@@ -161,7 +161,7 @@ $logo=getMemberLogo($member_id);
                   </ec>
                   &nbsp;<a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></strong><span>Hourly Rate </span></div>
                 <div class="overview-item">
-                <strong><?php D($memberInfo->total_working_hour);?></strong>
+                <strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong>
                 <span>Total Working Hour</span>
                 </div>
                 <div class="overview-item"><strong>

@@ -172,6 +172,19 @@ $logo=getMemberLogo($member_id);
         </div>
         <?php }?>
         
+               <!-- Boxed List -->
+        <div class="boxed-list mb-4">
+          <div class="boxed-list-headline">
+            <h3><i class="icon-material-outline-thumb-up"></i> Work History and Feedback</h3>
+          </div>
+			<div id="profile-reviews-data"></div>
+          
+
+          <div class="clearfix"></div>
+          <!-- Pagination / End --> 
+          
+        </div>
+        <!-- Boxed List / End --> 
         <!-- Boxed List -->
         
         <div class="boxed-list mb-4">
@@ -246,7 +259,7 @@ $logo=getMemberLogo($member_id);
                   </strong><span>Jobs</span>
                 </div>
                 <div class="overview-item">
-                <strong><?php D($memberInfo->total_working_hour);?></strong>
+                <strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong>
                 <span>Total Working Hour</span>
                 </div>
                 <div class="overview-item" style="flex:0 0 100%"><strong>
@@ -426,6 +439,7 @@ var  main = function(){
 	load_data('education');
 	load_data('skill');
 	load_data('portfolio');
+	load_data('reviews');
 	
 	$('.proposal-btn').click(function(){
 		var section=$(this);
