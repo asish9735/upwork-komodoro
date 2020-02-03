@@ -15,3 +15,11 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+application/temp/
+base_config/constants.php
+base_config/database.php
+NewFlance.clpprj
+*.db
+
+
+

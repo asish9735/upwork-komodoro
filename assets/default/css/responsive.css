@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen and (min-width: 0) {
+html {
+    font-size: 14px;
+}
+}
+
+@media only screen and (min-width: 768px) {
+ul.totalList > li {
+	flex: 0 0 25%;
+}
+ul.totalList > li:nth-child(4n) {
+	border-right:none
+}
+.pricing-group > .btn {
+    flex: 0 0 calc(33.3333% - 1.25rem);
+}
+.attachmentFile {
+	width: 200px;
+}
+.attachmentFile ul> li>a h5{
+	max-width: 180px;
+}
+}
+
+@media only screen and (min-width: 992px) {
+html {
+    font-size: 14.5px;
+}
+.freelancer-actions {
+	margin-left: 6.6rem;
+}
+.pricing-group > .btn {
+    flex: 0 0 calc(25% - 1.25rem);
+}
+}
+@media only screen and (min-width: 1200px) {
+html {
+    font-size: 15px;
+}
+}
+
+@media only screen and (max-width: 767px) {
+ul.totalList > li {
+	flex: 0 0 50%;
+}
+ul.totalList > li:nth-child(2n) {
+	border-right:none
+}
+.sidebar-container {
+	margin-top: 20px;
+}
+}
+
+@media only screen and (max-width: 575px) {
+.avatar-wrapper {
+	margin: 0 auto 1rem;
+}
+}
+
+
+
+
+/* END CSS */

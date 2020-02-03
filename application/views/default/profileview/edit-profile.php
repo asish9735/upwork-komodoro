@@ -1,0 +1,658 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+//get_print($memberInfo,FALSE);
+if(!$is_editable){
+?>
+<style>
+.edit_account_btn, .delete_account_btn, .edit_logo_btn {
+	display: none !important;
+}
+</style>
+<?php }?>
+<style>
+.cropper-view-box, .cropper-face {
+	border-radius: 50%;
+}
+</style>
+<div id="edit-profile-page">
+  <?php
+$logo=getMemberLogo($member_id);
+?>
+  <!-- Titlebar
+================================================== -->
+  <div class="single-page-header freelancer-header" data-background-image="<?php // echo IMAGE;?>">
+    <div class="container">
+      <div class="single-page-header-inner">
+        <div class="left-side"><!--<?php echo IMAGE;?>default-member-logo.svg-->
+          <div class="header-image freelancer-avatar" id="" style="position: relative">
+            <ec id="crop-avatar-dashboard" style="width: 100%">
+              <input type="hidden" name="logo" id="logo" class="replceLogoVal">
+              <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar" style="width: 30px;HEIGHT: 30PX;POSITION: ABSOLUTE;LEFT: 40%;TOP: 40%; display: block;"><i class="icon-feather-edit"></i></a></ec>
+          </div>
+          <div class="header-details">
+            <h3>
+              <?php D(ucwords($memberInfo->member_name))?>
+              <span class="show_edit_btn">
+              <ec id="profile-heading-data">
+                <?php D(ucfirst($memberInfo->member_heading))?>
+              </ec>
+              <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></span></h3>
+            <ul>
+              <li>
+                <div class="star-rating" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div>
+              </li>
+              <?php if($memberInfo->badges){
+              	?>
+              	<li>
+              	<?php
+              	foreach($memberInfo->badges as $b=>$badge){
+              		$badge_icon=UPLOAD_HTTP_PATH.'badge-icons/'.$badge->icon_image;
+				?>
+				<img src="<?php echo $badge_icon;?>" alt="<?php echo $badge->name;?>" height="26" width="26" data-tippy-placement="top" title="<?php echo $badge->name;?>"  /> &nbsp;
+				<?php	
+				}
+				?>
+				</li>
+				<?php
+				}
+              	?>
+
+              <li>
+                <?php if($memberInfo->country_code_short){?>
+                <img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($memberInfo->country_code_short));?>.svg" alt="<?php D(ucfirst($memberInfo->country_name))?>">
+                <?php }?>
+                <?php D(ucfirst($memberInfo->country_name))?>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="ml-auto" style="min-width: 150px;">
+            <p class="mb-0">Job Success <strong>50%</strong></p>
+            <div class="progress" style="max-width:200px; height:6px">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page Content
+================================================== -->
+  <div class="container">
+    <div class="row"> 
+      <!-- Content -->
+      <div class="col-lg-8"> 
+        
+        <!-- Page Content -->
+        <div class="panel mb-4">
+          <div class="panel-header">
+            <h4 class="show_edit_btn"><i class="icon-material-outline-account-circle text-site"></i> About Me <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="overview" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></h4>
+          </div>
+          <div class="panel-body">
+            <ec id="profile-overview-data">
+              <?php D(ucfirst(nl2br($memberInfo->member_overview)))?>
+            </ec>
+          </div>
+        </div>
+        
+        <!-- Boxed List -->
+        <div class="boxed-list mb-4">
+          <div class="boxed-list-headline">
+            <h3><i class="icon-material-outline-thumb-up"></i> Work History and Feedback</h3>
+          </div>
+			<div id="profile-reviews-data"></div>
+          
+
+          <div class="clearfix"></div>
+          <!-- Pagination / End --> 
+          
+        </div>
+        <!-- Boxed List / End --> 
+        <!-- Boxed List -->
+        
+        <div class="boxed-list mb-4">
+          <div class="boxed-list-headline">
+            <h3><i class="icon-material-outline-business-center"></i> Portfolio <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="portfolio" data-tippy-placement="top" title="Add">
+              <icon class="icon-material-outline-add"></icon>
+              </a></h3>
+          </div>
+          <ul class="boxed-list-ul">
+            <li class="pb-0">
+              <div id="profile-portfolio-data"></div>
+            </li>
+          </ul>
+        </div>
+        <!-- Boxed List / End --> 
+        <!-- Boxed List -->
+        <div class="boxed-list mb-4">
+          <div class="boxed-list-headline">
+            <h3><i class="icon-material-outline-business"></i> Employment History <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="employment" data-tippy-placement="top" title="Add">
+              <icon class="icon-material-outline-add"></icon>
+              </a></h3>
+          </div>
+          <div id="profile-employment-data"> </div>
+        </div>
+        <!-- Boxed List / End --> 
+        <!-- Boxed List -->
+        <div class="boxed-list mb-4">
+          <div class="boxed-list-headline">
+            <h3><i class="icon-material-outline-school"></i> Education <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="education" data-tippy-placement="top" title="Add">
+              <icon class="icon-material-outline-add"></icon>
+              </a></h3>
+          </div>
+          <div id="profile-education-data"> </div>
+        </div>
+        <!-- Boxed List / End --> 
+        
+      </div>
+      
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <div class="sidebar-container">
+          <div class="panel mb-4">
+            <div class="panel-body"> 
+              <!-- Profile Overview -->
+              <div class="profile-overview">
+                <div class="overview-item"><strong>
+                  <ec id="profile-hourly-data">
+                    <?php if($memberInfo->member_hourly_rate && $memberInfo->member_hourly_rate>0){D(priceSymbol().priceFormat($memberInfo->member_hourly_rate));}elseif(!$is_editable){D('Not set');}else{D('Set');}?>
+                  </ec>
+                  &nbsp;<a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></strong><span>Hourly Rate </span></div>
+                <div class="overview-item">
+                <strong><?php D($memberInfo->total_working_hour);?></strong>
+                <span>Total Working Hour</span>
+                </div>
+                <div class="overview-item"><strong>
+                  <?php D(priceSymbol().priceFormat($memberInfo->total_earning));?>
+                  </strong><span>Earned</span></div>
+                <div class="overview-item"><strong>
+                  <?php D($memberInfo->total_jobs);?>
+                  </strong><span>Jobs</span></div>
+                <div class="overview-item" style="flex:0 0 100%"> <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a> <strong>
+                  <ec id="profile-availability-data">
+                    <?php if($memberInfo->not_available_until){
+                    		echo 'Offline till '.dateFormat($memberInfo->not_available_until);
+                    	}elseif($memberInfo->available_per_week){
+	                    	$duration=getAllProjectDurationTime($memberInfo->available_per_week);
+	                    	D($duration['freelanceName']);
+                    	}elseif(!$is_editable){
+                    		D('Not set');
+                    	}else{
+                    		D('Set');
+                    	}?>
+                  </ec>
+                  </strong> <span>Availability</span> </div>
+              </div>
+              
+              <!-- Button --> 
+              <!--<a href="#small-dialog" class="btn btn-site apply-now-button popup-with-zoom-anim">Make an Offer</a>--> 
+            </div>
+          </div>
+          <!-- Freelancer Indicators -->
+          <div class="sidebar-widget d-none">
+            <div class="freelancer-indicators"> 
+              
+              <!-- Indicator -->
+              <div class="indicator"> <strong>88%</strong>
+                <div class="indicator-bar" data-indicator-percentage="88"><span></span></div>
+                <span>Job Success</span> </div>
+              
+              <!-- Indicator -->
+              <div class="indicator"> <strong>100%</strong>
+                <div class="indicator-bar" data-indicator-percentage="100"><span></span></div>
+                <span>Recommendation</span> </div>
+              
+              <!-- Indicator -->
+              <div class="indicator"> <strong>90%</strong>
+                <div class="indicator-bar" data-indicator-percentage="90"><span></span></div>
+                <span>On Time</span> </div>
+              
+              <!-- Indicator -->
+              <div class="indicator"> <strong>80%</strong>
+                <div class="indicator-bar" data-indicator-percentage="80"><span></span></div>
+                <span>On Budget</span> </div>
+            </div>
+          </div>
+          <div class="panel mb-4">
+            <div class="panel-header">
+              <h4>Language <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="language" data-tippy-placement="top" title="Add language"><i class="icon-material-outline-add"></i></a></h4>
+            </div>
+            <div class="panel-body" id="profile-language-data"> </div>
+          </div>
+          <!-- Widget -->
+          <div class="panel mb-4 d-none">
+            <div class="panel-header">
+              <h3>Social Profiles</h3>
+            </div>
+            <div class="panel-body freelancer-socials">
+              <ul>
+                <li><a href="#" title="Dribbble" data-tippy-placement="top"><i class="icon-brand-dribbble"></i></a></li>
+                <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                <li><a href="#" title="Behance" data-tippy-placement="top"><i class="icon-brand-behance"></i></a></li>
+                <li><a href="#" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Widget -->
+          <div class="panel mb-4">
+            <div class="panel-header">
+              <h4>Skills <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="skill" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></h4>
+            </div>
+            <div class="panel-body task-tags" id="profile-skill-data"> </div>
+          </div>
+          
+          <!-- Widget -->
+          <div class="sidebar-widget d-none">
+            <h3>Attachments</h3>
+            <div class="attachments-container"> <a href="#" class="attachment-box"><span>Cover Letter</span><i>PDF</i></a> <a href="#" class="attachment-box"><span>Contract</span><i>DOCX</i></a> </div>
+          </div>
+          
+          <!-- Sidebar Widget -->
+          <div class="panel mb-4">
+            <div class="panel-header">
+              <h4>Bookmark or Share</h4>
+            </div>
+            <div class="panel-body"> 
+              <!-- Bookmark Button -->
+              <button class="bookmark-button margin-bottom-25"> <span class="bookmark-icon"></span> <span class="bookmark-text">Bookmark</span> <span class="bookmarked-text">Bookmarked</span> </button>
+              
+              <!-- Copy URL -->
+              <div class="copy-url">
+                <input type="text" id="copy-url-profile" value="" class="form-control">
+                <button class="copy-url-button" data-clipboard-target="#copy-url-profile" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button>
+              </div>
+              
+              <!-- Share Buttons -->
+              <div class="share-buttons margin-top-25">
+                <div class="share-buttons-trigger"><i class="icon-feather-share-2"></i></div>
+                <div class="share-buttons-content"> <span>Interesting? <strong>Share It!</strong></span>
+                  <ul class="share-buttons-icons">
+                    <li><a href="#" data-button-color="#3b5998" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+                    <li><a href="#" data-button-color="#1da1f2" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                    <li><a href="#" data-button-color="#dd4b39" title="Share on Google Plus" data-tippy-placement="top"><i class="icon-brand-google-plus-g"></i></a></li>
+                    <li><a href="#" data-button-color="#0077b5" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
+	function load_data(type){
+		$( "#profile-"+type+"-data").html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 50px;">'+SPINNER+'<div>').show();
+		$.get( "<?php D(get_link('editprofileloadDataAJAXURL').'/'.md5($member_id).'/');?>",{'type':type}, function( data ) {
+			setTimeout(function(){ $( "#profile-"+type+"-data").html( data );
+			loadtooltip();
+			},2000)
+		});
+	}
+	function loadtooltip(){
+		tippy('[data-tippy-placement]', {
+			delay: 100,
+			arrow: true,
+			arrowType: 'sharp',
+			size: 'regular',
+			duration: 200,
+			// 'shift-toward', 'fade', 'scale', 'perspective'
+			animation: 'shift-away',
+			animateFill: true,
+			theme: 'dark',
+			// How far the tooltip is from its reference element in pixels 
+			distance: 10,
+		});
+	}
+		
+</script>
+<?php if($is_editable){?>
+<script type="text/javascript">
+var all_skills=<?php D(json_encode($all_skills));?>;
+var  main = function(){
+var bh = new Bloodhound({
+	local:all_skills,
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('skill_name'),
+	queryTokenizer: Bloodhound.tokenizers.whitespace,
+});
+
+$('#edit-profile-page').on('click','.edit_account_btn',function(){
+		$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+		$('#myModal').modal('show');
+		var formtype=$(this).attr('data-popup');
+		$.get( "<?php echo get_link('editprofileAJAXURL')?>",{'formtype':formtype,'Okey':$(this).attr('data-popup-id')}, function( data ) {
+			setTimeout(function(){ $( "#myModal .mycustom-modal").html( data );$('.selectpicker').selectpicker('refresh');if(formtype=='skill'){load_tag_input(bh);}},1000)
+		});
+	});
+$('#edit-profile-page').on('click','.delete_account_btn',function(){
+		var sec=$(this);
+		var formtype=sec.attr('data-popup');
+		if(formtype=='language'){
+			var title="Remove language";
+			var message="Remove the following language";
+		}else if(formtype=='employment'){
+			var title="Remove employment";
+			var message="Remove the following employment";
+		}else if(formtype=='education'){
+			var title="Remove education";
+			var message="Remove the following education";
+		}else if(formtype=='portfolio'){
+			var title="Remove portfolio";
+			var message="Remove the following portfolio";
+		}
+		bootbox.confirm({
+			title:title,
+		    message:message,
+		    size: 'small',
+		    buttons: {
+		        confirm: {
+		            label: "Yes",
+		            className: 'btn btn-success float-right'
+		        },
+		        cancel: {
+		            label: "No",
+		            className: 'btn btn-dark pull-left'
+		        }
+		    },
+		    callback: function (result) {
+		    	if(result==true){
+		      		$.post( "<?php echo get_link('deleteprofileDataAJAXURL')?>",{'formtype':formtype,'Okey':sec.attr('data-popup-id')}, function( data ) {
+			sec.closest('.'+formtype+'-contain').slideUp('slow');
+		});	
+		       	}
+		    }
+		});
+		
+	});
+load_data('language');
+load_data('employment');
+load_data('education');
+load_data('skill');
+load_data('portfolio');
+load_data('reviews');
+}
+function SaveHeading(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="headingform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					$('#profile-heading-data').html(msg['msg_heading']);
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SaveOverview(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="overviewform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					$('#profile-overview-data').html(msg['msg_overview']);
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SaveHourly(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="hourlyform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					$('#profile-hourly-data').html(msg['msg_hourly']);
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SaveAvailability(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="availabilityform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					$('#profile-availability-data').html(msg['msg_availability']);
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SaveLanguage(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="languageform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					//$('#profile-language-data').html(msg['msg_hourly']);
+					load_data('language');
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SaveEmployment(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="employmentform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					//$('#profile-language-data').html(msg['msg_hourly']);
+					load_data('employment');
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SaveEducation(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="educationform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					//$('#profile-language-data').html(msg['msg_hourly']);
+					load_data('education');
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SaveSkill(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="skillform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					//$('#profile-language-data').html(msg['msg_hourly']);
+					load_data('skill');
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function SavePortfolio(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="portfolioform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('editprofileFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+					//$('#profile-language-data').html(msg['msg_hourly']);
+					load_data('portfolio');
+					$('#myModal').modal('hide');
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+	}
+	function updateprofilepercent(){}
+</script>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document"> 
+    <!-- Modal content-->
+    <div class="modal-content mycustom-modal">
+      <div class="text-center padding-top-50 padding-bottom-50">
+        <?php load_view('inc/spinner',array('size'=>30));?>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="avatar-modal-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content mycustom-modal">
+      <form class="avatar-form" action="<?php D(get_link('editprofileFormCheckAJAXURL'))?>" enctype="multipart/form-data" method="post">
+        <input  type="hidden" value="logo" id="formtype" name="formtype"/>
+        <div class="modal-header"> 
+          <!-- <button type="submit" class="btn btn-success float-right avatar-save">Done</button>-->
+          <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+          <h4 class="modal-title">Change Avatar</h4>
+          <button  class="btn btn-success float-right avatar-save" type="submit">Save</button>
+        </div>
+        <div class="modal-body">
+          <div class="avatar-body"> 
+            <!-- Upload image and data -->
+            <div class="avatar-upload">
+              <input type="hidden" class="avatar-src" name="avatar_src">
+              <input type="hidden" class="avatar-data" name="avatar_data">
+              <label for="avatarInput"> Profile Picture</label>
+              <div class="uploadButton margin-top-0">
+                <input class="uploadButton-input avatar-input" type="file" id="avatarInput" name="avatar_file">
+                <label class="uploadButton-button" for="avatarInput">Upload Files</label>
+                <span class="uploadButton-file-name">Maximum file size: 2 MB</span> </div>
+            </div>
+            <p class="green-text">File must be gif, jpg, png, jpeg.</p>
+          </div>
+          
+          <!-- Crop and preview -->
+          <div class="row">
+            <div class="col-md-9">
+              <div class="avatar-crop-wrapper"></div>
+            </div>
+            <div class="col-md-3">
+              <div class="avatar-preview preview-lg"></div>
+              <div class="avatar-preview preview-md d-none"></div>
+              <div class="avatar-preview preview-sm d-none"></div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<?php }else{?>
+<script type="text/javascript">
+var  main = function(){
+	
+	load_data('language');
+	load_data('employment');
+	load_data('education');
+	load_data('skill');
+	load_data('portfolio');
+	load_data('reviews');
+
+}
+</script>
+<?php }?>

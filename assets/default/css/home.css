@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-color: #fff;
+    color: #000;
+}
+.section-1 {
+	height:549px
+}
+.banner-text {
+	font-size: 1.5rem;
+}
+.section-2 {
+	background-color:#ff7b00;
+	height:581px
+}
+.section-2-text {
+	font-size: 1.5rem;
+	text-align:center
+}
+.section-2-inner {
+	height:575px;
+	margin:30px auto 0;
+	max-width:1089px
+	
+}
+.section-3-text {
+	font-size: 1.5rem;
+}
+.box-1 {
+	height:94px;
+	width:332px;
+	margin-left:-3rem;
+	margin-bottom: 20px;
+}
+.box-2 {
+	height:184px;
+	width:231px;
+	margin:0 auto 10px
+}
+
+.section-3 {
+	height:px
+}
+.section-4 {
+	max-width:900px;
+	margin: 0 auto;
+	position:relative
+}
+.section-4-text {
+	font-size: 1.5rem;
+}
+.small-box {
+	position: absolute;
+    left: -30px;
+    top: -30px;
+}
+.small-box > span {
+	margin-left:10px
+}
+.section-5 {
+	height:1851px;
+	max-width:1140px;
+	margin-left: auto;
+	margin-right:auto
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* END CSS */
