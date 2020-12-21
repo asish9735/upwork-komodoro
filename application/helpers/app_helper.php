@@ -974,3 +974,15 @@ if (!function_exists('get_contract_view')) {
 		return $res;
 	}
 }
+if (!function_exists('isFavouriteMember')) {
+	function isFavouriteMember($member_id='',$favorite_member_id='') {
+		$ci = &get_instance();
+		return $ci->db->where('favorite_member_id',$favorite_member_id)->where('member_id',$member_id)->from('favorite_member')->count_all_results();
+	}
+}
+if (!function_exists('isFavouriteJob')) {
+	function isFavouriteJob($member_id='',$project_id='') {
+		$ci = &get_instance();
+		return $ci->db->where('project_id',$project_id)->where('member_id',$member_id)->from('favorite_project')->count_all_results();
+	}
+}

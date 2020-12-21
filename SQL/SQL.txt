@@ -1,4 +1,4 @@
-
+﻿
 -------------------
 ALTER TABLE `pref_member` ADD `is_employer` BOOLEAN NOT NULL AFTER `access_user_id`;
 ALTER TABLE `pref_access_panel` CHANGE `access_user_password` `access_user_password` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
@@ -632,3 +632,6 @@ ALTER TABLE `pref_project_contract_dispute_submission`
   
   
   ALTER TABLE `pref_member_statistics` ADD `total_working_hour` DECIMAL(10,2) NOT NULL AFTER `no_of_reviews`;
+----------Done -----
+CREATE TABLE `pref_favorite_member` ( `member_id` INT NOT NULL , `favorite_member_id` INT NOT NULL , `reg_date` DATETIME NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `pref_favorite_project` ( `member_id` INT NOT NULL , `project_id` INT NOT NULL , `reg_date` DATETIME NOT NULL ) ENGINE = InnoDB;

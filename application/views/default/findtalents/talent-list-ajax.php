@@ -6,7 +6,16 @@ if(!function_exists('print_skill')){
 		echo '<li>'.$v['skill_name'].'</li>';
 	}
 }
-if($talent_list){foreach($talent_list as $k => $freelancer){ ?>
+if($talent_list){foreach($talent_list as $k => $freelancer){
+	$is_fav_class="";
+	if($login_user_id){
+		$is_fav = isFavouriteMember($login_user_id, $freelancer['member_id']);
+		if($is_fav){
+			$is_fav_class="active";
+		}	
+	}
+	
+	 ?>
 <!-- Freelancer -->
 <div class="job-listing">
 
@@ -65,7 +74,7 @@ if($talent_list){foreach($talent_list as $k => $freelancer){ ?>
 				}
 				}
               	?>
-            <a href="#" class="btn btn-circle btn-light"><i class="icon-feather-heart"></i></a>
+            <a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($freelancer['member_id']);?>"><i class="icon-feather-heart"></i></a>
             <!--<a href="#" class="btn btn-circle btn-light active"><i class="icon-feather-heart"></i></a>-->
             </li>
         </ul>

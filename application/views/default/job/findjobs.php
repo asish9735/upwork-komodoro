@@ -226,7 +226,72 @@ var main = function(){
 			}
 		});
 	});
-	
+	$('#job_list').on('click', '.action_favorite',function(e){
+		e.preventDefault();
+		var _self=$(this);
+		var data = {
+			pid: _self.data('pid'),
+		};
+		$.post('<?php echo get_link('actionfavorite_job'); ?>', data, function(res){
+			if(res['status'] == 'OK'){
+				if(res['cmd']== 'add'){
+					_self.addClass('active');
+					bootbox.alert({
+						title:'Make Favorite',
+						message: 'Successfully Saved',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+				}else{
+					_self.removeClass('active');
+					bootbox.alert({
+						title:'Remove Favorite',
+						message: 'Successfully Removed',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+					
+				}
+			}else if(res['popup'] == 'login'){
+				bootbox.confirm({
+					title:'Login Error!',
+					message: 'You are not Logged In. Please login first.',
+					buttons: {
+					'confirm': {
+						label: 'Login',
+						className: 'btn-site pull-right'
+						},
+					'cancel': {
+						label: 'Cancel',
+						className: 'btn-dark pull-left'
+						}
+					},
+					callback: function (result) {
+						if(result){
+							var base_url = '<?php echo base_url();?>';
+							var refer = window.location.href.replace(base_url, '');
+							location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+						}
+					}
+				});
+			}
+		},'JSON');
+		
+	})
 }
 
 

@@ -169,8 +169,10 @@ $config['myBidsAJAXURL'] = 'projectfreelancer/load_project_bid';
 $config['downloadTempURL'] = 'welcome/downloadtempfile';
 
 $config['search_job'] = 'job/findjobs';
+$config['actionfavorite_job'] = 'job/action_favorite';
 
 $config['search_freelancer'] = 'findtalents/all_list';
+$config['actionfavorite_freelancer'] = 'findtalents/action_favorite';
 
 
 

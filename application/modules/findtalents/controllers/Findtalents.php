@@ -7,6 +7,13 @@ class Findtalents extends MX_Controller {
 	private $data;
 	
     public function __construct() {
+    	$this->loggedUser=$this->session->userdata('loggedUser');
+		$this->access_member_type='';
+		if($this->loggedUser){
+			$this->access_user_id=$this->loggedUser['LID'];	
+			$this->access_member_type=$this->loggedUser['ACC_P_TYP'];
+			$this->member_id=$this->loggedUser['MID'];
+		}
 		parent::__construct();
         $this->load->model('findtalents_model');
 		$curr_class = $this->router->fetch_class();
@@ -14,7 +21,9 @@ class Findtalents extends MX_Controller {
 		
 		$this->data['curr_class'] = $curr_class;
 		$this->data['curr_method'] = $curr_method;
-		
+		$this->layout->set_js(array(
+			'bootbox_custom.js',
+		));
     }
 
   
@@ -45,7 +54,11 @@ class Findtalents extends MX_Controller {
 		$limit = !empty($get['per_page']) ? $get['per_page'] : 0;
 		$offset = 10;
 		$next_limit = $limit + $offset;
-		
+		$login_user_id=0;
+		if($this->loggedUser){
+			$login_user_id=$this->member_id;
+		}
+		$data['login_user_id']=$login_user_id;
 		$data['talent_list'] =$this->findtalents_model->getTalentList($get,$limit, $offset);
 		$data['talent_list_count'] =$this->findtalents_model->getTalentList($get,'','', FALSE);
 		
@@ -69,6 +82,33 @@ class Findtalents extends MX_Controller {
 		echo json_encode($json);
 	}
 	
+	public function action_favorite(){
+		checkrequestajax();
+		if($this->loggedUser){
+			$cmd='';
+			$member_id_md5=post('mid');
+			if($member_id_md5){
+				$member_id=getFieldData('member_id','member','md5(member_id)',$member_id_md5);
+				if($member_id){
+					$cnt=$this->db->where('favorite_member_id',$member_id)->where('member_id',$this->member_id)->from('favorite_member')->count_all_results();
+					if($cnt){
+						$this->db->where('favorite_member_id',$member_id)->where('member_id',$this->member_id)->delete('favorite_member');
+						$cmd='remove';
+					}else{
+						$this->db->insert('favorite_member',array('favorite_member_id'=>$member_id,'member_id'=>$this->member_id,'reg_date'=>date('Y-m-d H:i:s')));
+						$cmd='add';
+					}
+					
+				}
+			}
+			$json['status']='OK';
+			$json['cmd']=$cmd;
+		}else{
+			$json['status']='FAIL';
+			$json['popup']='login';
+		}
+		echo json_encode($json);
+	}
 	
 
 	
