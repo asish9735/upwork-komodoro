@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-define('PROJECT',						'newflance/');
+$http_path="http://";
+define('PROJECT',						'upwork/');
 define('PROJECT_ADMIN',					'hackground/');
 define('THEME',							'default/');
 /*----------------------------------------------------------------------------*/
-define('URL',							'http://'.$_SERVER['HTTP_HOST']."/".PROJECT.PROJECT_ADMIN);
-define('SITE_URL',						'http://'.$_SERVER['HTTP_HOST']."/".PROJECT);
+define('URL',							$http_path.$_SERVER['HTTP_HOST']."/".PROJECT.PROJECT_ADMIN);
+define('SITE_URL',						$http_path.$_SERVER['HTTP_HOST']."/".PROJECT);
 define('APS_PATH',						$_SERVER['DOCUMENT_ROOT']."/".PROJECT);
-define('VPATH',							'http://'.$_SERVER['HTTP_HOST']."/".PROJECT.PROJECT_ADMIN);
+define('VPATH',							$http_path.$_SERVER['HTTP_HOST']."/".PROJECT.PROJECT_ADMIN);
 define('APATH',							$_SERVER['DOCUMENT_ROOT']."/".PROJECT.PROJECT_ADMIN);
 
 
-define('BASE_URL' , 					'http://'.$_SERVER['HTTP_HOST']."/".PROJECT);
+define('BASE_URL' , 					$http_path.$_SERVER['HTTP_HOST']."/".PROJECT);
 define('PROJECT_BASE_URL',				BASE_URL);
 
 /*FRONT END CONSTANTS */
@@ -40,7 +40,7 @@ define('PLUGINS',						ASSETS.THEME."plugins/");
 
 /*BACK END CONSTANTS */
 
-define('ADMIN_URL',                   	'http://'.$_SERVER['HTTP_HOST'].'/'.PROJECT.'hackground/');
+define('ADMIN_URL',                   	$http_path.$_SERVER['HTTP_HOST'].'/'.PROJECT.'hackground/');
 define('ADMIN_BASE_URL',				ADMIN_URL);
 define('ADMIN_ASSETS',                  ADMIN_URL.'assets/');
 define('ADMIN_THEME',					'admin/'); // active theme
