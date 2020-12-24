@@ -23,12 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="input-with-icon-left">
         <i class="icon-feather-mail"></i>      	          	
-        <input type="text" class="form-control" value="" name="email" id="email" placeholder="Enter Email Address">
+        <input type="text" class="form-control" value="" name="email" id="email" placeholder="Email Address">
         <span id="emailError" class="rerror"></span>
-    </div>
-    
-    <button class="btn btn-site btn-block mb-3 signUpBTN">Sign Up</button>
-    
+    </div>    
+    <button class="btn btn-site btn-block mb-3 signUpBTN">Sign Up</button>    
    </div>
     <div id="step_2" style="display: none">
      <h2 class="text-center m-0">Complete your account</h2>
@@ -76,11 +74,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <button class="btn btn-site btn-block signUpBTN">Submit</button>
     </div>
     </form>
-    </div>
-    <div class="general-footer">
-    <p>Already have an account?</p>
-    <a href="<?php URL::getLink('login'); ?>" class="btn btn-outline-success">Log In</a>
-    </div>
+    <p class="text-center small mb-0">Already have an account? <a href="<?php URL::getLink('login'); ?>">Log In</a></p>
+    </div>    
    </div>
        
 <script type="text/javascript">

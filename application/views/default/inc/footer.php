@@ -1,89 +1,71 @@
-<!-- Footer
-================================================== -->
-
-<div id="footer"> 
-  <!-- Footer Top Section -->
-  <div class="footer-top-section">
-    <div class="container"> 
-      <!-- Footer Rows Container -->
-      <div class="footer-rows-container"> 
-        
-        <!-- Left Side -->
-        <div class="footer-rows-left">
-          <div class="footer-row">
-            <div class="footer-row-inner footer-logo"> <img src="<?php echo IMAGE;?>logo2.png" alt=""> </div>
-          </div>
-        </div>
-        
-        <!-- Right Side -->
-        <div class="footer-rows-right"> 
-          <!-- Social Icons -->
-          <div class="footer-row">
-            <div class="footer-row-inner">
-              <ul class="footer-social-links">
-                <li> <a href="#" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-facebook-f"></i> </a> </li>
-                <li> <a href="#" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-twitter"></i> </a> </li>
-                <li> <a href="#" title="Google Plus" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-google-plus-g"></i> </a> </li>
-                <li> <a href="#" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-linkedin-in"></i> </a> </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Footer Rows Container / End --> 
-      
-    </div>
-  </div>
-  <!-- Footer Top Section / End --> 
-  
+<!-- Footer -->
+<div id="footer">  
   <!-- Footer Middle Section -->
   <div class="footer-middle-section">
     <div class="container">
       <div class="row"> 
-        
-        <!-- Links -->
-        <div class="col-md-4 col-xl-3 offset-xl-1">
+        <div class="col-xl-3 col-md-4 col-12">
           <div class="footer-links">
-            <h3>Company</h3>
+            <h3>Category</h3>
             <ul>
-              <li><a href="<?php D(get_link('CMSaboutus'))?>"><span>About Us</span></a></li>
-              <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span>Terms & Conditions</span></a></li>
-              <li><a href="<?php D(get_link('CMSrefundpolicy'))?>"><span>Refund Policy</span></a></li>
-              <li><a href="<?php D(get_link('CMSprivacypolicy'))?>"><span>Privacy Policy</span></a></li>
-              <li><a href="<?php D(get_link('CMShelp'))?>"><span>FAQs</span></a></li>
-              <li><a href="<?php D(get_link('conatctURL'))?>"><span>Contact Us</span></a></li>              
-              <li><a href="<?php D(get_link('CMShowitworks'))?>"><span>How it works</span></a></li>              
+              <li><a href="#"><span>Business</span></a></li>
+              <li><a href="#"><span>Digital Marketing</span></a></li>
+              <li><a href="#"><span>Graphics &amp; Design</span></a></li>              
+              <li><a href="#"><span>Lifestyle</span></a></li>
+              <li><a href="#"><span>Music &amp; Audio</span></a></li>
+              <li><a href="#"><span>Programming &amp; Tech</span></a></li>
+              <li><a href="#"><span>Sitemap</span></a></li>
+              <li><a href="#"><span>Video &amp; Animation</span></a></li>
+              <li><a href="#"><span>Writing &amp; Translation</span></a></li>
             </ul>
           </div>
         </div>
-        
         <!-- Links -->
-        <div class="col-md-4 col-xl-3 offset-xl-1">
-          <div class="footer-links">
-            <h3>Resources</h3>
-            <ul>
-              <li><a href="#"><span>Customer Support</span></a></li>
-              <li><a href="#"><span>Hiring Headquarters</span></a></li>
-              <li><a href="#"><span>Customer Stories</span></a></li>
-              <li><a href="#"><span>Business Resources</span></a></li>
-              <li><a href="#"><span>Payroll Services</span></a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- Links -->
-        <div class="col-md-4 col-xl-3 offset-xl-1">
+        <div class="col-xl-3 col-md-4 col-12">
           <div class="footer-links">
             <h3>Browse</h3>
             <ul>
               <li><a href="#"><span>Freelancers by Skill</span></a></li>
               <li><a href="#"><span>Freelancers by Location</span></a></li>
-              <li><a href="#"><span>Find Jobs</span></a></li>
-              <li><a href="#"><span>Find Freelancers</span></a></li>
+              <li><a href="#"><span>Find Projects</span></a></li>
+              <li><a href="#"><span>Find Professionals</span></a></li>
+              <li><a href="#"><span>Freelancers in UK</span></a></li>
+              <li><a href="#"><span>Freelancers in USA</span></a></li>
+              <li><a href="#"><span>Freelancers in Canada</span></a></li>
+              <li><a href="#"><span>Freelancers in Australia</span></a></li>
+              <li><a href="#"><span>Jobs in USA</span></a></li>
             </ul>
           </div>
         </div>
+        <!-- Links -->
+        <div class="col-xl-3 col-md-4 col-12">
+          <div class="footer-links">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="<?php D(get_link('CMSaboutus'))?>"><span>About Us</span></a></li>                                                        
+              <li><a href="<?php D(get_link('conatctURL'))?>"><span>Contact Us</span></a></li>
+              <li><a href="<?php D(get_link('CMShelp'))?>"><span>FAQs</span></a></li>              
+              <li><a href="<?php D(get_link('CMShowitworks'))?>"><span>How it works</span></a></li>
+              <li><a href="<?php D(get_link('CMSprivacypolicy'))?>"><span>Privacy Policy</span></a></li>
+              <li><a href="<?php D(get_link('CMSrefundpolicy'))?>"><span>Refund Policy</span></a></li>
+              <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span>Terms &amp; Conditions</span></a></li>              
+            </ul>
+          </div>
+        </div>        
+        <!-- Links -->
+        <div class="col-xl-3 col-md-4 col-12">
+          <div class="footer-links">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#"><span>Business Resources</span></a></li>
+              <li><a href="#"><span>Customer Stories</span></a></li>
+              <li><a href="#"><span>Customer Support</span></a></li>
+              <li><a href="#"><span>Hiring Headquarters</span></a></li>              
+              <li><a href="#"><span>Payroll Services</span></a></li>
+              <li><a href="#"><span>Trust &amp; Safety</span></a></li>
+            </ul>
+          </div>
+        </div>                
       </div>
     </div>
   </div>
@@ -92,7 +74,46 @@
   <!-- Footer Copyrights -->
   <div class="footer-bottom-section">
     <div class="container">
-      <p>© 2019 <strong>Demo</strong>. All Rights Reserved.</p>
+    <div class="footer-rows-container">       
+      <!-- Left Side -->
+      <div class="footer-rows-left">
+        <!-- Social Icons -->
+        <div class="footer-row">
+            <div class="footer-row-inner">
+              <ul class="footer-social-links">
+                <li><a href="#" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-facebook-f"></i></a></li>
+                <li><a href="#" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-twitter"></i></a></li>
+                <li><a href="#" title="Google Plus" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-google-plus-g"></i></a></li>
+                <li><a href="#" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-linkedin-in"></i></a></li>
+                <li><a href="#" title="Instagram" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-instagram"></i></a></li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+		</div>
+      </div>
+      
+      <div class="footer-rows-center">
+      	<div class="footer-row-inner">
+        	<p>&copy; Copyright 2020 Demo.com. All Rights Reserved</p>
+        </div>
+      </div>
+      <!-- Right Side -->
+      <div class="footer-rows-right">                         
+        <!-- Language Switcher -->
+        <div class="footer-row float-md-right">
+          <div class="footer-row-inner">
+            <select class="selectpicker language-switcher" data-selected-text-format="count" data-size="5">
+              <option selected>English</option>
+              <option>Français</option>
+              <option>Español</option>
+              <option>Deutsch</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>		
+		
+        
     </div>
   </div>
   <!-- Footer Copyrights / End --> 
@@ -104,7 +125,7 @@
 <!-- Wrapper / End -->
 <?php 
 $load_js=$this->layout->load_js();
-$load_js_default=array('jquery-3.3.1.min.js','popper.js', 'bootstrap.min.js','jquery-migrate-3.0.0.min.js','mmenu.min.js','tippy.all.min.js','simplebar.min.js','bootstrap-slider.min.js','bootstrap-select.min.js','snackbar.js','clipboard.min.js','counterup.min.js','magnific-popup.min.js','slick.min.js','custom.js','promise.min.js','loadMore.js', 'app-service.js');
+$load_js_default=array('jquery-3.3.1.min.js','popper.min.js','bootstrap.min.js','jquery-migrate-3.0.0.min.js','mmenu.min.js','tippy.all.min.js','simplebar.min.js','bootstrap-slider.min.js','bootstrap-select.min.js','snackbar.js','clipboard.min.js','counterup.min.js','magnific-popup.min.js','feedback-plugins.js','feedback.js','slick.min.js','custom.js','promise.min.js','loadMore.js', 'app-service.js');
 $this->minify->js($load_js_default);
 if(!empty($load_js)){
 	foreach($load_js as $files){
@@ -113,6 +134,7 @@ if(!empty($load_js)){
 }
 echo $this->minify->deploy_js(FALSE, 'footer.min.js');
  ?>
+
 <!-- Main Script Loading --> 
 <script>
 $(document).ready(function(){
@@ -187,4 +209,5 @@ $(window).load(function(){
 	
 });
 </script>
-</body></html>
+</body>
+</html>

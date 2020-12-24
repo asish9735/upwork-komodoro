@@ -9,9 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="shortcut icon" href="<?php echo IMAGE;?>favicon.png" type="image/x-icon">
 <?php $this->layout->load_meta(); ?>
-<style type="">
+<!--<style type="">
 	@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&subset=latin-ext");
-</style>
+</style>-->
 
 <?php
 $this->minify->add_css('bootstrap.css');

@@ -11,16 +11,13 @@
          <input type="hidden" name="refer" value="" readonly="readonly">
          <div class="input-with-icon-left">
             <i class="icon-feather-mail"></i>
-            <input type="text" class="form-control" value="" name="forgot_email" id="forgot_email" placeholder="Enter Email Address">
+            <input type="text" class="form-control" value="" name="forgot_email" id="forgot_email" placeholder="Email Address">
             <span id="forgot_emailError" class="rerror"></span> 
           </div>                                          
         <button class="btn btn-site btn-block mb-3 saveBTN" id="submit-btn">Submit</button>
         </form>
-        </div>
-        <div class="general-footer">
-        <p>Don't have an account?</p>
-        <a href="<?php URL::getLink('signup'); ?>" class="btn btn-outline-success">Register Now</a>
-		</div>
+        <p class="text-center small mb-0">Don't have an account? <a href="<?php URL::getLink('signup'); ?>">Register Now</a></p>
+        </div>        
        </div>
 	</aside>
 </div>

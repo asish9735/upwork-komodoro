@@ -32,57 +32,7 @@ if($loggedUser){
 				<!-- Logo -->
 				<div id="logo">
 					<a href="<?php echo SITE_URL;?>"><img src="<?php echo IMAGE;?>logo.png" data-sticky-logo="<?php echo IMAGE;?>logo.png" data-transparent-logo="<?php echo IMAGE;?>logo2.png" alt=""></a>
-				</div>
-
-				<!-- Main Navigation -->
-				<nav id="navigation">
-					<ul id="responsive">
-					<?php if($loggedUser){
-						if($this->access_member_type=='C'){
-						?>
-						<li><a href="<?php echo URL::get_link('search_freelancer'); ?>">Find a Freelancer</a></li>
-						<li><a href="<?php D(get_link('postprojectURL'))?>">Post a Job</a></li>
-						<?php }
-						if($this->access_member_type=='F'){
-						?>
-						<li><a href="<?php echo URL::get_link('search_job'); ?>">Browse Jobs</a></li>
-						<?php }?>
-						<li><a href="<?php echo URL::get_link('dashboardURL'); ?>">Dashboard</a></li>
-					<?php }else{?>
-					<li><a href="<?php echo URL::get_link('search_job'); ?>">Browse Jobs</a></li>
-					<li><a href="<?php echo URL::get_link('search_freelancer'); ?>">Find a Freelancer</a></li>
-					<?php }?>
-					<?php /*?>
-						<li><a href="#">Find Work</a>
-							<ul class="dropdown-nav">
-								<li><a href="<?php echo URL::get_link('search_job'); ?>">Browse Jobs</a></li>
-								<li><a href="#">Browse Tasks</a></li>
-							</ul>
-						</li>
-
-						<li><a href="#">For Employers</a>
-							<ul class="dropdown-nav">
-								<li><a href="<?php echo URL::get_link('search_freelancer'); ?>">Find a Freelancer</a></li>								
-								<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-								<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
-							</ul>
-						</li>
-
-						<li><a href="#">Dashboard</a>
-							<ul class="dropdown-nav">
-								<li><a href="<?php echo URL::get_link('dashboardURL'); ?>">Dashboard</a></li>
-								<li><a href="dashboard-messages.html">Messages</a></li>
-								<li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
-								<li><a href="dashboard-reviews.html">Reviews</a></li>
-								<li><a href="dashboard-manage-jobs.html">Jobs</a></li>																	
-								<li><a href="dashboard-settings.html">Settings</a></li>
-							</ul>
-						</li>
-						<?php */?>
-					</ul>
-				</nav>
-				<div class="clearfix"></div>
-				<!-- Main Navigation / End -->
+				</div>				
 				
 			</div>
 			<!-- Left Side Content / End -->
@@ -90,35 +40,60 @@ if($loggedUser){
 
 			<!-- Right Side Content / End -->
 			<div class="right-side">
+            	<!-- Main Navigation -->
+				<nav id="navigation">
+					<ul id="responsive">                    
+                    <li><a href="">How It Works</a></li>
+                    <li><a href="">Contact Us</a></li>
+					<?php if($loggedUser){
+						if($this->access_member_type=='C'){
+						?>
+						<li><a href="<?php echo URL::get_link('search_freelancer'); ?>">Professionals</a></li>
+						<li><a href="<?php D(get_link('postprojectURL'))?>">Post a Job</a></li>
+						<?php }
+						if($this->access_member_type=='F'){
+						?>
+						<li><a href="<?php echo URL::get_link('search_job'); ?>">Projects</a></li>
+						<?php }?>
+						<li><a href="<?php echo URL::get_link('dashboardURL'); ?>">Dashboard</a></li>
+					<?php }else{?>
+					<li><a href="<?php echo URL::get_link('search_job'); ?>">Projects</a></li>
+					<li><a href="<?php echo URL::get_link('search_freelancer'); ?>">Professionals</a></li>
+                    <li class="d-sm-none"><a href="<?php echo URL::get_link('loginURL'); ?>">Log In</a></li>
+					<li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>">Register</a></li>
+                    <li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>">Post A Job</a></li>
+					<?php }?>
+					</ul>
+				</nav>
+				<!--<div class="clearfix"></div>-->
+				<!-- Main Navigation / End -->
 
 			<?php if(!is_login_user()){ ?>
-				<div class="header-widget hide-on-mobile">
-					<a href="<?php echo URL::get_link('loginURL'); ?>" class=" log-in-button"><span>Log In</span></a>
-					<a href="<?php echo URL::get_link('registerURL'); ?>" class=" log-in-button"><span>Register</span></a>
-				</div>
+				<div class="header-widget hide-on-mobile_ d-none d-sm-block">
+					<ul class="display-inline">
+                    	<li><a href="<?php echo URL::get_link('loginURL'); ?>"><img src="<?php echo IMAGE;?>login_16.png" alt=""> Log In</a></li>
+						<li><a href="<?php echo URL::get_link('registerURL'); ?>"><img src="<?php echo IMAGE;?>register_16.png" alt=""> Register</a></li>
+                    	<li><a href="<?php echo URL::get_link('registerURL'); ?>" class="btn btn-site text-white"><img src="<?php echo IMAGE;?>post_20.png" alt=""> Post A Job</a></li>
+					</ul>
+                </div>
 			<?php }else{ ?>
 
 				<!--  User Notifications -->
-				<div class="header-widget hide-on-mobile">
-					
+				<div class="header-widget hide-on-mobile">					
 					<!-- Notifications -->
 					<div class="header-notifications">
-
 						<!-- Trigger -->
 						<div class="header-notifications-trigger notification-trigger">
 							<a href="#"><i class="icon-feather-bell"></i><span class="new-notification-counter" style="display:none"></span></a>
 						</div>
-
 						<!-- Dropdown -->
 						<div class="header-notifications-dropdown">
-
 							<div class="header-notifications-headline">
 								<h4>Notifications</h4>
 								<button class="mark-as-read" title="Mark all as read" data-tippy-placement="left" hidden>
 									<i class="icon-feather-check-square"></i>
 								</button>
-							</div>
-
+							</div>                            
 							<div class="header-notifications-content">
 								<div class="header-notifications-scroll">
 									<ul id="header-notification-list" style="max-height:200px; overflow: auto;">
@@ -127,9 +102,7 @@ if($loggedUser){
 									<a id="load_more_notification_btn" href="javascript:void(0)" style="display:none;">Load more</a>
 								</div>
 							</div>
-
 						</div>
-
 					</div>
 					
 					<!-- Messages -->
@@ -148,7 +121,7 @@ if($loggedUser){
 								</button>
 							</div>
 
-							<div class="header-notifications-content">
+							<div class="header-notifications-content with-icon">
 								<div class="header-notifications-scroll" id="header-message-container">
 									<ul id="header-message-list" style="max-height:200px; overflow: auto;">
 										
@@ -157,14 +130,12 @@ if($loggedUser){
 								</div>
 							</div>
 
-							<a href="<?php echo base_url('message');?>" class="header-notifications-button40de00button-sliding-icon">View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
+							<a href="<?php echo base_url('message');?>" class="header-notifications-button button-sliding-icon">View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
 						</div>
 					</div>
 
 				</div>
-				<!--  User Notifications / End -->
-
-				
+				<!--  User Notifications / End -->				
 
 				<!-- User Menu -->
 				<div class="header-widget">
@@ -185,7 +156,7 @@ if($loggedUser){
 								<div class="user-details">
 									<div class="user-avatar status-online"><img src="<?php echo $logo;?>" alt=""></div>
 									<div class="user-name">
-										<?php echo $profile_name;?> <span><?php echo $profile_type_name;?></span>
+										<p><?php echo $profile_name;?></p> <span><?php echo $profile_type_name;?></span>
 									</div>
 								</div>
 								

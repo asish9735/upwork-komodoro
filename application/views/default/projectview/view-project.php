@@ -15,7 +15,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 						
 						<div class="header-details">
 							<h1><?php D(ucfirst($projectData['project']->project_title));?></h1>
-							<h5><?php D($projectData['project_category']->category_subchild_name);?> , <?php D($projectData['project_category']->category_name);?></h5>
+							<p><?php D($projectData['project_category']->category_subchild_name);?>, <?php D($projectData['project_category']->category_name);?></p>
 							
 						</div>
 					</div>
@@ -177,11 +177,11 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
                         <ul>
                             <li>
                                 <i class="icon-material-outline-business"></i>
-                                <h5><?php D($projectData['clientInfo']['client_name'])?></h5>
+                                <p><?php D($projectData['clientInfo']['client_name'])?></p>
                             </li>
                             <li>
                                 <i class="icon-material-outline-location-on"></i>
-                                <h5><?php D($projectData['clientInfo']['client_address']['country'])?></h5>
+                                <p><?php D($projectData['clientInfo']['client_address']['country'])?></p>
                                 <span><?php D($projectData['clientInfo']['client_address']['location'])?> &nbsp;</span>
                             </li>
                             <li>
@@ -195,16 +195,16 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
                             </li>
                             <li>
                                 <i class="icon-material-outline-business-center"></i>
-                                <h5><?php D($projectData['clientInfo']['client_project_info']['total_project'])?> total project posted</h5>
+                                <p><?php D($projectData['clientInfo']['client_project_info']['total_project'])?> total project posted</p>
                                 <span><?php D($projectData['clientInfo']['client_project_info']['total_hired'])?> hires<!--, <?php D($projectData['clientInfo']['client_project_info']['total_active'])?> active--></span>
                             </li>
                             <li>
                                 <i class="icon-material-outline-local-atm"></i>
-                                <h5><?php D(priceSymbol().priceFormat($projectData['clientInfo']['client_total_payment']));?> total spent</h5>
+                                <p><?php D(priceSymbol().priceFormat($projectData['clientInfo']['client_total_payment']));?> total spent</p>
                             </li>
                             <li>
                                 <i class="icon-material-outline-access-time"></i>                                
-                                <h5><strong>Member since:</strong> <span><?php D(dateFormat($projectData['clientInfo']['client_member_since'],'M d, Y'))?></span></h5>
+                                <p><strong>Member since:</strong> <span><?php D(dateFormat($projectData['clientInfo']['client_member_since'],'M d, Y'))?></span></p>
                             </li>
                         </ul>
 					</div>
@@ -215,7 +215,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
                 <div class="panel-header"><h4>Bookmark or Share</h4></div>
 				<div class="panel-body">					
 					<!-- Bookmark Button -->
-					<button class="bookmark-button margin-bottom-25">
+					<button class="bookmark-button btn-block mb-3">
 						<span class="bookmark-icon"></span>
 						<span class="bookmark-text">Bookmark</span>
 						<span class="bookmarked-text">Bookmarked</span>

@@ -14,13 +14,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        <div id="agree_termsError" class="error-msg5 error alert-error alert alert-danger" style="display:none"></div>
          <div class="input-with-icon-left">
             <i class="icon-feather-mail"></i>
-            <input type="text" class="form-control" name="email" id="email" placeholder="Email Email Address" />
+            <input type="text" class="form-control" name="email" id="email" placeholder="Email Address" />
             <span id="emailError" class="rerror"></span>
         </div>              
         
         <div class="input-with-icon-left">   
         	<i class="icon-feather-lock"></i>     	         	
-            <input type="password" class="form-control" value="" name="password" id="password" placeholder="Enter Password">
+            <input type="password" class="form-control" value="" name="password" id="password" placeholder="Password">
             <span id="passwordError" class="rerror"></span>
         </div>
         
@@ -31,17 +31,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <button class="btn btn-site btn-block" id="signInBTN">Log In</button>
         
-        <div class="social-login-separator"><span>or</span></div>
+        <div class="social-login-separator"><span>OR</span></div>
         <div class="social-login-buttons mb-3">
             <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via Facebook</button>
             <button class="google-login ripple-effect"><i class="icon-brand-google"></i> Log In via Google</button>
         </div>
         </form>
-        </div>
-        <div class="general-footer">
-        <p>Don't have an account?</p>
-        <a href="<?php URL::getLink('signup'); ?>" class="btn btn-outline-success">Register Now</a>
-        </div>
+        <p class="text-center small mb-0">Don't have an account? <a href="<?php URL::getLink('signup'); ?>">Register Now</a></p>
+        </div>        
        </div>
 <script type="text/javascript">
 var main = function(){

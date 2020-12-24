@@ -1,4 +1,5 @@
-/* CCS */
+@charset "utf-8";
+/* CSS Document */
 .slick-slider {
 	position:relative;
 	display:block;
@@ -86,20 +87,10 @@
 .slick-arrow.slick-hidden {
 	display:none
 }
-@charset 'UTF-8';
 .slick-loading .slick-list {
-	background:#fff url(../img/ajax-loader.gif) center center no-repeat
+	background:#fff url('ajax-loader.gif') center center no-repeat
 }
-@font-face {
-font-family:'slick';
-font-weight:400;
-font-style:normal;
-src:url(../fonts/slick.eot);
-src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/slick.woff) format('woff'), url(../fonts/slick.ttf) format('truetype'), url('../fonts/slick.svg#slick') format('svg')
-}
-.slick-dotted.slick-slider {
-	margin-bottom:30px
-}
+
 .slick-dots {
 	position:absolute;
 	bottom:-25px;
@@ -165,11 +156,12 @@ src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/s
 .testimonial-style-5.testimonial-slider-2 .testimonal-img {
 	text-align: center;	
     overflow: hidden;
-	padding:6px;
-    max-width: 135px;
+	padding:1px;
+	background-color: #ddd;
+    max-width: 130px;
 }
 .testimonial-style-5.testimonial-slider-2 .testimonial-for {
-	padding: 0 15%;
+	padding: 0 10%;
 }
  @media only screen and (min-width: 768px) and (max-width: 991px) {
  .testimonial-style-5.testimonial-slider-2 .testimonial-for {
@@ -186,8 +178,8 @@ src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/s
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	padding: 30px;
 	margin-top: 30px;
-	margin-left: 6px;*/
-	color: #fff;
+	margin-left: 6px;
+	color: #fff;*/
 	position: relative;
 }
 .testimonial-style-5.testimonial-slider-2 .testimonial-for .testimonial-desc .triangle {
@@ -200,8 +192,10 @@ src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/s
 	border-bottom: 20px solid #fff;
 	left: 50%;
 	transform: translateX(-50%);
+	display:none;
 }
 .testimonial-desc .client h3 {
+	margin-bottom: 0;
 	text-align: center;
 }
 .testimonial-style-5.testimonial-slider-2 .testimonial-for .testimonial-desc .client ul.rating {
@@ -226,17 +220,17 @@ src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/s
 .testimonial-style-5.testimonial-slider-2 .slick-slide {
 	padding: 4px 0;
 }
-.testimonial-style-5.testimonial-slider-2 .testimonal-nav .slick-track {
+/*.testimonial-style-5.testimonial-slider-2 .testimonal-nav .slick-track {
 	margin-top: 30px;
-}
+}*/
 /*----------------------------------
     Testimonial Style 5
 -------------------------------------*/
 .testimonial-for .testimonial-desc p {
 	text-align: center;
-	padding: 0 10%;
-	font-size: 1.25rem;
-    line-height: 2rem;
+	/*padding: 0 10%;*/
+	font-size: 1rem;
+    line-height: 1.75rem;
     font-style: italic;
 }
 .testimonal-img {
@@ -257,9 +251,12 @@ src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/s
 	line-height: 29px;
 }
 .testimonal-nav.slick-slider {
-	max-width: 30%;
+	max-width: 34%;
 	width: 100%;
 	margin: 0 auto;
+}
+.slick-dotted.slick-slider {
+	margin-bottom:30px
 }
 .slick-slide.slick-active.slick-center .testimonal-img {
 	transform: scale(1);
@@ -280,10 +277,12 @@ src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/s
 	transform: translateX(-50%);
 }
 /* */
-
+.client > h4{
+	text-align:center;
+}
 .client > .star-rating {
 	display:block;
-	margin-bottom: 20px;
+	margin-bottom: 0.25rem;
 	text-align:center
 }
 

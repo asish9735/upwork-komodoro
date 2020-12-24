@@ -10,7 +10,7 @@ $(document).ready(function(){
 	$(function() {
 		function mmenuInit() {
 			var wi = $(window).width();
-			if(wi <= '1099') {
+			if(wi <= '991') {
 
 				$(".mmenu-init" ).remove();
 				$("#navigation").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
@@ -993,7 +993,7 @@ $(document).ready(function(){
 		var photoBoxBG = $(this).attr('data-background-image');
 
         if(photoBox !== undefined) {
-            $(this).css('background-image', 'url('+photoBoxBG+')');
+            $(this).css('background-image', 'url('+VPATH+'assets/default/'+photoBoxBG+')');
         }
 	});
 
@@ -1109,21 +1109,21 @@ $(document).ready(function(){
     /*----------------------------------------------------*/
 	$('.default-slick-carousel').slick({
 		infinite: false,
-		slidesToShow: 3,
+		slidesToShow: 4,
 		slidesToScroll: 1,
 		dots: false,
 		arrows: true,
 		adaptiveHeight: true,
 		responsive: [
 		    {
-		      breakpoint: 1292,
+		      breakpoint: 1199,
 		      settings: {
 		        dots: true,
 		    	arrows: false
 		      }
 		    },
 		    {
-		      breakpoint: 993,
+		      breakpoint: 991,
 		      settings: {
 		        slidesToShow: 2,
 		        slidesToScroll: 2,
@@ -1132,7 +1132,7 @@ $(document).ready(function(){
 		      }
 		    },
 		    {
-		      breakpoint: 769,
+		      breakpoint: 767,
 		      settings: {
 		        slidesToShow: 1,
 		        slidesToScroll: 1,

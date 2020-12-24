@@ -1,29 +1,34 @@
-/* ------------------------------------------------------------------- */
+@charset "utf-8";
+/* CSS Document */
+:root {
+    --siteColor: #64be43;
+	--webColor: #000;
+}
 .numbered.color ol > li::before {
-     border:1px solid #40de00;
-     color:#40de00;
+     border:1px solid var(--siteColor);
+     color:var(--siteColor);
 }
  .numbered.color.filled ol > li::before {
-     border:1px solid #40de00;
-     background-color:#40de00;
+     border:1px solid var(--siteColor);
+     background-color:var(--siteColor);
 }
  .radio input[type="radio"]:checked + label .radio-label {
-     background-color:#40de00;
-     border-color:#40de00;
+     background-color:var(--siteColor);
+     border-color:var(--siteColor);
 }
  .checkbox input:checked + label span.checkbox-icon {
-     background-color:#40de00;
-     border-color:#40de00;
+     background-color:var(--siteColor);
+     border-color:var(--siteColor);
 }
  .slider-handle {
-     border:2px solid #40de00;
+     border:2px solid var(--siteColor);
 }
  .infoBox-close:hover {
      color:#fff;
-     background-color:#40de00;
+     background-color:var(--siteColor);
 }
  .message-bubble.me .message-text:before {
-     border-left:6px solid #40de00;
+     border-left:6px solid var(--siteColor);
 }
  a,
  .header-widget .log-in-button:hover i,
@@ -51,8 +56,8 @@
  .keyword,
  .banner-headline strong.color,
  .category-box-icon,
- .recommended .pricing-plan-label,
- .recommended .pricing-plan-label strong,
+ /*.recommended .pricing-plan-label,
+ .recommended .pricing-plan-label strong,*/
  .boxed-widget.summary li.total-costs span,
  .testimonial-box:before,
  .single-counter h3,
@@ -77,9 +82,11 @@
  .dashboard-nav ul li.active a:after,
  .dashboard-nav ul li:hover a:after,
  .help-icon,
+ .slick-prev:hover,
+ .slick-next:hover,
  .header-widget .log-in-button:hover,
  .header-widget .log-in-button:hover i {
-     color:#40de00;
+     color:var(--siteColor);
 }
 #backtotop a,
  .header-notifications-trigger span,
@@ -146,7 +153,7 @@
  .messages-inbox ul li:before,
  .message-by h5 i,
  .message-bubble.me .message-text {
-     background-color:#40de00;
+     background-color:var(--siteColor);
 }
  .transparent-header #navigation > ul li:hover ul li:hover a:after,
  .transparent-header #navigation > ul li:hover a:after,
@@ -158,22 +165,20 @@
  .intro-search-field .field-title,
  .category-box:hover,
  .photo-box:hover:before,
- .photo-box.small .photo-box-content span,
- .slick-prev:hover,
- .slick-next:hover,
+ .photo-box.small .photo-box-content span, 
  .bootstrap-select.btn-group .bs-actionsbox div button:hover {
-     background:#40de00;
+     background:var(--siteColor);
 }
  .uploadButton .uploadButton-button,
  .pricing-plan .button {
-     color:#40de00;
-     border:1px solid #40de00;
+     color:var(--siteColor);
+     border:1px solid var(--siteColor);
 }
  .payment-tab-trigger > input:checked ~ label::before,
  .dashboard-nav ul li.active-submenu,
  .dashboard-nav ul li.active,
  .dashboard-nav ul li:hover {
-     border-color:#40de00;
+     border-color:var(--siteColor);
 }
 
  #navigation ul ul.dropdown-nav ul.dropdown-nav li:hover a:after,
@@ -354,20 +359,29 @@
 
  #navigation ul ul.dropdown-nav ul.dropdown-nav li:hover a:after,
  #navigation ul ul.dropdown-nav li:hover a:after {
-     background-color:#40de00;
+     background-color:var(--siteColor);
  }
  
 /* custom color */
 .btn-site {
-	background-color:#40de00;
+	background-color:var(--siteColor);
 	color:#fff
 }
 .btn-site:hover {
 	background-color:#37bf00;
 	color:#fff
 }
+.btn-outline-site {
+	border:1px solid var(--siteColor);
+	color: var(--siteColor);
+}
+.btn-outline-site:hover {
+	border-color: var(--siteColor);
+	background-color: var(--siteColor);
+	color: #fff;
+}
 .text-site {
-	color:#40de00
+	color:var(--siteColor)
 }
 .bg-site {
 	background-color:#37bf00;

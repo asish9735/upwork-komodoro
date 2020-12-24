@@ -1,4 +1,4 @@
-<div class="margin-top-50"></div>
+<section class="section">
 <div class="container">
 <!--<div class="row">
     <div class="col-xl-3 col-lg-4 col-12">
@@ -11,18 +11,18 @@
     
 	<h3 class="page-title">Search Results</h3>
     <form id="filterForm">
-    <div class="row">
+    <div class="row row-10">
     	<div class="col-md-8">
             <div class="search-box input-group">
                 <input type="text" class="form-control" placeholder="Find jobs by title" form="filterForm" name="term"/>
-                <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()">Search</button></div>
+                <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i> Search</button></div>
             </div>
         </div>
         <div class="col-md-4">
         	<div class="d-flex">
-                <a href="javascript:void(0)" class="btn btn-outline-success" onclick="$('#filterAdvance').toggle();" style="min-width:45%"><i class="icon-feather-filter"></i> Filter</a>
-                <span style="width:10%">&nbsp;</span>
-                <a href="javascript:void(0)" class="btn btn-outline-success" style="min-width:45%"><i class="icon-feather-heart"></i> Save Search</a>        
+                <a href="javascript:void(0)" class="btn btn-outline-site" onclick="$('#filterAdvance').toggle();" style="min-width:47%"><i class="icon-feather-filter"></i> Filter</a>
+                <span style="width:6%">&nbsp;</span>
+                <a href="javascript:void(0)" class="btn btn-outline-site" style="min-width:47%"><i class="icon-feather-heart"></i> Save Search</a>        
             </div>    
         </div>
     </div>
@@ -44,8 +44,8 @@
     
         <!--<div class="sort-group">
             <span>View by:</span>
-            <a href="#" class="btn btn-outline-success"><i class="icon-feather-grid"></i></a> &nbsp;
-            <a href="#" class="btn btn-outline-success active"><i class="icon-feather-list"></i></a>
+            <a href="#" class="btn btn-outline-site"><i class="icon-feather-grid"></i></a> &nbsp;
+            <a href="#" class="btn btn-outline-site active"><i class="icon-feather-list"></i></a>
         </div>-->
 		</div>
         </div>
@@ -154,13 +154,11 @@
 
 		
 </div>
+</section>
 
 <script>
-
-var main = function(){
-	
-	var findJobLoadMore = LoadMore.getInstance();
-	
+var main = function(){	
+	var findJobLoadMore = LoadMore.getInstance();	
 	/* findJobLoadMore.config({
 		url : '<?php echo base_url('job/job_list_ajax');?>',
 		target : '#job_list',
@@ -173,7 +171,6 @@ var main = function(){
 		
 		}
 	});
-
 	findJobLoadMore.start(); */
 	
 	function filterForm(){
