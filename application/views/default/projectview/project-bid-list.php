@@ -12,7 +12,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 						
 						<div class="header-details">
 							<h1><?php D(ucfirst($projectData['project']->project_title));?></h1>
-							<h5><?php D($projectData['project_category']->category_subchild_name);?> , <?php D($projectData['project_category']->category_name);?></h5>
+							<p><?php D($projectData['project_category']->category_subchild_name);?>, <?php D($projectData['project_category']->category_name);?></p>
 
 						</div>
 					</div>

@@ -55,9 +55,9 @@ $logo=getMemberLogo($member_id);
                 <?php }?>
                 <?php D(ucfirst($memberInfo->country_name))?>
               </li>
-              <li>
+              <!--<li>
                 <div class="verified-badge-with-title">Verified</div>
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>
@@ -84,7 +84,7 @@ $logo=getMemberLogo($member_id);
         <!-- Page Content -->
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title"><i class="icon-material-outline-account-circle text-site"></i> About Me </h4>
+            <h4 class="panel-title">About </h4>
           </div>
           <div class="panel-body">
             <ec id="profile-overview-data">
@@ -94,7 +94,7 @@ $logo=getMemberLogo($member_id);
         </div>
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title"><i class="icon-feather-file-text text-site"></i> Cover Letter </h4>
+            <h4 class="panel-title">Cover Letter </h4>
           </div>
           <div class="panel-body">
             <ec id="profile-overview-data">
@@ -108,7 +108,7 @@ $logo=getMemberLogo($member_id);
             		?>
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title"><i class="icon-material-outline-account-balance-wallet text-site"></i> Milestone </h4>
+            <h4 class="panel-title">Milestone </h4>
           </div>
           <div class="boxed-list">
             <ul class="boxed-list-ul">
@@ -133,7 +133,7 @@ $logo=getMemberLogo($member_id);
         <?php if($proposaldetails['project_question']){?>
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title"><i class="icon-line-awesome-question-circle text-site"></i> Question </h4>
+            <h4 class="panel-title">Question </h4>
           </div>
           <div class="panel-body">
             <?php
@@ -152,7 +152,7 @@ $logo=getMemberLogo($member_id);
         <?php if($proposaldetails['proposal']->bid_attachment){?>
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title"><i class="icon-material-outline-account-circle text-site"></i> Attachments </h4>
+            <h4 class="panel-title">Attachments </h4>
           </div>
           <div class="panel-body">
             <div class="attachments-container">
@@ -175,7 +175,7 @@ $logo=getMemberLogo($member_id);
                <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3><i class="icon-material-outline-thumb-up"></i> Work History and Feedback</h3>
+            <h3>Work History and Feedback</h3>
           </div>
 			<div id="profile-reviews-data"></div>
           
@@ -189,7 +189,7 @@ $logo=getMemberLogo($member_id);
         
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3><i class="icon-material-outline-business-center"></i> Portfolio </h3>
+            <h3>Portfolio </h3>
           </div>
           <ul class="boxed-list-ul">
             <li>
@@ -201,7 +201,7 @@ $logo=getMemberLogo($member_id);
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3><i class="icon-material-outline-business"></i> Employment History </h3>
+            <h3>Employment History </h3>
           </div>
           <div id="profile-employment-data"> </div>
         </div>
@@ -209,7 +209,7 @@ $logo=getMemberLogo($member_id);
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3><i class="icon-material-outline-school"></i> Education </h3>
+            <h3>Education </h3>
           </div>
           <div id="profile-education-data"> </div>
         </div>
@@ -239,30 +239,36 @@ $logo=getMemberLogo($member_id);
               <div class="mb-3"></div>
               
               <!-- Profile Overview -->
-              <div class="profile-overview">
-                <div class="overview-item"><strong>
-                  <ec id="profile-hourly-data">
-                    <?php D(priceSymbol().priceFormat($proposaldetails['proposal']->bid_amount));?>
-                  </ec>
-                  &nbsp;</strong><span>
+              <ul class="list-group-0">
+                <li class="overview-item">
+                <span>
                   <?php if($is_hourly){?>
                   Hour
                   <?php }else{?>
                   Bids
                   <?php }?>
-                  </span></div>
-                <div class="overview-item"><strong>
+                  </span>
+                <strong>
+                  <ec id="profile-hourly-data">
+                    <?php D(priceSymbol().priceFormat($proposaldetails['proposal']->bid_amount));?>
+                  </ec>
+                </strong></li>
+                <li><span>Earned</span>
+                <strong>
                   <?php D(priceSymbol().priceFormat($memberInfo->total_earning));?>
-                  </strong><span>Earned</span></div>
-                <div class="overview-item"><strong>
+                  </strong></li>
+                <li class="overview-item">
+                <span>Jobs</span>
+                <strong>
                   <?php D($memberInfo->total_jobs);?>
-                  </strong><span>Jobs</span>
-                </div>
-                <div class="overview-item">
-                <strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong>
+                  </strong>
+                </li>
+                <li>
                 <span>Total Working Hour</span>
-                </div>
-                <div class="overview-item" style="flex:0 0 100%"><strong>
+                <strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong>                
+                </li>
+                <li> <span>Availability</span> 
+                <strong>
                   <ec id="profile-availability-data">
                     <?php if($memberInfo->not_available_until){
                     		echo 'Offline till '.dateFormat($memberInfo->not_available_until);
@@ -273,8 +279,8 @@ $logo=getMemberLogo($member_id);
                     		D('Not set');
                     	}?>
                   </ec>
-                  </strong> <span>Availability</span> </div>
-              </div>
+                  </strong></li>
+              </ul>
             </div>
           </div>
           <!-- Freelancer Indicators -->

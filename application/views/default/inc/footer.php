@@ -74,42 +74,30 @@
   <!-- Footer Copyrights -->
   <div class="footer-bottom-section">
     <div class="container">
-    <div class="footer-rows-container">       
+    <div class="row footer-rows-container">       
       <!-- Left Side -->
-      <div class="footer-rows-left">
-        <!-- Social Icons -->
-        <div class="footer-row">
-            <div class="footer-row-inner">
-              <ul class="footer-social-links">
-                <li><a href="#" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-facebook-f"></i></a></li>
-                <li><a href="#" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-twitter"></i></a></li>
-                <li><a href="#" title="Google Plus" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-google-plus-g"></i></a></li>
-                <li><a href="#" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-linkedin-in"></i></a></li>
-                <li><a href="#" title="Instagram" data-tippy-placement="bottom" data-tippy-theme="light"> <i class="icon-brand-instagram"></i></a></li>
+      <div class="col-auto">
+      <ul class="footer-social-links">
+                <li><a href="#" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-facebook-f"></i></a></li>
+                <li><a href="#" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-twitter"></i></a></li>                
+                <li><a href="#" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-linkedin-in"></i></a></li>
+                <li><a href="#" title="Instagram" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-instagram"></i></a></li>
+                <li><a href="#" title="Youtube" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-youtube"></i></a></li>
               </ul>
-              <div class="clearfix"></div>
-            </div>
-		</div>
-      </div>
-      
-      <div class="footer-rows-center">
-      	<div class="footer-row-inner">
+	  </div>              
+      <div class="col text-center">
         	<p>&copy; Copyright 2020 Demo.com. All Rights Reserved</p>
         </div>
-      </div>
+      
       <!-- Right Side -->
-      <div class="footer-rows-right">                         
+      <div class="col-auto">                         
         <!-- Language Switcher -->
-        <div class="footer-row float-md-right">
-          <div class="footer-row-inner">
-            <select class="selectpicker language-switcher" data-selected-text-format="count" data-size="5">
+        <select class="selectpicker language-switcher" data-selected-text-format="count" data-size="5">
               <option selected>English</option>
               <option>Français</option>
               <option>Español</option>
               <option>Deutsch</option>
             </select>
-          </div>
-        </div>
       </div>
     </div>		
 		

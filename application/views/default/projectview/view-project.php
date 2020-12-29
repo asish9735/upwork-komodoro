@@ -14,6 +14,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 					<div class="left-side">
 						
 						<div class="header-details">
+                        
 							<h1><?php D(ucfirst($projectData['project']->project_title));?></h1>
 							<p><?php D($projectData['project_category']->category_subchild_name);?>, <?php D($projectData['project_category']->category_name);?></p>
 							
@@ -21,6 +22,8 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 					</div>
 					<?php if($projectData['project_settings'] && $projectData['project_settings']->is_fixed==1){?>
 					<div class="right-side">
+                    	<!-- Bookmark icon -->
+                    	<span class="bookmark-icon"></span>
 						<div class="salary-box">
 							<div class="salary-type">Fixed Budget</div>
 							<div class="salary-amount"><?php D(priceSymbol().priceFormat($projectData['project_settings']->budget));?></div>
@@ -212,34 +215,24 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 
 				<!-- Sidebar Widget -->
                 <div class="panel">
-                <div class="panel-header"><h4>Bookmark or Share</h4></div>
+                <div class="panel-header"><h4>Share</h4></div>
 				<div class="panel-body">					
-					<!-- Bookmark Button -->
-					<button class="bookmark-button btn-block mb-3">
-						<span class="bookmark-icon"></span>
-						<span class="bookmark-text">Bookmark</span>
-						<span class="bookmarked-text">Bookmarked</span>
-					</button>
-
 					<!-- Copy URL -->
-					<div class="copy-url">
+					<div class="copy-url mb-3">
 						<input type="text" class="form-control" id="copy-url" value="">
 						<button class="copy-url-button ripple-effect" data-clipboard-target="#copy-url" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button>
 					</div>
 
 					<!-- Share Buttons -->
-					<div class="share-buttons margin-top-25">
-						<div class="share-buttons-trigger"><i class="icon-feather-share-2"></i></div>
-						<div class="share-buttons-content">
-							<span>Interesting? <strong>Share It!</strong></span>
-							<ul class="share-buttons-icons">
-								<li><a href="#" data-button-color="#3b5998" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
-								<li><a href="#" data-button-color="#1da1f2" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-								<li><a href="#" data-button-color="#dd4b39" title="Share on Google Plus" data-tippy-placement="top"><i class="icon-brand-google-plus-g"></i></a></li>
-								<li><a href="#" data-button-color="#0077b5" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-							</ul>
-						</div>
-					</div>
+					<div class="freelancer-socials">
+                      <ul class="social-links">
+                        <li><a href="#" data-button-color="#3b5998" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+                        <li><a href="#" data-button-color="#1da1f2" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                        <li><a href="#" data-button-color="#0077b5" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                        <li><a href="#" data-button-color="#7a5450" title="Share on Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
+                        <li><a href="#" data-button-color="#c4302b" title="Share on Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
+                      </ul>
+             	   </div>
 				</div>
                 </div>
 

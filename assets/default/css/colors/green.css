@@ -367,7 +367,7 @@
 	background-color:var(--siteColor);
 	color:#fff
 }
-.btn-site:hover {
+.btn-site:hover, .btn-site:focus {
 	background-color:#37bf00;
 	color:#fff
 }
@@ -375,12 +375,13 @@
 	border:1px solid var(--siteColor);
 	color: var(--siteColor);
 }
-.btn-outline-site:hover {
+.btn-outline-site:hover, .btn-outline-site:focus {
 	border-color: var(--siteColor);
 	background-color: var(--siteColor);
 	color: #fff;
 }
-.text-site {
+.text-site,
+.task-listing h3.task-listing-title a:hover {
 	color:var(--siteColor)
 }
 .bg-site {

@@ -8,48 +8,42 @@
     <div class="col-xl-9 col-lg-8 col-12">
     </div>
 </div>-->
-    
-	<h3 class="page-title">Search Results</h3>
+    <div class="dashboard-headline">
+    	<h1>Projects</h1>
+    </div>
+	<h3 class="page-title"><ec class="total_count">0</ec> jobs found</h3>
     <form id="filterForm">
     <div class="row row-10">
-    	<div class="col-md-8">
+    	<div class="col-md-6">
             <div class="search-box input-group">
                 <input type="text" class="form-control" placeholder="Find jobs by title" form="filterForm" name="term"/>
                 <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i> Search</button></div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
         	<div class="d-flex">
-                <a href="javascript:void(0)" class="btn btn-outline-site" onclick="$('#filterAdvance').toggle();" style="min-width:47%"><i class="icon-feather-filter"></i> Filter</a>
-                <span style="width:6%">&nbsp;</span>
-                <a href="javascript:void(0)" class="btn btn-outline-site" style="min-width:47%"><i class="icon-feather-heart"></i> Save Search</a>        
+                <a href="javascript:void(0)" class="btn btn-outline-site mr-3" onclick="$('#filterAdvance').toggle();"><i class="icon-feather-filter"></i> Filter</a>                
+                <a href="javascript:void(0)" class="btn btn-outline-site mr-3"><i class="icon-feather-heart"></i> Save Search</a>                                 
+                <div class="sort-by ml-auto">
+                <div class="sort-by">
+                    <span>Sort by:</span>
+                    <select class="selectpicker hide-tick" name="order_by"  onchange="filterForm()">
+                        <option value="default">Relevance</option>
+                        <option value="latest">Newest</option>
+                        <option value="old">Oldest</option>
+                        <!--<option value="random">Random</option>-->
+                    </select>
+                </div>
+                <!--    
+                <div class="sort-group">
+                    <span>View by:</span>
+                    <a href="#" class="btn btn-outline-site"><i class="icon-feather-grid"></i></a> &nbsp;
+                    <a href="#" class="btn btn-outline-site active"><i class="icon-feather-list"></i></a>
+                </div>-->
+			</div>       
             </div>    
         </div>
-    </div>
-    <div class="row">
-    	<div class="col-md-9">
-        	<p class="mt-2"><i class="icon-material-outline-business-center"></i> <ec class="total_count">0</ec> jobs found</p>
-        </div>
-        <div class="col-md-3  text-right">
-        <div class="sort-by mb-3">
-        <div class="sort-by">
-            <span>Sort by:</span>
-            <select class="selectpicker hide-tick" name="order_by"  onchange="filterForm()">
-                <option value="default">Relevance</option>
-                <option value="latest">Newest</option>
-                <option value="old">Oldest</option>
-                <!--<option value="random">Random</option>-->
-            </select>
-        </div>
-    
-        <!--<div class="sort-group">
-            <span>View by:</span>
-            <a href="#" class="btn btn-outline-site"><i class="icon-feather-grid"></i></a> &nbsp;
-            <a href="#" class="btn btn-outline-site active"><i class="icon-feather-list"></i></a>
-        </div>-->
-		</div>
-        </div>
-    </div>
+    </div>    
     
 
     <div id="filterAdvance" style="display:none">
@@ -130,7 +124,7 @@
     
 
 	<!-- Tasks Container -->
-    <div class="tasks-list-container" id="job_list">
+    <div class="tasks-list-container mt-4" id="job_list">
     	<div class="text-center" style="margin: 100px"><?php load_view('inc/spinner',array('size'=>30));?></div>
         <!-- Pagination -->
         <div class="pagination-container margin-top-30 margin-bottom-60" hidden>

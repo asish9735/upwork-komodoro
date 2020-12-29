@@ -1,7 +1,11 @@
-<div class="margin-top-50"></div>
+<section class="section">
 <div class="container">
+	<div class="dashboard-headline">
+    	<h1>Professionals</h1>
+    </div>
 	<div class="row">
 		<div class="col-xl-3 col-lg-4 col-12">
+        	<a href="javascript:void(0)" class="d-lg-none" id="filter" title="Filter"><i class="icon-feather-filter f20"></i></a>
 			<div class="sidebar-container">	
 			<form id="filterForm">			
 				<!-- Location -->
@@ -100,17 +104,17 @@
 
 		<h3 class="page-title">Search Results</h3>
         <div class="row">
-    		<div class="col-md-8">
+    		<div class="col-md-8 col-12">
             <div class="search-box input-group">
 				<input type="text" class="form-control" name="term" placeholder="Find talents by name" form="filterForm"/>
                 <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()">Search</button></div>
 			</div>
 		</div>
-    	<div class="col-md-4">
+    	<div class="col-md-4 col-12">
             <div class="sort-by">
             	<div class="sort-by">
                 <span>Sort by:</span>
-                <select class="selectpicker hide-tick" name="order_by" form="filterForm" onchange="filterForm()" form="filterForm">
+                <select class="selectpicker hide-tick" name="order_by" form="filterForm" onchange="filterForm()">
 		            <option value="default">Relevance</option>
 		            <option value="latest">Newest</option>
 		            <option value="old">Oldest</option>
@@ -124,7 +128,7 @@
 
 			
 			<!-- Freelancers List Container -->		
-            <div class="listings-container margin-top-30" id="talent_list">
+            <div class="listings-container mt-4" id="talent_list">
 				
 				
 			</div>
@@ -150,7 +154,7 @@
 		</div>
 	</div>
 </div>
-<div class="dashboard-footer-spacer"></div>
+</section>
 
 <script>
 function starRating(ratingElem) {

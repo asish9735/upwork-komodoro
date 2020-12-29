@@ -1014,7 +1014,7 @@ $(document).ready(function(){
 	$(".freelancer-socials a").each(function() {
 		var buttonBG = $(this).attr("data-button-color");
         if(buttonBG !== undefined) {
-        	$(this).css('color',buttonBG);
+        	$(this).css('background-color',buttonBG);
         }
 	});
 

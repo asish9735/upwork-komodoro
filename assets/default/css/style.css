@@ -29,7 +29,7 @@ b, strong {
 body {	
 	background-color: #f5f5f5;
 	color: #333;
-	font-family:'Open sans', Helvetica, sans-serif;
+	/*font-family:'Open sans', Helvetica, sans-serif;*/
 }
 .btn{
 	font-family:'FSJoey', Helvetica, sans-serif;
@@ -233,14 +233,14 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 .btn-circle {
   position: relative;
   bottom: 5px;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   text-align: center;
-  padding: 6px 0;
-  font-size: 1rem;
-  line-height: 1.428571429;
-  border-radius: 15px;
-      -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  padding: 5px 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 16px;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 .edit_account_btn{
@@ -632,8 +632,8 @@ font-size:2rem
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 .panel-header {
-	border-bottom:1px solid #ddd;
-	padding:1rem 1.333rem
+	border-bottom:1px solid #dfdfdf;
+	padding:0.75rem 1.25rem;
 }
 .card-header > h3,
 .card-header > h4,
@@ -642,7 +642,7 @@ font-size:2rem
     margin-bottom: 0;
 }
 .panel-body {
-	padding:1.333rem
+	padding:1.25rem
 }
 .panel-footer {
     padding: 0.75rem 1.25rem;
@@ -651,13 +651,13 @@ font-size:2rem
 }
 ul.langList {
 	padding: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     list-style: none;
 }
 ul.langList > li {
 	display:block;
 	clear:both;
-	margin-bottom:1rem
+	margin-bottom:0.5rem;
 }
 ul.langList > li:last-child {
 	margin-bottom:0
@@ -698,10 +698,7 @@ ul.langList > li:last-child {
 	text-align:center
 }
 .search-box {
-    background-color: #f2f2f2;
-    border-radius: 4px;
     position: relative;
-	margin-bottom:1rem
 }
 .bootstrap-select .dropdown-toggle::after {
 	display:none
@@ -714,7 +711,7 @@ ul.langList > li:last-child {
 }
 .freelancer-about .freelancer-intro {
     flex-grow: 1;
-	margin-bottom:1rem
+	/*margin-bottom:1rem*/
 }
 .brr-0 {
     border-top-right-radius: 0px;
@@ -790,7 +787,7 @@ ul.totalList > li > span {
 }
 .sort-by > div > span {
 	display:inline-block;
-	line-height: 40px;
+	line-height: 2.25rem;
 	margin-right:1rem
 }
 .dashboard-box-footer {
@@ -813,9 +810,12 @@ ul.totalList > li > span {
 	overflow:hidden
 }
 .job-listing .job-listing-description p {
-    max-height: 45px;
-    overflow: hidden;
+	overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 0.938rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .freelancer-intro > h5 {
 	font-size: 1.067rem;
@@ -1138,15 +1138,29 @@ ul.display-inline li {
 .header-widget ul.display-inline > li > a > img {
     vertical-align: -3px;
 }
-
-
-
-
-
-
-
-
-
+.dashboard-headline h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+}
+#filter {
+    position: absolute;
+    right: 20px;
+    top: -40px;
+    z-index: 9;
+}
+.single-page-header span.bookmark-icon{
+	right: 15px;
+    top: -10px;
+}
+ul.list-group-0{
+	margin-bottom:0;
+}
+ul.list-group-0 > li{
+	display: flex;
+    justify-content: space-between;
+	padding: 0.25rem 0;
+}
 
 
 

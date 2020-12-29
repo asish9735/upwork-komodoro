@@ -3,7 +3,7 @@
 <?php 
 if(!function_exists('print_skill')){
 	function print_skill($v){
-		echo '<li>'.$v['skill_name'].'</li>';
+		echo '<span>'.$v['skill_name'].'</span> ';
 	}
 }
 if($talent_list){foreach($talent_list as $k => $freelancer){
@@ -18,7 +18,6 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 	 ?>
 <!-- Freelancer -->
 <div class="job-listing">
-
 	<!-- Job Listing Details -->
 	<div class="job-listing-details">
 		<!-- Logo -->
@@ -40,10 +39,10 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 			
 			<div class="freelancer-details-list">
 				<ul>	                	
-                    <li><a href="#" class="btn btn-sm btn-success">Hire Freelancer</a></li>
-                    <li><a href="#" class="btn btn-sm btn-outline-success">Invite to Job</a></li>				
+                    <li><a href="#" class="btn btn-site">Hire Freelancer</a></li>
+                    <li><a href="#" class="btn btn-outline-site">Invite to Job</a></li>				
 					<li>
-                        <p class="mb-0">Job Success <b>50%</b></p>
+                        <p class="mb-1">Job Success <b>50%</b></p>
                         <div class="progress" style="height:6px; min-width: 100px;">
                           <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>                
@@ -54,17 +53,17 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 			</div>
 			
 			<p class="job-listing-text"><?php echo $freelancer['member_overview'];?></p>
-			<ul class="skill-tags list-1">	
+			<div class="task-tags">	
 				<?php array_map("print_skill", $freelancer['user_skill']); ?>
-			</ul>
+			</div>
 		</div>
 	</div>		
     <div class="job-listing-footer">
         <ul>
             <li><i class="icon-feather-map-pin"></i> <?php echo $freelancer['country_name'];?></li>
             <li>Rate <strong><?php echo $freelancer['member_hourly_rate'] > 0 ? priceSymbol().  priceFormat($freelancer['member_hourly_rate']) . ' / hr' : ' - ';?></strong></li>
-			<li><i class="icon-material-outline-account-balance-wallet"></i> Earned <strong><?php D(priceSymbol().displayamount($freelancer['total_earning'],2));?></strong></li>
-            <li class="ml-auto">
+			<li><i class="icon-material-outline-account-balance-wallet"></i>Earned <strong><?php D(priceSymbol().displayamount($freelancer['total_earning'],2));?></strong></li>
+            <li class="ml-md-auto">
             <?php if($freelancer['badges']){
               	foreach($freelancer['badges'] as $b=>$badge){
               		$badge_icon=UPLOAD_HTTP_PATH.'badge-icons/'.$badge->icon_image;
@@ -127,3 +126,10 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 	</div>					
 </div>
 */?>
+<script>
+$(document).ready(function(){
+  $('#filter').click(function(){
+    $('.sidebar-container').slideToggle();
+  });
+});
+</script>

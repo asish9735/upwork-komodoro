@@ -18,7 +18,7 @@ if($login_user_id){
 		<!-- Details -->
 		<div class="task-listing-description">
 			<h3 class="task-listing-title"><a href="<?php echo $v['project_detail_url']; ?>"><?php echo $v['project_title']; ?></a></h3>
-			<p><b><?php echo $budget > 0 ? ($v['is_fixed'] == '1' ? 'Fixed' : 'Hourly') . '' : 'Hourly'; ?></b> - <span><?php D($v['experience_level_name']);?> (<i class="icon-feather-<?php D($v['experience_level_key']);?>"></i>)</span> - 
+			<p class="mb-2"><b><?php echo $budget > 0 ? ($v['is_fixed'] == '1' ? 'Fixed' : 'Hourly') . '' : 'Hourly'; ?></b> - <span><?php D($v['experience_level_name']);?> (<i class="icon-feather-<?php D($v['experience_level_key']);?>"></i>)</span> - 
 			<?php if($v['is_hourly']){
 				$duration=getAllProjectDuration($v['hourly_duration']);
 				$durationtime=getAllProjectDurationTime($v['hourly_time_required']);
@@ -42,14 +42,10 @@ if($login_user_id){
 
 	<div class="task-listing-bid">
 		<div class="task-listing-bid-inner">
-			<div class="task-offers text-right">
-                 <a href="<?php echo VZ;?>" class="btn btn-circle btn-light mr-2 action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-feather-heart"></i></a>
-            <!--<a href="#" class="btn btn-circle btn-light active"><i class="icon-feather-heart"></i></a>-->
-            	<a href="#" class="btn btn-circle btn-light"><i class="icon-material-outline-bug-report"></i></a>
-            	<div class="clearfix"></div>
-                
+			<div class="task-offers text-md-right">                 
+            	<a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-site">Send Proposal</a>                       
             </div>
-			
+			     
 		</div>
 	</div>
 	</div>
@@ -75,9 +71,12 @@ if($login_user_id){
 			
 			</li>
 			<li><i class="icon-material-outline-account-balance-wallet"></i> <?php echo $budget > 0 ? get_setting('site_currency'). $budget : 'Not Set';?></li>
-			<li><i class="icon-material-outline-access-time"></i> <?php D(get_time_ago($v['project_posted_date']));?></li>
-            <li class="ml-auto"><a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-site btn-sm">Send Proposal</a></li>
-		</ul>
+			<li><i class="icon-material-outline-access-time"></i> <?php D(get_time_ago($v['project_posted_date']));?></li>      
+            <li class="ml-md-auto"><a href="<?php echo VZ;?>" class="btn btn-circle btn-light mr-2 action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-feather-heart"></i></a>
+            <!--<a href="#" class="btn btn-circle btn-light active"><i class="icon-feather-heart"></i></a>-->
+            	<a href="#" class="btn btn-circle btn-light"><i class="icon-material-outline-bug-report"></i></a>      
+			</li>
+        </ul>
 	</div>
 </div>
 
