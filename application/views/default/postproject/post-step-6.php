@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="content with-padding">
       <div class="submit-field myradio">
-        <h5>How would you like to pay freelancer ?</h5>
+        <label>How would you like to pay freelancer ?</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn">
             <input type="radio" class="project_payment_type" id="defaultInlineHourly" name="projectPaymentType" value="hourly" autocomplete="off">
@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="clearfix"></div>
         <span id="projectPaymentTypeError" class="rerror"></span> </div>
       <div class="submit-field myradio">
-        <h5>Experience level required ?</h5>
+        <label>Experience level required?</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <?php if($all_projectExperienceLevel){
 										foreach($all_projectExperienceLevel as $key=>$keydata){
@@ -45,14 +45,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row fixed_project_display" style="display: none">
       	<div class="col-xl-6">
         <div class="submit-field mb-0">
-          <h5>Do you have a specific budget ?</h5>
+          <label>Do you have a specific budget?</label>
           <input type="text" class="form-control" name="fixed_budget" id="fixed_budget" value="">
           <span id="fixed_budgetError" class="rerror"></span> </div>
         </div>
       </div>
       <div class="hourly_project_display" style="display: none">
         <div class="submit-field myradio">
-          <h5>Project duration</h5>
+          <label>Project duration</label>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <?php if($all_projectDuration){
 										foreach($all_projectDuration as $key=>$keydata){
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="hourly_project_display" style="display: none">
         <div class="submit-field myradio mb-0">
-          <h5>Time required for this project</h5>
+          <label>Time required for this project</label>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <?php if($all_projectDurationTime){
 										foreach($all_projectDurationTime as $key=>$keydata){

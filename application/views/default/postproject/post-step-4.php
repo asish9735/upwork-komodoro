@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="content with-padding">    
             <div class="submit-field mb-0">
-                <h5>Select required skills</h5>
+                <label>Select required skills</label>
                 <div class="keywords-list skillContaintag"></div>
 			   <input  class="form-control tagsinput_skill" name="skills" id="skills" value="">
                 <span id="skillsError" class="rerror"></span>

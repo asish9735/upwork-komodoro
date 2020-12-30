@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="content with-padding">
       <div class="submit-field myradio">
-        <h5>Who can see your project?</h5>
+        <label>Who can see your project?</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn">
             <input type="radio" id="defaultInlinePublic" name="projectVisibility" value="public" autocomplete="off">
@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="clearfix"></div>
         <span id="projectVisibilityError" class="rerror"></span> </div>
       <div class="submit-field myradio mb-0">
-        <h5>How many freelancer you need for your project?</h5>
+        <label>How many freelancer you need for your project?</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn">
             <input type="radio" class="no_of_freelancer_radio" id="defaultInlineOne" name="member_required" value="S" autocomplete="off">
@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row no_of_freelancer_display mt-3" style="display: none">
         <div class="col-xl-6">
           <div class="submit-field mb-0">
-            <h5>Number of freelancer</h5>
+            <label>Number of freelancer</label>
             <input type="text" class="form-control" name="no_of_freelancer" id="no_of_freelancer" value=""/>
             <span id="no_of_freelancerError" class="rerror"></span> </div>
         </div>

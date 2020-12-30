@@ -233,15 +233,15 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 .btn-circle {
   position: relative;
   bottom: 5px;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   padding: 5px 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1;
-  border-radius: 16px;
-	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  border-radius: 15px;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
 }
 .edit_account_btn{
 	/* visibility: hidden;*/
@@ -629,7 +629,7 @@ font-size:2rem
 .panel {
 	background-color:#fff;
 	border-radius: 0.25rem;
-	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .panel-header {
 	border-bottom:1px solid #dfdfdf;
@@ -659,6 +659,9 @@ ul.langList > li {
 	clear:both;
 	margin-bottom:0.5rem;
 }
+ul.langList.with-edit > li {
+	margin-bottom:1rem;
+}
 ul.langList > li:last-child {
 	margin-bottom:0
 }
@@ -674,7 +677,7 @@ ul.langList > li:last-child {
 
 .general-form {
 	background-color:#fff;
-	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 0.25rem;
 	margin:0 auto;
 	max-width:480px
@@ -730,7 +733,7 @@ ul.totalList {
     align-content: center;
     text-align: center;
     background-color: #fff;
-	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	margin-bottom:0;
 	overflow:hidden
 }
@@ -1034,7 +1037,7 @@ ul.skill-tags > li {
 .how-box{
 	background-color:#fff;
 	border-radius: 0.25rem;
-	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);	
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);	
 	margin-bottom:1.5rem;
     min-height: 250px;
 	padding:1.25rem;
@@ -1080,7 +1083,7 @@ ul.skill-tags > li {
 	background-position:center bottom;
 	background-repeat:no-repeat;
 	border:none;
-	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	margin-bottom:1.5rem;
 	min-height:350px;
 	display:flex;
@@ -1102,7 +1105,7 @@ ul.skill-tags > li {
 }
 .partner .card{
 	border:none;
-	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	margin:10px;
 }
 

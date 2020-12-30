@@ -106,11 +106,12 @@ $logo=getMemberLogo($member_id);
             	if($proposaldetails['proposal']->bid_by_project!=1){
             		if($proposaldetails['proposal']->project_bid_milestones){
             		?>
-        <div class="panel mb-4">
-          <div class="panel-header">
-            <h4 class="panel-title">Milestone </h4>
-          </div>
-          <div class="boxed-list">
+        
+          
+        <div class="boxed-list mb-4">
+            <div class="boxed-list-headline">
+                <h3>Milestone</h3>
+            </div>
             <ul class="boxed-list-ul">
               <?php foreach($proposaldetails['proposal']->project_bid_milestones as $k=>$val){?>
               <li class="milestone-contain">
@@ -127,8 +128,8 @@ $logo=getMemberLogo($member_id);
               </li>
               <?php }?>
             </ul>
-          </div>
         </div>
+        
         <?php }}}?>
         <?php if($proposaldetails['project_question']){?>
         <div class="panel mb-4">

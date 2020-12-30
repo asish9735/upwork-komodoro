@@ -13,14 +13,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="content with-padding">
     
             <div class="submit-field">
-                <h5>Description about project</h5>
+                <label>Description about project</label>
                 <textarea  class="form-control" name="description" id="description"></textarea>
                 <span id="descriptionError" class="rerror"></span>
 
             </div>
         
             <div class="submit-field">
-                <h5>Project attachment</h5>                
+                <label>Project attachment</label>                
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
                     <h4>Drag &amp; drop file here or <span class="text-site">click</span> to select file</h4>

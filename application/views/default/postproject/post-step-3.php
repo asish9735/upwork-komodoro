@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="content with-padding">
             <div class="submit-field myradio mb-0">
-                <h5>What type of project you have ?</h5>
+                <label>What type of project you have ?</label>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <?php if($all_projectType){
                     foreach($all_projectType as $key=>$keydata){
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="content with-padding">
             <div class="submit-field mb-0">
-                <h5>Add screen question / require a cover letter </h5>
+                <label>Add screen question / require a cover letter </label>
                 <div id="addQuestion_container"></div>
                 <span id="questionError" class="rerror"></span>
                 <a href="javascript:void(0)" class="btn btn-outline-success" id="addQuestion">+ Add </a>    

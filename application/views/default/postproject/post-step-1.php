@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h3> Title </h3>
                     </div>
                     <div class="content with-padding">
-                        <h5>Name of your project</h5>
+                        <label>Name of your project</label>
                         <input type="text"  class="form-control" name="title" id="title">
                         <span id="titleError" class="rerror"></span>
                     </div>
@@ -20,24 +20,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="dashboard-box">
 						<!-- Headline -->
 						<div class="headline">
-							<h3> Category </h3>
+							<h3>Category</h3>
 						</div>
 						<div class="content with-padding">
-								<div class="submit-field remove_arrow_select">
-									<select name="category" id="category" data-size="4" class="selectpicker browser-default" title="Category" data-live-search="true">
-					            	<?php
-				            		if($all_category){
-										foreach($all_category as $category_list){
-											?>
-											<option value="<?php D($category_list->category_id);?>" ><?php D(ucfirst($category_list->category_name));?></option>
-											<?php
-										}
-									}
-				            		 ?>
-				            		</select>
-								
-								<span id="categoryError" class="rerror"></span>
-                                </div>
+                            <div class="submit-field remove_arrow_select">
+                                <select name="category" id="category" data-size="4" class="selectpicker browser-default" title="Category" data-live-search="true">
+                                <?php
+                                if($all_category){
+                                    foreach($all_category as $category_list){
+                                        ?>
+                                        <option value="<?php D($category_list->category_id);?>" ><?php D(ucfirst($category_list->category_name));?></option>
+                                        <?php
+                                    }
+                                }
+                                 ?>
+                                </select>
+                            
+                            <span id="categoryError" class="rerror"></span>
+                            </div>
 							
 							<div class="sub_category_display" style="display: none">
 							<div class="remove_arrow_select">
