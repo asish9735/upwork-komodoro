@@ -9656,7 +9656,7 @@ img.mfp-img {
 	text-align: center;
 	position: relative;
 	width: 100%;
-	margin: 38px 0 15px 0;
+	margin: 25px 0 15px 0;
 	height: 1px;
 }
 .social-login-separator:before {
@@ -9687,12 +9687,15 @@ img.mfp-img {
 	flex: 1;
 	text-align: center;
 	border: 1px solid #333;
+	border-radius: 0.25rem;
 	color: #333;
-	border-radius: 4px;
+	font-family: 'FSJoey', Helvetica, sans-serif;
 	margin-top: 10px;
-	margin-right: 20px;
-	font-size: 14px;
-	padding: 9px 5px;
+	margin-right: 20px;		
+    margin-top: 10px;
+    margin-right: 20px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
 	max-width: 50%;
 	transition: 0.3s;
 }
@@ -9704,7 +9707,7 @@ img.mfp-img {
 	position: relative;
 	top: 1px;
 	margin-right: 7px;
-	font-size: 15px;
+	font-size: 1.125rem;
 }
 .social-login-buttons .facebook-login {
 	background-color: #0078ff;

@@ -328,12 +328,12 @@
 </section>
 <!-- Membership Plans / End--> 
 <!-- Feedback -->
-<section class="section pt-0">
+<section class="section bg-white">
 <div class="container">
 <!-- Section Headline -->
 <div class="section-headline centered">
   <h2>Client's Feedback</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+  <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>-->
 </div>
 <div class="testimonial-style-5 testimonial-slider-2 poss--relative">     
     <!-- Start Testimonial Nav -->
@@ -352,7 +352,7 @@
         <div class="triangle"></div>
         <div class="client">
           <h3>Sarah George</h3>
-          <p class="mb-0"><i>CEO and co-founder</i></p>
+          <p><i>CEO and co-founder</i></p>
           <div class="star-rating" data-rating="3.5"></div>
         </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -361,7 +361,7 @@
         <div class="triangle"></div>
         <div class="client">
           <h3>Michelle Mitchell</h3>
-          <p><i>CEO and co-founder</i></p>
+          <p><i>Director</i></p>
           <div class="star-rating" data-rating="3.5"></div>
         </div>
         <p>Nipa ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -370,6 +370,7 @@
         <div class="triangle"></div>
         <div class="client">
           <h3>Ryan Garcia</h3>
+          <p><i>Social Activist</i></p>
           <div class="star-rating" data-rating="3.5"></div>
         </div>
         <p>Np ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
@@ -378,6 +379,7 @@
         <div class="triangle"></div>
         <div class="client">
           <h3>Klaus Gruber</h3>
+          <p><i>Marketing Head</i></p>
           <div class="star-rating" data-rating="3.5"></div>
         </div>
         <p>Supa ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
@@ -386,6 +388,7 @@
         <div class="triangle"></div>
         <div class="client">
           <h3>Amanda Cook</h3>
+          <p><i>XYZ Company</i></p>
           <div class="star-rating" data-rating="3.5"></div>
         </div>
         <p>Nerum vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
@@ -398,7 +401,7 @@
 <!-- Feedback End --> 
 
 <!-- Choose Account -->
-<section class="section pt-0 choose-acc">
+<section class="section choose-acc">
     <div class="container">
     	<div class="row">
         	<aside class="col-sm-6 col-12">

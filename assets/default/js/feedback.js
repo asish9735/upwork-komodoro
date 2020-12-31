@@ -87,13 +87,13 @@
 		arrows: false,
 
 		responsive: [{
-				breakpoint: 769,
+				breakpoint: 767,
 				settings: {
 					slidesToShow: 2
 				}
 			},
 			{
-				breakpoint: 769,
+				breakpoint: 767,
 				settings: {
 					slidesToShow: 1
 				}

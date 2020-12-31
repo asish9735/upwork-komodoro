@@ -43,8 +43,8 @@ if($loggedUser){
             	<!-- Main Navigation -->
 				<nav id="navigation">
 					<ul id="responsive">                    
-                    <li><a href="">How It Works</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="<?php D(get_link('CMShowitworks'))?>">How It Works</a></li>
+                    <li><a href="<?php D(get_link('conatctURL'))?>">Contact Us</a></li>
 					<?php if($loggedUser){
 						if($this->access_member_type=='C'){
 						?>

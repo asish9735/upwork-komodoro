@@ -161,7 +161,7 @@
     max-width: 130px;
 }
 .testimonial-style-5.testimonial-slider-2 .testimonial-for {
-	padding: 0 10%;
+	padding: 0 5%;
 }
  @media only screen and (min-width: 768px) and (max-width: 991px) {
  .testimonial-style-5.testimonial-slider-2 .testimonial-for {
@@ -226,12 +226,37 @@
 /*----------------------------------
     Testimonial Style 5
 -------------------------------------*/
+.testimonial-for .testimonial-desc:after,
+.testimonial-for .testimonial-desc:before{
+	content:'';
+	position:absolute;		
+	background-repeat:no-repeat;
+	height:64px;
+	width:64px;
+}
+.testimonial-for .testimonial-desc:before{
+	background-image:url('../images/quote_left.png');
+	left:0;
+	top:60px;
+}
+.testimonial-for .testimonial-desc:after{	
+	background-image:url('../images/quote_right.png');
+	right:0;
+	bottom:0;
+}
 .testimonial-for .testimonial-desc p {
 	text-align: center;
-	/*padding: 0 10%;*/
+	padding: 0 5%;
 	font-size: 1rem;
     line-height: 1.75rem;
     font-style: italic;
+}
+.testimonial-for .testimonial-desc p:last-child{
+	margin-bottom:0;
+}
+.testimonial-for .testimonial-desc .client p {
+	color:#777;
+	margin-bottom:0;
 }
 .testimonal-img {
 	text-align: center;
@@ -251,7 +276,7 @@
 	line-height: 29px;
 }
 .testimonal-nav.slick-slider {
-	max-width: 34%;
+	max-width: 32%;
 	width: 100%;
 	margin: 0 auto;
 }
