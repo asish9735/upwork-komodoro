@@ -19,7 +19,7 @@ class Home extends MX_Controller {
 		 * Setting default css and js
 		 */
 		$this->layout->set_css(array(
-			'home.css',
+			'home.css','feedback.css'
 			
 		));
 

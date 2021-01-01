@@ -1857,16 +1857,16 @@ display: none;
 .footer-social-links li {
 	display: inline-block;	
 	padding: 0;
-	margin-right: 10px;
+	margin-right: 6px;
 }
 .footer-social-links li a {
 	background-color: #333;
-	font-size: 20px;
-	border-radius: 50%;
+	font-size: 1.125rem;
+    border-radius: 50%;
     text-align: center;
-    height: 40px;
-    line-height: 40px;
-    width: 40px;
+    height: 36px;
+    line-height: 36px;
+    width: 36px;
 	color: #fff;
 	display: inline-block;
 	transition: 0.3s;
@@ -2138,12 +2138,12 @@ display: block
 	text-decoration: none;
 	border: 0 none;
 	display: block;
-	width: 46px;
-	height: 46px;
+	width: 40px;
+    height: 40px;
 	background-color: #66676b;
 	opacity: 1;
 	transition: all 0.3s;
-	border-radius: 4px;
+	border-radius: 0.25rem;
 	text-align: center;
 	font-size: 26px;
 }
@@ -3290,7 +3290,7 @@ span.blog-item-tag {
 	align-content: center;
 	justify-content: center;
 	background-color: #fff;
-	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .contact-location-info .contact-address, .contact-location-info #single-job-map-container {
 	flex: 1;
@@ -3299,9 +3299,10 @@ span.blog-item-tag {
 	border-radius: 0 4px 4px 0;
 }
 .contact-location-info .contact-address {
-	border: 1px solid #e0e0e0;
+	/*border: 1px solid #e0e0e0;
 	border-right: 0;
-	border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;*/	
+	border-radius:0.25rem;
 }
 .contact-location-info .contact-address {
 	display: flex;
@@ -3893,7 +3894,7 @@ text-align: center;
 }
 .job-listing h3.job-listing-title,
 .job-listing h4.job-listing-title {
-	font-size: 1.125rem;
+	font-size: 1.25rem;
 	color: #333;
 	margin-bottom:0
 }
@@ -3904,7 +3905,7 @@ text-align: center;
 .job-listing .job-listing-footer {
 	/*background-color: #f9f9f9;*/
 	border-top: 1px solid #eee;
-	padding: 1rem 1.25rem;
+	padding: 0.75rem 1.25rem;
 	border-radius: 0 0 4px 4px;
 	position: relative;
 }
@@ -6129,7 +6130,7 @@ color: #ffc600;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	font-size: 1.333rem;
+	font-size: 1.125rem;
 	color: #a0a0a0;
 	font-style: normal;
 	cursor: normal;
@@ -6253,7 +6254,7 @@ color: #ffc600;
 	padding: 0;
 	color: #fff;
 	background-color: #66676b;
-	border-radius: 4px;
+	border-radius: 0.2rem;
 	margin: 5px;
 	font-size: 19px;
 	text-align: center;
@@ -6261,10 +6262,11 @@ color: #ffc600;
 .keyword-input-container .keyword-input-button i {
 	color: #fff;
 	position: relative;
-	top: 2px;
+	top: 0;
 }
 input.keyword-input {
 	margin: 0 0 15px 0;
+	padding-right: 2.75rem;
 }
 /* ---------------------------------- */
 /* Clickable Tags
@@ -6602,11 +6604,14 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	height: 44px;
-	padding: 10px 18px;
-	cursor: pointer;
-	border-radius: 4px;
+	height: 40px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 0.25rem;
 	color: #66676b;
+	font-family: 'FSJoey', Helvetica, sans-serif;
+    font-size: 1.063rem;
+    font-weight: 500;
 	background-color: transparent;
 	border: 1px solid #66676b;
 	flex-direction: row;

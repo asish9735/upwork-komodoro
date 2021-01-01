@@ -33,42 +33,21 @@
 .banner-search .btn-white{
 	height:40px;
 }
-.box-1 {
-	height:94px;
-	width:332px;
-	margin-left:-3rem;
-	margin-bottom: 20px;
+.home-banner .carousel-indicators{
+    margin: 0;
+    width: auto;
+    left: auto;
+    bottom: 20px;
+    transform: rotate(90deg) translate(-20px, 0px);
 }
-.box-2 {
-	height:184px;
-	width:231px;
-	margin:0 auto 10px
+.home-banner .carousel-indicators > li{
+	background-color:#000;
+	border-radius: 50%;
+	width: 15px;
+    height: 15px;
 }
-
-.section-3 {
-	height:px
-}
-.section-4 {
-	max-width:900px;
-	margin: 0 auto;
-	position:relative
-}
-.section-4-text {
-	font-size: 1.5rem;
-}
-.small-box {
-	position: absolute;
-    left: -30px;
-    top: -30px;
-}
-.small-box > span {
-	margin-left:10px
-}
-.section-5 {
-	height:1851px;
-	max-width:1140px;
-	margin-left: auto;
-	margin-right:auto
+.home-banner .carousel-indicators .active{
+	background-color:var(--siteColor);
 }
 
 /* Media Screen */

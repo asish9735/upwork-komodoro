@@ -1,9 +1,13 @@
-<link href="<?=CSS?>feedback.css" rel="stylesheet" type="text/css">
 <!-- Intro Banner -->
 <section class="home-banner">
 <div class="row align-items-center h-100">
   <div class="col-md-7 offset-md-5 col-12">
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+	<ol class="carousel-indicators">
+        <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleFade" data-slide-to="1"></li>
+        <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+	</ol>
       <div class="carousel-inner">
         <div class="carousel-item active"> <img src="<?php echo IMAGE;?>banner01.jpg" class="d-block w-100" alt="..."> </div>
         <div class="carousel-item"> <img src="<?php echo IMAGE;?>banner02.jpg" class="d-block w-100" alt="..."> </div>

@@ -73,7 +73,7 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 				}
 				}
               	?>
-            <a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($freelancer['member_id']);?>"><i class="icon-feather-heart"></i></a>
+            <a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($freelancer['member_id']);?>"><i class="icon-feather-heart"></i></a>
             <!--<a href="#" class="btn btn-circle btn-light active"><i class="icon-feather-heart"></i></a>-->
             </li>
         </ul>

@@ -2,15 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($filter);
 ?>
-<div class="single-page-header bg-site">
-	<div class="container">		
-		<h1 class="text-center">Contact Us</h1>
-	</div>
-</div>
+
 <section class="section">
   <div class="container"> 
-  <div class="row">
-  
+  <div class="dashboard-headline">
+    	<h1>Contact Us</h1>
+  </div>    
+  <div class="row">  
   <aside class="col-md-8">
 	<form id="contact_form">
 	<div id="server_status"></div>
@@ -39,10 +37,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </form>
   </aside>
   <aside class="col-md-4">
-  <div class="contact-location-info margin-bottom-50">
+  <div class="contact-location-info mb-4">
     <div class="contact-address">
         <ul>
-            <li class="contact-address-headline">Our Office</li>
+            <li class="contact-address-headline"><h4>Our Office</h4></li>
             <li>425 Berry Street, CA 93584</li>
             <li>Phone (123) 123-456</li>
             <li><a href="#">mail@example.com</a></li>
