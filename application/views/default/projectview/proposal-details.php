@@ -23,13 +23,14 @@ $logo=getMemberLogo($member_id);
               <img src="<?php D($logo);?>" alt=""></ec>
           </div>
           <div class="header-details">
-            <h3>
+            <h1>
               <?php D(ucwords($memberInfo->member_name))?>
               <span class="show_edit_btn">
               <ec id="profile-heading-data">
                 <?php D(ucfirst($memberInfo->member_heading))?>
               </ec>
-              </span></h3>
+              </span>
+            </h1>
             <ul>
               <li>
                 <div class="star-rating" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div>
@@ -41,7 +42,7 @@ $logo=getMemberLogo($member_id);
               	foreach($memberInfo->badges as $b=>$badge){
               		$badge_icon=UPLOAD_HTTP_PATH.'badge-icons/'.$badge->icon_image;
 				?>
-				<img src="<?php echo $badge_icon;?>" alt="<?php echo $badge->name;?>" height="26" width="26" data-tippy-placement="top" title="<?php echo $badge->name;?>"  /> &nbsp;
+				<img src="<?php echo $badge_icon;?>" alt="<?php echo $badge->name;?>" height="26" width="26" data-tippy-placement="top" title="<?php echo $badge->name;?>"  />
 				<?php	
 				}
 				?>
@@ -226,13 +227,13 @@ $logo=getMemberLogo($member_id);
               <?php if($proposaldetails['proposal']->is_hired){?>
               <?php }else{?>
               <?php if($proposaldetails['proposal']->is_archive){?>
-              <a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn btn btn-secondary btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Unarchive</a>
+              <a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn btn btn-secondary btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Unarchive</a>
               <?php }elseif($proposaldetails['proposal']->is_shortlisted){?>
-              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-phone"></i> Interview</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Archive</a>
+              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-phone"></i> Interview</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
               <?php }elseif($proposaldetails['proposal']->is_interview){?>
-              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Archive</a>
+              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
               <?php }else{?>
-              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="shortlisted-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-star"></i> Shortlist</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Archive</a>
+              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="shortlisted-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-star"></i> Shortlist</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
               <?php
  	}
 }?>

@@ -77,13 +77,13 @@
     <div class="row footer-rows-container">       
       <!-- Left Side -->
       <div class="col-auto">
-      <ul class="footer-social-links">
-                <li><a href="#" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-facebook-f"></i></a></li>
-                <li><a href="#" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-twitter"></i></a></li>                
-                <li><a href="#" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-linkedin-in"></i></a></li>
-                <li><a href="#" title="Instagram" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-instagram"></i></a></li>
-                <li><a href="#" title="Youtube" data-tippy-placement="bottom" data-tippy-theme="light"><i class="icon-brand-youtube"></i></a></li>
-              </ul>
+      	  <ul class="social-links footer-social-links">
+            <li><a href="#" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-facebook-f"></i></a></li>
+            <li><a href="#" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-twitter"></i></a></li>                
+            <li><a href="#" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-linkedin-in"></i></a></li>
+            <li><a href="#" title="Instagram" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-instagram"></i></a></li>
+            <li><a href="#" title="Youtube" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-youtube"></i></a></li>
+          </ul>
 	  </div>              
       <div class="col text-center">
         	<p>&copy; Copyright 2020 Demo.com. All Rights Reserved</p>

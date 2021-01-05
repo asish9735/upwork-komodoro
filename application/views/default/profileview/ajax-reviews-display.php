@@ -13,7 +13,7 @@ $cntloop=0;
 		$cntloop++;
 	}
 ?>
-					<li class="review-contain review-contain-sec-<?php D($cntloop);?>" <?php if($cntloop>1){?> style="display:none"<?php }?>">
+					<li class="review-contain review-contain-sec-<?php D($cntloop);?>" <?php if($cntloop>1){?> style="display:none"<?php }?>>
 						<div class="boxed-list-item">
 							<!-- Content -->
 							<div class="item-content">

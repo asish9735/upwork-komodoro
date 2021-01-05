@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="submit-field">
-					<h5>Name</h5>
+					<label>Name</label>
 					<input type="text" class="form-control input-text with-border" value="<?php D($memberInfo->member_name)?>" name="name" id="name" placeholder="Enter Name">
 					<span id="nameError" class="rerror"></span>
 				</div>
@@ -17,14 +17,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-sm-6">
 				<!-- Account Type -->
 				<div class="submit-field">
-					<h5>Email</h5>
+					<label>Email</label>
 					<input type="text" class="form-control input-text with-border" value="<?php D($memberInfo->member_email)?>" name="email" id="email" placeholder="Enter email address" readonly>
 					<span id="emailError" class="rerror"></span>
 				</div>
 			</div>			
 		</div>
-        <button class="btn btn-site accountUpdateBTN">Update</button>
-		<a href="javascript:void(0)" class="popup-with-zoom-anim button-sliding-icon padding-left-20" id="cancel_account_info">Cancel </a>
+        <button class="btn btn-site mr-2 accountUpdateBTN">Update</button>
+		<a href="javascript:void(0)" class="btn btn-secondary" id="cancel_account_info">Cancel </a>
 		</form>
 	</div>
 </div>

@@ -30,8 +30,9 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 				</div>
 			</div>
 		</div>
-		<!-- Buttons -->
-		<div class="buttons-to-right_ always-visible_">
+		</div>
+        <!-- Buttons -->
+		<div class="buttons-to-right single-right-button always-visible">
 			<?php if($member_id==$invoice->recipient_member_id && $invoice->invoice_status==0){?>
 				<button class="btn btn-success btn-sm acceptbtn" data-sid="<?php echo md5($invoice->invoice_id);?>">Accept</button>&nbsp;
       			<button class="btn btn-danger btn-sm denybtn" data-sid="<?php echo md5($invoice->invoice_id);?>">Reject</button>
@@ -40,12 +41,12 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 				<i class="icon-feather-eye"></i>
 			</a>
 		</div>
-	</div>
+	
 </li>
 <?php		
 }
 }else{?>
-<li><p>No record</p></li>
+<li class="justify-content-center text-danger">No record found</li>
 <?php }?>
 </ul>
 

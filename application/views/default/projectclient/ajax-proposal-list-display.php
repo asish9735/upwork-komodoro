@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="freelancer-details p-0">
                 	<div class="freelancer-details-list">
                         <ul>
-                            <li>Location <strong><i class="icon-material-outline-location-on"></i>  <?php D($bid->country_info->country_name);?> <img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($bid->country_info->country_code_short));?>.svg" alt="" width="20" title="<?php D($bid->country_info->country_name);?>" data-tippy-placement="top"></strong> </li>
+                            <li>Location <strong><img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($bid->country_info->country_code_short));?>.svg" alt="" width="20" title="<?php D($bid->country_info->country_name);?>" data-tippy-placement="top"> <?php D($bid->country_info->country_name);?></strong> </li>
                             <li>
                             <?php if($projects['project_settings']->is_hourly){?>
                              Rate <strong><?php D(priceSymbol().priceFormat($bid->bid_amount));?> / hr</strong>
@@ -74,62 +74,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="freelancer-actions">
                     <!-- Buttons -->
                     <div class=" always-visible margin-bottom-0">
-<a data-href="<?php echo $application_link;?>" data-btn="application-dtl" href="<?php D(VZ);?>" class="proposal-btn  button dark ripple-effect"><i class="icon-feather-file"></i> Proposal</a>	
+<a data-href="<?php echo $application_link;?>" data-btn="application-dtl" href="<?php D(VZ);?>" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-file"></i> Proposal</a>	
 <?php if($req_type=='proposal'){?>	
 <?php if($bid->is_shortlisted==1){?>
-<a href="<?php D(VZ);?>" class="button green ripple-effect disabled"><i class="icon-feather-star"></i> Shortlisted</a>
+<a href="<?php D(VZ);?>" class="btn btn-outline-site btn-sm mr-1 mb-2 disabled"><i class="icon-feather-star"></i> Shortlisted</a>
 <?php }else{?>
-<a href="<?php D(VZ);?>" data-btn="shortlisted-btn" class="proposal-btn button dark ripple-effect"><i class="icon-feather-star"></i> Shortlist</a>
+<a href="<?php D(VZ);?>" data-btn="shortlisted-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-star"></i> Shortlist</a>
 <?php }?>
 <?php if($bid->is_interview==1){?>
-<a href="<?php D(VZ);?>" class="button green ripple-effect disabled"><i class="icon-feather-phone"></i> Interview</a>
+<a href="<?php D(VZ);?>" class="btn btn-outline-site btn-sm mr-1 mb-2 disabled"><i class="icon-feather-phone"></i> Interview</a>
 <?php }else{?>
-<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn button dark ripple-effect"><i class="icon-feather-phone"></i> Interview</a>
+<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-phone"></i> Interview</a>
 <?php }?>
-<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn button dark ripple-effect" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Archive</a>
-<!--<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn  button dark ripple-effect"><i class="icon-feather-mail"></i> Message</a>
+<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
+<!--<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn  button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>
 -->
 <?php if($bid->is_hired==1){?>
-<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn button ripple-effect"><i class="icon-material-outline-check"></i> Send Offer</a>
+<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> Send Offer</a>
 <?php }else{?>
-<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn button ripple-effect"><i class="icon-material-outline-check"></i> Hire</a>
+<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-success btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> Hire</a>
 <?php }?>
 <?php }elseif($req_type=='archive'){?>
-<a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn button red ripple-effect" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Unarchive</a>
+<a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Unarchive</a>
 <?php }elseif($req_type=='interview'){?>
-<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn button dark ripple-effect" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Archive</a>
-<!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark ripple-effect"><i class="icon-feather-mail"></i> Message</a>-->
-<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim button ripple-effect"><i class="icon-material-outline-check"></i> Hire</a>
+<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
+<!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>-->
+<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> Hire</a>
 <?php }elseif($req_type=='shortlisted'){?>
-<!--<a href="<?php D(VZ);?>" class="button green ripple-effect disabled"><i class="icon-feather-star"></i> Shortlisted</a>-->
+<!--<a href="<?php D(VZ);?>" class="button green mr-1 mb-2 disabled"><i class="icon-feather-star"></i> Shortlisted</a>-->
 <?php if($bid->is_interview==1){?>
-<a href="<?php D(VZ);?>" class="button green ripple-effect disabled"><i class="icon-feather-phone"></i> Interview</a>
+<a href="<?php D(VZ);?>" class="button btn btn-outline-success mr-1 mb-2 disabled"><i class="icon-feather-phone"></i> Interview</a>
 <?php }else{?>
-<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn button dark ripple-effect"><i class="icon-feather-phone"></i> Interview</a>
+<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-phone"></i> Interview</a>
 <?php }?>
-<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn button dark ripple-effect" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Archive</a>
-<!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark ripple-effect"><i class="icon-feather-mail"></i> Message</a>-->
-<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim button ripple-effect"><i class="icon-material-outline-check"></i> Hire</a>
+<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
+<!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>-->
+<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim btn btn-outline-success btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> Hire</a>
 <?php }elseif($req_type=='hired'){?>
-<!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark ripple-effect"><i class="icon-feather-mail"></i> Message</a>-->
-<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn button ripple-effect"><i class="icon-material-outline-check"></i> Send Offer</a>
+<!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>-->
+<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> Send Offer</a>
 <?php }?>
-<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn  button dark ripple-effect"><i class="icon-feather-mail"></i> Message</a>
+<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>
                         
                     </div>
                 	<p class="mb-0"><?php 
                 	$cover_details=trim(strip_tags($bid->bid_details));
                 	echo substr($cover_details,0,100);
                 	?></p>
-                </div>
-                
-                
-            
+                </div>                                            
         </li>
     <?php }?>
     </ul>
 <?php }else{?>
-<div class="not-found">No record</div>
+<div class="not-found">No record found</div>
 <?php }?>
 </div>
 </div>

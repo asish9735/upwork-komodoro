@@ -2,7 +2,9 @@
 /* CSS Document */
 :root {
     --siteColor: #64be43;
-	--webColor: #000;
+	--webColor: #333;
+	--siteHoverColor:#37bf00;
+	--webHoverColor:#222;
 }
 .numbered.color ol > li::before {
      border:1px solid var(--siteColor);
@@ -85,7 +87,8 @@
  .slick-prev:hover,
  .slick-next:hover,
  .header-widget .log-in-button:hover,
- .header-widget .log-in-button:hover i {
+ .header-widget .log-in-button:hover i,
+ .freelancer-name h4 a:hover {
      color:var(--siteColor);
 }
 #backtotop a,
@@ -347,7 +350,7 @@
  .dashboard-nav ul li.active-submenu, .dashboard-nav ul li.active, .dashboard-nav ul li:hover {
      background-color: rgba(100,190,67,0.04);
 }
- .dashboard-nav ul li.active-submenu a:after, .dashboard-nav ul li.active a:after, .dashboard-nav ul li:hover a:after {
+ .dashboard-nav ul li.active-submenu a:after, .dashboard-nav ul li.active a:after/*, .dashboard-nav ul li:hover a:after*/ {
      background: rgba(100,190,67,0.13);
 }
  .dashboard-box-list .button {
@@ -368,11 +371,19 @@
 	color:#fff
 }
 .btn-site:hover, .btn-site:focus {
-	background-color:#37bf00;
+	background-color:var(--siteHoverColor);
+	color:#fff
+}
+.btn-web {
+	background-color:var(--webColor);
+	color:#fff
+}
+.btn-web:hover, .btn-web:focus {
+	background-color:var(--webHoverColor);
 	color:#fff
 }
 .btn-outline-site {
-	border:1px solid var(--siteColor);
+	border-color: var(--siteColor);
 	color: var(--siteColor);
 }
 .btn-outline-site:hover, .btn-outline-site:focus {

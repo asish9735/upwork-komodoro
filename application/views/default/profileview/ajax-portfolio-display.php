@@ -20,8 +20,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div href="javascript:void(0)" class="photo-box-portfolio">
 	<?php if($is_editable){?>
 	<div class="action-btn">
-		<a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a> 
-		<a href="javascript:void(0)" class=" ripple-effect delete_account_btn btn btn-danger btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash-2"></i></a>
+		<a href="javascript:void(0)" class="edit_account_btn btn btn-outline-secondary btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a> 
+		<a href="javascript:void(0)" class=" ripple-effect delete_account_btn btn btn-outline-danger btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash"></i></a>
 	</div>
 <?php }?>
 		<h3><?php D(ucfirst($portfolio->portfolio_title));?></h3>

@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php echo $left_panel;?>
 <!-- Dashboard Content
 	================================================== -->
-	<div class="dashboard-content-container" >
-		<div class="dashboard-content-inner" >
+	<div class="dashboard-content-container">
+		<div class="dashboard-content-inner">
 			
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
@@ -17,8 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="dashboard-box margin-top-0">
 
                     <!-- Headline -->
-                    <div class="headline">
-                        <h3><i class="icon-material-outline-account-circle"></i> Account <a href="<?php echo VZ;?>" class="gray ico float-right edit_account_info" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>                        
+                    <div class="headline d-flex">
+                        <h3>Account </h3>  
+                        <a href="<?php echo VZ;?>" class="btn btn-circle btn-outline-site edit_account_info" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a>                      
                     </div>
 
                     <div class="content with-padding">
@@ -27,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="avatar-wrapper rounded-circle" id="crop-avatar-dashboard">
 								<input type="hidden" name="logo" id="logo" class="replceLogoVal">
 								<img   src="<?php D(getMemberLogo($member_id));?>" alt="">
-								<a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar" ><i class="icon-feather-edit"></i></a>
+								<a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle" data-popup="logo" data-tippy-placement="top" title="Change avatar" ><i class="icon-feather-edit-2"></i></a>
 							</div>
 						</div>
 					
@@ -45,9 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="dashboard-box ">
 
                     <!-- Headline -->
-                    <div class="headline">
-                        <h3><i class="icon-feather-map-pin"></i> Location <a href="<?php echo VZ;?>" class=" gray ico float-right edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>
-                        
+                    <div class="headline d-flex">
+                        <h3>Location</h3>
+                        <a href="<?php echo VZ;?>" class="btn btn-circle btn-outline-site edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a>                        
                     </div>
 
                     <div class="content with-padding"  id="locationLoad">

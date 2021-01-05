@@ -1,15 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div class="modal-header">
+	<div class="modal-header">
         <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
         <h4 class="modal-title">Overview</h4>
         <button type="button" class="btn btn-success pull-right" onclick="SaveOverview(this)">Save</button>
-      </div>
+	</div>
     <div class="modal-body">
-	    <div class="row">
-			<div class="col">
-				<form action="" method="post" accept-charset="utf-8" id="overviewform" class="form-horizontal" role="form" name="overviewform" onsubmit="return false;">  
+	    <form action="" method="post" accept-charset="utf-8" id="overviewform" class="form-horizontal" role="form" name="overviewform" onsubmit="return false;">  
 				<input  type="hidden" value="<?php echo $formtype;?>" id="formtype" name="formtype"/>
 					<div class="row">
 						<div class="col-xl-12">
@@ -26,6 +24,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
        				</div>
        			</form>
-       		</div>
-       	</div>
     </div>

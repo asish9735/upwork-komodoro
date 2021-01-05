@@ -27,7 +27,8 @@ html {
     font-size: 15px;
 }
 .freelancer-actions {
-	margin-left: 6.6rem;
+	margin-left: 85px;
+    min-width: 480px;
 }
 .pricing-group > .btn {
     flex: 0 0 calc(25% - 1.25rem);
@@ -35,6 +36,9 @@ html {
 }
 
 @media only screen and (min-width: 992px) {
+	.freelancer-actions {
+		margin-left: 98px;
+	}
 	.language-switcher.bootstrap-select.btn-group button {
 		border-color: transparent;
 	}
@@ -56,9 +60,10 @@ ul.top-list{
 }
 
 @media only screen and (max-width: 991px) {
-	.sidebar-container {
+	.sidebar-container, .tippy-popper {
 		display:none;
 	}
+
 }
 
 @media only screen and (max-width: 767px) {

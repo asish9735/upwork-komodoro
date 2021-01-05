@@ -23,7 +23,7 @@ $logo=getMemberLogo($bid);
             <ec id="crop-avatar-dashboard" style="width: 100%"><img src="<?php D($logo);?>" alt=""></ec>
           </div>
           <div class="header-details">
-            <h1>Hire</h1>
+            <h1>Hire, </h1>
             <h3>
               <?php D(ucwords($memberInfo->member_name))?>
             </h3>
@@ -44,7 +44,7 @@ $logo=getMemberLogo($bid);
           <!-- Page Content -->
           <div class="panel mb-4">
             <div class="panel-header">
-              <h4 class="panel-title show_edit_btn"><i class="icon-feather-briefcase text-site"></i> Job Listing </h4>
+              <h4 class="panel-title show_edit_btn">Job Listing </h4>
             </div>
             <div class="panel-body">
               <p><strong>Project Title:</strong> <a href="<?php echo get_link('myProjectDetailsURL')."/".$projects['project']->project_url;?>" target="_blank">
@@ -57,7 +57,7 @@ $logo=getMemberLogo($bid);
           </div>
           <div class="panel mb-4">
             <div class="panel-header">
-              <h4 class="panel-title"><i class="icon-material-outline-settings text-site"></i> Terms </h4>
+              <h4 class="panel-title">Terms </h4>
             </div>
             <div class="panel-body">
               <div class="form-group">
@@ -131,7 +131,7 @@ $logo=getMemberLogo($bid);
                 <div class="payment_milestone_wrapper"  style="display: none">
                   <h4>How many milestones do you want to include?</h4>
                   <div id="milestone_wrapper">
-                    <div class="row milestone_row_parent">
+                    <div class="row row-10 milestone_row_parent">
                       <div class="col-sm-6 col-xs-12">
                         <input type="hidden" name="milestone_id[]" class="milestone_row" value="1"/>
                         <div class="form-group">
@@ -153,7 +153,7 @@ $logo=getMemberLogo($bid);
                       </div>
                     </div>
                   </div>
-                  <a href="javascript:" class="addMilestone"><i class="icon-feather-plus"></i> Add milestone</a> </div>
+                  <a href="javascript:" class="btn btn-site btn-sm addMilestone"><i class="icon-feather-plus"></i> Add milestone</a> </div>
                 <div class="payment_project_wrapper">
                   <h4>What is the full amount you'd like to bid for this job?</h4>
                   <div class="padding-top-20" style="max-width:720px">
@@ -168,7 +168,7 @@ $logo=getMemberLogo($bid);
           </div>
           <div class="panel">
             <div class="panel-header">
-              <h4 class="panel-title"><i class="icon-feather-briefcase text-site"></i> Work Description</h3>
+              <h4 class="panel-title">Work Description</h4>
             </div>
             <div class="panel-body">
               <div class="form-group">
@@ -179,9 +179,9 @@ $logo=getMemberLogo($bid);
                 <label><b>Attachments</b></label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                  <h4 class="mb-0">Drag and Drop file here<br/>
+                  <p>Drag and Drop file here<br/>
                     Or<br/>
-                    Click to select file</h4>
+                    Click to select file</p>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>
@@ -252,7 +252,7 @@ $logo=getMemberLogo($bid);
         success: function(response){
            if(response.status=='OK'){
     			var name = response.upload_response.original_name;
-    			$("#thumbnail_"+num).html('<input type="hidden" name="projectfile[]" value=\''+JSON.stringify(response.upload_response)+'\'/> '+name+'<a href="<?php D(VZ);?>" class=" text-danger ico float-right" onclick="$(this).parent().remove()"><i class="icon-feather-trash"></i></a>');
+    			$("#thumbnail_"+num).html('<input type="hidden" name="projectfile[]" value=\''+JSON.stringify(response.upload_response)+'\'/> '+name+'<a href="<?php D(VZ);?>" class="text-danger ico" onclick="$(this).parent().remove()"><i class="icon-feather-trash"></i></a>');
 		   }else{
 		   	bootbox.alert({
 				title: 'Uplaod File',
@@ -309,7 +309,7 @@ $logo=getMemberLogo($bid);
 			var html='';
 			var cnt=$(".milestone_row").last().val();
 			var new_row=parseInt(cnt)+1;
-			html+='<div class="row milestone_row_parent">';
+			html+='<div class="row row-10 milestone_row_parent">';
 			html+='<div class="col-sm-6 col-12">';
 			html+='<input type="hidden" name="milestone_id[]" class="milestone_row" value="'+new_row+'"/>';
 			html+='<div class="form-group">';

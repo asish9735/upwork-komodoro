@@ -27,7 +27,7 @@ $logo=getMemberLogo($member_id);
           <div class="header-image freelancer-avatar" id="" style="position: relative">
             <ec id="crop-avatar-dashboard" style="width: 100%">
               <input type="hidden" name="logo" id="logo" class="replceLogoVal">
-              <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar" style="width: 30px;HEIGHT: 30PX;POSITION: ABSOLUTE;LEFT: 40%;TOP: 40%; display: block;"><i class="icon-feather-edit"></i></a></ec>
+              <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar"><i class="icon-feather-edit-2"></i></a></ec>
           </div>
           <div class="header-details">
             <h3>
@@ -36,7 +36,7 @@ $logo=getMemberLogo($member_id);
               <ec id="profile-heading-data">
                 <?php D(ucfirst($memberInfo->member_heading))?>
               </ec>
-              <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></span>              
+              <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site ml-2 btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></span>              
               </h3>
             <ul>
               <li>
@@ -90,8 +90,9 @@ $logo=getMemberLogo($member_id);
         
         <!-- Page Content -->
         <div class="panel mb-4" id="job-about">
-          <div class="panel-header">
-            <h4 class="show_edit_btn">About <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="overview" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></h4>
+          <div class="panel-header d-flex">
+            <h4 class="show_edit_btn">About</h4>
+            <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="overview" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a>
           </div>
           <div class="panel-body">
             <ec id="profile-overview-data">
@@ -103,7 +104,7 @@ $logo=getMemberLogo($member_id);
         <!-- Boxed List -->
         <div class="boxed-list mb-4" id="job-experience">
           <div class="boxed-list-headline">
-            <h3>Work History and Feedback</h3>
+            <h4>Work History and Feedback</h4>
           </div>
 			<div id="profile-reviews-data"></div>
           
@@ -116,10 +117,11 @@ $logo=getMemberLogo($member_id);
         <!-- Boxed List -->
         
         <div class="boxed-list mb-4" id="job-portfolio">
-          <div class="boxed-list-headline">
-            <h3>Portfolio <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="portfolio" data-tippy-placement="top" title="Add">
-              <icon class="icon-material-outline-add"></icon>
-              </a></h3>
+          <div class="boxed-list-headline d-flex">
+            <h4>Portfolio </h4>
+            <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="portfolio" data-tippy-placement="top" title="Add">
+              <icon class="icon-feather-plus"></icon>
+              </a>
           </div>
           <ul class="boxed-list-ul">
             <li class="pb-0">
@@ -130,28 +132,26 @@ $logo=getMemberLogo($member_id);
         <!-- Boxed List / End --> 
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
-          <div class="boxed-list-headline">
-            <h3>Employment History <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="employment" data-tippy-placement="top" title="Add">
-              <icon class="icon-material-outline-add"></icon>
-              </a></h3>
+          <div class="boxed-list-headline d-flex">
+            <h4>Employment History</h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="employment" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
+              </a>
           </div>
           <div id="profile-employment-data"> </div>
         </div>
         <!-- Boxed List / End --> 
         
         <div class="panel mb-4">
-            <div class="panel-header">
-              <h4>Skills <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="skill" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></h4>
+            <div class="panel-header d-flex">
+              <h4>Skills</h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="skill" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a>
             </div>
             <div class="panel-body task-tags" id="profile-skill-data"> </div>
           </div>
           
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
-          <div class="boxed-list-headline">
-            <h3>Education <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="education" data-tippy-placement="top" title="Add">
-              <icon class="icon-material-outline-add"></icon>
-              </a></h3>
+          <div class="boxed-list-headline d-flex">
+            <h4>Education</h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="education" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
+              </a>
           </div>
           <div id="profile-education-data"> </div>
         </div>
@@ -172,7 +172,7 @@ $logo=getMemberLogo($member_id);
                   <ec id="profile-hourly-data">
                     <?php if($memberInfo->member_hourly_rate && $memberInfo->member_hourly_rate>0){D(priceSymbol().priceFormat($memberInfo->member_hourly_rate));}elseif(!$is_editable){D('Not set');}else{D('Set');}?>
                   </ec>
-                  <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a></strong>
+                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-right ml-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
                 </li>
                 <li>
                 	<span>Total Working Hour</span>
@@ -190,7 +190,7 @@ $logo=getMemberLogo($member_id);
                   <?php D($memberInfo->total_jobs);?>
                   </strong>
                 </li>
-                <li> <a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle float-right" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a>
+                <li> 
                 <span>Availability</span>
                 <strong>
                   <ec id="profile-availability-data">
@@ -205,7 +205,8 @@ $logo=getMemberLogo($member_id);
                     		D('Set');
                     	}?>
                   </ec>
-                  </strong>
+                  
+                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-right ml-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
                 </li>
               </ul>
               
@@ -239,8 +240,9 @@ $logo=getMemberLogo($member_id);
             </div>
           </div>
           <div class="panel mb-4">
-            <div class="panel-header">
-              <h4>Language <a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle float-right" data-popup="language" data-tippy-placement="top" title="Add language"><i class="icon-material-outline-add"></i></a></h4>
+            <div class="panel-header d-flex">
+              <h4>Language</h4>
+              <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="language" data-tippy-placement="top" title="Add language"><i class="icon-feather-plus"></i></a>
             </div>
             <div class="panel-body" id="profile-language-data"> </div>
           </div>
@@ -281,10 +283,11 @@ $logo=getMemberLogo($member_id);
               <!-- Share Buttons -->
               <div class="freelancer-socials">
                   <ul class="social-links">
-                    <li><a href="#" data-button-color="#3b5998" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
-                    <li><a href="#" data-button-color="#1da1f2" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                    <li><a href="#" data-button-color="#0077b5" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-                    <li><a href="#" data-button-color="#7a5450" title="Share on Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>                    <li><a href="#" data-button-color="#c4302b" title="Share on Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
+                    <li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+                    <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                    <li><a href="#" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                    <li><a href="#" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
+                    <li><a href="#" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
                   </ul>
               </div>
             </div>

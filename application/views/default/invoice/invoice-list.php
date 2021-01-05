@@ -9,8 +9,7 @@ $invoice_url=get_link('InvoiceURL');
 	<div class="dashboard-content-container" >
 		<div class="dashboard-content-inner">
 
-			 <div class="panel-body">
-	          <ul class="nav nav-tabs mb-3">
+	        <ul class="nav nav-tabs mb-3">
 		      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $invoice_url;?>">All</a> </li>
 		      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=pending">Pending</a> </li>
 		      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=completed">Paid</a> </li>
@@ -24,7 +23,7 @@ $invoice_url=get_link('InvoiceURL');
 		    <div class="container text-center padding-bottom-40">
 	            <button class="btn btn-primary" id="load_more" data-page = "0">Load more..</button>
 	        </div>
-          </div>
+
 		</div>
 	</div>
 </div>

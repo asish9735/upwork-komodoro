@@ -20,16 +20,15 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 							
 						</div>
 					</div>
-					<?php if($projectData['project_settings'] && $projectData['project_settings']->is_fixed==1){?>
-					<div class="right-side">
-                    	<!-- Bookmark icon -->
-                    	<span class="bookmark-icon"></span>
+					
+					<div class="right-side">                    	
+					<?php if($projectData['project_settings'] && $projectData['project_settings']->is_fixed==1){?>                    	
 						<div class="salary-box">
 							<div class="salary-type">Fixed Budget</div>
 							<div class="salary-amount"><?php D(priceSymbol().priceFormat($projectData['project_settings']->budget));?></div>
-						</div>
-					</div>
+						</div>					
 					<?php }?>
+                    </div>
 				</div>
 	</div>
 </div>
@@ -155,6 +154,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 		<!-- Sidebar -->
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container">
+            <div class="countdown green mb-3">Posted <?php D(get_time_ago($projectData['project']->project_posted_date));?></div>
 			<?php if(!$is_owner){
 				if($is_already_bid && $is_already_bid->is_hired!=1){
 				?>
@@ -172,7 +172,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 			<?php	
 				}
 			}?>
-				<div class="countdown green mb-3">Posted <?php D(get_time_ago($projectData['project']->project_posted_date));?></div>
+				
 
 				<div class="job-overview mb-4">
 					<div class="job-overview-headline"><h4>Client Information</h4></div>
@@ -215,7 +215,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 
 				<!-- Sidebar Widget -->
                 <div class="panel">
-                <div class="panel-header"><h4>Share</h4></div>
+                <div class="panel-header"><h4>Share &amp; Bookmark</h4></div>
 				<div class="panel-body">					
 					<!-- Copy URL -->
 					<div class="copy-url mb-3">
@@ -226,12 +226,14 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 					<!-- Share Buttons -->
 					<div class="freelancer-socials">
                       <ul class="social-links">
-                        <li><a href="#" data-button-color="#3b5998" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
-                        <li><a href="#" data-button-color="#1da1f2" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                        <li><a href="#" data-button-color="#0077b5" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-                        <li><a href="#" data-button-color="#7a5450" title="Share on Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
-                        <li><a href="#" data-button-color="#c4302b" title="Share on Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
+                        <li><a href="#" title="Facebook" data-tippy-placement="top" target="_blank"><i class="icon-brand-facebook-f"></i></a></li>
+                        <li><a href="#" title="Twitter" data-tippy-placement="top" target="_blank"><i class="icon-brand-twitter"></i></a></li>
+                        <li><a href="#" title="LinkedIn" data-tippy-placement="top" target="_blank"><i class="icon-brand-linkedin-in"></i></a></li>
+                        <li><a href="#" title="Instagram" data-tippy-placement="top" target="_blank"><i class="icon-brand-instagram"></i></a></li>
+                        <li><a href="#" title="Youtube" data-tippy-placement="top" target="_blank"><i class="icon-brand-youtube"></i></a></li>
                       </ul>
+                      <!-- Bookmark icon -->
+                    	<span class="bookmark-icon"></span>
              	   </div>
 				</div>
                 </div>
@@ -241,7 +243,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 
 	</div>
 </div>
-<div class="margin-top-15"></div>
+<div class="margin-top-30"></div>
 <?php if($this->session->flashdata('not_verified')){?>
 <script type="text/javascript">
 var vtype="<?php echo $this->session->flashdata('not_verified');?>";

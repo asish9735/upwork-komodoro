@@ -390,26 +390,26 @@ h6, .h6 {
 }
 
 .display-1 {
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: 300;
   line-height: 1.2;
 }
 
 .display-2 {
-  font-size: 5.5rem;
+  font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
 }
 
 .display-3 {
-  font-size: 4.5rem;
+  font-size: 3rem;
   font-weight: 300;
   line-height: 1.2;
 }
 
 .display-4 {
-  font-size: 3.5rem;
-  font-weight: 300;
+  font-size: 1.75rem;
+  /*font-weight: 300;*/
   line-height: 1.2;
 }
 
@@ -3125,12 +3125,12 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #007bff;
+  color: var(--siteColor);
   text-decoration: none;
 }
 
 .btn-link:hover {
-  color: #0056b3;
+  color: var(--hoverColor);
   text-decoration: underline;
 }
 
@@ -3151,8 +3151,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-sm, .btn-group-sm > .btn {
-  padding: 0.25rem 0.5rem;
-  /*font-size: 0.875rem;*/
+  padding: 0.25rem 0.75rem;
   font-size: 0.938rem;
   line-height: 1.5;
   border-radius: 0.2rem;
@@ -4750,7 +4749,8 @@ input[type="button"].btn-block {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  /*border: 1px solid rgba(0, 0, 0, 0.125);*/
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
 }
 
@@ -4807,7 +4807,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  /*background-color: rgba(0, 0, 0, 0.03);*/
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 

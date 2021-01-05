@@ -23,7 +23,7 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 ?>
 <section class="section">
 <div class="container">
-        <h1><?php echo $contractDetails->contract_title;?></h1>
+        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>">Milestones & Earnings</a> </li>
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
@@ -137,11 +137,11 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
               	<img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
                 <h5 class="card-title"><?php echo $name;?></h5>
                 
-                <p><a href="<?php echo $offer_details_url;?>" target="_blank">View Offer <i class="icon-feather-external-link"></i></a></p>
+                <a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block mb-2">View Offer <!--<i class="icon-feather-external-link"></i>--></a>
                 <?php if($contractDetails->bid_id){?>
-                <p><a href="<?php echo $application_link;?>" target="_blank">View Original Proposal <i class="icon-feather-external-link"></i></a></p>
+                <a href="<?php echo $application_link;?>" target="_blank" class="btn btn-site btn-block mb-2">Original Proposal</a>
                 <?php }?>
-                <p><a href="<?php echo $ProjectDetailsURL;?>" target="_blank">View Original Job Posting <i class="icon-feather-external-link"></i></a></p>
+                <a href="<?php echo $ProjectDetailsURL;?>" target="_blank" class="btn btn-web btn-block">Original Job Posting</a>
 
               </div>
             </div>

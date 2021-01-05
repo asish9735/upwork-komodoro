@@ -20,7 +20,7 @@ $sub_total=0;
 			</div>-->
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i> Amount</h3>
+			<h3>Amount</h3>
 			</div>
 			<div class="content with-padding">	
 				<div class="row">
@@ -37,7 +37,7 @@ $sub_total=0;
             </div>
 			<div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i> <?php D(__('cart_checkout_page_Payment_Options',"Payment Options"));?></h3>
+			<h3><?php D(__('cart_checkout_page_Payment_Options',"Payment Options"));?></h3>
 			</div>
 			<div class="content with-padding">	
              <div class="btn-group btn-group-toggle pricing-group" data-toggle="buttons">                        

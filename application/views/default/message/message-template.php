@@ -3,7 +3,7 @@
 <div class="messages-headline">
 	<div class="input-with-icon">
 			<input type="text" class="form-control" id="autocomplete-input" placeholder="Search" v-model="term">
-		<span class="icon-material-outline-search"></span>
+		<span class="icon-feather-search"></span>
 	</div>
 </div>
 
@@ -108,48 +108,39 @@ Vue.component('active-chat-header', {
 </script>
 
 <script type="text/x-template" id="active-chat-message-body-template">
-<div>
-
+<div class="justify-content-start">
 <div class="message-content-inner" ref="message-inner" style="height:400px;">
-
-	<infinite-loading direction="top" @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>
-	
+	<infinite-loading direction="top" @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>	
 		<div v-for="message in message_list" :key="message.message_id">
 			<!-- Time Sign -->
 			<div class="message-time-sign" v-if="checkDate(message)">
 				<span>{{message.sending_date | formatDate }}</span>
 			</div>
-
 			<div class="message-bubble" :class="{'me_': message.sender_id == login_user.member_id}">
 				<div class="message-bubble-inner">
 					<div class="message-avatar" v-if="message.sender_id == login_user.member_id"><img :src="login_user.avatar" alt="" /></div>
-					<div class="message-avatar" v-else><img :src="active_chat.avatar" alt="" /></div>
-					
-					<div class="message-text">
-					
-						<p>{{message.message}}</p>
-						
+					<div class="message-avatar" v-else><img :src="active_chat.avatar" alt="" /></div>					
+					<div class="message-text">																	
 						<div v-if="message.attachment != null">
-							<div class="mb-2" v-if="message.attachment.is_image">
+							<div class="message-attachment" v-if="message.attachment.is_image">
 								<a :href="message.attachment.file_url" target="_blank"><img :src="message.attachment.file_url"  class="rounded attach-thumbnail" /></a>
 							</div>
-							<div class="mb-2" v-else>
+							<div class="message-attachment" v-else>
 								<div><a :href="message.attachment.file_url" target="_blank" style="color: black">{{message.attachment.org_file_name}}</a></div>
 								<div>Size: {{message.attachment.file_size | formatFileSize }}</div>
 							</div>
 						</div>
-						
-						<div class="time">
+						<p>{{message.message}}
+						<span class="time">
 							{{message.sending_date | formatTime }} 
 							<i class="icon-feather-check" v-if="message.sender_id == login_user.member_id && active_chat.last_seen_msg >= message.message_id"></i>
-						</div>
-						
+						</span>
+						</p>												
 					</div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
-		</div>
-		
+		</div>		
 		<div class="message-bubble me_" v-if="attachment_loading.loading">
 			<div class="message-bubble-inner">
 				<div class="message-avatar"><img :src="login_user.avatar" alt="" /></div>
@@ -162,8 +153,7 @@ Vue.component('active-chat-header', {
 					</div>
 			</div>
 			<div class="clearfix"></div>
-		</div>
-		
+		</div>		
 		<!--
 		<div class="message-bubble">
 			<div class="message-bubble-inner">

@@ -19,9 +19,9 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
 
 <section class="section">
 <div class="container">
-      <a href="<?php echo $contract_details_url;?>" class="mb-3 btn btn-link"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+      <a href="<?php echo $contract_details_url;?>" class="mb-3 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
       
-        <h1><?php echo $contractMilestoneDetails->contract_title;?></h1>
+        <h1 class="display-4"><?php echo $contractMilestoneDetails->contract_title;?></h1>
         <div class="row">
           <div class="col-lg-9">
             <div class="panel mb-4">

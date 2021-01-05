@@ -30,8 +30,8 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 
 <section class="section">
 <div class="container">
-		<a href="<?php echo $contract_details_url;?>" class="mb-3 btn btn-link"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
-        <h1><?php echo $contractDetails->contract_title;?></h1>
+		<a href="<?php echo $contract_details_url;?>" class="mb-3 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
       
         <div class="row">
           <div class="col-lg-8">
@@ -92,8 +92,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
           
   
         <div class="messages-container margin-top-0">
-            <div class="messages-container-inner" id="message-app">
-            
+            <div class="messages-container-inner" id="message-app">            
                 <!-- Message Content -->
                 <div class="message-content">
                     <div v-if="active_chat">

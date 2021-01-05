@@ -12,8 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="item-content">
 <?php if($is_editable){?>
 	<div class="float-right">
-		<a href="javascript:void(0)" class="edit_account_btn btn btn-secondary btn-circle" data-popup="education" data-popup-id="<?php D($education->education_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit"></i></a> 
-		<a href="javascript:void(0)" class="delete_account_btn btn btn-danger btn-circle" data-popup="education" data-popup-id="<?php D($education->education_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash-2"></i></a>
+		<a href="javascript:void(0)" class="edit_account_btn btn btn-outline-secondary btn-circle" data-popup="education" data-popup-id="<?php D($education->education_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a> 
+		<a href="javascript:void(0)" class="delete_account_btn btn btn-outline-danger btn-circle" data-popup="education" data-popup-id="<?php D($education->education_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash"></i></a>
 	</div>
 <?php }?>
 			<h4><?php D($education->education_degree); if($education->education_area_of_study){D(', '.$education->education_area_of_study);} if($education->education_degree || $education->education_area_of_study){D(' | ');}?><?php D($education->education_school);?></h4>
