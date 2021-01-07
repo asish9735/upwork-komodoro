@@ -6,7 +6,7 @@
 		<span class="icon-feather-search"></span>
 	</div>
 </div>
-
+<div class="attachScrollbar" data-simplebar>
 <ul>
 	<li v-for="chat_user in chatUserList" :class="{'active-message': active_chat && (chat_user.member_id==active_chat.member_id)}">
 		<a href="#" @click.prevent="setActiveChat(chat_user)">
@@ -25,8 +25,9 @@
 				<p v-else><i class="icon-feather-check" v-if="chat_user.sender_id == login_user.member_id && chat_user.last_seen_msg >= chat_user.message_id"></i> <span v-html="chat_user.message"></span></p>
 			</div>
 		</a>
-	</li>
+	</li>	
 </ul>
+</div>
 </div>
 </script>
 
@@ -110,6 +111,7 @@ Vue.component('active-chat-header', {
 <script type="text/x-template" id="active-chat-message-body-template">
 <div class="justify-content-start">
 <div class="message-content-inner" ref="message-inner" style="height:400px;">
+
 	<infinite-loading direction="top" @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>	
 		<div v-for="message in message_list" :key="message.message_id">
 			<!-- Time Sign -->
@@ -168,7 +170,7 @@ Vue.component('active-chat-header', {
 				</div>
 			</div>
 			<div class="clearfix"></div>
-		</div> -->
+		</div> -->		
 </div>
 <reply-chat :active_chat="active_chat" :login_user="login_user" v-on:new-message="updateMessage" v-on:new-attachment="updateAttachment" v-on:progress="handleProgress" v-on:complete="handleComplete" v-on:start-upload="handleStartUpload"></reply-chat>
 </div>
@@ -451,6 +453,7 @@ Vue.component('reply-chat', {
 					_self.$emit('new-attachment', msg_data);
 				}
 			  }
+			  
 		});
     },
 	sendMsg: function(){
@@ -481,7 +484,7 @@ Vue.component('reply-chat', {
 					msg_data.message_id = res.last_message_id;
 					_self.$emit('new-message', msg_data);
 				}
-			}
+			}			
 		});
 		
 	}

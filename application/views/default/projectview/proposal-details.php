@@ -42,7 +42,7 @@ $logo=getMemberLogo($member_id);
               	foreach($memberInfo->badges as $b=>$badge){
               		$badge_icon=UPLOAD_HTTP_PATH.'badge-icons/'.$badge->icon_image;
 				?>
-				<img src="<?php echo $badge_icon;?>" alt="<?php echo $badge->name;?>" height="26" width="26" data-tippy-placement="top" title="<?php echo $badge->name;?>"  />
+				<img src="<?php echo $badge_icon;?>" alt="<?php echo $badge->name;?>" height="24" width="24" data-tippy-placement="top" title="<?php echo $badge->name;?>"  />
 				<?php	
 				}
 				?>

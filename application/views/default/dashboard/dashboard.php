@@ -9,11 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="dashboard-content-inner">
 		<?php if(!$is_email_verified){?>
 			<div class="mx-auto alert alert-warning text-center">
-                <p class="mb-0"> <i class="icon-material-outline-check-circle text-danger"></i> Your email is not verified. <a href="<?php D(VZ);?>" class="btn btn-site btn-sm resendEmail">Resend Email</a></p>            
+                <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> Your email is not verified. <a href="<?php D(VZ);?>" class="btn btn-site btn-sm ml-2 resendEmail">Resend Email</a></p>            
             </div>
         	<?php }elseif(!$is_doc_verified){?>
             <div class="mx-auto alert alert-warning text-center">
-                <p class="mb-0"> <i class="icon-material-outline-check-circle text-danger"></i> Please verify your profile. <a href="<?php echo URL::get_link('verifyDocumentURL');?>" class="btn btn-site btn-sm">Verify Now</a></p>
+                <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> Please verify your profile. <a href="<?php echo URL::get_link('verifyDocumentURL');?>" class="btn btn-site btn-sm ml-2">Verify Now</a></p>
             </div>
             <?php }?>
         
@@ -37,6 +37,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
+        <div class="row">
+        <div class="col-md-6">
+        	<!-- Dashboard Box -->
+            <div class="dashboard-box main-box-in-row mb-4 mt-0">
+                <div class="headline">
+                    <h3>Your Profile Views</h3>
+                    <div class="sort-by">
+                        <select class="selectpicker hide-tick">
+                            <option>Last 6 Months</option>
+                            <option>This Year</option>
+                            <option>This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="content">
+                    <!-- Chart -->
+                    <div class="chart">
+                        <canvas id="chart" width="100" height="45"></canvas>
+                    </div>
+                </div>
+            </div>
+			<!-- Dashboard Box / End -->
+        </div>
+        <div class="col-md-6">
+        	<!-- Dashboard Box -->
+            <div class="dashboard-box main-box-in-row mb-4 mt-0">
+                <div class="headline">
+                    <h3>My Works Statics</h3>
+                    <div class="sort-by">
+                        <select class="selectpicker hide-tick">
+                            <option>Last 6 Months</option>
+                            <option>This Year</option>
+                            <option>This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="content">
+                    <!-- Chart -->
+                    <div class="chart m-auto" style="max-width:50%;">
+                        <canvas id="chart-area" style="height:200px; width:200px;"></canvas>
+                    </div>
+                </div>
+            </div>
+			<!-- Dashboard Box / End -->
+        </div>
+        </div>
+        
         <div class="dashboard-box margin-top-0">        
             <!-- Headline -->
             <div class="headline">
@@ -372,6 +419,174 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </div>
 <!-- Dashboard Container / End -->
+<script src="<?php echo JS;?>chart.min.js"></script>
+<script src="<?php echo JS;?>utils.js"></script>
+
+<script>
+	//Chart1.defaults.global.defaultFontFamily = "Nunito";
+	//Chart1.defaults.global.defaultFontColor = '#888';
+	//Chart1.defaults.global.defaultFontSize = '14';
+
+	var ctx_987465 = document.getElementById('chart').getContext('2d');
+
+	var chart1 = new Chart(ctx_987465, {
+		type: 'line',
+
+		// The data for our dataset
+		data: {
+			labels: ["January", "February", "March", "April", "May", "June"],
+			// Information about the dataset
+	   		datasets: [{
+				label: "Views",
+				backgroundColor: 'rgba(100,190,67,0.1)',
+				borderColor: '#64be43',
+				borderWidth: "3",
+				data: [196,132,215,362,210,252],
+				pointRadius: 5,
+				pointHoverRadius:5,
+				pointHitRadius: 10,
+				pointBackgroundColor: "#fff",
+				pointHoverBackgroundColor: "#fff",
+				pointBorderWidth: "2",
+			}]
+		},
+
+		// Configuration options
+		options: {
+
+		    layout: {
+		      padding: 0,
+		  	},
+
+			legend: { display: false },
+			title:  { display: false },
+
+			scales: {
+				yAxes: [{
+					scaleLabel: {
+						display: false
+					},
+					gridLines: {
+						 borderDash: [6, 10],
+						 color: "#d8d8d8",
+						 lineWidth: 1,
+	            	},
+				}],
+				xAxes: [{
+					scaleLabel: { display: false },  
+					gridLines:  { display: false },
+				}],
+			},
+
+		    tooltips: {
+		      backgroundColor: '#333',
+		      titleFontSize: 13,
+		      titleFontColor: '#fff',
+		      bodyFontColor: '#fff',
+		      bodyFontSize: 13,
+		      displayColors: false,
+		      xPadding: 10,
+		      yPadding: 10,
+		      intersect: false
+		    }
+		},
+
+});
+</script>
+
+
+<script>
+var randomScalingFactor = function() {
+	return Math.round(Math.random() * 100);
+};
+
+var config = {
+	type: 'pie',
+	data: {
+		datasets: [{
+			data: [
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				randomScalingFactor(),
+				//randomScalingFactor(),
+			],
+			backgroundColor: [
+				window.chartColors.red,
+				window.chartColors.orange,
+				window.chartColors.yellow,
+				window.chartColors.green,
+				//window.chartColors.blue,
+			],
+			label: 'Dataset 1',
+		}],
+		labels: [
+			'Open Jobs',
+			'Processing Jobs',
+			'Pending Jobs',
+			'Completed Jobs'
+		]
+		
+	},
+	options: {
+		responsive: true,
+		scaleBeginAtZero: true,
+		legend: {
+            display: true,
+            position: 'bottom',	
+			align: 'center',
+            labels: {
+                fontColor: '#333',
+				usePointStyle: true,
+     			boxWidth: 6
+            }
+			
+        }
+		
+	}
+};
+
+window.onload = function() {
+	var ctx_287894 = document.getElementById('chart-area').getContext('2d');
+	window.myPie = new Chart(ctx_287894, config);
+};
+
+document.getElementById('randomizeData').addEventListener('click', function() {
+	config.data.datasets.forEach(function(dataset) {
+		dataset.data = dataset.data.map(function() {
+			return randomScalingFactor();
+		});
+	});
+
+	window.myPie.update();
+});
+
+var colorNames = Object.keys(window.chartColors);
+document.getElementById('addDataset').addEventListener('click', function() {
+	var newDataset = {
+		backgroundColor: [],
+		data: [],
+		label: 'New dataset ' + config.data.datasets.length,
+	};
+
+	for (var index = 0; index < config.data.labels.length; ++index) {
+		newDataset.data.push(randomScalingFactor());
+
+		var colorName = colorNames[index % colorNames.length];
+		var newColor = window.chartColors[colorName];
+		newDataset.backgroundColor.push(newColor);
+	}
+
+	config.data.datasets.push(newDataset);
+	window.myPie.update();
+});
+
+document.getElementById('removeDataset').addEventListener('click', function() {
+	config.data.datasets.splice(0, 1);
+	window.myPie.update();
+});
+</script>
+
 <script type="text/javascript">
 var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 	var main=function(){

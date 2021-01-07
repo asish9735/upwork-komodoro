@@ -862,15 +862,13 @@ ul.skill-tags > li {
 .comment-by .status {
     position: absolute;
     right: 0;
-    top: 15px;
-	font-weight: 600;
-	font-size:85%;
+    top: 6px;
 }
 .toggleUD {
-	font-size: 2rem;
+	font-size: 1.5rem;
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 12px;
+    right: 1.25rem;
     line-height: 0;
 }
 .toggleUD.active {
@@ -894,24 +892,27 @@ ul.skill-tags > li {
 .ribbon span {
     position: absolute;
     display: block;
-    width: 225px;
-    padding: 8px 0;
+    width: 150px;
+    padding: 5px 0;
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
     color: #fff;
     text-shadow: 0 1px 1px rgba(0,0,0,.2);
-    text-transform: capitalize;
+    font-family: 'FSJoey', Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
     text-align: center;
+    letter-spacing: 1px;
 }
 .ribbon-top-right span {
-    left: -8px;
+    left: 30px;
     top: 30px;
     transform: rotate(45deg);
 }
-.tab-pane ul.dashboard-box-list.if-button > li {/* if button temporary class not used yet */
+.tab-pane ul.dashboard-box-list.if-button > li {
     padding-right: 70px;
 }
 .section {
-	padding:3rem 0
+	padding:2rem 0
 }
 .number {
 	position: absolute;
@@ -1055,7 +1056,7 @@ ul.skill-tags > li {
 	font-size:0.813rem;
 }
 .attachScrollbar {
-	height: 500px
+	height: 450px
 }
 .attach-thumbnail{
 	max-width:300px
@@ -1219,6 +1220,28 @@ ul.list-group-0 > li{
 	height:30px;
 	justify-content: center;
 }
+.avatar-logo{
+	background-color:#ddd;	
+    border-radius: 50%;
+	display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

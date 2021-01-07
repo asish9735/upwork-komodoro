@@ -19,7 +19,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
 
 <section class="section">
 <div class="container">
-      <a href="<?php echo $contract_details_url;?>" class="mb-3 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+      <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
       
         <h1 class="display-4"><?php echo $contractMilestoneDetails->contract_title;?></h1>
         <div class="row">
@@ -29,18 +29,19 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                 <h4>Details</h4>
               </div>
               <div class="panel-body">
-                <p><b>Title:</b> <?php echo $contractMilestoneDetails->milestone_title;?></p>
-                <p><b>Due date:</b> <?php echo $contractMilestoneDetails->milestone_due_date;?></p>
+                <p class="mb-2"><b>Title:</b> <?php echo $contractMilestoneDetails->milestone_title;?></p>
+                <p class="mb-2"><b>Due date:</b> <i class="icon-feather-calendar text-muted"></i> <?php echo $contractMilestoneDetails->milestone_due_date;?></p>
                 <?php if($contractMilestoneDetails->is_approved==1){?>
-                <p><b>Approved Date:</b> <?php echo $contractMilestoneDetails->approved_date;?></p>
+                <p><b>Approved Date:</b> <i class="icon-feather-calendar text-muted"></i> <?php echo $contractMilestoneDetails->approved_date;?></p>
                 <?php }else{
                 	if(!$contractMilestoneDetails->is_escrow){
 				?>
-				<p class="alert alert-warning">Milestone not started.</p>
+				
 				<?php		
 					}
                 	
                 }?>
+                <span class="badge badge-warning">Milestone not started.</span>
               </div>
             </div>
             <div class="panel mb-4">
@@ -67,9 +68,9 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                         <h4 class="mb-1"><i class="icon-feather-arrow-right text-success"></i> <b>Work Submitted</b></h4>
                         <span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->submission_date;?></span>
                           <?php if($submission->is_approved==1){?>
-                          <span class="status badge badge-success"><i class="fa fa-reply"></i> Approved</span>
+                          <span class="status badge badge-success">Approved</span>
                           <?php } elseif($submission->is_approved==2){?>
-                          <span class="status badge badge-danger"><i class="fa fa-reply"></i> Rejected</span>
+                          <span class="status badge badge-danger">Rejected</span>
                           <?php }else{
 	if($is_owner){ 
 	?>
@@ -78,7 +79,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                           <?php
 	}else{
 	?>
-                          <span class="status badge badge-warning"><i class="fa fa-reply"></i> Pending</span>
+                          <span class="status badge badge-warning">Pending</span>
                           <?php	
 	}
 								   }
@@ -122,6 +123,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                       </ul>
                       <?php }?>
                     </li>
+                    
                     <?php /*?>   
                 <?php if($submission->is_approved==1){?>
                 <p class="alert alert-success">Submission got approved On:<?php echo $submission->update_date;?></p>
@@ -166,10 +168,10 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
 	            <?php }?>
 	            	
 	            <hr><?php */?>
-                    <?php 
+                <?php 
 	            	}
 	            }else{?>
-                    No record found
+                    <li class="text-center text-danger">No record found</li>
                     <?php }?>
                   </ul>
                 </section>
@@ -179,8 +181,10 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
           <div class="col-lg-3">
             <div class="card text-center mx-auto">
               <div class="card-body">
-              <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
-                <h5 class="card-title"><b><?php echo $name;?></b></h5>
+                <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
+                <h5 class="card-title mb-0"><?php echo $name;?></h5>
+                <p class="text-muted mb-0">Senior Developer</p>
+            	<div class="star-rating" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div>
               </div>
             </div>
           </div>

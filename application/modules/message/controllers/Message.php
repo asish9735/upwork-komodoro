@@ -23,9 +23,10 @@ class Message extends MX_Controller {
 	
 	public function index($selected_conversation_id=''){
 		$this->layout->set_js(array(
+			'jquery.nicescroll.min.js',
 			'utils/helper.js',
 			'bootbox_custom.js',
-			'mycustom.js',
+			'mycustom.js',			
 		));
 		
 		if($this->access_member_type=='F'){

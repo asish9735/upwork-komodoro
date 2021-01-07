@@ -63,7 +63,16 @@ ul.top-list{
 	.sidebar-container, .tippy-popper {
 		display:none;
 	}
-
+	.milestone_row_parent{
+		border-bottom: 1px dashed #ccc;
+		margin-bottom: 1.5rem;
+		padding-bottom: 0.5rem;
+	}
+	.milestone_row_parent:last-child{
+		border-bottom:none;
+		margin-bottom:0;
+		padding-bottom:0;
+	}
 }
 
 @media only screen and (max-width: 767px) {

@@ -30,9 +30,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <active-chat-header :active_chat="active_chat"></active-chat-header>
               <active-chat-body :active_chat="active_chat" :login_user="login_user" v-on:update-message="updateMessage" :new_message_received="lastMessageReceived" v-on:last-seen-msg="updateLastSeenMsg"></active-chat-body>
             </div>
+            
             <div class="text-center" v-else> <img src="<?php echo IMAGE;?>communication.png" alt="">
               <p class="text-muted"><i class="icon-feather-message-circle"></i> <i>Select a chat to view conversation</i></p>
-            </div>
+            </div>            
           </div>
           <!-- Message Content --> 
           

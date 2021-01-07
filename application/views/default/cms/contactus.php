@@ -46,11 +46,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="#">mail@example.com</a></li>
             <li>
                 <div class="freelancer-socials">
-                    <ul>
-                        <li><a href="#" data-button-color="#3b5998" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
-                        <li><a href="#" data-button-color="#1da1f2" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                        <li><a href="#" data-button-color="#dd4b39" title="Share on Google Plus" data-tippy-placement="top"><i class="icon-brand-google-plus-g"></i></a></li>
-                        <li><a href="#" data-button-color="#0077b5" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                    <ul class="social-links">
+                        <li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+                        <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                        <li><a href="#" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                        <li><a href="#" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
+                        <li><a href="#" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
                     </ul>
                 </div>
             </li>

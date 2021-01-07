@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="dashboard-box margin-top-0">
 <div class="content">
 <?php if($all_data){?>
-    <ul class="dashboard-box-list">
+    <ul class="dashboard-box-list if-button">
     <?php foreach($all_data as $k=>$bid){
     	//get_print($bid,true);
     $logo=getMemberLogo($bid->member_id);

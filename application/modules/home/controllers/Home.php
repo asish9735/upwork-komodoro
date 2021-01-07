@@ -62,6 +62,12 @@ class Home extends MX_Controller {
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
 		$this->layout->view('findtalents',$this->data);
 	}
-	
+	public function enterprise() {
+		$this->layout->set_title('Enterprise');
+		$this->layout->set_meta('author', 'Dev Sharma');
+		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
+		$this->layout->set_meta('description', 'Freelancer Clone Script');
+		$this->layout->view('enterprise',$this->data);
+	}
 	
 }

@@ -23,7 +23,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 
 <section class="section">
   <div class="container">
-    <h1><?php echo $contractDetails->contract_title;?></h1>
+    <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>">Milestones & Earnings</a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
@@ -56,7 +56,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
         <?php
         if($not_started_contract){
 			?>
-		<p class="alert alert-warning"><?php echo $not_started_contract;?> milestone not started.</p>	
+		<p class="alert alert-warning text-center"><?php echo $not_started_contract;?> milestone not started.</p>	
 			<?php
 		}
         ?>
@@ -203,10 +203,13 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
       </div>
       <div class="col-lg-3">
         <div class="card text-center mx-auto">
-          <div class="card-body"> <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
-            <h5 class="card-title"><?php echo $name;?></h5>
+          <div class="card-body">
+            <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
+            <h5 class="card-title mb-0"><?php echo $name;?></h5>
+            <p class="text-muted mb-0">Senior Developer</p>
+            <div class="star-rating" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div>
             <?php if($is_owner){?>
-            <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block">
+            <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block mt-2">
             <icon class="icon-material-outline-add"></icon>
             New Contract</a> <!--<a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
             <icon class="icon-material-outline-add"></icon>

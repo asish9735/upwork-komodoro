@@ -172,16 +172,16 @@ $logo=getMemberLogo($bid);
             </div>
             <div class="panel-body">
               <div class="form-group">
-                <label><b>Description</b></label>
+                <label>Description</label>
                 <textarea class="form-control" id="bid_details" name="bid_details"></textarea>
               </div>
               <div class="form-group">
-                <label><b>Attachments</b></label>
+                <label>Attachments</label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
                   <p>Drag and Drop file here<br/>
                     Or<br/>
-                    Click to select file</p>
+                    <span class="text-site">Click</span> to select file</p>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>

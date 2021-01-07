@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php echo $left_panel;?>
 <!-- Dashboard Content
 	================================================== -->
-	<div class="dashboard-content-container" >
-		<div class="dashboard-content-inner" >
+	<div class="dashboard-content-container">
+		<div class="dashboard-content-inner">
 			
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <!-- Headline -->
                 <div class="headline">
-                    <h3><i class="icon-material-outline-assignment"></i> My Posted Projects</h3>
+                    <h3>My Posted Projects</h3>
                 </div>
                 <div class="content">
                     <ul class="dashboard-box-list" id="ajax_table"></ul>

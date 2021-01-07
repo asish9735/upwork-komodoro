@@ -15,7 +15,6 @@
 }
 textarea {
 	height: auto;
-	min-height: 130px;
 	transition: none !important;
 	min-width: 100%;
 }
@@ -26,8 +25,10 @@ label, legend {
 }
 label span, legend span {
 	font-weight: normal;
-	font-size: 0.933rem;
-	color: #666;
+	font-size: 0.875rem;
+	color: #777;
+	line-height: 20px;
+    display: inline-block;
 }
 fieldset {
 	padding: 0;
@@ -791,7 +792,7 @@ ul.user-menu-small-nav li a:hover, ul.user-menu-small-nav li a:hover i {
 }
 #navigation ul a {
 	font-family:'FSJoey', Helvetica, sans-serif;
-	font-size:1.125rem;
+	font-size: 1.063rem;
 	line-height: 24px;
 	padding: 6px 10px;
 	border-right: 4px;
@@ -2542,15 +2543,11 @@ max-width: 140px;
 	font-weight: 400;
 	margin-top: 5px;
 }
-.single-page-header .header-details h5 {
-	font-size: 16px;
-	font-weight: 600;
-	color: #333;
+.single-page-header .header-details p {
+	margin-bottom:0;
 }
 /* Details */
 .single-page-header .header-details h5 {
-	font-size: 16px;
-	font-weight: 600;
 	color: #333;
 }
 .single-page-header .header-details ul {
@@ -2903,7 +2900,6 @@ blockquote {
 }
 /* Comments */
 .comments {
-	margin: -10px 0 0 0;
 }
 .comments h4 {
 	color: #333;
@@ -2923,13 +2919,14 @@ blockquote {
 	margin: 0;
 }
 .comments ul {
+	margin-bottom: 0;
 	padding-left: 0;
 }
 .comments ul li {
 	display: block;
 }
 .comments ul li, .comments ul li ul li, .comments ul li ul li ul li, .comments ul li ul li ul li {
-	margin: 30px 0 0 0px;
+	margin: 1rem 0 0 0;
 }
 .comments ul li ul {
 	margin: 0 0 0 64px;
@@ -2959,8 +2956,16 @@ blockquote {
 .comments ul li {
 	position: relative;
 }
+.comments > ul > li{
+	border-bottom:1px dashed #ccc;
+	padding-bottom:1.25rem;
+}
 .comments > ul > li:first-child {
 	margin-top:0
+}
+.comments > ul > li:last-child {
+	border-bottom:none;
+	padding-bottom:0;
 }
 .comment-content strong {
 	padding-right: 5px;
@@ -2990,8 +2995,6 @@ body .comment-content p {
 }
 .comment-by {
 	width: 100%;
-	padding-top: 5px;
-	font-weight: 500;
 	color: #333;
 }
 .comment-by h5 {
@@ -3024,12 +3027,11 @@ body .comment-content p {
 }
 .comment-by span.date {
 	color: #777;
-	font-weight: 500;
 	margin: 0px 0 0 0;
 	float: none;
 	display: block;
 	text-align: left;
-	font-size: 0.85rem;
+	font-size: 0.875rem;
 }
  @media (max-width: 767px) {
 
@@ -6014,14 +6016,15 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 	/*float: right;
 	background-color: #febe42;
 	line-height: 15px;*/
-	padding: 0 6px;
+	font-family: 'FSJoey', Helvetica, sans-serif;
+	padding: 2px 6px;
     border: 1px solid #febe42;
     border-radius: 0.2rem;
 	color: #febe42;
 	font-size: 1rem;	
 	font-weight: 500;	
 	position: relative;
-	top: -2px;
+	top: -3px;
 	margin-left: 6px;
 } 
 /* No stars */
@@ -10575,6 +10578,10 @@ width: 5px;
 	border-color: #ced4da;
 	border-radius: 0.25rem;
 }
+.sort-by .bootstrap-select.btn-group button {
+	font-size: 0.938rem;
+}
+
 /* Select Check Icon */
 .hide-tick .check-mark {
 	display: none !important;
@@ -11489,7 +11496,7 @@ a.apply-now-button i {
 	flex-wrap: wrap;
 	flex-direction: row;
 	width: calc(100% + 20px);
-	margin-bottom: -20px;
+	/*margin-bottom: -20px;*/
 }
 .attachment-box {
 	display: flex;
@@ -11777,7 +11784,7 @@ a.dashboard-responsive-nav-trigger {
 	position: relative;
 }
 .dashboard-nav .dashboard-nav-inner > ul > li > a {
-	font-size:1.125rem;
+	font-size: 1.063rem;
 }
 .dashboard-nav ul li a i {
 	padding-right: 5px;
@@ -12038,17 +12045,18 @@ flex: 1;
 	padding: 20px;
 }
 .dashboard-box .chart {
-	padding: 30px 20px 17px 18px;
+	padding:1.25rem 1rem 1rem;
 }
 .dashboard-box .headline .sort-by {
 	float: none;
 	display: inline-block;
 	position: absolute;
-	top: calc(50% + 3px);
+	/*top: calc(50% + 3px);*/
+	top:50%;
 	transform: translateY(-50%);
-	right: 30px;
+	right: 1.25rem;
 	z-index: 100;
-	height: 33px;
+	height: 32px;
 }
 .dashboard-box .headline .bootstrap-select.btn-group .dropdown-toggle .filter-option {
 	font-weight: 500;
@@ -12308,14 +12316,19 @@ ul.dashboard-box-list > li:hover {
 .dashboard-status-button {
 	color: #fff;
 	border-radius: 0.25rem;
+	font-family: 'FSJoey', Helvetica, sans-serif;
 	font-size: 0.875rem;
 	font-weight: 500;
-	line-height: 21px;
+	line-height: 20px;
 	padding: 2px 8px;
 	display: inline-block;
 	position: relative;
 	top: -2px;
 	margin: 0 0 4px 4px;
+}
+.job-listing-footer .dashboard-status-button{
+	margin-bottom:0;
+	top:0;
 }
 .dashboard-status-button.green {
 	background: #e0f5d7;
@@ -12420,7 +12433,7 @@ ul.dashboard-box-list > li:hover {
 	background-color:transparent;
 	border-top:0;
 	padding: 0;
-	border-radius: none;
+	border-radius: 0;
 }
 /* Jobs */
 .dashboard-box .freelancer-overview {
@@ -12677,7 +12690,7 @@ max-width: 100%
 	bottom: 0;
 }
 .dashboard-footer-spacer {
-	padding-top: 3rem;
+	padding-top: 2rem;
 }
 
 
@@ -12819,7 +12832,6 @@ opacity: 1;
 }
  .fun-facts-container {
  width: calc(100% + 15px);
- margin-bottom: -15px;
 }
  .fun-fact {
  flex: 1 1 calc(50% - 15px);
@@ -12885,13 +12897,15 @@ opacity: 1;
 .message-content, .messages-container-inner .messages-inbox {
 	overflow: hidden;
 }
-.message-content-inner, .messages-container-inner .messages-inbox ul {
-	overflow-y: scroll;
+.message-content-inner,
+.messages-container-inner .messages-inbox ul {
+	overflow-y: auto;
 	/*width: calc(100% + 18px)*/
 }
-/*.message-content-inner::-webkit-scrollbar, .messages-container-inner .messages-inbox ul::-webkit-scrollbar {
+/*.message-content-inner::-webkit-scrollbar,*/
+.messages-container-inner .messages-inbox ul::-webkit-scrollbar {
 width: 17px;
-}*/
+}
 /*  Scrollbar Hide - End */
 
 .messages-headline {
@@ -13110,17 +13124,21 @@ width: 17px;
 	margin-bottom: 25px;
 }
 .message-bubble .message-avatar {
+	background-color: #ddd;
+    border-radius: 50%;
 	position: absolute;
 	left: 0;
 	top: 0;
 }
 .message-bubble .message-avatar img {
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 }
 .message-bubble .message-text {
 	margin-left: 70px;
-	background-color: #f4f4f4;
+	margin-top: 4px;
+	background-color: #eff8ec;
+	background-color: rgb(100 190 67 / 0.1);
 	border-radius: 0.25rem;
 	padding: 0.625rem 1rem;
 	position: relative;
@@ -13155,10 +13173,10 @@ width: 17px;
 	height: 0;
 	border-top: 6px solid transparent;
 	border-bottom: 6px solid transparent;
-	border-right: 6px solid #f4f4f4;
+	border-right: 6px solid rgb(100 190 67 / 0.1);
 	left: -6px;
 	right: auto;
-	top: 19px;
+	top: 12px;
 	position: absolute;
 }
 .message-bubble.me .message-text:before {

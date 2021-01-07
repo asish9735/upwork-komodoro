@@ -10,9 +10,9 @@ if($contractDetails->is_hourly){
 ?>
 <section class="section">
 <div class="container">
-      <a href="<?php echo $contract_details_url;?>" class="mb-3 btn btn-link"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+      <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
       
-        <h1>Submit Dispute</h1>
+        <h1 class="display-4">Submit Dispute</h1>
         <div class="row">
           <div class="col-lg-9">
 <form action="" method="post" accept-charset="utf-8" id="newdisputeform" class="form-horizontal" role="form" name="newdisputeform" onsubmit="return false;">  

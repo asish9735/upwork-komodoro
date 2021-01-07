@@ -25,6 +25,7 @@ class Dashboard extends MX_Controller {
 				'utils/helper.js',
 				'bootbox_custom.js',
 				'mycustom.js',
+				//'chart.min.js',
 			));
 			$this->data['is_email_verified']=getFieldData('is_email_verified','member','member_id',$this->member_id);
 			$this->data['is_doc_verified']=getFieldData('is_doc_verified','member','member_id',$this->member_id);

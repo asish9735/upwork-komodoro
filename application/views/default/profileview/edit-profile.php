@@ -30,14 +30,14 @@ $logo=getMemberLogo($member_id);
               <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar"><i class="icon-feather-edit-2"></i></a></ec>
           </div>
           <div class="header-details">
-            <h3>
+            <h1>
               <?php D(ucwords($memberInfo->member_name))?>
               <span class="show_edit_btn">
               <ec id="profile-heading-data">
                 <?php D(ucfirst($memberInfo->member_heading))?>
               </ec>
               <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site ml-2 btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></span>              
-              </h3>
+              </h1>
             <ul>
               <li>
                 <div class="star-rating" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div>
@@ -67,9 +67,7 @@ $logo=getMemberLogo($member_id);
             </ul>
           </div>
         </div>
-        <div class="right-side">
-        	<!-- Bookmark icon -->
-            <span class="bookmark-icon"></span>
+        <div class="right-side">        	
           <div class="ml-auto" style="min-width: 150px;">          	
             <p class="mb-0">Job Success <strong>50%</strong></p>
             <div class="progress" style="max-width:200px; height:6px">
@@ -245,22 +243,7 @@ $logo=getMemberLogo($member_id);
               <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="language" data-tippy-placement="top" title="Add language"><i class="icon-feather-plus"></i></a>
             </div>
             <div class="panel-body" id="profile-language-data"> </div>
-          </div>
-          <!-- Widget -->
-          <div class="panel mb-4 d-none">
-            <div class="panel-header">
-              <h3>Social Profiles</h3>
-            </div>
-            <div class="panel-body freelancer-socials">
-              <ul>
-                <li><a href="#" title="Dribbble" data-tippy-placement="top"><i class="icon-brand-dribbble"></i></a></li>
-                <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                <li><a href="#" title="Behance" data-tippy-placement="top"><i class="icon-brand-behance"></i></a></li>
-                <li><a href="#" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
-              </ul>
-            </div>
-          </div>
-                    
+          </div>          
           
           <!-- Widget -->
           <div class="sidebar-widget d-none">
@@ -289,6 +272,8 @@ $logo=getMemberLogo($member_id);
                     <li><a href="#" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
                     <li><a href="#" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
                   </ul>
+                  <!-- Bookmark icon -->
+              	  <span class="bookmark-icon"></span>
               </div>
             </div>
           </div>

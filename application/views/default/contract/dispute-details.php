@@ -30,7 +30,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 
 <section class="section">
 <div class="container">
-		<a href="<?php echo $contract_details_url;?>" class="mb-3 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+		<a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
         <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
       
         <div class="row">

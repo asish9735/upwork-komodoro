@@ -20,30 +20,29 @@ if($is_owner){
 	<?php //echo $left_panel;?>
     <div class="container">
         <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
-        <div class="row">
-        <div class="col-lg-9">				
+        				
         <?php 
         if($contractDetails->contract_status==0){
             if($current_member!=$contractDetails->offer_by){
             ?>
             <p>You have a new offer. 
-            <button class="btn btn-success acceptbtn">Accept</button>
-            <button class="btn btn-danger denybtn">Reject</button></p>
+            <button class="btn btn-success btn-sm acceptbtn ml-2">Accept</button>
+            <button class="btn btn-danger btn-sm denybtn ml-2">Reject</button></p>
             <?php	
             }
         }elseif($contractDetails->contract_status==1){
         ?>
-        <div class="mx-auto alert alert-success text-center">
-        <p class="mb-0"> <i class="icon-material-outline-check-circle text-success"></i> Offer Accepted. </p>
-        </div>
+        
+        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i> Offer Accepted.</span></p>
+        
         <?php	
         }elseif($contractDetails->contract_status==2){
         ?>
-        <div class="mx-auto alert alert-warning text-center">
-        <p class="mb-0"> <i class="icon-material-outline-check-circle text-danger"></i> Offer Rejected</p>
-        </div>
+        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> Offer Rejected</span></p>        
         <?php	
         }?>
+        <div class="row">
+        <div class="col-lg-9">
         <div class="panel mb-4">
         <div class="panel-header"><h4>Details</h4></div>
         <div class="panel-body">
@@ -76,7 +75,7 @@ if($is_owner){
         <div class="milestone-item">
             <b><?php echo ucfirst($milestone->milestone_title);?></b><br>
             <b>Budget:</b> <?php echo $milestone->milestone_amount;?> <br> 
-            <b>Due Date:</b> <?php echo $milestone->milestone_due_date; ?>
+            <b>Due Date:</b> <i class="icon-feather-calendar text-muted"></i> <?php echo $milestone->milestone_due_date; ?>
         </div>				
         </li>
         <?php		
@@ -114,8 +113,10 @@ if($is_owner){
         <div class="col-lg-3">
         <div class="card text-center mx-auto">
             <div class="card-body">
-            <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
-            <h5 class="card-title"><?php echo $name;?></h5>
+            <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>                    
+            <h5 class="card-title mb-0"><?php echo $name;?></h5>
+            <p class="text-muted mb-0">Senior Developer</p>
+            <div class="star-rating" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div>
             </div>                    
         </div>
         </div>
