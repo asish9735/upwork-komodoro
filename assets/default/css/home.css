@@ -58,8 +58,14 @@
 	height: 150%;
     width: 70%;
     background-color: var(--siteColor);
-    transform: rotate(-60deg) translate(15%, -30%);
+    transform: rotate(-65deg) translate(20%, -30%);
 }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+	.banner-search:before {
+		width: 75%;
+	}	
 }
 
 @media only screen and (min-width: 992px) {

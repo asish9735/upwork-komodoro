@@ -44,8 +44,10 @@
             <ul>
               <li><a href="<?php D(get_link('CMSaboutus'))?>"><span>About Us</span></a></li>                                                        
               <li><a href="<?php D(get_link('conatctURL'))?>"><span>Contact Us</span></a></li>
+              <li><a href="<?php D(get_link('enterpriseURL'))?>"><span>Enterprise</span></a></li>
               <li><a href="<?php D(get_link('CMShelp'))?>"><span>FAQs</span></a></li>              
               <li><a href="<?php D(get_link('CMShowitworks'))?>"><span>How it works</span></a></li>
+              <li><a href="<?php D(get_link('membershipURL'))?>"><span>Membership</span></a></li>
               <li><a href="<?php D(get_link('CMSprivacypolicy'))?>"><span>Privacy Policy</span></a></li>
               <li><a href="<?php D(get_link('CMSrefundpolicy'))?>"><span>Refund Policy</span></a></li>
               <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span>Terms &amp; Conditions</span></a></li>              

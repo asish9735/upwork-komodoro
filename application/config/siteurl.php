@@ -78,6 +78,8 @@ $config['conatctCheckAjaxURL'] = 'contact-request-check'; #router
 $config['CMStermsandconditions'] = 'terms-and-conditions'; #router
 $config['CMSprivacypolicy'] = 'privacy-policy'; #router
 $config['CMSrefundpolicy'] = 'refund-policy'; #router
+$config['enterpriseURL'] = 'enterprise'; #router
+$config['membershipURL'] = 'membership'; #router
 $config['CMShelp'] = 'help'; #router
 $config['CMShowitworks'] = 'how-it-works'; #router
 

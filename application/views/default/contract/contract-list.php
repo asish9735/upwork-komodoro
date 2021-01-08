@@ -19,7 +19,7 @@ $currency=priceSymbol();
         
         <!-- Headline -->
         <div class="headline">
-          <h3><i class="icon-feather-star"></i> All Contracts</h3>
+          <h3>All Contracts</h3>
         </div>
         <div class="content">
           <ul class="nav nav-tabs">
@@ -66,7 +66,7 @@ $currency=priceSymbol();
                         </li>
                         <li><b>Status:</b>
                           <?php if($v['is_contract_ended']==1){?>
-                          <span class="dashboard-status-button yellow">Completed On:
+                          <span class="dashboard-status-button blue">Completed On:
                           <?php D($v['contract_end_date']);?>
                           </span>
                           <?php }else{?>
@@ -77,10 +77,10 @@ $currency=priceSymbol();
                     </div>
                   </div>
                 </div>
-                
+                </div>
                 <!-- Buttons -->
-                <div class="buttons-to-right_ always-visible_"> <a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top" title="View"> <i class="icon-feather-eye"></i> </a> </div>
-              </div>
+                <div class="buttons-to-right single-right-button always-visible"> <a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top" title="View"> <i class="icon-feather-eye"></i> </a> </div>
+              
             </li>
             <?php } }else{ ?>
             <li>No record found</li>

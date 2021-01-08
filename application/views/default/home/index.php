@@ -275,10 +275,21 @@
 <section class="section pt-0">
   <div class="container"> 
     <!-- Section Headline -->
-    <div class="section-headline centered margin-top-0 mb-4">
+    <div class="section-headline centered margin-top-0 mb-3">
       <h2>Membership Plans</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
+    <!-- Billing Cycle  -->
+      <div class="billing-cycle-radios mb-4">
+        <div class="radio billed-monthly-radio">
+          <input id="radio-5" name="radio-payment-type" type="radio" checked>
+          <label for="radio-5"><span class="radio-label"></span> Billed Monthly</label>
+        </div>
+        <div class="radio billed-yearly-radio">
+          <input id="radio-6" name="radio-payment-type" type="radio">
+          <label for="radio-6"><span class="radio-label"></span> Billed Yearly <span class="small-label">Save 10%</span></label>
+        </div>
+      </div>
     <!-- Pricing Plans Container -->
     <div class="pricing-plans-container"> 
       <!-- Plan -->
@@ -286,12 +297,19 @@
         <h3>Basic Plan</h3>
         <div class="pricing-plan-label billed-monthly-label"><strong>Free</strong></div>
         <div class="pricing-plan-label billed-yearly-label"><strong>$499</strong>/ yr</div>
-        <img src="<?php echo IMAGE;?>badge_green.png" alt="badge" class="mb-3">
+        <img src="<?php echo IMAGE;?>badge_green.png" alt="badge" class="mb-2">
         <div class="pricing-plan-features"> <strong>Features</strong>
           <ul class="list list-2">
-            <li>Verified work history &amp; reviews</li>
-            <li>Unlimited proposals</li>
-            <li>Built-in collaboration tools &amp; easy payments</li>
+            <li>Verified freelancer work history and reviews on Upwork</li>
+            <li>Safe, easy payments</li>
+            <li>Built-in collaboration features</li>
+            <li>Upwork Payment Protection Plan</li>
+            <li>Customer Support</li>
+            <li>Transaction details reporting</li>
+            <li>3 freelancer invites per job post</li>
+            <li><del>Team reporting</del></li>
+            <li><del>Job post and talent sourcing assistance</del></li>
+            <li><del>Featured Jobs upgrade</del></li>
           </ul>
         </div>
         <a href="#" class="btn btn-site btn-block">Select Plan</a> </div>
@@ -301,13 +319,19 @@
         <h3>Standard Plan</h3>
         <div class="pricing-plan-label billed-monthly-label"><strong>$49.99/</strong><sup>mo*</sup></div>
         <div class="pricing-plan-label billed-yearly-label"><strong>$499.99/</strong><sup>yr</sup></div>
-        <img src="<?php echo IMAGE;?>badge_white.png" alt="badge" class="mb-3">
+        <img src="<?php echo IMAGE;?>badge_white.png" alt="badge" class="mb-2">
         <div class="pricing-plan-features"> <strong>Features</strong>
           <ul class="list list-2">
-            <li>All basic plan features</li>
-            <li>Dedicated account managers to help you find &amp; hire quality talent fast</li>
-            <li>Project tracking and collaboration tools for teams</li>
-            <li>Tailored search results featuring top rated &amp; rising talent</li>
+            <li>Verified freelancer work history and reviews on Upwork</li>
+            <li>Safe, easy payments</li>
+            <li>Built-in collaboration features</li>
+            <li>Upwork Payment Protection Plan</li>
+            <li>Premium Customer Support</li>
+            <li>Team reporting</li>
+            <li>Job post and talent sourcing assistance</li>
+            <li>Dedicated account management</li>
+            <li>15 freelancer invites per job post</li>
+            <li>Featured Jobs upgrade</li>
           </ul>
         </div>
         <a href="#" class="btn btn-white btn-block">Select Plan</a> </div>
@@ -317,13 +341,19 @@
         <h3>Premium Plan</h3>
         <div class="pricing-plan-label billed-monthly-label"><strong>$99.99/</strong><sup>mo</sup></div>
         <div class="pricing-plan-label billed-yearly-label"><strong>$999.99/</strong><sup>yr</sup></div>
-        <img src="<?php echo IMAGE;?>badge_green.png" alt="badge" class="mb-3">
+        <img src="<?php echo IMAGE;?>badge_green.png" alt="badge" class="mb-2">
         <div class="pricing-plan-features"> <strong>Features</strong>
           <ul class="list list-2">
-            <li>All basic &amp; standard plan features</li>
-            <li>Custom configurable contracting &amp; onboarding process</li>
-            <li>Worker classification compliance services</li>
-            <li>Project-based or managed solutions, &amp; dedicated account executive</li>
+            <li>Verified freelancer work history and reviews on Upwork</li>
+            <li>Safe, easy payments</li>
+            <li>Built-in collaboration features</li>
+            <li>Upwork Payment Protection Plan</li>
+            <li>Premium Customer Support</li>
+            <li>Team reporting</li>
+            <li>Job post and talent sourcing assistance</li>
+            <li>Dedicated account management</li>
+            <li>15 freelancer invites per job post</li>
+            <li>Featured Jobs upgrade</li>
           </ul>
         </div>
         <a href="#" class="btn btn-site btn-block">Select Plan</a> </div>

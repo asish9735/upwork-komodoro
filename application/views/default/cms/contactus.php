@@ -6,10 +6,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <section class="section">
   <div class="container"> 
   <div class="dashboard-headline">
-    	<h1>Contact Us</h1>
+	<h1>Contact Us</h1>
   </div>    
   <div class="row">  
-  <aside class="col-md-8">
+  <aside class="col-md-8 col-12">
+  <div class="card"><div class="card-body">
 	<form id="contact_form">
 	<div id="server_status"></div>
 	<div class="form-field">
@@ -23,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="form-field">
     	<label class="form-label">Description <span class="req">*</span></label>
     	<textarea rows="3" class="form-control"  name="description"></textarea>
-        <p class="text-muted"><small>Please enter the details of your request. A member of our support staff will respond as soon as possible.</small></p>
+        <p class="help-text">Please enter the details of your request. A member of our support staff will respond as soon as possible.</p>
     </div>
     <div class="form-field">
     	<label class="form-label">Attachments</label>
@@ -35,29 +36,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <button type="submit" class="btn btn-site">Submit</button>
     </form>
+  </div>
+  </div>
   </aside>
-  <aside class="col-md-4">
-  <div class="contact-location-info mb-4">
-    <div class="contact-address">
-        <ul>
-            <li class="contact-address-headline"><h4>Our Office</h4></li>
-            <li>425 Berry Street, CA 93584</li>
-            <li>Phone (123) 123-456</li>
-            <li><a href="#">mail@example.com</a></li>
-            <li>
-                <div class="freelancer-socials">
-                    <ul class="social-links">
-                        <li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
-                        <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                        <li><a href="#" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-                        <li><a href="#" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
-                        <li><a href="#" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>				
-	</div>
+  <aside class="col-md-4 col-12">
+	<div class="media single_ctinfo">
+        <div class="ctinfo_icon"><i class="icon-line-awesome-building"></i></div>
+        <div class="media-body">
+            <h4>Our Office</h4>
+            <span>425 Berry Street, CA 93584 <br>New York, USA</span>
+        </div>								
+    </div>
+    <div class="media single_ctinfo">
+        <div class="ctinfo_icon"><i class="icon-line-awesome-envelope"></i></div>
+        <div class="media-body">
+            <h4>Drop A Mail</h4>
+            <a href="#">info@demo.com</a><br />
+            <a href="#">user@sitename.com</a>
+        </div>								
+    </div>
+    <div class="media single_ctinfo">
+        <div class="ctinfo_icon"><i class="icon-line-awesome-phone-square"></i></div>
+        <div class="media-body">
+            <h4>Call Us</h4>
+            9876543210<br />
+            (012) 3456-789
+        </div>								
+    </div>
+    <div class="media single_ctinfo">        
+        <div class="media-body">
+        	<h4 class="mb-3">Social Links</h4>
+            <div class="freelancer-socials">
+                <ul class="social-links">
+                    <li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+                    <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                    <li><a href="#" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                    <li><a href="#" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
+                    <li><a href="#" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>								
+    </div>
+  
  	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d471218.38560188503!2d88.04952746944409!3d22.676385755547646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1578895327808!5m2!1sen!2sin" height="300" frameborder="0" style="border:0;width:100%" allowfullscreen=""></iframe>
   </aside>
   </div>

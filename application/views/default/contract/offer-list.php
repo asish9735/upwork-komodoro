@@ -21,7 +21,7 @@ $currency=priceSymbol();
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3><i class="icon-feather-star"></i> All Offers</h3>
+							<h3>All Offers</h3>
 						</div>
 
 						<div class="content">
@@ -57,14 +57,13 @@ $currency=priceSymbol();
 												</div>
 											</div>
 										</div>
-									
+									</div>
 									<!-- Buttons -->
-									<div class="buttons-to-right_ always-visible_">
-										<a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top" title="View">
+									<div class="buttons-to-right single-right-button always-visible">
+										<a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
 											<i class="icon-feather-eye"></i>
 										</a>
-									</div>
-									</div>
+									</div>									
 								</li>
 								<?php } }else{ ?>
 								<li>No record found</li>

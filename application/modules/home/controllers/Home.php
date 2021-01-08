@@ -69,5 +69,12 @@ class Home extends MX_Controller {
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
 		$this->layout->view('enterprise',$this->data);
 	}
+	public function membership() {
+		$this->layout->set_title('Membership');
+		$this->layout->set_meta('author', 'Dev Sharma');
+		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
+		$this->layout->set_meta('description', 'Freelancer Clone Script');
+		$this->layout->view('membership',$this->data);
+	}
 	
 }

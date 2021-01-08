@@ -2,41 +2,35 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<div class="dashboard-container">
-<?php echo $left_panel;?>
-<!-- Dashboard Content
+<div class="dashboard-container"> <?php echo $left_panel;?> 
+  <!-- Dashboard Content
 	================================================== -->
-	<div class="dashboard-content-container" >
-		<div class="dashboard-content-inner" >
-
-			<!-- Dashboard Box -->
-        	<div class="dashboard-box margin-top-0">
-
-                <!-- Headline -->
-                <div class="headline">
-                    <h3><i class="icon-material-outline-assignment"></i> My Proposals</h3>
-                </div>
-                <div class="content">
-                    <ul class="dashboard-box-list" id="ajax_table"></ul>
-                    <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
-                </div>
-                <div class="container text-center padding-bottom-40">
-                    <button class="btn btn-primary" id="load_more" data-val = "0">Load more..</button>
-                </div>
-
-            </div>
-
-			<!-- Footer -->
-			<div class="dashboard-footer-spacer"></div>
-			
-			<!-- Footer / End -->
-
-		</div>
-	</div>
-	<!-- Dashboard Content / End -->
-
+  <div class="dashboard-content-container" >
+    <div class="dashboard-content-inner" > 
+      
+      <!-- Dashboard Box -->
+      <div class="dashboard-box margin-top-0"> 
+        
+        <!-- Headline -->
+        <div class="headline">
+          <h3>My Proposals</h3>
+        </div>
+        <div class="content">
+          <ul class="dashboard-box-list" id="ajax_table">
+          </ul>
+          <div class="text-center" id="loader" style="display: none">
+            <?php load_view('inc/spinner',array('size'=>30));?>
+          </div>
+        </div>
+        <div class="text-center padding-bottom-20">
+          <button class="btn btn-site" id="load_more" data-val = "0">Load more..</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Dashboard Content / End --> 
+  
 </div>
-
 <script>
 var main=function(){
 getprojects(0);

@@ -40,26 +40,21 @@ $status=getAllProjectStatus($projectDetails->project_status);
 						<li>
 						<b>Status:</b> 
 						<?php if($projectDetails->is_hired){?>
-						<span class="text-success"><?php D('Hired');?></span>
+						<span class="dashboard-status-button green"><?php D('Hired');?></span>
 						<?php }else{?>
-						<span class="text-warning"><?php D('Pending');?></span>
+						<span class="dashboard-status-button yellow"><?php D('Pending');?></span>
 						<?php }?>
 							
 						</li>
 						</ul>
 				</div>
-                </div>
-                
-				<!-- Buttons -->
-                <div class="buttons-to-right_ always-visible_">
-                    <a href="<?php D($link);?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top"title="View"><i class="icon-feather-eye"></i></a>
-                </div>
+                </div>                				
 		</div>
 	</div>
-	
-	
-
-	
+	<!-- Buttons -->
+    <div class="buttons-to-right single-right-button always-visible">
+        <a href="<?php D($link);?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View"><i class="icon-feather-eye"></i></a>
+    </div>		
 </li>
 <?php 
 	}

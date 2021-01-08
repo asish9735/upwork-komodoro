@@ -95,8 +95,8 @@ Vue.component('chat-list', {
 
 <script type="text/x-template" id="active-chat-header-template">
 <div class="messages-headline">
-	<h4>{{active_chat.name}}</h4>
-	<p class="mb-0" v-if="active_chat.project_name.length > 0">{{active_chat.project_name}}</p>
+	<h4><a href="<?php D($link);?>">{{active_chat.name}}</a></h4>
+	<p class="mb-0" v-if="active_chat.project_name.length > 0"><a href="<?php D($link);?>">{{active_chat.project_name}}</a></p>
 	<a href="#" class="message-action" hidden><i class="icon-feather-trash-2"></i> Delete Conversation</a>
 </div>
 </script>

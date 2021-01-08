@@ -4967,6 +4967,7 @@ input[type="button"].btn-block {
   border-bottom: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  margin-bottom: 1px; /* added */
 }
 
 .accordion > .card:not(:first-of-type) {
@@ -4976,7 +4977,8 @@ input[type="button"].btn-block {
 
 .accordion > .card > .card-header {
   border-radius: 0;
-  margin-bottom: -1px;
+  border-bottom:0; /* added */
+  margin-bottom: -1px;  
 }
 
 .breadcrumb {

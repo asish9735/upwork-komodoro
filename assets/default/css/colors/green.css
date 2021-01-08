@@ -88,7 +88,10 @@
  .slick-next:hover,
  .header-widget .log-in-button:hover,
  .header-widget .log-in-button:hover i,
- .freelancer-name h4 a:hover {
+ .freelancer-name h4 a:hover,
+ .job-listing h4 > a:hover, .job-listing h3 > a:hover,
+ .messages-headline h4 > a:hover,
+ .messages-headline p > a:hover {
      color:var(--siteColor);
 }
 #backtotop a,
