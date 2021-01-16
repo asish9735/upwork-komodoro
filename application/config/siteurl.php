@@ -176,6 +176,6 @@ $config['actionfavorite_job'] = 'job/action_favorite';
 $config['search_freelancer'] = 'findtalents/all_list';
 $config['actionfavorite_freelancer'] = 'findtalents/action_favorite';
 
-
+$config['favoriteURL'] = 'favorite';
 
 

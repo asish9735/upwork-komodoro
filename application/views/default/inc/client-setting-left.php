@@ -21,7 +21,7 @@
 						<ul data-submenu-title="Start">
 							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
 							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> Messages <!--<span class="nav-tag">2</span>--></a></li>
-							<li><a href="#"><i class="icon-material-outline-star-border"></i> Bookmarks</a></li>
+							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> Bookmarks</a></li>
 							<li><a href="#"><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
 						</ul>
 						<ul data-submenu-title="Finance">
