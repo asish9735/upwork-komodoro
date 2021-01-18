@@ -10,7 +10,7 @@ class Message_model extends CI_Model {
 	
 	public function getChatList($member_id='', $limit=0, $offset=100, $for_list=TRUE){
 		$conversations_room = $this->db->dbprefix('conversations_room');
-		$this->db->select("c_m.*,c_r_self.user_id as chat_user_id,c_r.last_seen_msg,c.project_id")
+		$this->db->select("c.conversations_id,c_m.sender_id,c_m.message_id,c_m.sending_date,c_m.message,c_m.attachment,c_m.is_read,c_r_self.user_id as chat_user_id,c_r.last_seen_msg,c.project_id")
 				->from('conversations c')
 				->join('conversations_room c_r', 'c_r.conversations_id=c.conversations_id', 'LEFT')
 				->join('conversations_room c_r_self', "(c_r.conversations_id=c_r_self.conversations_id and c_r_self.user_id <> '".$member_id."')", 'LEFT')
@@ -24,6 +24,7 @@ class Message_model extends CI_Model {
 		if( $for_list){
 			$this->db->limit($offset, $limit);
 			$result = $this->db->get()->result();
+			//echo $this->db->last_query();
 			if($result){
 				foreach($result as $k => $v){
 					$return_result[$k] = $this->getMessageUser($v->chat_user_id);
@@ -36,6 +37,7 @@ class Message_model extends CI_Model {
 					$return_result[$k]->last_seen_msg = $this->getLastSeenMsg($v->chat_user_id, $v->conversations_id);
 					$return_result[$k]->unread_msg_count = $this->getUnreadMsgCount($member_id, $v->conversations_id);
 					$return_result[$k]->project_name = getField('project_title', 'project', 'project_id', $v->project_id);
+					$return_result[$k]->project_url = get_link('myProjectDetailsURL')."/".getField('project_url', 'project', 'project_id', $v->project_id);
 					$return_result[$k]->time_ago = get_time_ago($v->sending_date);
 				}
 			}
@@ -99,6 +101,7 @@ class Message_model extends CI_Model {
 			$return_result->last_seen_msg = $this->getLastSeenMsg($result->chat_user_id, $result->conversations_id);
 			$return_result->unread_msg_count = $this->getUnreadMsgCount($member_id, $result->conversations_id);
 			$return_result->project_name = getField('project_title', 'project', 'project_id', $result->project_id);
+			$return_result->project_url = get_link('myProjectDetailsURL')."/".getField('project_url', 'project', 'project_id', $result->project_id);
 			$return_result->time_ago = get_time_ago($result->sending_date);
 			return $return_result;
 		}
@@ -117,6 +120,7 @@ class Message_model extends CI_Model {
 		}
 		
 		$user->member_id = $member_id;
+		$user->profile_url=get_link('viewprofileURL').'/'.$member_id;
 		$user->online_status = (bool) $this->db->where('user_id', $member_id)->count_all_results('online_user');
 		
 		return $user;
