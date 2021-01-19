@@ -20,7 +20,7 @@ $currency=priceSymbol();
 if($list){
 	foreach($list as $l=>$favorite){
 		$favorite_url=get_link('myProjectDetailsURL').'/'.$favorite->project_url;
-		$budget = !empty($favorite->budget) ? $favorite->budget : '';
+		$budget = $favorite->budget;
 ?>
 <li>
 <div class="job-listing width-adjustment">
@@ -29,23 +29,17 @@ if($list){
 		<div class="job-listing-description">
 			<h3 class="job-listing-title">
 				<a href="<?php echo $favorite_url;?>" target="_blank"><?php echo ucfirst($favorite->project_title);?></a>
+				<span class="text-muted small"> - <?php D($favorite->experience_level_name);?> (<i class="icon-feather-<?php D($favorite->experience_level_key);?>"></i>)</span>
 				
-				<img src="<?php echo IMAGE;?><?php D($favorite->experience_level_key);?>-selected.png" alt="<?php D($favorite->experience_level_name);?>" height="24" data-tippy-placement="top" title="<?php D($favorite->experience_level_name);?>"  />
-			  	<img src="<?php echo IMAGE;if($favorite->is_worldwide){echo 'worldwide-selected.png';}else{echo 'usonly-selected.png';}?>" alt="<?php if($favorite->is_worldwide){echo 'Worldwide';}else{echo 'United States only';}?>" height="16" data-tippy-placement="top" title="<?php if($favorite->is_worldwide){echo 'Worldwide';}else{echo 'United States only';}?>"  />
-			  
 			</h3>
 			<p class="mb-2"><?php echo $favorite->project_short_info;?></p>
 			
 			<div class="job-listing-footer mb-3">
 				<ul>
-					<?php if($favorite->is_hourly){
-					$budget_amt=getAllProjectBudgetHourly($budget);	
-						?>
-					<li><b>Hourly Rate:</b> <?php if($budget){echo $budget_amt['name'];}?></li>
-					<?php }else{
-						$budget_amt=getAllProjectBudgetFixed($budget);
-						?>
-					<li><b>Fixed Price:</b> <?php if($budget){echo $budget_amt['name'];}?></li>
+					<?php if($favorite->is_fixed==1){
+					?>
+					
+					<li><b>Fixed Price:</b> <?php if($budget){echo $currency.priceFormat($budget);}?></li>
 					<?php }?>
 					<li><b>Industry:</b> <?php D($favorite->category_name);?></li>
 					<li><i class="icon-feather-clock text-site"></i> <?php D(get_time_ago($favorite->project_posted_date));?></li>

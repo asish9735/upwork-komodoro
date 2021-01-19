@@ -40,7 +40,7 @@ class Favorite_model extends MX_Controller {
 	}
 	public function getfavoriteProjects($srch=array(), $limit=0, $offset=20, $for_list=TRUE){ 
 	
-		$this->db->select('p.project_id,p.project_url,p.project_title,p.project_short_info,p.project_posted_date,p_s.is_hourly,p_s.is_worldwide,p_s.is_fixed,p_s.budget,p_s.project_type_code,e_l.experience_level_key,e_l_n.experience_level_name,p_s.hourly_duration,p_s.hourly_time_required,c_n.category_name,p_c.category_id');		 
+		$this->db->select('p.project_id,p.project_url,p.project_title,p.project_short_info,p.project_posted_date,p_s.is_hourly,p_s.is_fixed,p_s.budget,p_s.project_type_code,e_l.experience_level_key,e_l_n.experience_level_name,p_s.hourly_duration,p_s.hourly_time_required,c_n.category_name,p_c.category_id');		 
 	   $this->db->from('favorite_project as f');
 	   $this->db->join("project p",'f.project_id=p.project_id','left')
 	   ->join("project_settings p_s", "p_s.project_id=p.project_id", "LEFT")

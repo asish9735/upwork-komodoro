@@ -23,9 +23,9 @@ $currency=priceSymbol();
         </div>
         <div class="content">
           <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" href="#">All</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">In Progress</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Completed</a></li>
+            <li class="nav-item"><a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>">All</a></li>
+            <li class="nav-item"><a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>?show=pending">In Progress</a></li>
+            <li class="nav-item"><a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>?show=completed">Completed</a></li>
           </ul>
           <ul class="dashboard-box-list">
             <?php if($list){foreach($list as $k => $v){ 

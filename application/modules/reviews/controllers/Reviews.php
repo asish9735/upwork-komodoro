@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Favorite extends MX_Controller {
+class Reviews extends MX_Controller {
 	private $data;
 	function __construct()
 	{
@@ -18,7 +18,7 @@ class Favorite extends MX_Controller {
 		}
 		$this->data['curr_class'] = $this->router->fetch_class();
 		$this->data['curr_method'] = $this->router->fetch_method();
-		$this->load->model('favorite_model');
+		$this->load->model('reviews_model');
 		parent::__construct();
 	}
 	public function index()
@@ -30,7 +30,7 @@ class Favorite extends MX_Controller {
 		}
 		if($this->loggedUser){
 			$this->layout->set_js(array(
-				'bootbox_custom.js',
+				'utils/helper.js',
 				'mycustom.js',
 			));
 			/* $this->layout->set_css(array(
@@ -43,20 +43,17 @@ class Favorite extends MX_Controller {
 			$srch['member_id']=$this->member_id;
 
 			if($this->access_member_type=='F'){
-				$this->data['bookmark_type']='project';
 				$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
-				$this->data['list']=$this->favorite_model->getfavoriteProjects($srch,$limit,$offset);
-				$this->data['list_total']=$this->favorite_model->getfavoriteProjects($srch, $limit, $offset, FALSE);
 				
 			}else{
-				$this->data['bookmark_type']='freelancer';
 				$this->data['left_panel']=$this->layout->view('inc/client-setting-left',$this->data,TRUE,TRUE);
-				$this->data['list']=$this->favorite_model->getfavoriteFreelancers($srch,$limit,$offset);
-				$this->data['list_total']=$this->favorite_model->getfavoriteFreelancers($srch, $limit, $offset, FALSE);
 			}
+			$this->data['list']=$this->reviews_model->getreviews($srch,$limit,$offset);
+			$this->data['list_total']=$this->reviews_model->getreviews($srch, $limit, $offset, FALSE);
+				
 
 			/*Pagination Start*/
-			$config['base_url'] = base_url('favorite/index');
+			$config['base_url'] = base_url('reviews/index');
 			$config['page_query_string'] = TRUE;
 			$config['reuse_query_string'] = TRUE;
 			$config['total_rows'] = $this->data['list_total'];
@@ -83,13 +80,62 @@ class Favorite extends MX_Controller {
 
 			$this->pagination->initialize($config);
 			$this->data['links'] = $this->pagination->create_links();
-
-
-
-			
-			$this->data['show']=$show;
-			$this->layout->view('favorite-'.$this->data['bookmark_type'], $this->data);
+			$this->layout->view('reviews', $this->data);
 		}
+	}
+	public function details(){
+		checkrequestajax();
+		$review_id_enc=get('rid');
+		$contract_id=getFieldData('contract_id','contract_reviews','','',array('md5(review_id)'=>$review_id_enc));
+		
+		if($contract_id){
+			$contract_id_enc=md5($contract_id);
+			$this->data['reviews']=get_contract_view($contract_id,$this->member_id);
+			$this->data['contractDetails'] = get_contract_details($contract_id_enc,array('data_from'=>'contract_term','member_id'=>$this->member_id));
+			
+			$project_id=$this->data['contractDetails']->project_id;
+
+			$owner=getProjectDetails($project_id,array('project_owner'));
+			$this->data['contractDetails']->owner=$owner['project_owner'];
+			$this->data['contractDetails']->contractor=getData(array(
+				'select'=>'m.member_id,m.member_name',
+				'table'=>'member m',
+				'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
+				'single_row'=>true
+			));
+
+			$this->data['is_owner']=0;
+			if($this->data['contractDetails']->owner_id==$this->member_id){
+				$this->data['is_owner']=1;
+			}
+			$this->data['show_client_review']=$this->data['show_freelancer_review']=0;
+			if($this->data['reviews']){
+				if($this->data['reviews']['review_by_me']){
+					$this->data['show_client_review']=1;
+					$this->data['show_freelancer_review']=1;
+				}else{
+					if($this->data['is_owner']==1){
+						$this->data['show_client_review']=1;
+					}else{
+						$this->data['show_freelancer_review']=1;
+					}
+				}
+				if($this->data['is_owner']==1){
+					$this->data['review_by_client']=$this->data['reviews']['review_by_me'];
+					$this->data['review_by_freelancer']=$this->data['reviews']['review_to_me'];
+				}else{
+					$this->data['review_by_client']=$this->data['reviews']['review_to_me'];
+					$this->data['review_by_freelancer']=$this->data['reviews']['review_by_me'];
+				}
+
+			}
+
+
+			$this->layout->view('ajax-view-review', $this->data,TRUE);
+		}else{
+			show_404();
+		}
+
 	}
 	
 	

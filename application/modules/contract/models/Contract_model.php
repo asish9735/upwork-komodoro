@@ -24,6 +24,14 @@ class Contract_model extends MX_Controller {
 			if(array_key_exists('contract_status', $srch)){
 				$this->db->where('c.contract_status', $srch['contract_status']);
 			}
+			if(array_key_exists('show', $srch)){
+				if($srch['show']=='pending'){
+					$this->db->where('c.is_contract_ended <>', 1);
+				}elseif($srch['show']=='completed'){
+					$this->db->where('c.is_contract_ended', 1);
+				}
+				
+			}
 		}
 		$this->db->group_by('c.contract_id');
 		$this->db->order_by('c.contract_id','desc');

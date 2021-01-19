@@ -46,11 +46,17 @@ class Contract extends MX_Controller {
 				$srch['owner_id'] = $this->member_id;
 			}
 			$srch['contract_status'] = 1;
+			$show='all';
+			if($this->input->get('show')){
+				$show=$srch['show'];
+			}
+			$this->data['show']=$show;
+
 			$this->data['list'] = $this->contract_model->getContracts($srch, $limit, $offset);
 			$this->data['list_total'] = $this->contract_model->getContracts($srch, $limit, $offset, FALSE);
 			
 			/*Pagination Start*/
-			$config['base_url'] = base_url('dashboard/favorite');
+			$config['base_url'] = base_url('contract/index');
 			$config['page_query_string'] = TRUE;
 			$config['reuse_query_string'] = TRUE;
 			$config['total_rows'] = $this->data['list_total'];

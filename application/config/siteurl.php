@@ -177,5 +177,7 @@ $config['search_freelancer'] = 'findtalents/all_list';
 $config['actionfavorite_freelancer'] = 'findtalents/action_favorite';
 
 $config['favoriteURL'] = 'favorite';
+$config['MyReviewURL'] = 'reviews';
+$config['Reviewdetails'] = 'reviews/details';
 
 
