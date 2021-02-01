@@ -30,10 +30,13 @@ class Projectview extends MX_Controller {
 				'bootbox_custom.js',
 			));
 		$is_owner=FALSE;
+		$login_user_id=0;
 		if($this->loggedUser){
 			$member_id=$this->member_id;
 			$organization_id=$this->organization_id;
+			$login_user_id=$this->member_id;
 		}
+		$this->data['login_user_id']=$login_user_id;
 		$arr=array(
 				'select'=>'p.project_id,p.project_title,p.project_posted_date,p.project_expired_date,p.project_status,p_s.is_hourly,p_s.is_fixed,p_s.budget,p_s.is_visible_anyone',
 				'table'=>'project as p',
@@ -213,8 +216,11 @@ class Projectview extends MX_Controller {
 				'utils/helper.js',
 				'mycustom.js',
 				'bootbox_custom.js',
+				'bootstrap-tagsinput.min.js',
 			));
-		
+		$this->layout->set_css(array(
+				'bootstrap-tagsinput.css',
+			));
 			$member_id=$this->member_id;
 			$organization_id=$this->organization_id;	
 			$this->data['projectData']=getProjectDetails($project_id,array('project','project_owner','project_settings','project_category'));

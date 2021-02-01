@@ -39,8 +39,8 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 			
 			<div class="freelancer-details-list">
 				<ul>	                	
-                    <li><a href="#" class="btn btn-site">Hire Freelancer</a></li>
-                    <li><a href="#" class="btn btn-outline-site">Invite to Job</a></li>				
+                    <li><a href="<?php echo VZ;?>" data-mid="<?php echo md5($freelancer['member_id']);?>" class="btn btn-site hire-member">Hire Freelancer</a></li>
+                    <li><a href="<?php echo VZ;?>" data-mid="<?php echo md5($freelancer['member_id']);?>" class="btn btn-outline-site invite-member">Invite to Job</a></li>				
 					<li>
                         <p class="mb-1">Job Success <b>50%</b></p>
                         <div class="progress" style="height:6px; min-width: 100px;">

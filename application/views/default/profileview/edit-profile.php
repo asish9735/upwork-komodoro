@@ -17,6 +17,13 @@ if(!$is_editable){
 <div id="edit-profile-page">
   <?php
 $logo=getMemberLogo($member_id);
+$is_fav_class="";
+if($login_user_id){
+	$is_fav = isFavouriteMember($login_user_id, $member_id);
+	if($is_fav){
+		$is_fav_class="active";
+	}	
+}
 ?>
   <!-- Titlebar
 ================================================== -->
@@ -70,9 +77,14 @@ $logo=getMemberLogo($member_id);
         <div class="right-side">        	
           <div class="ml-auto" style="min-width: 150px;">          	
             <p class="mb-0">Job Success <strong>50%</strong></p>
-            <div class="progress" style="max-width:200px; height:6px">
+            <div class="progress" style="max-width:200px; height:6px;margin-bottom:10px">
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
+			<?php if(!$is_editable){?>
+			<a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-site hire-member btn-sm">Hire Freelancer</a>
+            <a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-outline-site invite-member btn-sm">Invite to Job</a>			
+			<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($member_id);?>"><i class="icon-feather-heart"></i></a>		
+			<?php }?>
           </div>
         </div>
       </div>
@@ -266,20 +278,27 @@ $logo=getMemberLogo($member_id);
               <!-- Share Buttons -->
               <div class="freelancer-socials">
                   <ul class="social-links">
-                    <li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
-                    <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                    <li><a href="#" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-                    <li><a href="#" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
-                    <li><a href="#" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
-                  </ul>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $profile_url;?>" target="_blank" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+                    <li><a href="https://twitter.com/home?status=<?php echo $profile_url;?>" target="_blank" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $profile_url;?>&title=&summary=&source=" target="_blank" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                   </ul>
                   <!-- Bookmark icon -->
-              	  <span class="bookmark-icon"></span>
+              	  <!-- <span class="bookmark-icon"></span> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <!-- Modal content-->
+    <div class="modal-content mycustom-modal">
+    <div class="text-center padding-top-50 padding-bottom-50"><?php load_view('inc/spinner',array('size'=>30));?></div>
+    </div>
+
   </div>
 </div>
 <script type="text/javascript">
@@ -642,6 +661,19 @@ function SaveHeading(ev){
 </div>
 <?php }else{?>
 <script type="text/javascript">
+function check_login(succ, fail){
+	$.get('<?php echo get_link('IsLoginURL'); ?>', function(res){
+		if(res == 1){
+			if(typeof succ == 'function'){
+				succ();
+			}
+		}else{
+			if(typeof fail == 'function'){
+				fail();
+			}
+		}
+	});
+}
 var  main = function(){
 	
 	load_data('language');
@@ -651,6 +683,156 @@ var  main = function(){
 	load_data('portfolio');
 	load_data('reviews');
 
+	$('.action_favorite').on('click',function(e){
+		e.preventDefault();
+		var _self=$(this);
+		var data = {
+			mid: _self.data('mid'),
+		};
+		$.post('<?php echo get_link('actionfavorite_freelancer'); ?>', data, function(res){
+			if(res['status'] == 'OK'){
+				if(res['cmd']== 'add'){
+					_self.addClass('active');
+					bootbox.alert({
+						title:'Make Favorite',
+						message: 'Successfully Saved',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+				}else{
+					_self.removeClass('active');
+					bootbox.alert({
+						title:'Remove Favorite',
+						message: 'Successfully Removed',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+					
+				}
+			}else if(res['popup'] == 'login'){
+				bootbox.confirm({
+					title:'Login Error!',
+					message: 'You are not Logged In. Please login first.',
+					buttons: {
+					'confirm': {
+						label: 'Login',
+						className: 'btn-site pull-right'
+						},
+					'cancel': {
+						label: 'Cancel',
+						className: 'btn-dark pull-left'
+						}
+					},
+					callback: function (result) {
+						if(result){
+							var base_url = '<?php echo base_url();?>';
+							var refer = window.location.href.replace(base_url, '');
+							location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+						}
+					}
+				});
+			}
+		},'JSON');
+		
+	})
+	$('.hire-member').on('click',function(e){
+		e.preventDefault();
+		var _self=$(this);
+		var data = {
+			mid: _self.data('mid'),
+			formtype:'hire'
+		};
+		var hiremember = function(){
+				$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+				$('#myModal').modal('show');
+				
+				$.get("<?php echo get_link('HireInviteFreelanceFormURL'); ?>",data, function( data ) {
+					setTimeout(function(){ $( "#myModal .mycustom-modal").html( data );$('.selectpicker').selectpicker('refresh');},1000)
+				});
+		};
+		var login_error = function(){
+			bootbox.confirm({
+				title:'<?php D(__('project_view_Save_Search_login_error','Login Error!'));?>',
+				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+				buttons: {
+				'confirm': {
+					label: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					className: 'btn-site pull-right'
+					},
+				'cancel': {
+					label: '<?php D(__('project_view_save_search_button_cancel','Cancel'));?>',
+					className: 'btn-dark pull-left'
+					}
+				},
+				callback: function (result) {
+					if(result){
+						var base_url = '<?php echo base_url();?>';
+						var refer = window.location.href.replace(base_url, '');
+						location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+					}
+				}
+			});
+		};
+
+		check_login(hiremember, login_error);
+		
+	})
+	$('.invite-member').on('click',function(e){
+		e.preventDefault();
+		var _self=$(this);
+		var data = {
+			mid: _self.data('mid'),
+			formtype:'invite'
+		};
+		var invitemember = function(){
+				$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+				$('#myModal').modal('show');
+				
+				$.get("<?php echo get_link('HireInviteFreelanceFormURL'); ?>",data, function( data ) {
+					setTimeout(function(){ $( "#myModal .mycustom-modal").html( data );$('.selectpicker').selectpicker('refresh');},1000)
+				});
+		};
+		var login_error = function(){
+			bootbox.confirm({
+				title:'<?php D(__('project_view_Save_Search_login_error','Login Error!'));?>',
+				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+				buttons: {
+				'confirm': {
+					label: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					className: 'btn-site pull-right'
+					},
+				'cancel': {
+					label: '<?php D(__('project_view_save_search_button_cancel','Cancel'));?>',
+					className: 'btn-dark pull-left'
+					}
+				},
+				callback: function (result) {
+					if(result){
+						var base_url = '<?php echo base_url();?>';
+						var refer = window.location.href.replace(base_url, '');
+						location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+					}
+				}
+			});
+		};
+
+		check_login(invitemember, login_error);
+		
+	})
 }
 </script>
 <?php }?>

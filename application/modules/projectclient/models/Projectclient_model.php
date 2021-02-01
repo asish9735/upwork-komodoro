@@ -24,6 +24,9 @@ class Projectclient_model extends MX_Controller {
 			if(array_key_exists('project_id',$where)){
 				//$arr['where']['p.project_id']=$where['project_id'];
 			}
+			if(array_key_exists('status',$where)){
+				$arr['where']['p.project_status']=$where['status'];
+			}
 		}
 		if($count==TRUE){
 			$arr['return_count']=TRUE;

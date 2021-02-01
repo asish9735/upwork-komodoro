@@ -132,6 +132,9 @@ $(document).ready(function(){
 	if(typeof main == 'function'){
 		main();
 	}
+  if(typeof mainpart == 'function'){
+    mainpart();
+	}
 	
 	if(typeof AppService !== 'undefined'){
 		AppService.setUrl('<?php echo base_url('message/update_service'); ?>');

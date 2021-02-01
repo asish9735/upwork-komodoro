@@ -23,12 +23,12 @@ class Findtalents extends MX_Controller {
 		$this->data['curr_method'] = $curr_method;
 		$this->layout->set_js(array(
 			'bootbox_custom.js',
+			'mycustom.js',
 		));
     }
 
   
 	public function all_list() {
-
 		$this->data['category'] = $this->findtalents_model->get_all_category();
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');

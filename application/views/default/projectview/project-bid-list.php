@@ -100,7 +100,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
     <div class="tab-pane" id="archive" role="tabpanel">archive</div>
     <div class="tab-pane" id="shortlisted" role="tabpanel">shortlist</div>
     <div class="tab-pane" id="interview" role="tabpanel">interview</div>
-    <div class="tab-pane" id="invite" role="tabpanel">invite</div>
+    <div class="tab-pane" id="invite" role="tabpanel"></div>
     <div class="tab-pane" id="hired" role="tabpanel">hired</div>
 </div>
 				
@@ -153,7 +153,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 	  var target = $(e.target).attr("href") // activated tab
 	  var pattern=/#.+/gi //use regex to get anchor(==selector)
 	  var contentID = e.target.toString().match(pattern)[0]; //get anchor 
-	  $('#'+contentID.replace('#','')).html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 70px;">'+SPINNER+'</div>');
+		$('#'+contentID.replace('#','')).html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 70px;">'+SPINNER+'</div>');
 	    $.ajax({
 	      type: "POST",
 	      data:{type:contentID.replace('#','')},

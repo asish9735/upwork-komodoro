@@ -5,6 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $ProjectDetailsURL=get_link('myProjectDetailsURL')."/".$projectData['project']->project_url;
 $ProjectApplicationURL=get_link('myProjectDetailsBidsClientURL')."/".$projectData['project']->project_id;
 $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project_url;
+$is_fav_class="";
+if($login_user_id){
+	$is_fav = isFavouriteJob($login_user_id, $projectData['project']->project_id);
+	if($is_fav){
+		$is_fav_class="active";
+	}	
+}
 ?>
 <!-- Titlebar
 ================================================== -->
@@ -225,16 +232,18 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 
 					<!-- Share Buttons -->
 					<div class="freelancer-socials">
-                      <ul class="social-links">
-                        <li><a href="#" title="Facebook" data-tippy-placement="top" target="_blank"><i class="icon-brand-facebook-f"></i></a></li>
-                        <li><a href="#" title="Twitter" data-tippy-placement="top" target="_blank"><i class="icon-brand-twitter"></i></a></li>
-                        <li><a href="#" title="LinkedIn" data-tippy-placement="top" target="_blank"><i class="icon-brand-linkedin-in"></i></a></li>
-                        <li><a href="#" title="Instagram" data-tippy-placement="top" target="_blank"><i class="icon-brand-instagram"></i></a></li>
-                        <li><a href="#" title="Youtube" data-tippy-placement="top" target="_blank"><i class="icon-brand-youtube"></i></a></li>
-                      </ul>
+						<ul class="social-links">
+							<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $ProjectDetailsURL;?>" target="_blank" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+							<li><a href="https://twitter.com/home?status=<?php echo $ProjectDetailsURL;?>" target="_blank" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+							<li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $ProjectDetailsURL;?>&title=&summary=&source=" target="_blank" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+						</ul>
                       <!-- Bookmark icon -->
-                    	<span class="bookmark-icon"></span>
-             	   </div>
+					  <?php if(!$is_owner){?>
+					  <span style=" position: absolute; right: 0; top: 0;">
+						<a href="<?php echo VZ;?>" class="btn btn-circle btn-light mr-2 action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-feather-heart"></i></a>
+					  </span>
+					  <?php }?>
+				    </div>
 				</div>
                 </div>
 
@@ -244,6 +253,16 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 	</div>
 </div>
 <div class="margin-top-30"></div>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document"> 
+    <!-- Modal content-->
+    <div class="modal-content mycustom-modal">
+      <div class="text-center padding-top-50 padding-bottom-50">
+        <?php load_view('inc/spinner',array('size'=>30));?>
+      </div>
+    </div>
+  </div>
+</div>
 <?php if($this->session->flashdata('not_verified')){?>
 <script type="text/javascript">
 var vtype="<?php echo $this->session->flashdata('not_verified');?>";
@@ -304,3 +323,73 @@ bootbox.alert({
 }
 </script>
 <?php }?>
+<script>
+var mainpart=function(){
+$('.action_favorite').on('click', function(e){
+		e.preventDefault();
+		var _self=$(this);
+		var data = {
+			pid: _self.data('pid'),
+		};
+		$.post('<?php echo get_link('actionfavorite_job'); ?>', data, function(res){
+			if(res['status'] == 'OK'){
+				if(res['cmd']== 'add'){
+					_self.addClass('active');
+					bootbox.alert({
+						title:'Make Favorite',
+						message: 'Successfully Saved',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+				}else{
+					_self.removeClass('active');
+					bootbox.alert({
+						title:'Remove Favorite',
+						message: 'Successfully Removed',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+					
+				}
+			}else if(res['popup'] == 'login'){
+				bootbox.confirm({
+					title:'Login Error!',
+					message: 'You are not Logged In. Please login first.',
+					buttons: {
+					'confirm': {
+						label: 'Login',
+						className: 'btn-site pull-right'
+						},
+					'cancel': {
+						label: 'Cancel',
+						className: 'btn-dark pull-left'
+						}
+					},
+					callback: function (result) {
+						if(result){
+							var base_url = '<?php echo base_url();?>';
+							var refer = window.location.href.replace(base_url, '');
+							location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+						}
+					}
+				});
+			}
+		},'JSON');
+		
+	})
+}
+</script>

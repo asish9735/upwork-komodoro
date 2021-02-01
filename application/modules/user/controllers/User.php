@@ -447,6 +447,15 @@ class User extends MX_Controller {
 		$this->session->unset_userdata('loggedUser');
 		redirect(URL::get_link('homeURL'));
 	}
+	public function is_login() {
+		$this->loggedUser=$this->session->userdata('loggedUser');
+		if($this->loggedUser){
+			echo 1;
+		}else{
+			echo 0;
+		}
+	}
+
 	public function login_check() {
 		$this->load->library('form_validation');
 		if(post()){

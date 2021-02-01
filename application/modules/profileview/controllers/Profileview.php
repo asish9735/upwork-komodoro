@@ -40,6 +40,7 @@ class Profileview extends MX_Controller {
 				'mycustom.js',
 				'bootbox_custom.js',
 			));
+		$log_member_id=0;
 		if($this->loggedUser){
 			$log_member_id=$this->member_id;	
 			if(!$member_id){
@@ -49,6 +50,7 @@ class Profileview extends MX_Controller {
 				$is_editable=TRUE;
 			}
 		}
+		$this->data['login_user_id']=$log_member_id;
 		$memberDataBasic=getData(array(
 				'select'=>'m.member_name,m_b.member_heading,m_b.member_overview,m_b.member_hourly_rate,m_b.available_per_week,m_b.not_available_until,c_n.country_name,c.country_code_short,m_l.logo,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews,m_s.total_working_hour',
 				'table'=>'member as m',
@@ -57,6 +59,7 @@ class Profileview extends MX_Controller {
 				'single_row'=>true,
 			));	
 		if($memberDataBasic){
+			$this->data['profile_url']=URL::get_link('viewprofileURL').'/'.$member_id;
 			$this->data['member_id']=$member_id;
 			$this->data['memberInfo']=$memberDataBasic;
 			$this->data['memberInfo']->badges=getData(array(

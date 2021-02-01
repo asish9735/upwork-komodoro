@@ -10,6 +10,7 @@ define('USER_LANG_KEY',$lang_key);
 $lang_key=USER_LANG_KEY;*/
 $config['homeURL'] = '';
 $config['loginURL']= 'login/';
+$config['IsLoginURL']= 'user/is_login';
 $config['registerURL'] = 'sign-up/';
 $config['logoutURL'] = 'logout/';
 $config['dashboardURL'] = 'dashboard/';
@@ -94,6 +95,7 @@ $config['postprojectSuccessURL'] = 'postproject/success';
 $config['myProjectDetailsURL'] = 'p';
 $config['ApplyProjectURL'] = 'apply-job';
 $config['HireProjectURL'] = 'projectview/hire';
+$config['HireInviteFreelanceFormURL'] = 'projectclient/hireinviteform';
 
 $config['OfferList'] = 'contract/offerlist';
 $config['OfferDetails'] = 'contract/offer';
@@ -159,6 +161,7 @@ $config['myProjectClientAJAXURL'] = 'projectclient/load_project';
 $config['myProjectDetailsBidsClientloadCountAjaxURL'] = 'projectclient/load_proposal_count';
 $config['myProjectDetailsBidsClientloadAjaxURL'] = 'projectclient/load_propasal';
 $config['myProjectBidsClientStatusAjaxURL'] = 'projectclient/update_propasal';
+$config['inviteToProjectAjaxURL'] = 'projectclient/invitetoproject';
 
 
 

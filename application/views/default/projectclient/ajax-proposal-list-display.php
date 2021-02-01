@@ -6,7 +6,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Dashboard Box -->
 <div class="dashboard-box margin-top-0">
 <div class="content">
-<?php if($all_data){?>
+<?php 
+if($req_type=='invite'){
+?>
+<div class="text-center" style="min-height: 70px;width: 100%;line-height: 70px;"><button class="btn btn-outline-site inviteuser">Invite user</button></div>
+<?php
+}
+elseif($all_data){?>
     <ul class="dashboard-box-list if-button">
     <?php foreach($all_data as $k=>$bid){
     	//get_print($bid,true);
@@ -34,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <!-- Details -->
                         <span class="freelancer-detail-item"> <?php D($bid->member_heading);?></span>
-                        <p class="margin-bottom-10">Rating: <?php D($bid->avg_review);?><?php if($projects['project_settings']->is_hourly){}else{?>  | Delivery Time: <?php D(getAllBidDuration($bid->bid_duration));?><?php }?></p>
+                        <p class="margin-bottom-10">Rating: <?php D($bid->avg_review);?>  | Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D($bid->bid_duration);?> Days<?php }?></p>
 
                         <!-- Rating -->
                         <div class="freelancer-rating d-none">
@@ -55,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <ul>
                             <li>Location <strong><img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($bid->country_info->country_code_short));?>.svg" alt="" width="20" title="<?php D($bid->country_info->country_name);?>" data-tippy-placement="top"> <?php D($bid->country_info->country_name);?></strong> </li>
                             <li>
-                            <?php if($projects['project_settings']->is_hourly){?>
+                            <?php if($projects['project_settings']->is_hourly==1){?>
                              Rate <strong><?php D(priceSymbol().priceFormat($bid->bid_amount));?> / hr</strong>
                             <?php }else{?>
                              Bid <strong><?php D(priceSymbol().priceFormat($bid->bid_amount));?></strong>
@@ -154,6 +160,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			make_hire(pid,mid);
 		}
 		//alert(btn);
+	})
+	$('.inviteuser').click(function(){
+		$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+		$('#myModal').modal('show');
+		var formtype='invite';
+		$.get( "<?php echo get_link('inviteToProjectAjaxURL')?>",{'formtype':formtype,'project_id':"<?php D($projects['project_id']);?>"}, function( data ) {
+			setTimeout(function(){ $( "#myModal .mycustom-modal").html( data ); },1000)
+		});
 	})
 function view_application(application_url){
 	var redirectWindow = window.open(application_url, '_blank');
