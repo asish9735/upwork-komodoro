@@ -16,21 +16,21 @@
     <div class="row row-10">
     	<div class="col-md-6">
             <div class="search-box input-group">
-                <input type="text" class="form-control" placeholder="Find jobs by title" form="filterForm" name="term"/>
+                <input type="text" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" class="form-control" placeholder="Find jobs by title" form="filterForm" name="term"/>
                 <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i> Search</button></div>
             </div>
         </div>
         <div class="col-md-6">
         	<div class="d-flex">
                 <a href="javascript:void(0)" class="btn btn-outline-site mr-3" onclick="$('#filterAdvance').toggle();"><i class="icon-feather-filter"></i> Filter</a>                
-                <a href="javascript:void(0)" class="btn btn-outline-site mr-3"><i class="icon-feather-heart"></i> Save Search</a>                                 
+                <a href="javascript:void(0)" class="btn btn-outline-site mr-3" hidden><i class="icon-feather-heart"></i> Save Search</a>                                 
                 <div class="sort-by ml-auto">
                 <div class="sort-by">
                     <span>Sort by:</span>
                     <select class="selectpicker hide-tick" name="order_by"  onchange="filterForm()">
-                        <option value="default">Relevance</option>
-                        <option value="latest">Newest</option>
-                        <option value="old">Oldest</option>
+                        <option value="default" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='default'){echo 'selected';}?>>Relevance</option>
+                        <option value="latest" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='latest'){echo 'selected';}?>>Newest</option>
+                        <option value="old" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='old'){echo 'selected';}?>>Oldest</option>
                         <!--<option value="random">Random</option>-->
                     </select>
                 </div>
@@ -46,7 +46,7 @@
     </div>    
     
 
-    <div id="filterAdvance" style="display:none">
+    <div id="filterAdvance" style="display:none" class="mt-3">
     
     	<div class="row">
         <!-- Category -->
@@ -55,7 +55,7 @@
             <h5>Category</h5>
             <select name="category" class="selectpicker default"  title="All Categories"  data-live-search="true">
                 <option value="">All</option>
-                <?php print_select_option($category, 'category_id', 'category_name'); ?>
+                <?php print_select_option($category, 'category_id', 'category_name',(($searchdata && array_key_exists('category',$searchdata)) ? $searchdata['category']:'' )); ?>
             </select>
         </div>
         </div>
@@ -65,31 +65,47 @@
         <div class="sidebar-widget" id="sub_category_wrapper">
             <h5>Speciality</h5>
             <select name="sub_category" id="sub_category" class="selectpicker default" title="Speciality"  data-live-search="true" onchange="filterForm()">
-            
+            	<option value="">All</option>
+				<?php 
+				if($searchdata && array_key_exists('category',$searchdata)){
+				?>
+				<?php print_select_option($sub_category, 'category_subchild_id', 'category_subchild_name',(($searchdata && array_key_exists('sub_category',$searchdata)) ? $searchdata['sub_category']:'' )); ?>
+        		<?php }?>
+			</select>
+        </div>
+        </div>
+        <div class="col-md-4">
+        <div class="sidebar-widget">
+            <h5>Payment Type</h5>
+            <select name="is_hourly" class="selectpicker default"  title="Payment Type" onchange="filterForm()">
+                <option value="">All</option>
+                <option value="0" <?php if($searchdata && array_key_exists('is_hourly',$searchdata) && $searchdata['is_hourly']=='0'){echo 'selected';}?>>Fixed</option>
+                <option value="1" <?php if($searchdata && array_key_exists('is_hourly',$searchdata) && $searchdata['is_hourly']=='1'){echo 'selected';}?>>Hourly</option>
             </select>
         </div>
         </div>
+
         
-        <div class="col-md-4">
+        </div>
+        
+        <div class="row">
+		<div class="col-md-4">
         <div class="sidebar-widget">
             <h5>Experience Level</h5>
             <select name="experience_level" class="selectpicker default" title="Experience Level"  data-live-search="true" onchange="filterForm()">
                 <option value="">All</option>
-                <?php print_select_option($experience_level, 'experience_level_id', 'experience_level_name'); ?>
+                <?php print_select_option($experience_level, 'experience_level_id', 'experience_level_name',(($searchdata && array_key_exists('experience_level',$searchdata)) ? $searchdata['experience_level']:'' )); ?>
             </select>
         </div>
         </div>
-        </div>
-        
-        <div class="row">
         <div class="col-md-4">
         <div class="sidebar-widget">
             <h5>Job Type</h5>
             <select name="job_type" class="selectpicker default"  title="Job Type" onchange="filterForm()">
                 <option value="">All</option>
-                <option value="OneTime">One Time Poject</option>
-                <option value="Ongoing">Ongoing Project</option>
-                <option value="NotSure">Not Sure</option>
+                <option value="OneTime" <?php if($searchdata && array_key_exists('job_type',$searchdata) && $searchdata['job_type']=='OneTime'){echo 'selected';}?>>One Time Poject</option>
+                <option value="Ongoing" <?php if($searchdata && array_key_exists('job_type',$searchdata) && $searchdata['job_type']=='Ongoing'){echo 'selected';}?>>Ongoing Project</option>
+                <option value="NotSure" <?php if($searchdata && array_key_exists('job_type',$searchdata) && $searchdata['job_type']=='NotSure'){echo 'selected';}?>>Not Sure</option>
             </select>
         </div>
         </div>
@@ -97,15 +113,13 @@
         <div class="col-md-4">
         <div class="sidebar-widget">
             <h5>Budget</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" placeholder="Min" name="min">
-                </div>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" placeholder="Max" name="max">
-                </div>
+            <div class="">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Min" name="min" value="<?php if($searchdata && array_key_exists('min',$searchdata)){echo $searchdata['min'];}?>">
+					<input type="text" class="form-control" placeholder="Max" name="max" value="<?php if($searchdata && array_key_exists('max',$searchdata)){echo $searchdata['max'];}?>">
+					<div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i> Search</button></div>   
+				</div>
             </div>
-            
         </div>
         </div>
         <!--<div class="col-md-4">
@@ -181,6 +195,7 @@ var main = function(){
 				target: 'window'
 			},
 			onResult: function(res){
+				history.pushState({}, null,  '<?php echo URL::get_link('search_job'); ?>?'+form);
 			$('.total_count').html(res.job_list_count);
 			}
 		});

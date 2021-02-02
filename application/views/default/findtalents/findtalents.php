@@ -9,7 +9,7 @@
 			<div class="sidebar-container">	
 			<form id="filterForm">			
 				<!-- Location -->
-				<div class="sidebar-widget">
+				<div class="sidebar-widget" hidden>
 					<h5>Location</h5>
 					<div class="input-with-icon">
 						<div id="autocomplete-container">
@@ -20,7 +20,7 @@
 				</div>
 
 				<!-- Category -->
-				<div class="sidebar-widget">
+				<div class="sidebar-widget" hidden>
 					<h5>Category</h5>
 					<select name="category" class="selectpicker default" data-size="7" title="All Categories"  data-live-search="true">
 		                <option value="">All</option>
@@ -29,7 +29,7 @@
 				</div>
 
 				<!-- Keywords -->
-				<div class="sidebar-widget">
+				<div class="sidebar-widget" hidden>
 					<h5>Keywords</h5>
 					<div class="keywords-container">
 						<div class="keyword-input-container">
@@ -290,6 +290,7 @@ var main = function(){
 			onResult: function(res){
 				starRating('.star-rating');
 				loadtooltip();
+				history.pushState({}, null,  '<?php echo URL::get_link('search_freelancer'); ?>?'+form);
 			}
 		});
 	

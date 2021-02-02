@@ -57,6 +57,12 @@ class Job extends MX_Controller {
 	public function findjobs() {
 		$this->data['category'] = $this->job_model->get_all_category();
 		$this->data['experience_level'] = $this->job_model->get_experience_level();
+		$this->data['searchdata']=get();
+		$category_id = get('category');
+		if($category_id > 0){
+			$this->data['sub_category'] = $this->job_model->get_sub_category($category_id);
+		}
+
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');

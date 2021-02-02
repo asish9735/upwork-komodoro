@@ -67,6 +67,9 @@ class Findtalents_model extends CI_Model {
 					$this->db->order_by("m.member_id", "ASC");
 				}else if($srch['order_by'] == 'random'){
 					$this->db->order_by("RAND()");
+				}else if($srch['order_by'] == 'rating'){
+					$this->db->order_by("m_s.avg_rating", "DESC");
+					$this->db->order_by("m_s.no_of_reviews", "DESC");
 				}
 			}else{
 				$this->db->order_by("m.member_id", "ASC");
@@ -97,7 +100,7 @@ class Findtalents_model extends CI_Model {
 		return $result;
 	}
 	
-	public function get_all_category(){
+	public function get_all_category($is_featured=false){
 		$this->db->select('*')
 			->from('category a')
 			->join('category_names b', 'a.category_id=b.category_id');
@@ -105,7 +108,10 @@ class Findtalents_model extends CI_Model {
 		
 		$this->db->where('a.category_status', STATUS_ACTIVE);	
 		$this->db->where('b.category_lang', $this->lang);	
-		$result = $this->db->get()->result_array();
+		if($is_featured){
+			$this->db->where('a.is_featured', 1);	
+		}
+		$result = $this->db->order_by('a.category_order','asc')->get()->result_array();
 		return $result;
 	}
 	

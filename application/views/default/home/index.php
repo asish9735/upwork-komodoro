@@ -51,64 +51,28 @@
       <p>Below are the lists of popular job categories. The freelancers can find a suitable job category and pick up an ideal job that matches their expertise as well as professional experience.</p>
     </div>
     <div class="row row-10">
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
+ <?php
+    if($popular_category){
+      foreach($popular_category as $k=>$category){
+       $icon=NO_IMAGE;
+       if($category['category_icon'] && file_exists(UPLOAD_PATH.'category_icons/'.$category['category_icon'])){
+        $icon=UPLOAD_HTTP_PATH.'category_icons/'.$category['category_icon'];
+       }
+?>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="<?php echo URL::get_link('search_job'); ?>?category=<?php echo $category['category_id'];?>" class="photo-box small" data-background-image="images/cat_1.jpg">
         <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_1.png" alt="cat_1" /> </div>
-          <h3>Graphics &amp; Design</h3>
-          <p>Creative Director, Web Designer &amp; more</p>
+          <div class="photo-box-icon"> <img src="<?php echo $icon;?>" alt="<?php echo $category['category_name'];?>" /> </div>
+          <h3><?php echo $category['category_name'];?></h3>
+          <p><?php echo $category['description'];?></p>
         </div>
         </a> </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
-        <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_2.png" alt="cat_2" /> </div>
-          <h3>Accounting &amp; Finance</h3>
-          <p>Auditor, Accountant, Financial Analyst &amp; more</p>
-        </div>
-        </a> </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
-        <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_3.png" alt="cat_3" /> </div>
-          <h3>Digital Marketing</h3>
-          <p>Marketing Analyst, Social Profile Admin &amp; more</p>
-        </div>
-        </a> </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
-        <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_4.png" alt="cat_4" /> </div>
-          <h3>Writing &amp; Translations</h3>
-          <p>Copywriter, Creative Writer, Translator &amp; more</p>
-        </div>
-        </a> </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
-        <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_5.png" alt="cat_1" /> </div>
-          <h3>Sales &amp; Marketing</h3>
-          <p>Brand Manager, Marketing Coordinator &amp; more</p>
-        </div>
-        </a> </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
-        <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_6.png" alt="cat_1" /> </div>
-          <h3>Education &amp; Training</h3>
-          <p>Advisor, Coach, Education Coordinator &amp; more</p>
-        </div>
-        </a> </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
-        <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_7.png" alt="cat_1" /> </div>
-          <h3>Web &amp; Software Dev</h3>
-          <p>Software Engineer, Web / Mobile Developer &amp; more</p>
-        </div>
-        </a> </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="#" class="photo-box small" data-background-image="images/cat_1.jpg">
-        <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo IMAGE;?>cat_8.png" alt="cat_1" /> </div>
-          <h3>Engineering &amp; Architecture</h3>
-          <p>Civil, Mechanical, Interior Design, Electrical &amp; more</p>
-        </div>
-        </a> </div>
+<?php
+      }
+    }
+?>
+      
     </div>
-    <div class="text-center"><a href="#" class="btn btn-site">View All Category</a></div>
+    <div class="text-center" hidden><a href="#" class="btn btn-site">View All Category</a></div>
   </div>
 </section>
 <!-- Popular Job Categories / End -->
@@ -154,6 +118,7 @@
   </div>
 </section>
 
+
 <!-- Highest Rated Freelancers -->
 <section class="section pt-0 full-width-carousel-fix">
   <div class="container">
@@ -162,6 +127,12 @@
       <p>Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
     </div>
     <div class="default-slick-carousel freelancers-container freelancers-grid-layout"> 
+<?php
+    if($popular_freelancer){
+      foreach($popular_freelancer as $k=>$freelancer){
+        $skills = array_map(function($item) { return $item['skill_name']; }, $freelancer['user_skill']); 
+        $skills_name=implode(',', $skills);
+?>
       <div class="freelancer"> 
         <!-- Overview -->
         <div class="freelancer-overview">
@@ -169,103 +140,24 @@
             <!-- Avatar -->
             <div class="freelancer-avatar">
               <div class="verified-badge"></div>
-              <a href="#"><img src="<?php echo IMAGE;?>professional01.jpg" alt="professional01"></a> </div>
+              <a href="<?php echo $freelancer['profile_link'];?>"><img src="<?php echo $freelancer['user_logo'];?>" alt="professional01"></a> </div>
             <!-- Name -->
             <div class="freelancer-name">
-              <h4><a href="single-freelancer-profile.html">Diana Robinson <img class="flag" src="<?php echo IMAGE;?>flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
-              <span>Web Designer</span> </div>
+              <h4><a href="single-freelancer-profile.html"><?php echo $freelancer['member_name'];?> <?php if($freelancer['country_code_short']){?><img class="flag" src="<?php echo IMAGE;?>flags/<?php echo strtolower($freelancer['country_code_short']);?>.svg" alt="" title="<?php echo $freelancer['country_name'];?>" data-tippy-placement="top"></a><?php }?></h4>
+              <span><?php echo $freelancer['member_heading'];?></span> </div>
             <!-- Rating -->
             <div class="freelancer-rating">
-              <div class="star-rating" data-rating="3.5"></div>
+              <div class="star-rating" data-rating="<?php echo round($freelancer['avg_rating'],2);?>"></div>
             </div>
-            <p>Adobe Photoshop & Illustrator, Coding, Branding, Visual design</p>
-            <a href="#" class="btn btn-outline-site btn-block">View Profile</a> </div>
+            <p><?php echo $skills_name; ?></p>
+            <a href="<?php echo $freelancer['profile_link'];?>" class="btn btn-outline-site btn-block">View Profile</a> </div>
         </div>
       </div>
-      
-      <div class="freelancer"> 
-        <!-- Overview -->
-        <div class="freelancer-overview">
-          <div class="freelancer-overview-inner"> 
-            <!-- Avatar -->
-            <div class="freelancer-avatar">
-              <div class="verified-badge"></div>
-              <a href="#"><img src="<?php echo IMAGE;?>professional02.jpg" alt=""></a> </div>
-            <!-- Name -->
-            <div class="freelancer-name">
-              <h4><a href="single-freelancer-profile.html">George Brown <img class="flag" src="<?php echo IMAGE;?>flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
-              <span>Creative Writer</span> </div>
-            <!-- Rating -->
-            <div class="freelancer-rating">
-              <div class="star-rating" data-rating="3.5"></div>
-            </div>
-            <p>Adobe Photoshop & Illustrator, Coding, Branding, Visual design</p>
-            <a href="#" class="btn btn-outline-site btn-block">View Profile</a> </div>
-        </div>
-      </div>
-      
-      <div class="freelancer"> 
-        <!-- Overview -->
-        <div class="freelancer-overview">
-          <div class="freelancer-overview-inner"> 
-            <!-- Avatar -->
-            <div class="freelancer-avatar">
-              <div class="verified-badge"></div>
-              <a href="#"><img src="<?php echo IMAGE;?>professional03.jpg" alt=""></a> </div>
-            <!-- Name -->
-            <div class="freelancer-name">
-              <h4><a href="single-freelancer-profile.html">Marie Taylor <img class="flag" src="<?php echo IMAGE;?>flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
-              <span>Financial Analyst</span> </div>
-            <!-- Rating -->
-            <div class="freelancer-rating">
-              <div class="star-rating" data-rating="3.5"></div>
-            </div>
-            <p>Adobe Photoshop & Illustrator, Coding, Branding, Visual design</p>
-            <a href="#" class="btn btn-outline-site btn-block">View Profile</a> </div>
-        </div>
-      </div>
-      
-      <div class="freelancer"> 
-        <!-- Overview -->
-        <div class="freelancer-overview">
-          <div class="freelancer-overview-inner"> 
-            <!-- Avatar -->
-            <div class="freelancer-avatar">
-              <div class="verified-badge"></div>
-              <a href="#"><img src="<?php echo IMAGE;?>professional04.jpg" alt=""></a> </div>
-            <!-- Name -->
-            <div class="freelancer-name">
-              <h4><a href="single-freelancer-profile.html">David Joe <img class="flag" src="<?php echo IMAGE;?>flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
-              <span>Civil Engineer</span> </div>
-            <!-- Rating -->
-            <div class="freelancer-rating">
-              <div class="star-rating" data-rating="3.5"></div>
-            </div>
-            <p>Adobe Photoshop & Illustrator, Coding, Branding, Visual design</p>
-            <a href="#" class="btn btn-outline-site btn-block">View Profile</a> </div>
-        </div>
-      </div>
-      
-      <div class="freelancer"> 
-        <!-- Overview -->
-        <div class="freelancer-overview">
-          <div class="freelancer-overview-inner"> 
-            <!-- Avatar -->
-            <div class="freelancer-avatar">
-              <div class="verified-badge"></div>
-              <a href="#"><img src="<?php echo IMAGE;?>professional01.jpg" alt=""></a> </div>
-            <!-- Name -->
-            <div class="freelancer-name">
-              <h4><a href="single-freelancer-profile.html">Diana Robinson <img class="flag" src="<?php echo IMAGE;?>flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
-              <span>Web Designer</span> </div>
-            <!-- Rating -->
-            <div class="freelancer-rating">
-              <div class="star-rating" data-rating="3.5"></div>
-            </div>
-            <p>Adobe Photoshop & Illustrator, Coding, Branding, Visual design</p>
-            <a href="#" class="btn btn-outline-site btn-block">View Profile</a> </div>
-        </div>
-      </div>
+<?php 
+    }
+  }
+?> 
+
     </div>
   </div>
 </section>

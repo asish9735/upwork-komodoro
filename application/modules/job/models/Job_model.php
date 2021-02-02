@@ -38,6 +38,9 @@ class Job_model extends CI_Model {
 		if(!empty($srch['job_type'])){
 			$this->db->where('p_s.project_type_code', $srch['job_type']);
 		}
+		if(!empty($srch['is_hourly'])){
+			$this->db->where('p_s.is_hourly', $srch['is_hourly']);
+		}
 		
 		if(!empty($srch['min']) && $srch['min'] > 0){
 			$this->db->where('p_s.budget >=', $srch['min']);

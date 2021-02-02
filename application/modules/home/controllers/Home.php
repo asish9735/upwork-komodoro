@@ -48,6 +48,14 @@ class Home extends MX_Controller {
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
+
+		
+		$this->load->model('findtalents/findtalents_model');
+		$get = array('order_by'=>'rating');
+		$limit = 0;
+		$offset = 10;
+		$this->data['popular_category'] = $this->findtalents_model->get_all_category(true);
+		$this->data['popular_freelancer']=$this->findtalents_model->getTalentList($get,$limit, $offset);
 		$this->layout->view('index',$this->data);
 	}
 	public function findjobs() {
