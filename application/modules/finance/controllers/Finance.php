@@ -61,16 +61,68 @@ class Finance extends MX_Controller {
 	}
 	public function transaction()
 	{
+		$this->load->model('finance_model');
+		$this->load->library('pagination');
 		$this->layout->set_js(array(
 			'utils/helper.js',
 			'bootbox_custom.js',
 			'mycustom.js',
 			'moment-with-locales.js',
-			'bootstrap-datetimepicker.min.js'
+			'daterangepicker.js'
 		));
 		$this->layout->set_css(array(
-			'bootstrap-datetimepicker.css'
+			'daterangepicker.css'
 		));
+		$wallet_id=$balance=0;
+		$srch = $this->input->get();
+		$limit = !empty($srch['per_page']) ? $srch['per_page'] : 0;
+		$offset = 10;
+		$this->data['member_wallet']=getWalletMember($this->member_id);
+		if($this->data['member_wallet']){
+			$wallet_id=$this->data['member_wallet']->wallet_id;
+			$balance=$this->data['member_wallet']->balance;
+		}
+		$this->data['current_balance']=$balance;
+		$this->data['total_debit']=$this->finance_model->wallet_debit_balance($wallet_id);
+		$this->data['total_credit']=$this->finance_model->wallet_credit_balance($wallet_id);
+		$this->data['current_balance']=$balance;
+		$srch['wallet_id'] = $wallet_id;
+
+
+		$this->data['list'] = $this->finance_model->getTransaction($srch, $limit, $offset);
+		$this->data['list_total'] = $this->finance_model->getTransaction($srch, $limit, $offset, FALSE);
+		
+		/*Pagination Start*/
+		$config['base_url'] = get_link('TransactionHistoryURL');
+		$config['page_query_string'] = TRUE;
+		$config['reuse_query_string'] = TRUE;
+		$config['total_rows'] = $this->data['list_total'];
+		$config['per_page'] = $offset;
+		
+		$config['full_tag_open'] = '<div class="pagination-container margin-top-60 margin-bottom-60"><nav class="pagination"><ul>';
+		$config['full_tag_close'] = '</ul></nav></div>';
+		$config['first_link'] = 'First';
+		$config['first_tag_open'] = '<li class="waves-effect">';
+		$config['first_tag_close'] = '</li>';
+		$config['num_tag_open'] = '<li class="waves-effect">';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li><a class='current-page' href='javascript:void(0)'>";
+		$config['cur_tag_close'] = '</a></li>';
+		$config['last_link'] = 'Last';
+		$config['last_tag_open'] = "<li class='last waves-effect'>";
+		$config['last_tag_close'] = '</li>';
+		$config['next_link'] = '<i class="icon-material-outline-keyboard-arrow-right"></i>';
+		$config['next_tag_open'] = '<li class="waves-effect">';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '<i class="icon-material-outline-keyboard-arrow-left"></i>';
+		$config['prev_tag_open'] = '<li class="waves-effect">';
+		$config['prev_tag_close'] = '</li>';  
+		
+		$this->pagination->initialize($config);
+		$this->data['links'] = $this->pagination->create_links();
+
+
+
 		if($this->access_member_type=='F'){
 			$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
 		}else{

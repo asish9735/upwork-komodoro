@@ -1,32 +1,30 @@
-<section class="section">
+<section class="section findtalentpage">
 <div class="container">
 	<div class="dashboard-headline">
     	<h1>Professionals</h1>
     </div>
+	<?php //print_r($all_location);?>
 	<div class="row">
 		<div class="col-xl-3 col-lg-4 col-12">
         	<a href="javascript:void(0)" class="d-lg-none" id="filter" title="Filter"><i class="icon-feather-filter f20"></i></a>
 			<div class="sidebar-container">	
 			<form id="filterForm">			
 				<!-- Location -->
-				<div class="sidebar-widget" hidden>
+				<div class="sidebar-widget">
 					<h5>Location</h5>
-					<div class="input-with-icon">
-						<div id="autocomplete-container">
-							<input type="text" class="form-control" id="autocomplete-input" placeholder="Location">
-						</div>
-						<span class="icon-feather-map-pin"></span>
-					</div>
+					<select name="country" class="selectpicker default"  title="All locations"  data-live-search="true">
+						<option value="">All</option>
+						<?php if($all_location){
+							foreach($all_location as $l=>$location){
+								?>
+							<option value="<?php echo ($location->country_code);?>" <?php if($searchdata && array_key_exists('country',$searchdata) && $searchdata['country']==($location->country_code)){echo 'selected';}?> ><?php echo $location->country_name;?></option>
+								<?php
+							}
+						}?>
+					</select>
 				</div>
 
-				<!-- Category -->
-				<div class="sidebar-widget" hidden>
-					<h5>Category</h5>
-					<select name="category" class="selectpicker default" data-size="7" title="All Categories"  data-live-search="true">
-		                <option value="">All</option>
-		                <?php print_select_option($category, 'category_id', 'category_name'); ?>
-		            </select>
-				</div>
+			
 
 				<!-- Keywords -->
 				<div class="sidebar-widget" hidden>
@@ -41,60 +39,31 @@
 					</div>
 				</div>
 
+				
+
+				<!-- Tags -->
+				<div class="sidebar-widget">
+					<h5>Skills</h5>
+
+					<div class="tags-container skillContaintag">
+						
+					</div>
+					<div class="clearfix"></div>
+
+					<!-- More Skills -->
+					<div class="submit-field">
+					<input type="text"  class="form-control input-text with-border tagsinput_skill" placeholder="skills"/>
+					</div>
+				</div>
 				<!-- Hourly Rate -->
 				<div class="sidebar-widget">
 					<h5>Hourly Rate</h5>
 					<div class="margin-top-25"></div>
 
 					<!-- Range Slider -->
-					<input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="10" data-slider-max="250" data-slider-step="5" data-slider-value="[10,250]"/>
-				</div>
-
-				<!-- Tags -->
-				<div class="sidebar-widget">
-					<h5>Skills</h5>
-
-					<div class="tags-container">
-						<div class="tag">
-							<input type="checkbox" id="tag1"/>
-							<label for="tag1">front-end dev</label>
-						</div>
-						<div class="tag">
-							<input type="checkbox" id="tag2" checked="checked"/>
-							<label for="tag2">angular</label>
-						</div>
-						<div class="tag">
-							<input type="checkbox" id="tag3"/>
-							<label for="tag3">react</label>
-						</div>
-						<div class="tag">
-							<input type="checkbox" id="tag4"/>
-							<label for="tag4">vue js</label>
-						</div>
-						<div class="tag">
-							<input type="checkbox" id="tag5"/>
-							<label for="tag5">web apps</label>
-						</div>
-						<div class="tag">
-							<input type="checkbox" id="tag6" checked="checked"/>
-							<label for="tag6">design</label>
-						</div>
-						<div class="tag">
-							<input type="checkbox" id="tag7"/>
-							<label for="tag7">wordpress</label>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-
-					<!-- More Skills -->
-					<div class="keywords-container margin-top-20">
-						<div class="keyword-input-container">
-							<input type="text" class="form-control keyword-input" placeholder="add more skills"/>
-							<button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
-						</div>
-						<div class="keywords-list"><!-- keywords go here --></div>
-						<div class="clearfix"></div>
-					</div>
+					<input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="0" data-slider-max="250" data-slider-step="5" data-slider-value="[0,250]"/>
+					<input type="hidden" name="min" id="min">
+					<input type="hidden" name="max" id="max">
 				</div>
 				<div class="clearfix"></div>
 			</form>
@@ -106,7 +75,7 @@
         <div class="row">
     		<div class="col-md-8 col-12">
             <div class="search-box input-group">
-				<input type="text" class="form-control" name="term" placeholder="Find talents by name" form="filterForm"/>
+				<input type="text" class="form-control" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" name="term" placeholder="Find talents by name" form="filterForm"/>
                 <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()">Search</button></div>
 			</div>
 		</div>
@@ -114,11 +83,13 @@
             <div class="sort-by">
             	<div class="sort-by">
                 <span>Sort by:</span>
-                <select class="selectpicker hide-tick" name="order_by" form="filterForm" onchange="filterForm()">
-		            <option value="default">Relevance</option>
-		            <option value="latest">Newest</option>
-		            <option value="old">Oldest</option>
-		        </select>
+				<select class="selectpicker hide-tick" name="order_by" form="filterForm" onchange="filterForm()">
+						<option value="default" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='default'){echo 'selected';}?>>Relevance</option>
+                        <option value="default" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='rating'){echo 'selected';}?>>Rating</option>
+                        <option value="latest" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='latest'){echo 'selected';}?>>Newest</option>
+                        <option value="old" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='old'){echo 'selected';}?>>Oldest</option>
+                        <!--<option value="random">Random</option>-->
+                    </select>
                 </div>
             </div>
 		</div>
@@ -165,6 +136,7 @@
   </div>
 </div>
 <script>
+var all_skills=<?php D(json_encode($all_skills));?>;
 var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 function starRating(ratingElem) {
 
@@ -256,7 +228,56 @@ function check_login(succ, fail){
 	});
 }
 var main = function(){
-	
+	$( ".range-slider" ).on( "slideStop", function( event ) {
+		var data=event.value;
+		$('#min').val(data[0]);
+		$('#max').val(data[1]);
+		filterForm();
+	} );
+
+	var bhtn = new Bloodhound({
+		local:all_skills,
+	        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('skill_name'),
+	  		queryTokenizer: Bloodhound.tokenizers.whitespace,
+	});
+	var elts = $('.tagsinput_skill');
+	elts.tagsinput({
+	  itemValue: 'skill_id',
+	  itemText: 'skill_name',
+	  typeaheadjs: {
+	  	limit: 25,
+	  	displayKey: 'skill_name',
+	    hint: false,
+	    highlight: true,
+	    minLength: 1,
+	    source: bhtn.ttAdapter(),
+	    templates: {
+	      notFound: [
+	        "<div class=empty-message>",
+	        "<?php D('No match found')?>",
+	        "</div>"
+	      ].join("\n"),
+	      suggestion: function(e) {  var test_regexp = new RegExp('('+e._query+')' , "gi"); return ('<div>'+ e.skill_name.replace(test_regexp,'<b>$1</b>')  + '</div>'); }
+	    }
+	  }
+	});
+	elts.on('beforeItemAdd', function(event) {
+		var itemdata=event.item;
+		console.log(itemdata);
+		var key=itemdata.skill_id;
+		var name=key;
+		if($(".skill_set_"+key).length>0){
+			var html='<input type="checkbox" id="tag_'+key+'"  name="byskillsname[]" value="'+itemdata.skill_key+'" checked/><label for="tag_'+key+'">'+itemdata.skill_name+'</label>';
+			$(".skillContaintag skill_set_"+key).html(html);
+		}else{
+			var html='<div class="tag skill_set_'+key+'" onclick="filterForm()"><input type="checkbox" id="tag_'+key+'"  name="byskillsname[]" value="'+itemdata.skill_key+'" checked/><label for="tag_'+key+'">'+itemdata.skill_name+'</label></div>';
+			$(".skillContaintag").append(html);
+		}
+		filterForm();
+		//console.log(event.item);
+		event.cancel = true;
+	})
+
 	var findJobLoadMore = LoadMore.getInstance();
 	
 	/* findJobLoadMore.config({
@@ -302,10 +323,10 @@ var main = function(){
 	filterForm();
 	
 	// get sub category
-	$('[name="category"]').change(function(){
-		
-		var val = $('[name="category"] :selected').val();
-		$.ajax({
+	$('[name="country"]').change(function(){
+		filterForm();
+		/*var val = $('[name="country"] :selected').val();
+		 $.ajax({
 			url : '<?php echo base_url('job/get_sub_category')?>',
 			data: {category_id: val},
 			dataType: 'JSON',
@@ -323,7 +344,7 @@ var main = function(){
 				}
 				filterForm();
 			}
-		});
+		}); */
 	});
 	$('#talent_list').on('click', '.action_favorite',function(e){
 		e.preventDefault();

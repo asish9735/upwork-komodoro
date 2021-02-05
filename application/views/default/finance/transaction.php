@@ -1,10 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
-$enable_paypal=get_setting('enable_paypal');
-$payfor=1;
-$p=0;
-$sub_total=0;
+//print_r($list);
 ?>
 <!-- Dashboard Container -->
 <div class="dashboard-container">
@@ -22,44 +19,48 @@ $sub_total=0;
 			<h3><i class="icon-material-outline-credit-card text-site"></i> Transaction</h3>
 			</div>
 			<div class="content with-padding">	
-            	<label class="form-label">Select date for which you want your transaction history</label>
+				<label class="form-label">Select date for which you want your transaction history</label>
+				<form action="" method="get">
 				<div class="row">
-					<div class="col-md-4">                    	
+					<div class="col-md-6">                    	
 						<div class="input-with-icon-left">
 		                    <i class="icon-feather-calendar"></i>
-		                    <input type="text" name="amount" id="amount" class="form-control datepicker">
-						</div>						
-					</div>
-                    <div class="col-md-4">                    	
-						<div class="input-with-icon-left">
-		                    <i class="icon-feather-calendar"></i>
-		                    <input type="text" name="amount" id="amount" class="form-control datepicker">
+		                    <input type="text" name="searchdate" id="searchdate" class="form-control datepicker" value="<?php if($this->input->get('searchdate')){echo $this->input->get('searchdate');}?>">
 						</div>						
 					</div>
                     <div class="col-md-4">
-                    	<button class="btn btn-site">Go</button>
+                    	<button class="btn btn-site" name="search" value="1">Go</button>
                         &nbsp;
-                        <button class="btn btn-site">Download CSV</button>
+                        <button class="btn btn-site"  name="CSV" value="1">Download CSV</button>
                     </div>
 				</div>
+				</form>
+
 				<div>
                 
                 </div>
             </div>
             </div>
 			<div class="fun-facts-container">
+				<div class="fun-fact" data-fun-fact-color="#37bf00">
+                	<div class="fun-fact-icon"><i class="icon-material-outline-account-balance-wallet"></i></div>
+                    <div class="fun-fact-text ml-1">
+                        <span>Current Balance</span>
+                        <h4> <?php echo $currency.priceFormat($current_balance);?></h4>
+                    </div>
+                </div>
                 <div class="fun-fact" data-fun-fact-color="#37bf00">
                 	<div class="fun-fact-icon"><i class="icon-feather-credit-card"></i></div>
-                    <div class="fun-fact-text">
-                        <span>Total Debit</span>
-                        <h4> 1773.00</h4>
+                    <div class="fun-fact-text ml-1">
+                        <span>Total Credit</span>
+                        <h4> <?php echo $currency.priceFormat($total_credit);?></h4>
                     </div>
                 </div>
                 <div class="fun-fact" data-fun-fact-color="#f00">
                     <div class="fun-fact-icon"><i class="icon-feather-credit-card"></i></div>
-                    <div class="fun-fact-text">
-                        <span>Total Credit</span>
-                        <h4> 28045.00</h4>
+                    <div class="fun-fact-text ml-1">
+                        <span>Total Debit</span>
+                        <h4> <?php echo $currency.priceFormat($total_debit);?></h4>
                     </div>
                 </div>                
            </div>
@@ -69,46 +70,47 @@ $sub_total=0;
                 </div>
                 <div class="content">
                     <ul class="dashboard-box-list">
-                        <li>
-                            <div class="invoice-list-item">
-                            <strong>Commission deducted</strong>
-                                <ul>
-                                    <li><span class="paid">Success</span></li>
-                                    <li><b>Credit:</b> <?php echo CURRENCY;?>100.00</li>
-                                    <li><b>Debit:</b> <?php echo CURRENCY;?>20.00</li>
-                                    <li><b>Date:</b> 03 Jan, 2019 03:11 PM</li>
-                                </ul>
-                            </div>   
-                            <!-- Buttons -->
-                            <div class="buttons-to-right single-right-button always-visible">
-                                <a href="#" class="button">Button</a>
-                            </div>                         
-                        </li>
-                        <li>
-                            <div class="invoice-list-item">
-                            <strong>Project payment received</strong>
-                                <ul>
-                                    <li><span class="unpaid">Reject</span></li>
-                                    <li><b>Credit:</b> <?php echo CURRENCY;?>100.00</li>
-                                    <li><b>Debit:</b> <?php echo CURRENCY;?>20.00</li>
-                                    <li><b>Date:</b> 03 Jan, 2019 03:11 PM</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="invoice-list-item">
-                            <strong>Bid Purchase</strong>
-                                <ul>
-                                    <li><span class="paid">Success</span></li>
-                                    <li><b>Credit:</b> <?php echo CURRENCY;?>100.00</li>
-                                    <li><b>Debit:</b> <?php echo CURRENCY;?>20.00</li>
-                                    <li><b>Date:</b> 03 Jan, 2019 03:11 PM</li>
-                                </ul>
-                            </div>
-                        </li>                        
+					<?php if($list){
+					foreach($list as $k=>$row){
+						$color="waitingcolor";
+						$status_name='Pending';
+						if($row['status']==1){
+							$color="paid";
+							$status_name='Success';
+						}elseif($row['status']==2){
+							$color="unpaid";
+							$status_name='Rejected';
+						}
+					?>
+					<li>
+						<div class="invoice-list-item">
+						<strong><?php echo $row['name']?></strong>
+							<ul>
+								
+								<li><span class="<?php echo $color;?>"><?php echo $status_name;?></span>
+							<?php if($row['admin_message']){?>
+								<a href="<?php D(VZ);?>" data-tippy-placement="top" title="<?php echo $row['admin_message']; ?><?php if($row['admin_message_date']!='0000-00-00 00:00:00'){echo '<br>'.$row['admin_message_date'];} ?>"> <i class="icon-feather-info"></i> </a>	
+							<?php }?>
+								</li>
+								<li>T<?php echo $row['wallet_transaction_id'];?></li>
+								<li><b><?php if($row['Amount']>0){echo 'Credit';}else{echo 'Debit';}?>:</b> <?php echo $currency;?><?php echo priceFormat(abs($row['Amount']));?></li>
+								<li><b>Date:</b> <?php echo $row['transaction_date'];?></li>
+							</ul>
+						</div>   
+						<!-- Buttons -->
+						<div class="buttons-to-right single-right-button always-visible" hidden>
+							<a href="#" class="button">Button</a>
+						</div>                         
+                    </li>
+					<?php						
+					}
+					}else{?>     
+					<li><p>No record found</p></li>
+					<?php }?>
                     </ul>
-                </div>
-            </div>
+				</div>
+			</div>
+			<?php echo $links; ?> 
 		</div>
 	</div>
 	<!-- Dashboard Content / End -->
@@ -120,111 +122,16 @@ $sub_total=0;
 var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 
 var main=function(){
-	$('.datepicker').datetimepicker({
-		format: 'YYYY-MM-DD',
-		maxDate: "<?php echo date('Y-m-d');?>"
-	});
-$('input[name="method"]').click(function(){
-	var id=$(this).attr('id');
-	var amount=$(this).data('total');
-	var fee=$(this).data('processing-fee');
-	var feetext=$(this).data('processing-fee-text');
-	$('.checkoutForm').hide();
-	if(id=='shopping-balance'){
-		$('.processing-fee').hide();
-	}else{
-		$('.processing-fee').show();
-	}
-	$('.processing-fee ec').html(fee);
-	$('.total-price').html('<?php echo $currency; ?>'+amount);
-	$('.processingFeeText').html(feetext);
-	$('#'+id+'-form').show();
-})
-
-$('input[name="method"]:first').click();	
-}
-function processCheckout(ev){
-	var formID= $(ev).attr('id');
-	var buttonsection=$('#'+formID).find('.saveBTN');
-	var buttonval = buttonsection.html();
-	buttonsection.html(SPINNER).attr('disabled','disabled');
-	$.ajax({
-			method: "POST",
-			dataType: 'json',
-			url: "<?php if($payfor==1){D(get_link('processAddFundFormCheckAJAXURL'));}?>",
-			data: $('#'+formID).serialize()+'&'+$.param({ 'okey': $('input[name="amount"]').val() }),
-			success: function(msg) {
-				buttonsection.html(buttonval).removeAttr('disabled');
-				clearErrors();
-				if (msg['status'] == 'OK') {
-					if(msg['method']=='wallet' || msg['method']=='bank'){
-						
-					}else{
-						 window.location.href=msg['redirect'];
-					}
-				} else if (msg['status'] == 'FAIL') {
-					bootbox.alert({
-						title:'Add Fund',
-						message: msg['error'],
-						buttons: {
-						'ok': {
-							label: 'Ok',
-							className: 'btn-site pull-right'
-							}
-						}
-					});
-				}
-			}
-		})
 	
-	return false;
-}
-function updateTotal(){
-	var amount=$('#amount').val();
-	if(isNaN(amount)){
-		amount=0;
-	}
-	$('#amount').val(amount);
-}
-</script>
-<?php if(($this->input->get('refer') && $this->input->get('refer')=='paymentsuccess') || ($this->input->get('ref_p') && $this->input->get('ref_p')=='paymentsuccess')){?>
-<script>
-var mainload=function(){
-	bootbox.alert({
-		title: '<?php D(__('popup_manageproposal_Payment_Success',"Payment Success"));?>',
-		message: 'Payment Successfull',
-		size: 'small',
-		buttons: {
-			ok: {
-				label: "Ok",
-				className: 'btn-site pull-right'
-			},
-		},
-		callback: function(result){
-			window.location.href='<?php D(get_link('AddFundURL'));?>';
-		}
-
+	$('.datepicker').daterangepicker({
+    	"maxDate": "<?php echo date('Y/m/d');?>",
+  		locale: {
+            format: 'YYYY-MM-DD'
+        },
+		autoUpdateInput: false
+	}, function(from_date, to_date) {
+		$('.datepicker').val(from_date.format('YYYY-MM-DD')+' - '+to_date.format('YYYY-MM-DD'));
 	});
 }
-</script>
-<?php }elseif(($this->input->get('refer') && $this->input->get('refer')=='paymenterror') || ($this->input->get('ref_p') && $this->input->get('ref_p')=='paymenterror')){?>
-<script>
-var mainload=function(){
-	bootbox.alert({
-		title: '<?php D(__('popup_manageproposal_Payment_Error',"Payment Error"));?>',
-		message: 'Payment failed',
-		size: 'small',
-		buttons: {
-			ok: {
-				label: "Ok",
-				className: 'btn-site pull-right'
-			},
-		},
-		callback: function(result){
-			window.location.href='<?php D(get_link('AddFundURL'));?>';
-		}
 
-	});
-}
 </script>
-<?php }?>

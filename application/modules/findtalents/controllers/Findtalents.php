@@ -21,15 +21,23 @@ class Findtalents extends MX_Controller {
 		
 		$this->data['curr_class'] = $curr_class;
 		$this->data['curr_method'] = $curr_method;
-		$this->layout->set_js(array(
-			'bootbox_custom.js',
-			'mycustom.js',
-		));
+		
     }
 
   
 	public function all_list() {
-		$this->data['category'] = $this->findtalents_model->get_all_category();
+		$this->layout->set_js(array(
+			'bootbox_custom.js',
+			'mycustom.js',
+			'bootstrap-tagsinput.min.js',
+			'typeahead.bundle.min.js',
+		));
+		$this->layout->set_css(array(
+			'bootstrap-tagsinput.css'
+		));
+		$this->data['searchdata']=get();
+		$this->data['all_skills']=getAllSkills();
+		$this->data['all_location']=getAllCountry();
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');

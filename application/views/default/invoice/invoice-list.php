@@ -8,7 +8,9 @@ $invoice_url=get_link('InvoiceURL');
 	<!-- Dashboard Content -->
 	<div class="dashboard-content-container" >
 		<div class="dashboard-content-inner">
-
+			<div class="dashboard-headline">
+				<h3>Invoice list</h3>				
+			</div>
 	        <ul class="nav nav-tabs mb-3">
 		      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $invoice_url;?>">All</a> </li>
 		      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=pending">Pending</a> </li>

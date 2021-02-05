@@ -2364,8 +2364,55 @@ if ( ! function_exists('updateMemberRatting'))
 				insert_record('member_statistics',array('member_id'=>$member_id,'avg_rating'=>$avg_review,'no_of_reviews'=>$total_review),TRUE);
 			}
 		}
+		updateMemberSuccessRate($member_id);
 	}
 }
+if ( ! function_exists('updateMemberSuccessRate'))
+{
+	function updateMemberSuccessRate($member_id=''){
+		//echo 'dasd';
+		if($member_id){
+			$success_rate=0;
+			$review_date=date('Y-m-d',strtotime('-12 months'));
+			$positive=getData(array(
+				'select'=>'review_id',
+				'table'=>'contract_reviews',
+				'where'=>array('review_to'=>$member_id,'average_review >= '=>'4','review_status'=>1,'is_display_public'=>1,'date(review_date) >'=>$review_date),
+				'return_count'=>true,
+			));
+			//echo get_last_query();
+			$negative=getData(array(
+				'select'=>'review_id',
+				'table'=>'contract_reviews',
+				'where'=>array('review_to'=>$member_id,'average_review <= '=>'3','review_status'=>1,'is_display_public'=>1,'date(review_date) >'=>$review_date),
+				'return_count'=>true,
+			));
+			$total=getData(array(
+				'select'=>'review_id',
+				'table'=>'contract_reviews',
+				'where'=>array('review_to'=>$member_id,'review_status'=>1,'is_display_public'=>1,'date(review_date) >'=>$review_date),
+				'return_count'=>true,
+			));
+			if($total){
+				$calculate_rate=(($positive-$negative)/$total)*100;
+				if($calculate_rate>0){
+					$success_rate=round($calculate_rate);
+				}
+			}
+			$memberDatacount=getData(array(
+				'select'=>'m_s.member_id',
+				'table'=>'member_statistics as m_s',
+				'where'=>array('m_s.member_id'=>$member_id),
+				'return_count'=>true,
+			));
+			if($memberDatacount){
+				updateTable('member_statistics',array('success_rate'=>$success_rate),array('member_id'=>$member_id));
+			}else{
+				insert_record('member_statistics',array('member_id'=>$member_id,'success_rate'=>$success_rate),TRUE);
+			}
+		}
+	}
+}	
 if ( ! function_exists('updateMemberEarning'))
 {
 	function updateMemberEarning($member_id=''){

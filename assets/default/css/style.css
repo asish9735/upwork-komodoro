@@ -1252,7 +1252,9 @@ ul.list-group-0 > li{
     color:var(--siteColor);
     font-size: 2.5rem;
 }
-
+.findtalentpage .slider .tooltip{
+	z-index: 999;
+}
 
 
 

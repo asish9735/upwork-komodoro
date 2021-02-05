@@ -15,9 +15,9 @@ $sub_total=0;
 	================================================== -->
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner" >		
-			<!--<div class="dashboard-headline">
-				<h3>My Favourite</h3>				
-			</div>-->
+			<div class="dashboard-headline">
+				<h3>Add fund to your wallet</h3>				
+			</div>
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
 			<h3>Amount</h3>

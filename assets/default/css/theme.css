@@ -12396,7 +12396,7 @@ ul.dashboard-box-list > li:hover {
 	margin-top: -2px;
 	display: block;
 }
-.paid, .unpaid {
+.paid, .unpaid ,.waitingcolor{
 	background-color: #333;
 	color: #fff;
 	border-radius: 0.25rem;
@@ -12411,6 +12411,9 @@ ul.dashboard-box-list > li:hover {
 }
 .unpaid {
 	background-color: #dc3139;
+}
+.waitingcolor {
+	background-color: #ffc107;
 }
 /* Listings in Dashboard
 ------------------------------------- */

@@ -52,7 +52,7 @@ class Profileview extends MX_Controller {
 		}
 		$this->data['login_user_id']=$log_member_id;
 		$memberDataBasic=getData(array(
-				'select'=>'m.member_name,m_b.member_heading,m_b.member_overview,m_b.member_hourly_rate,m_b.available_per_week,m_b.not_available_until,c_n.country_name,c.country_code_short,m_l.logo,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews,m_s.total_working_hour',
+				'select'=>'m.member_name,m_b.member_heading,m_b.member_overview,m_b.member_hourly_rate,m_b.available_per_week,m_b.not_available_until,c_n.country_name,c.country_code_short,m_l.logo,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews,m_s.total_working_hour,m_s.success_rate',
 				'table'=>'member as m',
 				'join'=>array(array('table'=>'member_basic as m_b','on'=>'m.member_id=m_b.member_id','position'=>'left'),array('table'=>'member_statistics m_s','on'=>'m.member_id=m_s.member_id','position'=>'left'),array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),array('table'=>'country_names as c_n','on'=>'c.country_code=c_n.country_code','position'=>'left'),array('table'=>'member_logo as m_l','on'=>'(m.member_id=m_l.member_id and m_l.status=1)','position'=>'left'),),
 				'where'=>array('m.member_id'=>$member_id,'c_n.country_lang'=>get_active_lang()),

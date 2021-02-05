@@ -15,7 +15,7 @@ class Findtalents_model extends CI_Model {
 	public function getTalentList($srch=array(), $limit=0, $offset=10, $for_list=TRUE){
 		$this->load->model('skill_model');
 		
-		$this->db->select("m.member_id,m.member_name,m.member_username,m.member_register_date,m_b.member_heading,m_b.member_overview,m_b.member_hourly_rate,c_n.country_name,c.country_code_short,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews")
+		$this->db->select("m.member_id,m.member_name,m.member_username,m.member_register_date,m_b.member_heading,m_b.member_overview,m_b.member_hourly_rate,c_n.country_name,c.country_code_short,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews,m_s.success_rate")
 			->from("member m")
 			->join("access_panel a", "m.access_user_id=a.access_user_id", "LEFT")
 			->join("member_address m_a", "m_a.member_id=m.member_id", "LEFT")
@@ -43,14 +43,17 @@ class Findtalents_model extends CI_Model {
 		if(!empty($srch['job_type'])){
 			$this->db->where('p_s.project_type_code', $srch['job_type']);
 		}
-		
+		 */
+		if(!empty($srch['country'])){
+			$this->db->where("m_a.member_country", $srch['country']);
+		}
 		if(!empty($srch['min']) && $srch['min'] > 0){
-			$this->db->where('p_s.budget >=', $srch['min']);
+			$this->db->where('m_b.member_hourly_rate >=', $srch['min']);
 		}
 		
 		if(!empty($srch['max']) && $srch['max'] > 0){
-			$this->db->where('p_s.budget <=', $srch['max']);
-		} */
+			$this->db->where('m_b.member_hourly_rate <=', $srch['max']);
+		}
 		
 		if(!empty($srch['term'])){
 			$this->db->like('m.member_name', $srch['term']);

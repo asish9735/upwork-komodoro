@@ -28,6 +28,8 @@
 							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> Finance</a>
 								<ul>
 									<li><a href="<?php D(get_link('AddFundURL'))?>">Add Fund</a></li>
+									<li><a href="<?php D(get_link('TransactionHistoryURL'))?>">Transaction</a></li>
+									<li><a href="<?php D(get_link('WithdrawURL'))?>">Withdraw</a></li>
 									<li><a href="<?php D(get_link('InvoiceURL'))?>">Invoice</a></li>
 								</ul>	
 							</li>
