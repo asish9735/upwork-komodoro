@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($all_projects,TRUE);
 if($all_projects){
 	foreach($all_projects as $p=>$projectDetails){
+		$edit_link=get_link('editprojectURL').'/'.md5($projectDetails->project_id).'/'.md5('UPW'.'-'.date("Y-m-d").'-'.md5($projectDetails->project_id));
 		if($projectDetails->project_status==PROJECT_DRAFT){
 			$link=get_link('editprojectURL');
 		}else{
@@ -47,7 +48,7 @@ $status=getAllProjectStatus($projectDetails->project_status);
 				<!-- Buttons -->
                 <div class="buttons-to-right_ always-visible_">
                     <a href="<?php D($link_bid);?>" class="btn btn-sm btn-site <?php if($projectDetails->project_status==PROJECT_DRAFT){ D('disabled');}?>"><i class="icon-material-outline-supervisor-account"></i> Manage Bidders <span class="button-info"><?php D($projectDetails->bids);?></span></a>
-                    <a href="#" class="btn btn-sm btn-secondary ico" data-tippy-placement="top"title="Edit"><i class="icon-feather-edit"></i></a>
+                    <a href="<?php echo $edit_link;?>" class="btn btn-sm btn-secondary ico" data-tippy-placement="top"title="Edit"><i class="icon-feather-edit"></i></a>
                     <a href="#" class="btn btn-sm btn-danger ico" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
                 </div>
 		</div>

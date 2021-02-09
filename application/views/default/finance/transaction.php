@@ -84,7 +84,9 @@ $currency=priceSymbol();
 					?>
 					<li>
 						<div class="invoice-list-item">
-						<strong><?php echo $row['name']?></strong>
+						<strong><?php //echo $row['name'];
+						echo $row['description'];
+						?></strong>
 							<ul>
 								
 								<li><span class="<?php echo $color;?>"><?php echo $status_name;?></span>

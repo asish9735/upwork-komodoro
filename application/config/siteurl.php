@@ -92,6 +92,7 @@ $config['postprojectURL'] = 'postproject/add';
 $config['postprojectFormCheckAJAXURL'] = 'postproject/post_project_form_check';
 $config['uploadFileFormCheckAJAXURL'] = 'postproject/uploadattachment';
 $config['postprojectSuccessURL'] = 'postproject/success';
+$config['editprojectURL'] = 'postproject/edit';
 
 
 $config['myProjectDetailsURL'] = 'p';

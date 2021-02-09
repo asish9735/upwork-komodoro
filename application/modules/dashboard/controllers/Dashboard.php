@@ -27,15 +27,50 @@ class Dashboard extends MX_Controller {
 				'mycustom.js',
 				//'chart.min.js',
 			));
+			$this->data['currency']=priceSymbol();
 			$this->data['is_email_verified']=getFieldData('is_email_verified','member','member_id',$this->member_id);
 			$this->data['is_doc_verified']=getFieldData('is_doc_verified','member','member_id',$this->member_id);
+
+			$limit = 0;
+			$offset = 10;
+			$this->load->model('notification/notification_model','notification_model');
+			$this->data['notification_list'] = $this->notification_model->getNotificationList($this->member_id,$limit, $offset);
+			if($this->access_member_type=='F'){
+				$srch['contractor_id'] = $this->member_id;
+			}else{
+				$srch['owner_id'] = $this->member_id;
+			}
+			$srch['contract_status'] = 1;
+			$this->load->model('contract/contract_model','contract_model');
+			$this->data['contract_list'] = $this->contract_model->getContracts($srch, $limit, $offset);
+
+
 			if($this->access_member_type=='F'){
 				$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
+				$layout_tempate='freelancer';
+				$memberDataBasic=getData(array(
+					'select'=>'m.member_name,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews,m_s.total_working_hour,m_s.success_rate',
+					'table'=>'member as m',
+					'join'=>array(array('table'=>'member_statistics m_s','on'=>'m.member_id=m_s.member_id','position'=>'left'),array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),array('table'=>'country_names as c_n','on'=>'c.country_code=c_n.country_code','position'=>'left'),array('table'=>'member_logo as m_l','on'=>'(m.member_id=m_l.member_id and m_l.status=1)','position'=>'left'),),
+					'where'=>array('m.member_id'=>$this->member_id),
+					'single_row'=>true,
+				));	
+				$this->data['memberInfo']=$memberDataBasic;
+				$this->data['memberInfo']->total_jobs=$this->db->where(array('c.contractor_id'=>$this->member_id,'c.contract_status'=>1))->from('project_contract as c')->count_all_results();
 			}else{
 				$this->data['is_doc_verified']=1;
 				$this->data['left_panel']=$this->layout->view('inc/client-setting-left',$this->data,TRUE,TRUE);
+				$layout_tempate='employer';
+				$memberDataBasic=getData(array(
+					'select'=>'m.member_name,m_s.avg_rating,m_s.total_spent,m_s.no_of_reviews',
+					'table'=>'member as m',
+					'join'=>array(array('table'=>'member_statistics m_s','on'=>'m.member_id=m_s.member_id','position'=>'left'),array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),array('table'=>'country_names as c_n','on'=>'c.country_code=c_n.country_code','position'=>'left'),array('table'=>'member_logo as m_l','on'=>'(m.member_id=m_l.member_id and m_l.status=1)','position'=>'left'),),
+					'where'=>array('m.member_id'=>$this->member_id),
+					'single_row'=>true,
+				));	
+				$this->data['memberInfo']=$memberDataBasic;
 			}
-			$this->layout->view('dashboard', $this->data);
+			$this->layout->view('dashboard-'.$layout_tempate, $this->data);
 		}
 	}
 	public function verifydocument()

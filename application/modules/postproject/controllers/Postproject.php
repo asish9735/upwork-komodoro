@@ -61,6 +61,69 @@ class Postproject extends MX_Controller {
 			}
 		}	
 	}
+	public function edit($md5id='',$token='')
+	{
+		if($this->access_member_type=='F'){
+			redirect(get_link('dashboardURL'));
+		}
+		$this->data['itemid']=$md5id;	
+		$verify_token=md5('UPW'.'-'.date("Y-m-d").'-'.$md5id);
+		$this->layout->set_js(array(
+				'utils/helper.js',
+				'mycustom.js',
+				'bootstrap-tagsinput.min.js',
+				'typeahead.bundle.min.js',
+				'upload-drag-file.js'
+			));
+		$this->layout->set_css(array(
+				'bootstrap-tagsinput.css'
+			));
+			
+				
+		if($this->loggedUser){
+			$member_id=$this->member_id;	
+			if($verify_token==$token){	
+				$arr=array(
+					'select'=>'p.project_id,p.project_url,p.project_title,p.project_posted_date,p.project_expired_date,p.project_status',
+					'table'=>'project as p',
+					'join'=>array(
+						array('table'=>'project_owner as p_o','on'=>'p.project_id=p_o.project_id','position'=>'left'),
+					),
+					'where'=>array('p.project_status <>'=>PROJECT_DELETED,'p_o.member_id'=>$member_id),
+					'single_row'=>true,
+					);
+				$arr['where']['md5(p.project_id)']=$md5id;
+				$ProjectDataBasic=getData($arr);
+				if($ProjectDataBasic){
+					$project_id=$ProjectDataBasic->project_id;
+					$this->data['projectData']=getProjectDetails($project_id);
+				}else{
+					redirect(get_link('dashboardURL'));
+				}
+			}else{
+				redirect(get_link('dashboardURL'));
+			}
+			
+			$memberData=getData(array(
+				'select'=>'o.organization_name,o.organization_email,m.member_name,m.member_email,o_l.logo',
+				'table'=>'member as m',
+				'join'=>array(array('table'=>'organization as o','on'=>'m.member_id=o.member_id','position'=>'left'),array('table'=>'organization_logo as o_l','on'=>'(o.organization_id=o_l.organization_id and o_l.status=1)','position'=>'left')),
+				'where'=>array('m.member_id'=>$member_id),
+				'single_row'=>true,
+			));	
+			if($memberData){
+				$this->data['organizationInfo']=$memberData;
+				$this->data['all_category']=getAllCategory();
+				$this->data['all_projectType']=getAllProjectType();
+				$this->data['all_projectExperienceLevel']=getAllExperienceLevel();
+				$this->data['all_projectDuration']=getAllProjectDuration();
+				$this->data['all_projectDurationTime']=getAllProjectDurationTime();
+				$this->data['all_skills']=getAllSkills();
+				//$this->data['left_panel']=load_view('inc/client-setting-left','',TRUE);
+				$this->layout->view('post-project', $this->data);
+			}
+		}	
+	}
 	public function uploadattachment(){
 		if($this->loggedUser){
 		$config['upload_path']          = TMP_UPLOAD_PATH;
@@ -96,6 +159,8 @@ class Postproject extends MX_Controller {
 			redirect(get_link('dashboardURL'));
 		}
 		$i=0;
+		$project_id="";
+		$is_edited=0;
 		$msg=array();
 		if($this->loggedUser){
 		$member_id=$this->member_id;	
@@ -103,6 +168,31 @@ class Postproject extends MX_Controller {
 		if($member_id){
 			if($this->input->post()){
 				$dataid=post('dataid');
+				if($dataid){
+					if($member_id){
+						$arr=array(
+							'select'=>'p.project_id',
+							'table'=>'project as p',
+							'join'=>array(
+								array('table'=>'project_owner as p_o','on'=>'p.project_id=p_o.project_id','position'=>'left'),
+							),
+							'where'=>array('p.project_status <>'=>PROJECT_DELETED),
+							'single_row'=>true,
+							);
+						$arr['where']['md5(p.project_id)']=$dataid;
+						$arr['where']['p_o.member_id']=$member_id;
+						$ProjectDataBasic=getData($arr);
+						if($ProjectDataBasic){
+							$project_id=$ProjectDataBasic->project_id;
+							$is_edited=1;
+						}else{
+							show_404();
+						}
+					}else{
+						show_404();
+					}
+				}
+
 				if($step=='1' || $step=='7')
 				{
 					$this->form_validation->set_rules('title', 'Title', 'required|trim|xss_clean');

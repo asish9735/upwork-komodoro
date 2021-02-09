@@ -87,10 +87,47 @@ class Finance extends MX_Controller {
 		$this->data['total_credit']=$this->finance_model->wallet_credit_balance($wallet_id);
 		$this->data['current_balance']=$balance;
 		$srch['wallet_id'] = $wallet_id;
+		if($this->input->get('searchdate')){
+			$searchdates=explode(' - ',$this->input->get('searchdate'));
+			$srch['txn_from']=$searchdates[0];
+			$srch['txn_to']=$searchdates[1];
+			
+		}
+		
 
 
 		$this->data['list'] = $this->finance_model->getTransaction($srch, $limit, $offset);
 		$this->data['list_total'] = $this->finance_model->getTransaction($srch, $limit, $offset, FALSE);
+
+		$CSV=$this->input->get('CSV');
+		if($CSV==1){
+			$this->load->helper('csv');	
+			$csvarr[]=array('Transaction ID', 'Detail', 'Create Date', 'Transaction Date','Debit', 'Credit','Status');
+			$list=$this->data['list'];
+			if($list){
+				foreach($list as $k=>$v){
+					//print_r($v);
+					$status = '';
+					$debit=$credit=0;
+					if($v['status'] == '1'){
+						$status = 'Active';
+					}else if($v['status'] == '0'){
+						$status = 'Pending';
+					}else if($v['status'] == '2'){
+						$status = 'Deleted';
+					}
+					if($v['Amount']>0){
+						$credit=abs($v['Amount']);
+					}else{
+						$debit=abs($v['Amount']);
+					}
+					$csvarr[]=array($v['wallet_transaction_id'],$v['description'], $v['created_date'],$v['transaction_date'],$debit, $credit,$status);
+				}
+			}
+			$file_name='Transaction-List-'.date("dmY").'.csv';
+			array_to_csv($csvarr, $file_name);
+			die;
+		}
 		
 		/*Pagination Start*/
 		$config['base_url'] = get_link('TransactionHistoryURL');
