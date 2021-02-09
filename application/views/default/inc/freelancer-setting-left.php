@@ -1,5 +1,24 @@
-<!-- Dashboard Sidebar
-	================================================== -->
+<?php
+$loggedUser=$this->session->userdata('loggedUser');
+if($loggedUser){
+	$profile_name='';
+	$this->access_user_id=$loggedUser['LID'];	
+	$this->access_member_type=$loggedUser['ACC_P_TYP'];
+	$this->member_id=$loggedUser['MID'];
+	$this->organization_id=$loggedUser['OID'];
+	$member_name=getFieldData('member_name','member','member_id',$this->member_id);
+	if($this->access_member_type=='C'){
+		$logo=getCompanyLogo($this->organization_id);
+		$organization_name=getFieldData('organization_name','organization','member_id',$this->member_id);
+		$profile_name=($organization_name  ? $organization_name:$member_name);
+	}else{
+		$logo=getMemberLogo($this->member_id);
+		$profile_name=$member_name;
+	}
+	$profile_type_name=($this->access_member_type =='C'  ? "Client":"Freelancer");
+}
+?>
+<!-- Dashboard Sidebar -->
 	<div class="dashboard-sidebar" data-simplebar>
 		<div class="dashboard-sidebar-inner" >
 			<div class="dashboard-nav-container">
@@ -13,7 +32,26 @@
 					</span>
 					<span class="trigger-title">Dashboard Navigation</span>
 				</a>
-				
+				<div class="profile">
+                	<img src="<?php echo $logo;?>" alt="user" class="rounded-circle" />
+                    <!--<span class="verified-badge"></span>-->
+                </div>
+                <div class="profile-details">
+                	<div class="text-center">
+                    <h4><?php echo $profile_name;?> <img class="flag" src="<?php echo IMAGE;?>flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top" height="15"></h4>
+                    <div class="star-rating mb-2" data-rating="3.5"></div>
+                    <div class="mb-2">
+                    <img src="<?php echo IMAGE;?>badge-award.png" alt="Badge Award" height="26" width="26" data-tippy-placement="top" title="Badge Award"  /> &nbsp;
+                    <img src="<?php echo IMAGE;?>badge-security.png" alt="Badge Security" height="26" width="26" data-tippy-placement="top" title="Badge Security"  /> &nbsp;
+                    <img src="<?php echo IMAGE;?>badge-verified.png" alt="Badge Award" height="26" width="26" data-tippy-placement="top" title="Badge Award"  /> &nbsp;
+                    <img src="<?php echo IMAGE;?>badge-winner.png" alt="Badge Award" height="26" width="26" data-tippy-placement="top" title="Badge Award"  />
+                    </div>
+                    </div>
+                    <h5><i class="icon-feather-clock text-info"></i> <?php echo CURRENCY;?>20/hr &nbsp; <span class="text-muted">|</span> &nbsp; <i class="icon-feather-calendar text-primary"></i> <b>30hr/week</b> </h5>
+                    <h5><i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b>1500</b></h5>
+                    <a href="<?php echo URL::get_link('myprofileAJAXURL');?>" class="btn btn-site btn-block">My Profile</a>
+                    
+                </div>
 				<!-- Navigation -->
 				<div class="dashboard-nav">
 					<div class="dashboard-nav-inner">

@@ -95,8 +95,8 @@ if($loggedUser){
 								</button>
 							</div>                            
 							<div class="header-notifications-content">
-								<div class="header-notifications-scroll">
-									<ul id="header-notification-list" style="max-height:200px; overflow: auto;">
+								<div class="header-notifications-scroll" data-simplebar>
+									<ul id="header-notification-list">
 										
 									</ul>
 									<a id="load_more_notification_btn" href="javascript:void(0)" style="display:none;">Load more</a>
@@ -122,8 +122,8 @@ if($loggedUser){
 							</div>
 
 							<div class="header-notifications-content with-icon">
-								<div class="header-notifications-scroll" id="header-message-container">
-									<ul id="header-message-list" style="max-height:200px; overflow: auto;">
+								<div class="header-notifications-scroll" id="header-message-container" data-simplebar>
+									<ul id="header-message-list">
 										
 									</ul>
 									<a id="load_more_msg_btn" href="javascript:void(0)" style="display:none;">Load more</a>

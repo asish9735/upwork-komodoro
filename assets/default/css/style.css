@@ -1255,7 +1255,26 @@ ul.list-group-0 > li{
 .findtalentpage .slider .tooltip{
 	z-index: 999;
 }
-
+.profile {
+    background-color: #eee;
+    border-radius: 50%;
+    margin: 1rem auto 0.5rem;
+    height: 128px;
+    width: 128px;
+    vertical-align: middle;
+	position:relative;
+}
+.profile-details{
+	padding:0 1.25rem;
+}
+.profile-details > p{
+	margin-bottom:0.5rem;
+}
+.profile .verified-badge{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
 
 
 
