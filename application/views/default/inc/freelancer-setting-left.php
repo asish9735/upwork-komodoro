@@ -16,6 +16,22 @@ if($loggedUser){
 		$profile_name=$member_name;
 	}
 	$profile_type_name=($this->access_member_type =='C'  ? "Client":"Freelancer");
+	$badges =getData(array(
+		'select'=>'b.icon_image,b_n.name,b_n.description',
+		'table'=>'member_badges as m',
+		'join'=>array(array('table'=>'badges as b','on'=>'m.badge_id=b.badge_id','position'=>'left'),array('table'=>'badges_names as b_n','on'=>"(b.badge_id=b_n.badge_id and b_n.lang='".get_active_lang()."')",'position'=>'left')),
+		'where'=>array('m.member_id'=>$this->member_id,'b.status'=>1),
+		'order'=>array(array('b.display_order','asc')),
+	));
+	$memberDataBasic=getData(array(
+		'select'=>'m_b.member_hourly_rate,m_b.available_per_week,m_b.not_available_until,m_s.avg_rating,',
+		'table'=>'member as m',
+		'join'=>array(array('table'=>'member_basic as m_b','on'=>'m.member_id=m_b.member_id','position'=>'left'),array('table'=>'member_statistics m_s','on'=>'m.member_id=m_s.member_id','position'=>'left')),
+		'where'=>array('m.member_id'=>$this->member_id),
+		'single_row'=>true,
+	));	
+	$memberDataBasic->badges=$badges;
+	$memberDataBasic->balance=getFieldData('balance','wallet','user_id',$this->member_id);
 }
 ?>
 <!-- Dashboard Sidebar -->
@@ -33,22 +49,44 @@ if($loggedUser){
 					<span class="trigger-title">Dashboard Navigation</span>
 				</a>
 				<div class="profile">
-                	<img src="<?php echo $logo;?>" alt="user" class="rounded-circle" />
+                	<img src="<?php echo $logo;?>" alt="<?php echo $profile_name;?>" class="rounded-circle" />
                     <!--<span class="verified-badge"></span>-->
                 </div>
-                <div class="profile-details">
-                	<div class="text-center">
-                    <h4><?php echo $profile_name;?> <img class="flag" src="<?php echo IMAGE;?>flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top" height="15"></h4>
-                    <div class="star-rating mb-2" data-rating="3.5"></div>
+                <div class="profile-details text-center">
+                	<div class="">
+                    <h4><?php echo $profile_name;?></h4>
+                    <div class="star-rating mb-2" data-rating="<?php echo round($memberDataBasic->avg_rating,1);?>"></div>
+					<?php if($memberDataBasic->badges){?>
                     <div class="mb-2">
-                    <img src="<?php echo IMAGE;?>badge-award.png" alt="Badge Award" height="26" width="26" data-tippy-placement="top" title="Badge Award"  /> &nbsp;
-                    <img src="<?php echo IMAGE;?>badge-security.png" alt="Badge Security" height="26" width="26" data-tippy-placement="top" title="Badge Security"  /> &nbsp;
-                    <img src="<?php echo IMAGE;?>badge-verified.png" alt="Badge Award" height="26" width="26" data-tippy-placement="top" title="Badge Award"  /> &nbsp;
-                    <img src="<?php echo IMAGE;?>badge-winner.png" alt="Badge Award" height="26" width="26" data-tippy-placement="top" title="Badge Award"  />
+					<?php
+					foreach($memberDataBasic->badges as $b=>$badge){
+						$badge_icon=UPLOAD_HTTP_PATH.'badge-icons/'.$badge->icon_image;
+					?>
+						<img src="<?php echo $badge_icon;?>" alt="<?php echo $badge->name;?>" height="26" width="26" data-tippy-placement="top" title="<?php echo $badge->name;?>"  /> &nbsp;
+					<?php
+					}
+					?>
+                   </div>
+					<?php }?>
                     </div>
-                    </div>
-                    <h5><i class="icon-feather-clock text-info"></i> <?php echo CURRENCY;?>20/hr &nbsp; <span class="text-muted">|</span> &nbsp; <i class="icon-feather-calendar text-primary"></i> <b>30hr/week</b> </h5>
-                    <h5><i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b>1500</b></h5>
+					
+                    <h5>
+					<i class="icon-feather-clock text-info"></i> <?php if($memberDataBasic->member_hourly_rate && $memberDataBasic->member_hourly_rate>0){D(CURRENCY.priceFormat($memberDataBasic->member_hourly_rate).'/hr');}else{D('Not set');}?> &nbsp; <span class="text-muted">|</span> &nbsp; 
+					<i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php D(priceFormat($memberDataBasic->balance));?></b>
+					<?php /*<i class="icon-feather-calendar text-primary"></i> 
+					<b>
+					<?php if($memberDataBasic->not_available_until){
+                    		echo 'Offline till '.dateFormat($memberDataBasic->not_available_until);
+                    	}elseif($memberDataBasic->available_per_week){
+	                    	$duration=getAllProjectDurationTime($memberDataBasic->available_per_week);
+	                    	D($duration['freelanceName']);
+                    	}else{
+                    		D('Not set');
+                    	}?>
+					
+					</b>  */?>
+					</h5>
+                    <!-- <h5><i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b>1500</b></h5> -->
                     <a href="<?php echo URL::get_link('myprofileAJAXURL');?>" class="btn btn-site btn-block">My Profile</a>
                     
                 </div>

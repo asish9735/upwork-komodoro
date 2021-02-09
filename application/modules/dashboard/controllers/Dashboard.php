@@ -16,16 +16,18 @@ class Dashboard extends MX_Controller {
 		}
 		$this->data['curr_class'] = $this->router->fetch_class();
 		$this->data['curr_method'] = $this->router->fetch_method();
+		$this->load->model('dashboard_model');
 		parent::__construct();
 	}
 	public function index()
 	{
 		if($this->loggedUser){
+			$wallet_id=0;
 			$this->layout->set_js(array(
 				'utils/helper.js',
 				'bootbox_custom.js',
 				'mycustom.js',
-				//'chart.min.js',
+				'chart.min.js',
 			));
 			$this->data['currency']=priceSymbol();
 			$this->data['is_email_verified']=getFieldData('is_email_verified','member','member_id',$this->member_id);
@@ -43,7 +45,11 @@ class Dashboard extends MX_Controller {
 			$srch['contract_status'] = 1;
 			$this->load->model('contract/contract_model','contract_model');
 			$this->data['contract_list'] = $this->contract_model->getContracts($srch, $limit, $offset);
-
+			$this->data['member_wallet']=getWalletMember($this->member_id);
+			if($this->data['member_wallet']){
+				$wallet_id=$this->data['member_wallet']->wallet_id;
+				$balance=$this->data['member_wallet']->balance;
+			}
 
 			if($this->access_member_type=='F'){
 				$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
@@ -57,6 +63,11 @@ class Dashboard extends MX_Controller {
 				));	
 				$this->data['memberInfo']=$memberDataBasic;
 				$this->data['memberInfo']->total_jobs=$this->db->where(array('c.contractor_id'=>$this->member_id,'c.contract_status'=>1))->from('project_contract as c')->count_all_results();
+				$this->data['bid_invitation_list']=$this->dashboard_model->getBidInvitation($srch, $limit, $offset);
+				$srch['contract_status'] = 0;
+				$this->data['offer_invitation_list']=$this->contract_model->getContracts($srch, $limit, $offset);
+				$this->data['line_chart_earning']=$this->dashboard_model->getEarningGraph($wallet_id);
+				$this->data['pie_chart_project']=$this->dashboard_model->getprojectGraphFreelancer($this->member_id);
 			}else{
 				$this->data['is_doc_verified']=1;
 				$this->data['left_panel']=$this->layout->view('inc/client-setting-left',$this->data,TRUE,TRUE);
@@ -69,6 +80,16 @@ class Dashboard extends MX_Controller {
 					'single_row'=>true,
 				));	
 				$this->data['memberInfo']=$memberDataBasic;
+				$srch=array();
+				$srch['owner_id'] = $this->member_id;
+				$srch['contract_status'] = 1;
+				$srch['show'] = 'pending';
+				$this->data['memberInfo']->open_contract=$this->contract_model->getContracts($srch, '','',false);
+				$srch['show'] = 'completed';
+				$this->data['memberInfo']->complete_contract=$this->contract_model->getContracts($srch, '','',false);
+
+				$this->data['line_chart_spent']=$this->dashboard_model->getSpentGraph($wallet_id);
+				$this->data['pie_chart_project']=$this->dashboard_model->getprojectGraphEmployer($this->member_id);
 			}
 			$this->layout->view('dashboard-'.$layout_tempate, $this->data);
 		}

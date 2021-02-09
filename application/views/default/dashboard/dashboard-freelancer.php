@@ -7,7 +7,7 @@
 
 <div class="dashboard-container"> <?php echo $left_panel;?> 
   <!-- Dashboard Content -->
-  <div class="dashboard-content-container" >
+  <div class="dashboard-content-container " >
     <div class="dashboard-content-inner">
       <?php if(!$is_email_verified){?>
       <div class="mx-auto alert alert-warning text-center">
@@ -40,6 +40,121 @@
           </div>
         </div>
       </div>
+<?php  if($offer_invitation_list){?>
+      <div class="dashboard-box "> 
+        <!-- Headline -->
+        <div class="headline">
+          <h3>Invitation for offer</h3>
+        </div>
+        <div class="content">
+          <ul class="dashboard-box-list">
+          <?php foreach($offer_invitation_list as $k => $v){ 
+								$contract_details_url=get_link('OfferDetails').'/'.md5($v['contract_id']);
+					?>
+              <li>
+									<!-- Job Listing -->
+									<div class="job-listing width-adjustment">
+
+										<!-- Job Listing Details -->
+										<div class="job-listing-details">
+											<!-- Details -->
+											<div class="job-listing-description">
+												<h3 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
+												<?php if($v['contract_status']==1){?>
+												<span class="dashboard-status-button green">Approved</span>
+												<?php }elseif($v['contract_status']==2){?>
+												<span class="dashboard-status-button red">Rejected</span>
+												<?php }elseif($v['contract_status']==0){?>
+												<span class="dashboard-status-button yellow">Pending</span>
+												<?php }?>
+												</h3>
+
+												<!-- Job Listing Footer -->
+												<div class="job-listing-footer">
+													<ul>
+														<li><b>Budget:</b> <?php D($currency.$v['contract_amount']);?><?php if($v['is_hourly']==1){echo'/hr';}?></li>
+														<li><b>Date:</b> <?php D($v['contract_date']);?></li>
+														
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Buttons -->
+									<div class="buttons-to-right single-right-button always-visible">
+										<a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
+											<i class="icon-feather-eye"></i>
+										</a>
+									</div>									
+								</li>
+          <?php 
+              }
+          ?>
+          </ul>
+        </div>
+      </div>
+<?php
+}
+?>
+<?php  if($bid_invitation_list){?>
+      <div class="dashboard-box "> 
+        <!-- Headline -->
+        <div class="headline">
+          <h3>Invitation for bids</h3>
+        </div>
+        <div class="content">
+          <ul class="dashboard-box-list">
+          <?php foreach($bid_invitation_list as $k => $v){ 
+							 $url=get_link('myProjectDetailsURL')."/".$v['project_url'];
+					?>
+ <li>
+									<!-- Job Listing -->
+									<div class="job-listing width-adjustment">
+
+										<!-- Job Listing Details -->
+										<div class="job-listing-details">
+											<!-- Details -->
+											<div class="job-listing-description">
+												<h3 class="job-listing-title"><a href="<?php echo $url;?>"><?php echo $v['project_title']; ?></a>
+                        <?php if($v['is_hourly']){?>
+                        <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
+                        <?php }else{?>
+                        <span class="dashboard-status-button green"><?php D('Fixed');?></span>
+                        <?php }?>
+                        <?php if($v['bid_id']){?>
+                          <span class="dashboard-status-button green">Already Bid</span>
+                        <?php }else{?>
+                          <span class="dashboard-status-button yellow">Pending</span>
+                        <?php }?>
+												</h3>
+
+												<!-- Job Listing Footer -->
+												<div class="job-listing-footer">
+													<ul>
+                            <li><i class="icon-material-outline-access-time"></i> Posted <?php D(get_time_ago($v['project_posted_date']));?></li>
+						                <li><b>Date:</b> <?php D($v['invite_date']);?></li>
+														
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Buttons -->
+									<div class="buttons-to-right single-right-button always-visible">
+										<a href="<?php echo $url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
+											<i class="icon-feather-eye"></i>
+										</a>
+									</div>									
+								</li>
+
+          <?php 
+             }   
+          ?>
+          </ul>
+        </div>
+      </div>
+<?php }?>
+
       <div class="dashboard-box "> 
         <!-- Headline -->
         <div class="headline">
@@ -168,43 +283,36 @@
       <div class="row margin-top-10">
         <div class="col-md-6"> 
           <!-- Dashboard Box -->
-          <div class="dashboard-box main-box-in-row mb-4 mt-0">
-            <div class="headline">
-              <h3>My Project Report</h3>
-              <div class="sort-by">
-                <select class="selectpicker hide-tick">
-                  <option>Last 6 Months</option>
-                  <option>This Year</option>
-                  <option>This Month</option>
-                </select>
-              </div>
-            </div>
-            <div class="content"> 
-              <!-- Chart -->
-              <div class="chart">
-                <div id="splineChartContainer" style="height: 300px; max-width: 500px; margin: 0px auto;"></div>
-              </div>
-            </div>
-          </div>
+          <div class="dashboard-box main-box-in-row">
+						<div class="headline">
+							<h3><i class="icon-feather-bar-chart-2"></i> Earning Statics</h3>
+							<div class="sort-by" hidden>
+								<select class="selectpicker hide-tick">
+									<option>Last 6 Months</option>
+									<option>This Year</option>
+									<option>This Month</option>
+								</select>
+							</div>
+						</div>
+						<div class="content">
+							<!-- Chart -->
+							<div class="chart">
+								<canvas id="chart"></canvas>
+							</div>
+						</div>
+					</div>
           <!-- Dashboard Box / End --> 
         </div>
         <div class="col-md-6"> 
           <!-- Dashboard Box -->
-          <div class="dashboard-box main-box-in-row mb-4 mt-0">
+          <div class="dashboard-box main-box-in-row">
             <div class="headline">
-              <h3>My Works Statics</h3>
-              <div class="sort-by">
-                <select class="selectpicker hide-tick">
-                  <option>Last 6 Months</option>
-                  <option>This Year</option>
-                  <option>This Month</option>
-                </select>
-              </div>
+              <h3><i class="icon-feather-pie-chart-2"></i> Project Statics</h3>
             </div>
             <div class="content"> 
               <!-- Chart -->
               <div class="chart">
-                <div id="pieChartContainer" style="height: 300px; max-width: 500px; margin: 0px auto;"></div>
+              <canvas id="chartpie"></canvas>
               </div>
             </div>
           </div>
@@ -218,87 +326,7 @@
 </div>
 <!-- Dashboard Container / End --> 
 
-<script>
-window.onload = function () {
-
-var chart_9645123 = new CanvasJS.Chart("splineChartContainer", {
-	animationEnabled: true,  
-	/*title:{
-		text: "Music Album Sales by Year"
-	},*/
-	axisX: {
-		valueFormatString: "MMMM"
-	},
-	axisY: {
-		//title: "Units Sold",
-		//valueFormatString: "#0",
-		//suffix: "mn",
-		stripLines: [{
-			value: 250,
-			label: "Average"
-		}]
-	},
-	data: [{
-		yValueFormatString: "#,### Units",
-		xValueFormatString: "YYYY",
-		type: "splineArea",
-		lineColor: '#64be43',
-		color: "rgba(100,190,67,0.25)",
-		markerSize: 10,		
-		markerColor: "#64be43",
-		dataPoints: [
-			{x: new Date(2021, 0, 0), y: 103},
-			{x: new Date(2021, 1, 0), y: 300},
-			{x: new Date(2021, 2, 0), y: 254},
-			{x: new Date(2021, 3, 0), y: 239},
-			{x: new Date(2021, 4, 0), y: 201},
-			{x: new Date(2021, 5, 0), y: 282},
-			{x: new Date(2021, 6, 0), y: 450}
-		]
-	}]
-});
-chart_9645123.render();
-
-
-
-var chart_47456512 = new CanvasJS.Chart("pieChartContainer", {
-	//exportEnabled: true,
-	animationEnabled: true,
-	/*title:{
-		text: "State Operating Funds"
-	},*/
-	legend:{
-		cursor: "pointer",
-		itemclick: explodePie
-	},
-	data: [{
-		type: "pie",
-		showInLegend: true,
-		toolTipContent: "{name}: <strong>{y}%</strong>",
-		//indexLabel: "{name} - {y}%",
-		dataPoints: [
-			{ y: 50, name: 'Open Jobs', exploded: true },
-			{ y: 10, name: 'Pending Jobs' },
-			{ y: 20, name: 'Completed Jobs' },
-			{ y: 35, name: 'Available Bids' }
-		]
-	}]
-});
-chart_47456512.render();
-}			
-			
-function explodePie (e) {
-	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
-		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
-	} else {
-		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
-	}
-	e.chart_47456512.render();
-
-}
-</script> 
-
-<!--<script type="text/javascript">
+<script type="text/javascript">
 var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 	var main=function(){
 		$('.resendEmail').click(function(){
@@ -343,5 +371,110 @@ var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 		}
 	})
 		})
+  }
+  var mainload=function(){
+/*   Chart.defaults.global.defaultFontFamily = "Nunito";
+	Chart.defaults.global.defaultFontColor = '#888';
+	Chart.defaults.global.defaultFontSize = '14'; */
+
+	var ctx = document.getElementById('chart').getContext('2d');
+
+  var chart = new Chart(ctx, {
+		type: 'line',
+
+		// The data for our dataset
+		data: {
+			labels: ["<?php echo implode('","',$line_chart_earning['label'])?>"],
+			// Information about the dataset
+	   		datasets: [{
+				label: "Earn",
+				backgroundColor: 'rgba(42,65,232,0.08)',
+				borderColor: '#2a41e8',
+				borderWidth: "3",
+				data: [<?php echo implode(',',$line_chart_earning['data'])?>],
+				pointRadius: 5,
+				pointHoverRadius:5,
+				pointHitRadius: 10,
+				pointBackgroundColor: "#fff",
+				pointHoverBackgroundColor: "#fff",
+				pointBorderWidth: "2",
+			}]
+		},
+
+		// Configuration options
+		options: {
+      responsive: true,
+		    layout: {
+		      padding: 10,
+		  	},
+			legend: { display: false },
+			title:  { display: false },
+
+			scales: {
+				yAxes: [{
+					scaleLabel: {
+						display: false,
+					},
+          ticks: {
+            beginAtZero: true,
+            //stepSize: 20,
+          },
+					gridLines: {
+						 borderDash: [6, 10],
+						 color: "#d8d8d8",
+						 lineWidth: 1,
+	            	},
+				}],
+				xAxes: [{
+					scaleLabel: { display: false },  
+					gridLines:  { display: false },
+				}],
+			},
+
+		    tooltips: {
+		      backgroundColor: '#333',
+		      titleFontSize: 13,
+		      titleFontColor: '#fff',
+		      bodyFontColor: '#fff',
+		      bodyFontSize: 13,
+		      displayColors: false,
+		      xPadding: 10,
+		      yPadding: 10,
+		      intersect: false,
+          callbacks: {
+            label: function(tooltipItem, data) {
+                var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                if (label) {
+                    label += ': <?php echo $currency;?>';
+                }
+                label += Math.round(tooltipItem.yLabel * 100) / 100;
+                return label;
+            }
+          }
+		    }
+		},
+
+
+});
+
+var ctx_pie = document.getElementById('chartpie').getContext('2d');
+var chart_pie = new Chart(ctx_pie, {
+  type: 'pie',
+			data: {
+				datasets: [{
+					data: [ <?php echo implode(',',$pie_chart_project['data'])?>],
+					backgroundColor: [ "<?php echo implode('","',$pie_chart_project['color'])?>" ],
+					label: 'Dataset 1'
+				}],
+				labels: [ "<?php echo implode('","',$pie_chart_project['label'])?>"]
+			},
+			options: {
+				responsive: true
+			}
+});
+
+
+
 	}
-</script>-->
+</script>
