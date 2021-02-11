@@ -3877,7 +3877,7 @@ text-align: center;
 .job-listing .job-listing-company-logo {
 	flex: 1;
 	max-width: 64px;
-	margin-right: 20px;
+	margin-right: 1rem;
 	position: relative;
 }
 .job-listing .job-listing-company-logo img {
@@ -3902,6 +3902,7 @@ text-align: center;
 .job-listing h4.job-listing-title {
 	font-size: 1.25rem;
 	color: #333;
+	margin-top: -5px;
 	margin-bottom:0
 }
 .job-listing h4 > a,
@@ -3938,7 +3939,6 @@ text-align: center;
 .job-listing .job-listing-footer ul > li > i {
 	position: relative;
 	top: 1px;
-	margin-right: 3px;
 	color: #777;
 }
 
@@ -11938,7 +11938,7 @@ a.dashboard-responsive-nav-trigger {
 	display: flex;
 	flex-wrap: wrap;
 	width: calc(100% + 30px);
-	/*margin-bottom: -30px;*/
+	margin-bottom: -30px;
 }
 .fun-fact {
 	background-color: #fff;
@@ -12166,7 +12166,7 @@ ul.dashboard-box-list {
 ul.dashboard-box-list > li {
 	border-bottom: 1px solid #e4e4e4;
 	padding: 0;
-	padding: 1rem 1.25rem;
+	padding: 0.75rem 1.25rem;
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -12720,12 +12720,12 @@ max-width: 100%
 
 /* Dashbaord Media Queries 
 ------------------------------------- */
- @media (max-width: 1365px) {
+/* @media (max-width: 1365px) {
  .fun-fact {
  flex: 1 1 calc(50% - 30px);
  max-width: calc(50% - 30px);
 }
-}
+}*/
  @media (max-width: 991px) {
  .dashboard-content-inner {
 min-height: auto !important;
@@ -13040,6 +13040,8 @@ width: 17px;
 	left: 30px;
 	top: 50%;
 	transform: translateY(-50%);
+	background-color: #ddd;
+    border-radius: 50%;
 }
 .messages-inbox .message-by {
 	margin-left: 85px;

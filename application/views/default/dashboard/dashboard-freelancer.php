@@ -30,7 +30,12 @@
           </div>
         </div>
         <div class="fun-fact">
-          <div class="fun-fact-text"> <span>Projects</span>
+          <div class="fun-fact-text"> <span>Contracts</span>
+            <h4><strong><?php D($memberInfo->total_jobs);?></strong></h4>
+          </div>
+        </div>
+        <div class="fun-fact">
+          <div class="fun-fact-text"> <span>Offers</span>
             <h4><strong><?php D($memberInfo->total_jobs);?></strong></h4>
           </div>
         </div>
@@ -59,7 +64,7 @@
 										<div class="job-listing-details">
 											<!-- Details -->
 											<div class="job-listing-description">
-												<h3 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
+												<h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
 												<?php if($v['contract_status']==1){?>
 												<span class="dashboard-status-button green">Approved</span>
 												<?php }elseif($v['contract_status']==2){?>
@@ -67,7 +72,7 @@
 												<?php }elseif($v['contract_status']==0){?>
 												<span class="dashboard-status-button yellow">Pending</span>
 												<?php }?>
-												</h3>
+												</h4>
 
 												<!-- Job Listing Footer -->
 												<div class="job-listing-footer">
@@ -115,18 +120,18 @@
 										<div class="job-listing-details">
 											<!-- Details -->
 											<div class="job-listing-description">
-												<h3 class="job-listing-title"><a href="<?php echo $url;?>"><?php echo $v['project_title']; ?></a>
-                        <?php if($v['is_hourly']){?>
-                        <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
-                        <?php }else{?>
-                        <span class="dashboard-status-button green"><?php D('Fixed');?></span>
-                        <?php }?>
-                        <?php if($v['bid_id']){?>
-                          <span class="dashboard-status-button green">Already Bid</span>
-                        <?php }else{?>
-                          <span class="dashboard-status-button yellow">Pending</span>
-                        <?php }?>
-												</h3>
+												<h4 class="job-listing-title"><a href="<?php echo $url;?>"><?php echo $v['project_title']; ?></a>
+												<?php if($v['is_hourly']){?>
+                                                <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
+                                                <?php }else{?>
+                                                <span class="dashboard-status-button green"><?php D('Fixed');?></span>
+                                                <?php }?>
+                                                <?php if($v['bid_id']){?>
+                                                  <span class="dashboard-status-button green">Already Bid</span>
+                                                <?php }else{?>
+                                                  <span class="dashboard-status-button yellow">Pending</span>
+                                                <?php }?>
+												</h4>
 
 												<!-- Job Listing Footer -->
 												<div class="job-listing-footer">
@@ -158,10 +163,10 @@
       <div class="dashboard-box "> 
         <!-- Headline -->
         <div class="headline">
-          <h3>News Feed</h3>
+          <h3>Activity Feed</h3>
         </div>
         <div class="content">
-          <ul class="dashboard-box-list">
+          <ul class="dashboard-box-list activity-feed">
           <?php if($notification_list){
             foreach($notification_list as $k=>$list){
              // echo '<pre>';
@@ -169,9 +174,9 @@
              // echo '</pre>';
               $url=base_url('notification/seen?id='.$list->notification_id.'&link='.urlencode($list->link));
               $logo=getMemberLogo($list->notification_from);
-              $read_class="";
+              $read_class='<i class="icon-feather-check"></i>';
               if($list->read_status){
-                $read_class='<i class="icon-feather-check" style="margin-left:-8px"></i>';
+                $read_class='<i class="icon-feather-check-all"></i>';
               }
               $parse_data = !empty($list->template_data) ? (array) json_decode($list->template_data) : array();
               $sender_name='';
@@ -180,7 +185,7 @@
               }
           ?>
             <li>
-              <div class="job-listing mb-2">                 
+              <div class="job-listing">                 
                 <!-- Job Listing Details -->
                 <div class="job-listing-details">                   
                   <!-- Logo --> 
@@ -188,12 +193,15 @@
                   <!-- Details -->
                   <div class="job-listing-description">
                   	<span class="float-right text-muted"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
-                    <h4 class="job-listing-title"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
+                    <h4 class="job-listing-title mb-1"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
                     <div class="job-listing-footer">
                     <ul>
                       <li><i class="icon-material-outline-account-circle"></i> <?php echo $sender_name;?></li>
                       <li><i class="icon-feather-calendar"></i> <?php echo $list->sent_date;?> </li>
-                      <li><i class="icon-feather-check"></i><?php echo $read_class;?></li>
+                      <li>
+                      	<?php echo $read_class;?>
+                      	
+                      </li>
                     </ul>
                     </div>
                   </div>
@@ -234,15 +242,15 @@
                 <div class="job-listing-details"> 
                   <!-- Details -->
                   <div class="job-listing-description">
-                    <h3 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
-                      <?php if($v['contract_status']==1){?>
+                    <h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
+                      <?php /* if($v['contract_status']==1){?>
                       <span class="dashboard-status-button green">Approved</span>
                       <?php }elseif($v['contract_status']==2){?>
                       <span class="dashboard-status-button red">Rejected</span>
                       <?php }elseif($v['contract_status']==0){?>
                       <span class="dashboard-status-button yellow">Pending</span>
-                      <?php }?>
-                    </h3>
+                      <?php }*/ ?>
+                    </h4>
                     
                     <!-- Job Listing Footer -->
                     <div class="job-listing-footer">
@@ -251,10 +259,10 @@
                           <?php D($currency.$v['contract_amount']);?>
                           <?php if($v['is_hourly']==1){echo'/hr';}?>
                         </li>
-                        <li><b>Date:</b>
+                        <li><i class="icon-feather-calendar"></i>
                           <?php D($v['contract_date']);?>
                         </li>
-                        <li><b>Status:</b>
+                        <li>
                           <?php if($v['is_contract_ended']==1){?>
                           <span class="dashboard-status-button blue">Completed On:
                           <?php D($v['contract_end_date']);?>

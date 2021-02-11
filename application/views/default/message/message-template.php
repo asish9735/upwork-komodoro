@@ -297,6 +297,7 @@ Vue.component('active-chat-body', {
 			}
 			
 		});
+		$('.message-content-inner').niceScroll();
 	},
 	
 	loadNewMessage: function(){
@@ -575,4 +576,5 @@ Vue.component('conversation-attachment', {
 	},
   }
 });
+
 </script>

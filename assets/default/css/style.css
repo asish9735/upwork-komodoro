@@ -1275,8 +1275,16 @@ ul.list-group-0 > li{
     right: 10px;
     bottom: 10px;
 }
-
-
+.activity-feed .icon-feather-check-all:before {
+	content: "\e92b";
+    color: var(--siteColor);
+}
+.activity-feed .icon-feather-check-all:after {
+    content: "\e92b";
+    position: relative;
+    left: -10px;
+    color: var(--siteColor);
+}
 
 
 
