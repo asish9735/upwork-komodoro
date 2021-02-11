@@ -1,3 +1,32 @@
+<?php
+$loggedUser=$this->session->userdata('loggedUser');
+if($loggedUser){
+	$profile_name='';
+	$this->access_user_id=$loggedUser['LID'];	
+	$this->access_member_type=$loggedUser['ACC_P_TYP'];
+	$this->member_id=$loggedUser['MID'];
+	$this->organization_id=$loggedUser['OID'];
+	$member_name=getFieldData('member_name','member','member_id',$this->member_id);
+	if($this->access_member_type=='C'){
+		$logo=getCompanyLogo($this->organization_id);
+		$organization_name=getFieldData('organization_name','organization','member_id',$this->member_id);
+		$profile_name=($organization_name  ? $organization_name:$member_name);
+	}else{
+		$logo=getMemberLogo($this->member_id);
+		$profile_name=$member_name;
+	}
+	$profile_type_name=($this->access_member_type =='C'  ? "Client":"Freelancer");
+	
+	$memberDataBasic=getData(array(
+		'select'=>'m_s.avg_rating,',
+		'table'=>'member as m',
+		'join'=>array(array('table'=>'member_basic as m_b','on'=>'m.member_id=m_b.member_id','position'=>'left'),array('table'=>'member_statistics m_s','on'=>'m.member_id=m_s.member_id','position'=>'left')),
+		'where'=>array('m.member_id'=>$this->member_id),
+		'single_row'=>true,
+	));	
+	$memberDataBasic->balance=getFieldData('balance','wallet','user_id',$this->member_id);
+}
+?>
 <!-- Dashboard Sidebar
 	================================================== -->
 	<div class="dashboard-sidebar">
@@ -13,7 +42,18 @@
 					</span>
 					<span class="trigger-title">Dashboard Navigation</span>
 				</a>
-				
+				<div class="profile">
+                	<img src="<?php echo $logo;?>" alt="<?php echo $profile_name;?>" class="rounded-circle" />
+                    <!--<span class="verified-badge"></span>-->
+                </div>
+				<div class="profile-details text-center">
+                	<div class="">
+                    <h4><?php echo $profile_name;?></h4>
+                    <div class="star-rating mb-2" data-rating="<?php echo round($memberDataBasic->avg_rating,1);?>"></div>
+                    </div>
+                    <h5> <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php D(priceFormat($memberDataBasic->balance));?></b> <a href="<?php D(get_link('AddFundURL'))?>" class="btn btn-circle btn-outline-site ml-2" style="width: 1.5rem;height: 1.5rem;padding: 0.2rem 0;"><i class="icon-feather-plus"></i></a></h5>
+                    
+                </div>
 				<!-- Navigation -->
 				<div class="dashboard-nav">
 					<div class="dashboard-nav-inner">

@@ -13,12 +13,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="submit-field myradio">
         <label>How would you like to pay freelancer ?</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn">
-            <input type="radio" class="project_payment_type" id="defaultInlineHourly" name="projectPaymentType" value="hourly" autocomplete="off">
+          <label class="btn <?php if($projectData && $projectData['project_settings']->is_hourly==1){echo "active";}?>">
+            <input type="radio" class="project_payment_type" id="defaultInlineHourly" name="projectPaymentType" value="hourly" autocomplete="off" <?php if($projectData && $projectData['project_settings']->is_hourly==1){echo "checked";}?>>
             <i class="icon-feather-clock"></i><br>
             Hourly </label>
-          <label class="btn">
-            <input type="radio" class="project_payment_type" id="defaultInlineFixed" name="projectPaymentType" value="fixed" autocomplete="off">
+          <label class="btn <?php if($projectData && $projectData['project_settings']->is_fixed==1){echo "active";}?>">
+            <input type="radio" class="project_payment_type" id="defaultInlineFixed" name="projectPaymentType" value="fixed" autocomplete="off" <?php if($projectData && $projectData['project_settings']->is_fixed==1){echo "checked";}?>>
             <i class="icon-feather-tag"></i><br>
             Fixed </label>
         </div>
@@ -30,8 +30,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <?php if($all_projectExperienceLevel){
 										foreach($all_projectExperienceLevel as $key=>$keydata){
 										?>
-          <label class="btn">
-            <input type="radio" name="experience_level" id="defaultInline<?php D($keydata->experience_level_key);?>" autocomplete="off"  value="<?php D($keydata->experience_level_id);?>">
+          <label class="btn <?php if($projectData && $projectData['project_settings']->experience_level_key==$keydata->experience_level_key){echo 'active';}?>">
+            <input type="radio" name="experience_level" id="defaultInline<?php D($keydata->experience_level_key);?>" autocomplete="off"  value="<?php D($keydata->experience_level_id);?>" <?php if($projectData && $projectData['project_settings']->experience_level_key==$keydata->experience_level_key){echo 'checked';}?>>
             <i class="icon-feather-<?php D($keydata->experience_level_key);?>"></i><br>
             <?php D($keydata->experience_level_name);?>
           </label>
@@ -42,23 +42,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="clearfix"></div>
         <span id="experience_levelError" class="rerror"></span> </div>
-      <div class="row fixed_project_display" style="display: none">
+      <div class="row fixed_project_display" <?php if($projectData && $projectData['project_settings']->is_fixed==1){}else{?>style="display: none" <?php }?>>
       	<div class="col-xl-6">
         <div class="submit-field mb-0">
           <label>Do you have a specific budget?</label>
-          <input type="text" class="form-control" name="fixed_budget" id="fixed_budget" value="">
+          <input type="text" class="form-control" name="fixed_budget" id="fixed_budget" value="<?php if($projectData && $projectData['project_settings']->budget){echo $projectData['project_settings']->budget;}?>">
           <span id="fixed_budgetError" class="rerror"></span> </div>
         </div>
       </div>
-      <div class="hourly_project_display" style="display: none">
+      <div class="hourly_project_display" <?php if($projectData && $projectData['project_settings']->is_hourly==1){}else{?>style="display: none" <?php }?>>
         <div class="submit-field myradio">
           <label>Project duration</label>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <?php if($all_projectDuration){
 										foreach($all_projectDuration as $key=>$keydata){
 										?>
-            <label class="btn">
-              <input type="radio" name="hourly_duration" id="defaultInline<?php D($key);?>" autocomplete="off"  value="<?php D($key);?>">
+            <label class="btn <?php if($projectData && $projectData['project_settings']->hourly_duration==$key){echo "active";}?>">
+              <input type="radio" name="hourly_duration" id="defaultInline<?php D($key);?>" autocomplete="off"  value="<?php D($key);?>" <?php if($projectData && $projectData['project_settings']->hourly_duration==$key){echo "checked";}?>>
               <i class="icon-line-awesome-<?php D($key);?>"></i><br>
               <?php D($keydata['name']);?>
             </label>
@@ -77,8 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php if($all_projectDurationTime){
 										foreach($all_projectDurationTime as $key=>$keydata){
 										?>
-            <label class="btn">
-              <input type="radio" name="hourly_duration_time" id="defaultInlineDuration<?php D($key);?>" autocomplete="off"  value="<?php D($key);?>">
+            <label class="btn <?php if($projectData && $projectData['project_settings']->hourly_time_required==$key){echo "active";}?>">
+              <input type="radio" name="hourly_duration_time" id="defaultInlineDuration<?php D($key);?>" autocomplete="off"  value="<?php D($key);?>" <?php if($projectData && $projectData['project_settings']->hourly_time_required==$key){echo "checked";}?>>
               <i class="icon-feather-<?php D($key);?>"></i><br>
               <?php D($keydata['name']);?>
             </label>

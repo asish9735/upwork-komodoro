@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="content with-padding">    
             <div class="submit-field">
                 <label>Description about project</label>
-                <textarea  class="form-control" name="description" id="description"></textarea>
+                <textarea  class="form-control" name="description" id="description"><?php if($projectData){echo $projectData['project_additional']->project_description;}?></textarea>
                 <span id="descriptionError" class="rerror"></span>
 
             </div>
@@ -22,7 +22,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="upload-area" id="uploadfile">
                     <p>Drag &amp; drop file here<br /> or<br /> <span class="text-site">click</span> to select file</p>
                 </div>
-                <div id="uploadfile_container"></div>
+                <div id="uploadfile_container">
+                <?php if($projectData && $projectData['project_files']){
+			           	$inc=0;
+			           	foreach($projectData['project_files'] as $files){
+			           		$inc++;
+			           		$filejson=array(
+			           		'file_id'=>$files->file_id,
+			           		'file_name'=>$files->server_name,
+			           		'original_name'=>$files->original_name,
+			           		);
+							?>
+						<div id="thumbnail_<?php D($inc)?>" data-name="<?php echo $filejson['file_name'];?>" class="thumbnail_sec">
+						<input type="hidden" name="projectfileprevious[]" value='<?php D(json_encode($filejson))?>'/>
+						<a href="<?php echo UPLOAD_HTTP_PATH.'projects-files/projects-requirement/'.$files->server_name;?>" target="_blank"><?php echo $files->original_name;?></a>
+						<a href="javascript:void(0)" class="text-danger ripple-effect ico float-right" onclick="$(this).parent().remove()">
+						<i class="icon-feather-trash"></i>
+						</a>
+						</div>
+							
+					<?php 
+						}
+					}
+					?>
+                </div>
             </div>        
     </div>
     <div class="dashboard-box-footer">

@@ -16,8 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php if($all_projectType){
                     foreach($all_projectType as $key=>$keydata){
                     ?>
-                    <label class="btn">
-                        <input type="radio" name="projectType" id="defaultInline<?php D($key);?>" autocomplete="off"  value="<?php D($key);?>">
+                    <label class="btn <?php if($projectData && $projectData['project_settings']->project_type_code==$key){echo 'active';}?>">
+                        <input type="radio" name="projectType" id="defaultInline<?php D($key);?>" autocomplete="off"  value="<?php D($key);?>" <?php if($projectData && $projectData['project_settings']->project_type_code==$key){echo 'checked';}?>>
                         <i class="icon-material-<?php D($key);?>"></i><br>
                         <?php D($keydata['name']);?>
                     </label>
@@ -42,7 +42,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="content with-padding">
             <div class="submit-field mb-0">
                 <label>Add screen question / require a cover letter </label>
-                <div id="addQuestion_container"></div>
+                <div id="addQuestion_container">
+                <?php if($projectData && $projectData['project_question']){
+                		$question_previous=$projectData['project_question'];
+                		foreach($question_previous as $k=>$ques){
+						?>	
+						<div class="question_sec input-group margin-bottom-10">
+			                <input type="text" class="form-control input-text with-border" name="pre_question[<?php echo $ques->question_id;?>]" placeholder="Enter question" value="<?php echo $ques->question_title;?>">
+			                <div class="input-group-append">
+			                	<a href="<?php D(VZ);?>" class="btn text-danger" onclick="$(this).closest('.question_sec').remove()"><i class="icon-feather-x f20"></i></a>
+			                </div>
+		                </div>
+                		<?php
+                		}
+                	}?>
+                
+                
+                
+                </div>
                 <span id="questionError" class="rerror"></span>
                 <a href="javascript:void(0)" class="btn btn-outline-success" id="addQuestion">+ Add </a>    
             </div>

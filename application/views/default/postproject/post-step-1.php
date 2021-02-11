@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="content with-padding">
                         <label>Name of your project</label>
-                        <input type="text"  class="form-control" name="title" id="title">
+                        <input type="text"  class="form-control" name="title" id="title" value="<?php if($projectData){echo $projectData['project']->project_title;}?>">
                         <span id="titleError" class="rerror"></span>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 if($all_category){
                                     foreach($all_category as $category_list){
                                         ?>
-                                        <option value="<?php D($category_list->category_id);?>" ><?php D(ucfirst($category_list->category_name));?></option>
+                                        <option value="<?php D($category_list->category_id);?>" <?php if($projectData && $projectData['project_category']->category_id==$category_list->category_id){echo 'selected';}?>><?php D(ucfirst($category_list->category_name));?></option>
                                         <?php
                                     }
                                 }
@@ -38,12 +38,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             
                             <span id="categoryError" class="rerror"></span>
                             </div>
-							
-							<div class="sub_category_display" style="display: none">
+                            
+                            <?php
+                            $all_sub_category=array();
+                            if($projectData && $projectData['project_category']->category_id){
+                                $all_sub_category=getAllSubCategory($projectData['project_category']->category_id);
+                            }
+                            ?>
+							<div class="sub_category_display" style="<?php if(!$projectData){?>display: none<?php }?>">
 							<div class="remove_arrow_select">
-								<div id="load_sub_category">
-								<select name="sub_category" id="sub_category" data-size="4" class="selectpicker browser-default" title="Sub category" data-live-search="true">
+								<div id="load_sub_category" style="position:relative">
+								<select name="sub_category" id="sub_category"  style="min-height:200px;" class="selectpicker browser-default" title="Sub category" data-live-search="true">
+				            	<option value="">Select</option>
 				            	
+                                <?php
+                                if($all_sub_category){
+                                    foreach($all_sub_category as $sub_category_list){
+                                        ?>
+                                        <option value="<?php D($sub_category_list->category_subchild_id);?>" <?php if($projectData && $projectData['project_category']->category_subchild_id==$sub_category_list->category_subchild_id){echo 'selected';}?>><?php D(ucfirst($sub_category_list->category_subchild_name));?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
 			            		</select>
 			            		</div>
 							</div>

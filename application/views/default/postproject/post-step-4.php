@@ -17,7 +17,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span id="skillsError" class="rerror"></span>
 
             </div>
-    
         </div>
         <div class="dashboard-box-footer">
             <button class="btn btn-secondary backbtnproject" data-step="4">Back</button>

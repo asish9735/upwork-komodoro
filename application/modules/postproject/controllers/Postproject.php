@@ -49,6 +49,8 @@ class Postproject extends MX_Controller {
 				'single_row'=>true,
 			));	
 			if($memberData){
+				$this->data['projectData']=array();
+				$this->data['itemid']='';
 				$this->data['organizationInfo']=$memberData;
 				$this->data['all_category']=getAllCategory();
 				$this->data['all_projectType']=getAllProjectType();
@@ -159,7 +161,7 @@ class Postproject extends MX_Controller {
 			redirect(get_link('dashboardURL'));
 		}
 		$i=0;
-		$project_id="";
+		$project_id=0;
 		$is_edited=0;
 		$msg=array();
 		if($this->loggedUser){
@@ -394,22 +396,32 @@ class Postproject extends MX_Controller {
 					if(post('member_required') && post('member_required')=='M'){
 						$project['project_member_required']=post('no_of_freelancer');
 					}
-					
-					$project_id=insert_record('project',$project,TRUE);
+					if($is_edited){
+						unset($project['project_url']);
+						updateTable('project',$project,array('project_id'=>$project_id));
+					}else{
+						$project_id=insert_record('project',$project,TRUE);
+					}
 					if($project_id){
-						$project_owner=array(
-						'project_id'=>$project_id,
-						'member_id'=>$member_id,
-						'organization_id'=>$organization_id,
-						);
-						insert_record('project_owner',$project_owner);
-						
+						if($is_edited){}else{
+							$project_owner=array(
+							'project_id'=>$project_id,
+							'member_id'=>$member_id,
+							'organization_id'=>$organization_id,
+							);
+							insert_record('project_owner',$project_owner);
+						}
 						$project_category=array(
 						'project_id'=>$project_id,
 						'category_id'=>post('category'),
 						'category_subchild_id'=>post('sub_category'),
 						);
-						insert_record('project_category',$project_category);
+						if($is_edited){
+							unset($project_category['project_id']);
+							updateTable('project_category',$project_category,array('project_id'=>$project_id));
+						}else{
+							insert_record('project_category',$project_category);
+						}
 						
 						$project_additional=array(
 						'project_id'=>$project_id,
@@ -423,8 +435,31 @@ class Postproject extends MX_Controller {
 						}else{
 							$project_additional['project_is_cover_required']=1;
 						}
-						insert_record('project_additional',$project_additional);
-						
+						if($is_edited){
+							unset($project_additional['project_id']);
+							updateTable('project_additional',$project_additional,array('project_id'=>$project_id));
+						}else{
+							insert_record('project_additional',$project_additional);
+						}
+						if($is_edited==1){
+							$previous_file=array();
+							if(post('projectfileprevious')){
+								$projectfileprevious=post('projectfileprevious');
+								foreach($projectfileprevious as $file){
+									$file_data_p=json_decode($file);
+									if($file_data_p){
+										$previous_file[]=$file_data_p->file_id;
+										$is_primary=0;
+										$file_order[]=array('file_id'=>$file_data_p->file_id);
+									}
+								}
+							}
+							if($previous_file){
+								$this->db->where_not_in('file_id',$previous_file)->where('project_id',$project_id)->delete('project_files');
+							}else{
+								$this->db->where('project_id',$project_id)->delete('project_files');
+							}
+						}
 						if(post('projectfile')){
 							$projectfiles=post('projectfile');
 							foreach($projectfiles as $file){
@@ -451,10 +486,71 @@ class Postproject extends MX_Controller {
 								}
 							}
 						}
+						if($is_edited==1){
+							$previous_question=array();
+							if(post('pre_question')){
+								$projectpre_question=post('pre_question');
+								foreach($projectpre_question as $question_id=>$question){
+									if(trim($question)!=''){
+									if($question_id){
+										$previous_question[]=$question_id;
+									}
+									$questionDatacount=getData(array(
+										'select'=>'q.question_id',
+										'table'=>'question as q',
+										'where'=>array('LOWER(q.question_title)'=>trim(strtolower($question))),
+										'single_row'=>true,
+									)
+									);
+									$newquestion_id=0;
+									if($questionDatacount){
+										$newquestion_id=$questionDatacount->question_id;
+										updateTable('question',array('question_status'=>1),array('question_id'=>$question_id));
+									}else{
+										$question=array(
+										'question_title'=>$question,
+										'category_subchild_id'=>$project_category['category_subchild_id'],
+										'question_status'=>1,
+										'is_manual'=>1,
+										);
+										$newquestion_id=insert_record('question',$question,TRUE);
+									}
+									if($newquestion_id){
+										$questionDatacount_p=getData(array(
+										'select'=>'q.question_id',
+										'table'=>'project_question as q',
+										'where'=>array('project_id'=>$project_id,'question_id'=>$newquestion_id),
+										'single_row'=>true,
+										)
+										);
+										if(!$questionDatacount_p){
+											$previous_question[]=$newquestion_id;
+											$project_question=array(
+											'project_id'=>$project_id,
+											'question_id'=>$newquestion_id,
+											'project_question_status'=>1,
+											);
+											insert_record('project_question',$project_question);
+										}
+											
+									}
+									}
+								}
+							}
+							if($previous_question){
+								$this->db->where_not_in('question_id',$previous_question)->where('project_id',$project_id)->delete('project_question');
+							}else{
+								$this->db->where('project_id',$project_id)->delete('project_question');
+							}
+							
+						}
 						if(post('question')){
-							$this->db->where('project_id', $project_id)->delete('project_question');
+							if($is_edited==1){}else{
+								$this->db->where('project_id', $project_id)->delete('project_question');
+							}
 							$projectquestion=post('question');
 							foreach($projectquestion as $question){
+							if(trim($question)!=''){
 								$questionDatacount=getData(array(
 									'select'=>'q.question_id',
 									'table'=>'question as q',
@@ -483,6 +579,7 @@ class Postproject extends MX_Controller {
 									);
 									insert_record('project_question',$project_question);
 								}
+							}
 							}
 						}
 						if(post('skills')){
@@ -550,15 +647,23 @@ class Postproject extends MX_Controller {
 						if(post('projectType')){
 							$project_settings['project_type_code']=post('projectType');
 						}
-						insert_record('project_settings',$project_settings);
+						if($is_edited==1){
+							unset($project_settings['project_id']);
+							updateTable('project_settings',$project_settings,array('project_id'=>$project_id));
+						}else{
+							insert_record('project_settings',$project_settings);	
+						}
 						
 						
 						$data_parse = array(
 							'TITLE' => post('title')
 						);
+						if($is_edited==1){
+							
+						}else{
 						$this->admin_notification_model->parse('admin-ad-post', $data_parse, 'proposal/list_record?ID='.$project_id);
 						SendMail(get_setting('admin_email'),'admin-ad-post',$data_parse);
-						
+						}
 						$msg['status'] = 'OK';
 						$msg['preview_data'] = 'project';
 						$msg['project_id'] =$project_id;

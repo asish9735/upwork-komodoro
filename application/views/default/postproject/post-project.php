@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+/* echo '<pre>';
+print_r($projectData);
+echo '</pre>'; */
 ?>
 
 <div class="dashboard-container">
@@ -36,16 +39,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="col-xl-9">
 				
 			<form action="" method="post" accept-charset="utf-8" id="postprojectform" class="form-horizontal" role="form" name="postprojectform" onsubmit="return false;">  
-            
+            <input type="hidden" name="dataid" value="<?php echo $itemid;?>"/>
 			<?php
-			$this->layout->view('post-step-1', array('step'=>1,'all_category'=>$all_category),TRUE);
+			$this->layout->view('post-step-1', array('step'=>1,'all_category'=>$all_category,'projectData'=>$projectData),TRUE);
 			
-			$this->layout->view('post-step-2', array('step'=>2),TRUE);
-			$this->layout->view('post-step-3', array('step'=>3,'all_projectType'=>$all_projectType),TRUE);
-			$this->layout->view('post-step-4', array('step'=>4),TRUE);
-			$this->layout->view('post-step-5', array('step'=>5),TRUE);
-			$this->layout->view('post-step-6', array('step'=>6,'all_projectExperienceLevel'=>$all_projectExperienceLevel,'all_projectDuration'=>$all_projectDuration,'all_projectDurationTime'=>$all_projectDurationTime),TRUE);
-			$this->layout->view('post-step-7', array('step'=>7),TRUE);
+			$this->layout->view('post-step-2', array('step'=>2,'projectData'=>$projectData),TRUE);
+			$this->layout->view('post-step-3', array('step'=>3,'all_projectType'=>$all_projectType,'projectData'=>$projectData),TRUE);
+			$this->layout->view('post-step-4', array('step'=>4,'projectData'=>$projectData),TRUE);
+			$this->layout->view('post-step-5', array('step'=>5,'projectData'=>$projectData),TRUE);
+			$this->layout->view('post-step-6', array('step'=>6,'all_projectExperienceLevel'=>$all_projectExperienceLevel,'all_projectDuration'=>$all_projectDuration,'all_projectDurationTime'=>$all_projectDurationTime,'projectData'=>$projectData),TRUE);
+			$this->layout->view('post-step-7', array('step'=>7,'projectData'=>$projectData),TRUE);
 			
 			?>
 			</form>		
@@ -72,9 +75,20 @@ form>div {
 	display:block !important
 }
 </style>-->
+<?php
+if($projectData && $projectData['project_skills']){
+    $myskills=$projectData['project_skills'];
+?>
+<script>
+var pre_skills=<?php D(json_encode($myskills));?>;
+</script>
+<?php
+}
+?>
 <script type="text/javascript">
 	var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 	var all_skills=<?php D(json_encode($all_skills));?>;
+
 	function load_data(type){
 		$( "#project-"+type+"-data").html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 50px;">'+SPINNER+'<div>').show();
 		if(type=='title'){
@@ -162,7 +176,7 @@ form>div {
 	}
 	
 var  main = function(){
-
+	$('.selectpicker').selectpicker('refresh');
 	$('#category').on('change',function(){
 	$('.sub_category_display').show();
 	$( "#load_sub_category").html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 50px;">'+SPINNER+'<div>').show();
@@ -273,21 +287,26 @@ var mainload = function(){
 	    }
 	  }
 	});
+	/* elts.on('beforeItemAdd', function(event) {
+		var itemdata=event.item;
+		console.log(itemdata);
+		var key=itemdata.skill_id;
+		if($(".skill_set_"+key).length>0){	
+		}else{
+			var name=key;
+			var html='<span class=" keyword skill_set_'+key+'" ><span class="keyword-remove"></span><span class="keyword-text">'+itemdata.skill_name+'</span><input type="hidden" name="byskills[]" value="'+name+'"/><input type="hidden" name="byskillsname[]" value="'+itemdata.skill_key+'"/></span>';
+			$(".skillContaintag").append(html);
+			
+
+		}
+		//console.log(event.item);
+		event.cancel = true;
+	}) */
+	$.each(pre_skills, function(index, value) {
+		elts.tagsinput('add', value);
+		console.log(value);
+	});
 	},2000);
 }
-/*elt.on('beforeItemAdd', function(event) {
-	var itemdata=event.item;
-	console.log(itemdata);
-	var key=itemdata.skill_id;
-	if($(".skill_set_"+key).length>0){	
-	}else{
-		var name=key;
-		var html='<span class=" keyword skill_set_'+key+'" ><span class="keyword-remove"></span><span class="keyword-text">'+itemdata.skill_name+'</span><input type="hidden" name="byskills[]" value="'+name+'"/><input type="hidden" name="byskillsname[]" value="'+itemdata.skill_key+'"/></span>';
-		$(".skillContaintag").append(html);
-		
 
-	}
-	//console.log(event.item);
-	event.cancel = true;
-})*/
 </script>

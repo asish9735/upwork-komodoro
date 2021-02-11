@@ -13,16 +13,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="submit-field myradio">
         <label>Who can see your project?</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn">
-            <input type="radio" id="defaultInlinePublic" name="projectVisibility" value="public" autocomplete="off">
+          <label class="btn <?php if($projectData && $projectData['project_settings']->is_visible_anyone==1){echo "active";}?>">
+            <input type="radio" id="defaultInlinePublic" name="projectVisibility" value="public" autocomplete="off" <?php if($projectData && $projectData['project_settings']->is_visible_anyone==1){echo "checked";}?>>
             <i class="icon-line-awesome-eye"></i><br>
             Anyone </label>
-          <label class="btn">
-            <input type="radio" id="defaultInlinePrivate" name="projectVisibility" value="private" autocomplete="off">
+          <label class="btn <?php if($projectData && $projectData['project_settings']->is_visible_private==1){echo "active";}?>">
+            <input type="radio" id="defaultInlinePrivate" name="projectVisibility" value="private" autocomplete="off" <?php if($projectData && $projectData['project_settings']->is_visible_private==1){echo "checked";}?>>
             <i class="icon-line-awesome-eye-slash"></i><br>
             Private </label>
-          <label class="btn">
-            <input type="radio" id="defaultInlineInvite" name="projectVisibility" value="invite" autocomplete="off">
+          <label class="btn <?php if($projectData && $projectData['project_settings']->is_visible_invite==1){echo "active";}?>">
+            <input type="radio" id="defaultInlineInvite" name="projectVisibility" value="invite" autocomplete="off" <?php if($projectData && $projectData['project_settings']->is_visible_invite==1){echo "checked";}?>>
             <i class="icon-line-awesome-lock"></i><br>
             Invite </label>
         </div>
@@ -31,22 +31,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="submit-field myradio mb-0">
         <label>How many freelancer you need for your project?</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn">
-            <input type="radio" class="no_of_freelancer_radio" id="defaultInlineOne" name="member_required" value="S" autocomplete="off">
+          <label class="btn <?php if($projectData && $projectData['project']->project_member_required==1){echo "active";}?>">
+            <input type="radio" class="no_of_freelancer_radio" id="defaultInlineOne" name="member_required" value="S" autocomplete="off" <?php if($projectData && $projectData['project']->project_member_required==1){echo "checked";}?>>
             <i class="icon-feather-user"></i><br>
             One freelancer </label>
-          <label class="btn">
-            <input type="radio" class="no_of_freelancer_radio" id="defaultInlineMulti" name="member_required" value="M" autocomplete="off">
+          <label class="btn <?php if($projectData && $projectData['project']->project_member_required>1){echo "active";}?>">
+            <input type="radio" class="no_of_freelancer_radio" id="defaultInlineMulti" name="member_required" value="M" autocomplete="off" <?php if($projectData && $projectData['project']->project_member_required>1){echo "checked";}?>>
             <i class="icon-feather-users"></i><br>
             More than one freelancer </label>
         </div>
         <div class="clearfix"></div>
         <span id="member_requiredError" class="rerror"></span> </div>
-      <div class="row no_of_freelancer_display mt-3" style="display: none">
+      <div class="row no_of_freelancer_display mt-3" style="<?php if($projectData && $projectData['project']->project_member_required>1){echo "";}else{?>display: none<?php }?>">
         <div class="col-xl-6">
           <div class="submit-field mb-0">
             <label>Number of freelancer</label>
-            <input type="text" class="form-control" name="no_of_freelancer" id="no_of_freelancer" value=""/>
+            <input type="text" class="form-control" name="no_of_freelancer" id="no_of_freelancer" value="<?php if($projectData && $projectData['project']->project_member_required){echo $projectData['project']->project_member_required;}?>"/>
             <span id="no_of_freelancerError" class="rerror"></span> </div>
         </div>
       </div>
