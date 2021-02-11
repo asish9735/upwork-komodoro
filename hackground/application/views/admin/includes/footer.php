@@ -202,26 +202,26 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<!--<script src="<?php echo ADMIN_COMPONENT;?>bootstrap/js/jquery-3.3.1.slim.min.js"></script>-->
+<?php /*?><!--<script src="<?php echo ADMIN_COMPONENT;?>bootstrap/js/jquery-3.3.1.slim.min.js"></script>-->
 <script src="<?php echo ADMIN_COMPONENT;?>bootstrap/js/popper.min.js" type="text/javascript"></script>
+<?php */?>
 <!-- Bootstrap 4.3.1 -->
-<script src="<?php echo ADMIN_COMPONENT;?>bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-
+<script src="<?php echo ADMIN_PLUGINS;?>bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<?php /*?>
 <!-- SlimScroll -->
 <script src="<?php echo ADMIN_COMPONENT;?>jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="<?php echo ADMIN_COMPONENT;?>fastclick/lib/fastclick.js"></script>
+<script src="<?php echo ADMIN_COMPONENT;?>fastclick/lib/fastclick.js"></script><?php */?>
+
 <!-- AdminLTE App -->
-<script src="<?php echo ADMIN_JS; ?>adminlte.min.js"></script>
+<script src="<?php echo ADMIN_THEME_JS;?>adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?php echo ADMIN_JS; ?>demo.js"></script>
-<script src="<?php echo ADMIN_JS;?>modules/My_Modal.js"></script>
-<script>
+<script src="<?php echo ADMIN_JS;?>demo.js"></script>
+<?php /*?><script src="<?php echo ADMIN_JS;?>modules/My_Modal.js"></script><?php */?>
+<!--<script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   });
- 
-</script>
-
+</script>-->
 </body>
 </html>

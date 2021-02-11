@@ -8,19 +8,25 @@ $admin_notification_count = $this->admin_notification_model->getUnreadCount();
  <!-- =============================================== -->
 
   <!-- Left side column. contains the sidebar -->
-  <aside class="main-sidebar">
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <a class="brand-link">
+      <img src="<?php echo ADMIN_IMAGES;?>logo.png" alt="<?php echo get_setting('site_title');?>" class="brand-image" style="opacity: .8" height="48" />
+    </a>
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+    <div class="sidebar">
+      
       <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="<?php echo ADMIN_IMAGES;?>avatar5.png" class="rounded-circle" alt="User Image">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="<?php echo ADMIN_IMAGES;?>avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="pull-left info">
+        <div class="info">
           <p><?php echo $admin_detail['full_name']; ?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <h6><small><i class="fa fa-circle text-success"></i> Online</small></h6>
         </div>
       </div>
+      
+      
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form" hidden>
         <div class="input-group">
@@ -32,27 +38,24 @@ $admin_notification_count = $this->admin_notification_model->getUnreadCount();
         </div>
       </form>
       <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-		<li class="<?php echo $uri_segment == 'dashboard' ? 'active' : '';?>">
-          <a href="<?php echo base_url('dashboard')?>">
+      
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+      <!-- <ul class=" sidebar-menu">-->
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">        
+		<li class="nav-item">
+          <a href="<?php echo base_url('dashboard')?>" class="nav-link <?php echo $uri_segment == 'dashboard' ? 'active' : '';?>">
            <i class="icon-material-outline-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <small class="badge badge-success pull-right">Hot</small>
-            </span>
+           <small class="badge badge-success right">Hot</small>            
           </a>
         </li>
-		<li class="<?php echo $uri_segment == 'admin_notification/list_record' ? 'active' : '';?>">
-          <a href="<?php echo base_url('admin_notification/list_record')?>">
+		<li class="nav-item">
+          <a href="<?php echo base_url('admin_notification/list_record')?>" class="nav-link <?php echo $uri_segment == 'admin_notification/list_record' ? 'active' : '';?>">
            <i class="icon-feather-bell"></i> <span>Notification</span>
-            <span class="pull-right-container">
-              <small class="badge badge-danger pull-right"><?php echo $admin_notification_count; ?></small>
-            </span>
+           <small class="badge badge-danger right"><?php echo $admin_notification_count; ?></small>   
           </a>
         </li>
-		
-		
+				
 		<?php if($menu_list){foreach($menu_list  as $k => $v){ 
 		$childs = $v['child'];
 		$isactive = '';
@@ -73,23 +76,24 @@ $admin_notification_count = $this->admin_notification_model->getUnreadCount();
 			}
 		}
 		?>
-		<li class="treeview <?php echo $isactive; ?>">
-          <a href="#">
+		<li class="nav-item <?php echo $isactive; ?>">
+          <a href="#" class="nav-link">
             <i class="<?php echo $icon_class; ?>"></i> <span><?php echo $v['name'];?></span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right"></i>
-            </span>
+           
+            <i class="fa fa-angle-right right"></i>
+            
           </a>
-          <ul class="treeview-menu">
+          <ul class="nav nav-treeview">
 			<?php if($childs){foreach($childs as $key => $child){ ?>
-            <li class="<?php echo ($uri_segment == $child['url']) ? 'active' : '';?>"><a href="<?php echo base_url($child['url']);?>"><?php echo $child['name']; ?></a></li>
+            <li class="nav-item"><a href="<?php echo base_url($child['url']);?>" class="nav-link <?php echo ($uri_segment == $child['url']) ? 'active' : '';?>"><?php echo $child['name']; ?></a></li>
 			<?php } } ?>
           </ul>
         </li>
 		<?php } } ?>
         
       </ul>
-    </section>
+      </nav>
+    </div>
 	
 	
     <!-- /.sidebar -->

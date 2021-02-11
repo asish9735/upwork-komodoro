@@ -33,7 +33,7 @@ if(!function_exists('admin_log_check')){
 if(!function_exists('breadcrumb')){
 	
 	function breadcrumb($option=array()){
-		$html = '<ol class="breadcrumb">';
+		$html = '<ol class="breadcrumb float-sm-right">';
        $html .= '<li class="breadcrumb-item"><a href="'.base_url().'"> Home</a></li>';
 		if($option){
 			foreach($option as $v){

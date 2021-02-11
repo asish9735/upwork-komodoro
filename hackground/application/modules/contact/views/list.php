@@ -5,11 +5,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -19,11 +23,10 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
@@ -35,13 +38,13 @@
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
-				 <th style="width:10%">ID</th>
-                  <th style="width:20%">Email</th>
-                  <th style="width:20%">Enquiry For</th>
+				 <th style="width:5%">ID</th>
+                  <th style="width:25%">Email</th>
+                  <th style="width:25%">Enquiry For</th>
                   <th style="width:20%">Date</th>
                   <th style="width:10%">Status</th>
                   <th align="right">Action</th>
@@ -73,13 +76,11 @@
 				}
                   ?>	
                   </td>
-                  <td><?php echo $v['date']; ?></td>
+                  <td><?php echo date('d M, Y', strtotime($v['date'])); ?></td>
                   <td><?php echo $status; ?></td>
                   <td align="right">
-					<a href="<?php echo JS_VOID; ?>" onclick="view_message(this)" data-message="<?php echo htmlentities(json_encode($v)); ?>" data-toggle="tooltip" title="View Message"><i class="icon-feather-mail text-success <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp; 
+					<a href="<?php echo JS_VOID; ?>" onclick="view_message(this)" data-message="<?php echo htmlentities(json_encode($v)); ?>" data-toggle="tooltip" title="View Message"><i class="icon-feather-mail text-success <?php echo ICON_SIZE;?>"></i></a>				
 					<a href="<?php echo JS_VOID; ?>" onclick="reply('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Reply"><i class="fa fa-mail-reply red <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
 				 </td>
                 </tr>
@@ -93,14 +94,13 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-			<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
       </div>
       <!-- /.box -->
-
+	  <nav>
+<ul class="pagination justify-content-center">
+<?php echo $links;?>
+</ul>
+</nav>
     </section>
     <!-- /.content -->
   </div>

@@ -3,22 +3,20 @@ $admin_detail = get_session('admin_detail');
 ?>
 <!-- Site wrapper -->
 <div class="wrapper">
-  <header class="main-header">
-    <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top_">
-    <a class="navbar-brand" href="<?php echo base_url()?>"><img src="<?php echo ADMIN_IMAGES;?>logo.png" alt="<?php echo get_setting('site_title');?>" height="42" /></a>
-  
-      <!-- Sidebar toggle button
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>-->
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <button class="navbar-toggler d-block sidebar-toggle mr-auto" type="button" data-toggle="push-menu" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-      <ul class="navbar-nav">
+  <header>
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top_">    
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <!--<li class="nav-item d-none d-sm-inline-block">
+        <a href="index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>-->
+    </ul>
+	<ul class="navbar-nav ml-auto">
         <!--<li class="nav-item active">
 			<a class="nav-link" href="#">Home</a>
         </li>-->
@@ -34,11 +32,6 @@ $admin_detail = get_session('admin_detail');
         </div>            
 	  </li>            
     </ul>
-    <!--<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>-->
-  </div>
       <div class="navbar-custom-menu" hidden>
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->

@@ -22,6 +22,10 @@ class Dashboard extends MX_Controller {
 		$this->data['unread_notification_count'] = $this->dashboard->get_unread_notification_count();
 		$this->data['withdrawn_request_count'] = $this->dashboard->get_withdrawn_count();
 		$this->data['users_count'] = $this->dashboard->get_user_count(); */
+		$this->data['main_title'] = 'Dashboard';
+		//$this->data['second_title'] = 'Dashboard';
+		//$this->data['title'] = 'Notification';
+		
 		$breadcrumb = array(
 			array(
 				'name' => 'Dashboard',

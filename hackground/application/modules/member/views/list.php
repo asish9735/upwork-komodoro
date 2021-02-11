@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -16,24 +20,23 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
 
-          <div class="box-tools pull-right">
+          <div class="card-tools">
 			
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
-				<tr>
-					
-                  <th style="width:5%">ID</th>
-                  <th style="width:30%">Name</th>
+				<tr>					
+                  <th>ID</th>
+                  <th style="width:28%">Name</th>
                   <th style="width:20%">Email</th>
-                  <th style="width:10%" class="text-center">Verification</th>
+                  <th style="width:12%" class="text-center">Verification</th>
                   <th style="width:20%">Registered On</th>
                   <th style="width:5%">Status</th>
                   <th class="text-right" style="padding-right:15px;">Action</th>
@@ -70,9 +73,9 @@
 				
 				$user_tag = '';
 				if($v['is_employer'] == '1'){
-					$user_tag = '<sup class="badge badge-dark">Employer</sup>';
+					$user_tag = '<span class="badge badge-dark">Employer</span>';
 				}else{
-					$user_tag = '<sup class="badge badge-info">Freelancer</sup>';
+					$user_tag = '<span class="badge badge-info">Freelancer</span>';
 				}
 				
 				$status = '';
@@ -136,14 +139,13 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
       </div>
       <!-- /.box -->
-
+	  <nav>
+<ul class="pagination justify-content-center">
+<?php echo $links;?>
+</ul>
+</nav>
     </section>
     <!-- /.content -->
   </div>

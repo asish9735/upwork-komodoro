@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -16,16 +20,16 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
 
-          <div class="box-tools pull-right">
+          <div class="card-tools">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
 			<?php }else{ ?>
-			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="fa fa-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
+			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="icon-feather-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
 			<?php } ?>
 			<?php } ?>
 		   
@@ -38,13 +42,13 @@
 			&nbsp;
 			<?php } ?>
             <button type="button" class="btn btn-site btn-sm" onclick="add()">
-              <i class="fa fa-plus"></i>
+              <i class="icon-feather-plus"></i>
 				Add Setting Group
 			</button>
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
@@ -79,11 +83,11 @@
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td><?php echo $v['group_name']; ?></td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
+                  <td class="text-right" style="padding-right:15px;">
 					<?php if($v['status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="fa fa-edit green <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit green <?php echo ICON_SIZE;?>"></i></a>
 					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="fa fa-trash red <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="fa fa-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php } ?>
@@ -100,11 +104,13 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
+		<?php if($links){?>
+			<div class="card-footer clearfix">
               <ul class="pagination pagination-sm no-margin pull-right">
                <?php echo $links;?>
               </ul>
             </div>
+		 <?php }?>
       </div>
       <!-- /.box -->
 

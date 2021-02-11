@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+     <div class="row">
+      <div class="col-sm-6 col-12">
+	  	<h1><?php echo $main_title ? $main_title : '';?></h1>
+      	<!--<small><?php // echo $second_title ? $second_title : '';?></small>-->
+      </div>   
+      <div class="col-sm-6 col-12">           
+      	<?php echo $breadcrumb ? $breadcrumb : '';?>
+      </div>
+      </div>
     </section>
 
     <!-- Main content -->

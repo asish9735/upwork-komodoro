@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -16,11 +20,10 @@
     <section class="content">
 	
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
           <form action="<?php echo base_url($curr_controller.'csv')?>" method="get" target="_blank">
           	<input type="hidden"  name="type" value="transaction"/>
           	<div class="input-group">
@@ -45,7 +48,7 @@
                   <th style="width:20%">Created Date</th>
                   <th style="width:10%">Status</th>
                  
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
@@ -57,16 +60,14 @@
 					$status = '<span class="badge badge-danger">Deleted</span>';
 				}
 				?>
-				<tr>
-					
+				<tr>					
                   <td><?php echo $v['wallet_transaction_id']; ?></td>
                   <td><?php echo $v['type_description_tkey']; ?></td>
                   <td><?php echo format_date_time($v['transaction_date']); ?></td>
                   <td><?php echo format_date_time($v['created_date']); ?></td>
-                  <td><?php echo $status; ?></td>
-                 
-                  <td class="text-right" style="padding-right:20px;">
-					<a href="<?php echo JS_VOID; ?>" data-toggle="tooltip" title="View Detail" onclick="view_txn_detail('<?php echo $v['wallet_transaction_id']; ?>')"><i class="fa fa-info-circle green <?php echo ICON_SIZE;?>"></i></a>
+                  <td><?php echo $status; ?></td>                 
+                  <td align="right">
+					<span data-toggle="tooltip" title="View Detail" data-placement="left" onclick="view_txn_detail('<?php echo $v['wallet_transaction_id']; ?>')"><i class="icon-feather-info <?php echo ICON_SIZE;?>"></i></span>
 				  </td>
                 </tr>
 				<?php } }else{  ?>
@@ -79,14 +80,13 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
       </div>
       <!-- /.box -->
-
+	  <nav>
+<ul class="pagination justify-content-center">
+<?php echo $links;?>
+</ul>
+</nav>
     </section>
     <!-- /.content -->
   </div>

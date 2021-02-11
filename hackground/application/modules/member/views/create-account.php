@@ -10,11 +10,15 @@ var VPATH = '<?php echo SITE_URL;?>';
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -22,18 +26,17 @@ var VPATH = '<?php echo SITE_URL;?>';
 	
     <!-- Main content -->
     <section class="content">
-
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      
+	<div class="card">
+        <div class="card-header text-center">
+          <h3 class="card-title w-100"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			
           </div>
         </div>
        
-		<div class="box-body table-responsive" id="main_table">
+		<div class="card-body table-responsive" id="main_table">
              <div class="general-form">
 				<div class="general-body">
 			   <form action="" method="post" accept-charset="utf-8" id="Register_form" class="form-horizontal" role="form" name="regform" onsubmit="return false;"> 

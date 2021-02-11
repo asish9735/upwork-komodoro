@@ -4,11 +4,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -18,11 +22,10 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
@@ -34,22 +37,23 @@
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
-					<th style="width:5%">ID</th>
+				  <th style="width:5%">ID</th>
                   <th style="width:35%">Name</th>
                   <th style="width:30%">User</th>
                   <th style="width:5%">Status</th>
                   <th class="text-right" style="padding-right:20px;">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+					$logo = getMemberLogo($v[$primary_key]);
 				$project_tag = '';
 				if($v['is_hourly'] == '1'){
-					$project_tag = '<sup class="badge badge-info">Hourly</sup>';
+					$project_tag = '<span class="badge badge-info">Hourly</span>';
 				}else if($v['is_fixed'] == '1'){
-					$project_tag = '<sup class="badge badge-dark">Fixed</sup>';
+					$project_tag = '<span class="badge badge-dark">Fixed</span>';
 				}
 				
 				$status = $status_txt = '';
@@ -78,7 +82,7 @@
 					
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td><?php echo $v['project_title']; ?> <?php echo $project_tag; ?></td>
-                  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><?php echo $v['member_name']; ?></a> </td>
+                  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['member_name']; ?></a> </td>
                   <td><?php echo $status; ?></td>
                   <td class="text-right" style="padding-right:15px;">
                   <div class="dropdown">
@@ -109,15 +113,14 @@
                </tbody>
 			  </table>
         </div>
-		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+		 <!-- /.box-body -->		
       </div>
       <!-- /.box -->
-
+	  <nav>
+<ul class="pagination justify-content-center">
+<?php echo $links;?>
+</ul>
+</nav>
     </section>
     <!-- /.content -->
   </div>

@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	
@@ -17,11 +21,10 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
@@ -50,7 +53,7 @@
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
@@ -59,9 +62,9 @@
 						  <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
 							<label for="all_item"></label>
 					</th>
-                  <th style="width:10%">ID</th>
+                  <th style="width:5%">ID</th>
                   <th style="width:40%">Name</th>
-                  <th style="width:20%">Key</th>
+                  <th style="width:25%">Key</th>
                   <th style="width:10%">Status</th>
                   <th align="right">Action</th>
                 </tr>
@@ -107,15 +110,14 @@
                </tbody>
 			  </table>
         </div>
-		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+		 <!-- /.box-body -->		
       </div>
       <!-- /.box -->
-
+	  <nav>
+	<ul class="pagination justify-content-center">
+	<?php echo $links;?>
+	</ul>
+	</nav>
     </section>
     <!-- /.content -->
   </div>

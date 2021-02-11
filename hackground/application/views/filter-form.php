@@ -50,7 +50,7 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 		<div class="input-group">
 			<input class="form-control" placeholder="Search..." name="term" value="<?php echo !empty($srch['term']) ? $srch['term'] : '';?>">
 			<div class="input-group-append">
-			  <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+			  <button type="submit" class="btn btn-site"><i class="fa fa-search"></i></button>
 			</div>
 		  </div>
 	</div>
@@ -70,7 +70,7 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 			<input class="form-control" placeholder="Search..." name="term" value="<?php echo !empty($srch['term']) ? $srch['term'] : '';?>">
 
 			<div class="input-group-append">
-			  <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+			  <button type="submit" class="btn btn-site"><i class="fa fa-search"></i></button>
 			</div>
 		  </div>
 	</div>
@@ -105,7 +105,7 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 		</div>
 		
 		<div class="col-sm-12">
-			<button class="btn btn-sm btn-success" style="margin-top: 10px; margin-bottom: 15px;">Filter</button>
+			<button class="btn btn-sm btn-site" style="margin-top: 10px; margin-bottom: 15px;">Filter</button>
 		</div>
 	</div>
 	
@@ -133,7 +133,7 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 		</div>
 		
 		<div class="col-sm-12">
-			<button class="btn btn-sm btn-success" style="margin-top: 10px; margin-bottom: 15px;">Filter</button>
+			<button class="btn btn-sm btn-site" style="margin-top: 10px; margin-bottom: 15px;">Filter</button>
 		</div>
 	</div>
 	

@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -14,13 +18,11 @@
 	
     <!-- Main content -->
     <section class="content">
-
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
@@ -41,17 +43,18 @@
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
-                  <th style="width:50%">Project</th>
-                  <th style="width:20%">Bidder</th>
-                  <th style="width:10%">Bid Amount</th>
+                  <th style="width:45%">Project</th>
+                  <th style="width:25%">Bidder</th>
+                  <th style="width:15%">Bid Amount</th>
                   <th style="width:20%">Date</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th>Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+					$logo = getMemberLogo($v[$primary_key]);
 				$status = '';
 				/* if($v['status'] == ACTIVE_STATUS){
 					$status = '<a href="'.JS_VOID.'"  data-toggle="tooltip" title="Make inactive" onclick="changeStatus(0, '.$v[$primary_key].',this)"><span class="badge badge-success">Active</span></a>';
@@ -64,9 +67,9 @@
 				?>
 				<tr>
                   <td><a href="<?php echo base_url('proposal/list_record?project_id='.$v['project_id']); ?>"><?php echo $v['project_title']; ?></a></td>
-                  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><?php echo $v['member_name']; ?></a></td>
+                  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['member_name']; ?></a></td>
                   <td><?php echo get_setting('site_currency').$v['bid_amount']; ?></td>
-                  <td><?php echo date('d M,Y', strtotime($v['bid_date'])); ?></td>
+                  <td><?php echo date('d M, Y', strtotime($v['bid_date'])); ?></td>
                  
 				 
                   <td class="text-right" style="padding-right:20px;">
@@ -90,14 +93,13 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
       </div>
       <!-- /.box -->
-
+	  <nav>
+<ul class="pagination justify-content-center">
+<?php echo $links;?>
+</ul>
+</nav>
     </section>
     <!-- /.content -->
   </div>

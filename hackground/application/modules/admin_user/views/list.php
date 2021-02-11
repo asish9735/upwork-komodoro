@@ -2,22 +2,25 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
     <!-- Main content -->
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
@@ -41,7 +44,7 @@
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
@@ -51,12 +54,12 @@
 							<label for="all_item"></label>
 					</th>
                   <th style="width:5%">ID</th>
-                  <th style="width:20%">Username</th>
+                  <th style="width:15%">Username</th>
                   <th style="width:20%">Name</th>
-                  <th style="width:10%">Role</th>
-                  <th style="width:15%">Registered On</th>
+                  <th style="width:15%">Role</th>
+                  <th style="width:20%">Registered On</th>
                   <th style="width:10%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th class="text-right" style="padding-right:15px;">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
@@ -80,7 +83,7 @@
                   <td><?php echo $v['username']; ?></td>
                   <td><?php echo $v['full_name']; ?></td>
                   <td><?php echo $v['role_id'] == '0' ? 'Super Admin' : $v['role']; ?></td>
-                  <td><?php echo date('d M,Y h:i A', strtotime($v['registered_on']));?></td>
+                  <td><?php echo date('d M, Y h:i A', strtotime($v['registered_on']));?></td>
                   <td><?php echo $status; ?></td>
                   <td align="right">
 					<?php if($v['status'] != DELETE_STATUS){ ?>
@@ -103,11 +106,13 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
+		 <?php if($links){?>
+			<div class="card-footer clearfix">
               <ul class="pagination pagination-sm no-margin pull-right">
                <?php echo $links;?>
               </ul>
             </div>
+		 <?php }?>
       </div>
       <!-- /.box -->
 

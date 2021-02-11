@@ -19,7 +19,7 @@
 
       <!-- Default box -->
       <div class="box">
-        <div class="box-header with-border">
+        <div class="box-header">
           <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
 
           <div class="box-tools pull-right">
@@ -44,17 +44,18 @@
         </div>
        
 		<div class="box-body table-responsive no-padding" id="main_table">
-              <table class="table table-hover" style="margin-bottom: 50px">
+              <table class="table table-hover">
                 <tbody>
 				<tr>
-                  <th style="width:10%">ID</th>
+                  <td>ID</th>
                   <th style="width:20%">Member Name</th>
-                  <th style="width:15%">Document</th>
+                  <th style="width:35%">Document</th>
                   <th style="width:20%">Request On</th>
                   <th style="width:10%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th class="text-right" style="padding-right:15px;">Action</th>
                 </tr>
-				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+				<?php if(count($list) > 0){foreach($list as $k => $v){
+					$logo = getMemberLogo($v[$primary_key]); 
 				$status =$status_txt= '';
 				if($v['document_status'] == 1){
 					$status = '<span class="badge badge-success">Active</span>';
@@ -72,13 +73,13 @@
 				?>
 				<tr>
                   <td><?php echo $v[$primary_key]; ?></td>
-                  <td><a target="_blank" href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><?php echo $v['member_name']; ?></a></td>
+                  <td><a target="_blank" href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['member_name']; ?></a></td>
                   <td><?php 
                   $document_data=json_decode($v['document_data']);
                   if($document_data){
 				  	foreach($document_data as $kd=>$vald){
 						?>
-					<p><b><?php echo $vald->title;?>:</b> <a href="<?php echo UPLOAD_HTTP_PATH.'verification-documents/'.$vald->file;?>" target="_blank" title="<?php echo $vald->type;?>"><i class="fa fa-file green <?php echo ICON_SIZE;?>"></i> (<?php echo $vald->type;?>)</a></p>	
+					<p class="mb-1"><b><?php echo $vald->title;?>:</b> <a href="<?php echo UPLOAD_HTTP_PATH.'verification-documents/'.$vald->file;?>" target="_blank" title="<?php echo $vald->type;?>"><i class="icon-feather-file green <?php echo ICON_SIZE;?>"></i> (<?php echo $vald->type;?>)</a></p>	
 						<?php
 					}
 				  }
@@ -87,27 +88,22 @@
                   
                   <td><?php echo date('d M,Y h:i A', strtotime($v['document_date'])); ?></td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
-					<div class="btn-group">
-					  <button type="button" class="btn btn-default"><?php echo $status_txt; ?></button>
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						<span class="caret"></span>
-						<span class="sr-only">Toggle Dropdown</span>
-					  </button>
-					  <ul class="dropdown-menu dropdown-menu-right" role="menu">
-					  <li><a href="<?php echo SITE_URL;?>profileview/view/<?php echo $v['member_id'];?>" target="_blank">View Profile</a></li>
+                  <td class="text-right" style="padding-right:15px;">
+                  	<div class="dropdown">
+					  <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  <?php echo $status_txt; ?>
+                      </button>
+					  
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					  	<a class="dropdown-item" href="<?php echo SITE_URL;?>profileview/view/<?php echo $v['member_id'];?>" target="_blank">View Profile</a>
 					  <?php if($v['document_status'] == 1){?>
-					  <li><a href="<?php echo JS_VOID;?>" onclick="addReason('2', '<?php echo $v[$primary_key]; ?>')">Reject</a></li>
-					  <?php }elseif($v['document_status'] == 2){?>
-					  
+					  	<a class="dropdown-item" href="<?php echo JS_VOID;?>" onclick="addReason('2', '<?php echo $v[$primary_key]; ?>')">Reject</a>
+					  <?php }elseif($v['document_status'] == 2){?>					  
 					  <?php }else{?>
-					  <li><a href="<?php echo JS_VOID;?>" onclick="changeStatus('1', '<?php echo $v[$primary_key]; ?>')">Approve</a></li>
-					  <li><a href="<?php echo JS_VOID;?>" onclick="addReason('2', '<?php echo $v[$primary_key]; ?>')">Reject</a></li>
-					  <?php }?>
-					  	
-						
-					  
-					  </ul>
+					  	<a class="dropdown-item" href="<?php echo JS_VOID;?>" onclick="changeStatus('1', '<?php echo $v[$primary_key]; ?>')">Approve</a>
+					  	<a class="dropdown-item" href="<?php echo JS_VOID;?>" onclick="addReason('2', '<?php echo $v[$primary_key]; ?>')">Reject</a>
+					  <?php }?>					  												  
+					  </div>
 					</div>
 				  </td>
                 </tr>

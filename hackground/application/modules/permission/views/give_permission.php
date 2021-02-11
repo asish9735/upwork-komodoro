@@ -11,22 +11,26 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
     <!-- Main content -->
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      
+<div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			<select class="form-control form-control-sm" name="user_role">
 					<option value="">Choose</option>
 					<?php if(count($user_type) > 0){foreach($user_type as $k => $v){ ?>
@@ -36,7 +40,7 @@
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
 			 <?php if(!empty($srch['token']) AND !empty($srch['role'])){ ?>
 			<form action="" method="post">
 			<input type="hidden" name="admin_role" value="<?php echo (!empty($srch['role'])) ? $srch['role'] : '';?>"/>
@@ -47,7 +51,7 @@
                   <th style="width:25%">Menu</th>
                   <th style="width:25%">Sub Menu</th>
                   <th style="width:25%">Menu Code</th>
-                  <th class="text-right" style="padding-right:20px;">Give Permission</th>
+                  <th class="text-right" style="padding-right:15px;">Give Permission</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $key => $menu){ 
 				$child = $menu['child'];
@@ -57,7 +61,7 @@
 						<?php echo $menu['name']; ?>
 						<div><small><?php echo $menu['menu_desc'];?></small></div>
 					</td>
-					<td></td>
+					<td>&nbsp;</td>
 					<td><?php echo $menu['menu_code']; ?></td>
                  
 					<td align="right">
@@ -65,19 +69,21 @@
 							<input type="checkbox" class="parent_menu magic-checkbox" name="menu_code[]" value="<?php echo $menu['menu_code'].'|'.$menu['id'];?>" id="item_<?php echo $menu['id'];?>" data-menu-id="<?php echo $menu['id']; ?>" <?php echo in_array($menu['menu_code'], $user_permission) ? 'checked' : '';?>>
 							<label for="item_<?php echo $menu['id'];?>"></label>
 							</span>
+							<a href="javascript:void(0)" onclick="toggleSubMenu('<?php echo $menu['id']?>', this)" class="mt-2" style="display: inline-block; vertical-align: middle;"><i class="icon-feather-chevron-down fa-lg"></i></a>
 					</td>
                 </tr>
 				
 				<?php if($child){foreach($child as $key => $child_menu){ ?>
-				<tr class="child_menu childof-<?php echo $menu['id'];?> sub_trno_<?php echo $menu['id'];?>">
+				
+				<tr class="child_menu childof-<?php echo $menu['id'];?> sub_trno_<?php echo $menu['id'];?>" style="display:none;">
 					
-				  <td></td>	
+				<td>&nbsp;</td>
                    <td>
 					<?php echo $child_menu['name']; ?>
 					<div><small><?php echo $child_menu['menu_desc'];?></small></div>
 				  </td>
                   <td><?php echo $child_menu['menu_code']; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
+                  <td class="text-right" style="padding-right:10px;">
 						<span class="check-inline">
 						<input type="checkbox" class="magic-checkbox child_menu_<?php echo $menu['id']; ?>" name="menu_code[]" value="<?php echo $child_menu['menu_code'].'|'.$child_menu['id'];?>" id="item_<?php echo $child_menu['id'];?>" data-menu-id="<?php echo $child_menu['id']; ?>" <?php echo in_array($child_menu['menu_code'], $user_permission) ? 'checked' : '';?>>
 						<label for="item_<?php echo $child_menu['id'];?>"></label>
@@ -94,9 +100,9 @@
                 
                </tbody>
 			  </table>
-				<div class="pull-right" style="padding: 10px 5px 10px 0px;">
-					<a href="<?php echo base_url('permission/list_menu'); ?>" class="btn btn-default">Cancel</a>
-					<button type="submit" class="btn btn-primary " style="margin-right:10px;">Save Changes</button>
+				<div class="p-3 text-right">
+					<a href="<?php echo base_url('permission/list_menu'); ?>" class="btn btn-secondary">Cancel</a>
+					<button type="submit" class="btn btn-site " style="margin-right:10px;">Save Changes</button>
 				</div>
 			</form>
 			<?php }else{  ?>
@@ -109,9 +115,7 @@
 			<?php } ?>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
 		
-		</div>
       </div>
       <!-- /.box -->
 
@@ -130,7 +134,19 @@
 </div>
 
 <script>
-
+function toggleSubMenu(parent_id, ele){
+    if($(ele).is('.opened-subchild')){
+        $('.childof-'+parent_id).slideToggle();
+    }else{
+        $('.opened-subchild').removeClass('opened-subchild');
+        $(ele).addClass('opened-subchild');
+        $('.child_menu').hide();
+        $('.childof-'+parent_id).slideDown();
+    }
+    
+}
+</script>
+<script>
 /* function add(p_id){
 	var url = '<?php echo base_url($curr_controller.'load_ajax_page?page='.$add_command);?>';
 	if(p_id > 0){

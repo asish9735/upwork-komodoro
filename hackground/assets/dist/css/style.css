@@ -73,9 +73,8 @@ transform:translate(230px, 0)
 }
 }
 .content-wrapper {
-	min-height:100%;
-	background-color:#f3f3f3;
-	z-index:800
+	height: auto;
+	padding: 1.25rem;
 }
 .main-footer {
 	background:#fff;
@@ -118,15 +117,10 @@ padding-top:100px
 	padding-left:15px;
 	padding-right:15px
 }
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-}
-a {
-	color:#40de00
-}
 a:hover, a:active, a:focus {
 	outline:none;
 	text-decoration:none;
-	color:#37bf00
+	color:#37bf00;
 }
 .page-header {
 	margin:10px 0 20px 0;
@@ -252,18 +246,18 @@ transition:width .3s ease-in-out;
 	color:#fff
 }*/
 .content-header {
+	padding: 0 0.5rem 15px;
 	position:relative;
-	padding:15px 15px 0 15px
 }
-.content-header>h1 {
+.content-header h1 {
 	margin:0;
-	font-size:24px
+	font-size:1.5rem
 }
-.content-header>h1>small {
-	font-size:15px;
+.content-header h1>small {
+	font-size:1.125rem;
 	display:inline-block;
 	padding-left:4px;
-	font-weight:300
+	font-weight:400
 }
 .content-header>.breadcrumb {
 	float: right;
@@ -333,18 +327,18 @@ top:0;
 right:40px
 }
 }
-.main-sidebar {
+/*.main-sidebar {
 	position:absolute;
 	top:0;
 	left:0;
 	min-height:100%;
 	width:230px;
 	z-index:810;
--webkit-transition:-webkit-transform .3s ease-in-out, width .3s ease-in-out;
--moz-transition:-moz-transform .3s ease-in-out, width .3s ease-in-out;
--o-transition:-o-transform .3s ease-in-out, width .3s ease-in-out;
-transition:transform .3s ease-in-out, width .3s ease-in-out
-}
+	-webkit-transition:-webkit-transform .3s ease-in-out, width .3s ease-in-out;
+	-moz-transition:-moz-transform .3s ease-in-out, width .3s ease-in-out;
+	-o-transition:-o-transform .3s ease-in-out, width .3s ease-in-out;
+	transition:transform .3s ease-in-out, width .3s ease-in-out
+}*/
 @media (max-width:767px) {
 .main-sidebar {
 padding-top:100px
@@ -374,16 +368,13 @@ transform:translate(-230px, 0)
 transform:translate(0, 0)
 }
 }
-.sidebar {
-	padding-bottom:10px
-}
+
 .sidebar-form input:focus {
 	border-color:transparent
 }
 .user-panel {
 	position:relative;
 	width:100%;
-	padding:10px;
 	overflow:hidden
 }
 .user-panel:before, .user-panel:after {
@@ -463,9 +454,9 @@ transform:translate(0, 0)
 	height:auto;
 	padding:0;
 	margin-right:5px;
--webkit-transition:transform .5s ease;
--o-transition:transform .5s ease;
-transition:transform .5s ease
+	-webkit-transition:transform .5s ease;
+	-o-transition:transform .5s ease;
+	transition:transform .5s ease
 }
 .sidebar-menu .menu-open>a>i, .sidebar-menu .menu-open>a>.pull-right-container>i {
 	-webkit-transform:rotate(90deg);
@@ -2203,9 +2194,6 @@ box-shadow:inset 0 0 100px rgba(0, 0, 0, 0.2)
 }
 .nav-pills>li>a>.fa, .nav-pills>li>a>.glyphicon, .nav-pills>li>a>.ion {
 	margin-right:5px
-}
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-	border-top-color:#3c8dbc
 }
 .nav-pills>li.active>a {
 	font-weight:600
@@ -4752,9 +4740,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e73f7c', endCo
 .attachment-block .attachment-text {
 	color:#555
 }
-.connectedSortable {
-	min-height:100px
-}
 .ui-helper-hidden-accessible {
 	border:0;
 	clip:rect(0 0 0 0);
@@ -4818,14 +4803,13 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e73f7c', endCo
 	white-space:normal !important
 }
 }
-
 /* 03012020 */
-ul,ol, li {
+ul, ol, li {
 	list-style:none;
 	padding:0
 }
 .btn-site {
-	background-color:#40de00;
+	background-color:#64be43;
 	color:#fff
 }
 .btn-site:hover {
@@ -4950,7 +4934,8 @@ th {
 .general-form {
     background-color: #fff;
     border-radius: 4px;
-    max-width: 500px;
+	max-width: 500px;
+	margin: auto;
 }
 .general-body {
     /*padding: 1.5rem;*/
@@ -4984,7 +4969,7 @@ th {
     margin-right: 2px;
 }
 label, legend {
-    display: block;
+    /*display: block;*/
     font-weight: 500;
     margin-bottom: 8px;
 }
@@ -5058,12 +5043,26 @@ label, legend {
 	background-color: #40de00;
 	color: #fff;
 }
-
-
-
-
-
-
+.card-header.border-bottom-0{
+	align-items: center;
+	display: flex;
+}
+.card-header > .card-tools {
+    margin-left: auto;
+}
+.opened-subchild .icon-feather-chevron-down{
+	transform: rotate(180deg);
+    display: inline-block;
+}
+.nav-sidebar .nav-treeview {
+    margin-left: 1.25rem;
+}
+.table-middle > tbody > tr > td {
+	vertical-align:middle
+}
+.table thead > tr > td:last-child, .table thead > tr > th:last-child, .table tbody > tr > td:last-child, .table tbody > tr > th:last-child, .table tfoot > tr > td:last-child, .table tfoot > tr > th:last-child {
+	text-align:right;
+}
 
 
 

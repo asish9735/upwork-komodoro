@@ -10,15 +10,15 @@
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="<?php echo ADMIN_COMPONENT;?>bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="<?php echo ADMIN_THEME_CSS;?>adminlte.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo ADMIN_COMPONENT;?>font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo ADMIN_PLUGINS;?>font-awesome/font-awesome.min.css" type="text/css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="<?php echo ADMIN_COMPONENT;?>Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?php echo ADMIN_PLUGINS;?>ionicons/ionicons.min.css" type="text/css"> 
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo ADMIN_CSS;?>style.css">
-  <link rel="stylesheet" href="<?php echo ADMIN_EXTRA;?>plugins/magic-checkbox/css/magic-check.min.css">
-  <script src="<?php echo ADMIN_COMPONENT; ?>jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="<?php echo ADMIN_CSS;?>magic-check.min.css">
+  <script src="<?php echo ADMIN_JS; ?>jquery.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
