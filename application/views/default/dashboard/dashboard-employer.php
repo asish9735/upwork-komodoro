@@ -18,20 +18,28 @@
         <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> Please verify your profile. <a href="<?php echo URL::get_link('verifyDocumentURL');?>" class="btn btn-site btn-sm ml-2">Verify Now</a></p>
       </div>
       <?php }?>
-      <div class="fun-facts-container">
-       
-        
+      <div class="fun-facts-container">               
         <div class="fun-fact">
+          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Open Contract</span>
             <h4><strong><?php D($memberInfo->open_contract);?></strong></h4>
           </div>
         </div>
         <div class="fun-fact">
-          <div class="fun-fact-text"> <span>Completed Contract</span>
+        <span>Completed Contract</span>
+        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" /></div>
+          <div class="fun-fact-text"> 
             <h4><strong><?php D($memberInfo->complete_contract);?></strong></h4>
           </div>
         </div>
         <div class="fun-fact">
+          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>discount.png" alt="" /></div>
+          <div class="fun-fact-text"> <span>Offers</span>
+            <h4><strong><?php D($memberInfo->total_jobs);?></strong></h4>
+          </div>
+        </div>
+        <div class="fun-fact">
+        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>money.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Total Spent</span>
           <h4><?php D($currency);?> <strong><?php D(priceFormat($memberInfo->total_spent));?></strong></h4>
           </div>

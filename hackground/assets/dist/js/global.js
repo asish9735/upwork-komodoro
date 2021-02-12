@@ -116,10 +116,13 @@ function ajaxSubmit(form, onSuccess, onError){
  ------------------------------------------------------------- */
  
 function init_plugin(){
-	
-	/* $('[data-toggle="tooltip"]').tooltip("destroy"); */
-	// $('[data-toggle="tooltip"]').tooltip();
-	$('[data-toggle="tooltip"]').tooltip({ boundary: 'window' })
-	
+	//$('[data-toggle="tooltip"]').tooltip("hide");
+	$('[data-toggle="tooltip"]').tooltip({boundary: 'scrollParent'});
+	//$('.table').tooltip({ boundary: 'window' })	
 }
-	
+/* $(document).ready(function () {
+	$('[data-toggle="tooltip"]').tooltip({
+		boundary: 'scrollParent'
+	})
+});
+	 */

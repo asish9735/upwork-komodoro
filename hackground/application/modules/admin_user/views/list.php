@@ -278,10 +278,7 @@ function init_event(){
 }
 
 $(function(){
-	
 	init_plugin(); /* global.js */
 	init_event();
-	
-	
 });
 </script>

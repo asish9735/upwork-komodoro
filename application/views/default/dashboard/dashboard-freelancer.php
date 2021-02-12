@@ -25,22 +25,27 @@
           </div>
         </div>
         <div class="fun-fact">
+          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>money.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Earned</span>
-            <h4><?php D($currency);?> <strong><?php D(priceFormat($memberInfo->total_earning));?></strong></h4>
-          </div>
+            <h4><?php D($currency);?><strong><?php D(priceFormat($memberInfo->total_earning));?></strong></h4>
+          </div>          
         </div>
         <div class="fun-fact">
+          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Contracts</span>
             <h4><strong><?php D($memberInfo->total_jobs);?></strong></h4>
           </div>
         </div>
         <div class="fun-fact">
+          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>discount.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Offers</span>
             <h4><strong><?php D($memberInfo->total_jobs);?></strong></h4>
           </div>
         </div>
         <div class="fun-fact">
-          <div class="fun-fact-text"> <span>Total Working Hour</span>
+          <span>Total Working Hour</span>
+          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>clock.png" alt="" /></div>
+          <div class="fun-fact-text"> 
             <h4><strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong></h4>
           </div>
         </div>

@@ -118,7 +118,7 @@ if($loggedUser){
 									<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
 								</ul>	
 							</li>-->
-							<li><a href="#"><i class="icon-material-outline-assignment"></i> Jobs</a>
+							<li><a href="#"><i class="icon-material-outline-assignment"></i> Projects</a>
 								<ul>
 									<li><a href="<?php D(get_link('myBidsURL'))?>">My Proposals</a></li>
 									<li><a href="<?php D(get_link('OfferList'))?>">My Offers </a></li>
