@@ -44,12 +44,18 @@ define('ADMIN_URL',                   	$http_path.$_SERVER['HTTP_HOST'].'/'.PROJ
 define('ADMIN_BASE_URL',				ADMIN_URL);
 define('ADMIN_ASSETS',                  ADMIN_URL.'assets/');
 define('ADMIN_THEME',					'admin/'); // active theme
-define('ADMIN_APP_ASSETS',              ADMIN_ASSETS.'app_assets/');
-define('ADMIN_JS',                   	ADMIN_APP_ASSETS.ADMIN_THEME.'js/');
-define('ADMIN_CSS',                   	ADMIN_APP_ASSETS.ADMIN_THEME.'css/');
-define('ADMIN_IMAGES',                 	ADMIN_APP_ASSETS.ADMIN_THEME.'images/');
-define('ADMIN_COMPONENT',              	ADMIN_APP_ASSETS.ADMIN_THEME.'bower_components/');
-define('ADMIN_EXTRA',                  	ADMIN_APP_ASSETS.'extra/');
+define('ADMIN_ASSETS_THEME',			'v3/'); // active theme
+//define('ADMIN_APP_ASSETS',            ADMIN_ASSETS.'app_assets/');
+define('ADMIN_APP_ASSETS',              ADMIN_ASSETS.'dist/');
+define('ADMIN_PLUGINS',                 ADMIN_ASSETS.ADMIN_ASSETS_THEME.'plugins/');
+define('ADMIN_JS',                   	ADMIN_APP_ASSETS.'js/');
+define('ADMIN_CSS',                   	ADMIN_APP_ASSETS.'css/');
+define('ADMIN_THEME_CSS',               ADMIN_ASSETS.ADMIN_ASSETS_THEME.'css/');
+define('ADMIN_THEME_JS',                ADMIN_ASSETS.ADMIN_ASSETS_THEME.'js/');
+define('ADMIN_IMAGES',                 	ADMIN_APP_ASSETS.'images/');
+define('ADMIN_COMPONENT',              	ADMIN_ASSETS.ADMIN_ASSETS_THEME.'bower_components/');
+define('ADMIN_EXTRA',                  	ADMIN_ASSETS.ADMIN_ASSETS_THEME.'extra/');
+
 
 /* END OF BACK END  CONSTANTS */
 
