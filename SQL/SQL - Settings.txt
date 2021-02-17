@@ -72,7 +72,10 @@ INSERT INTO `pref_settings` (`id`, `title`, `setting_key`, `setting_value`, `edi
 (49, 'Invoice Number', 'INVOICE_NUMBER', '15', 0, 0, 10, 'constants'),
 (50, 'Dispute Wallet', 'DISPUTE_WALLET', '27', 0, 0, 11, 'constants'),
 (51, 'Dispute', 'ESCROW_DISPUTE', '6', 0, 0, 12, 'constants'),
-(52, 'Dispute Resolve', 'DISPUTE_RESOLVE', '7', 0, 0, 13, 'constants');
+(52, 'Dispute Resolve', 'DISPUTE_RESOLVE', '7', 0, 0, 13, 'constants'),
+(53, 'Enable Paypal Withdraw', 'enable_paypal_withdraw', '1', 1, 0, 0, 'payment'),
+(54, 'Enable Stripe Withdraw', 'enable_stripe_withdraw', '1', 1, 0, 0, 'payment'),
+(55, 'Enable Bank Withdraw', 'enable_bank_withdraw', '1', 1, 0, 0, 'payment');
 
 
 CREATE TABLE IF NOT EXISTS `pref_setting_group` (

@@ -1,8 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
-$enable_paypal=get_setting('enable_paypal');
-$payfor=1;
+$enable_paypal=get_setting('enable_paypal_withdraw');
+$enable_stripe=get_setting('enable_stripe_withdraw');
+$enable_bank=get_setting('enable_bank_withdraw');
+$payfor=2;
 $p=0;
 $sub_total=0;
 ?>
@@ -28,7 +30,7 @@ $sub_total=0;
 		                    <i><?php echo $currency;?></i>
 		                    <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="0" onkeyup="updateTotal('add_fund')" onkeypress="return isNumberKey(event)">
 						</div>
-						<p><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
+						<p class="processing-fee" style="display:none"><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
 					</div>
 				</div>
 				
@@ -36,29 +38,93 @@ $sub_total=0;
             </div>
 			<div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i> <?php D(__('cart_checkout_page_Payment_Options',"Payment Options"));?></h3>
+			<h3>
+			<i class="icon-material-outline-credit-card text-site"></i> <?php D(__('cart_checkout_page_Withdraw_Options',"Withdraw Options"));?>
+			<button class="btn btn-sm btn-site float-right add_new_method"><i class="icon-feather-plus"></i> Add new</button>
+			</h3>
 			</div>
 			<div class="content with-padding">	
-             <div class="btn-group btn-group-toggle pricing-group" data-toggle="buttons">                        
-            <?php if($enable_paypal == 1){
-            	$feeCalculation=generateProcessingFee('paypal',$sub_total);
-            $p++;
+             <div class="btn-group btn-group-toggle pricing-group" data-toggle="buttons">    
+			<?php if($list){
+				foreach($list as $k=>$account){
+				?>
+
+			<?php if($enable_paypal == 1 && $account->payment_type=='paypal'){
+            	$feeCalculation=generateProcessingFee('paypal_withdrawn',$sub_total);
+           		 $p++;
             ?>            
             <label for="paypal" class="btn btn-outline-black">
-            <input type="radio" name="method" id="paypal" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
-            <?php D(__('paymentmethod_page_Pay_By_Paypal',"Pay With Paypal"));?>
-            <img src="<?php D(IMAGE)?>paypal.png">
+            <input value="<?php echo $account->account_id;?>" type="radio" name="method" id="paypal" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+            <?php //D(__('paymentmethod_page_withdraw_By_Paypal',"With Paypal"));?>
+            <img src="<?php D(IMAGE)?>paypal.png"><br>
+			<b>ID:</b> <?php D($account->account_heading);?>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
+            
             </label>
-            <?php } ?>
+            <?php }
+			elseif($enable_stripe == 1 && $account->payment_type=='stripe'){
+				$feeCalculation=generateProcessingFee('stripe_withdrawn',$sub_total);
+				$p++;
+			?>
+			<label for="stripe" class="btn btn-outline-black">
+            <input value="<?php echo $account->account_id;?>" type="radio" name="method" id="stripe" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+            <?php //D(__('paymentmethod_page_withdraw_By_Stripe',"With Stripe"));?>
+            <img src="<?php D(IMAGE)?>stripe.png">
+			<br>
+			<b>ID:</b> <?php D($account->account_heading);?>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
+            
+            </label>
+			<?php
+			}elseif($enable_bank == 1 && $account->payment_type=='bank'){
+				$feeCalculation=generateProcessingFee('bank_withdrawn',$sub_total);
+				$p++;
+			?>
+			<label for="bank" class="btn btn-outline-black">
+            <input value="<?php echo $account->account_id;?>" type="radio" name="method" id="bank" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+            <?php //D(__('paymentmethod_page_withdraw_By_Bank',"With Bank"));?>
+            <img src="<?php D(IMAGE)?>bank.png"><br>
+			<b>A/C:</b> <?php D($account->account_heading);?>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
+                
+            </label>
+			<?php
+			}
+			?>
+
+				<?php
+				}
+			}
+			?>
+
+
+            
+
+
+
             </div>
             
             </div>
             </div>
 			<?php if($enable_paypal ==1){ ?>
-			<form action="" class="checkoutForm" method="post" id="paypal-form" onsubmit="return processCheckout(this);return false;">
+			<form style="display:none" action="" class="checkoutForm" method="post" id="paypal-form" onsubmit="return processCheckout(this);return false;">
 				<input type="hidden" name="method" value="paypal">
 				<input type="hidden" name="payfor" value="<?php D($payfor)?>">
-				<button type="submit" name="paypal" class="btn btn-site saveBTN"><?php D(__('paymentmethod_page_Pay_With_Paypal',"Pay With Paypal"));?> </button>
+				<button type="submit" name="paypal" class="btn btn-site saveBTN"><?php D(__('paymentmethod_page_Pay_With_Withdraw',"Withdraw With Paypal"));?> </button>
+			</form>
+			<?php } ?>
+			<?php if($enable_stripe ==1){ ?>
+			<form style="display:none" action="" class="checkoutForm" method="post" id="stripe-form" onsubmit="return processCheckout(this);return false;">
+				<input type="hidden" name="method" value="stripe">
+				<input type="hidden" name="payfor" value="<?php D($payfor)?>">
+				<button type="submit" name="stripe" class="btn btn-site saveBTN"><?php D(__('paymentmethod_page_Pay_With_stripe',"Withdraw With Stripe"));?> </button>
+			</form>
+			<?php } ?>
+			<?php if($enable_bank ==1){ ?>
+			<form style="display:none" action="" class="checkoutForm" method="post" id="bank-form" onsubmit="return processCheckout(this);return false;">
+				<input type="hidden" name="method" value="bank">
+				<input type="hidden" name="payfor" value="<?php D($payfor)?>">
+				<button type="submit" name="bank" class="btn btn-site saveBTN"><?php D(__('paymentmethod_page_Pay_With_Bank',"Withdraw With Bank"));?> </button>
 			</form>
 			<?php } ?>		
 
@@ -67,20 +133,29 @@ $sub_total=0;
 	<!-- Dashboard Content / End -->
 
 </div>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document"> 
+    <!-- Modal content-->
+    <div class="modal-content mycustom-modal">
+      <div class="text-center padding-top-50 padding-bottom-50">
+        <?php load_view('inc/spinner',array('size'=>30));?>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Dashboard Container / End -->
 <script type="text/javascript">
 var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 
 var main=function(){
 $('input[name="method"]').click(function(){
+	$('.processing-fee').hide();
 	var id=$(this).attr('id');
 	var amount=$(this).data('total');
 	var fee=$(this).data('processing-fee');
 	var feetext=$(this).data('processing-fee-text');
 	$('.checkoutForm').hide();
-	if(id=='shopping-balance'){
-		$('.processing-fee').hide();
-	}else{
+	if(fee>0){
 		$('.processing-fee').show();
 	}
 	$('.processing-fee ec').html(fee);
@@ -90,6 +165,54 @@ $('input[name="method"]').click(function(){
 })
 
 $('input[name="method"]:first').click();	
+$('.add_new_method').on('click',  function(e){
+	e.preventDefault();
+	$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+	$('#myModal').modal('show');
+	var _self = $(this);
+	var data = {
+		rid: _self.data('id'),
+	};
+	$.get( "<?php echo get_link('WithdrawformAJAXURL')?>",data, function( data ) {
+		setTimeout(function(){ $( "#myModal .mycustom-modal").html( data );$('.selectpicker').selectpicker('refresh');},1000)
+	});	
+
+});
+$('.removeaccount').on('click',  function(e){
+	e.preventDefault();
+	var _self = $(this);
+		var data = {
+			aid: _self.data('id'),
+		};
+		
+		bootbox.confirm({
+			title: '<?php D(__('withdraw_page_Delete_withdraw_method','Delete withdraw method'));?>',
+			message: 'Are you sure to delete this withdraw method?',
+			size: 'small',
+			buttons: {
+				confirm: {
+					label: "Yes",
+					className: 'btn-site pull-right'
+				},
+				cancel: {
+					label: "No",
+					className: 'btn-dark pull-left'
+				}
+			},
+			
+			callback: function(result){
+				if(result==true){
+					$.post('<?php echo get_link('actionwithdrawremove'); ?>', data, function(res){
+						if(res.status == 'OK'){
+							location.reload();
+						}
+					},'JSON');
+				}
+			}
+
+		});
+
+});
 }
 function processCheckout(ev){
 	var formID= $(ev).attr('id');
@@ -99,20 +222,29 @@ function processCheckout(ev){
 	$.ajax({
 			method: "POST",
 			dataType: 'json',
-			url: "<?php if($payfor==1){D(get_link('processAddFundFormCheckAJAXURL'));}?>",
-			data: $('#'+formID).serialize()+'&'+$.param({ 'okey': $('input[name="amount"]').val() }),
+			url: "<?php D(get_link('processAddFundFormCheckAJAXURL'));?>",
+			data: $('#'+formID).serialize()+'&'+$.param({ 'okey': $('input[name="amount"]').val() ,'account_id': $('input[type="radio"][name="method"]:checked').val() }),
 			success: function(msg) {
 				buttonsection.html(buttonval).removeAttr('disabled');
 				clearErrors();
 				if (msg['status'] == 'OK') {
-					if(msg['method']=='wallet' || msg['method']=='bank'){
-						
-					}else{
-						 window.location.href=msg['redirect'];
-					}
+					var message='<?php D(__('popup_withdrawn_request_success_message',"Your request has been submitted successfully!"));?>';
+					bootbox.alert({
+						title:'Withdrawn Fund',
+						message: message,
+						buttons: {
+							'ok': {
+								label: 'Ok',
+								className: 'btn-site pull-right'
+							}
+						},
+						callback: function (result) {
+							window.location.href="<?php D(get_link('TransactionHistoryURL'))?>";
+						}
+					});
 				} else if (msg['status'] == 'FAIL') {
 					bootbox.alert({
-						title:'Add Fund',
+						title:'Withdrawn Fund',
 						message: msg['error'],
 						buttons: {
 						'ok': {

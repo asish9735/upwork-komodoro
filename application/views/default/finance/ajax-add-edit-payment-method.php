@@ -1,0 +1,129 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+$enable_paypal=get_setting('enable_paypal_withdraw');
+$enable_stripe=get_setting('enable_stripe_withdraw');
+$enable_stripe=0;
+$enable_bank=get_setting('enable_bank_withdraw');
+?>
+<div class="modal-header">
+<button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+    <h4 class="modal-title">Payment Method</h4> 
+    <button type="button" class="btn btn-success pull-right" onclick="SaveAccount(this)">Save</button>
+</div>
+<div class="modal-body">
+<form action="" method="post" accept-charset="utf-8" id="withdrawmethodform" class="form-horizontal" role="form" name="withdrawmethodform" onsubmit="return false;">  
+       
+    <div class="row">
+     <div class="col">
+                <div class="submit-field remove_arrow_select">
+                    <label>Select Method</label>
+                    <select  data-live-search="true" name="payment_method" id="payment_method"  class="selectpicker browser-default">
+                        <option value="">Select</option>	
+                        <?php if($enable_paypal){?>	
+						<option value="paypal">Paypal</option>		
+                        <?php }?>
+                        <?php if($enable_stripe){?>	
+						<option value="stripe">Stripe</option>	
+                        <?php }?>
+                        <?php if($enable_bank){?>		
+						<option value="bank">Bank</option>		
+                        <?php }?>
+					</select>
+					<span id="payment_methodError" class="rerror"></span>
+				</div>
+                <div class="paypal_container default_container" style="display:none">
+                    <div class="submit-field ">
+                        <label>Account Email id</label>
+                        <input type="text"  class="form-control" name="paypal_address" id="paypal_address" value="">
+                        <span id="paypal_addressError" class="rerror"></span>
+                    </div>
+                </div>
+                <div class="stripe_container default_container" style="display:none">
+                    <div class="submit-field ">
+                        <label>Account Email id</label>
+                        <input type="text"  class="form-control" name="stripe_address" id="stripe_address" value="">
+                        <span id="stripe_addressError" class="rerror"></span>
+                    </div>
+                </div>
+                <div class="bank_container default_container" style="display:none">
+                    <div class="submit-field ">
+                        <label>Bank Name</label>
+                        <input type="text"  class="form-control" name="bank_name" id="bank_name" value="">
+                        <span id="bank_nameError" class="rerror"></span>
+                    </div>
+                    <div class="submit-field ">
+                        <label>Account Number</label>
+                        <input type="text"  class="form-control" name="bank_ac_number" id="bank_ac_number" value="">
+                        <span id="bank_ac_numberError" class="rerror"></span>
+                    </div>
+                    <div class="submit-field ">
+                        <label>Swift Code</label>
+                        <input type="text"  class="form-control" name="bank_swift_code" id="bank_swift_code" value="">
+                        <span id="bank_swift_codeError" class="rerror"></span>
+                    </div>
+                    <div class="submit-field ">
+                        <label>IBAN</label>
+                        <input type="text"  class="form-control" name="bank_iban" id="bank_iban" value="">
+                        <span id="bank_ibanError" class="rerror"></span>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+ </form>
+</div>
+<script>
+$('.selectpicker').selectpicker('refresh');
+$('#payment_method').change(function(){
+    $('.default_container').hide();
+    var method=$(this).val();
+    if(method=='paypal'){
+        $('.'+method+'_container').show();
+    }
+    else if(method=='stripe'){
+        $('.'+method+'_container').show();
+    }
+    else if(method=='bank'){
+        $('.'+method+'_container').show();
+    }
+
+})
+
+function SaveAccount(ev){
+		var buttonsection=$(ev);
+		var buttonval = buttonsection.html();
+		buttonsection.html(SPINNER).attr('disabled','disabled');
+		var formID="withdrawmethodform";
+		$.ajax({
+	        type: "POST",
+	        url: "<?php D(get_link('processwithdrawmethodFormCheckAJAXURL'))?>",
+	        data:$('#'+formID).serialize(),
+	        dataType: "json",
+	        cache: false,
+			success: function(msg) {
+				buttonsection.html(buttonval).removeAttr('disabled');
+				clearErrors();
+				if (msg['status'] == 'OK') {
+                    $('#myModal').modal('hide');
+					var message='<?php D(__('popup_withdrawn_method_success_message',"Your account added successfully!"));?>';
+					bootbox.alert({
+						title:'Withdrawn Fund Account',
+						message: message,
+						buttons: {
+							'ok': {
+								label: 'Ok',
+								className: 'btn-site pull-right'
+							}
+						},
+						callback: function (result) {
+							location.reload();
+						}
+					});
+                    
+				} else if (msg['status'] == 'FAIL') {
+					registerFormPostResponse(formID,msg['errors']);
+				}
+			}
+		})
+}
+</script>

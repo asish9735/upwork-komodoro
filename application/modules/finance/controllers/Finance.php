@@ -176,6 +176,11 @@ class Finance extends MX_Controller {
 			'bootbox_custom.js',
 			'mycustom.js',
 		));
+		$this->data['list']=getData(array(
+			'select'=>'m.account_id,m.member_id,m.payment_type,m.account_heading,m.acount_details',
+			'table'=>'member_withdraw_account as m',
+			'where'=>array('m.member_id'=>$this->member_id,'m.account_status'=>1),
+		));
 		if($this->access_member_type=='F'){
 			$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
 		}else{
@@ -205,7 +210,7 @@ class Finance extends MX_Controller {
 				$msg['redirect'] =get_link('StripeCheckOut').'addfund';
 			}
 			elseif($method=='telr'){
-				$featured_fee=get_option_value('featured_fee');
+				$featured_fee=get_setting('featured_fee');
 				$feeCalculation=generateProcessingFee('telr',$featured_fee);
 				$processing_fee=$feeCalculation['processing_fee'];
 				$amount=$featured_fee+$processing_fee;
@@ -213,13 +218,13 @@ class Finance extends MX_Controller {
 				$cart_id=$proposal_id.'-'.time();
 				$post_data = Array(
 					'ivp_method'		=> 'create',
-					'ivp_authkey'		=> get_option_value('telr_authentication_code'),
-					'ivp_store'		=> get_option_value('telr_store_id'),
+					'ivp_authkey'		=> get_setting('telr_authentication_code'),
+					'ivp_store'		=> get_setting('telr_store_id'),
 					'ivp_lang'		=> 'en',
 					'ivp_cart'		=> $cart_id,
 					'ivp_amount'		=> $amount,
 					'ivp_currency'		=> trim(CurrencyCode()),
-					'ivp_test'		=> get_option_value('telr_is_sandbox'),
+					'ivp_test'		=> get_setting('telr_is_sandbox'),
 					'ivp_desc'		=> trim($cart_desc),
 					'return_auth'		=> 	get_link('TelrNotify').'featured/'.$proposal_id,
 					'return_can'		=>  get_link('homeURL'),
@@ -231,7 +236,7 @@ class Finance extends MX_Controller {
 				if(isset($curl_telr['order'])) {
 					$transansaction_data=array('payment_type'=>'TELR','content_key'=>$cart_id);
 					$transansaction_data['request_value']=json_encode($post_data);
-					insertTable('online_transaction_data',$transansaction_data);
+					insert_record('online_transaction_data',$transansaction_data);
 		
 					$jobj = $curl_telr['order'];
 					$ref=$jobj['ref'];
@@ -250,7 +255,7 @@ class Finance extends MX_Controller {
 				
 			}
 			elseif($method=='ngenius'){
-				$featured_fee=get_option_value('featured_fee');
+				$featured_fee=get_setting('featured_fee');
 				$feeCalculation=generateProcessingFee('ngenius',$featured_fee);
 				$processing_fee=$feeCalculation['processing_fee'];
 				$amount=$featured_fee+$processing_fee;
@@ -282,7 +287,7 @@ class Finance extends MX_Controller {
 								$postData['cart_id']=$cart_id;
 								$postData['payment_type']='featured';
 								$transansaction_data['request_value']=json_encode($postData);
-								insertTable('online_transaction_data',$transansaction_data);
+								insert_record('online_transaction_data',$transansaction_data);
 								
 								
 								//$this->session->set_userdata('Nref',$ref);
@@ -300,6 +305,227 @@ class Finance extends MX_Controller {
 					}
 				}
 			}
+		}
+		else if($payfor==2){
+			$this->load->library('form_validation');
+			$member_details=getWalletMember($this->member_id);
+			$current_balance=$member_details->balance;
+			$wallet_id=$member_details->wallet_id;
+			$site_details=getWallet(get_setting('WITHDRAW_WALLET'));
+			$receiver_wallet_id=$site_details->wallet_id;
+			$receiver_wallet_balance=$site_details->balance;
+			$fee_wallet_details=getWallet(get_setting('PROCESSING_FEE_WALLET'));
+			$fee_wallet_id=$fee_wallet_details->wallet_id;
+			$fee_wallet_balance=$fee_wallet_details->balance;
+			$accountDetails=array();
+			if($method=='paypal'){
+				if($this->input->post()){
+					$this->form_validation->set_rules('okey', 'amount', 'required|trim|xss_clean|is_numeric|greater_than[0]');
+					$this->form_validation->set_rules('account_id', 'account id', 'required|trim|xss_clean|is_numeric|greater_than[0]');
+					if ($this->form_validation->run() == FALSE){
+						$error=validation_errors_array();
+						if($error){
+							foreach($error as $key=>$val){
+								$msg['status'] = 'FAIL';
+								$msg['error'] = $val;
+								$i++;
+							}
+						}
+					}
+					$account_id=post('account_id');
+					$total=post('okey');
+					if($account_id){
+						$accountDetails=getData(array(
+							'select'=>'ma.account_id,ma.member_id,ma.payment_type,ma.account_heading,ma.acount_details,m.member_name',
+							'table'=>'member_withdraw_account as ma',
+							'join'=>array(
+								array('table'=>'member as m','on'=>'ma.member_id=m.member_id','position'=>'left'),
+							),
+							'where'=>array('ma.member_id'=>$this->member_id,'ma.account_status'=>1,'ma.account_id'=>$account_id),
+							'single_row'=>true
+						));
+					}
+					if(!$accountDetails){
+						$msg['status'] = 'FAIL';
+						$msg['error'] = 'Invalid account details';
+						$i++;	
+					}else{
+						if($current_balance>=$total){
+
+						}else{
+							$msg['status'] = 'FAIL';
+							$msg['error'] = 'Insufficient funds';
+							$i++;
+						}
+
+					}
+					
+					if($i==0){
+						
+						$acount_details_data=json_decode($accountDetails->acount_details);
+						$paypal_email=$acount_details_data->id;
+						
+						$feeCalculation=generateProcessingFee('withdrawal_paypal',$total);
+						$order_fee=$feeCalculation['processing_fee'];
+
+						$relational_data=json_encode(array('method'=>'Paypal','to'=>$paypal_email));
+						$wallet_transaction_type_id=get_setting('WITHDRAW');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>0,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+						if($wallet_transaction_id){
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$wallet_id,'debit'=>$total,'description_tkey'=>'Paypal_Transfer','relational_data'=>$relational_data);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$accountDetails->member_name.' wallet',
+								'TW'=>$site_details->title,
+								'TP'=>'Withdraw',
+								));
+							insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+							$w_payment=$total-$order_fee;
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$receiver_wallet_id,'credit'=>$w_payment,'description_tkey'=>'Transfer_from','relational_data'=>$accountDetails->member_name);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$accountDetails->member_name.' wallet',
+								'TW'=>$site_details->title,
+								'TP'=>'Withdraw',
+								));
+							insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+							if($order_fee>0){
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$fee_wallet_id,'credit'=>$order_fee,'description_tkey'=>'Paypel_fee','relational_data'=>$order_fee);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$accountDetails->member_name.' wallet',
+								'TW'=>$fee_wallet_details->title,	
+								'TP'=>'Processing_Fee',
+								));
+							insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+							}
+							$new_balance=displayamount($current_balance,2)-displayamount($total,2);
+							updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$wallet_id));
+							wallet_balance_check($wallet_id,array('transaction_id'=>$wallet_transaction_id));
+							
+							$new_balance=displayamount($receiver_wallet_balance,2)+displayamount($w_payment,2);
+							updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$receiver_wallet_id));
+							wallet_balance_check($receiver_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+							if($order_fee>0){
+							$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
+							updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
+							wallet_balance_check($fee_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+							}
+							$template='withdrawn-request';
+							$data_parse=array(
+								'WITHDRAWN_URL'=>ADMIN_URL.'wallet/withdrawn_list',
+							);
+							SendMail(get_setting('admin_email'),$template,$data_parse);
+							$msg['status'] = 'OK';
+						}else{
+							$msg['status'] = 'FAIL';
+							$msg['error'] = 'Invalid request';
+						}						
+					}
+				}
+			}
+			elseif($method=='bank'){
+				if($this->input->post()){
+					$this->form_validation->set_rules('okey', 'amount', 'required|trim|xss_clean|is_numeric|greater_than[0]');
+					$this->form_validation->set_rules('account_id', 'account id', 'required|trim|xss_clean|is_numeric|greater_than[0]');
+					if ($this->form_validation->run() == FALSE){
+						$error=validation_errors_array();
+						if($error){
+							foreach($error as $key=>$val){
+								$msg['status'] = 'FAIL';
+								$msg['error'] = $val;
+								$i++;
+							}
+						}
+					}
+					$account_id=post('account_id');
+					$total=post('okey');
+					if($account_id){
+						$accountDetails=getData(array(
+							'select'=>'ma.account_id,ma.member_id,ma.payment_type,ma.account_heading,ma.acount_details,m.member_name',
+							'table'=>'member_withdraw_account as ma',
+							'join'=>array(
+								array('table'=>'member as m','on'=>'ma.member_id=m.member_id','position'=>'left'),
+							),
+							'where'=>array('ma.member_id'=>$this->member_id,'ma.account_status'=>1,'ma.account_id'=>$account_id),
+							'single_row'=>true
+						));
+					}
+					if(!$accountDetails){
+						$msg['status'] = 'FAIL';
+						$msg['error'] = 'Invalid account details';
+						$i++;	
+					}else{
+						if($current_balance>=$total){
+
+						}else{
+							$msg['status'] = 'FAIL';
+							$msg['error'] = 'Insufficient funds';
+							$i++;
+						}
+
+					}
+					
+					if($i==0){
+						
+						$acount_details_data=json_decode($accountDetails->acount_details);
+						$bank_account_number=$acount_details_data->id;
+						
+						$feeCalculation=generateProcessingFee('withdrawal_bank',$total);
+						$order_fee=$feeCalculation['processing_fee'];
+
+						$relational_data=json_encode(array('method'=>'Bank','to'=>$bank_account_number,'name'=>$acount_details_data->name,'swift'=>$acount_details_data->swift,'iban'=>$acount_details_data->iban));
+						$wallet_transaction_type_id=get_setting('WITHDRAW');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>0,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+						if($wallet_transaction_id){
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$wallet_id,'debit'=>$total,'description_tkey'=>'Bank_Transfer','relational_data'=>$relational_data);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$accountDetails->member_name.' wallet',
+								'TW'=>$site_details->title,
+								'TP'=>'Withdraw',
+								));
+							insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+							$w_payment=$total-$order_fee;
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$receiver_wallet_id,'credit'=>$w_payment,'description_tkey'=>'Transfer_from','relational_data'=>$accountDetails->member_name);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$accountDetails->member_name.' wallet',
+								'TW'=>$site_details->title,
+								'TP'=>'Withdraw',
+								));
+							insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+							if($order_fee>0){
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$fee_wallet_id,'credit'=>$order_fee,'description_tkey'=>'Bank_fee','relational_data'=>$order_fee);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$accountDetails->member_name.' wallet',
+								'TW'=>$fee_wallet_details->title,	
+								'TP'=>'Processing_Fee',
+								));
+							insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+							}
+							$new_balance=displayamount($current_balance,2)-displayamount($total,2);
+							updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$wallet_id));
+							wallet_balance_check($wallet_id,array('transaction_id'=>$wallet_transaction_id));
+							
+							$new_balance=displayamount($receiver_wallet_balance,2)+displayamount($w_payment,2);
+							updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$receiver_wallet_id));
+							wallet_balance_check($receiver_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+							if($order_fee>0){
+							$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
+							updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
+							wallet_balance_check($fee_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+							}
+							$template='withdrawn-request';
+							$data_parse=array(
+								'WITHDRAWN_URL'=>ADMIN_URL.'wallet/withdrawn_list',
+							);
+							SendMail(get_setting('admin_email'),$template,$data_parse);
+							$msg['status'] = 'OK';
+						}else{
+							$msg['status'] = 'FAIL';
+							$msg['error'] = 'Invalid request';
+						}						
+					}
+				}
+			}
 		}else{
 			$msg['status'] = 'FAIL';
 			$msg['error'] = 'Invalid payment option';
@@ -311,8 +537,98 @@ class Finance extends MX_Controller {
 		unset($_POST);
 		echo json_encode($msg);	
 	}
-   
-	
-	
+	public function withdrawmethod(){
+		checkrequestajax();
+		
+		$this->layout->view('ajax-add-edit-payment-method', $this->data,TRUE);
+
+	}
+	public function processwithdrawmethod(){
+		$this->load->library('form_validation');
+		checkrequestajax();
+		$i=0;
+		$account_heading=$acount_details=NULL;
+		$msg=array();
+		if($this->loggedUser){
+		if($this->input->post()){
+			$this->form_validation->set_rules('payment_method', 'payment method', 'required|trim|xss_clean');
+			if(post('payment_method')=='paypal'){
+				$this->form_validation->set_rules('paypal_address', 'address', 'required|trim|xss_clean|valid_email');
+				$account_heading=post('paypal_address');
+				$acount_details=json_encode(array('id'=>post('paypal_address')));
+			}
+			elseif(post('payment_method')=='stripe'){
+				$this->form_validation->set_rules('stripe_address', 'address', 'required|trim|xss_clean|valid_email');
+				$account_heading=post('stripe_address');
+				$acount_details=json_encode(array('id'=>post('stripe_address')));
+			}elseif(post('payment_method')=='bank'){
+				$this->form_validation->set_rules('bank_name', 'bank name', 'required|trim|xss_clean');
+				$this->form_validation->set_rules('bank_ac_number', 'account number', 'required|trim|xss_clean');
+				$this->form_validation->set_rules('bank_swift_code', 'swift code', 'required|trim|xss_clean');
+				$this->form_validation->set_rules('bank_iban', 'IBAN', 'required|trim|xss_clean');
+				$account_heading=post('bank_ac_number');
+				$acount_details=json_encode(array('id'=>post('bank_ac_number'),'name'=>post('bank_name'),'swift'=>post('bank_swift_code'),'iban'=>post('bank_iban')));
+			}
+			
+			if ($this->form_validation->run() == FALSE){
+				$error=validation_errors_array();
+				if($error){
+					foreach($error as $key=>$val){
+						$msg['status'] = 'FAIL';
+		    			$msg['errors'][$i]['id'] = $key;
+						$msg['errors'][$i]['message'] = $val;
+		   				$i++;
+					}
+				}
+			}
+			if($i==0 && !in_array(post('payment_method'),array('paypal','bank'))){
+				$msg['status'] = 'FAIL';
+				$msg['errors'][$i]['id'] = 'payment_method';
+				$msg['errors'][$i]['message'] = 'Invalid payment method';
+				$i++;
+
+			}
+			if($i==0){
+				$member_withdraw_account=array(
+					'member_id'=>$this->member_id,
+					'payment_type'=>post('payment_method'),
+					'account_heading'=>$account_heading,
+					'acount_details'=>$acount_details,
+					'account_status'=>1,
+					'reg_date'=>date('Y-m-d H:i:s')
+				);
+				$acount_id=insert_record('member_withdraw_account',$member_withdraw_account,true);
+				if($acount_id){			
+					$msg['status'] = 'OK';
+				}else{
+					$msg['status'] = 'FAIL';
+	    			$msg['errors'][$i]['id'] = 'payment_method';
+					$msg['errors'][$i]['message'] = 'invalid data';
+	   				$i++;
+				}
+			}
+		}
+		unset($_POST);
+		echo json_encode($msg);		
+		}
+	}
+	public function removewithdrawmethod(){
+		checkrequestajax();
+		if($this->loggedUser){
+			$cmd='';
+			$account_id_md5=post('aid');
+			if($account_id_md5){
+				$account_id=getFieldData('account_id','member_withdraw_account','md5(account_id)',$account_id_md5);
+				if($account_id){
+					$this->db->where('account_id',$account_id)->where('member_id',$this->member_id)->update('member_withdraw_account',array('account_status'=>2));
+				}
+			}
+			$json['status']='OK';
+		}else{
+			$json['status']='FAIL';
+			$json['popup']='login';
+		}
+		echo json_encode($json);
+	}
 	
 }

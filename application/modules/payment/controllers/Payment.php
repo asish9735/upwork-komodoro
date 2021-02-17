@@ -98,8 +98,8 @@ class Payment extends MX_Controller {
 					'select'=>'o.order_id,o.order_number,o.order_duration,o.order_date,o.order_time,o.order_description,o.seller_id,o.buyer_id,o.proposal_id,o.order_price,o.order_qty,o.order_fee,o.order_active,o.complete_time,o.order_status,o.payment_method,o.transaction_id,p.proposal_image,p.proposal_title,p.proposal_url,p_a.buyer_instruction',
 					'table'=>'orders as o',
 					'join'=>array(
-					array('table'=>'proposals as p','on'=>'o.proposal_id=p.proposal_id','posiotion'=>'left'),
-					array('table'=>'proposal_additional as p_a','on'=>'o.proposal_id=p_a.proposal_id','posiotion'=>'left'),
+					array('table'=>'proposals as p','on'=>'o.proposal_id=p.proposal_id','position'=>'left'),
+					array('table'=>'proposal_additional as p_a','on'=>'o.proposal_id=p_a.proposal_id','position'=>'left'),
 					),
 					'where'=>array('o.order_id'=>$id,'o.order_status'=>0),
 					'single_row'=>TRUE
@@ -808,8 +808,8 @@ class Payment extends MX_Controller {
 						'select'=>'o.order_id,o.order_number,o.order_duration,o.order_date,o.order_time,o.order_description,o.seller_id,o.buyer_id,o.proposal_id,o.order_price,o.order_qty,o.order_fee,o.order_active,o.complete_time,o.order_status,o.payment_method,o.transaction_id,p.proposal_image,p.proposal_title,p.proposal_url,p_a.buyer_instruction',
 						'table'=>'orders as o',
 						'join'=>array(
-						array('table'=>'proposals as p','on'=>'o.proposal_id=p.proposal_id','posiotion'=>'left'),
-						array('table'=>'proposal_additional as p_a','on'=>'o.proposal_id=p_a.proposal_id','posiotion'=>'left'),
+						array('table'=>'proposals as p','on'=>'o.proposal_id=p.proposal_id','position'=>'left'),
+						array('table'=>'proposal_additional as p_a','on'=>'o.proposal_id=p_a.proposal_id','position'=>'left'),
 						),
 						'where'=>array('o.order_id'=>$id,'o.order_status'=>0),
 						'single_row'=>TRUE

@@ -26,6 +26,9 @@ $config['SaveDocumentAJAXURL']= 'dashboard/verifydocumentCheckAjax';
 
 $config['TransactionHistoryURL'] = 'finance/transaction';
 $config['WithdrawURL'] = 'finance/withdraw';
+$config['WithdrawformAJAXURL'] = 'finance/withdrawmethod';
+$config['processwithdrawmethodFormCheckAJAXURL'] = 'finance/processwithdrawmethod';
+$config['actionwithdrawremove'] = 'finance/removewithdrawmethod';
 $config['AddFundURL'] = 'finance/addfund';
 $config['processAddFundFormCheckAJAXURL'] = 'finance/processfund';
 $config['PaypalCheckOut'] = 'payment/paypal/';
