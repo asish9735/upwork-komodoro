@@ -36,8 +36,20 @@ class Findtalents extends MX_Controller {
 			'bootstrap-tagsinput.css'
 		));
 		$this->data['searchdata']=get();
+		if(get('byskillsname')){
+			$this->data['searchdata']['pre_skills']=getData(array(
+				'select'=>'s.skill_id,s.skill_key,s_n.skill_name',
+				'table'=>'skills s',
+				'join'=>array(array('table'=>'skill_names as s_n','on'=>"(s.skill_id=s_n.skill_id and s_n.skill_lang='".get_active_lang()."')",'position'=>'left')),
+				'where'=>array('s.skill_status'=>'1'),
+				'where_in'=>array('s.skill_key'=>get('byskillsname'))
+			));
+		}
+		
 		$this->data['all_skills']=getAllSkills();
 		$this->data['all_location']=getAllCountry();
+
+
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');

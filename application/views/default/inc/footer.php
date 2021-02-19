@@ -209,6 +209,14 @@ function updateheadscroll(type){
 	var scrollbar=container.closest('.header-notifications-scroll');
 	var scrollContainerList = container;
 	var itemsCount = scrollContainerList.children("li").length;
+  if(itemsCount>0){
+    if(type=='message'){
+      $('.viewallbtnmessage').show();
+    }else{
+        $('.viewallbtnnotification').show();
+    }
+    
+  }
 	var notificationItems;
 	if (scrollContainerList.children("li").outerHeight() > 120) {
 		var notificationItems = 2;

@@ -21,6 +21,7 @@ class Notification extends MX_Controller {
 	}
 	
 	public function index(){
+		$this->load->library('pagination');
 		$this->layout->set_js(array(
 			'utils/helper.js',
 			'bootbox_custom.js',
@@ -33,9 +34,54 @@ class Notification extends MX_Controller {
 			
 			$this->data['left_panel']=$this->layout->view('inc/client-setting-left',$this->data,TRUE,TRUE);
 		}
+		$srch = $this->input->get();
+			$limit = !empty($srch['per_page']) ? $srch['per_page'] : 0;
+			$offset = 10;
+			if($this->access_member_type=='F'){
+				$srch['contractor_id'] = $this->member_id;
+			}else{
+				$srch['owner_id'] = $this->member_id;
+			}
+			$srch['contract_status'] = 1;
+			$show='all';
+			if($this->input->get('show')){
+				$show=$srch['show'];
+			}
+			$this->data['show']=$show;
+
+			$this->data['notification_list'] = $this->notification_model->getNotificationList($this->member_id, $limit, $offset);
+			$this->data['list_total'] = $this->notification_model->getNotificationList($this->member_id, $limit, $offset, FALSE);
+			
+			/*Pagination Start*/
+			$config['base_url'] = get_link('NotificationURL');
+			$config['page_query_string'] = TRUE;
+			$config['reuse_query_string'] = TRUE;
+			$config['total_rows'] = $this->data['list_total'];
+			$config['per_page'] = $offset;
+			
+			$config['full_tag_open'] = '<div class="pagination-container margin-top-60 margin-bottom-60"><nav class="pagination"><ul>';
+			$config['full_tag_close'] = '</ul></nav></div>';
+			$config['first_link'] = 'First';
+			$config['first_tag_open'] = '<li class="waves-effect">';
+			$config['first_tag_close'] = '</li>';
+			$config['num_tag_open'] = '<li class="waves-effect">';
+			$config['num_tag_close'] = '</li>';
+			$config['cur_tag_open'] = "<li><a class='current-page' href='javascript:void(0)'>";
+			$config['cur_tag_close'] = '</a></li>';
+			$config['last_link'] = 'Last';
+			$config['last_tag_open'] = "<li class='last waves-effect'>";
+			$config['last_tag_close'] = '</li>';
+			$config['next_link'] = '<i class="icon-material-outline-keyboard-arrow-right"></i>';
+			$config['next_tag_open'] = '<li class="waves-effect">';
+			$config['next_tag_close'] = '</li>';
+			$config['prev_link'] = '<i class="icon-material-outline-keyboard-arrow-left"></i>';
+			$config['prev_tag_open'] = '<li class="waves-effect">';
+			$config['prev_tag_close'] = '</li>';  
+			
+			$this->pagination->initialize($config);
+			$this->data['links'] = $this->pagination->create_links();
 		
-		
-		//$this->layout->view('message', $this->data);
+		$this->layout->view('notification', $this->data);
 	}
 	
 	public function notification_list_htm(){

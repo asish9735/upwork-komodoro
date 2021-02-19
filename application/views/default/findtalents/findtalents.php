@@ -46,7 +46,20 @@
 					<h5>Skills</h5>
 
 					<div class="tags-container skillContaintag">
-						
+						<?php
+						if($searchdata && array_key_exists('byskillsname',$searchdata)){
+							if($searchdata['pre_skills']){
+								foreach($searchdata['pre_skills'] as $k=>$preskills){
+						?>
+						<div class="tag skill_set_<?php echo $preskills->skill_id;?>" onclick="filterForm()">
+							<input type="checkbox" id="tag_<?php echo $preskills->skill_id;?>" name="byskillsname[]" value="<?php echo $preskills->skill_key;?>" checked>
+							<label for="tag_<?php echo $preskills->skill_id;?>"><?php echo $preskills->skill_name;?></label>
+						</div>
+						<?php
+								}
+							}
+						}
+						?>
 					</div>
 					<div class="clearfix"></div>
 
@@ -296,6 +309,8 @@ var main = function(){
 	findJobLoadMore.start(); */
 	
 	function filterForm(){
+		setTimeout(() => {
+			
 		
 		$('#talent_list').html('');
 		var form = $('#filterForm').serialize();
@@ -316,7 +331,7 @@ var main = function(){
 		});
 	
 		findJobLoadMore.start();
-		
+	}, 100);
 	}
 	
 	window.filterForm = filterForm;

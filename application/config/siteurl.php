@@ -144,6 +144,7 @@ $config['endcontractformFormCheckAJAXURL'] = 'contract/endcontractcheck';
 
 
 
+$config['NotificationURL'] = 'notification';
 $config['MessageURL'] = 'message';
 $config['MessageRoomURL'] = 'message-room';
 $config['CreateMessageRoomURL'] = 'message/createnewroom';

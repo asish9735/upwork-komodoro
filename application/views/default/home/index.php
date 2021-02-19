@@ -337,7 +337,7 @@
                     	<h3>I want to hire a</h3>
                         <h2>Professionals</h2>                        
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                        <a href="#" class="btn btn-outline-site">Post A Job</a>
+                        <a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-outline-site">Post A Job</a>
                     </div>
                 </div>
             </aside>
@@ -348,7 +348,7 @@
                     	<h3>I'm looking for</h3>
                         <h2>Projects</h2>                        
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <a href="#" class="btn btn-outline-site">Get Started</a>
+                        <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-site">Get Started</a>
                     </div>
                 </div>
             </aside>
@@ -419,40 +419,17 @@
       <h2>Top Skills</h2>
     </div>
     <ul class="list list-2 top-list">
-        <li><a href="#">Android Developer</a></li>
-        <li><a href="#">Bookkeeper</a></li>
-        <li><a href="#">Content Writer</a></li>
-        <li><a href="#">Copywriter</a></li>
-        <li><a href="#">Customer Service Representative</a></li>
-        <li><a href="#">Database Administrator</a></li>
-        <li><a href="#">Data Scientist</a></li>
-        <li><a href="#">Facebook Developer</a></li>
-        <li><a href="#">Front-End Developer</a></li>
-        <li><a href="#">Game Developer</a></li>
-        <li><a href="#">Graphic Designer</a></li>
-        <li><a href="#">Information Security Analyst</a></li>
-        <li><a href="#">iOS Developer</a></li>
-        <li><a href="#">Java Developer</a></li>
-        <li><a href="#">JavaScript Developer</a></li>
-        <li><a href="#">Logo Designer</a></li>
-        <li><a href="#">Mobile App Developer</a></li>
-        <li><a href="#">PHP Developer</a></li>
-        <li><a href="#">Python Developer</a></li>
-        <li><a href="#">Resume Writer</a></li>
-        <li><a href="#">Sales Consultant</a></li>
-        <li><a href="#">SEO Expert</a></li>
-        <li><a href="#">Social Media Manager</a></li>
-        <li><a href="#">Software Developer</a></li>
-        <li><a href="#">Software Engineer</a></li>
-        <li><a href="#">Technical Writer</a></li>
-        <li><a href="#">UI Designer</a></li>
-        <li><a href="#">UX Designer</a></li>
-        <li><a href="#">Virtual Assistant</a></li>
-        <li><a href="#">Web Designer</a></li>
-        <li><a href="#">Wordpress Developer</a></li>
-        <li><a href="#">Writer</a></li>
+    <?php if($popular_skills){
+        foreach($popular_skills as $k=>$sk){
+
+      ?>
+        <li><a href="<?php echo get_link('search_freelancer').'?byskillsname[]='.$sk->skill_key;?>"><?php echo $sk->skill_name;?></a></li>
+    <?php 
+        }
+      }?>
+       
 	</ul>
-    <div class="text-center"><a href="#" class="btn btn-outline-site">View All Skills</a></div>
+    <div class="text-center" hidden><a href="#" class="btn btn-outline-site">View All Skills</a></div>
 </div>
 </section>
 <!-- Top Skills End -->

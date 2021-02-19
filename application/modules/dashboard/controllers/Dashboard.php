@@ -63,6 +63,7 @@ class Dashboard extends MX_Controller {
 				));	
 				$this->data['memberInfo']=$memberDataBasic;
 				$this->data['memberInfo']->total_jobs=$this->db->where(array('c.contractor_id'=>$this->member_id,'c.contract_status'=>1))->from('project_contract as c')->count_all_results();
+				$this->data['memberInfo']->total_offer=$this->db->where(array('c.contractor_id'=>$this->member_id))->from('project_contract as c')->count_all_results();
 				$this->data['bid_invitation_list']=$this->dashboard_model->getBidInvitation($srch, $limit, $offset);
 				$srch['contract_status'] = 0;
 				$this->data['offer_invitation_list']=$this->contract_model->getContracts($srch, $limit, $offset);

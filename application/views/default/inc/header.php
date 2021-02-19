@@ -102,6 +102,7 @@ if($loggedUser){
 									<a id="load_more_notification_btn" href="javascript:void(0)" style="display:none;">Load more</a>
 								</div>
 							</div>
+							<a href="<?php echo get_link('NotificationURL');?>" style="display:none" class="header-notifications-button button-sliding-icon viewallbtnnotification">View All Notifications<i class="icon-material-outline-arrow-right-alt"></i></a>
 						</div>
 					</div>
 					
@@ -130,7 +131,7 @@ if($loggedUser){
 								</div>
 							</div>
 
-							<a href="<?php echo base_url('message');?>" class="header-notifications-button button-sliding-icon">View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
+							<a href="<?php echo get_link('MessageURL');?>" style="display:none" class="header-notifications-button button-sliding-icon viewallbtnmessage">View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
 						</div>
 					</div>
 

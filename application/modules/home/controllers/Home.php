@@ -56,6 +56,10 @@ class Home extends MX_Controller {
 		$offset = 10;
 		$this->data['popular_category'] = $this->findtalents_model->get_all_category(true);
 		$this->data['popular_freelancer']=$this->findtalents_model->getTalentList($get,$limit, $offset);
+		$this->load->model('skill_model');
+		$limit = 0;
+		$offset = 32;
+		$this->data['popular_skills']=$this->skill_model->getPolularSkillsList($get,$limit, $offset);
 		$this->layout->view('index',$this->data);
 	}
 	public function findjobs() {

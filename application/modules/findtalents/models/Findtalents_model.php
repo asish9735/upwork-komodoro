@@ -23,6 +23,12 @@ class Findtalents_model extends CI_Model {
 			->join("country_names as c_n", "(c.country_code=c_n.country_code and c_n.country_lang='".$this->lang."')", "LEFT")
 			->join("member_basic m_b", "m_b.member_id=m.member_id", "LEFT")
 			->join("member_statistics m_s", "m.member_id=m_s.member_id", "LEFT");
+		if(!empty($srch['byskillsname'])){
+			$this->db->join("member_skills m_sk", "m.member_id=m_sk.member_id", "LEFT");
+			$this->db->join("skills s", "m_sk.skill_id=s.skill_id", "LEFT");
+			$this->db->where_in("s.skill_key", $srch['byskillsname']);
+			$this->db->where("s.skill_status", 1);
+		}
 			
 		$this->db->where("a.login_status", 1);
 		$this->db->where("m.is_email_verified", 1);

@@ -33,5 +33,25 @@ class Skill_model extends CI_Model {
 		$result = $this->ci->db->get()->result_array();
 		return $result;
 	}
+	public function getPolularSkillsList($srch=array(), $limit=0, $offset=10, $for_list=TRUE){
+		$default_lang = get_active_lang();
+		$this->ci->db->select("m_s.skill_id,s_n.skill_name,s.skill_key,count(m_s.skill_id) as total_freelancer")
+				->from("skills s")
+				->join("skill_names s_n", "s.skill_id=s_n.skill_id AND s_n.skill_lang='$default_lang'", "LEFT")
+				->join("member_skills m_s", "s.skill_id=m_s.skill_id", "LEFT");
+		$this->db->where(array('s.skill_status'=>'1'));
+		$this->db->group_by('s.skill_id');
+		$this->db->order_by('total_freelancer','desc');
+		$this->db->order_by('s_n.skill_name','asc');
+		if($for_list){
+			$result = $this->db->limit($offset, $limit)->get()->result();
+		}else{
+			$result = $this->db->get()->num_rows();
+		}
+		return $result;
+	}
+
+
+
 	
 }
