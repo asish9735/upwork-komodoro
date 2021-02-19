@@ -328,6 +328,54 @@ if($login_user_id){
 	}
 		
 </script>
+<div id="myModalPort" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document"> 
+    <!-- Modal content-->
+    <div class="modal-content mycustom-modal">
+    <div class="modal-header">        
+         <h4 class="modal-title">View portfolio</h4>
+         <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+      </div>
+    <div class="modal-body">
+    <div class="row">
+    <aside class="col-8">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<?php echo IMAGE;?>banner01.jpg" class="d-block w-100" alt="...">      
+    </div>
+    <div class="carousel-item">
+      <img src="<?php echo IMAGE;?>banner02.jpg" class="d-block w-100" alt="...">      
+    </div>
+    <div class="carousel-item">
+      <img src="<?php echo IMAGE;?>banner03.jpg" class="d-block w-100" alt="...">      
+    </div>
+  </div>
+  <!--<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>-->
+</div>
+	</aside>
+    <aside class="col-4">
+    	<p><b> Lorem ipsum dolor sit consectetur</b> <a href=""><i class="icon-feather-external-link"></i></a></p>    
+        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        <p><i class="icon-feather-calendar"></i> 19 Feb, 2021</p>
+    </aside>
+    </div>
+    </div>               
+    </div>
+  </div>
+</div>
 <?php if($is_editable){?>
 <script type="text/javascript">
 var all_skills=<?php D(json_encode($all_skills));?>;

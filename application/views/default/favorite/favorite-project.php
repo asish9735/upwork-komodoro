@@ -15,7 +15,7 @@ $currency=priceSymbol();
 				</div>
 				
 				<div class="content">
-                    <ul class="dashboard-box-list" id="ajax_table">
+                    <ul class="dashboard-box-list if-button" id="ajax_table">
 <?php
 if($list){
 	foreach($list as $l=>$favorite){
@@ -23,8 +23,7 @@ if($list){
 		$budget = $favorite->budget;
 ?>
 <li>
-<div class="job-listing width-adjustment">
-
+<div class="job-listing width-adjustment if-button">
 	<div class="job-listing-details">
 		<div class="job-listing-description">
 			<h3 class="job-listing-title">
@@ -55,7 +54,7 @@ if($list){
 			<i class="icon-feather-eye"></i>
 		</a>
 		<a href="<?php echo VZ;?>" data-id="<?php echo md5($favorite->project_id);?>" data-action="remove" class="btn btn-outline-danger btn-sm ico mark_fav" data-tippy-placement="top" data-tippy="" title="Remove">
-			<i class="icon-feather-trash-2"></i>
+			<i class="icon-feather-trash"></i>
 		</a>
 	</div>
 

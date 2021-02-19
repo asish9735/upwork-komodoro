@@ -1877,6 +1877,8 @@ ul.social-links li a {
 }
 ul.social-links li a:hover {
 	color: #fff;
+	background-color: var(--siteColor);
+    border-color: var(--siteColor);
 }
 /* Social Icons */
 ul.footer-social-links li a {

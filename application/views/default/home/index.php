@@ -131,7 +131,7 @@
     if($popular_freelancer){
       foreach($popular_freelancer as $k=>$freelancer){
         $skills = array_map(function($item) { return $item['skill_name']; }, $freelancer['user_skill']); 
-        $skills_name=implode(',', $skills);
+        $skills_name=implode(', ', $skills);
 ?>
       <div class="freelancer"> 
         <!-- Overview -->

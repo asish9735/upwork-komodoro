@@ -40,7 +40,7 @@ elseif($all_data){?>
 
                         <!-- Details -->
                         <span class="freelancer-detail-item"> <?php D($bid->member_heading);?></span>
-                        <p class="margin-bottom-10">Rating: <?php D($bid->avg_review);?>  | Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D($bid->bid_duration);?> Days<?php }?></p>
+                        <p class="margin-bottom-10">Rating: <?php D($bid->avg_review);?>  <span class="pipe">|</span> Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D($bid->bid_duration);?> Days<?php }?></p>
 
                         <!-- Rating -->
                         <div class="freelancer-rating d-none">

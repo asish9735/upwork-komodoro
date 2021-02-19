@@ -191,7 +191,7 @@ $logo=getMemberLogo($member_id);
         
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3>Portfolio </h3>
+            <h4>Portfolio </h4>
           </div>
           <ul class="boxed-list-ul">
             <li>

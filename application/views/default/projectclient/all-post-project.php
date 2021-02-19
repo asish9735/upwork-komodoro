@@ -9,10 +9,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner">
 			
-			<!-- Dashboard Headline -->
+			<!-- Dashboard Headline
 			<div class="dashboard-headline">
 				<h3>Job postings</h3>				
-			</div>
+			</div> -->
 	
 			<!-- Dashboard Box -->
         	<div class="dashboard-box margin-top-0">

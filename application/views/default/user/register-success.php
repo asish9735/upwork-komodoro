@@ -1,9 +1,9 @@
-<section class="sec">
-<div class="container margin-top-65 margin-bottom-65">
+<section class="section">
+<div class="container">
 <div class="row">
-	<aside class=" offset-md-3 offset-sm-1 col-12 col-sm-10 col-md-6 col-lg-6" data-effect="slide-top">
+	<aside class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">	
         <div class="general-form text-center" style="min-height:300px">
-        <i class="icon-material-outline-check-circle text-success" style="font-size: 3rem;"></i>
+        <img src="<?php echo IMAGE;?>checkmark.png" alt="" class="mb-3" />
         <h1>Thank you for registration</h1>
        	<p>Please check your inbox to verify your email.</p>
 		<a href="<?php echo base_url();?>" class="btn btn-site">Back to Home</a>

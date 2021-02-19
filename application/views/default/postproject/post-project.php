@@ -27,7 +27,7 @@ echo '</pre>'; */
 							<li><a><i class="icon-line-awesome-lightbulb-o"></i> Expertise <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
 							<li><a><i class="icon-material-outline-visibility"></i> Visibility <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
 							<li><a><i class="icon-material-outline-monetization-on"></i> Budget <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-material-outline-check"></i> Review</a></li>
+							<li><a><i class="icon-material-baseline-star-border"></i> Review</a></li>
 						</ul>
 						
 					</div>

@@ -13,22 +13,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 		
 	?>
-<div class="col-md-6">
+<div class="col-md-4">
 <div class="portfolio-contain portfolio-contain-sec-<?php D($cntloop);?>" <?php if($cntloop>1){?> style="display:none"<?php }?>>
 
 	<!-- Photo Box -->
-	<div href="javascript:void(0)" class="photo-box-portfolio">
-	<?php if($is_editable){?>
-	<div class="action-btn">
-		<a href="javascript:void(0)" class="edit_account_btn btn btn-outline-secondary btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a> 
-		<a href="javascript:void(0)" class=" ripple-effect delete_account_btn btn btn-outline-danger btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash"></i></a>
-	</div>
-<?php }?>
+	<div href="javascript:void(0)" class="photo-box-portfolio" style="background-image:url(<?php echo IMAGE;?>cat_1.jpg)">
+	
 		<h3><?php D(ucfirst($portfolio->portfolio_title));?></h3>
-		<p><?php D(ucfirst($portfolio->portfolio_description));?></p>
-		<div class="photo-box-portfolio-content">
-			<h4><?php D(ucfirst($portfolio->category_subchild_name));?></h4>
-			<?php if($portfolio->portfolio_complete_date){?><span><?php D(dateFormat($portfolio->portfolio_complete_date,'M d, Y'));?></span><?php }else{?><div style="height:28px;margin-top: 8px;">&nbsp;</div><?php }?>
+		<!--<p><?php // D(ucfirst($portfolio->portfolio_description));?></p>-->
+        <div class="portfolio-action-btn">       	
+        	<a href="javascript:void(0)" class="edit_account_btnl btn btn-site btn-circle" onclick="$('#myModalPort').modal('show');" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Preview"><i class="icon-feather-eye"></i></a>
+            <?php if($is_editable){?>                
+                    <a href="javascript:void(0)" class="edit_account_btn btn btn-primary btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a> 
+                    <a href="javascript:void(0)" class=" ripple-effect delete_account_btn btn btn-danger btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash"></i></a> 
+                                 
+            <?php }?>
+            </div>
+		<div class="photo-box-portfolio-content">         	
+			<h4 class="mb-0"><?php D(ucfirst($portfolio->category_subchild_name));?></h4>
+			<?php if($portfolio->portfolio_complete_date){?>
+            <span><?php D(dateFormat($portfolio->portfolio_complete_date,'M d, Y'));?></span>
+			<?php }else{?>
+            <div style="height:28px;margin-top: 8px;">&nbsp;</div>
+			<?php }?>
 		</div>
 	</div>
 </div>
