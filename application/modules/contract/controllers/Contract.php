@@ -317,9 +317,21 @@ class Contract extends MX_Controller {
 				));
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+				
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
+				
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
@@ -378,6 +390,7 @@ class Contract extends MX_Controller {
 		if($this->loggedUser){
 			$this->load->model('contract_model');
 			$this->layout->set_js(array(
+				'jquery.nicescroll.min.js',
 				'utils/helper.js',
 				'bootbox_custom.js',
 				'mycustom.js',
@@ -397,9 +410,20 @@ class Contract extends MX_Controller {
 				
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
+				
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
@@ -458,9 +482,20 @@ class Contract extends MX_Controller {
 				
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
+				
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));

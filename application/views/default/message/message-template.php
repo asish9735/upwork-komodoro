@@ -122,7 +122,7 @@ Vue.component('active-chat-header', {
 				<div class="message-bubble-inner">
 					<div class="message-avatar" v-if="message.sender_id == login_user.member_id"><img :src="login_user.avatar" alt="" /></div>
 					<div class="message-avatar" v-else><img :src="active_chat.avatar" alt="" /></div>					
-					<div class="message-text">																	
+					<div class="message-text edit-active_">																	
 						<div v-if="message.attachment != null">
 							<div class="message-attachment" v-if="message.attachment.is_image">
 								<a :href="message.attachment.file_url" target="_blank"><img :src="message.attachment.file_url"  class="rounded attach-thumbnail" /></a>
@@ -137,7 +137,20 @@ Vue.component('active-chat-header', {
 							{{message.sending_date | formatTime }} 
 							<i class="icon-feather-check" v-if="message.sender_id == login_user.member_id && active_chat.last_seen_msg >= message.message_id"></i>
 						</span>
-						</p>												
+						</p>
+						<a href="javascript:void(0)" class="fav-star active_"><i class="icon-material-outline-star-border"></i></a>
+						<div class="input-group message-edit-box">
+							<input type="text" class="form-control" value="Edit text here">
+							<div class="input-group-append"><button class="btn btn-outline-site"><i class="icon-feather-send"></i></button></div>
+						</div>																	
+					</div>
+					<div class="dropdown edit-message">
+						<a href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown"><i class="icon-feather-more-vertical"></i></a>	
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-feather-edit"></i> Edit</a>	
+							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-feather-trash"></i> Delete</a>	
+							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-line-awesome-quote-left"></i> Quote <i class="icon-line-awesome-quote-right"></i></a>	
+						</div>
 					</div>
 				</div>
 				<div class="clearfix"></div>

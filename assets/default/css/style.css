@@ -570,6 +570,9 @@ border-radius: 4px !important;
 flex: 1;
 padding: 2rem 1rem;
 }
+.myradio .btn-group > .btn:hover {
+	background-color:#eee;
+}
 .myradio .btn-group .btn + .btn {
 margin-left:1rem
 }
@@ -578,9 +581,9 @@ margin-left:1rem
 }
 
 .myradio .btn-group > .btn:active, .myradio .btn-group > .btn.active {
-    color: #00a500;
-    background-color: #ffffff;
-    border-color: #00a500;
+    color: var(--siteColor);
+    background-color: #ebffe3;
+    border-color: var(--siteColor);
 }
 .myradio .btn-group > .btn i {
 font-size:2rem
@@ -849,10 +852,10 @@ ul.totalList > li > span {
 	background-color: #40de00 !important;
     color: #fff !important;
 }
-.job-listing h4.job-listing-title {
-	max-width:300px;
+.job-listing h4.job-listing-title {	
 	display: -webkit-box;
-    height: 24px;
+    /*height: 24px;
+	max-width:300px;*/
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -951,10 +954,19 @@ ul.dashboard-box-list.if-button > li {
 .radio-inline {
 	margin-right:1rem
 }
+.btn-group .btn-outline-black{
+	border-color: #ddd;
+    background-color: #fff;
+}
+.btn-group .btn-outline-black:hover{
+	border-color: #ddd;
+    background-color: #eee;
+    color: #000;
+}
 .btn-group > .btn-outline-black:active,
 .btn-group > .btn-outline-black:not(:disabled):not(.disabled).active {
-    color: #37bf00;
-    border-color: #28a745;
+    color: var(--siteColor);
+    border-color: var(--siteColor);
 	background-color: #ebffe3;
 }
 .btn-group .btn-outline-black:focus,
@@ -965,6 +977,7 @@ ul.dashboard-box-list.if-button > li {
     display: flex;
     width: calc(100% + 1.25rem);
     flex-wrap: wrap;
+	margin-bottom: -1rem;
 }
 .pricing-group > .btn {
     margin-right: 1.25rem;
@@ -1276,9 +1289,12 @@ ul.list-group-0 > li{
 	z-index: 999;
 }
 .profile {
+	padding:1.5rem 0;
+}
+.profile_pic {
     background-color: #eee;
     border-radius: 50%;
-    margin: 1rem auto 0.5rem;
+    margin: 0 auto 0.5rem;
     height: 96px;
     width: 96px;
     vertical-align: middle;
@@ -1292,8 +1308,8 @@ ul.list-group-0 > li{
 }
 .profile .verified-badge{
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+	right: 5px;
+    bottom: 5px;
 }
 .activity-feed .icon-feather-check-all:before {
 	content: "\e92b";
@@ -1322,11 +1338,43 @@ ul.list-group-0 > li{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-
-
-
-
+.fav-star{
+	display:none;
+	position:absolute;
+	right:-30px;
+	top:0;
+	font-size: 1.25rem;
+}
+.fav-star.active .icon-material-outline-star-border:before{
+	content: "\e988";
+}
+.edit-message{
+	display:none;
+	position:absolute;
+	right:10px;
+	bottom:0;    
+}
+.message-bubble:hover .fav-star,
+.message-bubble:hover .edit-message{
+	display:block;
+}
+.edit-message .dropdown-menu .dropdown-item{
+	font-size: 0.875rem;
+}
+.message-text.edit-active{
+	float: none;
+    display: block;
+}
+.message-edit-box{
+	display:none;
+	margin-top: 0.5rem;
+}
+.message-text.edit-active .message-edit-box{
+	display:flex;
+}
+.alert-site{
+	background-color:#fff;
+}
 
 
 

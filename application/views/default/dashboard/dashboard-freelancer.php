@@ -59,44 +59,44 @@
         <div class="content">
           <ul class="dashboard-box-list">
           <?php foreach($offer_invitation_list as $k => $v){ 
-								$contract_details_url=get_link('OfferDetails').'/'.md5($v['contract_id']);
-					?>
-              <li>
-									<!-- Job Listing -->
-									<div class="job-listing width-adjustment">
-
-										<!-- Job Listing Details -->
-										<div class="job-listing-details">
-											<!-- Details -->
-											<div class="job-listing-description">
-												<h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
-												<?php if($v['contract_status']==1){?>
-												<span class="dashboard-status-button green">Approved</span>
-												<?php }elseif($v['contract_status']==2){?>
-												<span class="dashboard-status-button red">Rejected</span>
-												<?php }elseif($v['contract_status']==0){?>
-												<span class="dashboard-status-button yellow">Pending</span>
-												<?php }?>
-												</h4>
-
-												<!-- Job Listing Footer -->
-												<div class="job-listing-footer">
-													<ul>
-														<li><b>Budget:</b> <?php D($currency.$v['contract_amount']);?><?php if($v['is_hourly']==1){echo'/hr';}?></li>
-														<li><b>Date:</b> <?php D($v['contract_date']);?></li>
-														
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Buttons -->
-									<div class="buttons-to-right single-right-button always-visible">
-										<a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
-											<i class="icon-feather-eye"></i>
-										</a>
-									</div>									
-								</li>
+			$contract_details_url=get_link('OfferDetails').'/'.md5($v['contract_id']);
+			?>
+            <li>
+                <!-- Job Listing -->
+                <div class="job-listing width-adjustment">
+            
+                    <!-- Job Listing Details -->
+                    <div class="job-listing-details">
+                        <!-- Details -->
+                        <div class="job-listing-description">
+                            <h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a></h4>
+            
+                            <!-- Job Listing Footer -->
+                            <div class="job-listing-footer if-button">
+                                <ul>
+                                    <li><b>Budget:</b> <?php D($currency.$v['contract_amount']);?><?php if($v['is_hourly']==1){echo'/hr';}?></li>
+                                    <li><b>Date:</b> <?php D($v['contract_date']);?></li>
+                                    <li>
+                                    	<?php if($v['contract_status']==1){?>
+                                        <span class="dashboard-status-button green">Approved</span>
+                                        <?php }elseif($v['contract_status']==2){?>
+                                        <span class="dashboard-status-button red">Rejected</span>
+                                        <?php }elseif($v['contract_status']==0){?>
+                                        <span class="dashboard-status-button yellow">Pending</span>
+                                        <?php }?>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="buttons-to-right single-right-button always-visible">
+                    <a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
+                        <i class="icon-feather-eye"></i>
+                    </a>
+                </div>									
+            </li>
           <?php 
               }
           ?>
@@ -115,47 +115,46 @@
         <div class="content">
           <ul class="dashboard-box-list">
           <?php foreach($bid_invitation_list as $k => $v){ 
-							 $url=get_link('myProjectDetailsURL')."/".$v['project_url'];
-					?>
- <li>
-									<!-- Job Listing -->
-									<div class="job-listing width-adjustment">
-
-										<!-- Job Listing Details -->
-										<div class="job-listing-details">
-											<!-- Details -->
-											<div class="job-listing-description">
-												<h4 class="job-listing-title"><a href="<?php echo $url;?>"><?php echo $v['project_title']; ?></a>
-												<?php if($v['is_hourly']){?>
-                                                <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
-                                                <?php }else{?>
-                                                <span class="dashboard-status-button green"><?php D('Fixed');?></span>
-                                                <?php }?>
-                                                <?php if($v['bid_id']){?>
-                                                  <span class="dashboard-status-button green">Already Bid</span>
-                                                <?php }else{?>
-                                                  <span class="dashboard-status-button yellow">Pending</span>
-                                                <?php }?>
-												</h4>
-
-												<!-- Job Listing Footer -->
-												<div class="job-listing-footer">
-													<ul>
-                            <li><i class="icon-material-outline-access-time"></i> Posted <?php D(get_time_ago($v['project_posted_date']));?></li>
-						                <li><b>Date:</b> <?php D($v['invite_date']);?></li>
-														
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Buttons -->
-									<div class="buttons-to-right single-right-button always-visible">
-										<a href="<?php echo $url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
-											<i class="icon-feather-eye"></i>
-										</a>
-									</div>									
-								</li>
+			 $url=get_link('myProjectDetailsURL')."/".$v['project_url'];
+			?>
+            <li>
+                <!-- Job Listing -->
+                <div class="job-listing width-adjustment">
+            
+                    <!-- Job Listing Details -->
+                    <div class="job-listing-details">
+                        <!-- Details -->
+                        <div class="job-listing-description">
+                            <h4 class="job-listing-title"><a href="<?php echo $url;?>"><?php echo $v['project_title']; ?></a></h4>
+            
+                            <!-- Job Listing Footer -->
+                            <div class="job-listing-footer if-button">
+                                <ul>
+                                <li><i class="icon-material-outline-access-time"></i> Posted <?php D(get_time_ago($v['project_posted_date']));?></li>
+                                <li><b>Date:</b> <?php D($v['invite_date']);?></li>
+                                <li><?php if($v['is_hourly']){?>
+                                <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
+                                <?php }else{?>
+                                <span class="dashboard-status-button green"><?php D('Fixed');?></span>
+                                <?php }?>
+                                <?php if($v['bid_id']){?>
+                                  <span class="dashboard-status-button green">Already Bid</span>
+                                <?php }else{?>
+                                  <span class="dashboard-status-button yellow">Pending</span>
+                                <?php }?>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="buttons-to-right single-right-button always-visible">
+                    <a href="<?php echo $url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
+                        <i class="icon-feather-eye"></i>
+                    </a>
+                </div>									
+            </li>
 
           <?php 
              }   
@@ -197,15 +196,15 @@
                   <a href="<?php echo $url;?>" class="job-listing-company-logo"> <img src="<?php echo $logo;?>" alt=""> </a>                   
                   <!-- Details -->
                   <div class="job-listing-description">
-                  	<span class="float-right text-muted"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
-                    <h4 class="job-listing-title mb-1"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
+                  	<span class="float-right text-muted d-none d-md-block"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
+                    <h4 class="job-listing-title mb-1 mw-100"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
                     <div class="job-listing-footer">
                     <ul>
                       <li><i class="icon-material-outline-account-circle"></i> <?php echo $sender_name;?></li>
-                      <li><i class="icon-feather-calendar"></i> <?php echo $list->sent_date;?> </li>
+                      <li><i class="icon-feather-calendar"></i> <?php echo $list->sent_date;?> </li>                      
+                      <li class="d-md-none"><span class="text-muted"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span></li>
                       <li>
-                      	<?php echo $read_class;?>
-                      	
+                      	<?php echo $read_class;?>                      	
                       </li>
                     </ul>
                     </div>
@@ -258,7 +257,7 @@
                     </h4>
                     
                     <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
+                    <div class="job-listing-footer if-button">
                       <ul>
                         <li><b>Budget:</b>
                           <?php D($currency.$v['contract_amount']);?>

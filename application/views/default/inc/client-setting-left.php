@@ -40,24 +40,26 @@ if($loggedUser){
 							<span class="hamburger-inner"></span>
 						</span>
 					</span>
-					<span class="trigger-title">Dashboard Navigation</span>
+					<span class="trigger-title">Navigation</span>
 				</a>
-				<div class="profile">
-                	<img src="<?php echo $logo;?>" alt="<?php echo $profile_name;?>" class="rounded-circle" />
-                    <!--<span class="verified-badge"></span>-->
-                </div>
-				<div class="profile-details text-center">
-                	<div class="">
-                    <h4><?php echo $profile_name;?></h4>
-                    <div class="star-rating mb-2" data-rating="<?php echo round($memberDataBasic->avg_rating,1);?>"></div>
-                    </div>
-                    <h5> <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php D(priceFormat($memberDataBasic->balance));?></b> <a href="<?php D(get_link('AddFundURL'))?>" class="btn btn-circle btn-outline-site ml-2" style="width: 1.5rem;height: 1.5rem;padding: 0.2rem 0;"><i class="icon-feather-plus"></i></a></h5>
-                    
-                </div>
+				
 				<!-- Navigation -->
 				<div class="dashboard-nav">
 					<div class="dashboard-nav-inner">
-
+                    	<div class="profile">
+                	<div class="profile_pic">
+                    	<img src="<?php echo $logo;?>" alt="<?php echo $profile_name;?>" class="rounded-circle" />
+                        <span class="verified-badge"></span>
+                    </div>                    
+                    <div class="profile-details text-center">
+                        <div class="">
+                        <h4><?php echo $profile_name;?></h4>
+                        <div class="star-rating mb-2" data-rating="<?php echo round($memberDataBasic->avg_rating,1);?>"></div>
+                        </div>
+                        <h5> <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php D(priceFormat($memberDataBasic->balance));?></b> <a href="<?php D(get_link('AddFundURL'))?>" class="btn btn-circle btn-outline-site ml-2" style="width: 1.5rem;height: 1.5rem;padding: 0.2rem 0;"><i class="icon-feather-plus"></i></a></h5>
+                        
+                    </div>
+                </div>
 						<ul data-submenu-title="Start">
 							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
 							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> Messages <!--<span class="nav-tag">2</span>--></a></li>

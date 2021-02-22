@@ -44,7 +44,7 @@ html {
 		border-color: transparent;
 	}
 	.dashboard-content-inner {
-		min-height: 720px;
+		min-height: 740px;
 	}
 }
 
@@ -96,7 +96,9 @@ ul.totalList > li:nth-child(2n) {
 .task-listing > .task-listing-body{
 	flex-direction:column;
 }
-
+.dashboard-box .job-listing .job-listing-footer.if-button{
+	padding-right:40px;
+}
 
 }
 

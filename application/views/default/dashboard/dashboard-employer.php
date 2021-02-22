@@ -10,8 +10,9 @@
   <div class="dashboard-content-container" >
     <div class="dashboard-content-inner">
       <?php if(!$is_email_verified){?>
-      <div class="mx-auto alert alert-warning text-center">
-        <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> Your email is not verified. <a href="<?php D(VZ);?>" class="btn btn-site btn-sm ml-2 resendEmail">Resend Email</a></p>
+      <div class="mx-auto alert alert-site">
+        <span> <i class="icon-material-outline-highlight-off text-danger"></i> Your email is not verified. <a href="<?php D(VZ);?>" class="resendEmail">Resend Email</a> </span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="icon-feather-x"></i></button>
       </div>
       <?php }elseif(!$is_doc_verified){?>
       <div class="mx-auto alert alert-warning text-center">
@@ -26,22 +27,18 @@
           </div>
         </div>
         <div class="fun-fact">
-        <span>Completed Contract</span>
-        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" /></div>
-          <div class="fun-fact-text"> 
+        
+        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>completed.png" alt="" /></div>
+          <div class="fun-fact-text">
+            <span>Close Contract</span>
             <h4><strong><?php D($memberInfo->complete_contract);?></strong></h4>
           </div>
         </div>
-        <div class="fun-fact">
-          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>discount.png" alt="" /></div>
-          <div class="fun-fact-text"> <span>Offers</span>
-            <h4><strong><?php D($memberInfo->total_jobs);?></strong></h4>
-          </div>
-        </div>
+      
         <div class="fun-fact">
         <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>money.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Total Spent</span>
-          <h4><?php D($currency);?> <strong><?php D(priceFormat($memberInfo->total_spent));?></strong></h4>
+          <h4><?php D($currency);?><strong><?php D(priceFormat($memberInfo->total_spent));?></strong></h4>
           </div>
         </div>
       </div>
@@ -77,12 +74,13 @@
                   <a href="<?php echo $url;?>" class="job-listing-company-logo"> <img src="<?php echo $logo;?>" alt=""> </a>                   
                   <!-- Details -->
                   <div class="job-listing-description">
-                  	<span class="float-right text-muted"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
-                    <h4 class="job-listing-title mb-1"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
+                  	<span class="float-right text-muted d-none d-md-block"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
+                    <h4 class="job-listing-title mb-1 mw-100"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
                     <div class="job-listing-footer">
                     <ul>
                       <li><i class="icon-material-outline-account-circle"></i> <?php echo $sender_name;?></li>
                       <li><i class="icon-feather-calendar"></i> <?php echo $list->sent_date;?> </li>
+                      <li class="d-md-none"><span class="text-muted"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span></li>
                       <li><?php echo $read_class;?></li>
                     </ul>
                     </div>
@@ -136,7 +134,7 @@
                     </h4>
                     
                     <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
+                    <div class="job-listing-footer if-button">
                       <ul>
                         <li><b>Budget:</b>
                           <?php D($currency.$v['contract_amount']);?>
@@ -174,30 +172,30 @@
         <div class="col-md-6"> 
           <!-- Dashboard Box -->
           <div class="dashboard-box main-box-in-row">
-						<div class="headline">
-							<h3><i class="icon-feather-bar-chart-2"></i> Spent Statics</h3>
-							<div class="sort-by" hidden>
-								<select class="selectpicker hide-tick">
-									<option>Last 6 Months</option>
-									<option>This Year</option>
-									<option>This Month</option>
-								</select>
-							</div>
-						</div>
-						<div class="content">
-							<!-- Chart -->
-							<div class="chart">
-								<canvas id="chart"></canvas>
-							</div>
-						</div>
-					</div>
+            <div class="headline">
+                <h3><i class="icon-feather-bar-chart-2 text-site"></i> Spent Statics</h3>
+                <div class="sort-by" hidden>
+                    <select class="selectpicker hide-tick">
+                        <option>Last 6 Months</option>
+                        <option>This Year</option>
+                        <option>This Month</option>
+                    </select>
+                </div>
+            </div>
+            <div class="content">
+                <!-- Chart -->
+                <div class="chart">
+                    <canvas id="chart"></canvas>
+                </div>
+            </div>
+        </div>
           <!-- Dashboard Box / End --> 
         </div>
         <div class="col-md-6"> 
           <!-- Dashboard Box -->
           <div class="dashboard-box main-box-in-row">
             <div class="headline">
-              <h3><i class="icon-feather-pie-chart-2"></i> Project Statics</h3>
+              <h3><i class="icon-feather-pie-chart text-site"></i> Project Statics</h3>
             </div>
             <div class="content"> 
               <!-- Chart -->

@@ -20,8 +20,8 @@ if($loggedUser){
 ?>
 <!-- Header Container
 ================================================== -->
-<header id="header-container" class="fullwidth <?php if($this->router->fetch_class()=='dashboard'){?>dashboard-header not-sticky<?php }?>" >
-
+<header id="header-container" class="fullwidth">
+<?php /* if($this->router->fetch_class()=='dashboard'){?>dashboard-header not-sticky<?php }*/?>
 	<!-- Header -->
 	<div id="header">
 		<div class="container">
@@ -79,7 +79,7 @@ if($loggedUser){
 			<?php }else{ ?>
 
 				<!--  User Notifications -->
-				<div class="header-widget hide-on-mobile">					
+				<div class="header-widget">					
 					<!-- Notifications -->
 					<div class="header-notifications">
 						<!-- Trigger -->

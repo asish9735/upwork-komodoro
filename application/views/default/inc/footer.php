@@ -4,7 +4,7 @@
   <div class="footer-middle-section">
     <div class="container">
       <div class="row"> 
-        <div class="col-xl-3 col-md-4 col-12">
+        <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
             <h3>Category</h3>
             <ul>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <!-- Links -->
-        <div class="col-xl-3 col-md-4 col-12">
+        <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
             <h3>Browse</h3>
             <ul>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <!-- Links -->
-        <div class="col-xl-3 col-md-4 col-12">
+        <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
             <h3>Company</h3>
             <ul>
@@ -55,7 +55,7 @@
           </div>
         </div>        
         <!-- Links -->
-        <div class="col-xl-3 col-md-4 col-12">
+        <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
             <h3>Resources</h3>
             <ul>

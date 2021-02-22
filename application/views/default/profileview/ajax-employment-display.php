@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php if($is_editable){?>
 	<div class="float-right">
 		<a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle" data-popup="employment" data-popup-id="<?php D($employment->employment_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a> 
-		<a href="javascript:void(0)" class="delete_account_btn btn btn-outline-danger btn-circle" data-popup="employment" data-popup-id="<?php D($employment->employment_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash"></i></a>
+		<a href="javascript:void(0)" class="delete_account_btn btn btn-outline-danger btn-circle ml-1" data-popup="employment" data-popup-id="<?php D($employment->employment_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash"></i></a>
 	</div>
 <?php }?>
 			<h4><?php D($employment->employment_title);?> | <?php D($employment->employment_company);?>

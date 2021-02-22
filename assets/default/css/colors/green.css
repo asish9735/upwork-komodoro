@@ -196,9 +196,9 @@
  #navigation ul li a.current:after {
      background: rgba(100,190,67,0.13);
 }
- .pagination ul li a.current-page {
+/*.pagination ul li a.current-page {
      box-shadow: 0 2px 8px rgba(100,190,67,0.25) 
-}
+}*/
  .sidebar-search-button-container button {
      box-shadow: 0 4px 12px rgba(100,190,67,0.1);
 }
@@ -351,7 +351,7 @@
      box-shadow: 0 2px 8px rgba(100,190,67,0.35);
 }
  .dashboard-nav ul li.active-submenu, .dashboard-nav ul li.active, .dashboard-nav ul li:hover {
-     background-color: rgba(100,190,67,0.04);
+     background-color: rgba(100,190,67,0.1);
 }
  .dashboard-nav ul li.active-submenu a:after, .dashboard-nav ul li.active a:after/*, .dashboard-nav ul li:hover a:after*/ {
      background: rgba(100,190,67,0.13);

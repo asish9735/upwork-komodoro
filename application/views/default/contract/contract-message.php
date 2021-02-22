@@ -32,7 +32,6 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
         </ul>
         <div class="row">
           <div class="col-lg-9">
-
 						<div class="messages-container margin-top-0">
 							<div class="messages-container-inner" id="message-app">
 							
@@ -65,6 +64,12 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                 <div class="card-body">
                 <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
                 <h5 class="card-title"><?php echo $name;?></h5>
+                <?php if($is_owner){?>
+            	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
+            	<div class="star-rating" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
+            <?php }else{ ?>
+             	<div class="star-rating" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+            <?php }?>
                 </div>                    
             </div>
            </div>                          

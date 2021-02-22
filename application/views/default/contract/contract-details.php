@@ -206,8 +206,13 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
           <div class="card-body">
             <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
             <h5 class="card-title mb-0"><?php echo $name;?></h5>
-          <!--   <p class="text-muted mb-0">Senior Developer</p>
-            <div class="star-rating" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div> -->
+            <?php if($is_owner){?>
+            	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
+            	<div class="star-rating" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
+            <?php }else{ ?>
+             	<div class="star-rating" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+            <?php }?>
+            
             <?php if($is_owner){?>
             <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block mt-2">
             <icon class="icon-material-outline-add"></icon>

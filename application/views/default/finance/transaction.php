@@ -43,21 +43,21 @@ $currency=priceSymbol();
             </div>
 			<div class="fun-facts-container">
 				<div class="fun-fact" data-fun-fact-color="#37bf00">
-                	<div class="fun-fact-icon"><i class="icon-material-outline-account-balance-wallet"></i></div>
+                	<div class="fun-fact-icon"><img src="<?php echo IMAGE;?>wallet.png" alt="" /></div>
                     <div class="fun-fact-text ml-1">
                         <span>Current Balance</span>
-                        <h4> <?php echo $currency.priceFormat($current_balance);?></h4>
+                        <h4><?php echo $currency.priceFormat($current_balance);?></h4>
                     </div>
                 </div>
                 <div class="fun-fact" data-fun-fact-color="#37bf00">
-                	<div class="fun-fact-icon"><i class="icon-feather-credit-card"></i></div>
+                	<div class="fun-fact-icon"><img src="<?php echo IMAGE;?>credit-card.png" alt="" /></div>
                     <div class="fun-fact-text ml-1">
                         <span>Total Credit</span>
                         <h4> <?php echo $currency.priceFormat($total_credit);?></h4>
                     </div>
                 </div>
                 <div class="fun-fact" data-fun-fact-color="#f00">
-                    <div class="fun-fact-icon"><i class="icon-feather-credit-card"></i></div>
+                    <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>debit-card.png" alt="" /></div>
                     <div class="fun-fact-text ml-1">
                         <span>Total Debit</span>
                         <h4> <?php echo $currency.priceFormat($total_debit);?></h4>

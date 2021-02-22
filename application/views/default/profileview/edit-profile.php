@@ -338,8 +338,8 @@ if($login_user_id){
       </div>
     <div class="modal-body">
     <div class="row">
-    <aside class="col-8">
-    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <aside class="col-lg-8 col-12">
+    <div id="carouselExampleCaptions" class="carousel slide mb-3 mb-lg-0" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -366,10 +366,10 @@ if($login_user_id){
   </a>-->
 </div>
 	</aside>
-    <aside class="col-4">
+    <aside class="col-lg-4 col-12">
     	<p><b> Lorem ipsum dolor sit consectetur</b> <a href=""><i class="icon-feather-external-link"></i></a></p>    
         <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-        <p><i class="icon-feather-calendar"></i> 19 Feb, 2021</p>
+        <p class="mb-0"><i class="icon-feather-calendar"></i> 19 Feb, 2021</p>
     </aside>
     </div>
     </div>               

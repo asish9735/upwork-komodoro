@@ -136,9 +136,12 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
               <div class="card-body">
               	<span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
                 <h5 class="card-title mb-0"><?php echo $name;?></h5>
-                <!-- <p class="text-muted mb-0">Senior Developer</p>
-            	<div class="star-rating mb-2" data-rating="<?php echo round($memberInfo->avg_rating,1);?>"></div>
-                 --><a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block">View Offer <!--<i class="icon-feather-external-link"></i>--></a>
+                 <?php if($is_owner){?>
+            	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
+            	<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
+            <?php }else{ ?>
+             	<div class="star-rating" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+            <?php }?>                <a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block">View Offer <!--<i class="icon-feather-external-link"></i>--></a>
                 <?php if($contractDetails->bid_id){?>
                 <a href="<?php echo $application_link;?>" target="_blank" class="btn btn-site btn-block">Original Proposal</a>
                 <?php }?>
