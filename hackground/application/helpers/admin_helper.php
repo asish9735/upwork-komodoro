@@ -215,7 +215,7 @@ if(!function_exists('get_editor')){
 	
 	
 	function get_editor($input_id=''){
-		$ckeditor_url = ADMIN_COMPONENT.'/ckeditor/ckeditor.js';
+		$ckeditor_url = ADMIN_PLUGINS.'ckeditor/ckeditor.js';
 		$script = <<<EOD
 	
 	<script>

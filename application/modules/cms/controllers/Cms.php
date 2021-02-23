@@ -30,6 +30,7 @@ class Cms extends MX_Controller {
 		);
 		$this->data['cms']=getData($arr);
 
+		$this->data['cms_temp']=$this->cms_model->getTempContent($page);
 		$this->layout->set_title($this->data['cms']->meta_title);
 		$this->layout->set_meta('keywords',$this->data['cms']->meta_keys);
 		$this->layout->set_meta('description',strip_tags(html_entity_decode($this->data['cms']->meta_description)));

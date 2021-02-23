@@ -136,6 +136,37 @@ class Cms_model extends CI_Model{
 		}
 		return $result;
 	}
+	public function getTempContent($page=''){
+		$arr=array(
+			'select'=>'c.cms_key,c.cms_page,c.cms_class,c.child_class,c.section_type',
+			'table'=>'cms_temp as c',
+			'where'=>array('c.cms_page'=>$page),
+			'order'=>array(array('c.cms_order','asc'))
+		);
+		$section=getData($arr);
+		if($section){
+			foreach($section as $k=>$sec){
+				$arr=array(
+					'select'=>'c.part_id,c.part_class,c.part_content,c.lang,c.cms_key',
+					'table'=>'cms_temp_part as c',
+					'where'=>array('c.cms_key'=>$sec->cms_key),
+					'order'=>array(array('c.part_order','asc'))
+				);
+				$part=getData($arr);
+				$partcontent=array();
+				if($part){
+					foreach($part as $p=>$child){
+						$partcontent[$child->part_id]['part_id']=$child->part_id;
+						$partcontent[$child->part_id]['part_class']=$child->part_class;
+						$partcontent[$child->part_id]['part_content'][$child->lang]=$child->part_content;
+						//$part[$p]=$child;
+					}
+				}
+				$section[$k]->part=$partcontent;
+			}
+		}
+		return $section;
+	}
 	
 }
 

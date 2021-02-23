@@ -646,3 +646,17 @@ INSERT INTO `pref_settings` ( `title`, `setting_key`, `setting_value`, `editable
 ( 'Withdraw Wallet', 'WITHDRAW_WALLET', '28', 0, 0, 0, 'constants');
 ALTER TABLE `pref_member_withdraw_account` CHANGE `peyment_type` `payment_type` TINYTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 ALTER TABLE `pref_member_withdraw_account` ADD `reg_date` DATETIME NULL AFTER `account_status`;
+
+-------------
+CREATE TABLE `pref_cms_temp` ( `cms_page` TINYTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL , `cms_type` TINYTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL , `cms_content` VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL , `cms_order` INT NOT NULL ) ENGINE = InnoDB;
+ALTER TABLE `pref_cms_temp` ADD `cms_key` VARCHAR(100) NOT NULL FIRST, ADD UNIQUE (`cms_key`);
+CREATE TABLE `upwork`.`pref_cms_temp_part` ( `cms_key` VARCHAR(150) NOT NULL , `part_id` INT NOT NULL , `part_class` VARCHAR(150) NULL , `part_content` LONGTEXT NULL ) ENGINE = InnoDB;
+ALTER TABLE `pref_cms_temp` ADD `cms_class` VARCHAR(150) NULL AFTER `cms_page`;
+ALTER TABLE `pref_cms_temp` DROP `cms_content`;
+ALTER TABLE `pref_cms_temp_part` ADD `part_order` INT NOT NULL AFTER `part_content`;
+ALTER TABLE `pref_cms_temp_part` ADD UNIQUE( `cms_key`, `part_id`);
+ALTER TABLE `pref_cms_temp` CHANGE `cms_type` `child_class` MEDIUMTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE `pref_cms_temp` ADD `section_type` CHAR(3) NOT NULL AFTER `cms_page`;
+ALTER TABLE `pref_cms_temp_part` DROP INDEX `cms_key`;
+ALTER TABLE `pref_cms_temp_part` ADD `lang` CHAR(2) NOT NULL DEFAULT 'en' AFTER `part_order`;

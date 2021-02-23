@@ -13,12 +13,24 @@ $(document).ready(function(){
 			if(wi <= '991') {
 
 				$(".mmenu-init" ).remove();
-				$("#navigation").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
+				/* $("#navigation").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
 								.find('ul, div').removeClass('style-1 style-2 mega-menu mega-menu-content mega-menu-section').removeAttr('id');
+				$(".mmenu-init").find("ul").addClass("mm-listview");
+				$(".mmenu-init").find(".mobile-styles .mm-listview").unwrap(); */
+
+				/* $(".dashboard-nav-inner").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
+				.find('div').remove(); */
+				var profile_name=$(".dashboard-nav-inner").find('.profile').find('h4').text();
+				var html='<div class="mmenu-init"><ul>';
+				$('.dashboard-nav-inner > ul').each(function(){
+					html=html+$(this).html();
+				})
+				html=html+'</ul></div>';
+				$("#navigation").before(html);
 				$(".mmenu-init").find("ul").addClass("mm-listview");
 				$(".mmenu-init").find(".mobile-styles .mm-listview").unwrap();
 
-
+				//console.log(profile_name);
 				$(".mmenu-init").mmenu({
 				 	"counters": true
 				}, {
@@ -32,11 +44,13 @@ $(document).ready(function(){
 				var $icon = $(".mmenu-trigger .hamburger");
 
 				$(".mmenu-trigger").on('click', function() {
+					
 					mmenuAPI.open();
 				});
 
 			}
 			$(".mm-next").addClass("mm-fullsubopen");
+			$(".mmenu-init").find('#mm-1').find('.mm-title').html(profile_name);
 		}
 		mmenuInit();
 		$(window).resize(function() { mmenuInit(); });
