@@ -13,20 +13,24 @@ $(document).ready(function(){
 			if(wi <= '991') {
 
 				$(".mmenu-init" ).remove();
-				/* $("#navigation").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
-								.find('ul, div').removeClass('style-1 style-2 mega-menu mega-menu-content mega-menu-section').removeAttr('id');
-				$(".mmenu-init").find("ul").addClass("mm-listview");
-				$(".mmenu-init").find(".mobile-styles .mm-listview").unwrap(); */
+				if($('.dashboard-nav-inner').length==1){
+					var profile_name=$(".dashboard-nav-inner").find('.profile').find('h4').text();
+					var html='<div class="mmenu-init"><ul>';
+					$('.dashboard-nav-inner > ul').each(function(){
+						html=html+$(this).html();
+					})
+					html=html+'</ul></div>';
+					$("#navigation").before(html);
+				}else{
+					$("#navigation").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
+					.find('ul, div').removeClass('style-1 style-2 mega-menu mega-menu-content mega-menu-section').removeAttr('id');
+					$(".mmenu-init").find("ul").addClass("mm-listview");
+					$(".mmenu-init").find(".mobile-styles .mm-listview").unwrap(); */
 
-				/* $(".dashboard-nav-inner").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
-				.find('div').remove(); */
-				var profile_name=$(".dashboard-nav-inner").find('.profile').find('h4').text();
-				var html='<div class="mmenu-init"><ul>';
-				$('.dashboard-nav-inner > ul').each(function(){
-					html=html+$(this).html();
-				})
-				html=html+'</ul></div>';
-				$("#navigation").before(html);
+					$(".dashboard-nav-inner").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
+					.find('div').remove();
+				}
+				
 				$(".mmenu-init").find("ul").addClass("mm-listview");
 				$(".mmenu-init").find(".mobile-styles .mm-listview").unwrap();
 
@@ -50,7 +54,9 @@ $(document).ready(function(){
 
 			}
 			$(".mm-next").addClass("mm-fullsubopen");
-			$(".mmenu-init").find('#mm-1').find('.mm-title').html(profile_name);
+			if($('.dashboard-nav-inner').length==1){
+				$(".mmenu-init").find('#mm-1').find('.mm-title').html(profile_name);
+			}
 		}
 		mmenuInit();
 		$(window).resize(function() { mmenuInit(); });
