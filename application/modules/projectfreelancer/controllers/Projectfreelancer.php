@@ -30,6 +30,12 @@ class Projectfreelancer extends MX_Controller {
 		}
 		
 		if($this->loggedUser){
+			$member_id=$this->member_id;
+			$organization_id=$this->organization_id;
+			$where=array();
+			$this->load->model('projectfreelancer_model');
+			$all_projects_total=$this->projectfreelancer_model->getProjects($organization_id,$member_id,'','',true,$where);
+			$this->data['max_page']=ceil($all_projects_total/10);
 			$this->data['left_panel']=load_view('inc/freelancer-setting-left','',TRUE);
 			$this->layout->view('all-bids-project', $this->data);
 		}	
@@ -46,7 +52,7 @@ class Projectfreelancer extends MX_Controller {
 			$organization_id=$this->organization_id;
 			$limit=10;
 			$start=(post('page')? post('page'):0)*$limit;
-			
+			$maxcount=$start+$limit;
 			$where=array();
 			$this->data['all_projects']=$this->projectfreelancer_model->getProjects($organization_id,$member_id,$start,$limit,'',$where);
 			if($this->data['all_projects']){

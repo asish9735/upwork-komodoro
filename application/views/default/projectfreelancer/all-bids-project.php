@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
         <div class="text-center padding-bottom-20">
-          <button class="btn btn-site" id="load_more" data-val = "0">Load more..</button>
+          <button class="btn btn-site" id="load_more" data-val = "0" style="display:none">Load more..</button>
         </div>
       </div>
     </div>
@@ -41,7 +41,13 @@ getprojects(0);
 	});
 	
 }
+var max_page=<?php echo $max_page;?>;
 var getprojects = function(page){
+  if(max_page>page+1){
+    $('#load_more').show();
+  }else{
+    $('#load_more').hide();
+  }
 	$("#loader").show();
 	$.ajax({
 		url:"<?php D(get_link('myBidsAJAXURL'))?>",
