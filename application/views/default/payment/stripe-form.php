@@ -8,31 +8,20 @@ $payfor=1;
 $p=0;
 $sub_total=0;
 ?>
-<!-- Dashboard Container -->
-<div class="dashboard-container">
-	<!-- Dashboard Sidebar / End -->
-	<!-- Dashboard Content
-	================================================== -->
-	<div class="dashboard-content-container">
-		<div class="dashboard-content-inner" >		
-			<!--<div class="dashboard-headline">
-				<h3>My Favourite</h3>				
-			</div>-->
-            <div class="dashboard-box mt-0 mb-4">
+<section class="section">
+<div class="container">
+	<div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
 			<h3><i class="icon-material-outline-credit-card text-site"></i> Pay With - Stripe</h3>
 			</div>
-			<div class="content with-padding">	
-				<div class="row">
-					<button  class="btn btn-site mr-2" onclick="pay_stripe('card')">Card Payment</button>
-					<button  class="btn btn-site mr-2" onclick="pay_stripe('ali')">Ali Pay</button>
-					<button  class="btn btn-site mr-2" onclick="pay_stripe('wechat')">Wechat Pay</button>
-				</div>
+			<div class="content with-padding">					
+                <button  class="btn btn-site mr-2" onclick="pay_stripe('card')"><i class="icon-material-outline-credit-card"></i> Card Payment</button>
+                <button  class="btn btn-site mr-2" onclick="pay_stripe('ali')"><img src="<?php echo IMAGE;?>alipay.png" alt="Alipay" /> Ali Pay</button>
+                <button  class="btn btn-site mr-2" onclick="pay_stripe('wechat')"><i class="icon-brand-weixin"></i> Wechat Pay</button>				
 			</div>
-			</div>
-		</div>
-	</div>
+			</div>	
 </div>
+</section>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script type="text/javascript">

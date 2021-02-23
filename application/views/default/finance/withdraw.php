@@ -58,7 +58,7 @@ $sub_total=0;
             <?php //D(__('paymentmethod_page_withdraw_By_Paypal',"With Paypal"));?>
             <img src="<?php D(IMAGE)?>paypal.png"><br>
 			<b>ID:</b> <?php D($account->account_heading);?>
-			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash"></i></a>
             
             </label>
             <?php }
@@ -72,7 +72,7 @@ $sub_total=0;
             <img src="<?php D(IMAGE)?>stripe.png">
 			<br>
 			<b>ID:</b> <?php D($account->account_heading);?>
-			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash"></i></a>
             
             </label>
 			<?php
@@ -85,7 +85,7 @@ $sub_total=0;
             <?php //D(__('paymentmethod_page_withdraw_By_Bank',"With Bank"));?>
             <img src="<?php D(IMAGE)?>bank.png"><br>
 			<b>A/C:</b> <?php D($account->account_heading);?>
-			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash"></i></a>
                 
             </label>
 			<?php
@@ -95,7 +95,9 @@ $sub_total=0;
 				<?php
 				}
 			}
-			?>
+			
+			?>	
+			
 
 
             
@@ -103,6 +105,16 @@ $sub_total=0;
 
 
             </div>
+            <?php if(!$list){?>
+            <a href="<?php echo VZ;?>" class="card-box mx-auto add_new_method">
+                <div class="card-body text-center">
+                	<h1><i class="icon-line-awesome-plus-circle"></i></h1>
+                    <p>Add new payment method.</p>	
+                </div>
+            </a>
+			<?php	
+				}
+			?>
             
             </div>
             </div>

@@ -35,10 +35,9 @@ if($loggedUser){
 }
 ?>
 <!-- Dashboard Sidebar -->
-	<div class="dashboard-sidebar" data-simplebar>
-		<div class="dashboard-sidebar-inner" >
+	<div class="dashboard-sidebar">
+		<div class="dashboard-sidebar-inner" data-simplebar>
 			<div class="dashboard-nav-container">
-
 				<!-- Responsive Navigation Trigger -->
 				<a href="#" class="dashboard-responsive-nav-trigger">
 					<span class="hamburger hamburger--collapse" >
@@ -101,7 +100,7 @@ if($loggedUser){
 							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
 							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> Messages <!--<span class="nav-tag">2</span>--></a></li>
 							<li><a href="<?php echo URL::get_link('NotificationURL');?>"><i class="icon-material-outline-notifications-active"></i> Notification <!--<span class="nav-tag">2</span>--></a></li>
-							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> Bookmarks</a></li>
+							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> Favourite</a></li>
 							<li><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
 						</ul>
 						<ul data-submenu-title="Finance">

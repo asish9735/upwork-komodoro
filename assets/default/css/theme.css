@@ -1043,7 +1043,7 @@ body #navigation ul ul ul {
 #wrapper.wrapper-with-transparent-header {
 	padding-top: 0 !important;
 }
- @media (max-width: 1099px) {
+ @media (max-width: 991px) {
  #wrapper {
 padding-top: 0 !important;
 }
@@ -1891,7 +1891,7 @@ ul.footer-social-links li a:hover {
 }
 /* Middle Section */
 .footer-middle-section {
-	padding: 60px 0;
+	padding: 3rem 0;
 	position: relative;
 	z-index: 10;
 }
@@ -2585,14 +2585,14 @@ max-width: 140px;
 	position: relative;
 	top: 6px;
 }
-.single-page-header .header-details ul li img.flag {
+.single-page-header .header-details h1 img.flag {
 	height: 16px;
 	border-radius: 3px;
 	position: relative;
 	top: -1px;
 	display: inline-block;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-	margin-right: 5px;
+	margin-left: 5px;
 	cursor: default
 }
 /* Salary Box */
@@ -3746,7 +3746,7 @@ left: 0;
 right: auto;
 }
 }
- @media (max-width: 1099px) {
+ @media (max-width: 991px) {
  .full-page-content-inner .grid-layout .job-listing {
  width: calc(100% - 30px);
 }
@@ -4514,7 +4514,7 @@ width: calc(100% * (1/3) - 30px);
 width: calc(100% * (1/2) - 30px);
 }
 }
- @media (max-width: 1099px) {
+ @media (max-width: 991px) {
  .full-page-content-inner .tasks-grid-layout .task-listing {
 width: calc(100% - 30px);
 }
@@ -4730,7 +4730,7 @@ width: calc(100% * (1/3) - 30px);
 width: calc(100% * (1/2) - 30px);
 }
 }
- @media (max-width: 1099px) {
+ @media (max-width: 991px) {
  .full-page-container .freelancers-container {
 width: 100%;
 }
@@ -11505,7 +11505,7 @@ a.apply-now-button i {
 	flex-wrap: wrap;
 	flex-direction: row;
 	width: calc(100% + 20px);
-	/*margin-bottom: -20px;*/
+	margin-bottom: -1.5rem;
 }
 .attachment-box {
 	display: flex;
@@ -11521,7 +11521,7 @@ a.apply-now-button i {
 	color: #666;
 	position: relative;
 	transition: 0.3s;
-	flex: 0 1 calc(33.3333% - 21px);
+	flex: 0 1 calc(33.3333% - 20px);
 	cursor: default;
 	position: relative;
 }
@@ -11529,7 +11529,7 @@ a.apply-now-button i {
 	flex: 0 1 calc(33% - 20px);
 }
 .single-page-section .attachments-container {
-	margin-bottom: -20px;
+	margin-bottom: -1.5rem;
 }
 a.attachment-box {
 	cursor: pointer;
@@ -11555,8 +11555,13 @@ a.attachment-box:hover:before {
 .attachment-box span {
 	font-size: 14px;
 	line-height: 20px;
-	display: inline-block;
+	display: inline-block;	
+	display: -webkit-box;
 	flex: auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .attachment-box i {
 	display: block;
@@ -11696,7 +11701,7 @@ a.attachment-box:hover i {
 .full-page-container, .dashboard-container-o {
 	height: calc(100vh - 82px);
 }
- @media (max-width: 1099px) {
+ @media (max-width: 991px) {
  .full-page-container,  .dashboard-container-o {
  height: calc(100vh - 76px);
 }
@@ -11732,7 +11737,7 @@ a.attachment-box:hover i {
 
 
 /* Dashboard Header Logo Adjustent */
-@media (min-width: 1099px) {
+@media (min-width: 992px) {
  #header-container.dashboard-header .container {
  padding-right: 35px;
  padding-left: 0;
@@ -12606,7 +12611,7 @@ max-width: 100%
 /* Reviews
 ------------------------------------- */
 .dashboard-box .boxed-list-item {
-	padding: 10px 0;
+	padding: 0;
 	width: 100%;
 }
 /* Submit Forms

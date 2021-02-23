@@ -25,8 +25,7 @@ if($login_user_id){
 	}	
 }
 ?>
-  <!-- Titlebar
-================================================== -->
+  <!-- Titlebar -->
   <div class="single-page-header freelancer-header" data-background-image="<?php // echo IMAGE;?>">
     <div class="container">
       <div class="single-page-header-inner">
@@ -38,7 +37,9 @@ if($login_user_id){
           </div>
           <div class="header-details">
             <h1>
-              <?php D(ucwords($memberInfo->member_name))?>
+              <?php D(ucwords($memberInfo->member_name))?> <?php if($memberInfo->country_code_short){?>
+                <img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($memberInfo->country_code_short));?>.svg" alt="<?php D(ucfirst($memberInfo->country_name))?>" title="<?php D(ucfirst($memberInfo->country_name))?>" data-tippy-placement="top" height="16">
+                <?php }?>
               <span class="show_edit_btn">
               <ec id="profile-heading-data">
                 <?php D(ucfirst($memberInfo->member_heading))?>
@@ -63,14 +64,7 @@ if($login_user_id){
 				</li>
 				<?php
 				}
-              	?>
-
-              <li>
-                <?php if($memberInfo->country_code_short){?>
-                <img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($memberInfo->country_code_short));?>.svg" alt="<?php D(ucfirst($memberInfo->country_name))?>">
-                <?php }?>
-                <?php D(ucfirst($memberInfo->country_name))?>
-              </li>
+              	?>              
             </ul>
           </div>
         </div>
@@ -81,8 +75,8 @@ if($login_user_id){
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $memberInfo->success_rate;?>%" aria-valuenow="<?php echo $memberInfo->success_rate;?>" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
 			<?php if(!$is_editable){?>
-			<a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-site hire-member btn-sm">Hire Freelancer</a>
-            <a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-outline-site invite-member btn-sm">Invite to Job</a>			
+			<a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-site hire-member btn-sm mr-2">Hire Freelancer</a>
+            <a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-outline-site invite-member btn-sm mr-2">Invite to Job</a>			
 			<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($member_id);?>"><i class="icon-feather-heart"></i></a>		
 			<?php }?>
           </div>

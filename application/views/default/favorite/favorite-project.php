@@ -15,7 +15,7 @@ $currency=priceSymbol();
 				</div>
 				
 				<div class="content">
-                    <ul class="dashboard-box-list if-button" id="ajax_table">
+                    <ul class="dashboard-box-list if-double-button" id="ajax_table">
 <?php
 if($list){
 	foreach($list as $l=>$favorite){
@@ -23,7 +23,7 @@ if($list){
 		$budget = $favorite->budget;
 ?>
 <li>
-<div class="job-listing width-adjustment if-button">
+<div class="job-listing">
 	<div class="job-listing-details">
 		<div class="job-listing-description">
 			<h3 class="job-listing-title">

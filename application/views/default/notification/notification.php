@@ -51,12 +51,13 @@ $currency=priceSymbol();
 									<a href="<?php echo $url;?>" class="job-listing-company-logo"> <img src="<?php echo $logo;?>" alt=""> </a>                   
 									<!-- Details -->
 									<div class="job-listing-description">
-										<span class="float-right text-muted"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
-										<h4 class="job-listing-title mb-1"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
+										<span class="float-right text-muted d-none d-md-block"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
+										<h4 class="job-listing-title mb-1 mw-100"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
 										<div class="job-listing-footer">
 										<ul>
 										<li><i class="icon-material-outline-account-circle"></i> <?php echo $sender_name;?></li>
 										<li><i class="icon-feather-calendar"></i> <?php echo $list->sent_date;?> </li>
+                                        <li class="d-md-none"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></li>
 										<li>
 											<?php echo $read_class;?>
 											

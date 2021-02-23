@@ -57,11 +57,9 @@ if($login_user_id){
 <!-- Page Content
 ================================================== -->
 <div class="container">
-	<div class="row">
-		
+	<div class="row">		
 		<!-- Content -->
 		<div class="col-xl-8 col-lg-8">
-			
 			<!-- Description -->
 			<div class="panel mb-4">
             	<div class="panel-header"><h4>Project Description</h4></div>
@@ -81,10 +79,12 @@ if($login_user_id){
     <?php }?>
     
     <li><b>Project Type</b>
-        <span><i class="icon-material-<?php D($projectData['project_settings']->project_type_code);?> d-none"></i> <?php D(getAllProjectType($projectData['project_settings']->project_type_code)['name']);?></span>
+    	<br><i class="icon-material-<?php D($projectData['project_settings']->project_type_code);?>"></i><br>
+        <?php D(getAllProjectType($projectData['project_settings']->project_type_code)['name']);?>
     </li>
-    <li><b>No of freelancer required</b>
-        <span><?php D($projectData['project']->project_member_required);?></span>
+    <li><b>No of freelancer</b>
+    	<br><i class="icon-feather-user"></i><br>
+        <?php D($projectData['project']->project_member_required);?>
     </li>
 </ul>
 </div>
@@ -141,16 +141,16 @@ if($login_user_id){
 <?php }?>
 
 <ul class="totalList">
-            <li><b>Total proposal</b>
+            <li><b>Proposal</b>
                 <span><?php D($projectData['proposal']['total_proposal'])?></span>
             </li>
-            <li><b>Total invite</b>
+            <li><b>Invite</b>
                 <span><?php D($projectData['proposal']['total_invite'])?></span>
             </li>
-            <li><b>Total interview</b>
+            <li><b>Interview</b>
             	<span><?php D($projectData['proposal']['total_interview'])?></span>
             </li>
-            <li><b>Total hires</b>
+            <li><b>Hires</b>
             	<span><?php D($projectData['proposal']['total_hires'])?></span>
             </li>
         </ul>
@@ -192,7 +192,7 @@ if($login_user_id){
                             <li>
                                 <i class="icon-material-outline-location-on"></i>
                                 <p><?php D($projectData['clientInfo']['client_address']['country'])?></p>
-                                <span><?php D($projectData['clientInfo']['client_address']['location'])?> &nbsp;</span>
+                                <span><?php D($projectData['clientInfo']['client_address']['location'])?></span>
                             </li>
                             <li>
                                 <i class="icon-material-outline-check-circle <?php if($projectData['clientInfo']['client_payment_verify']=='1'){D('text-success');}else{D('text-danger');}?> "></i>

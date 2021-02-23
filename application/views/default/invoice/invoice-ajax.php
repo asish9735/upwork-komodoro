@@ -7,10 +7,10 @@ foreach($invoiceData as $l=>$invoice){
 $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 ?>
 <li>
-	<div class="job-listing width-adjustment">
+	<div class="job-listing">
 		<div class="job-listing-details">
 			<div class="job-listing-description">
-				<h3 class="job-listing-title">
+				<h4 class="job-listing-title">
 					<a href="<?php echo $invoice_url;?>" target="_blank"><?php echo make_invoice_number($invoice->invoice_number);?></a>
 					<?php if($invoice->invoice_status==1){?>
 					<span class="dashboard-status-button green">Paid</span>
@@ -20,9 +20,9 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 					<?php }else{?>
 					<span class="dashboard-status-button yellow">Pending</span>
 					<?php }?>
-				</h3>
+				</h4>
 
-				<div class="job-listing-footer">
+				<div class="job-listing-footer if-button">
 					<ul>
 						<li><b>Total:</b> <?php echo $currency.displayamount($invoice->total,2);?></li>
 						<li><b>Date:</b> <?php echo $invoice->invoice_date;?></li>

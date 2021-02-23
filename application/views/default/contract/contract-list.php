@@ -44,18 +44,10 @@ $currency=priceSymbol();
                 <div class="job-listing-details"> 
                   <!-- Details -->
                   <div class="job-listing-description">
-                    <h3 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
-                      <?php if($v['contract_status']==1){?>
-                      <span class="dashboard-status-button green">Approved</span>
-                      <?php }elseif($v['contract_status']==2){?>
-                      <span class="dashboard-status-button red">Rejected</span>
-                      <?php }elseif($v['contract_status']==0){?>
-                      <span class="dashboard-status-button yellow">Pending</span>
-                      <?php }?>
-                    </h3>
+                    <h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a></h4>
                     
                     <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
+                    <div class="job-listing-footer if-button">
                       <ul>
                         <li><b>Budget:</b>
                           <?php D($currency.$v['contract_amount']);?>
@@ -64,7 +56,15 @@ $currency=priceSymbol();
                         <li><b>Date:</b>
                           <?php D($v['contract_date']);?>
                         </li>
-                        <li><b>Status:</b>
+                        <li><?php if($v['contract_status']==1){?>
+                          <span class="dashboard-status-button green">Approved</span>
+                          <?php }elseif($v['contract_status']==2){?>
+                          <span class="dashboard-status-button red">Rejected</span>
+                          <?php }elseif($v['contract_status']==0){?>
+                          <span class="dashboard-status-button yellow">Pending</span>
+                          <?php }?>
+                        </li>
+                        <li><!--<b>Status:</b>-->
                           <?php if($v['is_contract_ended']==1){?>
                           <span class="dashboard-status-button blue">Completed On:
                           <?php D($v['contract_end_date']);?>

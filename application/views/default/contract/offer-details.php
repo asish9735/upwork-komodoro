@@ -49,7 +49,7 @@ if($is_owner){
         <?php if($contractDetails->contract_details){?>
         <p><?php echo nl2br($contractDetails->contract_details);?></p>
         <?php }?>
-        <p>Job: <a href="<?php echo $ProjectDetailsURL;?>" target="_blank"><?php echo $contractDetails->project_title;?></a></p>
+        <p><a href="<?php echo $ProjectDetailsURL;?>" target="_blank"><?php echo $contractDetails->project_title;?></a></p>
         </div>
         </div>
         <?php if($contractDetails->is_hourly){?>
@@ -115,7 +115,12 @@ if($is_owner){
             <div class="card-body">
             <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>                    
             <h5 class="card-title mb-0"><?php echo $name;?></h5>
-            
+            <?php if($is_owner){?>
+            	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
+            	<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
+            	<?php }else{ ?>
+             	<div class="star-rating" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+            <?php }?>
             </div>                    
         </div>
         </div>

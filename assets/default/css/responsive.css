@@ -43,9 +43,12 @@ html {
 	.language-switcher.bootstrap-select.btn-group button {
 		border-color: transparent;
 	}
-	.dashboard-content-inner {
-		min-height: 740px;
+	.dashboard-sidebar-inner{
+		height:750px !important;
 	}
+	/*.dashboard-content-inner {
+		min-height: 750px;
+	}*/
 }
 
 @media only screen and (min-width: 1200px) {
@@ -99,13 +102,25 @@ ul.totalList > li:nth-child(2n) {
 .dashboard-box .job-listing .job-listing-footer.if-button{
 	padding-right:40px;
 }
+.job-listing-footer .dashboard-status-button {
+    margin: 3px 0;
+}
 
 }
 
 @media only screen and (max-width: 575px) {
-.avatar-wrapper {
-	margin: 0 auto 1rem;
-}
+	.avatar-wrapper {
+		margin: 0 auto 1rem;
+	}
+	ul.dashboard-box-list.if-double-button > li{
+		padding-right:1.25rem;
+	}
+	ul.dashboard-box-list.if-double-button > li .buttons-to-right{
+		position:inherit;
+		left: 0;
+		top: 1rem;
+		box-shadow:none;
+	}
 }
 
 

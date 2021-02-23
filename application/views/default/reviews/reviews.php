@@ -22,16 +22,12 @@ if($list){
 	foreach($list as $l=>$review){
 		$project_url=get_link('myProjectDetailsURL').'/'.$review->project_url;
 ?>
-<li class="review-contain review-contain-sec-<?php D($l);?>">
-	<div class="boxed-list-item">
+<li>
+	<div class="job-listing">
 		<!-- Content -->
-		<div class="item-content">
+		<div class="job-listing-details">
 			<h4><a href="<?php echo $project_url;?>" target="_blank"><?php echo $review->project_title;?></a></h4>
-			<div class="float-right">	
-				<a href="<?php echo VZ;?>" class="btn btn-sm btn-outline-site ico viewreview" data-id="<?php echo md5($review->review_id);?>" data-tippy-placement="top" data-tippy="" title="View">
-					<i class="icon-feather-eye"></i>
-				</a>
-			</div>
+			
 			<div class="item-details margin-top-10">
 				<div class="star-rating" data-rating="<?php echo $review->average_review;?>"></div>
 				<div class="detail-item"><i class="icon-material-outline-account-circle"></i> <?php echo $review->member_name;?></div>
@@ -43,6 +39,11 @@ if($list){
 			</div>
 		</div>
 	</div>
+    <div class="buttons-to-right single-right-button always-visible">	
+				<a href="<?php echo VZ;?>" class="btn btn-sm btn-outline-site ico viewreview" data-id="<?php echo md5($review->review_id);?>" data-tippy-placement="top" data-tippy="" title="View">
+					<i class="icon-feather-eye"></i>
+				</a>
+			</div>
 	
 </li>
 <?php
