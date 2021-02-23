@@ -1603,6 +1603,23 @@ class Contract extends MX_Controller {
 					'single_row'=>true
 				));
 				
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
+				
+				$this->data['contractDetails']->contractor=getData(array(
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
+					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
+					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
+					'single_row'=>true
+				));	
 				
 				$this->data['is_owner']=0;
 				$is_valid=FALSE;
@@ -1613,7 +1630,7 @@ class Contract extends MX_Controller {
 					$is_valid=TRUE;
 				}
 
-			
+				
 				if(!$is_valid){
 					if($this->data['contractDetails']->is_hourly){
 						redirect(get_link('ContractDetailsHourly').'/'.$contract_id_enc);

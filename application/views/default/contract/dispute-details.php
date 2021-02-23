@@ -122,8 +122,14 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                 <div class="card-body">
                 <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
                 <h5 class="card-title"><?php echo $name;?></h5>
+                <?php if($is_owner){?>
+            	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
+            	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
+            	<?php }else{ ?>
+             	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+            	<?php }?>
                 <?php if($contractDetails->dispute_status==0){?>
-                <a href="javascript:void(0)" class="btn btn-site  submit_offer"><icon class="icon-material-outline-add"></icon> Submit Offer</a>
+                <a href="javascript:void(0)" class="btn btn-site submit_offer"><icon class="icon-material-outline-add"></icon> Submit Offer</a>
                 <?php }?>
                 </div> 
             </div>

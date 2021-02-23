@@ -208,9 +208,9 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
             <h5 class="card-title mb-0"><?php echo $name;?></h5>
             <?php if($is_owner){?>
             	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
-            	<div class="star-rating" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
+            	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
             <?php }else{ ?>
-             	<div class="star-rating" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+             	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
             <?php }?>
             
             <?php if($is_owner){?>

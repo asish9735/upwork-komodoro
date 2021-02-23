@@ -140,7 +140,7 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
             	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
             	<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
             	<?php }else{ ?>
-             	<div class="star-rating" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+             	<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
             	<?php }?>
             	<a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block">View Offer <!--<i class="icon-feather-external-link"></i>--></a>
                 <?php if($contractDetails->bid_id){?>
