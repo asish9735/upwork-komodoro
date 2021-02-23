@@ -157,7 +157,9 @@ if($loggedUser){
 								<div class="user-details">
 									<div class="user-avatar status-online"><img src="<?php echo $logo;?>" alt=""></div>
 									<div class="user-name">
-										<p><?php echo $profile_name;?></p> <span><?php echo $profile_type_name;?></span>
+										<p><?php echo $profile_name;?></p>
+                                        <span><?php echo $profile_type_name;?></span>
+                                        <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php // D(priceFormat($memberDataBasic->balance));?>499.00</b>
 									</div>
 								</div>
 								

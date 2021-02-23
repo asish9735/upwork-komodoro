@@ -938,6 +938,9 @@ ul.skill-tags > li {
     transform: rotate(45deg);
 }
 ul.dashboard-box-list.if-button > li {
+    padding-right: 50px;
+}
+ul.dashboard-box-list.if-double-button > li {
     padding-right: 100px;
 }
 .section {
@@ -1289,7 +1292,7 @@ ul.list-group-0 > li{
 	z-index: 999;
 }
 .profile {
-	padding:1.5rem 0;
+	padding:1rem 0 1.5rem;
 }
 .profile_pic {
     background-color: #eee;
@@ -1375,7 +1378,20 @@ ul.list-group-0 > li{
 .alert-site{
 	background-color:#fff;
 }
-
+.card-box{
+	align-items: center;
+    border: 1px solid #ccc;
+	border-radius:0.25rem;
+    color: #777;
+    display: flex;
+    max-width: 250px;
+    margin-top: 1rem;
+    height: 150px;
+}
+.card-box:hover{
+	color:var(--siteColor);
+	border-color:var(--siteColor);
+}
 
 
 

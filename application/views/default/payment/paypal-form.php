@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <script>
-var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
+/*var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 var main=function(){
 
 bootbox.alert({
@@ -20,9 +20,12 @@ window.setTimeout(function(){
 	 $('#pay').click();
  }, 2000);
  	
-}
+}*/
 </script>
-<section style="background-color: #2c3e50;min-height: 200px">
+<section class="pgLoad" style="background-color: #fff;">
+	<?php load_view('inc/spinner',array('size'=>36));?> <br />
+	<p>Processing your payment. Please wait...</p>
+
 <form action="<?php D($formdata['url']);?>" method="post" style="display: none">
     <input name="amount" type="hidden" value="<?php D($formdata['amount_converted']);?>">
     <input name="currency_code" type="hidden" value="<?php D($formdata['currency_code']);?>">
@@ -42,3 +45,42 @@ window.setTimeout(function(){
     <input type="submit" name="pay" value="Submit" id="pay">
     </form>	
 </section>
+<script>
+var main=function(){
+	$('body').addClass('loading');
+	setTimeout(function(){
+	$('body').removeClass('loading').addClass('loaded');	
+	$('#pay').click();})	
+};
+</script>
+
+<style>
+/*.loading {
+	background: #fff url('<?php echo IMAGE;?>loader.gif') no-repeat center center;
+	background-attachment:fixed;
+}*/
+.pgLoad {
+    /*opacity: 0;*/
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+}
+.loaded .pgLoad {
+	opacity: 1;
+	-webkit-transition: opacity 5s ease-out;
+	-moz-transition: opacity 5s ease-out;
+	transition: opacity 5s ease-out;
+}
+@media (min-width: 768px) {
+	.pgLoad{
+		min-height: 450px
+	}
+}
+@media (max-width: 767px) {
+	.pgLoad{
+		max-height: 250px
+	}
+}
+
+</style>
