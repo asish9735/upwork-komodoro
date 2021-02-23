@@ -26,11 +26,14 @@
      border:2px solid var(--siteColor);
 }
  .infoBox-close:hover {
-     color:#fff;
-     background-color:var(--siteColor);
+	color:#fff;
+	background-color:var(--siteColor);
 }
  .message-bubble.me .message-text:before {
-     border-left:6px solid var(--siteColor);
+	border-left:6px solid rgb(100 190 67 / 0.1);
+}
+.message-bubble.me .message-text{
+	background-color: rgb(100 190 67 / 0.1);
 }
  a,
  .header-widget .log-in-button:hover i,
@@ -157,10 +160,10 @@
  .dashboard-nav ul li span.nav-tag,
  .dashboard-box .button.dark:not(.ico):hover,
  .messages-inbox ul li:before,
- .message-by h5 i,
- .message-bubble.me .message-text {
-     background-color:var(--siteColor);
+ .message-by h5 i {
+	background-color:var(--siteColor);
 }
+
  .transparent-header #navigation > ul li:hover ul li:hover a:after,
  .transparent-header #navigation > ul li:hover a:after,
  .transparent-header #navigation > ul li a.current:after,

@@ -118,7 +118,7 @@ Vue.component('active-chat-header', {
 			<div class="message-time-sign" v-if="checkDate(message)">
 				<span>{{message.sending_date | formatDate }}</span>
 			</div>
-			<div class="message-bubble" :class="{'me_': message.sender_id == login_user.member_id}">
+			<div class="message-bubble" :class="{'me': message.sender_id == login_user.member_id}">
 				<div class="message-bubble-inner">
 					<div class="message-avatar" v-if="message.sender_id == login_user.member_id"><img :src="login_user.avatar" alt="" /></div>
 					<div class="message-avatar" v-else><img :src="active_chat.avatar" alt="" /></div>					
@@ -146,7 +146,7 @@ Vue.component('active-chat-header', {
 					</div>
 					<div class="dropdown edit-message">
 						<a href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown"><i class="icon-feather-more-vertical"></i></a>	
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-feather-edit"></i> Edit</a>	
 							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-feather-trash"></i> Delete</a>	
 							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-line-awesome-quote-left"></i> Quote <i class="icon-line-awesome-quote-right"></i></a>	
