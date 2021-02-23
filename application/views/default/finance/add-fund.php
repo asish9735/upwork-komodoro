@@ -47,7 +47,7 @@ $sub_total=0;
             ?>            
             <label for="paypal" class="btn btn-outline-black">
             <input type="radio" name="method" id="paypal" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
-            <?php D(__('paymentmethod_page_Pay_By_Paypal',"Pay With Paypal"));?>
+            <?php D(__('paymentmethod_page_Pay_By_Paypal',"Pay With Paypal"));?><br/>
             <img src="<?php D(IMAGE)?>paypal.png">
             </label>
             <?php } ?>
@@ -57,7 +57,7 @@ $sub_total=0;
             ?>            
             <label for="stripe" class="btn btn-outline-black">
             <input type="radio" name="method" id="stripe" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
-            <?php D(__('paymentmethod_page_Pay_By_Stripe',"Pay With Stripe"));?>
+            <?php D(__('paymentmethod_page_Pay_By_Stripe',"Pay With Stripe"));?><br/>
             <img src="<?php D(IMAGE)?>stripe.png">
             </label>
             <?php } ?>
@@ -66,14 +66,14 @@ $sub_total=0;
             </div>
             </div>
 			<?php if($enable_paypal ==1){ ?>
-			<form action="" class="checkoutForm" method="post" id="paypal-form" onsubmit="return processCheckout(this);return false;">
+			<form style="display:none" action="" class="checkoutForm" method="post" id="paypal-form" onsubmit="return processCheckout(this);return false;">
 				<input type="hidden" name="method" value="paypal">
 				<input type="hidden" name="payfor" value="<?php D($payfor)?>">
 				<button type="submit" name="paypal" class="btn btn-site saveBTN"><?php D(__('paymentmethod_page_Pay_With_Paypal',"Pay With Paypal"));?> </button>
 			</form>
 			<?php } ?>
 			<?php if($enable_stripe ==1){ ?>
-			<form action="" class="checkoutForm" method="post" id="stripe-form" onsubmit="return processCheckout(this);return false;">
+			<form style="display:none" action="" class="checkoutForm" method="post" id="stripe-form" onsubmit="return processCheckout(this);return false;">
 				<input type="hidden" name="method" value="stripe">
 				<input type="hidden" name="payfor" value="<?php D($payfor)?>">
 				<button type="submit" name="stripe" class="btn btn-site saveBTN"><?php D(__('paymentmethod_page_Pay_With_Stripe',"Pay With Stripe"));?> </button>
@@ -105,9 +105,23 @@ $('input[name="method"]').change(function(){
 	$('.total-price').html('<?php echo $currency; ?>'+amount);
 	$('.processingFeeText').html(feetext);
 	$('#'+id+'-form').show();
+	var payamount=$('input[name="amount"]').val();
+	if(payamount>0){
+		$('.saveBTN').removeAttr('disabled');
+	}else{
+		$('.saveBTN').attr('disabled','disabled');
+	}
 })
 
 $('input[name="method"]:first').click();	
+$('input[name="amount"]').on('keyup',function(){
+	var payamount=$('input[name="amount"]').val();
+	if(payamount>0){
+		$('.saveBTN').removeAttr('disabled');
+	}else{
+		$('.saveBTN').attr('disabled','disabled');
+	}
+})
 }
 function processCheckout(ev){
 	var formID= $(ev).attr('id');
