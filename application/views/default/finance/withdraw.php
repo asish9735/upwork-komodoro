@@ -174,9 +174,23 @@ $('input[name="method"]').click(function(){
 	$('.total-price').html('<?php echo $currency; ?>'+amount);
 	$('.processingFeeText').html(feetext);
 	$('#'+id+'-form').show();
+	var payamount=$('input[name="amount"]').val();
+	if(payamount>0){
+		$('.saveBTN').removeAttr('disabled');
+	}else{
+		$('.saveBTN').attr('disabled','disabled');
+	}
 })
 
 $('input[name="method"]:first').click();	
+$('input[name="amount"]').on('keyup',function(){
+	var payamount=$('input[name="amount"]').val();
+	if(payamount>0){
+		$('.saveBTN').removeAttr('disabled');
+	}else{
+		$('.saveBTN').attr('disabled','disabled');
+	}
+})
 $('.add_new_method').on('click',  function(e){
 	e.preventDefault();
 	$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
