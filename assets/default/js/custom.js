@@ -25,7 +25,7 @@ $(document).ready(function(){
 					$("#navigation").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
 					.find('ul, div').removeClass('style-1 style-2 mega-menu mega-menu-content mega-menu-section').removeAttr('id');
 					$(".mmenu-init").find("ul").addClass("mm-listview");
-					$(".mmenu-init").find(".mobile-styles .mm-listview").unwrap(); */
+					$(".mmenu-init").find(".mobile-styles .mm-listview").unwrap(); 
 
 					$(".dashboard-nav-inner").clone().addClass("mmenu-init").insertBefore("#navigation").removeAttr('id').removeClass('style-1 style-2')
 					.find('div').remove();
