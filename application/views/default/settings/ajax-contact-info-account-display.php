@@ -25,21 +25,20 @@ $display_email=$firs_part."@".$d[1];
 
 <div class="row">
     <div class="col-sm">
-        <div class="submit-field">
-            <label>User ID</label>
+        <div class="form-field">
+            <label class="mb-1">User ID</label>
             <p><?php D($memberInfo->member_username)?></p>
         </div>
-        <div class="submit-field">
-            <label>Name</label>
+        <div class="form-field">
+            <label class="mb-1">Name</label>
             <p><?php ucwords(D($memberInfo->member_name));?></p>
         </div>
 	</div>
     <div class="col-sm">
         <!-- Account Type -->
-        <div class="submit-field">
-            <label>Email</label>
+        <div class="form-field mb-0">
+            <label class="mb-1">Email</label>
             <p><?php D($display_email)?></p>
         </div>
     </div>
-    
 </div>

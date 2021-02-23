@@ -25,18 +25,18 @@ if($list){
 <li>
 	<div class="job-listing">
 		<!-- Content -->
-		<div class="job-listing-details">
-			<h4><a href="<?php echo $project_url;?>" target="_blank"><?php echo $review->project_title;?></a></h4>
-			
-			<div class="item-details margin-top-10">
-				<div class="star-rating" data-rating="<?php echo $review->average_review;?>"></div>
-				<div class="detail-item"><i class="icon-material-outline-account-circle"></i> <?php echo $review->member_name;?></div>
-				<div class="detail-item"><i class="icon-material-outline-date-range"></i> <?php echo dateFormat($review->review_date,'M d, Y');?></div>
-			</div>
-			<div class="item-description">
-				<p> <sup class="icon-line-awesome-quote-left"></sup> <?php echo nl2br($review->review_comments);?> <sub class="icon-line-awesome-quote-right"></sub></p>
-				
-			</div>
+		<div class="job-listing-details">						
+			<div class="job-listing-description">				
+                <h4 class="job-listing-title mb-1"><a href="<?php echo $project_url;?>" target="_blank"><?php echo $review->project_title;?></a></h4>
+                <div class="star-rating" data-rating="<?php echo $review->average_review;?>"></div>
+                <p class="mb-2"><sup class="icon-line-awesome-quote-left"></sup> <?php echo nl2br($review->review_comments);?> <sub class="icon-line-awesome-quote-right"></sub></p>
+				<div class="job-listing-footer if-button">
+                    <ul>
+                        <li><i class="icon-material-outline-account-circle"></i> <?php echo $review->member_name;?></li>
+                        <li><i class="icon-material-outline-date-range"></i> <?php echo dateFormat($review->review_date,'M d, Y');?></li>
+                    </ul>
+                </div>
+            </div>
 		</div>
 	</div>
     <div class="buttons-to-right single-right-button always-visible">	

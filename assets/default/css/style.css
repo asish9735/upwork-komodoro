@@ -1341,9 +1341,11 @@ ul.list-group-0 > li{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.fav-star{
+.fav-star, .edit-message{
 	display:none;
 	position:absolute;
+}
+.fav-star{
 	right:-30px;
 	top:0;
 	font-size: 1.25rem;
@@ -1352,10 +1354,24 @@ ul.list-group-0 > li{
 	content: "\e988";
 }
 .edit-message{
-	display:none;
-	position:absolute;
 	right:10px;
 	bottom:0;    
+}
+.message-bubble.me .fav-star{
+	left:-30px;
+	right:auto;
+}
+.message-bubble.me .edit-message{
+	left:10px;
+	right:auto;
+}
+.message-bubble .dropdown-menu {
+    right: 0;
+    left: auto !important;
+}
+.message-bubble.me .dropdown-menu {
+    right: auto;
+    left: 0;
 }
 .message-bubble:hover .fav-star,
 .message-bubble:hover .edit-message{
