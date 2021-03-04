@@ -57,6 +57,8 @@ if($cms_temp){
                     <div class="form-group">
                         <label for="block_type_section_child_area_<?php echo $rowid;?>_<?php echo $partid;?>_<?php echo $v;?>">Area (<?php echo $v;?>)</label>
                         <textarea class="form-control reset_field" id="block_type_section_child_area_<?php echo $rowid;?>_<?php echo $partid;?>_<?php echo $v;?>" name="child_key_p_<?php echo $rowid;?>[c_<?php echo $partid;?>][block_type_section_child_area][<?php echo $v;?>]" autocomplete="off"><?php if(array_key_exists($v,$part['part_content'])){echo $part['part_content'][$v];}?></textarea>
+
+                        <?php echo get_editor('block_type_section_child_area_'.$rowid.'_'.$partid.'_'.$v);?>
                     </div>
                     <?php }?>
                 </div>
@@ -79,6 +81,7 @@ if($cms_temp){
                     <label for="block_type_custom_area_<?php echo $rowid;?>_<?php echo $v?>">Custom HTML (<?php echo $v?>)</label>
                     <div data-error-wrapper="block_type_custom_area_<?php echo $rowid;?>_<?php echo $v?>">
                         <textarea class="form-control reset_field" id="block_type_custom_area_<?php echo $rowid;?>_<?php echo $v?>" name="block_type_custom_area_<?php echo $rowid;?>[<?php echo $v?>]" autocomplete="off"><?php if(array_key_exists($v,$part['part_content'])){echo $part['part_content'][$v];}?></textarea>
+                        <?php echo get_editor('block_type_custom_area_'.$rowid.'_'.$v);?>
                     </div>
                 </div>
         <?php }?>
@@ -100,7 +103,8 @@ if($cms_temp){
 </div>
 <?php }
 	elseif($type=='template'){?>
-<div class="template_block" style="display: none">
+    <script type="text/x-template" class="template_block">
+
   	<div class="row section_block_row">
   	<input type="hidden" name="cms_key[]" value="{CNT}"/>
 		<div class="col-sm-12">
@@ -148,8 +152,9 @@ if($cms_temp){
         </div>
 	</div>
     <hr>
-</div>
-<div class="template_block_child" style="display: none">
+</script>
+<script type="text/x-template" class="template_block_child">
+
     <div class="block_type_section_child_row">
         <span class="float-right">
             <button class="btn btn-danger ml-3 mb-2" type="button" onclick="$(this).closest('.block_type_section_child_row').remove()">X</button>
@@ -167,8 +172,36 @@ if($cms_temp){
         <?php }?>
     </div>
     <hr>
-</div>
+</script>
 <script>
+var alllanguage=<?php echo json_encode($lang);?>;
+var ckeditor_url = "<?php echo ADMIN_PLUGINS.'ckeditor/ckeditor.js'?>";
+function get_editor(input_id){
+    if(typeof CKEDITOR == 'undefined'){
+        var scriptTag = document.createElement('script');
+        scriptTag.type = 'text/javascript';
+        scriptTag.src = ckeditor_url;
+        scriptTag.onload = function(){
+           CKEDITOR.replace(input_id, {
+                    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserWindowWidth: '1000',
+                    filebrowserWindowHeight: '700'
+            });
+        };
+        document.body.appendChild(scriptTag);
+    }else{
+       CKEDITOR.replace(input_id, {
+                    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserWindowWidth: '1000',
+                    filebrowserWindowHeight: '700'
+            });
+    }
+}
+
+
+
 var sectionblockcnt=$('.section_block .section_block_row').length;
 var sectionblockcntchild=$('.section_block .block_type_section_child_row').length;
 function add_new_row_block(){	
@@ -176,7 +209,12 @@ function add_new_row_block(){
 	sectionblockcnt=sectionblockcnt+1;
   	cnt=sectionblockcnt;
   	html=html.replace(/{CNT}/g, cnt);
-  	$('.section_block').append(html);	
+  	$('.section_block').append(html);
+    if(alllanguage){
+        for (i = 0; i < alllanguage.length; i++) {
+            get_editor('block_type_custom_area_'+cnt+'_'+alllanguage[i]);
+        }
+    }   	
 }
 function add_new_row_block_child(parentcnt){	
 	var html=$('.template_block_child').html();
@@ -184,7 +222,13 @@ function add_new_row_block_child(parentcnt){
   	cnt=sectionblockcntchild;
   	html=html.replace(/{CNT}/g, parentcnt);
   	html=html.replace(/{CNTC}/g, cnt);
-  	$('.block_type_section_'+parentcnt+' .block_type_section_child').append(html);	
+  	$('.block_type_section_'+parentcnt+' .block_type_section_child').append(html);	 
+    if(alllanguage){
+        for (i = 0; i < alllanguage.length; i++) {
+            get_editor('block_type_section_child_area_'+parentcnt+'_'+cnt+'_'+alllanguage[i]);
+        }
+    } 
+    
 }
 </script>
 

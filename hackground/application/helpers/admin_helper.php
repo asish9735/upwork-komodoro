@@ -216,6 +216,7 @@ if(!function_exists('get_editor')){
 	
 	function get_editor($input_id=''){
 		$ckeditor_url = ADMIN_PLUGINS.'ckeditor/ckeditor.js';
+		$ckfinder_url= ADMIN_PLUGINS.'ckeditor';
 		$script = <<<EOD
 	
 	<script>
@@ -225,11 +226,21 @@ if(!function_exists('get_editor')){
 				scriptTag.type = 'text/javascript';
 				scriptTag.src = '$ckeditor_url';
 				scriptTag.onload = function(){
-					CKEDITOR.replace('$input_id');
+					CKEDITOR.replace('$input_id', {
+						filebrowserBrowseUrl: '$ckfinder_url/ckfinder/ckfinder.html',
+						filebrowserUploadUrl: '$ckfinder_url/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+						filebrowserWindowWidth: '1000',
+						filebrowserWindowHeight: '700'
+				});
 				};
 				document.body.appendChild(scriptTag);
 			}else{
-				CKEDITOR.replace('$input_id');
+				CKEDITOR.replace('$input_id', {
+                    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserWindowWidth: '1000',
+                    filebrowserWindowHeight: '700'
+            });
 			}
 			
 		});

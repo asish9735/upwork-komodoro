@@ -13,7 +13,7 @@ class Postproject extends MX_Controller {
 			$this->member_id=$this->loggedUser['MID'];
 			$this->organization_id=$this->loggedUser['OID'];
 		}else{
-			show_404();
+			redirect(URL::get_link('loginURL').'?ref=postprojectURL');
 		}	
 		$this->data['curr_class'] = $this->router->fetch_class();
 		$this->data['curr_method'] = $this->router->fetch_method();

@@ -85,7 +85,8 @@
                   <td><?php echo $status; ?></td>
                   <td class="text-right" style="padding-right:20px;">
 					<?php if($v['status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>
+						<!-- <a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a> -->
+					<a href="<?php echo base_url($curr_controller.'addedit/'.$v[$primary_key]);?>"  data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>
 					&nbsp;
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
@@ -128,8 +129,9 @@
 <script>
 
 function add(){
-	var url = '<?php echo base_url($curr_controller.'load_ajax_page?page='.$add_command);?>';
-	load_ajax_modal(url);
+	window.location.href="<?php echo base_url($curr_controller.'addedit');?>";
+	/* var url = '<?php echo base_url($curr_controller.'load_ajax_page?page='.$add_command);?>';
+	load_ajax_modal(url); */
 }
 
 function edit(id){

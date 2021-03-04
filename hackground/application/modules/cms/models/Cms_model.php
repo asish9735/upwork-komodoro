@@ -79,7 +79,6 @@ class Cms_model extends CI_Model{
 			
 			$lang_record['data'] = $structure;
 			$lang_record['table'] = $this->lang_table;
-			
 			insert($lang_record);
 		}
 	}

@@ -108,6 +108,8 @@ class Cms extends MX_Controller {
 		$this->layout->set_title('How It Works');
 		$this->layout->set_meta('keywords','How It Works');
 		$this->layout->set_meta('description','How It Works');
+		$page="how-it-works";
+		$this->data['cms_temp']=$this->cms_model->getTempContent($page);
 		$this->layout->view('howitwork', $this->data);
 	}
 	public function knowledgebank($page='knowledge-bank'){
