@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($filter);
-echo '<pre>';
+/* echo '<pre>';
 print_r($cms_temp);
-echo '</pre>';
+echo '</pre>'; */
 ?>
 <div class="single-page-header bg-site">
 	<div class="container">		
@@ -44,8 +44,10 @@ if($cms_temp){
 	}
 }
 ?>
+<?php /*?>
 <section class="section">
 	<div class="container">
     	<?php D(html_entity_decode($cms->content)); ?>
     </div>
 </section>
+<?php */?>
