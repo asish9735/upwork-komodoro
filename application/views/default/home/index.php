@@ -199,6 +199,7 @@ if($cms_temp){
 <!-- Highest Rated Freelancers / End --> 
 
 <!-- Membership Plans -->
+<?php /*?>
 <section class="section pt-0">
   <div class="container"> 
     <!-- Section Headline -->
@@ -287,6 +288,7 @@ if($cms_temp){
     </div>
   </div>
 </section>
+<?php */?>
 <!-- Membership Plans / End--> 
 <?php if($testimonial){?>
 <!-- Feedback -->
