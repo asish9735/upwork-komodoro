@@ -412,9 +412,50 @@ class Permission extends MX_Controller {
 		$this->db->where('menu_id', $menu_id)->delete('adminmenu_permission');
 		
 		set_flash('succ_msg', 'Successfully deleted');
+		$this->api->cmd('reload');
+		//redirect('permission/list_menu');
+		$this->api->out();
+	}
+	public function delete_record($id=''){
+		//$this->data['primary_key'] = 'role_id';
+		//$this->data['table'] = 'admin_role';
 		
-		redirect('permission/list_menu');
+		$action_type = post('action_type');
+		if($action_type == 'multiple'){
+			$id = post('ID');
+		}
 		
+		
+		if($id){
+			
+			if(is_array($id)){
+				$this->db->where_in('id', $id)->delete('adminmenu');
+				$this->db->where_in('parent_id', $id)->delete('adminmenu');
+				$this->db->where_in('menu_id', $id)->delete('adminmenu_permission');
+			}else{
+				$this->db->where('id', $id)->delete('adminmenu');
+				$this->db->where('parent_id', $id)->delete('adminmenu');
+				$this->db->where('menu_id', $id)->delete('adminmenu_permission');
+			}
+		
+			$cmd = get('cmd');
+			if($cmd && $cmd == 'remove'){
+				if($id && is_array($id)){
+					$this->db->where_in('id', $id)->delete('adminmenu');
+					$this->db->where_in('parent_id', $id)->delete('adminmenu');
+					$this->db->where_in('menu_id', $id)->delete('adminmenu_permission');
+				}else{
+					$this->db->where('id', $id)->delete('adminmenu');
+					$this->db->where('parent_id', $id)->delete('adminmenu');
+					$this->db->where('menu_id', $id)->delete('adminmenu_permission');
+				}
+				
+			}
+			$this->api->cmd('reload');
+		}else{
+			$this->api->set_error('invalid_request', 'Invalid Request');
+		}
+		$this->api->out();
 	}
 
 }

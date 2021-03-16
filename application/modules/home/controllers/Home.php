@@ -60,6 +60,11 @@ class Home extends MX_Controller {
 		$limit = 0;
 		$offset = 32;
 		$this->data['popular_skills']=$this->skill_model->getPolularSkillsList($get,$limit, $offset);
+		$page="how-it-works";
+		$this->load->model('cms/cms_model');
+		$this->data['cms_temp']=$this->cms_model->getTempContent($page);
+		$this->data['testimonial']=$this->home_model->getTestimonial();
+		$this->data['partner']=$this->home_model->getPartner();
 		$this->layout->view('index',$this->data);
 	}
 	public function findjobs() {

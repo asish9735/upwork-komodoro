@@ -216,7 +216,7 @@ if(!function_exists('get_editor')){
 	
 	function get_editor($input_id=''){
 		$ckeditor_url = ADMIN_PLUGINS.'ckeditor/ckeditor.js';
-		$ckfinder_url= ADMIN_PLUGINS.'ckeditor';
+		$ckfinder_url= ADMIN_PLUGINS.'ckfinder';
 		$script = <<<EOD
 	
 	<script>
@@ -227,8 +227,8 @@ if(!function_exists('get_editor')){
 				scriptTag.src = '$ckeditor_url';
 				scriptTag.onload = function(){
 					CKEDITOR.replace('$input_id', {
-						filebrowserBrowseUrl: '$ckfinder_url/ckfinder/ckfinder.html',
-						filebrowserUploadUrl: '$ckfinder_url/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+						filebrowserBrowseUrl: '$ckfinder_url/ckfinder.html',
+						filebrowserUploadUrl: '$ckfinder_url/core/connector/php/connector.php?command=QuickUpload&type=Files',
 						filebrowserWindowWidth: '1000',
 						filebrowserWindowHeight: '700'
 				});
@@ -236,10 +236,10 @@ if(!function_exists('get_editor')){
 				document.body.appendChild(scriptTag);
 			}else{
 				CKEDITOR.replace('$input_id', {
-                    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-                    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                    filebrowserWindowWidth: '1000',
-                    filebrowserWindowHeight: '700'
+                    filebrowserBrowseUrl: '$ckfinder_url/ckfinder.html',
+					filebrowserUploadUrl: '$ckfinder_url/core/connector/php/connector.php?command=QuickUpload&type=Files',
+					filebrowserWindowWidth: '1000',
+					filebrowserWindowHeight: '700'
             });
 			}
 			

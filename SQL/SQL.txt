@@ -660,3 +660,59 @@ ALTER TABLE `pref_cms_temp` CHANGE `cms_type` `child_class` MEDIUMTEXT CHARACTER
 ALTER TABLE `pref_cms_temp` ADD `section_type` CHAR(3) NOT NULL AFTER `cms_page`;
 ALTER TABLE `pref_cms_temp_part` DROP INDEX `cms_key`;
 ALTER TABLE `pref_cms_temp_part` ADD `lang` CHAR(2) NOT NULL DEFAULT 'en' AFTER `part_order`;
+---------
+
+CREATE TABLE `pref_testimonial` (
+  `testimonial_id` int(11) NOT NULL,
+  `logo` varchar(150) NOT NULL,
+  `testimonial_status` tinyint(1) NOT NULL,
+  `display_order` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pref_testimonial_names` (
+  `testimonial_id` int(11) NOT NULL,
+  `name` char(52) NOT NULL DEFAULT '',
+  `company_name` varchar(150) NOT NULL,
+  `description` text NOT NULL,
+  `lang` char(3) NOT NULL DEFAULT 'en'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `pref_testimonial` ADD PRIMARY KEY (`testimonial_id`);
+
+ALTER TABLE `pref_testimonial`  MODIFY `testimonial_id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+CREATE TABLE `pref_section_boxes` (
+  `box_id` int(10) NOT NULL,
+  `box_image` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `display_order` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pref_section_boxes_names` (
+  `box_id` int(10) NOT NULL,
+  `lang` char(3) NOT NULL,
+  `name` text NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `pref_section_boxes` ADD PRIMARY KEY (`box_id`);
+ALTER TABLE `pref_section_boxes` MODIFY `box_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+CREATE TABLE `pref_home_section_slider` (
+  `slide_id` int(100) NOT NULL,
+  `slide_image` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `pref_home_section_slider_names` (
+  `slide_id` int(10) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `slide_image` text NOT NULL,
+  `lang` char(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `pref_home_section_slider` ADD PRIMARY KEY (`slide_id`);
+ALTER TABLE `pref_home_section_slider` MODIFY `slide_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+ALTER TABLE `pref_home_section_slider` ADD `display_order` INT NOT NULL AFTER `slide_image`;
+

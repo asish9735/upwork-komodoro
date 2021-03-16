@@ -31,13 +31,13 @@
         <div class="banner-headline">
           <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit</h2>
           <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--></p>
-          <div class="input-group mb-3">
+          <div class="input-group mb-3" hidden>
             <input type="text" class="form-control" placeholder="Search projects or professionals" />
             <div class="input-group-append">
               <button class="btn btn-white"><i class="icon-feather-search"></i></button>
             </div>
           </div>
-          <a href="#" class="btn btn-outline-white mr-2">Get Started</a> <a href="#" class="btn btn-outline-black">Watch Tutorial</a> </div>
+          <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white mr-2">Get Started</a> <a href="#" hidden class="btn btn-outline-black">Watch Tutorial</a> </div>
       </div>
     </div>
   </div>
@@ -77,6 +77,41 @@
 </section>
 <!-- Popular Job Categories / End -->
 
+<?php 
+if($cms_temp){
+	foreach($cms_temp as $k=>$block){
+		if($block->cms_class){
+			echo '<div class="'.$block->cms_class.' pt-0">';
+		}
+		$child_block=array();
+		if($block->child_class){
+			$child_block=explode(',',$block->child_class);
+		}
+		if($child_block){
+			foreach($child_block as $c=>$child){
+				echo '<div class="'.$child.'">';
+			}
+		}
+		if($block->part){
+			foreach($block->part as $p=>$part){
+				echo '<div class="'.$part->part_class.'">';
+				echo html_entity_decode($part->part_content);
+				echo '</div>';
+			}
+
+		}
+		if($child_block){
+			foreach($child_block as $c=>$child){
+				echo '</div>';	
+			}
+		}
+		if($block->cms_class){
+			echo '</div>';		
+		}
+	}
+}
+?>
+<?php /*?>
 <section class="section pt-0 how-home">
   <div class="container">
     <div class="section-headline centered mb-4">
@@ -117,7 +152,7 @@
     </div>
   </div>
 </section>
-
+<?php */?>
 
 <!-- Highest Rated Freelancers -->
 <section class="section pt-0 full-width-carousel-fix">
@@ -253,6 +288,7 @@
   </div>
 </section>
 <!-- Membership Plans / End--> 
+<?php if($testimonial){?>
 <!-- Feedback -->
 <section class="section bg-white">
 <div class="container">
@@ -264,68 +300,41 @@
 <div class="testimonial-style-5 testimonial-slider-2 poss--relative">     
     <!-- Start Testimonial Nav -->
     <div class="testimonal-nav">
-      <div class="testimonal-img"> <img src="<?php echo IMAGE;?>sarah.jpg" alt="testimonal image"> </div>
-      <div class="testimonal-img"> <img src="<?php echo IMAGE;?>user-avatar-big-02.jpg" alt="testimonal image"> </div>
-      <div class="testimonal-img"> <img src="<?php echo IMAGE;?>user-avatar-big-03.jpg" alt="testimonal image"> </div>
-      <div class="testimonal-img"> <img src="<?php echo IMAGE;?>user.png" alt="testimonal image"> </div>
-      <div class="testimonal-img"> <img src="<?php echo IMAGE;?>user.png" alt="testimonal image"> </div>
+      <?php foreach($testimonial as $k=>$row){
+        $logo=IMAGE.'default/thumb/default-member-logo.svg';
+				if($row->logo){
+					$logo=UPLOAD_HTTP_PATH.'testimonial-icon/'.$row->logo;
+				}
+        ?>
+      <div class="testimonal-img"> <img src="<?php echo 	$logo;?>" alt="<?php echo $row->name;?>"> </div>
+      <?php }?>
     </div>
     <!-- End Testimonial Nav --> 
     
     <!-- Start Testimonial For -->
     <div class="testimonial-for">
+    <?php 
+    foreach($testimonial as $k=>$row){
+    ?>
       <div class="testimonial-desc">
         <div class="triangle"></div>
         <div class="client">
-          <h3>Sarah George</h3>
-          <p><i>CEO and co-founder</i></p>
-          <div class="star-rating" data-rating="3.5"></div>
+          <h3><?php echo $row->name;?></h3>
+          <p><i><?php echo $row->company_name;?></i></p>
+          <!-- <div class="star-rating" data-rating="3.5"></div> -->
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p><?php echo nl2br($row->description);?></p>
       </div>
-      <div class="testimonial-desc">
-        <div class="triangle"></div>
-        <div class="client">
-          <h3>Michelle Mitchell</h3>
-          <p><i>Director</i></p>
-          <div class="star-rating" data-rating="3.5"></div>
-        </div>
-        <p>Nipa ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-      <div class="testimonial-desc">
-        <div class="triangle"></div>
-        <div class="client">
-          <h3>Ryan Garcia</h3>
-          <p><i>Social Activist</i></p>
-          <div class="star-rating" data-rating="3.5"></div>
-        </div>
-        <p>Np ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-      </div>
-      <div class="testimonial-desc">
-        <div class="triangle"></div>
-        <div class="client">
-          <h3>Klaus Gruber</h3>
-          <p><i>Marketing Head</i></p>
-          <div class="star-rating" data-rating="3.5"></div>
-        </div>
-        <p>Supa ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-      </div>
-      <div class="testimonial-desc">
-        <div class="triangle"></div>
-        <div class="client">
-          <h3>Amanda Cook</h3>
-          <p><i>XYZ Company</i></p>
-          <div class="star-rating" data-rating="3.5"></div>
-        </div>
-        <p>Nerum vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
-      </div>
+    <?php
+        }
+    ?>
     </div>
     <!-- End Testimonial For --> 
   </div>
 </div>
 </section>
 <!-- Feedback End --> 
-
+<?php }?>
 <!-- Choose Account -->
 <section class="section choose-acc">
     <div class="container">
@@ -356,7 +365,7 @@
     </div>
 </section>
 <!-- Choose Account End -->
-
+<?php if($partner){?>
 <!-- Partner -->
 <section class="section pt-0 partner">
 <div class="container">
@@ -365,52 +374,28 @@
       <h2>Trusted Partners</h2>
       <p>Trusted by 10M+ businesses</p>
     </div>	
-    <div class="logo-carousel">    	
+    <div class="logo-carousel">   
+    <?php 
+    foreach($partner as $k=>$row){
+      $logo=IMAGE.'default/thumb/default-member-logo.svg';
+      if($row->box_image){
+        $logo=UPLOAD_HTTP_PATH.'box/'.$row->box_image;
+      }
+    ?> 	
         	<div class="card text-center">
             	<div class="card-body">
-                	<img src="<?php echo IMAGE;?>partner01.png" alt="partner">
+                	<img src="<?php echo $logo;?>" alt="<?php echo $row->name;?>">
                 </div>
             </div>
-        
-        	<div class="card text-center">
-            	<div class="card-body">
-                	<img src="<?php echo IMAGE;?>partner02.png" alt="partner">
-                </div>
-            </div>
-        
-        	<div class="card text-center">
-            	<div class="card-body">
-                	<img src="<?php echo IMAGE;?>partner03.png" alt="partner">
-                </div>
-            </div>
-        
-        	<div class="card text-center">
-            	<div class="card-body">
-                	<img src="<?php echo IMAGE;?>partner04.png" alt="partner">
-                </div>
-            </div>
-        
-        	<div class="card text-center">
-            	<div class="card-body">
-                	<img src="<?php echo IMAGE;?>partner05.png" alt="partner">
-                </div>
-            </div>   
-            <div class="card text-center">
-            	<div class="card-body">
-                	<img src="<?php echo IMAGE;?>partner01.png" alt="partner">
-                </div>
-            </div>
-        
-        	<div class="card text-center">
-            	<div class="card-body">
-                	<img src="<?php echo IMAGE;?>partner02.png" alt="partner">
-                </div>
-            </div>     
+    <?php
+    }
+    ?>   
+            
 	</div>
 </div>
 </section>
 <!-- Partner End -->
-
+<?php }?>
 <!-- Top Skills -->
 <section class="section pt-0">
 <div class="container">

@@ -132,7 +132,7 @@ function submitForm(form, evt){
 function onsuccess(res){
 	if(res.cmd){
 		if(res.cmd == 'reload'){
-			location.location.href="<?php echo base_url($curr_controller);?>";
+			window.location.href="<?php echo base_url($curr_controller);?>";
 		}else if(res.cmd == 'reset_form'){
 			var form = $('#add_form');
 			form.find('.reset_field').val('');

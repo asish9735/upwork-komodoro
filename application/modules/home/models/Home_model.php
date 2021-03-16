@@ -41,14 +41,22 @@ class Home_model extends CI_Model {
 	}
 	
 	public function getTestimonial($show_in_page=''){
-		$this->db->select('t.*')
-			->from('testimonial t');
+		$this->db->select('b.testimonial_id,l.name,l.company_name,l.description,b.logo')
+			->from('testimonial b')
+			->join('testimonial_names l', 'l.testimonial_id=b.testimonial_id', 'LEFT');
+		$this->db->where('l.lang', $this->lang);
+		$this->db->where('testimonial_status', '1');
+		$result = $this->db->order_by('b.display_order','asc')->get()->result();
+		return $result;
 		
-		if($show_in_page){
-			$this->db->where('t.display_in_page', $show_in_page);
-		}
-		$this->db->where('status', 'Y');
-		$result = $this->db->get()->result();
+	}
+	public function getPartner(){
+		$this->db->select('b.box_id,l.name,l.description,b.box_image')
+			->from('section_boxes b')
+			->join('section_boxes_names l', 'l.box_id=b.box_id', 'LEFT');
+		$this->db->where('l.lang', $this->lang);
+		$this->db->where('status', '1');
+		$result = $this->db->order_by('b.display_order','asc')->get()->result();
 		return $result;
 		
 	}

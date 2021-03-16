@@ -43,6 +43,7 @@ class Home_slider_model extends CI_Model{
 		$structure = array(
 			'slide_image' => !empty($data['slide_image']) ? $data['slide_image'] : '', 
 			'status' => !empty($data['status']) ? $data['status'] : '0',
+			'display_order' => !empty($data['display_order']) ? $data['display_order'] : '0',
 		);
 		$ins['data'] = $structure;
 		$ins['table'] = $this->table;
@@ -57,6 +58,7 @@ class Home_slider_model extends CI_Model{
 		$structure = array(
 			'slide_image' => !empty($data['slide_image']) ? $data['slide_image'] : '',
 			'status' => !empty($data['status']) ? $data['status'] : '0',
+			'display_order' => !empty($data['display_order']) ? $data['display_order'] : '0',
 		);
 		$ins['data'] = $structure;
 		$ins['table'] = $this->table;

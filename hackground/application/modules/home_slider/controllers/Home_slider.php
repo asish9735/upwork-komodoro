@@ -87,10 +87,12 @@ class Home_slider extends MX_Controller {
 			$this->load->library('form_validation');
 			
 			
-			$this->form_validation->set_rules('status', 'status', '');
+			$this->form_validation->set_rules('status', 'status', 'required');
 			if($this->form_validation->run()){
 				$post = post();
+				
 				$insert = $this->slider->addRecord($post);
+				
 				if(post('add_more') && post('add_more') == '1'){
 					$this->api->cmd('reset_form');
 				}else{
@@ -201,7 +203,7 @@ class Home_slider extends MX_Controller {
 	
 	public function upload_file(){
 		if($_FILES && $this->input->is_ajax_request()){
-			$upload_dir = LC_PATH.'userupload/slider-user/';
+			$upload_dir = LC_PATH.'slider/';
 			if(!is_dir($upload_dir)){
 				mkdir($upload_dir);
 			}
@@ -219,7 +221,7 @@ class Home_slider extends MX_Controller {
 			}else{
 				
 				$this->api->data('upload_data', $this->upload->data());
-				$this->api->data('file_url', USER_UPLOAD.'slider-user/'.$this->upload->data('file_name'));
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'slider/'.$this->upload->data('file_name'));
 			}
 			
 

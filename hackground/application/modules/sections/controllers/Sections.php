@@ -37,12 +37,12 @@ class Sections extends MX_Controller {
 		$curr_limit = get('per_page');
 		$limit = !empty($curr_limit) ? $curr_limit : 0; 
 		$offset = 20;
-		$this->data['main_title'] = 'Section Management';
-		$this->data['second_title'] = 'All Section List';
-		$this->data['title'] = 'Section';
+		$this->data['main_title'] = 'Partner Management';
+		$this->data['second_title'] = 'All Partner List';
+		$this->data['title'] = 'Partner';
 		$breadcrumb = array(
 			array(
-				'name' => 'Section',
+				'name' => 'Partner',
 				'path' => '',
 			),
 		);
@@ -62,7 +62,7 @@ class Sections extends MX_Controller {
 		$this->data['links'] = $this->pagination->create_links();
 		$this->data['add_command'] = 'add';
 		$this->data['edit_command'] = 'edit';
-		$this->data['add_btn'] = 'Add Section';
+		$this->data['add_btn'] = 'Add Partner';
 		$this->layout->view('list', $this->data);
        
 	}
@@ -71,14 +71,14 @@ class Sections extends MX_Controller {
 		$page = get('page');
 		$this->data['page'] = $page;
 		if($page == 'add'){
-			$this->data['title'] = 'Add Section';
+			$this->data['title'] = 'Add Partner';
 			$this->data['form_action'] = base_url($this->data['curr_controller'].'add');
 		}else if($page == 'edit'){
 			$id = get('id');
 			$this->data['ID']= $id;
 			$this->data['form_action'] = base_url($this->data['curr_controller'].'edit');
 			$this->data['detail'] = $this->section->getDetail($id);
-			$this->data['title'] = 'Edit Section';
+			$this->data['title'] = 'Edit Partner';
 		}
 		$this->load->view('ajax_page', $this->data);
 	}
@@ -208,7 +208,7 @@ class Sections extends MX_Controller {
 	public function upload_file(){
 		if($_FILES && $this->input->is_ajax_request()){
 			
-			$upload_dir = LC_PATH.'userupload/box/';
+			$upload_dir = LC_PATH.'box/';
 			if(!is_dir($upload_dir)){
 				mkdir($upload_dir);
 			}
@@ -226,7 +226,7 @@ class Sections extends MX_Controller {
 			}else{
 				
 				$this->api->data('upload_data', $this->upload->data());
-				$this->api->data('file_url', USER_UPLOAD.'box/'.$this->upload->data('file_name'));
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'box/'.$this->upload->data('file_name'));
 			}
 			
 

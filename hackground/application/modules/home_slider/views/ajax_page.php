@@ -7,11 +7,11 @@
 </div>
 <div class="modal-body">
 		<form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
-			    <?php $this->load->view('upload_file_component', array('input_name' => 'slide_image', 'url' => base_url('slider/upload_file'))); ?>
+			    <?php $this->load->view('upload_file_component', array('input_name' => 'slide_image', 'url' => base_url('home_slider/upload_file'))); ?>
 				
 			    <div class="form-group">
-                  <label for="slide_url">Slide URL </label>
-                  <input type="text" class="form-control reset_field" id="slide_url" name="slide_url" autocomplete="off" />
+                  <label for="display_order">Display Order </label>
+                  <input type="text" class="form-control reset_field" id="display_order" name="display_order" autocomplete="off" value="">
                 </div>
 				
 				
@@ -75,22 +75,25 @@ function onsuccess(res){
 		<form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
 			  <input type="hidden" name="ID" value="<?php echo $ID?>"/>
 			
-				<?php if(!empty($detail['slide_image']) && file_exists(LC_PATH.'userupload/slider/'.$detail['slide_image'])){ ?>
+				<?php if(!empty($detail['slide_image']) && file_exists(LC_PATH.'slider/'.$detail['slide_image'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_image">
 					<button type="button" class="close" onclick="removeByID('previous_image')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'slider/'.$detail['slide_image']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$detail['slide_image']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="slide_image" value="<?php echo $detail['slide_image'];?>"/>
 				</div>
                 </div>
 				<?php } ?>
 				
-				 <?php $this->load->view('upload_file_component', array('input_name' => 'slide_image', 'url' => base_url('slider/upload_file'))); ?>
+				 <?php $this->load->view('upload_file_component', array('input_name' => 'slide_image', 'url' => base_url('home_slider/upload_file'))); ?>
 				 
 				
 			
-				
+				<div class="form-group">
+                  <label for="display_order">Display Order </label>
+                  <input type="text" class="form-control reset_field" id="display_order" name="display_order" autocomplete="off" value="<?php echo !empty($detail['display_order']) ? $detail['display_order'] : ''; ?>">
+                </div>
 			   <div class="form-group">
 			   <label class="form-label">Status</label>
                 <div class="radio-inline">

@@ -217,7 +217,7 @@
 <script src="<?php echo ADMIN_THEME_JS;?>adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo ADMIN_JS;?>demo.js"></script>
-<?php /*?><script src="<?php echo ADMIN_JS;?>modules/My_Modal.js"></script><?php */?>
+<script src="<?php echo ADMIN_JS;?>My_Modal.js"></script>
 <!--<script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

@@ -110,6 +110,30 @@ class Cms extends MX_Controller {
 		$this->layout->set_meta('description','How It Works');
 		$page="how-it-works";
 		$this->data['cms_temp']=$this->cms_model->getTempContent($page);
+		$page="how-it-works-freelancer";
+		$arr=array(
+			'select'=>'c.content_id,c.content_slug,c_n.title,c_n.content,c_n.meta_title,c_n.meta_keys,c_n.meta_description',
+			'table'=>'content as c',
+			'join'=>array(
+			array('table'=>'content_names as c_n','on'=>"c.content_id=c_n.content_id and c_n.lang='".get_active_lang()."'",'position'=>'left'),
+			),
+			'where'=>array('c.content_slug'=>$page),
+			'single_row'=>TRUE
+		);
+		$this->data['cms_freelancer']=getData($arr);
+		$this->data['how_it_works_freelancer']=$this->cms_model->getTempContent($page);
+		$page="how-it-works-employer";
+		$arr=array(
+			'select'=>'c.content_id,c.content_slug,c_n.title,c_n.content,c_n.meta_title,c_n.meta_keys,c_n.meta_description',
+			'table'=>'content as c',
+			'join'=>array(
+			array('table'=>'content_names as c_n','on'=>"c.content_id=c_n.content_id and c_n.lang='".get_active_lang()."'",'position'=>'left'),
+			),
+			'where'=>array('c.content_slug'=>$page),
+			'single_row'=>TRUE
+		);
+		$this->data['cms_employer']=getData($arr);
+		$this->data['how_it_works_employer']=$this->cms_model->getTempContent($page);
 		$this->layout->view('howitwork', $this->data);
 	}
 	public function knowledgebank($page='knowledge-bank'){

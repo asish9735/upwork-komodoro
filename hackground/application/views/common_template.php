@@ -85,7 +85,7 @@ if($cms_temp){
                     </div>
                 </div>
         <?php }?>
-        <?php }
+        <?php break;}
         }?>
             </div> 
         </div>
@@ -176,6 +176,7 @@ if($cms_temp){
 <script>
 var alllanguage=<?php echo json_encode($lang);?>;
 var ckeditor_url = "<?php echo ADMIN_PLUGINS.'ckeditor/ckeditor.js'?>";
+var ckfinder_url = "<?php echo ADMIN_PLUGINS.'ckfinder'?>";
 function get_editor(input_id){
     if(typeof CKEDITOR == 'undefined'){
         var scriptTag = document.createElement('script');
@@ -183,8 +184,8 @@ function get_editor(input_id){
         scriptTag.src = ckeditor_url;
         scriptTag.onload = function(){
            CKEDITOR.replace(input_id, {
-                    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-                    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserBrowseUrl: ckfinder_url+'/ckfinder.html',
+                    filebrowserUploadUrl: ckfinder_url+'/core/connector/php/connector.php?command=QuickUpload&type=Files',
                     filebrowserWindowWidth: '1000',
                     filebrowserWindowHeight: '700'
             });
@@ -192,8 +193,8 @@ function get_editor(input_id){
         document.body.appendChild(scriptTag);
     }else{
        CKEDITOR.replace(input_id, {
-                    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-                    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserBrowseUrl: ckfinder_url+'/ckfinder.html',
+                    filebrowserUploadUrl: ckfinder_url+'/core/connector/php/connector.php?command=QuickUpload&type=Files',
                     filebrowserWindowWidth: '1000',
                     filebrowserWindowHeight: '700'
             });
