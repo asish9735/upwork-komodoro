@@ -7,8 +7,8 @@ class Dashboard_model extends CI_Model{
         return parent::__construct();
 	}
 	
-	public function get_active_order_count(){
-		return $this->db->where('order_active', 1)->count_all_results('orders');
+	public function get_project_count(){
+		return $this->db->count_all_results('project');
 	}
 	
 	public function get_support_request_count(){
@@ -22,15 +22,46 @@ class Dashboard_model extends CI_Model{
 		return $this->db->where('wallet_transaction_type_id', $wallet_transaction_type_id)->where('status', 0)->count_all_results('wallet_transaction');
 	}
 	
-	public function get_pending_approval_count(){
-		return $this->db->where('proposal_status', PROPOSAL_PENDING)->count_all_results('proposals');
-	}
-	public function get_request_pending_approval_count(){
-		return $this->db->where('request_status', REQUEST_PENDING)->count_all_results('buyer_requests');
+	public function get_contract_count(){
+		return $this->db->where('contract_status', 1)->count_all_results('project_contract');
 	}
 	
 	public function get_user_count(){
 		return $this->db->count_all_results('member');
+	}
+	
+	public function project_statics(){
+		$date = date('Y-m-d');
+		$records = array();
+		for($i=0; $i <= 12; $i++){
+			$date_key = date('m', strtotime("-$i month"));
+			$date_year = date('Y', strtotime("-$i month"));
+			$res1 = $this->db->where("MONTH(project_posted_date) = $date_key and YEAR(project_posted_date) = $date_year")->count_all_results('project');
+			$records[] = array(
+				'item1' => $res1,
+				'y' => date('Y-m', strtotime("-$i month")),
+			);
+		}
+		
+		return $records;
+	}
+	
+	public function member_statics(){
+		$date = date('Y-m-d');
+		$records = array();
+		for($i=0; $i <= 12; $i++){
+			$date_key = date('m', strtotime("-$i month"));
+			$date_year = date('Y', strtotime("-$i month"));
+			$res1 = $this->db->where("MONTH(member_register_date) = $date_key and YEAR(member_register_date) = $date_year and is_employer=1")->count_all_results('member');
+			$res2 = $this->db->where("MONTH(member_register_date) = $date_key and YEAR(member_register_date) = $date_year and is_employer=0")->count_all_results('member');
+			$records[] = array(
+				'item1' => $res1,
+				'item2' => $res2,
+				'y' => date('Y-m', strtotime("-$i month")),
+			);
+		}
+		
+		return $records;
 	}
 	
 	

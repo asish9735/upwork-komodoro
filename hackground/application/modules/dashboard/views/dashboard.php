@@ -2,16 +2,14 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">
-          <h1>
-            Dashboard
-            <small>Control panel</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
-      </div>
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -25,14 +23,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $active_orders_count; ?></h3>
+              <h3><?php echo $project_count; ?></h3>
 
-              <p>Active Orders</p>
+              <p>Projects</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('proposal/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -70,14 +68,13 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo $pending_approval_count; ?></h3>
-
-              <p>Pending Approvals</p>
+              <h3><?php echo $contract_count; ?></h3>
+              <p>Contract</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="<?php echo base_url('proposal/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('offers/contracts'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -85,40 +82,112 @@
       <!-- /.row -->
 	  
 	  
-	  <div class="row">
-		<div class="col-sm-8">
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">Website Statistics</h3>
+		<div class="row">
+		  <div class="col-sm-6">
+			<!-- solid sales graph -->
+			  <div class="box box-solid bg-teal-gradient">
+				<div class="box-header">
+				  <i class="fa fa-th"></i>
+
+				  <h3 class="box-title">Project Graph</h3>
+
 				</div>
-				<div class="box-body table-responsive no-padding">
-					<table class="table">
-						<tr>
-							<td><a href="<?php echo base_url('wallet/withdrawn_list'); ?>">Pending Withdrawn Request</a></td>
-							<td><small class="label pull-right bg-green"><?php echo $withdrawn_request_count; ?></small></td>
-						</tr>
-						<tr>
-							<td><a href="<?php echo base_url('proposal/list_record'); ?>">Proposals/Services Awaiting Approval</a></td>
-							<td><small class="label pull-right bg-green"><?php echo $pending_approval_count;?></small></td>
-						</tr>
-						<tr>
-							<td><a href="<?php echo base_url('buyer_request/list_record'); ?>">Buyer Requests Awaiting Approval</a></td>
-							<td><small class="label pull-right bg-green"><?php echo $pending__request_approval_count;?></small></td>
-						</tr>
-						<tr>
-							<td><a href="<?php echo base_url('admin_notification/list_record'); ?>">Unread Notification</a></td>
-							<td><small class="label pull-right bg-green"><?php echo $unread_notification_count;?></small></td>
-						</tr>
-					</table>
+				<div class="box-body border-radius-none">
+				  <div class="chart" id="line-chart" style="height: 250px;"></div>
 				</div>
-			</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->
+		  </div>
+		  
+		  <div class="col-sm-6">
+				<div class="box box-solid">
+					<div class="box-header">
+					  <i class="fa fa-th"></i>
+
+					  <h3 class="box-title">Member Graph</h3>
+
+					  
+					</div>
+					<div class="box-body border-radius-none">
+					  <div class="chart" id="revenue-chart" style="height: 250px;"></div>
+					</div>
+					<!-- /.box-body -->
+				</div>
+		  </div>
+		  
 		</div>
-	  </div>
 	  
-		
+
+
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+<script src="<?php echo ADMIN_PLUGINS;?>raphael/raphael.min.js"></script>
+<script src="<?php echo ADMIN_PLUGINS;?>morris.js/morris.min.js"></script>
+<script src="<?php echo ADMIN_PLUGINS;?>jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<script src="<?php echo ADMIN_PLUGINS;?>jquery-knob/dist/jquery.knob.min.js"></script>
+<script src="<?php echo ADMIN_PLUGINS;?>moment/min/moment.min.js"></script>
+
+
+<script>
+var project_statistics = <?php echo json_encode($statics['project']);?>;
+var member_statistics = <?php echo json_encode($statics['member']);?>;
+var line = new Morris.Line({
+    element          : 'line-chart',
+    resize           : true,
+	data			 : project_statistics,
+    data_org             : [
+      { y: '2011 Q1', item1: 2666 },
+      { y: '2011 Q2', item1: 2778 },
+      { y: '2011 Q3', item1: 4912 },
+      { y: '2011 Q4', item1: 3767 },
+      { y: '2012 Q1', item1: 6810 },
+      { y: '2012 Q2', item1: 5670 },
+      { y: '2012 Q3', item1: 4820 },
+      { y: '2012 Q4', item1: 15073 },
+      { y: '2013 Q1', item1: 10687 },
+      { y: '2013 Q2', item1: 8432 }
+    ],
+    xkey             : 'y',
+    ykeys            : ['item1'],
+    labels           : ['Item 1'],
+    lineColors       : ['#efefef'],
+    lineWidth        : 2,
+    hideHover        : 'auto',
+    gridTextColor    : '#fff',
+    gridStrokeWidth  : 0.4,
+    pointSize        : 4,
+    pointStrokeColors: ['#efefef'],
+    gridLineColor    : '#efefef',
+    gridTextFamily   : 'Open Sans',
+    gridTextSize     : 10
+  });
   
-  
+   /* Morris.js Charts */
+  // Sales chart
+  var area = new Morris.Area({
+    element   : 'revenue-chart',
+    resize    : true,
+	data	  : member_statistics,
+    data_org      : [
+      { y: '2011 Q1', item1: 2666, item2: 2666 },
+      { y: '2011 Q2', item1: 2778, item2: 2294 },
+      { y: '2011 Q3', item1: 4912, item2: 1969 },
+      { y: '2011 Q4', item1: 3767, item2: 3597 },
+      { y: '2012 Q1', item1: 6810, item2: 1914 },
+      { y: '2012 Q2', item1: 5670, item2: 4293 },
+      { y: '2012 Q3', item1: 4820, item2: 3795 },
+      { y: '2012 Q4', item1: 15073, item2: 5967 },
+      { y: '2013 Q1', item1: 10687, item2: 4460 },
+      { y: '2013 Q2', item1: 8432, item2: 5713 }
+    ],
+    xkey      : 'y',
+    ykeys     : ['item1', 'item2'],
+    labels    : ['Item 1', 'Item 2'],
+    lineColors: ['#a0d0e0', '#3c8dbc'],
+    hideHover : 'auto'
+  });
+
+</script>

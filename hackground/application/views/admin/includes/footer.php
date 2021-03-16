@@ -207,6 +207,7 @@
 <?php */?>
 <!-- Bootstrap 4.3.1 -->
 <script src="<?php echo ADMIN_PLUGINS;?>bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script src="<?php echo ADMIN_PLUGINS;?>overlayScrollbars/jquery.overlayScrollbars.min.js" type="text/javascript"></script>
 <?php /*?>
 <!-- SlimScroll -->
 <script src="<?php echo ADMIN_COMPONENT;?>jquery-slimscroll/jquery.slimscroll.min.js"></script>

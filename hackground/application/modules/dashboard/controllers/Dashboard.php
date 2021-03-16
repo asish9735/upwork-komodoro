@@ -15,25 +15,16 @@ class Dashboard extends MX_Controller {
 	}
 
 	public function index(){
-		/* $this->data['active_orders_count'] = $this->dashboard->get_active_order_count();
-		$this->data['support_request_count'] = $this->dashboard->get_support_request_count();
-		$this->data['pending_approval_count'] = $this->dashboard->get_pending_approval_count();
-		$this->data['pending__request_approval_count'] = $this->dashboard->get_request_pending_approval_count();
+		$this->data['project_count'] = $this->dashboard->get_project_count();
+		$this->data['contract_count'] = $this->dashboard->get_contract_count();
 		$this->data['unread_notification_count'] = $this->dashboard->get_unread_notification_count();
 		$this->data['withdrawn_request_count'] = $this->dashboard->get_withdrawn_count();
-		$this->data['users_count'] = $this->dashboard->get_user_count(); */
-		$this->data['main_title'] = 'Dashboard';
-		//$this->data['second_title'] = 'Dashboard';
-		//$this->data['title'] = 'Notification';
+		$this->data['users_count'] = $this->dashboard->get_user_count();
 		
-		$breadcrumb = array(
-			array(
-				'name' => 'Dashboard',
-				'path' => '',
-			),
-		);
-		$this->data['breadcrumb'] = breadcrumb($breadcrumb);
-		$this->layout->view('dashboard_static', $this->data);
+		$this->data['statics']['project'] = $this->dashboard->project_statics();
+		$this->data['statics']['member'] = $this->dashboard->member_statics();
+		//get_print($this->data['statics']['member']);
+		$this->layout->view('dashboard', $this->data);
        
 	}
 	
@@ -43,6 +34,10 @@ class Dashboard extends MX_Controller {
 	
 	public function icons_ajax(){
 		$this->load->view('icon_ajax');
+	}
+	
+	public function dashboard_static(){
+		$this->layout->view('dashboard_static', $this->data);
 	}
 
 }
