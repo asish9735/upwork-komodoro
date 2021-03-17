@@ -24,7 +24,7 @@
 			
 		   <?php if(!get('show')){ ?>
 			<div class="btn-group" id="global_action_btn" style="display:none">
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="fa fa-trash"></i></button>
+			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
 			</div>
 			&nbsp;
 			<?php } ?>
@@ -81,7 +81,7 @@
 				  
 					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="fa fa-edit green <?php echo ICON_SIZE;?>"></i></a>
 					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="fa fa-trash red <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					
 					
 				  </td>
@@ -96,14 +96,16 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+
       </div>
       <!-- /.box -->
-
+	  <?php if($links){?>
+		<nav>
+			<ul class="pagination justify-content-center">
+			<?php echo $links;?>
+			</ul>
+		</nav>
+		 <?php }?>
     </section>
     <!-- /.content -->
   </div>

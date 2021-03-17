@@ -128,7 +128,7 @@ if($login_user_id){
               </a>
           </div>
           <ul class="boxed-list-ul">
-            <li class="pb-0">
+            <li class="">
               <div id="profile-portfolio-data"></div>
             </li>
           </ul>

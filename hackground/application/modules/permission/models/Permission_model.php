@@ -208,7 +208,7 @@ class Permission_model extends CI_Model {
 		$html = null;
 		$btn_icons = array(
 			'edit' => '<i class="fa fa-edit fa-lg"></i>',
-			'delete' => '<i class="fa fa-trash fa-lg"></i>',
+			'delete' => '<i class="icon-feather-trash fa-lg"></i>',
 		);
 		if($type == 'edit'){
 			$html = '<a href="'.$link.'"> '. $btn_icons[$type]. '</a>';

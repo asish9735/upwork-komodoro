@@ -96,7 +96,7 @@ define('ALLOW_PERMANENT_DELETE', FALSE);
 define('ALLOW_TRASH_VIEW', FALSE); 
 define('ICON_SIZE', 'fa-lg'); 
 
-define('NO_RECORD', '<i class="fa fa-thumbs-o-down '.ICON_SIZE.'"></i> &nbsp;  Sorry, No records !'); 
+define('NO_RECORD', '<i class="icon-feather-thumbs-down '.ICON_SIZE.'"></i> &nbsp;  Sorry, No records !'); 
 
 define('REQUEST_PENDING',						"1"); #request 
 define('REQUEST_ACTIVE',			  			"2"); #request 

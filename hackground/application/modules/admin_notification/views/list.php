@@ -26,14 +26,14 @@
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
 			<?php }else{ ?>
-			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="fa fa-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
+			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="icon-feather-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
 			<?php } ?>
 			<?php } ?>
 		   
 		   <?php if(!get('show')){ ?>
 			<div class="btn-group" id="global_action_btn" style="display:none">
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="fa fa-trash"></i></button>
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Mark as read" onclick="changeStatusAll(1)"><i class="fa fa-thumbs-o-up"></i></button>
+			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
+			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Mark as read" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
 			 
 			</div>
 			&nbsp;
@@ -59,7 +59,7 @@
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
 				if($v['read_status'] == '0'){	
-					$status = '<a href="'.JS_VOID.'"  data-toggle="tooltip" title="Mark as read" onclick="changeStatus(1, '.$v[$primary_key].',this)"><span class="badge badge-default">Unread</span></a>';
+					$status = '<a href="'.JS_VOID.'"  data-toggle="tooltip" title="Mark as read" onclick="changeStatus(1, '.$v[$primary_key].',this)"><span class="badge badge-danger">Unread</span></a>';
 				}else if($v['read_status'] == '1'){
 					$status = '<span class="badge badge-success">Read</span>';
 				}
@@ -74,7 +74,7 @@
 					</td>
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td><?php echo $v['message']; ?>
-					<div><small class="text-muted"> <i class="fa fa-clock-o"></i> &nbsp; <?php echo format_date_time($v['created_date']); ?></small></div>
+					<div><small class="text-muted"> <i class="icon-feather-clock"></i> <?php echo format_date_time($v['created_date']); ?></small></div>
 				  </td>
                   <td><?php echo $status; ?></td>
                   <td class="text-right" style="padding-right:20px;">
@@ -93,14 +93,13 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
       </div>
       <!-- /.box -->
-
+<nav>
+<ul class="pagination justify-content-center">
+<?php echo $links;?>
+</ul>
+</nav>
     </section>
     <!-- /.content -->
   </div>

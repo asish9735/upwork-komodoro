@@ -32,7 +32,7 @@
 		   <?php if(!get('show')){ ?>
 			<div class="btn-group" id="global_action_btn" style="display:none">
 			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="fa fa-thumbs-o-up"></i></button>
+			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
 			   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="fa  fa-thumbs-o-down"></i></button>
 			</div>
 			&nbsp;
@@ -101,14 +101,16 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+
       </div>
       <!-- /.box -->
-
+	  <?php if($links){?>
+		<nav>
+			<ul class="pagination justify-content-center">
+			<?php echo $links;?>
+			</ul>
+		</nav>
+		 <?php }?>
     </section>
     <!-- /.content -->
   </div>

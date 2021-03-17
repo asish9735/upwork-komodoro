@@ -45,7 +45,7 @@
 					$status = '<span class="badge badge-success">Approved</span>';
 					$status_txt = 'Approved';
 				}else if($v['status'] == '0'){
-					$status = '<span class="badge badge-default">Pending</span>';
+					$status = '<span class="badge badge-warning">Pending</span>';
 					$status_txt = 'Pending';
 				}else if($v['status'] == '2'){
 					$status = '<span class="badge badge-danger">Rejected</span>';
@@ -116,14 +116,16 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+
       </div>
       <!-- /.box -->
-
+	  <?php if($links){?>
+		<nav>
+			<ul class="pagination justify-content-center">
+			<?php echo $links;?>
+			</ul>
+		</nav>
+		 <?php }?>
     </section>
     <!-- /.content -->
   </div>

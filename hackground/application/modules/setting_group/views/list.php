@@ -35,8 +35,8 @@
 		   
 		   <?php if(!get('show')){ ?>
 			<div class="btn-group" id="global_action_btn" style="display:none">
-			  <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="fa fa-trash"></i></button>
-			  <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="fa fa-thumbs-o-up"></i></button>
+			  <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
+			  <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
 			   <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="fa  fa-thumbs-o-down"></i></button>
 			</div>
 			&nbsp;
@@ -89,7 +89,7 @@
 					&nbsp;
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="fa fa-trash red <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php } ?>
 					
 				  </td>

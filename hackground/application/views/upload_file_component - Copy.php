@@ -101,7 +101,7 @@ function upload_file(ele){
 				html = html.replace(/{IMAGE_SRC}/g, res.data.file_url);
 				html = html.replace(/{FILENAME}/g, filename);
 			}else{
-				html = '<div id="'+wrapper_id+'"> '+orig_name+' <a href="#" onclick="removeByID(\''+wrapper_id+'\')"><i class="fa fa-trash"></i></a><input type="hidden" name="<?php echo $input_name; ?>" value="'+filename+'"/> </div>';
+				html = '<div id="'+wrapper_id+'"> '+orig_name+' <a href="#" onclick="removeByID(\''+wrapper_id+'\')"><i class="icon-feather-trash"></i></a><input type="hidden" name="<?php echo $input_name; ?>" value="'+filename+'"/> </div>';
 			}
 			
 			$upload_result.html(html);

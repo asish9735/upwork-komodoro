@@ -57,14 +57,16 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+
       </div>
       <!-- /.box -->
-
+	  <?php if($links){?>
+		<nav>
+			<ul class="pagination justify-content-center">
+			<?php echo $links;?>
+			</ul>
+		</nav>
+		 <?php }?>
     </section>
     <!-- /.content -->
   </div>

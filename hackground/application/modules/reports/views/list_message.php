@@ -22,7 +22,7 @@
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
 			<?php }else{ ?>
-			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="fa fa-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
+			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="icon-feather-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
 			<?php } ?>
 			<?php } ?>
 		   
@@ -51,7 +51,7 @@
                   <td><?php echo $v['reason']; ?></td>
                   <td><?php echo $v['additional_information']; ?></td>
                   <td class="text-right" style="padding-right:20px;">
-					<a href="javascript:void(0)" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)" data-toggle="tooltip" title="" data-title="Delete"><i class="fa fa-trash red fa-lg"></i></a>
+					<a href="javascript:void(0)" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)" data-toggle="tooltip" title="" data-title="Delete"><i class="icon-feather-trash red fa-lg"></i></a>
 					
 					
 				  </td>
@@ -66,14 +66,16 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+
       </div>
       <!-- /.box -->
-
+	  <?php if($links){?>
+		<nav>
+			<ul class="pagination justify-content-center">
+			<?php echo $links;?>
+			</ul>
+		</nav>
+		 <?php }?>
     </section>
     <!-- /.content -->
   </div>

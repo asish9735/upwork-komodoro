@@ -37,7 +37,7 @@
 				<?php $currency = get_setting('site_currency'); if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '-';
 				if($v['order_status'] == ORDER_PENDING){
-					$status = '<span class="badge badge-default">Pending</span>';
+					$status = '<span class="badge badge-warning">Pending</span>';
 					$status_txt = 'Pending';
 				}else if($v['order_status'] == ORDER_PROCESSING){
 					$status = '<span class="badge badge-default">Processing</span>';
@@ -102,14 +102,16 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
+
       </div>
       <!-- /.box -->
-
+	  <?php if($links){?>
+		<nav>
+			<ul class="pagination justify-content-center">
+			<?php echo $links;?>
+			</ul>
+		</nav>
+		 <?php }?>
     </section>
     <!-- /.content -->
   </div>

@@ -41,7 +41,7 @@
 				if($v['status'] == '1'){
 					$status = '<span class="badge badge-success">Active</span>';
 				}else if($v['status'] == '0'){
-					$status = '<span class="badge badge-default">Pending</span>';
+					$status = '<span class="badge badge-warning">Pending</span>';
 				}else if($v['status'] == '2'){
 					$status = '<span class="badge badge-danger">Deleted</span>';
 				}
@@ -69,12 +69,14 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-		<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-               <?php echo $links;?>
-              </ul>
-            </div>
       </div>
+	  <?php if($links){?>
+		<nav>
+			<ul class="pagination justify-content-center">
+			<?php echo $links;?>
+			</ul>
+		</nav>
+		 <?php }?>
 	  
 	  <table class="table v-middle">
 		<tr>

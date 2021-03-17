@@ -55,7 +55,7 @@
 				if($v['status'] == '1'){
 					$status = '<span class="badge badge-success">Active</span>';
 				}else if($v['status'] == '0'){
-					$status = '<span class="badge badge-default">Pending</span>';
+					$status = '<span class="badge badge-warning">Pending</span>';
 				}else if($v['status'] == '2'){
 					$status = '<span class="badge badge-danger">Deleted</span>';
 				}

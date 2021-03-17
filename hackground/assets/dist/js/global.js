@@ -119,6 +119,9 @@ function init_plugin(){
 	//$('[data-toggle="tooltip"]').tooltip("hide");
 	$('[data-toggle="tooltip"]').tooltip({boundary: 'scrollParent'});
 	//$('.table').tooltip({ boundary: 'window' })	
+	var h=$(document).height()-$('footer').height()-$('.main-header').height();
+	$('.content-wrapper').css({ height:h+"px"});
+
 }
 /* $(document).ready(function () {
 	$('[data-toggle="tooltip"]').tooltip({

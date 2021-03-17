@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; <?php echo date('Y');?> All rights
+    <strong>Copyright &copy; <?php echo date('Y');?> All rights</strong>
     reserved.
   </footer>
 
@@ -187,7 +187,7 @@
           <div class="form-group">
             <label class="control-sidebar-subheading">
               Delete chat history
-              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+              <a href="javascript:void(0)" class="text-red pull-right"><i class="icon-feather-trash-o"></i></a>
             </label>
           </div>
           <!-- /.form-group -->
