@@ -715,4 +715,9 @@ CREATE TABLE `pref_home_section_slider_names` (
 ALTER TABLE `pref_home_section_slider` ADD PRIMARY KEY (`slide_id`);
 ALTER TABLE `pref_home_section_slider` MODIFY `slide_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 ALTER TABLE `pref_home_section_slider` ADD `display_order` INT NOT NULL AFTER `slide_image`;
-
+----------------
+ALTER TABLE `pref_member_portfolio` ADD `portfolio_image` VARCHAR(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `portfolio_url`;
+ALTER TABLE `pref_conversations_message` ADD `reply_to` INT NULL AFTER `is_read`, ADD `is_deleted` DATETIME NULL AFTER `reply_to`, ADD `is_edited` DATETIME NULL AFTER `is_deleted`;
+CREATE TABLE `pref_conversations_message_favorite` ( `message_id` INT NOT NULL , `member_id` INT NOT NULL ) ENGINE = InnoDB;
+ALTER TABLE `pref_conversations_message_favorite` ADD UNIQUE( `message_id`, `member_id`);
+CREATE TABLE `pref_conversations_message_edited` ( `mesage_id` INT NOT NULL , `message_org` TEXT NOT NULL , `edit_date` DATETIME NOT NULL , `edit_id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`edit_id`), INDEX (`mesage_id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;

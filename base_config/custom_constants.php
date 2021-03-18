@@ -5,7 +5,7 @@ define('PDF_ICON',						IMAGE.'pdf_icon.png');
 define('DOC_ICON',						IMAGE.'doc_icon.png');
 define('TXT_ICON',						IMAGE.'txt_icon.png');
 define('COMMON_ICON',					IMAGE.'common_file.png');
-define('NO_IMAGE',						IMAGE.'no_image.png');
+define('NO_IMAGE',						IMAGE.'default/noimage.jpg');
 define('NO_IMAGE_USER',					IMAGE.'user-avatar-placeholder.png');
 
 /* SITE CONSTANTS */

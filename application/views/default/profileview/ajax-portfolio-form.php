@@ -74,9 +74,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span id="complete_dateError" class="rerror"></span>
                     </div>
        			</div>       			
-       			</div>	       				       				       					
+       			</div>
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                    <div class="submit-field">
+                        <label>Image</label>                
+                        <input type="file" name="fileinput" id="fileinput">
+                        <div class="upload-area" id="uploadfile">
+                            <p>Drag &amp; drop file here<br /> or<br /> <span class="text-site">click</span> to select file</p>
+                        </div>
+                        <div id="uploadfile_container">
+                    <?php  
+                        if($memberInfo && $memberInfo->portfolio_image){
+                        $files=json_decode($memberInfo->portfolio_image);
+                    ?>
+                            <div id="thumbnail_1" data-name="<?php echo $files->file;?>" class="thumbnail_sec">
+                                <input type="hidden" name="projectfileprevious[]" value='<?php D($memberInfo->portfolio_image)?>'/>
+                                <a href="<?php echo UPLOAD_HTTP_PATH.'member-portfolio/'.$files->file;?>" target="_blank"><?php echo $files->name;?></a>
+                                <a href="javascript:void(0)" class="text-danger ripple-effect ico float-right" onclick="$(this).parent().remove()">
+                                <i class="icon-feather-trash"></i>
+                                </a>
+                            </div>   
+                        <?php 
+                        } 
+                        ?>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
        			</form>
     </div>
+<script type="text/javascript" src="<?php echo JS;?>upload-drag-file.js"></script>
 <script type="text/javascript">
 	$('#category').on('change',function(){
 	$('.sub_category_display').show();
@@ -85,4 +113,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			setTimeout(function(){ $("#load_sub_category").html(data);$('.selectpicker').selectpicker('refresh');},1000)
 		});
 	})
+function uploadData(formdata){
+	num = 1;	
+	$("#uploadfile_container").html('<div id="thumbnail_'+num+'" class="thumbnail_sec">'+SPINNER+'</div>');
+    $.ajax({
+        url: "<?php D(get_link('uploadFileFormCheckAJAXURL'))?>?from=portfolio",
+        type: 'post',
+        data: formdata,
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        success: function(response){
+           if(response.status=='OK'){
+    			var name = response.upload_response.original_name;
+    			$("#thumbnail_"+num).html('<input type="hidden" name="projectfile[]" value=\''+JSON.stringify(response.upload_response)+'\'/> <a href="<?php D(get_link('downloadTempURL'))?>/'+response.upload_response.file_name+'" target="_blank">'+name+'</a><a href="<?php D(VZ);?>" class=" text-danger ripple-effect ico float-right" onclick="$(this).parent().remove()"><i class="icon-feather-trash"></i></a>');
+		   }else{
+		   		$("#thumbnail_"+num).html('<p class="text-danger">Error in upload file</p>');
+		   }
+           
+        },
+        
+    }).fail(function(){
+    	$("#thumbnail_"+num).html('<p class="text-danger">Error occurred</p>');
+    });
+}
 </script>

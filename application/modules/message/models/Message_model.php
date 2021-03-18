@@ -149,8 +149,9 @@ class Message_model extends CI_Model {
 	
 	public function getChatMessage($conversation_id='', $login_member='', $limit=0, $offset=30, $for_list=TRUE){
 
-		$this->db->select("c_m.*")
-			->from('conversations_message c_m');
+		$this->db->select("c_m.*,c_m_f.message_id as starred")
+			->from('conversations_message c_m')
+			->join('conversations_message_favorite c_m_f', "(c_m.message_id=c_m_f.message_id and c_m_f.member_id='".$login_member."')", 'LEFT');
 		$this->db->where('c_m.conversations_id', $conversation_id);
 		$this->db->order_by('c_m.message_id', 'DESC');
 		if($for_list){
@@ -160,6 +161,22 @@ class Message_model extends CI_Model {
 			if(count($result) > 0){
 				$this->markAsRead($conversation_id, $login_member);
 				$this->updateSeenStatus($login_member, $conversation_id);
+
+				foreach($result as $k => $v){
+					$result[$k]->message = nl2br($v->message);
+                    if($v->reply_to > 0){
+                        $result[$k]->parent = $this->get_parent_msg($v->reply_to);
+                    }
+                    if(!empty($v->is_deleted)){
+                        $result[$k]->message = 'This message is deleted ('.date('d M, Y h:i A', strtotime($v->is_deleted)).')';
+                        $result[$k]->attachment = null;
+                    }
+                    if(!empty($v->is_edited)){
+                        $result[$k]->edited_display_date = date('d M, Y h:i A', strtotime($v->is_edited));
+                    }else{
+                        $result[$k]->edited_display_date = null;
+                    }
+                }
 			}
 			
 		}else{
@@ -350,5 +367,16 @@ class Message_model extends CI_Model {
 		}	
 		return $selected_conversation_id;
 	}
+	public function get_parent_msg($msg_id){
+        $result = $this->db->select("c_m.*")
+                ->from('conversations_message c_m')
+                ->where('c_m.message_id', $msg_id)
+                ->get()->row();
+        if(!empty($result->deleted)){
+            $result->message = 'This message is deleted ('.date('d M, Y h:i A', strtotime($result->deleted)).')';
+            $result->attachment = null;
+        }
+        return $result;
+    }
 	
 }

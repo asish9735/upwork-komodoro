@@ -1345,10 +1345,20 @@ ul.list-group-0 > li{
 	display:none;
 	position:absolute;
 }
+
 .fav-star{
-	right:-30px;
-	top:0;
-	font-size: 1.25rem;
+	right:-5px;
+	font-size: 1rem;
+	top: -5px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    padding: 0px;
+    line-height: 10px;
+}
+.fav-star .icon-material-outline-star-border{
+	bottom: 0.6px;
+    position: relative;
 }
 .fav-star.active .icon-material-outline-star-border:before{
 	content: "\e988";
@@ -1409,6 +1419,120 @@ ul.list-group-0 > li{
 	border-color:var(--siteColor);
 }
 
+.fav-star:hover, .fav-star.active{
+	color:var(--siteColor);
+}
+.message-bubble:hover .fav-star, .message-bubble .fav-star.active{
+	display:block;
+}
+.message-bubble.me .fav-star{
+	left: -5px;
+	right:auto
+}
+.fav-star.active .icon-material-outline-star-border:before{
+	content: "\e988";
+}
+.btn-floating{
+	display: inline-block;
+	border:1px solid;
+    color:var(--siteColor);
+    position: relative;
+	overflow: hidden;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+	font-size: 0.8rem;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+	text-align: center;
+    vertical-align: middle;
+	-webkit-transition: .3s;
+    transition: .3s;
+}
+.btn-floating:hover{
+	background-color:var(--siteColor);
+	border:1px solid var(--siteColor);
+    color: #fff;
+}
+.btn-floating i{
+    line-height: inherit;
+}
+.fixed-action-btn {
+    position: absolute;
+    right: -30px;
+    bottom: 0;
+    z-index: 997;
+}
+.message-bubble.me .fixed-action-btn {
+    left: -30px;
+	right: auto;
+}
+.fixed-action-btn ul {
+    left: 15px;
+	font-size:0;    
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+	top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 100%;
+    width: 90px;
+    visibility: hidden;
+}
+.message-bubble.me .fixed-action-btn ul {
+	left: auto;
+    right: 15px;
+}
+.fixed-action-btn.active ul,
+.fixed-action-btn:hover ul{
+	visibility: visible;
+}
+.fixed-action-btn ul li {
+    display: inline-block;
+    margin: 0 3px;
+}
+.fixed-action-btn ul a.btn-floating {
+	transform: scaleY(0.4) scaleX(0.4) translateY(0px) translateX(24px);
+    opacity: 0;
+}
+.fixed-action-btn:hover ul a.btn-floating {
+    transform: scaleY(1) scaleX(1) translateY(0px) translateX(0px);
+    opacity: 1;
+}
+.edit-message .dropdown-menu .dropdown-item{
+	font-size: 0.875rem;
+}
+.message-text.edit-active{
+	float: none;
+    display: block;
+}
+.message-edit-box{
+	display:none;
+	margin-top: 0.5rem;
+}
+.message-text.edit-active .message-edit-box{
+	display:flex;
+}
+.message-quote-select{
+	background-color:rgb(0, 132, 255, 0.1);
+	padding:0.75rem 1rem;
+    position: relative;
+	width: 100%;
+}
+.message-quote .close{
+	position:absolute;
+	right: 10px;
+    top: 12px;
+}
+.message-quote p{
+	margin-bottom:0;
+}
+.message-quote hr{
+	margin:0.5rem 0;
+}
 
 
 

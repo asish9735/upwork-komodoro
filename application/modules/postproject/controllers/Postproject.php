@@ -132,6 +132,8 @@ class Postproject extends MX_Controller {
 		$from=get('from');
 		if($from=='verifydocument'){
 			$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|bnp';
+		}elseif($from=='portfolio'){
+			$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|bnp';
 		}else{
 			$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf|doc|docx|xls|xlsx|zip|rar|txt|ppt|pptx|bnp|svg';
 		}

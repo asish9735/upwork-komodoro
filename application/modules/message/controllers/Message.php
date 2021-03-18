@@ -106,16 +106,20 @@ class Message extends MX_Controller {
 		$json['status'] = 1;
 		if(post() && $this->input->is_ajax_request()){
 			$message = post('message');
+			$reply_to = post('reply_to');
 			$conversations_id = post('conversations_id');
 			$message = array(
 				'sender_id' => $this->member_id,
 				'conversations_id' => $conversations_id,
 				'message' => $message,
 				'sending_date' => date('Y-m-d H:i:s'),
-				
 			);
+			if($reply_to){
+				$message['reply_to']=$reply_to;
+			}
 			$json['last_message_id'] = $this->message_model->send_message($message);
 			$message['message_id'] = $json['last_message_id'];
+			$message['parent'] = $this->message_model->get_parent_msg($reply_to);
 			$json['message_data'] = $message;
 			
 			
@@ -149,6 +153,7 @@ class Message extends MX_Controller {
 						
 					);
 					$conversations_id = post('conversations_id');
+					$reply_to = post('reply_to');
 					$message = array(
 						'sender_id' => $this->member_id,
 						'conversations_id' => $conversations_id,
@@ -157,12 +162,14 @@ class Message extends MX_Controller {
 						'sending_date' => date('Y-m-d H:i:s'),
 						
 					);
-					
+					if($reply_to){
+						$message['reply_to']=$reply_to;
+					}
 					$json['last_message_id'] = $this->message_model->send_message($message);
 					$json['message_data'] = $message;
-				
-			
+			        $message['parent'] = $this->message_model->get_parent_msg($reply_to);
 					$json['message'] = $message;
+					
 					$json['attachment'] = $attachment;
 			
 				}
@@ -288,6 +295,54 @@ class Message extends MX_Controller {
 			redirect(get_link('dashboardURL'));
 		}
 	}
+	public function star_toggle(){
+        $id = post('ID');
+        $type = post('type'); // message
+        $user_id = $this->member_id;
+        $table = 'conversations_message_favorite';
+
+        $cond = [
+            'member_id' => $user_id,
+            'message_id' => $id
+        ];
+        $check = $this->db->where($cond)->count_all_results($table);
+        if($check > 0){
+            $this->db->where($cond)->delete($table);
+            $action = 'removed';
+        }else{
+            $this->db->insert($table, $cond);
+            $action = 'added';
+        }
+		$json['action']=$action;
+		$json['status']=1;
+		echo json_encode($json);
+    }
+	public function delete_msg($msg_id){
+        $this->db->where(['sender_id' => $this->member_id, 'message_id' => $msg_id])->update('conversations_message', array('is_deleted' => date('Y-m-d H:i:s')));
+        echo json_encode(array(
+            'status' => 1,
+            'deleted' => date('Y-m-d H:i:s'),
+            'msg_txt' => 'This message is deleted ('.date('d M, Y h:i A').')'
+		));
+        die;
+    }
+	public function edit_ajax(){
+		$edit_date=date('Y-m-d H:i:s');
+        $ID = post('ID');
+        $message = filter_data(post('message'));
+		$message_org=getFieldData('message','conversations_message','','',array('sender_id' =>$this->member_id, 'message_id' => $ID));
+        $up=$this->db->where(['sender_id' =>$this->member_id, 'message_id' => $ID])->update('conversations_message', ['is_edited' => $edit_date, 'message' => $message]);
+		if($up){
+			$this->db->insert('conversations_message_edited',array('mesage_id'=>$ID,'message_org'=>$message_org,'edit_date'=>$edit_date));
+		}
+        echo json_encode([
+            'status' => 1,
+            'edited' =>$edit_date,
+            'edited_display_date' => date('d M, Y h:i A',strtotime($edit_date)),
+            'msg_txt' =>  nl2br($message)
+        ]);
+        die;
+    }
 	
 	
 }

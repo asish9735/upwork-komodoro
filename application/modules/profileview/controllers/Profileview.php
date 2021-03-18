@@ -217,7 +217,7 @@ class Profileview extends MX_Controller {
 			}
 			elseif($type=='portfolio'){
 				$memberData=getData(array(
-						'select'=>'m_p.portfolio_id,m_p.portfolio_title,m_p.portfolio_description,m_p.portfolio_complete_date,cs_n.category_subchild_name',
+						'select'=>'m_p.portfolio_id,m_p.portfolio_title,m_p.portfolio_description,m_p.portfolio_complete_date,cs_n.category_subchild_name,m_p.portfolio_image',
 						'table'=>'member_portfolio as m_p',
 						'join'=>array(array('table'=>'category_subchild as cs','on'=>'m_p.category_subchild_id=cs.category_subchild_id','position'=>'left'),array('table'=>'category_subchild_names as cs_n','on'=>"(cs.category_subchild_id=cs_n.category_subchild_id and cs_n.category_subchild_lang='".get_active_lang()."')",'position'=>'left')),
 						'where'=>array('md5(m_p.member_id)'=>$md5_member_id,'m_p.portfolio_status'=>1),
@@ -407,7 +407,7 @@ class Profileview extends MX_Controller {
 				$memberportfolio=array();
 				if($dataid){
 					$memberportfolio=getData(array(
-					'select'=>'m_p.portfolio_id,m_p.portfolio_title,m_p.portfolio_description,m_p.portfolio_complete_date,m_p.portfolio_url,m_p.category_id,m_p.category_subchild_id',
+					'select'=>'m_p.portfolio_id,m_p.portfolio_title,m_p.portfolio_description,m_p.portfolio_complete_date,m_p.portfolio_url,m_p.category_id,m_p.category_subchild_id,m_p.portfolio_image',
 					'table'=>'member_portfolio as m_p',
 					'where'=>array('m_p.member_id'=>$member_id,'m_p.portfolio_id'=>$dataid),
 					'single_row'=>true,
@@ -423,6 +423,30 @@ class Profileview extends MX_Controller {
 				$this->data['formtype']=$form_type;
 				$this->data['dataid']=$dataid;
 				$this->layout->view('ajax-portfolio-form', $this->data,TRUE);
+			}
+			elseif($form_type=='portfolio_view')
+			{
+				$dataid=get('Okey');
+				$memberportfolio=array();
+				if($dataid){
+					$memberportfolio=getData(array(
+					'select'=>'m_p.portfolio_id,m_p.portfolio_title,m_p.portfolio_description,m_p.portfolio_complete_date,m_p.portfolio_url,m_p.category_id,m_p.category_subchild_id,m_p.portfolio_image,c_n.category_name,cs_n.category_subchild_name',
+					'table'=>'member_portfolio as m_p',
+					'join'=>array(array('table'=>'category_names as c_n','on'=>"(m_p.category_id=c_n.category_id and c_n.category_lang='".get_active_lang()."')",'position'=>'left'),array('table'=>'category_subchild_names as cs_n','on'=>"(m_p.category_subchild_id=cs_n.category_subchild_id and cs_n.category_subchild_lang='".get_active_lang()."')",'position'=>'left')),
+					'where'=>array('m_p.member_id'=>$member_id,'m_p.portfolio_id'=>$dataid),
+					'single_row'=>true,
+					));
+				}	
+				$this->data['memberInfo']=$memberportfolio;
+				$this->data['all_category']=getAllCategory();
+				$all_category_subchild=array();
+				if($memberportfolio && $memberportfolio->category_id){
+					$all_category_subchild=getAllSubCategory($memberportfolio->category_id);
+				}
+				$this->data['all_category_subchild']=$all_category_subchild;
+				$this->data['formtype']=$form_type;
+				$this->data['dataid']=$dataid;
+				$this->layout->view('ajax-portfolio-view', $this->data,TRUE);
 			}
 			elseif($form_type=='getsubcat')
 			{
@@ -864,6 +888,7 @@ class Profileview extends MX_Controller {
 						'category_subchild_id'=>post('sub_category'),
 						'portfolio_description'=>post('description'),
 						'portfolio_url'=>NULL,
+						'portfolio_image'=>NULL,
 						'portfolio_complete_date'=>NULL,
 						'portfolio_status'=>1,
 						);
@@ -873,6 +898,28 @@ class Profileview extends MX_Controller {
 						if(post('complete_date')){
 							$data_ins['portfolio_complete_date']=date('Y-m-d',strtotime(post('complete_date')));
 						}
+						if(post('projectfile')){
+							$projectfiles=post('projectfile');
+							foreach($projectfiles as $file){
+								$file_data=json_decode($file);
+								if($file_data){
+									if($file_data->file_name && file_exists(TMP_UPLOAD_PATH.$file_data->file_name)){
+										rename(TMP_UPLOAD_PATH.$file_data->file_name, UPLOAD_PATH."member-portfolio/".$file_data->file_name);
+										$ext=explode('.',$file_data->file_name);
+										$attahment=array(
+											'name'=>$file_data->original_name,
+											'file'=>$file_data->file_name,
+										);
+										$data_ins['portfolio_image']=json_encode($attahment);
+									}
+								}
+							}
+						}elseif(post('projectfileprevious')){
+							$data_ins['portfolio_image']=post('projectfileprevious');
+						}
+
+
+
 						if($memberDatacount){
 							$up=updateTable('member_portfolio',$data_ins,array('member_id'=>$member_id,'portfolio_id'=>$memberDatacount->portfolio_id));
 						}else{

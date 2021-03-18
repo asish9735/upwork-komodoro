@@ -121,37 +121,63 @@ Vue.component('active-chat-header', {
 			<div class="message-bubble" :class="{'me': message.sender_id == login_user.member_id}">
 				<div class="message-bubble-inner">
 					<div class="message-avatar" v-if="message.sender_id == login_user.member_id"><img :src="login_user.avatar" alt="" /></div>
-					<div class="message-avatar" v-else><img :src="active_chat.avatar" alt="" /></div>					
-					<div class="message-text edit-active_">																	
+					<div class="message-avatar" v-else><img :src="active_chat.avatar" alt="" /></div>
+					<div class="message-text" :class="{'message-deleted': message.is_deleted}">
+
+                        <div class="message-quote" v-if="parseInt(message.reply_to) > 0 && message.parent">
+                            <div v-if="message.parent.attachment != null">
+                                <div class="mb-1" v-if="message.parent.attachment.is_image">
+                                    <a :href="message.parent.attachment.file_url" target="_blank"><img :src="message.parent.attachment.file_url"  class="rounded attach-thumbnail" /></a>
+                                </div>
+                                <div class="mb-1" v-else>
+                                    <div><a :href="message.parent.attachment.file_url" target="_blank" style="color: black">{{message.parent.attachment.org_file_name}}</a></div>
+                                    <div>Size: {{message.parent.attachment.file_size | formatFileSize }}</div>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <p><i class="icon-line-awesome-quote-left"></i> <i>{{message.parent.message}}</i></p>
+                            </div>
+							<hr>
+						</div>
+
 						<div v-if="message.attachment != null">
-							<div class="message-attachment" v-if="message.attachment.is_image">
+							<div class="mb-1" v-if="message.attachment.is_image">
 								<a :href="message.attachment.file_url" target="_blank"><img :src="message.attachment.file_url"  class="rounded attach-thumbnail" /></a>
 							</div>
-							<div class="message-attachment" v-else>
+							<div class="mb-1" v-else>
 								<div><a :href="message.attachment.file_url" target="_blank" style="color: black">{{message.attachment.org_file_name}}</a></div>
 								<div>Size: {{message.attachment.file_size | formatFileSize }}</div>
 							</div>
 						</div>
-						<p>{{message.message}}
+						<p v-if="message.is_deleted" class="text-danger">
+							This message is deleted {{message.is_deleted | formatTime }} 
+						</p>
+						<p v-if="message.is_deleted == null">
+                        <span v-html="$options.filters.formatMsg(message.message, _self.term)"></span>
+						<span v-if="message.is_edited && message.is_deleted == null">
+                           <b> (edited)</b>
+                        </span>
+
 						<span class="time">
 							{{message.sending_date | formatTime }} 
 							<i class="icon-feather-check" v-if="message.sender_id == login_user.member_id && active_chat.last_seen_msg >= message.message_id"></i>
 						</span>
 						</p>
-						<a href="javascript:void(0)" class="fav-star active_"><i class="icon-material-outline-star-border"></i></a>
-						<div class="input-group message-edit-box">
+						<a v-if="message.is_deleted == null" href="javascript:void(0)" class="fav-star" :class="{'active': parseInt(message.starred) > 0}" @click="starMessage($event, message)"><i class="icon-material-outline-star-border"></i></a>
+						<div class="input-group message-edit-box" v-if="message.is_deleted == null">
 							<input type="text" class="form-control" value="Edit text here">
 							<div class="input-group-append"><button class="btn btn-outline-site"><i class="icon-feather-send"></i></button></div>
-						</div>																	
+						</div>	
+						<div class="fixed-action-btn" v-if="message.is_deleted == null">
+							<a href="javascript:void(0)" ><i class="icon-feather-more-vertical"></i></a>
+							<ul>
+							  <li v-if="message.sender_id == login_user.member_id"><a class="btn-floating red" href="javascript:void(0)" title="Edit"  @click="editMsg(message)"><i class="icon-feather-edit"></i></a></li>
+							  <li v-if="message.sender_id == login_user.member_id"><a class="btn-floating yellow darken-1" href="javascript:void(0)" title="Delete" @click="deleteMsg(message)"><i class="icon-feather-trash"></i></a></li>
+							  <li><a class="btn-floating green" href="javascript:void(0)" @click="replyMsg(message)" title="Quote"><i class="icon-line-awesome-reply"></i></a></li>
+							</ul>
+						</div>                       											
 					</div>
-					<div class="dropdown edit-message">
-						<a href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown"><i class="icon-feather-more-vertical"></i></a>	
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-feather-edit"></i> Edit</a>	
-							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-feather-trash"></i> Delete</a>	
-							<a class="dropdown-item" href="javascript:void(0)"><i class="icon-line-awesome-quote-left"></i> Quote <i class="icon-line-awesome-quote-right"></i></a>	
-						</div>
-					</div>
+					
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -185,7 +211,7 @@ Vue.component('active-chat-header', {
 			<div class="clearfix"></div>
 		</div> -->		
 </div>
-<reply-chat :active_chat="active_chat" :login_user="login_user" v-on:new-message="updateMessage" v-on:new-attachment="updateAttachment" v-on:progress="handleProgress" v-on:complete="handleComplete" v-on:start-upload="handleStartUpload"></reply-chat>
+<reply-chat :active_chat="active_chat" :login_user="login_user" v-on:new-message="updateMessage" v-on:new-attachment="updateAttachment" v-on:progress="handleProgress" v-on:complete="handleComplete" v-on:start-upload="handleStartUpload" :reply_msg="reply_msg" v-on:reply_reset="reply_msg=null"></reply-chat>
 </div>
 </script>
 
@@ -210,6 +236,7 @@ Vue.component('active-chat-body', {
 		message_list: [],
 		message_total: 0,
 		next_limit: 0,
+		reply_msg: null,
 		updateScroll: false,
 		message_date: '',
 		attachment_loading: {
@@ -220,6 +247,15 @@ Vue.component('active-chat-body', {
 	  
   },
   filters: {
+	formatMsg: function(val, term){
+        if(term != ''){
+            var regrex = new RegExp('('+term+')', 'gi');
+            return val.replace(regrex, '<span style="background-color: orange">$1</span>');
+        }else{
+            return val;
+        }
+       
+     },
 	 formatDate: function(val){
 		return moment(val, 'YYYY-MM-DD HH:mm:ss').format('D MMMM,YY');
 	 },
@@ -259,6 +295,88 @@ Vue.component('active-chat-body', {
 		
 		return false;
 	},
+	replyMsg: function(msg){
+        this.reply_msg = msg;
+    },
+    editMsg: function(msg){
+		var messageText = msg.message.replace(/(<br ?\/?>)*/g,"");
+        bootbox.confirm({
+            title: 'Edit Message!',
+            size: 'small',
+            message: '<textarea class="form-control" id="message">'+messageText+'</textarea>',
+			buttons: {
+		        confirm: {
+		            label: "Save",
+		            className: 'btn btn-success float-right'
+		        },
+		        cancel: {
+		            label: "No",
+		            className: 'btn btn-dark pull-left'
+		        }
+		    },
+			callback: function (result) {
+				if(result==true){
+					var $message = $('.bootbox').find('#message');
+					if($message.val().trim() == ''){
+						$message.addClass('is-invalid');
+						return false;
+					}else{
+						$message.removeClass('is-invalid');
+					}
+					$.post('<?php echo base_url('message/edit_ajax')?>', {message: $message.val().trim(), ID: msg.message_id}, function(res){
+						if(res.status == 1){
+							msg.message = res.msg_txt;
+							msg.is_edited = res.edited;
+							msg.edited_display_date = res.edited_display_date;
+						}
+					}, 'json');
+				}
+			}
+        });
+    },
+    deleteMsg: function(msg){
+        bootbox.confirm({
+            title: 'Delete Message!',
+            message: 'Are you sure to delete this message?',
+			size: 'small',
+			buttons: {
+		        confirm: {
+		            label: "Yes",
+		            className: 'btn btn-success float-right'
+		        },
+		        cancel: {
+		            label: "No",
+		            className: 'btn btn-dark pull-left'
+		        }
+		    },
+			callback: function (result) {
+				if(result==true){
+					$.post('<?php echo base_url('message/delete_msg')?>/'+msg.message_id, function (res) {
+						if(res.status == 1){
+							msg.deleted = res.deleted;
+							msg.message = res.msg_txt;
+							msg.attachment  = null;
+						}
+					}, 'JSON');
+				}
+			}
+        });
+        
+    },
+    starMessage: function(e, msg){
+        e.preventDefault();
+       
+       $.post('<?php echo base_url('message/star_toggle'); ?>', {ID: msg.message_id, type: 'message'}, function(res){
+            if(res.status > 0){
+                if(res.action == 'added'){
+                    msg.starred = 1;
+                }else{
+                    msg.starred = 0;
+                }
+            }
+       }, 'json');
+        
+    },
 	resetAll: function(){
 		this.message_total = 0;
 		this.next_limit = 0;
@@ -374,13 +492,31 @@ Vue.component('active-chat-body', {
 
 <script type="text/x-template" id="reply-chat-template">
 <div>
+    <div class="message-quote-select" v-if="reply_msg">
+        <div class="message-quote">
+            <div v-if="reply_msg.attachment != null">
+                <div class="mb-1" v-if="reply_msg.attachment.is_image">
+                    <a :href="reply_msg.attachment.file_url" target="_blank"><img :src="reply_msg.attachment.file_url"  class="rounded attach-thumbnail" /></a>
+                </div>
+                <div class="mb-1" v-else>
+                    <div><a :href="reply_msg.attachment.file_url" target="_blank" style="color: black">{{reply_msg.attachment.org_file_name}}</a></div>
+                    <div>Size: {{reply_msg.attachment.file_size | formatFileSize }}</div>
+                </div>
+            </div>
+            <div v-else>
+                <p><i class="icon-line-awesome-quote-left"></i> <i>{{reply_msg.message}}</i></p>
+            </div>
+            <a href="#" @click.prevent="clearReply" class="text-danger close"><i class="icon-feather-x"></i></a>
+            <!--<hr>-->
+        </div>
+    </div>
 	<div class="message-reply">
 		<textarea class="form-control" cols="1" rows="1" placeholder="Your Message" data-autoresize v-model="message" @keypress.enter="sendOnEnter"></textarea>
 		<div class="uploadButton">
 			<input class="uploadButton-input" v-on:change="sendAttachment()" ref="file" type="file" accept="image/*, application/pdf" id="upload" multiple="">
-			<label class="uploadButton-button ripple-effect" for="upload"><i class="icon-material-outline-attach-file"></i></label>
+			<label class="uploadButton-button ripple-effect" for="upload"><i class="icon-feather-paperclip"></i></label>
 		</div>
-		<button class="button ripple-effect" @click.prevent="sendMsg" :disabled="sent_status === 'sending'">Send</button>
+		<button class="btn btn-site" @click.prevent="sendMsg" :disabled="sent_status === 'sending'"><i class="icon-feather-send" title="Send"></i></button>
 		<div class="clearfix"></div>
 	</div>
 	<div class="chat-foot">
@@ -395,12 +531,12 @@ Vue.component('active-chat-body', {
 <script type="text/javascript">
 Vue.component('reply-chat', {
   template: '#reply-chat-template',
-  props: ['active_chat', 'login_user'],
+  props: ['active_chat', 'login_user', 'reply_msg'],
   data: function(){
 	  return {
 		message:  '',	
 		sent_status: 'sent',
-		send_on_enter: false,
+		send_on_enter: true,
 	  }
   },
   methods: {
@@ -411,6 +547,10 @@ Vue.component('reply-chat', {
 			this.sendMsg();
 		}
 	},
+    clearReply: function(){
+       // this.reply_msg = null;
+        this.$emit('reply_reset');
+    },
 	sendAttachment(){
 		var _self = this;
 		var file = this.$refs.file.files[0];
@@ -420,6 +560,7 @@ Vue.component('reply-chat', {
 		formData.append('sender_id', _self.login_user.member_id);
 		formData.append('conversations_id', _self.active_chat.conversations_id);
 		formData.append('message', '');
+		formData.append('reply_to', (_self.reply_msg !== null ? _self.reply_msg.message_id: 0));
 		
 		
 		var sendAttachentURL = '<?php echo base_url('message/send_attachment'); ?>';
@@ -428,6 +569,8 @@ Vue.component('reply-chat', {
 			message: '',
 			sender_id: _self.login_user.member_id,
 			conversations_id: _self.active_chat.conversations_id,
+            reply_to: _self.reply_msg !== null ? _self.reply_msg.message_id: 0,
+            starred: 0,
 		};
 		_self.sent_status = 'sending';
 		_self.$emit('start-upload');
@@ -462,12 +605,14 @@ Vue.component('reply-chat', {
 					_self.sent_status = 'sent';
 					msg_data.sending_date = res.message_data.sending_date;
 					msg_data.message_id = res.last_message_id;
+					msg_data.reply_to = res.message_data.reply_to;
+					msg_data.parent = res.message_data.parent;
 					msg_data.attachment = res.attachment; 
+                    _self.clearReply();
 					_self.$emit('new-message', msg_data);
 					_self.$emit('new-attachment', msg_data);
 				}
 			  }
-			  
 		});
     },
 	sendMsg: function(){
@@ -481,6 +626,8 @@ Vue.component('reply-chat', {
 			message: _self.message.trim(),
 			sender_id: _self.login_user.member_id,
 			conversations_id: _self.active_chat.conversations_id,
+            reply_to: _self.reply_msg !== null ? _self.reply_msg.message_id: 0,
+            starred: 0,
 		};
 		
 		
@@ -494,11 +641,14 @@ Vue.component('reply-chat', {
 				if(res.status == 1){
 					_self.message = '';
 					_self.sent_status = 'sent';
+                    _self.clearReply();
 					msg_data.sending_date = res.message_data.sending_date;
 					msg_data.message_id = res.last_message_id;
+                    msg_data.reply_to = res.message_data.reply_to;
+					msg_data.parent = res.message_data.parent;
 					_self.$emit('new-message', msg_data);
 				}
-			}			
+			}
 		});
 		
 	}
