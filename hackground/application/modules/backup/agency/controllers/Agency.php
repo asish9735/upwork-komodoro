@@ -203,7 +203,7 @@ class Agency extends MX_Controller {
 	
 	public function upload_file($type){
 		if($_FILES && $this->input->is_ajax_request()){
-			$upload_dir = LC_PATH.'userupload/broker/';
+			$upload_dir = LC_PATH.'broker/';
 			if($type=='logo'){
 				$upload_dir.=$pathupload='company-logo/';
 			}elseif($type=='thumb'){
@@ -226,7 +226,7 @@ class Agency extends MX_Controller {
 			}else{
 				
 				$this->api->data('upload_data', $this->upload->data());
-				$this->api->data('file_url', USER_UPLOAD.'broker/'.$pathupload.$this->upload->data('file_name'));
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'broker/'.$pathupload.$this->upload->data('file_name'));
 			}
 			
 

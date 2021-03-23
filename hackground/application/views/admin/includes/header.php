@@ -25,7 +25,9 @@ $admin_detail = get_session('admin_detail');
           <img src="<?php echo ADMIN_IMAGES;?>avatar5.png" class="user-image" alt="<?php echo $admin_detail['full_name']; ?>'s image">
           <span class="hidden-xs"><?php echo $admin_detail['full_name']; ?></span>
         </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">                    
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">            
+          <a href="<?php echo SITE_URL;?>" class="dropdown-item" target="_blank">View site</a> 
+          <div class="dropdown-divider"></div>            
           <a href="javascript:void(0)" class="dropdown-item" onclick="edit_profile()">Profile</a>
           <div class="dropdown-divider"></div>
           <a href="<?php echo base_url('login/logout')?>" class="dropdown-item">Sign out</a>          		          

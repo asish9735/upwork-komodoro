@@ -20,13 +20,13 @@
       </div>
       <?php }?>
       <div class="fun-facts-container">               
-        <div class="fun-fact">
+      <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('ContractList');?>?show=pending'">
           <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Open Contract</span>
             <h4><strong><?php D($memberInfo->open_contract);?></strong></h4>
           </div>
         </div>
-        <div class="fun-fact">
+        <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('ContractList');?>?show=completed'">
         
         <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>completed.png" alt="" /></div>
           <div class="fun-fact-text">
@@ -35,7 +35,7 @@
           </div>
         </div>
       
-        <div class="fun-fact">
+        <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('TransactionHistoryURL');?>'">
         <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>money.png" alt="" /></div>
           <div class="fun-fact-text"> <span>Total Spent</span>
           <h4><?php D($currency);?><strong><?php D(priceFormat($memberInfo->total_spent));?></strong></h4>

@@ -55,12 +55,12 @@ function onsuccess(res){
                   <input type="text" class="form-control reset_field" id="company_name" name="company_name" autocomplete="off" value="<?php echo !empty($detail['company_name']) ? $detail['company_name'] : '';?>">
                 </div>
 				
-				<?php if(!empty($detail['company_logo']) && file_exists(LC_PATH.'userupload/company-logo/'.$detail['company_logo'])){ ?>
+				<?php if(!empty($detail['company_logo']) && file_exists(LC_PATH.'company-logo/'.$detail['company_logo'])){ ?>
 				<div class="form-group">
                   <label>Previous Logo </label>
                   <div class="image-wrapper" id="previous_company_logo">
 					<button type="button" class="close" onclick="removeByID('previous_company_logo')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'company-logo/'.$detail['company_logo']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'company-logo/'.$detail['company_logo']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="company_logo" value="<?php echo $detail['company_logo'];?>"/>
 				</div>
                 </div>

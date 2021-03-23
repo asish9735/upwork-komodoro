@@ -5065,7 +5065,75 @@ label, legend {
 }
 
 
-
+/* ---------------------------------- */
+/* Star Rating
+------------------------------------- */
+/* Star Rating */
+.star-rating {
+	display: inline-block;
+}
+.star-rating .star {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	margin-right: 0;
+	position: relative;
+	line-height: 25px;
+}
+.star-rating .star.half:after, .star-rating .star:before {
+	font-family: "Material-Icons";
+	content: "\e988";
+	display: block;
+	color: #febe42;
+	font-size: 22px;
+}
+.star-rating .star.empty:before {
+	color: #ddd;
+}
+.rating:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+.star-rating .star.half:before {
+	color: #ddd;
+}
+.star-rating .star.half:after {
+	color: #febe42;
+	position: absolute;
+	top:0;
+	width: 50%;
+	display: block;
+	height: 100%;
+	overflow: hidden;
+}
+/* average rating before stars*/
+.star-rating:after {
+	content: attr(data-rating);
+	/*float: right;
+	background-color: #febe42;
+	line-height: 15px;*/
+	font-family: 'FSJoey', Helvetica, sans-serif;
+	padding: 2px 6px;
+    border: 1px solid #febe42;
+    border-radius: 0.2rem;
+	color: #febe42;
+	font-size: 1rem;	
+	font-weight: 500;	
+	position: relative;
+	top: -3px;
+	margin-left: 6px;
+} 
+/* No stars */
+.star-rating.no-stars .star {
+	display: none;
+}
+.star-rating.no-stars:before {
+	margin-right: 0;
+}
 
 
 

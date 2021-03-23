@@ -103,12 +103,12 @@ function onsuccess(res){
 				
 				<?php } ?>
 				
-				<?php if(!empty($detail['country_background']) && file_exists(LC_PATH.'userupload/country-icon/banner/'.$detail['country_background'])){ ?>
+				<?php if(!empty($detail['country_background']) && file_exists(LC_PATH.'country-icon/banner/'.$detail['country_background'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_country_background">
 					<button type="button" class="close" onclick="removeByID('previous_country_background')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'country-icon/banner/'.$detail['country_background']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'country-icon/banner/'.$detail['country_background']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="country_background" value="<?php echo $detail['country_background'];?>"/>
 				</div>
                 </div>
@@ -116,12 +116,12 @@ function onsuccess(res){
 				
 				<?php $this->load->view('upload_file_component', array('input_name' => 'country_background',  'label' => 'Banner Image',  'url' => base_url('country/upload_file/banner'))); ?>
 				
-				 <?php if(!empty($detail['country_thumb']) && file_exists(LC_PATH.'userupload/country-icon/thumb/'.$detail['country_thumb'])){ ?>
+				 <?php if(!empty($detail['country_thumb']) && file_exists(LC_PATH.'country-icon/thumb/'.$detail['country_thumb'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_country_thumb">
 					<button type="button" class="close" onclick="removeByID('previous_country_thumb')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'country-icon/thumb/'.$detail['country_thumb']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'country-icon/thumb/'.$detail['country_thumb']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="country_thumb" value="<?php echo $detail['country_thumb'];?>"/>
 				</div>
                 </div>

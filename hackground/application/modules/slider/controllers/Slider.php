@@ -207,7 +207,7 @@ class Slider extends MX_Controller {
 	
 	public function upload_file(){
 		if($_FILES && $this->input->is_ajax_request()){
-			$upload_dir = LC_PATH.'userupload/slider-user/';
+			$upload_dir = LC_PATH.'slider-user/';
 			if(!is_dir($upload_dir)){
 				mkdir($upload_dir);
 			}
@@ -225,7 +225,7 @@ class Slider extends MX_Controller {
 			}else{
 				
 				$this->api->data('upload_data', $this->upload->data());
-				$this->api->data('file_url', USER_UPLOAD.'slider-user/'.$this->upload->data('file_name'));
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'slider-user/'.$this->upload->data('file_name'));
 			}
 			
 

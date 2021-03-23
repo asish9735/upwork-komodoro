@@ -48,15 +48,16 @@
                   <th>Status</th>
                   <th align="right">Action</th>
                 </tr>
-				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+				<?php 
+				$currency=get_setting('site_currency');
+				if(count($list) > 0){foreach($list as $k => $v){ 
+					//print_r($v);
 					$logo = getMemberLogo($v[$primary_key]);
 				$status = '';
-				if($v['contract_status'] == '1'){
-					$status = '<span class="badge badge-success">Active</span>';
-				}else if($v['contract_status'] == '0'){
-					$status = '<span class="badge badge-warning">Pending</span>';
-				}else if($v['contract_status'] == '2'){
-					$status = '<span class="badge badge-danger">Rejected</span>';
+				if($v['is_contract_ended'] == '1'){
+					$status = '<span class="badge badge-success">Completed</span>';
+				}else if($v['is_contract_ended'] == '0'){
+					$status = '<span class="badge badge-warning">Processing</span>';
 				}
 				
 				?>
@@ -64,7 +65,7 @@
 				  <td><?php echo $v['contract_title'];?></td>
 				  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['bidder_info']['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-1" alt="User Image" height="24" width="24" /> <?php echo $v['bidder_info']['member_name'];?></a></td>
 				  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['employer_info']['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-1" alt="User Image" height="24" width="24" /> <?php echo $v['employer_info']['member_name'];?></a></td>
-                  <td><?php echo get_setting('site_currency').$v['contract_amount']; ?></td>
+                  <td><?php echo $currency.$v['contract_amount'].($v['is_hourly'] ?  '/hr':''); ?></td>
                   <td><?php echo date('d M, Y H:i', strtotime($v['contract_date'])); ?></td>
                   <td><?php echo $status; ?></td>
 					<td align="right">
@@ -73,9 +74,13 @@
 							Action
 						  </button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						  	<?php if($v['is_hourly']){?>
+							<a class="dropdown-item" href="<?php echo base_url('workroom/details/'.md5($v[$primary_key])); ?>">View Detail</a> 
+							<?php }else{?>
 							<a class="dropdown-item" href="<?php echo base_url('offers/milestone?contract_id='.$v[$primary_key]); ?>">View Milestone</a>
 							<a class="dropdown-item" href="<?php echo base_url('project_escrow/list_record?contract_id='.$v[$primary_key]); ?>">Escrow</a>      
 							<a class="dropdown-item" href="<?php echo base_url('offers/contract_details/'.md5($v[$primary_key])); ?>">View Detail</a>      
+							<?php }?>
 						</div>
 					   </div>   
 					  

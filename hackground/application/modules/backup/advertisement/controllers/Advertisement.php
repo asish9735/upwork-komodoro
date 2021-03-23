@@ -261,7 +261,7 @@ class Advertisement extends MX_Controller {
 	
 	public function upload_file(){
 		if($_FILES && $this->input->is_ajax_request()){
-			$upload_dir = LC_PATH.'userupload/advertisement/';
+			$upload_dir = LC_PATH.'advertisement/';
 			
 			if(!is_dir($upload_dir)){
 				mkdir($upload_dir);
@@ -281,7 +281,7 @@ class Advertisement extends MX_Controller {
 				
 				$this->api->data('upload_data', $this->upload->data());
 				
-				$this->api->data('file_url', USER_UPLOAD.'advertisement/'.$this->upload->data('file_name'));
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'advertisement/'.$this->upload->data('file_name'));
 				
 			}
 			

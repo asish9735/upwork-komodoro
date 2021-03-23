@@ -436,7 +436,7 @@ class Component extends MX_Controller {
 	
 	public function upload_file(){
 		if($_FILES && $this->input->is_ajax_request()){
-			$upload_dir = LC_PATH.'userupload/component_icons/';
+			$upload_dir = LC_PATH.'component_icons/';
 			
 			if(!is_dir($upload_dir)){
 				mkdir($upload_dir);
@@ -456,7 +456,7 @@ class Component extends MX_Controller {
 				
 				$this->api->data('upload_data', $this->upload->data());
 				
-				$this->api->data('file_url', USER_UPLOAD.'component_icons/'.$this->upload->data('file_name'));
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'component_icons/'.$this->upload->data('file_name'));
 				
 			}
 			

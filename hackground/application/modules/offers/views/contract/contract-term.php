@@ -15,7 +15,7 @@ if($is_owner){
 }
 $new_contract_url='#';
 $contract_details_url=base_url('offers/contract_details/'.md5($contractDetails->contract_id));
-$contract_message_url='#';
+$contract_message_url=base_url('offers/message/'.md5($contractDetails->contract_id));
 $contract_term_url=base_url('offers/contract_term/'.md5($contractDetails->contract_id));
 $ProjectDetailsURL='#';
 $offer_details_url='#';
@@ -101,7 +101,7 @@ ul.totalList > li > span {
                 <div class="row">
                  <?php if($pending_contract==0){?>
 	               <?php if($is_owner){?>
-	               <div class="col-sm-6"><h5>Your Feedback to Contractor</h5></div>
+	               <div class="col-sm-6"><h5>Client's Feedback to Contractor</h5></div>
 	               <div class="col-sm-6">
 	              		<?php if($reviews){
 	              			if($reviews['review_by_me']){
@@ -111,12 +111,12 @@ ul.totalList > li > span {
 						<?php		
 							}else{
 						?>
-						<button class="btn btn-site btn-sm mb-5 SubmitReview">Submit Review</button>
+						<p>No review yet.</p>
 						<?php		
 							}
 	              		}?>
 	               </div>
-	                <div class="col-sm-6"><h5>Contractor's Feedback to You</h5></div>
+	                <div class="col-sm-6"><h5>Contractor's Feedback to Client</h5></div>
 	               <div class="col-sm-6">
 	               <?php if($reviews){
 	              			if($reviews['review_to_me']){
@@ -139,7 +139,7 @@ ul.totalList > li > span {
 	               		
 	               </div>
 	               <?php }else{?>
-	               <div class="col-sm-6"><h5>Your Feedback to Client</h5></div>
+	               <div class="col-sm-6"><h5>Contractor's Feedback to Client</h5></div>
 	               <div class="col-sm-6">
 	               		<?php if($reviews){
 	              			if($reviews['review_by_me']){
@@ -154,7 +154,7 @@ ul.totalList > li > span {
 							}
 	              		}?>
 	               </div>
-	                <div class="col-sm-6"><h5>Client's Feedback to You</h5></div>
+	                <div class="col-sm-6"><h5>Client's Feedback to Contractor</h5></div>
 	               <div class="col-sm-6">
 	               	<?php if($reviews){
 	              			if($reviews['review_to_me']){

@@ -1022,12 +1022,18 @@ class Member extends MX_Controller {
 							'portfolio_url'=>NULL,
 							'portfolio_complete_date'=>NULL,
 							'portfolio_status'=>1,
+							'portfolio_image'=>NULL,
 						);
 						if(post('url')){
 							$data_ins['portfolio_url']=addhttp(trim(strtolower(post('url'))));
 						}
 						if(post('complete_date')){
 							$data_ins['portfolio_complete_date']=date('Y-m-d',strtotime(post('complete_date')));
+						}
+						if(post('portfolio_image')){
+							$data_ins['portfolio_image']=json_encode(array('name'=>post('portfolio_image'),'file'=>post('portfolio_image')));
+						}elseif(post('pre_portfolio_image')){
+							$data_ins['portfolio_image']=post('pre_portfolio_image');
 						}
 						if($memberDatacount){
 							$up=updateTable('member_portfolio',$data_ins,array('member_id'=>$member_id,'portfolio_id'=>$memberDatacount->portfolio_id));
@@ -1054,8 +1060,10 @@ class Member extends MX_Controller {
 	
 	public function upload_file(){
 		if($_FILES && $this->input->is_ajax_request()){
-			$upload_dir = LC_PATH.'userupload/member_logo/';
-			
+			$upload_dir = LC_PATH.'member-logo/';
+			if($this->input->get('type') && $this->input->get('type')=='portfolio'){
+				$upload_dir = LC_PATH.'member-portfolio/';
+			}
 			if(!is_dir($upload_dir)){
 				mkdir($upload_dir);
 			}
@@ -1073,8 +1081,11 @@ class Member extends MX_Controller {
 			}else{
 				
 				$this->api->data('upload_data', $this->upload->data());
-				
-				$this->api->data('file_url', USER_UPLOAD.'member_logo/'.$this->upload->data('file_name'));
+				if($this->input->get('type') && $this->input->get('type')=='portfolio'){
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'member-portfolio/'.$this->upload->data('file_name'));
+				}else{
+					$this->api->data('file_url', UPLOAD_HTTP_PATH.'member-logo/'.$this->upload->data('file_name'));
+				}
 				
 			}
 			

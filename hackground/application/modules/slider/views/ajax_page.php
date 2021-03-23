@@ -112,12 +112,12 @@ function onsuccess(res){
 				<?php } ?>
 				
 			
-				<?php if(!empty($detail['slide_image']) && file_exists(LC_PATH.'userupload/slider-user/'.$detail['slide_image'])){ ?>
+				<?php if(!empty($detail['slide_image']) && file_exists(LC_PATH.'slider-user/'.$detail['slide_image'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_image">
 					<button type="button" class="close" onclick="removeByID('previous_image')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'slider-user/'.$detail['slide_image']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'slider-user/'.$detail['slide_image']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="slide_image" value="<?php echo $detail['slide_image'];?>"/>
 				</div>
                 </div>

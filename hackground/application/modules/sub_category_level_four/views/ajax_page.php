@@ -116,12 +116,12 @@ function onsuccess(res){
 				
 				<?php } ?>
 				
-				<?php if(!empty($detail['category_subchild_icon']) && file_exists(LC_PATH.'userupload/category_icons/'.$detail['category_subchild_icon'])){ ?>
+				<?php if(!empty($detail['category_subchild_icon']) && file_exists(LC_PATH.'category_icons/'.$detail['category_subchild_icon'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_image">
 					<button type="button" class="close" onclick="removeByID('previous_image')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'category_icons/'.$detail['category_subchild_icon']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'category_icons/'.$detail['category_subchild_icon']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="category_subchild_icon" value="<?php echo $detail['category_subchild_icon'];?>"/>
 				</div>
                 </div>

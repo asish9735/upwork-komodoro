@@ -12,33 +12,7 @@ class Home_model extends CI_Model {
         return parent::__construct();
     }
 	
-	public function getBanner($display_for='D', $page=''){
-		$where = array(
-			'b.status' => STATUS_ACTIVE,
-			'b.display_for' => $display_for,
-			'b.page' => !empty($page) ? $page : 'HOME',
-		);
-		
-		$this->db->select('b.title as default_title,b.banner_id,b.image,l.*')
-			->from('banners b')
-			->join('banners_lang l', 'l.id=b.banner_id', 'LEFT');
-		
-		$this->db->where($where);
-		$this->db->where('l.lang_code', $this->lang);
-		
-		$result = $this->db->get()->result_array();
-		if($result){
-			foreach($result as $k => $v){
-				$result[$k]['image_url'] = ASSETS.'banners/'.$v['image'];
-				
-				if(!$v['title']){
-					$v['title'] = $v['default_title'];
-				}
-				
-			}
-		}
-		return $result;
-	}
+	
 	
 	public function getTestimonial($show_in_page=''){
 		$this->db->select('b.testimonial_id,l.name,l.company_name,l.description,b.logo')
@@ -60,7 +34,16 @@ class Home_model extends CI_Model {
 		return $result;
 		
 	}
-	
+	public function getSldier(){
+		$this->db->select('b.slide_id,b.slide_image')
+			->from('home_section_slider b')/* 
+			->join('section_boxes_names l', 'l.box_id=b.box_id', 'LEFT') */;
+		//$this->db->where('l.lang', $this->lang);
+		$this->db->where('b.status', '1');
+		$result = $this->db->order_by('b.display_order','asc')->get()->result();
+		return $result;
+		
+	}
     public function check_login($email='', $password='') {
 		$this->load->library('auth');
         if(empty($email) || empty($password)){

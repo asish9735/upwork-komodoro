@@ -100,10 +100,10 @@
                   if($document){
                   	$docN=0;
 				  	foreach($document as $doc){
-				  		if(file_exists(LC_PATH.'userupload/broker/broker-ids/'.$doc)){
+				  		if(file_exists(LC_PATH.'broker/broker-ids/'.$doc)){
 				  			$docN++;
 						?>
-					<a href="<?php echo USER_UPLOAD.'broker/broker-ids/'.$doc; ?>" target="_blank" data-toggle="tooltip" title="View Dcument"><i class="fa fa-download  blue <?php echo ICON_SIZE;?>"></i> <?php echo 'Doc-'.$docN;?></a>	 
+					<a href="<?php echo UPLOAD_HTTP_PATH.'broker/broker-ids/'.$doc; ?>" target="_blank" data-toggle="tooltip" title="View Dcument"><i class="fa fa-download  blue <?php echo ICON_SIZE;?>"></i> <?php echo 'Doc-'.$docN;?></a>	 
 						<?php
 						}
 					}

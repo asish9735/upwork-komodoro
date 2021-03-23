@@ -75,8 +75,8 @@
 					</td>
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td>
-                  	<?php if(!empty($v['slide_image']) && file_exists(LC_PATH.'userupload/slider/'.$v['slide_image'])){ ?>
-                  	<img src="<?php echo USER_UPLOAD.'slider/'.$v['slide_image']; ?>" class="img-rounded" alt="" width="210">
+                  	<?php if(!empty($v['slide_image']) && file_exists(LC_PATH.'slider/'.$v['slide_image'])){ ?>
+                  	<img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$v['slide_image']; ?>" class="img-rounded" alt="" width="210">
                   	<?php }?>
                   </td>
                   <td><?php echo $status; ?></td>

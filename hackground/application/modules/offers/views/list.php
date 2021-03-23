@@ -48,7 +48,9 @@
                   <th>Status</th>
                   <th align="right">Action</th>
                 </tr>
-				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+				<?php 
+				$currency=get_setting('site_currency');
+				if(count($list) > 0){foreach($list as $k => $v){ 
 					$logo = getMemberLogo($v[$primary_key]);
 				$status = '';
 				if($v['contract_status'] == '1'){
@@ -64,7 +66,7 @@
 				  <td><?php echo $v['contract_title'];?></td>
 				  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['bidder_info']['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-1" alt="User Image" height="24" width="24" /> <?php echo $v['bidder_info']['member_name'];?></a></td>
 				  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['employer_info']['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-1" alt="User Image" height="24" width="24" /> <?php echo $v['employer_info']['member_name'];?></a></td>
-                  <td><?php echo get_setting('site_currency').$v['contract_amount']; ?></td>
+                  <td><?php echo $currency.$v['contract_amount'].($v['is_hourly'] ?  '/hr':''); ?></td>
                   <td><?php echo date('d M, Y H:i', strtotime($v['contract_date'])); ?></td>
                   <td><?php echo $status; ?></td>
 				

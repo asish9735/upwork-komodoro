@@ -65,6 +65,7 @@ class Home extends MX_Controller {
 		$this->data['cms_temp']=$this->cms_model->getTempContent($page);
 		$this->data['testimonial']=$this->home_model->getTestimonial();
 		$this->data['partner']=$this->home_model->getPartner();
+		$this->data['slider']=$this->home_model->getSldier();
 		$this->layout->view('index',$this->data);
 	}
 	public function findjobs() {

@@ -227,12 +227,12 @@ function checkAdType(){
                 </div>
 				
 				
-				<?php if(!empty($detail['ad_image']) && file_exists(LC_PATH.'userupload/advertisement/'.$detail['ad_image'])){ ?>
+				<?php if(!empty($detail['ad_image']) && file_exists(LC_PATH.'advertisement/'.$detail['ad_image'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_category_background">
 					<button type="button" class="close" onclick="removeByID('previous_category_background')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'advertisement/'.$detail['ad_image']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'advertisement/'.$detail['ad_image']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="ad_image" value="<?php echo $detail['ad_image'];?>"/>
 				</div>
                 </div>

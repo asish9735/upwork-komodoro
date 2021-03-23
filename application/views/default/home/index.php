@@ -1,17 +1,18 @@
 <!-- Intro Banner -->
 <section class="home-banner">
+<?php if($slider){?>
 <div class="row align-items-center h-100">
   <div class="col-md-7 offset-md-5 col-12">
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 	<ol class="carousel-indicators">
-        <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleFade" data-slide-to="1"></li>
-        <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+  <?php foreach($slider as $k=>$banner){?>
+    <li data-target="#carouselExampleFade" data-slide-to="<?php echo $k;?>" class="<?php if($k==0){echo 'active';}?>"></li>
+  <?php }?>
 	</ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active"> <img src="<?php echo IMAGE;?>banner01.jpg" class="d-block w-100" alt="..."> </div>
-        <div class="carousel-item"> <img src="<?php echo IMAGE;?>banner02.jpg" class="d-block w-100" alt="..."> </div>
-        <div class="carousel-item"> <img src="<?php echo IMAGE;?>banner03.jpg" class="d-block w-100" alt="..."> </div>
+  <div class="carousel-inner">
+  <?php foreach($slider as $k=>$banner){?>
+      <div class="carousel-item <?php if($k==0){echo 'active';}?>"> <img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$banner->slide_image;?>" class="d-block w-100" alt="..."> </div>
+  <?php }?> 
       </div>
       <?php /*?><a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -24,6 +25,7 @@
     </div>
   </div>
 </div>
+<?php }?>
 <div class="banner-search">
   <div class="container h-100">
     <div class="row align-items-center h-100">
@@ -178,7 +180,7 @@ if($cms_temp){
               <a href="<?php echo $freelancer['profile_link'];?>"><img src="<?php echo $freelancer['user_logo'];?>" alt="professional01"></a> </div>
             <!-- Name -->
             <div class="freelancer-name">
-              <h4><a href="single-freelancer-profile.html"><?php echo $freelancer['member_name'];?> <?php if($freelancer['country_code_short']){?><img class="flag" src="<?php echo IMAGE;?>flags/<?php echo strtolower($freelancer['country_code_short']);?>.svg" alt="" title="<?php echo $freelancer['country_name'];?>" data-tippy-placement="top"></a><?php }?></h4>
+              <h4><a href="<?php echo $freelancer['profile_link'];?>"><?php echo $freelancer['member_name'];?> <?php if($freelancer['country_code_short']){?><img class="flag" src="<?php echo IMAGE;?>flags/<?php echo strtolower($freelancer['country_code_short']);?>.svg" alt="" title="<?php echo $freelancer['country_name'];?>" data-tippy-placement="top"></a><?php }?></h4>
               <span><?php echo $freelancer['member_heading'];?></span> </div>
             <!-- Rating -->
             <div class="freelancer-rating">

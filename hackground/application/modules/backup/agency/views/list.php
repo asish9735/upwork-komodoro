@@ -82,7 +82,7 @@
                   <td><?php echo $v['agent_name']; ?></td>
                   <td><?php echo $v['agent_registration_number']; ?></td>
                   <td>
-                  <?php if(!empty($v['agent_logo']) && file_exists(LC_PATH.'userupload/broker/company-logo/'.$v['agent_logo'])){ ?>	<img src="<?php echo USER_UPLOAD.'broker/company-logo/'.$v['agent_logo']; ?>" class="img-rounded" alt="" height="50">
+                  <?php if(!empty($v['agent_logo']) && file_exists(LC_PATH.'broker/company-logo/'.$v['agent_logo'])){ ?>	<img src="<?php echo UPLOAD_HTTP_PATH.'broker/company-logo/'.$v['agent_logo']; ?>" class="img-rounded" alt="" height="50">
                   <?php }?>
                   </td>
                   <td><?php echo $status; ?></td>

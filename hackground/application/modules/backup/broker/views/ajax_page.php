@@ -106,12 +106,12 @@ function onsuccess(res){
                   <input type="text" class="form-control reset_field" id="ded_license_number" name="ded_license_number" autocomplete="off" value="<?php echo !empty($detail['ded_license_number']) ? $detail['ded_license_number'] : '';?>">
                 </div>
 
-				<?php if(!empty($detail['agent_logo']) && file_exists(LC_PATH.'userupload/broker/company-logo/'.$detail['agent_logo'])){ ?>
+				<?php if(!empty($detail['agent_logo']) && file_exists(LC_PATH.'broker/company-logo/'.$detail['agent_logo'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_agent_logo">
 					<button type="button" class="close" onclick="removeByID('previous_agent_logo')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'broker/company-logo/'.$detail['agent_logo']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'broker/company-logo/'.$detail['agent_logo']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="agent_logo" value="<?php echo $detail['agent_logo'];?>"/>
 				</div>
                 </div>

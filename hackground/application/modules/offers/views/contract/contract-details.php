@@ -16,7 +16,7 @@ if($is_owner){
 $new_contract_url='#';
 $contract_details_url='#';
 /* $contract_message_url=get_link('ContractMessage').'/'.md5($contractDetails->contract_id); */
-$contract_message_url='#';
+$contract_message_url=base_url('offers/message/'.md5($contractDetails->contract_id));
 $contract_term_url=base_url('offers/contract_term/'.md5($contractDetails->contract_id));
 $endcontract_url='#';
 ?>
@@ -123,45 +123,32 @@ ul.totalList > li > span {
 		  <p>Contract Ended on <?php echo $contractDetails->contract_end_date;?></p>	
 		  	<?php
 		  }
-		 // get_print($reviews);
-          if($reviews){
-			  if($reviews['review_by_me'] && $reviews['review_to_me']){
+		  //get_print($reviews);
+      if($reviews){
+			  if($reviews['review_by_me'] || $reviews['review_to_me']){
 			  ?>
-			  <div class="col-sm-6"><h5>
-			  <?php if($is_owner){?>
-			  	Your Feedback to Contractor
-			  <?php }else{?>
-			   Your Feedback to Client
-			  <?php }?>
-			  </h5></div>
-			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
-			  <div class="col-sm-6"><h5>
-			  <?php if($is_owner){?>
-			  	Contractor's Feedback to You
-			  <?php }else{?>
-			  Client's Feedback to You
-			  <?php }?>
-			  </h5></div>
-			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div></div>
-			  <?php	
-			  }elseif($reviews['review_by_me'] && !$reviews['review_to_me']){
-			  	?>
-			  <div class="col-sm-6"><h5>Your Feedback</h5></div>
-			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
-			  <p>Client not send feedback yet.</p>
-			  <?php
-			  	
-			  }elseif(!$reviews['review_by_me']){
-			  ?>
-			 <a href="<?php echo $endcontract_url;?>" class="btn btn-site">Send Feedback</a>
-			  <?php
-			  }	
-		  }
-          ?>
-          </div>
+        <?php if($reviews['review_by_me']){?>
+			  <div class="col-sm-6">
+          <h5>Client's Feedback to Contractor</h5>
         </div>
+			  <div class="col-sm-6">
+          <div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div>
+        </div>
+        <?php }?>
+        <?php if($reviews['review_to_me']){?>
+			  <div class="col-sm-6">
+          <h5>Contractor's Feedback to Client</h5>
+        </div>
+			  <div class="col-sm-6">
+          <div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div>
+        </div>
+        <?php 
+        }  		
+		  }
+    ?>
 		<?php	
 		}
+  }
         ?>
         <div class="panel mb-4">
           <div class="panel-header relative">

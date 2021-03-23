@@ -125,12 +125,12 @@ function onsuccess(res){
                   <input type="text" class="form-control reset_field" id="state_order" name="state_order" autocomplete="off" value="<?php echo !empty($detail['state_order']) ? $detail['state_order'] : ''; ?>">
                 </div>
 				
-				<?php if(!empty($detail['state_thumb']) && file_exists(LC_PATH.'userupload/state-icon/thumb/'.$detail['state_thumb'])){ ?>
+				<?php if(!empty($detail['state_thumb']) && file_exists(LC_PATH.'state-icon/thumb/'.$detail['state_thumb'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_state_thumb">
 					<button type="button" class="close" onclick="removeByID('previous_state_thumb')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'state-icon/thumb/'.$detail['state_thumb']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'state-icon/thumb/'.$detail['state_thumb']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="state_thumb" value="<?php echo $detail['state_thumb'];?>"/>
 				</div>
                 </div>

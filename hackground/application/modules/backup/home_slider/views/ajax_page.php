@@ -75,12 +75,12 @@ function onsuccess(res){
 		<form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
 			  <input type="hidden" name="ID" value="<?php echo $ID?>"/>
 			
-				<?php if(!empty($detail['slide_image']) && file_exists(LC_PATH.'userupload/slider/'.$detail['slide_image'])){ ?>
+				<?php if(!empty($detail['slide_image']) && file_exists(LC_PATH.'slider/'.$detail['slide_image'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_image">
 					<button type="button" class="close" onclick="removeByID('previous_image')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'slider/'.$detail['slide_image']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$detail['slide_image']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="slide_image" value="<?php echo $detail['slide_image'];?>"/>
 				</div>
                 </div>

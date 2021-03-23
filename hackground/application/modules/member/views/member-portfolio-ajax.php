@@ -40,7 +40,26 @@
 		<div class="form-group">
 			<label for="description" class="form-label">Project Overview </label>
 			<textarea class="form-control" name="description"><?php echo !empty($detail['portfolio_description']) ? $detail['portfolio_description'] : ''; ?></textarea>
-		</div>			  
+		</div>	
+
+		<?php 
+		$files=json_decode($detail['portfolio_image']);	
+		if(!empty($detail['portfolio_image']) && file_exists(LC_PATH.'member-portfolio/'.$files->file)){ 
+		
+		?>
+		<div class="form-group">
+			<label>Previous Image </label>
+			<div class="image-wrapper" id="previous_image">
+			<button type="button" class="close" onclick="removeByID('previous_image')"><span aria-hidden="true">&times;</span></button>
+			<img src="<?php echo UPLOAD_HTTP_PATH.'member-portfolio/'.$files->file; ?>" class="img-rounded" alt="" width="210">
+			<input type="hidden" name="pre_portfolio_image" value="<?php echo $detail['portfolio_image'];?>"/>
+		</div>
+		</div>
+		<?php } ?>
+		
+		<?php $this->load->view('upload_file_component', array('input_name' => 'portfolio_image', 'url' => base_url('member/upload_file').'?type=portfolio')); ?>
+		
+
 
 		<button type="submit" class="btn btn-site"><?php echo !empty($detail) ? 'Save' : 'Add'; ?></button>
 

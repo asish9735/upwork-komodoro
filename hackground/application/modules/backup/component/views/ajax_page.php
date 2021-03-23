@@ -187,12 +187,12 @@ function onsuccess(res){
                   <textarea class="form-control reset_field" id="description" name="description"><?php echo !empty($detail['description']) ? $detail['description'] : '';?></textarea>
                 </div>
 				
-				<?php if(!empty($detail['component_icon']) && file_exists(LC_PATH.'userupload/component_icons/'.$detail['component_icon'])){ ?>
+				<?php if(!empty($detail['component_icon']) && file_exists(LC_PATH.'component_icons/'.$detail['component_icon'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_category_icon">
 					<button type="button" class="close" onclick="removeByID('previous_category_icon')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'component_icons/'.$detail['component_icon']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'component_icons/'.$detail['component_icon']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="component_icon" value="<?php echo $detail['component_icon'];?>"/>
 				</div>
                 </div>

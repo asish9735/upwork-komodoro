@@ -59,13 +59,15 @@ class Message extends MX_Controller {
 		}
 		$srch = get();
 		$srch['room_id'] = $room_id;
-		
-		$this->data['conversation_details']=$this->db->select('sender_id,receiver_id,conversations_id')->where('conversations_id',$room_id)->from('conversations')->get()->row();
-		if(!$this->data['conversation_details']){
+		$this->data['conversation_details']=new stdClass();
+		$this->data['conversation_details']->conversations_id=$room_id;
+		$this->data['conversation_details']->project=$this->db->select('p.project_title,c.project_id,p.project_url')->from('conversations as c')->join('project as p','c.project_id=p.project_id','left')->where('conversations_id',$room_id)->get()->row();
+		$this->data['conversation_details']->group=$this->db->select('m.member_name,r.user_id')->from('conversations_room as r')->join('member as m','r.user_id=m.member_id','left')->where('r.conversations_id',$room_id)->get()->result();
+		if(!$this->data['conversation_details']->group){
 			show_404(); return;
 		}
-		$this->data['conversation_details']->sender=$this->db->select('member_name')->where('member_id',$this->data['conversation_details']->sender_id)->from('member')->get()->row();
-		$this->data['conversation_details']->receiver=$this->db->select('member_name')->where('member_id',$this->data['conversation_details']->receiver_id)->from('member')->get()->row();
+		//$this->data['conversation_details']->sender=$this->db->select('member_name')->where('member_id',$this->data['conversation_details']->sender_id)->from('member')->get()->row();
+		//$this->data['conversation_details']->receiver=$this->db->select('member_name')->where('member_id',$this->data['conversation_details']->receiver_id)->from('member')->get()->row();
 		
 		$this->data['conversation_details']->conversations=$this->message->getMessageChatList($room_id);
 		
@@ -76,7 +78,7 @@ class Message extends MX_Controller {
 		
 		$breadcrumb = array(
 			array(
-				'name' => 'Orders',
+				'name' => 'Message',
 				'path' => base_url($this->data['curr_controller'].'list_record'),
 			),
 			array(

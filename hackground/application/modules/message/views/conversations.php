@@ -97,104 +97,134 @@ padding:25px 20px;
 			Room Id: #<?php echo $conversation_details->conversations_id; ?>
           </div>
         </div>
+		<div class="card-body">
+		<p><b>Project Name:</b> <a href="<?php echo SITE_URL;?>p/<?php echo  $conversation_details->project->project_url; ?>" target="_blank"><?php echo $conversation_details->project->project_title;?></a></p>
 
+		<?php 
+		if($conversation_details->group) {
+			foreach($conversation_details->group as $g=>$member){
+				$logo = getMemberLogo($member->user_id);
+				?>
+				<p class="mb-0"><a href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $member->user_id;?>" target="_blank"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /><?php echo $member->member_name;?></a></p>
+				<?php
+			}
+		}
+		?>
+		</div>
+		</div>
 
-	<div class="row mt-4">
+		<div class="row mt-4">
     <!--- 3 row Starts --->
     <div class="col-lg-12">
-        <!--- col-lg-12 Starts --->
-        <div class="card">
-            <!--- card Starts --->
-            <div class="card-header">
-                <!--- card-header Starts --->
-                <h4 class="h4">
-                    <i class="fa fa-money-bill-alt"></i> Order Conversation Between <?php echo $conversation_details->sender->member_name; ?> & <?php echo $conversation_details->receiver->member_name; ?>
-                </h4>
-            </div>
-            <!--- card-header Ends --->
-            <div class="card-body">
-                <!--- card-body Starts --->
-                <?php
-                $currency=get_setting('site_currency');
-			if($conversation_details->conversations){
-				foreach($conversation_details->conversations as $k=>$conversation){
-					//print_r($conversation);
-					/*$status=$conversation->status;*/
-					if($conversation->sender_id==$conversation_details->sender_id){
-						$sender_user_name=$conversation_details->sender->member_name;
-					}else{
-						$sender_user_name=$conversation_details->receiver->member_name;
-					}
-				?>
+<?php if($conversation_details->conversations){?>
+		<ul class="timeline">
+		<?php
+	foreach($conversation_details->conversations as $k=>$conversation){
+		//print_r($conversation);
+		/*$status=$conversation->status;*/
+		$sender_user_name=$conversation->sender_name;
+				  ?>
+<!-- timeline time label -->
+<!-- <li class="time-label">
+	<span class="bg-red">
+		<?php echo date('d M, Y',strtotime($conversation->sending_date)); ?>
+	</span>
+</li> -->
+<!-- /.timeline-label -->
+<?php 
+if(!empty($conversation->attachment)){ 
+$file=json_decode($conversation->attachment);
+$is_image=false;
+if($file->is_image){
+	$is_image=true;
+}
+?>
 
-				 <div class="message-div">
-                        <img src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image">
-                        <h5><?php echo $sender_user_name; ?></h5>
-                        <p class="message-desc">
-                            <?php echo html_entity_decode($conversation->message); ?>
-                           <?php if(!empty($conversation->attachment)){ ?>
-                            <a href="<?php echo USER_UPLOAD.'message-files/'.$conversation->attachment?>" download class="d-block mt-2 ml-1">
-                                <i class="fa fa-download"></i> <?php echo $conversation->attachment; ?>
-                            </a>
-                            <?php }?>
-                        </p>
-                        
-<?php if($conversation->offer_id){ ?>
-<div class="message-offer" style="clear: both"><!--- message-offer Starts --->
-<div class="row"><!--- row Starts --->
-	<div class="col-lg-2 col-md-3"><!--- col-lg-2 col-md-3 Starts --->
-		<img src="<?php echo USER_UPLOAD.'proposal-files/'.$conversation->proposal_image?>" class="img-responsive message-image" style="    width: 150px;height: 100%; border-radius: 0px;">
-	</div><!--- col-lg-2 col-md-3 Ends --->
-	<div class="col-lg-10 col-md-9"><!--- col-lg-10 col-md-9 Starts --->
-		<h5 class="mt-md-0 mt-2">
-			<?php echo $conversation->proposal_title; ?>
-			<span class="price float-right d-sm-block d-none"> <?php echo $currency; ?> <?php echo $conversation->amount; ?> </span>
-		</h5>
-		<p><?php echo $conversation->description; ?></p>
-		<p class="d-block d-sm-none"> <b> Price / Amount : </b> <?php echo $currency; ?><?php echo $conversation->amount; ?> </p>
-		<p> <b> Delivery Time : </b> <?php echo $conversation->delivery_time; ?>days </p>
+<li>
+	<!-- timeline icon -->
+	<?php if($is_image){?>
+	<i class="fa fa-camera bg-purple"></i>
+	<?php }else{?>
+		<i class="fa fa-file bg-purple"></i>
+	<?php }?>
+	<div class="timeline-item">
+		<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M, Y H:i:s',strtotime($conversation->sending_date)); ?></span>
 
-	<?php if($conversation->status != 1){ ?>
-		<button class="btn btn-success rounded-0 mt-2 float-right">
-			Offer has not been accepted yet.
-		</button>
-	<?php }elseif($conversation->status == 1){ ?>
-		<p class="float-right">
-			<a class="btn" href="<?php echo base_url('orders/order_detail')?>/<?php echo $conversation->order_id; ?>" target="_blank">
-			View Order
-			</a>
-			<button class="btn btn-success rounded-0" disabled>
-				Offer Accepted
-			</button>
-		</p>
-	<?php } ?>
-	</div><!--- col-lg-10 col-md-9 Ends --->
-</div><!--- row Ends --->
-</div><!--- message-offer Ends --->
-<?php } ?>
-<p class="float-right text-muted">
-                            <?php echo date('F d, Y H:i:s',strtotime($conversation->sending_date)); ?> 
-                        </p>
-                        <br>
-                    </div>	
-				<?php	
-				}
-			}else{
-			?>
-			<h3 class='text-center'>This Order Has No Conversations.</h3>
-			<?php
-			}?>
+		<h3 class="timeline-header"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a> <?php if($conversation->is_edited){?> edited the message<?php }?></h3>
 
-            </div>
-            <!--- card-body Ends --->
+		<div class="timeline-body">
+		<a href="<?php echo UPLOAD_HTTP_PATH.'message-files/'.$file->file_name;?>" download>
+		<?php 
+		if($is_image){
+		?>
+		<img src="<?php echo UPLOAD_HTTP_PATH.'message-files/'.$file->file_name;?>" alt="<?php echo $file->org_file_name?>" class="margin">
+		<?php }else{?>
+             <i class="fa fa-download"></i> <?php echo $file->org_file_name; ?>
+                           
+		<?php }?>
+		</a>
+		</div>
+	</div>
+</li>
+<?php }else{?>
+<!-- timeline item -->
+<li>
+	<!-- timeline icon -->
+	<i class="fa fa-comments bg-yellow"></i>
+	<div class="timeline-item">
+		<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M,Y H:i:s',strtotime($conversation->sending_date)); ?></span>
 
-        </div>
-        <!--- card Ends --->
+		<h3 class="timeline-header"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a> <?php if($conversation->is_edited){?> edited the message<?php }?></h3>
 
-    </div>
-    <!--- col-lg-12 Ends --->
+		<div class="timeline-body">
+		<?php echo html_entity_decode($conversation->message); ?>
+		</div>
+	</div>
+</li>
+<?php }?>
+<?php if($conversation->is_edited){
+	if($conversation->edited){
+	foreach($conversation->edited as $edited){
+	?>
+<li style="padding-left:30px">
+	<!-- timeline icon -->
+	<div class="timeline-item">
+		<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M,Y H:i:s',strtotime($edited->edit_date)); ?></span>
 
+		<h3 class="timeline-header"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a></h3>
+
+		<div class="timeline-body">
+		<?php echo html_entity_decode($edited->message_org); ?>
+		</div>
+	</div>
+</li>
+<?php } }}?>
+<?php if($conversation->is_deleted){?>
+	<li style="padding-left:30px">
+	<i class="fa fa-trash bg-red"></i>
+
+	<div class="timeline-item">
+	<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M, Y H:i:s',strtotime($conversation->is_deleted)); ?></span>
+	<h3 class="timeline-header  no-border"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a> deleted this message</h3>
+	</div>
+    </li>
+<?php }?>
+<!-- END timeline item -->
+<?php
+	}
+?>
+
+</ul>
+<?php }?>
 </div>
+</div>
+
+
+
+
+
+
+
 	</div>
     </section>
     <!-- /.content -->

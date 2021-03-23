@@ -350,7 +350,7 @@ class Offers extends MX_Controller {
 			$this->data['contractDetails']->milestone_paid=$this->contract_model->getMilestonePaid($project_id,$contract_id);
 			$this->data['contractDetails']->balance_remain=$this->data['contractDetails']->contract_amount-$this->data['contractDetails']->milestone_paid;
 			
-			$this->data['is_owner']=0;
+			$this->data['is_owner']=1;
 			$this->data['pending_contract']=$this->db->where('contract_id',$contract_id)->where('is_approved <>',1)->from('project_contract_milestone')->count_all_results();
 			$this->data['reviews']=get_contract_view($contract_id,$owner['project_owner']->member_id);
 
@@ -361,19 +361,24 @@ class Offers extends MX_Controller {
 	
 	public function message($contract_id_enc='')
 	{
-		if($this->loggedUser){
-			$this->load->model('contract_model');
-			$this->layout->set_js(array(
-				'utils/helper.js',
-				'bootbox_custom.js',
-				'mycustom.js',
-			));
-			if($this->access_member_type=='F'){
-				//$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
-			}else{
-				//$this->data['left_panel']=$this->layout->view('inc/client-setting-left',$this->data,TRUE,TRUE);
-			}
-			$this->data['contractDetails'] = get_contract_details($contract_id_enc,array('data_from'=>'contract_message','member_id'=>$this->member_id));
+		
+			$this->data['main_title'] = 'Contract Detail';
+			$this->data['second_title'] = 'Contract Detail';
+			$this->data['title'] = 'Contract Detail';
+			$breadcrumb = array(
+				array(
+					'name' => 'Contract',
+					'path' => base_url('offers/contracts'),
+				),
+				
+				array(
+					'name' => 'Contract Detail',
+					'path' => '',
+				),
+			);
+			$this->data['breadcrumb'] = breadcrumb($breadcrumb);
+			$this->load->model('offers/contract_model');
+			$this->data['contractDetails'] = get_contract_details($contract_id_enc,array('data_from'=>'contract_message'));
 			if($this->data['contractDetails']){
 				if($this->data['contractDetails']->contract_status!=1){
 					redirect(get_link('OfferDetails').'/'.$contract_id_enc);
@@ -389,36 +394,30 @@ class Offers extends MX_Controller {
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
-				
-				
 				$this->data['is_owner']=0;
-				if($owner['project_owner']->member_id==$this->member_id){
-					$this->data['is_owner']=1;
-				}
+				
 			}else{
 				redirect(get_link('dashboardURL'));
 			}
+			$freelancer_id=$this->data['contractDetails']->contractor_id;
+			$owner_id=$owner['project_owner']->member_id;
+
 			
+			$member_ids=array($freelancer_id,$owner_id);
+			$this->load->model('message/message_model','message');
+			$this->data['conversation_details']=new stdClass();
+			$room_id=$this->message->getConversationID($project_id,$member_ids,1);
+			$this->data['conversation_details']->conversations_id=$room_id;
+			$this->data['conversation_details']->group=$this->db->select('m.member_name,r.user_id')->from('conversations_room as r')->join('member as m','r.user_id=m.member_id','left')->where('r.conversations_id',$room_id)->get()->result();
+			if(!$this->data['conversation_details']->group){
+				show_404(); return;
+			}
+			$this->data['conversation_details']->conversations=$this->message->getMessageChatList($room_id);
 			
-			if($this->data['is_owner']){
-				$receiver_id=$this->data['contractDetails']->contractor_id;
-			}else{
-				$receiver_id=$owner['project_owner']->member_id;
-			}
-			$member_ids=array($this->member_id,$receiver_id);
-			/* Message section */
-			$this->load->model('message/message_model');
-			$selected_conversation_id=$this->message_model->getConversationID($project_id,$member_ids,1);
-			$this->data['login_member'] = $this->message_model->getMessageUser($this->member_id);
-			//$selected_conversation_id = 3;
-			if($selected_conversation_id){
-				$this->data['active_chat'] = $this->message_model->getConversationUserById($selected_conversation_id, $this->member_id);
-			}else{
-				$this->data['active_chat'] = null;
-			}
+
 			
 			$this->layout->view('contract/contract-message', $this->data);
-		}
+		
 	}
 	
 	public function contract_term($contract_id_enc=''){

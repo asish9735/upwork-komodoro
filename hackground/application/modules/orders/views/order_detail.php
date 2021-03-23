@@ -217,7 +217,7 @@ $orderStatus=array(
                         <p class="message-desc">
                             <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo USER_UPLOAD.'conversation-files/'.$conversation->file?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -236,7 +236,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo USER_UPLOAD.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -255,7 +255,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo USER_UPLOAD.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -275,7 +275,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo USER_UPLOAD.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -305,7 +305,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo USER_UPLOAD.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -331,7 +331,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo USER_UPLOAD.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>

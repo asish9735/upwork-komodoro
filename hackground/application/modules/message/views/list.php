@@ -23,23 +23,36 @@
               <table class="table table-hover">
                 <tbody>
 				<tr>
-				 <th style="width:10%">ID</th>
-                  <th style="width:15%">Sender</th>
-                  <th style="width:15%">Receiver</th>
-                  <th>Message Content</th>
-                  <th style="width:15%" class="text-right">Updated</th>
+				 <th style="width:5%">ID</th>
+                  <th style="width:20%">Project Name</th>
+                  <th style="width:30%">Group</th>
+                  <!-- <th>Message Content</th> -->
+                  <th style="width:20%">Last Updated</th>
+                  <th class="text-right">Action</th>
 
                 </tr>
 				<?php  if(count($list) > 0){foreach($list as $k => $v){ 
 				
 				?>
-				<tr onclick="location.href='<?php echo base_url('message/room/'.$v['conversations_id']); ?>'" style="cursor: pointer;">
+				<tr >
 					
                   <td><?php echo $v[$primary_key]; ?></td>
-                  <td><?php echo $v['sender_name']; ?></td>
-                  <td><?php echo $v['receiver_name']; ?></td>
-                  <td><?php echo $v['message']; ?></td>
-                  <td class="text-right"><?php echo format_date_time($v['sending_date']); ?></td>
+                  <td><a href="<?php echo base_url('proposal/list_record'); ?>?project_id=<?php echo $v['project_id'];?>" target="_blank"><?php echo $v['project_title']; ?></a></td>
+                  <td><?php 
+					if($v['group']) {
+						foreach($v['group'] as $g=>$member){
+							$logo = getMemberLogo($member->user_id);
+							?>
+							<p class="mb-0"><a href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $member->user_id;?>" target="_blank"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /><?php echo $member->member_name;?></a></p>
+							<?php
+						}
+					}
+				 ?></td>
+                 <!--  <td><?php echo $v['message']; ?></td> -->
+				 <td ><?php echo format_date_time($v['sending_date']); ?></td>
+                  <td class="text-right">
+				  <a href="<?php echo base_url('message/room/'.$v['conversations_id']); ?>" data-toggle="tooltip" title="View"><i class="icon-feather-eye green fa-lg"></i></a>
+				  </td>
                 </tr>
 				<?php } }else{  ?>
 				<tr>

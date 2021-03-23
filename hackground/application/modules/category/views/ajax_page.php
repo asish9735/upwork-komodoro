@@ -130,12 +130,12 @@ function onsuccess(res){
                 </div>
 				<?php } ?>
 				
-				<?php /*if(!empty($detail['category_background']) && file_exists(LC_PATH.'userupload/category_icons/banner/'.$detail['category_background'])){ ?>
+				<?php /*if(!empty($detail['category_background']) && file_exists(LC_PATH.'category_icons/banner/'.$detail['category_background'])){ ?>
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_category_background">
 					<button type="button" class="close" onclick="removeByID('previous_category_background')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo USER_UPLOAD.'category_icons/banner/'.$detail['category_background']; ?>" class="img-rounded" alt="" width="210">
+					<img src="<?php echo UPLOAD_HTTP_PATH.'category_icons/banner/'.$detail['category_background']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="category_background" value="<?php echo $detail['category_background'];?>"/>
 				</div>
                 </div>

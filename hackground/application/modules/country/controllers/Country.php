@@ -208,7 +208,7 @@ class Country extends MX_Controller {
 	
 	public function upload_file($type){
 		if($_FILES && $this->input->is_ajax_request()){
-			$upload_dir = LC_PATH.'userupload/country-icon/';
+			$upload_dir = LC_PATH.'country-icon/';
 			if($type=='banner'){
 				$upload_dir.=$pathupload='banner/';
 			}elseif($type=='thumb'){
@@ -231,7 +231,7 @@ class Country extends MX_Controller {
 			}else{
 				
 				$this->api->data('upload_data', $this->upload->data());
-				$this->api->data('file_url', USER_UPLOAD.'country-icon/'.$pathupload.$this->upload->data('file_name'));
+				$this->api->data('file_url', UPLOAD_HTTP_PATH.'country-icon/'.$pathupload.$this->upload->data('file_name'));
 			}
 			
 

@@ -31,7 +31,7 @@ class Notification_model extends MX_Controller {
 		'unread'=>$count_notic,
 		'poupmessage'=>array(),
 		);
-		$filename=LC_PATH."userupload/ECnote/".$id.".echo";
+		$filename=LC_PATH."ECnote/".$id.".echo";
 		if(!file_exists($filename)){
 			$array['poupmessage'][]=$nid;
 			if ( !write_file($filename, json_encode($array), 'w')){
