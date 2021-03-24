@@ -329,7 +329,7 @@ class Offers extends MX_Controller {
 				
 				redirect(base_url('offer/offer_detail/'.$contract_id_enc));
 			}elseif($this->data['contractDetails']->is_hourly==1){
-				//redirect(base_url('offer/contract_work/'.$contract_id_enc));
+				redirect(base_url('workroom/details/'.$contract_id_enc));
 			}
 			$contract_id=$this->data['contractDetails']->contract_id;
 			$project_id=$this->data['contractDetails']->project_id;
