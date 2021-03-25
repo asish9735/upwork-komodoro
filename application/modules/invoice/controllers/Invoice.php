@@ -12,6 +12,8 @@ class Invoice extends MX_Controller {
 			$this->access_member_type=$this->loggedUser['ACC_P_TYP'];
 			$this->member_id=$this->loggedUser['MID'];
 			$this->organization_id=$this->loggedUser['OID'];
+		}elseif($this->input->get('auth') && $this->input->get('auth')==md5(date('Y-m-d').'-ORGUP')){
+
 		}else{
 			$refer=uri_string();
 			redirect(URL::get_link('loginURL').'?refer='.$refer);

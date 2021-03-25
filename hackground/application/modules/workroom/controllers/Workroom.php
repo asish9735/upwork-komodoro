@@ -262,6 +262,7 @@ class Workroom extends MX_Controller {
 				'single_row'=>true
 			));
 			$this->data['show']=$show;
+			$this->data['is_owner']=1;
 			$this->layout->view('contract/contract-invoice', $this->data);
 		}
 		

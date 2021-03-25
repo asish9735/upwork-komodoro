@@ -28,7 +28,12 @@ if(!function_exists('admin_log_check')){
 	}
 	
 }
-
+if (!function_exists('make_invoice_number')) {
+	function make_invoice_number($INV) {
+		$num =str_pad($INV,8,'0',STR_PAD_LEFT);
+		return $num;
+	}
+}
 
 if(!function_exists('breadcrumb')){
 	

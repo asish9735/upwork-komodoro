@@ -45,87 +45,144 @@ $endcontract_url='#';
 }
 
 /* Comments */
-.comments {
+ul.dashboard-box-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.comments h4 {
-	color: #333;
+ul.dashboard-box-list > li {
+    border-bottom: 1px solid #e4e4e4;
+    padding: 0;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    flex-flow: row wrap;
+    transition: 0.3s;
+    overflow: hidden;
 }
-.comments h4 span {
-	display: inline-block;
-	font-size: inherit;
+ul.dashboard-box-list > li:hover {
+    background-color: #fbfbfb;
 }
-.comment {
-	font-size: 20px;
+.dashboard-box .job-listing-details {
+	box-shadow: none;
+	padding: 0;
+	align-items: center;
+	flex: auto;
 }
-.comments .button {
-	margin: 0 0 10px 0;
-	padding: 7px 15px;
-}
-.comments.reviews .button {
+.dashboard-box .job-listing {
+	box-shadow: none;
+	padding: 0;
 	margin: 0;
+	background-color: transparent;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 }
-.comments ul {
+.dashboard-box .job-listing.width-adjustment {
+	max-width: 60%
+}
+.dashboard-box .job-listing h4 a,
+.dashboard-box .job-listing h3 a {
+	font-size: 1.125rem;
+}
+.dashboard-box .job-listing .job-listing-company-logo {
+	max-width: 48px;
+}
+.dashboard-box .job-listing .job-listing-company-logo img {
+    height: 48px;
+    object-fit: contain;
+}
+.dashboard-box .job-listing .job-listing-description {
+	padding-top: 0;
+}
+.dashboard-box .job-listing:hover {
+	transform: none;
+}
+.dashboard-box .job-listing .job-listing-footer {
+	background-color:transparent;
+	border-top:0;
+	padding: 0;
+	border-radius: 0;
+}
+.dashboard-box .freelancer-overview {
+	padding: 0;
+}
+.dashboard-box .freelancer-overview-inner {
+	flex:  auto;
+	display: flex;
+	align-items: center;
+}
+.dashboard-box .freelancer-overview .freelancer-name {
+	text-align: left;
+	margin: 0 0 0 1.25rem;
+	width: 100%;
+}
+.dashboard-box .freelancer-overview .freelancer-avatar {
+	margin: 0;
+	width: 90px;
+}
+.dashboard-box .freelancer-overview .freelancer-avatar img{
+	max-height:80px;
+    background-color: #eee;
+}
+.dashboard-box .freelancer-overview.manage-candidates .freelancer-avatar {
+	align-self: flex-start;
+}
+.dashboard-box-footer {
+	background-color:#f9f9f9;
+	padding:1rem 1.25rem;
+    border-top: 1px solid #e4e4e4;
+}
+.dashboard-box-footer .backbtnproject {
+	margin-right:0.5rem
+}
+
+.btn-light.active {
+	background-color: #40de00 !important;
+    color: #fff !important;
+}
+.job-listing h4.job-listing-title {	
+	display: -webkit-box;
+    /*height: 24px;
+	max-width:300px;*/
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dashboard-box .job-listing h4.job-listing-title {
+    max-width: 80%;
+}
+.job-listing .job-listing-description p {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.938rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.freelancer-intro > h5 {
+	font-size: 1.063rem;
 	margin-bottom: 0;
-	padding-left: 0;
+	text-transform:capitalize
 }
-.comments ul li {
-	display: block;
+.dashboard-box .job-listing h4.job-listing-title {
+    max-width: 80%;
 }
-.comments ul li, .comments ul li ul li, .comments ul li ul li ul li, .comments ul li ul li ul li {
-	margin: 1rem 0 0 0;
+.buttons-to-right, .dashboard-box-list .button.to-right {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: 0.3s;
+    box-shadow: 0px 0px 10px 15px #fff;
+    background-color: #fff;
 }
-.comments ul li ul {
-	margin: 0 0 0 64px;
-}
-.comment-content p {
-	margin: 3px 0 0 0;
-	line-height: 26px;
-}
-.comment-content {
-	color: #666;
-	padding: 0 0 0 100px;
-}
-.comments ul li ul {
-	border-left: 1px solid #e0e0e0;
-	padding-left: 25px;
-}
-.comments ul li ul li:before {
-	content: "";
-	width: 15px;
-	height: 1px;
-	background-color: #e0e0e0;
-	display: inline-block;
-	position: absolute;
-	top: 30px;
-	left: -25px;
-}
-.comments ul li {
-	position: relative;
-}
-.comments > ul > li{
-	border-bottom:1px dashed #ccc;
-	padding-bottom:1.25rem;
-}
-.comments > ul > li:first-child {
-	margin-top:0
-}
-.comments > ul > li:last-child {
-	border-bottom:none;
-	padding-bottom:0;
-}
-.comment-content strong {
-	padding-right: 5px;
-	color: #666;
-}
-.comment-content > span {
-	color: #777;
-}
-body .comment-content p {
-	padding: 5px 0;
-}
-.comments-amount {
-	color: #777;
-	font-weight: 500;
+.dashboard-box-list .buttons-to-right.always-visible, .dashboard-box-list li:hover .buttons-to-right {
+    opacity: 1;
 }
 </style>
  <!-- Content Wrapper. Contains page content -->
@@ -183,14 +240,14 @@ body .comment-content p {
 <script>
 var SPINNER='<svg class="MYspinner" width="30px" height="30px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg>';
 var c_id="<?php echo md5($contractDetails->contract_id)?>";
-var getsubmission = function(from){
+var getinvoice = function(from){
 	$("#loader").show();
 	$.ajax({
-		url:"<?php echo base_url('workroom/load_invoice')?>/"+c_id,
+		url:"<?php echo base_url('invoice/load_invoice')?>",
 		type:'GET',
 		dataType:'json',
 		cache: false,
-		data: {from:from,show:'<?php echo $show;?>'},
+		data: {from:from,show:'<?php echo $show;?>','cid':c_id},
 		success: function(response) {
 			var newpage= parseInt(from)+1;
 			//console.log(newpage);
