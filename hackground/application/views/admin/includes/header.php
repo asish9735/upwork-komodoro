@@ -4,7 +4,7 @@ $admin_detail = get_session('admin_detail');
 <!-- Site wrapper -->
 <div class="wrapper">
   <header>
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top_">    
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top">    
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>

@@ -136,6 +136,9 @@ a:hover, a:active, a:focus {
 	max-height:100px;
 	z-index:1030
 }
+.fixed-top{
+	position:fixed;
+}
 .main-header .navbar {
 -webkit-transition:margin-left .3s ease-in-out;
 -o-transition:margin-left .3s ease-in-out;

@@ -6,7 +6,7 @@
          <?php echo $main_title ? $main_title : '';?>
         <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+     <?php // echo $breadcrumb ? $breadcrumb : '';?>
     </section>
 
     <!-- Main content -->
@@ -34,8 +34,8 @@
 			</div>
 			&nbsp;
 			<?php } ?>
-            <button type="button" class="btn btn-primary btn-sm" onclick="add()">
-              <i class="fa fa-plus"></i>
+            <button type="button" class="btn btn-site btn-sm" onclick="add()">
+              <i class="icon-feather-plus"></i>
 				<?php echo $add_btn;?>
 			</button>
           </div>
@@ -76,13 +76,13 @@
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td>
                   	<?php if(!empty($v['slide_image']) && file_exists(LC_PATH.'slider/'.$v['slide_image'])){ ?>
-                  	<img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$v['slide_image']; ?>" class="img-rounded" alt="" width="210">
+                  	<img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$v['slide_image']; ?>" class="img-rounded" alt="" width="100">
                   	<?php }?>
                   </td>
                   <td><?php echo $status; ?></td>
                   <td class="text-right" style="padding-right:20px;">
 					<?php if($v['status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="fa fa-edit green <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>
 					&nbsp;
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>

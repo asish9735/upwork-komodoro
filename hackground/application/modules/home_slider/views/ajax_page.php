@@ -79,8 +79,8 @@ function onsuccess(res){
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_image">
-					<button type="button" class="close" onclick="removeByID('previous_image')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$detail['slide_image']; ?>" class="img-rounded" alt="" width="210">
+					<button type="button" class="close" onclick="removeByID('previous_image')"><i class="icon-feather-trash"></i></button>
+					<img src="<?php echo UPLOAD_HTTP_PATH.'slider/'.$detail['slide_image']; ?>" alt="" />
 					<input type="hidden" name="slide_image" value="<?php echo $detail['slide_image'];?>"/>
 				</div>
                 </div>

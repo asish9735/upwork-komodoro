@@ -1,17 +1,27 @@
 <style>
 .image-wrapper{
 	position: relative;
-    width: 210px;
+    width: 120px;
+}
+.image-wrapper > img{
+	border:1px solid #dfdfdf;
+	border-radius: 0.25rem;
+	max-width:100%;
 }
 .image-wrapper button.close{
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	padding: 5px;
-	background-color: black;
-	color: white;
-	z-index: 111;
-	opacity: .8;
+	font-weight: normal;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 3px 4px 3px;
+    background-color: #f00;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    font-size: 1rem;
+    opacity: 0.65;
+    text-shadow: none;
 }
 </style>
 
