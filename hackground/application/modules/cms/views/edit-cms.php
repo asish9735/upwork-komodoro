@@ -20,7 +20,7 @@
 
       <!-- Default box -->
 	  <div class="card">
-        <div class="card-header border-bottom-0">
+        <div class="card-header">
           <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
         </div>
        
@@ -28,7 +28,7 @@
         <form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
         <input type="hidden" name="ID" value="<?php echo $ID?>"/>	
 				<div class="form-group">
-                  <label for="content_slug">Content Slug</label>
+                  <label for="content_slug">Content slug</label>
                   <input type="text" class="form-control reset_field" id="content_slug" name="content_slug" autocomplete="off" value="<?php echo !empty($detail['content_slug']) ? $detail['content_slug'] : '';?>" readonly />
                 </div>
 				
@@ -50,17 +50,17 @@
 				<?php echo get_editor('content_'.$v);?>
 				
 				<div class="form-group">
-                  <label for="meta_title_<?php echo $v;?>">Meta Title (<?php echo $v;?>)</label>
+                  <label for="meta_title_<?php echo $v;?>">Meta title (<?php echo $v;?>)</label>
                   <input type="text" class="form-control reset_field" id="meta_title_<?php echo $v;?>" name="lang[meta_title][<?php echo $v; ?>]" autocomplete="off" value="<?php echo !empty($detail['lang']['meta_title'][$v]) ? $detail['lang']['meta_title'][$v] : '';?>" />
                 </div>
 				
 				<div class="form-group">
-                  <label for="meta_keys_<?php echo $v;?>">Meta Keys (<?php echo $v;?>)</label>
+                  <label for="meta_keys_<?php echo $v;?>">Meta keys (<?php echo $v;?>)</label>
                   <input type="text" class="form-control reset_field" id="meta_keys_<?php echo $v;?>" name="lang[meta_keys][<?php echo $v; ?>]" autocomplete="off" value="<?php echo !empty($detail['lang']['meta_keys'][$v]) ? $detail['lang']['meta_keys'][$v] : '';?>" />
                 </div>
 				
 				<div class="form-group">
-                  <label for="meta_dscr_<?php echo $v;?>">Meta Description (<?php echo $v;?>)</label>
+                  <label for="meta_dscr_<?php echo $v;?>">Meta description (<?php echo $v;?>)</label>
                   <textarea class="form-control reset_field" id="meta_dscr_<?php echo $v;?>" name="lang[meta_description][<?php echo $v; ?>]" autocomplete="off"><?php echo !empty($detail['lang']['meta_description'][$v]) ? $detail['lang']['meta_description'][$v] : '';?></textarea>
                 </div>
 				
@@ -93,7 +93,7 @@
               
 			  
 
-                <button type="submit" class="btn btn-site">Add</button>
+                <button type="submit" class="btn btn-site">Save</button>
       
         </form>
         </div>

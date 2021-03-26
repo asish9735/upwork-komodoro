@@ -9,21 +9,7 @@ $logo=getMemberLogo($member_id);
 ?>
 
 <style>
-.panel {
-    background-color: #fff;
-}
-.panel-header {
-    border-bottom: 1px solid #ddd;
-    padding: 1rem 1.333rem;
-}
-.card-header > h3, .card-header > h4, .panel-header > h3, .panel-header > h4 {
-    margin-bottom: 0;
-}
-.panel-body {
-    padding: 1.333rem;
-}
 .boxed-list {
-    margin-top: 10px;
     display: block;
 }
 .boxed-list ul.boxed-list-ul {
@@ -78,99 +64,96 @@ $logo=getMemberLogo($member_id);
 	
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-		<div class="box">
-			<div class="box-header with-border">
-			  <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-			</div>
        
-			<div class="box-body table-responsive no-padding" id="main_table">
-				 <!-- content area -->
-				 <div class="panel mb-4">
-				  <div class="panel-header">
-					<h4 class="panel-title"><i class="icon-feather-file-text text-site"></i> Cover Letter </h4>
-				  </div>
-				  <div class="panel-body">
-					<ec id="profile-overview-data">
-					  <?php D(ucfirst(nl2br($proposaldetails['proposal']->bid_details)))?>
-					</ec>
-				  </div>
-				</div>
-			<?php if($is_hourly){}else{
-					if($proposaldetails['proposal']->bid_by_project!=1){
-						if($proposaldetails['proposal']->project_bid_milestones){
-						?>
-			<div class="panel mb-4">
-			  <div class="panel-header">
-				<h4 class="panel-title"><i class="icon-material-outline-account-balance-wallet text-site"></i> Milestone </h4>
-			  </div>
-			  <div class="boxed-list">
-				<ul class="boxed-list-ul">
-				  <?php foreach($proposaldetails['proposal']->project_bid_milestones as $k=>$val){?>
-				  <li class="milestone-contain">
-					<div class="boxed-list-item"> 
-					  <!-- Content -->
-					  <div class="item-content">
-						<h4><?php echo ucfirst($val->bid_milestone_title);?></h4>
-						<div class="item-details margin-top-7">
-						  <div class="detail-item"><i class="icon-material-outline-account-balance-wallet"></i> Amount: <?php echo priceSymbol().priceFormat($val->bid_milestone_amount);?></div>
-						  <div class="detail-item"><i class="icon-material-outline-date-range"></i> Due date: <?php echo $val->bid_milestone_due_date;?></div>
-						</div>
-					  </div>
-					</div>
-				  </li>
-				  <?php }?>
-				</ul>
-			  </div>
-			</div>
-			<?php }}}?>
-			<?php if($proposaldetails['project_question']){?>
-			<div class="panel mb-4">
-			  <div class="panel-header">
-				<h4 class="panel-title"><i class="icon-line-awesome-question-circle text-site"></i> Question </h4>
-			  </div>
-			  <div class="panel-body">
-				<?php
-					foreach($proposaldetails['project_question'] as $k=>$val){
-					?>
-				<div class="form-group">
-				  <label><b><?php echo $k+1;?>. <?php echo $val->question_title;?></b></label>
-				  <p><?php echo $val->question_answer;?></p>
-				</div>
-				<?php		
-						}
-					?>
-			  </div>
-			</div>
-			<?php }?>
-			<?php if($proposaldetails['proposal']->bid_attachment){?>
-			<div class="panel mb-4">
-			  <div class="panel-header">
-				<h4 class="panel-title"><i class="icon-material-outline-account-circle text-site"></i> Attachments </h4>
-			  </div>
-			  <div class="panel-body">
-					<div class="attachments-container">
-					  <?php
-						$attachments=json_decode($proposaldetails['proposal']->bid_attachment);
-						foreach($attachments as $k=>$val){
-							if($val->file && file_exists(UPLOAD_PATH.'projects-files/projects-applications/'.$val->file)){
-								$path_parts = pathinfo($val->name);
-						?>
-					  <a href="<?php echo UPLOAD_HTTP_PATH.'projects-files/projects-applications/'.$val->file;?>" target="_blank" class="attachment-box "><span><?php echo $path_parts['filename'];?></span><i><?php echo strtoupper($path_parts['extension']);?></i></a>
-					  <?php
-							}	
-						}
-						?>
-					</div>
-					  </div>
-			</div>
-			<?php } ?>
-			</div>
-		 <!-- /.box-body -->
-		</div>
+        <div id="main_table">
+             <!-- content area -->
+             <div class="card mb-4">
+              <div class="card-header">
+                <h4 class="card-title"><i class="icon-feather-file-text text-site"></i> Cover Letter </h4>
+              </div>
+              <div class="card-body">
+                <ec id="profile-overview-data">
+                  <?php D(ucfirst(nl2br($proposaldetails['proposal']->bid_details)))?>
+                </ec>
+              </div>
+            </div>
+        <?php if($is_hourly){}else{
+		if($proposaldetails['proposal']->bid_by_project!=1){
+			if($proposaldetails['proposal']->project_bid_milestones){
+		?>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4 class="card-title"><i class="icon-material-outline-account-balance-wallet text-site"></i> Milestone </h4>
+          </div>
+          <div class="boxed-list">
+            <ul class="boxed-list-ul">
+              <?php foreach($proposaldetails['proposal']->project_bid_milestones as $k=>$val){?>
+              <li class="milestone-contain">
+                <div class="boxed-list-item"> 
+                  <!-- Content -->
+                  <div class="item-content">
+                    <h4><?php echo ucfirst($val->bid_milestone_title);?></h4>
+                    <div class="item-details margin-top-7">
+                      <div class="detail-item"><i class="icon-material-outline-account-balance-wallet"></i> Amount: <?php echo priceSymbol().priceFormat($val->bid_milestone_amount);?></div>
+                      <div class="detail-item"><i class="icon-material-outline-date-range"></i> Due date: <?php echo $val->bid_milestone_due_date;?></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <?php }?>
+            </ul>
+          </div>
+        </div>
+        <?php }}}?>
+        <?php if($proposaldetails['project_question']){?>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4 class="card-title"><i class="icon-line-awesome-question-circle text-site"></i> Question </h4>
+          </div>
+          <div class="card-body">
+            <?php
+                foreach($proposaldetails['project_question'] as $k=>$val){
+                ?>
+            <div class="form-group">
+              <label><b><?php echo $k+1;?>. <?php echo $val->question_title;?></b></label>
+              <p><?php echo $val->question_answer;?></p>
+            </div>
+            <?php		
+                    }
+                ?>
+          </div>
+        </div>
+        <?php }?>
+        <?php if($proposaldetails['proposal']->bid_attachment){?>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4 class="card-title"><i class="icon-feather-paperclip text-site"></i> Attachments </h4>
+          </div>
+          <div class="card-body">
+                <div class="attachments-container">
+                  <?php
+                    $attachments=json_decode($proposaldetails['proposal']->bid_attachment);
+                    foreach($attachments as $k=>$val){
+                        if($val->file && file_exists(UPLOAD_PATH.'projects-files/projects-applications/'.$val->file)){
+                            $path_parts = pathinfo($val->name);
+                    ?>
+                  <a href="<?php echo UPLOAD_HTTP_PATH.'projects-files/projects-applications/'.$val->file;?>" target="_blank" class="attachment-box "><span><?php echo $path_parts['filename'];?></span><i><?php echo strtoupper($path_parts['extension']);?></i></a>
+                  <?php
+                        }	
+                    }
+                    ?>
+                </div>
+                  </div>
+        </div>
+        <?php } ?>
+        </div>
+		
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
+<script>
+$(document).ready(function(){
+init_plugin();
+});
+</script>  

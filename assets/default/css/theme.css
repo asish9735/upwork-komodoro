@@ -4608,6 +4608,7 @@ width: calc(100%);
 img.flag {
 	border-radius: 3px;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+	height:16px;
 }
 .freelancer-name img.flag {
 	height: 15px;	
@@ -9770,12 +9771,11 @@ max-width: 100%;
 	margin: 0 0 1rem 0;
 }
 .account-type div {
-	/*flex: 1;*/
+	flex: 1;
 	margin-right: 15px;
 }
 .account-type label {
-	border-radius: 20px;
-	border: 1px solid #47bb67;	
+	border-bottom: 1px solid #999;	
 	margin-bottom: 0;
 	width: 100%;
 	/*background-color: #f2f2f2;
@@ -9794,24 +9794,26 @@ max-width: 100%;
 }
  .account-type input.account-type-radio:empty ~ label {
 	position: relative;
-    padding: 5px 12px;
+    padding: 6px 12px;
     text-align: center;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: #47bb67;
+    color: #777;
     transition: 0.4s;
     overflow: hidden;    
 }
  .account-type input.account-type-radio ~ label:hover {
  color: #289c41;
  background-color: #e4f6e9;
+ border-bottom-color: #47bb67;
 }
  .account-type input.account-type-radio:checked ~ label {
  color: #fff;
  background-color: #47bb67;
+ border-bottom-color: #47bb67;
 }
  .account-type input.account-type-radio:empty ~ label:after, .account-type input.account-type-radio:empty ~ label:before {
  position: absolute;
@@ -13274,13 +13276,12 @@ width: 17px;
 	border-radius: 0.25rem;
 	flex: auto;
 	flex-grow: 0;
-	height: 44px;
+	height: 40px;
 	text-align: center;
 	align-self: center;
-	padding: 0 25px;
+	padding: 0 1rem;
 }
 .message-reply i {
-	font-size:24px;
 	padding: 0;
 	margin: 0;
 }

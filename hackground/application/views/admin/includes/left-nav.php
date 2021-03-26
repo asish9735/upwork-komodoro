@@ -18,11 +18,10 @@ $admin_notification_count = $this->admin_notification_model->getUnreadCount();
       <!-- Sidebar user panel -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo ADMIN_IMAGES;?>avatar5.png" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo ADMIN_IMAGES;?>avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="info">
-          <p><?php echo $admin_detail['full_name']; ?></p>
-          <h6><small><i class="fa fa-circle text-success"></i> Online</small></h6>
+          <p class="mb-0"><?php echo $admin_detail['full_name']; ?></p>
         </div>
       </div>
       
@@ -76,16 +75,16 @@ $admin_notification_count = $this->admin_notification_model->getUnreadCount();
 			}
 		}
 		?>
-		<li class="nav-item <?php echo $isactive; ?>">
-          <a href="#" class="nav-link">
-            <i class="<?php echo $icon_class; ?>"></i> <span><?php echo $v['name'];?></span>
-           
-            <i class="fa fa-angle-right right"></i>
-            
+		<li class="nav-item">
+          <a href="#" class="nav-link <?php echo $isactive; ?>">
+            <i class="<?php echo $icon_class; ?>"></i>
+            <span><?php echo $v['name'];?></span>           
+            <i class="icon-line-awesome-angle-right right"></i>            
           </a>
           <ul class="nav nav-treeview">
 			<?php if($childs){foreach($childs as $key => $child){ ?>
-            <li class="nav-item"><a href="<?php echo base_url($child['url']);?>" class="nav-link <?php echo ($uri_segment == $child['url']) ? 'active' : '';?>"><?php echo $child['name']; ?></a></li>
+            <li class="nav-item">
+            <a href="<?php echo base_url($child['url']);?>" class="nav-link <?php echo ($uri_segment == $child['url']) ? 'active' : '';?>"><i class="icon-line-awesome-check"></i> <?php echo $child['name']; ?></a></li>
 			<?php } } ?>
           </ul>
         </li>

@@ -46,9 +46,9 @@
 </div>
 
 <template id="image_upload_template">
-<div class="image-wrapper" id="{IMAGE_ID}">
-	<button type="button" class="close" onclick="removeByID('{IMAGE_ID}')"><span aria-hidden="true">&times;</span></button>
-	<img src="{IMAGE_SRC}" class="img-rounded" alt="" width="210">
+<div class="image-wrapper" id="{IMAGE_ID}" style="width:64px;">
+	<button type="button" class="close" onclick="removeByID('{IMAGE_ID}')"><i class="icon-feather-trash"></i></button>
+	<img src="{IMAGE_SRC}" alt="" />
 	<input type="hidden" name="<?php echo $input_name; ?>" value="{FILENAME}"/>
 </div>
 </template>

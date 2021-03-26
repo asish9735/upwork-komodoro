@@ -63,7 +63,7 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 <section class="content-header">
   <div class="row">
 	<div class="col-sm-3">
-		<a href="javascript:void(0)" onclick="toggleAdvanceSearch()" class="btn btn-box-tool" style="font-size: 15px; font-weight: bold;">Advance Search &nbsp; <i class="fa fa-search-plus <?php echo ICON_SIZE;?>"></i></a>
+		<a href="javascript:void(0)" onclick="toggleAdvanceSearch()" class="btn btn-box-tool" style="font-size: 1rem;">Advance Search &nbsp; <i class="icon-feather-zoom-in <?php echo ICON_SIZE;?>"></i></a>
 	</div>
 	<div class="offset-sm-5 col-sm-4">
 		<div class="input-group">
@@ -79,17 +79,25 @@ if(in_array($url_segment, $similar_search_module)){ ?>
   <div class="advance-search-panel" style="<?php echo !empty($srch['panel_open']) ? '' : 'display:none;';?>">
   
 	<?php if($url_segment == 'buyer_request/list_record'){ ?>
-	<a href="<?php echo base_url('buyer_request/list_record?panel_open=1'); ?>">All</a> /
-	<a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_ACTIVE.'&panel_open=1'); ?>">Active</a> /
-	<a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_PENDING.'&panel_open=1'); ?>">Pending</a> /
-	<a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_UNAPPROVED.'&panel_open=1'); ?>">Declined</a> /
-	<a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_PAUSED.'&panel_open=1'); ?>">Paused</a> 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo base_url('buyer_request/list_record?panel_open=1'); ?>">All</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_ACTIVE.'&panel_open=1'); ?>">Active</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_PENDING.'&panel_open=1'); ?>">Pending</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_UNAPPROVED.'&panel_open=1'); ?>">Declined</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('buyer_request/list_record?status='.REQUEST_PAUSED.'&panel_open=1'); ?>">Paused</a></li>
+        </ol>
+    </nav>
 	<?php } ?>
-	
+    
 	<?php if($url_segment == 'member/list_record'){ ?>
-	<a href="<?php echo base_url('member/list_record?panel_open=1'); ?>">All</a> /
-	<a href="<?php echo base_url('member/list_record?u_type=freelancer&panel_open=1'); ?>">Freelancer</a> /
-	<a href="<?php echo base_url('member/list_record?u_type=employer&panel_open=1'); ?>">Employer</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo base_url('member/list_record?panel_open=1'); ?>">All</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('member/list_record?u_type=freelancer&panel_open=1'); ?>">Freelancer</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('member/list_record?u_type=employer&panel_open=1'); ?>">Employer</a></li>
+    	</ol>
+    </nav>
 	<?php } ?>
 	
 	<?php if($url_segment == 'proposal/list_record'){
@@ -109,15 +117,17 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 		</div>
 	</div>
 	
-	
-			<a href="<?php echo base_url('proposal/list_record?panel_open=1'); ?>">All</a> /
-			<a href="<?php echo base_url('proposal/list_record?status='.PROJECT_OPEN.'&panel_open=1'); ?>">Open</a> /
-			<a href="<?php echo base_url('proposal/list_record?status='.PROJECT_DRAFT.'&panel_open=1'); ?>">Draft</a> /
-			<a href="<?php echo base_url('proposal/list_record?status='.PROJECT_HIRED.'&panel_open=1'); ?>">Hired</a> /
-			<a href="<?php echo base_url('proposal/list_record?status='.PROJECT_CLOSED.'&panel_open=1'); ?>">Closed</a> 
-			<span class="hide"><a href="<?php echo base_url('proposal/list_record?status='.PROJECT_DELETED.'&panel_open=1'); ?>">Deleted</a> </span>
-
-
+	<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+			<a href="<?php echo base_url('proposal/list_record?panel_open=1'); ?>">All</a></li>
+			<li class="breadcrumb-item"><a href="<?php echo base_url('proposal/list_record?status='.PROJECT_OPEN.'&panel_open=1'); ?>">Open</a></li>
+			<li class="breadcrumb-item"><a href="<?php echo base_url('proposal/list_record?status='.PROJECT_DRAFT.'&panel_open=1'); ?>">Draft</a></li>
+			<li class="breadcrumb-item"><a href="<?php echo base_url('proposal/list_record?status='.PROJECT_HIRED.'&panel_open=1'); ?>">Hired</a></li>
+			<li class="breadcrumb-item"><a href="<?php echo base_url('proposal/list_record?status='.PROJECT_CLOSED.'&panel_open=1'); ?>">Closed</a></li>
+			<?php /*?><li class="breadcrumb-item"><a href="<?php echo base_url('proposal/list_record?status='.PROJECT_DELETED.'&panel_open=1'); ?>">Deleted</a></li><?php */?>
+		</ol>
+	</nav>
 	
 	<?php } ?>
 	

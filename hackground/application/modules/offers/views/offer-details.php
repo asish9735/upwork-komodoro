@@ -24,7 +24,6 @@ if($is_owner){
       <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
 	  </div>
       <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
@@ -38,25 +37,14 @@ if($is_owner){
     <section class="content">
 
       <!-- Default box -->
-      <div class="card">
-        <div class="card-header border-bottom-0">
-          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
-        </div>
-       
-		<div class="card-body table-responsive p-0" id="main_table">
+      
             <!-- content area --> 
 			
 			<div class="dashboard-content-container">
-				<div class="dashboard-content-inner" >		
-					<!--<div class="dashboard-headline">
-						<h3>My Favourite</h3>				
-					</div>-->
-					
-					<div class="container">
-						<h1><?php echo $contractDetails->contract_title;?></h1>
-						<div class="row">
-						<div class="col-lg-9">
-						
+				<div class="dashboard-content-inner">
+                  
+					<div id="main_table">		
+																	
 						<?php 
 						if($contractDetails->contract_status==0){
 							if($current_member!=$contractDetails->offer_by){ /*
@@ -70,28 +58,28 @@ if($is_owner){
 						?>
 						<div class="mx-auto alert alert-success text-center">
 						<p class="mb-0"> <i class="icon-material-outline-check-circle text-success"></i> Offer Accepted. </p>
-					</div>
+						</div>
 						<?php	
 						}elseif($contractDetails->contract_status==2){
 						?>
 						<div class="mx-auto alert alert-warning text-center">
 						<p class="mb-0"> <i class="icon-material-outline-check-circle text-danger"></i> Offer Rejected</p>
-					</div>
+						</div>
 						<?php	
 						}?>
-						<div class="panel mb-4">
-						<div class="panel-header"><h4>Details</h4></div>
-						<div class="panel-body">
+						<div class="card mb-4">
+						<div class="card-header"><h4><?php echo $contractDetails->contract_title;?></h4></div>
+						<div class="card-body">
 						<?php if($contractDetails->contract_details){?>
 						<p><?php echo nl2br($contractDetails->contract_details);?></p>
 						<?php }?>
-						<p>Job: <a href="<?php echo $ProjectDetailsURL;?>" target="_blank"><?php echo $contractDetails->project_title;?></a></p>
+						<p>Title: <a href="<?php echo $ProjectDetailsURL;?>" target="_blank"><?php echo $contractDetails->project_title;?></a></p>
 						</div>
 						</div>
 						<?php if($contractDetails->is_hourly){?>
-						<div class="panel mb-4">
-						<div class="panel-header relative"><h4>Term </h4></div>	
-						<div class="panel-body">
+						<div class="card mb-4">
+						<div class="card-header relative"><h4>Term </h4></div>	
+						<div class="card-body">
 						<p><b>Hourly Rate:</b> <?php echo $currency.$contractDetails->contract_amount;?> /hr</p>
 						<p><b>Max Limit:</b> <?php if($contractDetails->max_hour_limit){echo round($contractDetails->max_hour_limit).' hr/week';}else{echo 'No limit';}?></p>
 						<p><b>Allow Manual Hour:</b> <?php if($contractDetails->allow_manual_hour){echo 'Yes';}else{echo 'No';}?></p>
@@ -99,9 +87,9 @@ if($is_owner){
 						
 						</div>	
 						<?php }else{?>
-						<div class="panel mb-4">
-						<div class="panel-header relative"><h4>Milestone (<?php echo count($contractDetails->milestone);?>)</h4> <a href="javascript:void(0)" onclick="showMilestone()" class="toggleUD milestoneToggle"><i class="icon-feather-chevron-down"></i></a></div>
-						<div class="panel-body" id="milestone" style="display:none">
+						<div class="card mb-4">
+						<div class="card-header relative"><h4>Milestone (<?php echo count($contractDetails->milestone);?>)</h4> <a href="javascript:void(0)" onclick="showMilestone()" class="toggleUD milestoneToggle"><i class="icon-feather-chevron-down"></i></a></div>
+						<div class="card-body" id="milestone" style="display:none">
 						<ul class="list-group ">
 						<?php if($contractDetails->milestone){
 							foreach($contractDetails->milestone as $m=>$milestone){
@@ -125,9 +113,9 @@ if($is_owner){
 					</div>
 						<?php }?>
 					<?php if($contractDetails->contract_attachment){?>
-					<div class="panel mb-4">
-						<div class="panel-header relative"><h4>Attachment</h4><a href="javascript:void(0)" onclick="showAttach()" class="toggleUD attachmentToggle"><i class="icon-feather-chevron-down"></i></a></div>
-						<div class="panel-body" id="attachment" style="display:none">
+					<div class="card mb-4">
+						<div class="card-header relative"><h4>Attachment</h4><a href="javascript:void(0)" onclick="showAttach()" class="toggleUD attachmentToggle"><i class="icon-feather-chevron-down"></i></a></div>
+						<div class="card-body" id="attachment" style="display:none">
 						<div class="attachments-container">
 						  <?php
 							$attachments=json_decode($contractDetails->contract_attachment);
@@ -144,15 +132,10 @@ if($is_owner){
 						</div>
 						</div>	
 						<?php }?>
-						
-						</div>
-						
-						</div>
-					</div>
-					
+												
 
 				</div>
-			</div>
+			
 	
         </div>
 		 <!-- /.box-body -->

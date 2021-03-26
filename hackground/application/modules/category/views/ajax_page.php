@@ -134,7 +134,7 @@ function onsuccess(res){
 				<div class="form-group">
                   <label>Previous Image </label>
                   <div class="image-wrapper" id="previous_category_background">
-					<button type="button" class="close" onclick="removeByID('previous_category_background')"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" onclick="removeByID('previous_category_background')"><i class="icon-feather-trash"></i></button>
 					<img src="<?php echo UPLOAD_HTTP_PATH.'category_icons/banner/'.$detail['category_background']; ?>" class="img-rounded" alt="" width="210">
 					<input type="hidden" name="category_background" value="<?php echo $detail['category_background'];?>"/>
 				</div>
@@ -146,9 +146,9 @@ function onsuccess(res){
 				<?php if(!empty($detail['category_thumb']) && file_exists(LC_PATH.'category_icons/thumb/'.$detail['category_thumb'])){ ?>
 				<div class="form-group">
                   <label class="form-label">Previous Image </label>
-                  <div class="image-wrapper" id="previous_category_thumb">
-					<button type="button" class="close" onclick="removeByID('previous_category_thumb')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo UPLOAD_HTTP_PATH.'category_icons/thumb/'.$detail['category_thumb']; ?>" class="img-rounded" alt="" width="210">
+                  <div class="image-wrapper" id="previous_category_thumb" style="width:64px;">
+					<button type="button" class="close" onclick="removeByID('previous_category_thumb')"><i class="icon-feather-trash"></i></button>
+					<img src="<?php echo UPLOAD_HTTP_PATH.'category_icons/thumb/'.$detail['category_thumb']; ?>" alt="" />
 					<input type="hidden" name="category_thumb" value="<?php echo $detail['category_thumb'];?>"/>
 				</div>
                 </div>
@@ -165,9 +165,9 @@ function onsuccess(res){
 				<?php if(!empty($detail['category_icon']) && file_exists(LC_PATH.'category_icons/'.$detail['category_icon'])){ ?>
 				<div class="form-group">
                   <label class="form-label">Previous Image </label>
-                  <div class="image-wrapper" id="previous_category_icon">
-					<button type="button" class="close" onclick="removeByID('previous_category_icon')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo UPLOAD_HTTP_PATH.'category_icons/'.$detail['category_icon']; ?>" class="img-rounded" alt="" width="210">
+                  <div class="image-wrapper" id="previous_category_icon" style="width:64px;">
+					<button type="button" class="close" onclick="removeByID('previous_category_icon')"><i class="icon-feather-trash"></i></button>
+					<img src="<?php echo UPLOAD_HTTP_PATH.'category_icons/'.$detail['category_icon']; ?>" alt="" />
 					<input type="hidden" name="category_icon" value="<?php echo $detail['category_icon'];?>"/>
 				</div>
                 </div>

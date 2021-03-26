@@ -370,7 +370,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 h2, .h2 {
@@ -378,19 +378,19 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: 1.75rem;
-}
-
-h4, .h4 {
   font-size: 1.5rem;
 }
 
-h5, .h5 {
+h4, .h4 {
   font-size: 1.25rem;
 }
 
-h6, .h6 {
+h5, .h5 {
   font-size: 1rem;
+}
+
+h6, .h6 {
+  font-size: 0.85rem;
 }
 
 .lead {
@@ -14295,7 +14295,7 @@ body.text-sm .control-sidebar {
 }
 
 label:not(.form-check-label):not(.custom-file-label) {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .warning-feedback {
@@ -19151,8 +19151,8 @@ html.maximized-card {
 
 .card-title {
   float: left;
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 500;
   margin: 0;
 }
 

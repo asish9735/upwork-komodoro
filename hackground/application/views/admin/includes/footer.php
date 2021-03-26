@@ -1,10 +1,7 @@
+<!--<div class="footer-spacer"></div>-->
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; <?php echo date('Y');?> All rights</strong>
-    reserved.
-  </footer>
+	Copyright &copy; <?php echo date('Y');?> All rights reserved.
+</footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -201,6 +198,7 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+
 <!-- ./wrapper -->
 <?php /*?><!--<script src="<?php echo ADMIN_COMPONENT;?>bootstrap/js/jquery-3.3.1.slim.min.js"></script>-->
 <script src="<?php echo ADMIN_COMPONENT;?>bootstrap/js/popper.min.js" type="text/javascript"></script>

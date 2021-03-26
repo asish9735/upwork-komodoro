@@ -1,5 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
+:root {
+ --siteColor: #64be43;
+ --webColor: #333;
+}
 html{
  font-size: 15px
  }
@@ -10,14 +14,16 @@ html{
 	height:100%
 }
 body {
+	background-color: #f4f6f9;
 	overflow-x:hidden;
-	overflow-y:auto
+	overflow-y:hidden;
 }
 .wrapper {
 	height:100%;
-	position:relative;
+	position:inherit;
 	overflow-x:hidden;
-	overflow-y:auto
+	overflow-y:auto;
+	padding-top: 53px;
 }
 .wrapper:before, .wrapper:after {
 	content:" ";
@@ -75,12 +81,18 @@ transform:translate(230px, 0)
 .content-wrapper {
 	height: auto;
 	padding: 1.25rem;
+	padding-bottom: 60px;
+	overflow-y:auto;
 }
 .main-footer {
+	position: absolute;
+    width: 100%;
+    bottom: 0;
 	background:#fff;
 	padding:15px;
 	color:#444;
-	border-top:1px solid #d2d6de
+	border-top:1px solid #d2d6de;
+    height: 53px;
 }
 .fixed .main-header, .fixed .main-sidebar, .fixed .left-side {
 	position:fixed
@@ -121,6 +133,9 @@ a:hover, a:active, a:focus {
 	outline:none;
 	text-decoration:none;
 	color:#37bf00;
+}
+.btn-sm, .btn-group-sm > .btn{
+	font-size:1rem
 }
 .page-header {
 	margin:10px 0 20px 0;
@@ -556,6 +571,9 @@ margin-left:0
 .sidebar-menu, .main-sidebar .user-panel, .sidebar-menu>li.header {
 	white-space:nowrap;
 	overflow:hidden
+}
+.main-sidebar .user-panel{
+	align-items: center;
 }
 .sidebar-menu:hover {
 	overflow:visible
@@ -4812,12 +4830,21 @@ ul, ol, li {
 	padding:0
 }
 .btn-site {
-	background-color:#64be43;
+	background-color: var(--siteColor);
 	color:#fff
 }
-.btn-site:hover {
+.btn-site:hover, .btn-site:focus {
 	background-color:#37bf00;
 	color:#fff
+}
+.btn-outline-site {
+	border:1px solid var(--siteColor);
+	color: var(--siteColor);
+}
+.btn-outline-site:hover, .btn-outline-site:focus {
+	border-color: var(--siteColor);
+	background-color: var(--siteColor);
+	color: #fff;
 }
 .hidden {
 	display:none !important
@@ -5037,15 +5064,6 @@ label, legend {
     z-index: 100;
     opacity: 0;
 }
-.btn-outline-site {
-	border:1px solid #40de00;
-	color: #40de00;
-}
-.btn-outline-site:hover {
-	border-color: #40de00;
-	background-color: #40de00;
-	color: #fff;
-}
 .card-header.border-bottom-0{
 	align-items: center;
 	display: flex;
@@ -5138,20 +5156,120 @@ label, legend {
 	margin-right: 0;
 }
 
+.footer-spacer{
+	padding-top: 53px;
+}
+.nav-sidebar .nav-item > .nav-link {
+    font-weight: 500;
+}
+.nav-sidebar .nav-pills > .nav-item > .nav-link > i{
+    font-size: 1.125rem;
+}
+.section_block_row{
+	border-bottom:1px solid #dfdfdf;
+	padding-bottom:1rem;
+	margin:1.5rem 0;
+	position:relative
+}
+.block_type_section_child_row{
+	border:1px solid #dfdfdf;
+    border-radius: 0.25rem;
+	margin-bottom:1.5rem;
+	padding: 1rem;
+	position:relative
+}
+.section_block_row:last-child{
+	border-bottom:none;
+	margin-bottom:0;
+}
+.form-group:last-child{
+	margin-bottom:0;
+}
+.btn-ico{    
+    position: absolute;
+    right: -1rem;
+    top: -0.75rem;
+}
+.btn-circle{
+	color: #fff;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 0;
+	width: 2rem;
+}
+.text-help{
+	color:#777;
+	font-size:0.85rem;
+	font-style:italic;
+}
+.card-header > h3, .card-header > h4, .card-header > h3, .card-header > h4 {
+    margin-bottom: 0;
+}
+.toggleUD {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 12px;
+    right: 1.25rem;
+    line-height: 0;
+}
+.toggleUD.active {
+    transform: rotate(180deg) translate(0, 0px);
+}
+.relative {
+    position: relative;
+}
+.message-image{
+	border-radius:50%;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ul.totalList > li:last-child{
+	border:none;
+}
+.panel {
+    background-color: #fff;
+}
+.panel-body {
+    padding: 1.333rem;
+}
+ul.totalList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* align-items: center; */
+    align-content: center;
+    text-align: center;
+    background-color: #fff;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+ul.totalList > li {
+    flex: 1;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: -1px;
+    padding: 1rem;
+}
+ul.totalList > li > span {
+    display: block;
+    margin-top: 0.5rem;
+}
+.panel-header {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 1.333rem;
+}
+.number {
+    position: absolute;
+    left: 1.25rem;
+    top: 0.75rem;
+}
+.milestone-item {
+    padding-left: 1.25rem;
+}
 
 
 

@@ -34,7 +34,8 @@
                 <tbody>
 				<tr>					
                   <th>ID</th>
-                  <th style="width:28%">Name</th>
+                  <th style="width:20%">Name</th>
+                  <th style="width:8%">User</th>
                   <th style="width:20%">Email</th>
                   <th style="width:12%" class="text-center">Verification</th>
                   <th style="width:20%">Registered On</th>
@@ -90,7 +91,8 @@
 				<tr>
 					
                   <td><?php echo $v[$primary_key]; ?></td>
-                  <td><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['member_name']; ?> <?php echo $user_tag; ?></td>
+                  <td><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['member_name']; ?></td>
+                  <td><?php echo $user_tag; ?></td>
                   <td><?php echo $v['access_user_email']; ?></td>
                   <td class="text-center">
 					<i class="icon-feather-mail <?php echo ICON_SIZE;?> <?php echo $email_ver_class; ?>" data-toggle="tooltip" title="<?php echo $email_ver_txt;?>"></i>

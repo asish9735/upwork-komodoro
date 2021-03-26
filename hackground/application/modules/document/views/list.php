@@ -86,7 +86,7 @@
                   
                   ?></td>
                   
-                  <td><?php echo date('d M,Y h:i A', strtotime($v['document_date'])); ?></td>
+                  <td><?php echo date('d M, Y h:i A', strtotime($v['document_date'])); ?></td>
                   <td><?php echo $status; ?></td>
                   <td class="text-right" style="padding-right:15px;">
                   	<div class="dropdown">

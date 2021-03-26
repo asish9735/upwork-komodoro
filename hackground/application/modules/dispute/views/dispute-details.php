@@ -20,59 +20,7 @@ $ProjectDetailsURL='#';
 $offer_details_url='#';
 $application_link='#';
 ?>
-<style>
-.panel {
-    background-color: #fff;
-}
-.panel-body {
-    padding: 1.333rem;
-}
-ul.totalList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    /* align-items: center; */
-    align-content: center;
-    text-align: center;
-    background-color: #fff;
-    margin-bottom: 0;
-    overflow: hidden;
-}
-ul.totalList > li {
-    flex: 1;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: -1px;
-    padding: 1rem;
-}
-ul.totalList > li > span {
-    display: block;
-    margin-top: 0.5rem;
-}
-.relative {
-    position: relative;
-}
 
-.panel-header {
-    border-bottom: 1px solid #ddd;
-    padding: 1rem 1.333rem;
-}
-.toggleUD {
-    font-size: 2rem;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    line-height: 0;
-}
-.number {
-    position: absolute;
-    left: 1.25rem;
-    top: 0.75rem;
-}
-.milestone-item {
-    padding-left: 1.25rem;
-}
-</style>
 <div class="content-wrapper">
 <section class="content-header">
       <h1>
@@ -84,8 +32,8 @@ ul.totalList > li > span {
 	
 <section class="content">
 <div class="">
-        <h1>Contract: <?php echo $contractDetails->contract_title;?> <a href="<?php echo base_url('offers/contracts')?>?contract_id=<?php echo $contractDetails->contract_id;?>" target="_blank"><i class="icon-feather-external-link"></i></a></h1>
-        <h2>Milestone: <?php echo $contractDetails->milestone_title;?></h2>
+        <h3>Contract: <?php echo $contractDetails->contract_title;?> <a href="<?php echo base_url('offers/contracts')?>?contract_id=<?php echo $contractDetails->contract_id;?>" target="_blank"><i class="icon-feather-external-link"></i></a></h3>
+        <h3>Milestone: <?php echo $contractDetails->milestone_title;?></h3>
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>">Submission</a> </li>
           <li class="nav-item"> <a class="nav-link " href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>

@@ -264,7 +264,7 @@ function browse_icon(){
                   <label for="add_more">Add more record</label>
 				</div>
               </div>
-                <button type="submit" class="btn-block btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-site">Add</button>
          
         </form>
 </div>

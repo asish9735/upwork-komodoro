@@ -53,17 +53,17 @@ class Dispute extends MX_Controller {
 	}
 	public function details($contract_milestone_id=''){
 		
-		$this->data['main_title'] = 'Offer';
-		$this->data['second_title'] = 'Offer';
-		$this->data['title'] = 'Offer';
+		$this->data['main_title'] = 'Dispute';
+		$this->data['second_title'] = 'Dispute Details';
+		$this->data['title'] = 'Dispute';
 		$breadcrumb = array(
 			array(
-				'name' => 'Offers',
-				'path' => base_url('offers/list_record'),
+				'name' => 'Dispute',
+				'path' => base_url('dispute/list_record'),
 			),
 			
 			array(
-				'name' => 'Offer Detail',
+				'name' => 'Dispute Details',
 				'path' => '',
 			),
 		);
@@ -137,17 +137,17 @@ class Dispute extends MX_Controller {
 	}
 	public function message($contract_milestone_id=''){
 		
-		$this->data['main_title'] = 'Offer';
-		$this->data['second_title'] = 'Offer';
-		$this->data['title'] = 'Offer';
+		$this->data['main_title'] = 'Dispute';
+		$this->data['second_title'] = 'Dispute Details';
+		$this->data['title'] = 'Dispute';
 		$breadcrumb = array(
 			array(
-				'name' => 'Offers',
-				'path' => base_url('offers/list_record'),
+				'name' => 'Dispute',
+				'path' => base_url('dispute/list_record'),
 			),
 			
 			array(
-				'name' => 'Offer Detail',
+				'name' => 'Dispute Details',
 				'path' => '',
 			),
 		);

@@ -42,7 +42,8 @@
                 <tbody>
 				<tr>
 				  <th style="width:5%">ID</th>
-                  <th style="width:35%">Name</th>
+                  <th style="width:25%">Name</th>
+                  <th style="width:10%">Type</th>
                   <th style="width:30%">User</th>
                   <th style="width:5%">Status</th>
                   <th class="text-right" style="padding-right:20px;">Action</th>
@@ -81,7 +82,8 @@
 				<tr>
 					
                   <td><?php echo $v[$primary_key]; ?></td>
-                  <td><?php echo $v['project_title']; ?> <?php echo $project_tag; ?></td>
+                  <td><?php echo $v['project_title']; ?></td>
+                  <td><?php echo $project_tag; ?></td>
                   <td><a href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['member_name']; ?></a> </td>
                   <td><?php echo $status; ?></td>
                   <td class="text-right" style="padding-right:15px;">
@@ -325,7 +327,6 @@ function init_event(){
 }
 
 $(function(){
-	
 	init_plugin(); /* global.js */
 	init_event();
 	

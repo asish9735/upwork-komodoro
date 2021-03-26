@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="input-with-icon-left">
         	<i class="icon-feather-map-pin"></i>       	                  
-            <select name="country" id="country" class="form-control selectpicker" title="Select Country" data-live-search="true">
+            <select name="country" id="country" class="selectpicker" title="Select Country" data-live-search="true">
             
                 <?php
                 if($country){

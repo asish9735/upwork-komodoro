@@ -116,16 +116,16 @@ function onsuccess(res){
 				<?php if(!empty($detail['icon_image']) && file_exists(UPLOAD_PATH.'badge-icons/'.$detail['icon_image'])){ ?>
 				<div class="form-group">
                   <label class="form-label">Previous Image </label>
-                  <div class="image-wrapper" id="previous_category_thumb">
-					<button type="button" class="close" onclick="removeByID('previous_category_thumb')"><span aria-hidden="true">&times;</span></button>
-					<img src="<?php echo UPLOAD_HTTP_PATH.'badge-icons/'.$detail['icon_image']; ?>" class="img-rounded" alt="" width="32">
+                  <div class="image-wrapper" id="previous_category_thumb" style="width:34px;">
+					<button type="button" class="close" onclick="removeByID('previous_category_thumb')"><i class="icon-feather-trash"></i></button>
+					<img src="<?php echo UPLOAD_HTTP_PATH.'badge-icons/'.$detail['icon_image']; ?>" alt="" width="32" />
 					<input type="hidden" name="icon_image" value="<?php echo $detail['icon_image'];?>"/>
 				</div>
                 </div>
 				<?php } ?>
 				
 				<?php $this->load->view('upload_file_component', array('input_name' => 'icon_image',  'label' => 'Icon Image',  'url' => base_url('badge/upload_file'))); ?>
-				<p>Note: Please upload 32 x 32 px</p>
+				<p class="text-help">Note: Please upload 32 x 32 px</p>
 				
 				<div class="form-group">
                   <label for="display_order" class="form-label">Display Order</label>
