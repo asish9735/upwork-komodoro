@@ -19,6 +19,9 @@ class Offer_model extends CI_Model{
 		if(!empty($srch['project_id'])){
 			$this->db->where('p_c.project_id', $srch['project_id']);
 		}
+		if(!empty($srch['contract_id'])){
+			$this->db->where('p_c.contract_id', $srch['contract_id']);
+		}
 		if(isset($srch['status']) && $srch['status'] != ''){
 			$this->db->where('p_c.contract_status', $srch['status']);
 		}

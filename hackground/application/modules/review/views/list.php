@@ -36,38 +36,43 @@
               <table class="table table-hover">
                 <tbody>
 				<tr>
-					<th style="width:3%">
+					<!-- <th style="width:3%">
 						
 						  <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
 							<label for="all_item"></label>
-					</th>
-                  <th style="width:10%">Order Number</th>
-                  <th style="width:20%">Buyer Name</th>
-                  <th style="width:20%">Proposal</th>
-                  <th style="width:20%">Review</th>
-                  <th style="width:5%">Rating</th>
-                  <th style="width:15%" class="text-center">Date</th>
+					</th> -->
+					<th style="width:5%">ID</th>
+                  <th style="width:25%">User</th>
+                  <th style="width:25%">Project/Contract</th>
+                  <th style="width:20%">Rating</th>
+                  <th style="width:10%" class="text-center">Date</th>
                   <th class="text-right" style="padding-right:20px;">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
-				
+				$logo_from = getMemberLogo($v['sender_id']);
+				$logo_to = getMemberLogo($v['receiver_id']);
 				
 				?>
 				<tr>
-					<td>
+					<!-- <td>
 						
 						<input type="checkbox" class="check_all magic-checkbox" name="ID[]" value="<?php echo $v['review_id']; ?>" id="item_<?php echo $v['review_id'];?>">
 						<label for="item_<?php echo $v['review_id'];?>"></label>
 						
-					</td>
-                  <td><?php echo $v['order_number']; ?></td>
-                  <td><?php echo $v['buyer_name']; ?></td>
-                  <td><?php echo $v['proposal_title']; ?></td>
-                  <td><?php echo $v['buyer_review']; ?></td>
-                  <td><?php echo $v['buyer_rating']; ?></td>
+					</td> -->
+				  <td><?php echo $v['review_id']; ?></td>
+                  <td>
+				  <p class="mb-0"><a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $v['sender_id']?>" target="_blank"><img src="<?php echo $logo_from;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['review_from']; ?></a></p>
+				  <p class="mb-0" style="padding-left: 10px;"><i class="icon-feather-arrow-down green"></i></p>
+				  <p class="mb-0"><a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $v['receiver_id']?>" target="_blank"><img src="<?php echo $logo_to;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /><?php echo $v['review_to']; ?></a></p>
+				  </td>
+                  <td>
+				  <?php echo $v['project_title']; ?> <a href="<?php echo base_url('proposal/list_record')?>?project_id=<?php echo $v['project_id']?>" target="_blank"><i class="icon-feather-external-link"></i></a><br>
+				  <?php echo $v['contract_title']; ?> <a href="<?php echo base_url('offers/contracts')?>?contract_id=<?php echo $v['contract_id']?>" target="_blank"><i class="icon-feather-external-link"></i></a></td>
+                  <td><div class="star-rating" data-rating="<?php echo $v['average_review'];?>"></div></td>
                  <td class="text-center"><?php echo format_date_time($v['review_date']); ?></td>
                   <td class="text-right" style="padding-right:20px;">
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v['review_id']; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" onclick="return view('<?php echo $v['review_id']; ?>', true)"data-toggle="tooltip" title="Details"><i class="icon-feather-eye green <?php echo ICON_SIZE;?>"></i></a>
 				 </td>
                 </tr>
 				<?php } }else{  ?>
@@ -105,7 +110,10 @@
 </div>
 
 <script>
-
+function view(id){
+	var url = '<?php echo base_url($curr_controller.'load_ajax_page?page=view');?>&id='+id;
+	load_ajax_modal(url);
+}
 function add(){
 	var url = '<?php echo base_url($curr_controller.'load_ajax_page?page='.$add_command);?>';
 	load_ajax_modal(url);
