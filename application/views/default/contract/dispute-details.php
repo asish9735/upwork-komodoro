@@ -35,6 +35,25 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
       
         <div class="row">
           <div class="col-lg-8">
+		  <?php 
+		  if($contractDetails->is_send_to_admin==1){
+			  if($contractDetails->dispute_status==1){
+		  ?>
+			<div class="text-center mb-2"><span class="status badge badge-success btn-block">Dispute closed by admin</span></div>
+			<ul class="totalList mb-3">
+                	<li><b>Total</b> <span ><?php echo $currency;?><?php echo $contractDetails->milestone_amount;?></span></li>
+                	<li><b>Commission</b> <span ><?php echo $currency;?><?php echo $contractDetails->commission_amount;?></span></li>
+                	<li><b>To Client</b> <span ><?php echo $currency;?><?php echo $contractDetails->owner_amount;?></span></li>
+                	<li><b>To Freelancer</b> <span ><?php echo $currency;?><?php echo $contractDetails->contractor_amount;?></span></li>
+            </ul>
+		<?php }else{ ?>
+			<div class="text-center mb-2"><span class="status badge badge-warning btn-block">Request sent to admin</span></div>
+			
+			<?php 
+			}
+		  }
+			?> 
+
           <?php if($contractDetails->submission){
           	$submission=$contractDetails->submission[0];
           	?>
@@ -79,9 +98,11 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                
                 
                   <?php if($submission->is_approved==0 && $submission->submitted_by!=$current_user_id){?>
+				  <?php if($contractDetails->is_send_to_admin==0){?>
                   <div class="text-center"><button class="btn btn-success btn-sm acceptbtn" data-sid="<?php echo $submission->submission_id;?>">Accept</button>&nbsp;
                   <button class="btn btn-primary btn-sm submit_offer" data-sid="<?php echo $submission->submission_id;?>">New Offer Request</button></div>
-                  <?php
+                  <?php 
+				  }
   					}
 					?>
                                              
@@ -128,9 +149,18 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
             	<?php }else{ ?>
              	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
             	<?php }?>
-                <?php if($contractDetails->dispute_status==0){?>
-                <a href="javascript:void(0)" class="btn btn-site submit_offer"><icon class="icon-material-outline-add"></icon> Submit Offer</a>
-                <?php }?>
+                <?php if($contractDetails->dispute_status==0){	
+				if($contractDetails->is_send_to_admin==0){
+				?>
+				<a href="javascript:void(0)" class="btn btn-site submit_offer"><icon class="icon-material-outline-add"></icon> Submit Offer</a>
+				<a href="javascript:void(0)" class="btn btn-dark  submit_send_to_admin"><icon class="icon-material-outline-account"></icon> Send to admin</a>
+                
+				<?php
+				}else{
+					echo '<span class="status badge badge-warning">Send to admin</span>';
+				}
+				?>
+				<?php }?>
                 </div> 
             </div>
             <div class="card">
@@ -356,6 +386,45 @@ var main = function(){
 	$('.submit_offer').click(function(){
 		$('#submit_offer_modal').modal('show');
 	});
+	$('.submit_send_to_admin').click(function(){
+		bootbox.confirm({
+			title:'Dispute Send To Admin',
+			message: 'After send to admin , admin will take decission',
+			buttons: {
+			'confirm': {
+				label: 'Confirm',
+				className: 'btn-site pull-right'
+				},
+			'cancel': {
+				label: 'Cancel',
+				className: 'btn-dark pull-left'
+				}
+			},
+			callback: function (result) {
+				if(result){
+					$.post("<?php echo get_link('disputeActionAjaxURL');?>",{'mid':m_id,'dis_id':dis_id,'action_type':'send_to_admin','sid':1}, function( msg ) {
+						if (msg['status'] == 'OK') {
+							bootbox.alert({
+								title:'Dispute Send To Admin',
+								message: '<?php D(__('dispute_send_to_admin_success_message','Request sent to admin succesfully'));?>',
+								buttons: {
+								'ok': {
+									label: 'Ok',
+									className: 'btn-site pull-right'
+									}
+								},
+								callback: function () {
+									location.reload();
+							    }
+							});
+						}
+					},'JSON'); 	
+				}
+			}
+		});
+
+	});
+
 	$('.acceptbtn').click(function(){
 		var buttonsection=$(this);
 		var sid=$(this).data('sid');

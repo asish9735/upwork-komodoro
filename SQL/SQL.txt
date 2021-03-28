@@ -721,3 +721,5 @@ ALTER TABLE `pref_conversations_message` ADD `reply_to` INT NULL AFTER `is_read`
 CREATE TABLE `pref_conversations_message_favorite` ( `message_id` INT NOT NULL , `member_id` INT NOT NULL ) ENGINE = InnoDB;
 ALTER TABLE `pref_conversations_message_favorite` ADD UNIQUE( `message_id`, `member_id`);
 CREATE TABLE `pref_conversations_message_edited` ( `mesage_id` INT NOT NULL , `message_org` TEXT NOT NULL , `edit_date` DATETIME NOT NULL , `edit_id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`edit_id`), INDEX (`mesage_id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+--------------
+ALTER TABLE `pref_project_contract_dispute` ADD `is_send_to_admin` BOOLEAN NOT NULL AFTER `contractor_amount`;

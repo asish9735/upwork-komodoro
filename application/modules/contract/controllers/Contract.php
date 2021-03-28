@@ -1573,7 +1573,7 @@ class Contract extends MX_Controller {
 				//$this->data['left_panel']=$this->layout->view('inc/client-setting-left',$this->data,TRUE,TRUE);
 			}
 			$this->data['contractDetails'] = getData(array(
-			'select'=>'p.project_id,p.project_url,c.contract_id,c.contract_title,o.member_id as owner_id,c.contractor_id,m.contract_milestone_id,m.milestone_title,m.milestone_amount,m.is_approved,m.milestone_due_date,m.approved_date,m.is_escrow,d.project_contract_dispute_id,d.dispute_status,d.project_contract_dispute_id,d.dispute_date,d.commission_amount,d.owner_amount,d.contractor_amount',
+			'select'=>'p.project_id,p.project_url,c.contract_id,c.contract_title,o.member_id as owner_id,c.contractor_id,m.contract_milestone_id,m.milestone_title,m.milestone_amount,m.is_approved,m.milestone_due_date,m.approved_date,m.is_escrow,d.project_contract_dispute_id,d.dispute_status,d.project_contract_dispute_id,d.dispute_date,d.commission_amount,d.owner_amount,d.contractor_amount,d.is_send_to_admin',
 			'table'=>'project_contract_milestone m',
 			'join'=>array(
 				array('table'=>'project_contract c', 'on'=>'m.contract_id=c.contract_id', 'position'=>'left'),
@@ -1865,7 +1865,7 @@ class Contract extends MX_Controller {
 				$contract_dispute_id_enc=post('dis_id');
 				$sid=post('sid');
 				$action_type=post('action_type');
-				if(!in_array($action_type,array('accept'))){
+				if(!in_array($action_type,array('accept','send_to_admin'))){
 					$msg['status'] = 'FAIL';
 	    			$msg['errors'][$i]['id'] = 'action_type';
 					$msg['errors'][$i]['message'] = 'invalid action';
@@ -1884,6 +1884,7 @@ class Contract extends MX_Controller {
 					'single_row'=>TRUE
 					));
 				if($this->data['contractDetails']){
+
 					
 					$contract_dispute_id=$this->data['contractDetails']->project_contract_dispute_id;
 					$contract_milestone_id=$this->data['contractDetails']->contract_milestone_id;
@@ -1991,6 +1992,45 @@ class Contract extends MX_Controller {
 						);			
 						
 						}
+
+					}elseif($action_type=='send_to_admin'){
+						updateTable('project_contract_dispute',array('is_send_to_admin'=>1),array('project_contract_dispute_id'=>$contract_dispute_id));
+						$projectDetails=getProjectDetails($project_id,array('project','project_owner'));
+						if($this->data['contractDetails']->owner_id==$this->member_id){
+							$receiver_id=$this->data['contractDetails']->contractor_id;
+							$to=getFieldData('member_email','member','member_id',$this->data['contractDetails']->contractor_id);	
+							$SENDER_NAME=getFieldData('organization_name','organization','member_id',$this->member_id);
+							if(!$SENDER_NAME){
+								$SENDER_NAME=getFieldData('member_name','member','member_id',$this->member_id);
+							}
+							$RECEIVER_NAME=getFieldData('member_name','member','member_id',$this->data['contractDetails']->contractor_id);
+						}else{
+							$receiver_id=$this->data['contractDetails']->owner_id;
+							$to=getFieldData('member_email','member','member_id',$this->data['contractDetails']->owner_id);
+							$SENDER_NAME=getFieldData('member_name','member','member_id',$this->member_id);
+							$RECEIVER_NAME=getFieldData('organization_name','organization','member_id',$this->data['contractDetails']->owner_id);
+							if(!$RECEIVER_NAME){
+								$RECEIVER_NAME=getFieldData('member_name','member','member_id',$this->data['contractDetails']->owner_id);
+							}
+						}
+						$template='dispute-send-to-admin';
+						$data_parse = array(
+							'SENDER_NAME' =>$SENDER_NAME,
+							'RECEIVER_NAME' =>$RECEIVER_NAME,
+							'TITLE' =>$projectDetails['project']->project_title,
+							'CONTRACT_TITLE' =>$this->data['contractDetails']->contract_title,
+							'MILESTONE_TITLE' =>$this->data['contractDetails']->milestone_title,
+							'DISPUTE_URL' =>get_link('DisputeDetails').'/'.md5($contract_milestone_id),
+						);
+						SendMail($to,$template,$data_parse);
+						
+						$this->notification_model->log(
+							$template, // template key
+							$data_parse, // template data
+							$this->config->item('DisputeDetails').'/'.md5($contract_milestone_id), // link (without base_url)
+							$receiver_id, // notification to,
+							$this->member_id // notification_from
+						);	
 
 					}
 

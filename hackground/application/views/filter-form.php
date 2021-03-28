@@ -103,12 +103,21 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 	<?php if($url_segment == 'proposal/list_record'){
 		 ?>
 	
-	<div class="row hide">
+	<div class="row">
 		<div class="col-sm-4">
 			<label>Category</label>
 			<select class="form-control" name="category">
 				<option value="">-select-</option>
 				<?php print_select_option($category, 'category_id', 'category_name', $srch['category']);?>
+			</select>
+		</div>
+		<div class="col-sm-4">
+			<label>Type</label>
+			<select class="form-control" name="project_type">
+			<option value="" >-select-</option>
+			<option value="F" <?php if(array_key_exists('project_type',$srch) && $srch['project_type']=='F'){echo 'selected';}?>>Fixed</option>
+			<option value="H" <?php if(array_key_exists('project_type',$srch) && $srch['project_type']=='H'){echo 'selected';}?>>Hourly</option>
+			
 			</select>
 		</div>
 		
@@ -117,7 +126,7 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 		</div>
 	</div>
 	
-	<nav aria-label="breadcrumb">
+	<nav aria-label="breadcrumb" hidden>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
 			<a href="<?php echo base_url('proposal/list_record?panel_open=1'); ?>">All</a></li>

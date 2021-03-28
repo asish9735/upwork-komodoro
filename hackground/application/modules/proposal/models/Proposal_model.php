@@ -37,6 +37,15 @@ class Proposal_model extends CI_Model{
 		if(!empty($srch['category'])){
 			$this->db->where('c.category_id', $srch['category']);
 		}
+		if(!empty($srch['project_type'])){
+			if($srch['project_type']=='F'){
+				$this->db->where('s.is_fixed', 1);
+			}
+			elseif($srch['project_type']=='H'){
+				$this->db->where('s.is_hourly', 1);
+			}
+			
+		}
 		
 		if(!empty($srch['project_id'])){
 			$this->db->where('p.project_id', $srch['project_id']);
