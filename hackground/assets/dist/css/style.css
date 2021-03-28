@@ -320,6 +320,9 @@ line-height:20px
 }
 }
 @media (max-width:767px) {
+.wrapper{
+	padding-top:0;
+}
 .main-header {
 position:relative
 }
