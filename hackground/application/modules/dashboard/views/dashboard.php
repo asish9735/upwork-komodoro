@@ -2,14 +2,14 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+      <div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+         <?php echo $main_title ? $main_title : '';?>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
     <!-- Main content -->
@@ -19,22 +19,22 @@
 		
 		 <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-blue">
             <div class="inner">
               <h3><?php echo $project_count; ?></h3>
 
               <p>Projects</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion icon-feather-pie-chart"></i>
             </div>
             <a href="<?php echo base_url('proposal/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
@@ -43,13 +43,13 @@
               <p>Withdrawn Request</p>
             </div>
             <div class="icon">
-              <i class="ion ion-social-usd"></i>
+              <i class="ion icon-feather-dollar-sign"></i>
             </div>
             <a href="<?php echo base_url('wallet/withdrawn_list'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
@@ -58,13 +58,13 @@
               <p>Registered Users</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion icon-feather-user-check"></i>
             </div>
             <a href="<?php echo base_url('member/list_record');?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -72,74 +72,74 @@
               <p>Contract</p>
             </div>
             <div class="icon">
-              <i class="ion ion-paper-plane"></i>
+              <i class="ion icon-feather-check-square"></i>
             </div>
             <a href="<?php echo base_url('offers/contracts'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-teal">
             <div class="inner">
               <h3><?php echo $unread_notification_count; ?></h3>
               <p>Unread notification</p>
             </div>
             <div class="icon">
-              <i class="ion ion-android-notifications"></i>
+              <i class="ion icon-feather-bell"></i>
             </div>
             <a href="<?php echo base_url('admin_notification/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?php echo $users_freelancer_count; ?></h3>
               <p>Total Freelancer</p>
             </div>
             <div class="icon">
-              <i class="ion ion-android-person"></i>
+              <i class="ion icon-feather-users"></i>
             </div>
             <a href="<?php echo base_url('member/list_record?u_type=freelancer&panel_open=1'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-pink">
             <div class="inner">
               <h3><?php echo $users_employer_count; ?></h3>
               <p>Total Employer</p>
             </div>
             <div class="icon">
-              <i class="ion ion-android-person"></i>
+              <i class="ion icon-material-outline-account-circle"></i>
             </div>
             <a href="<?php echo base_url('member/list_record?u_type=employer&panel_open=1'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-gray">
             <div class="inner">
               <h3><?php echo $contact_request_count; ?></h3>
               <p>Contact Request</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-feather-phone"></i>
             </div>
             <a href="<?php echo base_url('contact/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -147,89 +147,89 @@
               <p>Dispute</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-feather-x-circle"></i>
             </div>
             <a href="<?php echo base_url('dispute/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-olive">
             <div class="inner">
               <h3><?php echo $milestone_count; ?></h3>
               <p>Milestones</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-material-outline-account-balance-wallet"></i>
             </div>
             <a href="<?php echo base_url('offers/milestone'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-lime">
             <div class="inner">
               <h3><?php echo $bid_count; ?></h3>
               <p>Applications</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-feather-file-text"></i>
             </div>
             <a href="<?php echo base_url('project_application/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-indigo">
             <div class="inner">
               <h3><?php echo $review_count; ?></h3>
               <p>Reviews</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-feather-star"></i>
             </div>
             <a href="<?php echo base_url('review/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-maroon">
             <div class="inner">
               <h3><?php echo $message_count; ?></h3>
               <p>Message board</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-feather-mail"></i>
             </div>
             <a href="<?php echo base_url('message/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
                 <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-cyan">
             <div class="inner">
               <h3><?php echo $invoice_count; ?></h3>
               <p>Invoice</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion ion-file"></i>
             </div>
             <a href="<?php echo base_url('invoice/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -237,22 +237,22 @@
               <p>Total Offer</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-feather-gift"></i>
             </div>
             <a href="<?php echo base_url('offers/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-orange">
             <div class="inner">
               <h3><?php echo $escrow_count; ?></h3>
               <p>Escrow</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion icon-feather-shield"></i>
             </div>
             <a href="<?php echo base_url('project_escrow/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -264,7 +264,7 @@
 	  
 	  
 		<div class="row">
-		  <div class="col-sm-6">
+		  <div class="col-sm-6 col-12">
 			<!-- solid sales graph -->
 			  <div class="box box-solid bg-teal-gradient">
 				<div class="box-header">
@@ -281,7 +281,7 @@
 			  <!-- /.box -->
 		  </div>
 		  
-		  <div class="col-sm-6">
+		  <div class="col-sm-6 col-12">
 				<div class="box box-solid">
 					<div class="box-header">
 					  <i class="fa fa-th"></i>

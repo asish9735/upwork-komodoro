@@ -32,10 +32,19 @@ class Dashboard extends MX_Controller {
 		$this->data['offer_count'] = $this->dashboard->get_offer_count();
 		$this->data['escrow_count'] = $this->dashboard->get_escrow_count();
 
-
+		
 		$this->data['statics']['project'] = $this->dashboard->project_statics();
 		$this->data['statics']['member'] = $this->dashboard->member_statics();
 		$this->data['statics']['transaction'] = $this->dashboard->transaction_statics();
+		$this->data['main_title'] = 'Dashboard';
+		$this->data['title'] = 'Dashboard';
+		$breadcrumb = array(
+			array(
+				'name' => 'Dashboard',
+				'path' => '',
+			),
+		);
+		$this->data['breadcrumb'] = breadcrumb($breadcrumb);
 		//get_print($this->data['statics']['member']);
 		$this->layout->view('dashboard', $this->data);
        

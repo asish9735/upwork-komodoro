@@ -15,16 +15,16 @@ $admin_notification_count = $this->admin_notification_model->getUnreadCount();
     <!-- sidebar: style can be found in sidebar.less -->
     <div class="sidebar">
       
-      <!-- Sidebar user panel -->
+      <!-- Sidebar user panel
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo ADMIN_IMAGES;?>avatar5.png" class="img-circle" alt="User Image">
+          <img src="<?php // echo ADMIN_IMAGES;?>avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="info">
-          <p class="mb-0"><?php echo $admin_detail['full_name']; ?></p>
+          <p class="mb-0"><?php // echo $admin_detail['full_name']; ?></p>
         </div>
       </div>
-      
+       -->
       
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form" hidden>
