@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+      <div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -54,7 +58,7 @@
 	 
 	</ul>
       <!-- Default box -->
-      <div class="box">
+      <div class="card">
         <?php /*?><div class="box-header with-border">
           <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
 			
@@ -70,7 +74,7 @@
           </div>
         </div><?php */?>
        
-		<div class="box-body table-responsive" id="main_table">
+		<div class="card-body table-responsive" id="main_table">
 			<?php $this->load->view($page); ?>
         </div>
 		

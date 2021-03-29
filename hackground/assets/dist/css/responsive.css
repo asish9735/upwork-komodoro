@@ -1,6 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
 
+
+
 @media (min-width: 768px) {
 	.modal-dialog {
 		max-width: 600px;
@@ -12,7 +14,12 @@
 		position: absolute;
 	}
 }
-
+@media (min-width: 1200px) {
+	html{
+		font-size: 16px
+	}
+	
+}
 @media (max-width:767px) {
 	.nav-tabs {
 		flex-wrap: inherit;
