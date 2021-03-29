@@ -51,7 +51,7 @@
               <table class="table table-hover">
                 <tbody>
 				<tr>
-					<th style="width:3%">
+					<th style="width:30px">
 						
 						  <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
 							<label for="all_item"></label>
@@ -59,7 +59,7 @@
                   <th style="width:10%">CODE</th>
                   <th style="width:60%">Name</th>
                   <th style="width:10%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
@@ -84,9 +84,7 @@
                   <td><?php echo $status; ?></td>
                   <td align="right">
 					<?php if($v['country_status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
 					<?php } ?>

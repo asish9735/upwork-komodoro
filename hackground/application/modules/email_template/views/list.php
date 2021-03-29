@@ -22,9 +22,10 @@
 
       <!-- Default box -->
       <div class="card">
-        <div class="card-header border-bottom-0">
-          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
-          <div class="card-tools">
+        <div class="card-header border-0 d-sm-flex align-items-center">
+          
+          <h3 class="card-title float-none mb-2 mb-sm-0"><?php echo $title ? $title : '';?></h3>
+          <div class="ml-auto">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
@@ -34,21 +35,20 @@
 			<?php } ?>
 		   
 		   <?php if(!get('show')){ ?>
-			<div class="btn-group" id="global_action_btn" style="display:none">
+			<div class="btn-group mr-2" id="global_action_btn" style="display:none">
 			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
 			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
-			   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="fa  fa-thumbs-o-down"></i></button>
+			   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="icon-feather-thumbs-down"></i></button>
 			</div>
-			&nbsp;
 			<?php } ?>
-			<button type="button" class="btn btn-success btn-sm" onclick="redirect('<?php echo base_url('email_template/export_csv?export=1')?>')">
+			<button type="button" class="btn btn-success btn-sm mr-2" onclick="redirect('<?php echo base_url('email_template/export_csv?export=1')?>')">
               <i class="icon-feather-download"></i>
 				Export CSV
 			</button>
 			
             <button type="button" class="btn btn-site btn-sm" onclick="add()">
-              <i class="icon-feather-plus"></i>
-				<?php echo $add_btn;?>
+                <i class="icon-feather-plus"></i>
+				<span class="d-none d-sm-inline"><?php echo $add_btn;?></span>
 			</button>
           </div>
         </div>

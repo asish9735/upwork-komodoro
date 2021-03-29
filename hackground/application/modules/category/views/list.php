@@ -60,7 +60,7 @@
                   <th style="width:5%">ID</th>
                   <th style="width:60%">Name</th>
                   <th style="width:10%">Status</th>
-                  <th class="text-right" style="padding-right:15px;">Action</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
@@ -83,15 +83,9 @@
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td><?php echo $v['category_name']; ?></td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
+                  <td align="right">
 					<?php if($v['category_status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="add_sub_category('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Add Speciality"><i class="icon-feather-plus <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
-					<a href="<?php echo base_url('sub_category/list_record/'.$v[$primary_key]); ?>" data-toggle="tooltip" title="View Speciality"><i class="icon-feather-list <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit green <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="add_sub_category('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Add Speciality"><i class="icon-feather-plus <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo base_url('sub_category/list_record/'.$v[$primary_key]); ?>" class="mr-1" data-toggle="tooltip" title="View Speciality"><i class="icon-feather-list <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit green <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php } ?>

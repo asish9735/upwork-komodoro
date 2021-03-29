@@ -1,6 +1,6 @@
 <?php if($page == 'add'){ ?>
 <div class="modal-header">
-	<h5 class="modal-title"><?php echo $title;?></h5>
+	<h4 class="modal-title"><?php echo $title;?></h4>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	  <span aria-hidden="true">&times;</span></button>	
 </div>
@@ -86,7 +86,7 @@ function onsuccess(res){
 $login_admin_id = get_session('admin_id');
 ?>
 <div class="modal-header">
-	<h5 class="modal-title"><?php echo $title;?></h5>
+	<h4 class="modal-title"><?php echo $title;?></h4>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	  <span aria-hidden="true">&times;</span></button>
 	

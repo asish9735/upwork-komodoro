@@ -2,11 +2,17 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+    <div class="row">
+        <div class="col-sm-6 col-12">
+          <h1>
+            <?php echo $main_title ? $main_title : '';?>
+            <small><?php echo $second_title ? $second_title : '';?></small>
+          </h1>
+        </div>
+        <div class="col-sm-6 col-12">
+            <?php echo $breadcrumb ? $breadcrumb : '';?>
+        </div>
+    </div>
     </section>
 
 	 <!-- Content Filter -->
@@ -62,9 +68,11 @@
 					</td> -->
 				  <td><?php echo $v['review_id']; ?></td>
                   <td>
-				  <p class="mb-0"><a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $v['sender_id']?>" target="_blank"><img src="<?php echo $logo_from;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['review_from']; ?></a></p>
-				  <p class="mb-0" style="padding-left: 10px;"><i class="icon-feather-arrow-down green"></i></p>
+                  <div class="reviewTo">
+				  <p class="mb-1"><a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $v['sender_id']?>" target="_blank"><img src="<?php echo $logo_from;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['review_from']; ?></a></p>
+				  <span>&nbsp;</span>
 				  <p class="mb-0"><a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $v['receiver_id']?>" target="_blank"><img src="<?php echo $logo_to;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /><?php echo $v['review_to']; ?></a></p>
+                  </div>
 				  </td>
                   <td>
 				  <?php echo $v['project_title']; ?> <a href="<?php echo base_url('proposal/list_record')?>?project_id=<?php echo $v['project_id']?>" target="_blank"><i class="icon-feather-external-link"></i></a><br>

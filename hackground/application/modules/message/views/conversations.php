@@ -78,11 +78,15 @@ padding:25px 20px;
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+    <div class="row">
+        <div class="col-sm-6 col-12">
+          <h1>
+             <?php echo $main_title ? $main_title : '';?>
+            <small><?php echo $second_title ? $second_title : '';?></small>
+          </h1>
+      	</div>
+      	<div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+     </div>
     </section>
 
     <!-- Main content -->
@@ -100,16 +104,19 @@ padding:25px 20px;
 		<div class="card-body">
 		<p><b>Project Name:</b> <a href="<?php echo SITE_URL;?>p/<?php echo  $conversation_details->project->project_url; ?>" target="_blank"><?php echo $conversation_details->project->project_title;?></a></p>
 
+		<div class="reviewTo ml-4">
 		<?php 
 		if($conversation_details->group) {
 			foreach($conversation_details->group as $g=>$member){
 				$logo = getMemberLogo($member->user_id);
 				?>
-				<p class="mb-0"><a href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $member->user_id;?>" target="_blank"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /><?php echo $member->member_name;?></a></p>
+				<p class="mb-1"><a href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $member->user_id;?>" target="_blank"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /><?php echo $member->member_name;?></a></p>
 				<?php
 			}
 		}
 		?>
+        <span>&nbsp;</span>
+        </div>
 		</div>
 		</div>
 

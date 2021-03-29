@@ -16,7 +16,6 @@ html{
 body {
 	background-color: #f4f6f9;
 	overflow-x:hidden;
-	overflow-y:hidden;
 }
 .wrapper {
 	height:100%;
@@ -85,7 +84,6 @@ transform:translate(230px, 0)
 	overflow-y:auto;
 }
 .main-footer {
-	position: absolute;
     width: 100%;
     bottom: 0;
 	background:#fff;
@@ -360,17 +358,22 @@ right:40px
 	-o-transition:-o-transform .3s ease-in-out, width .3s ease-in-out;
 	transition:transform .3s ease-in-out, width .3s ease-in-out
 }*/
-@media (max-width:767px) {
-.main-sidebar {
-padding-top:100px
-}
-}
+
 @media (max-width:767px) {
 .main-sidebar {
 -webkit-transform:translate(-230px, 0);
 -ms-transform:translate(-230px, 0);
 -o-transform:translate(-230px, 0);
 transform:translate(-230px, 0)
+}
+.content-wrapper {
+    padding: 15px;
+}
+.content-header {
+	padding: 0 0 15px;
+}
+.content-wrapper > .content {
+    padding: 0;
 }
 }
 @media (min-width:768px) {
@@ -941,7 +944,7 @@ color:#444 !important
 	border-top-left-radius:0;
 	padding:1px 0 0 0;
 	border-top-width:0;
-	width:280px
+	width:150px
 }
 .navbar-nav>.user-menu>.dropdown-menu, .navbar-nav>.user-menu>.dropdown-menu>.user-body {
 	border-bottom-right-radius:4px;
@@ -1552,7 +1555,7 @@ color:#fff
 .box-header {
 	color:#444;
 	display:block;
-	padding:10px;
+	padding:0.75rem 1.25rem;
 	position:relative
 }
 .box-header.with-border {
@@ -1563,7 +1566,7 @@ color:#fff
 }
 .box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title {
 	display:inline-block;
-	font-size:18px;
+	font-size:1.25rem;
 	margin:0;
 	line-height:1
 }
@@ -5273,6 +5276,65 @@ ul.totalList > li > span {
 .milestone-item {
     padding-left: 1.25rem;
 }
+.reviewTo{
+	position:relative;
+}
+.reviewTo:before, .reviewTo:after{
+	position:absolute;
+	content:'';
+	left: -20px;
+	background-color:#ccc;
+}
+.reviewTo:before{
+	height:1px;
+	width: 20px;
+	top: 12px;
+}
+.reviewTo:after{
+	height:1px;
+	width: 20px;
+	bottom: 10px;
+}
+.reviewTo > span {
+	position: absolute;
+    height: 45px;
+    width: 1px;
+    background-color: #ccc;
+    left: -21px;
+    top: 12px;
+}
+
+.tr-none{
+	display:none !important;
+}
+.tr-block{
+	display:block;
+}
+.table .magic-checkbox+label{
+	padding-left: 0.5rem !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

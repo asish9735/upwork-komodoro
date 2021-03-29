@@ -2,7 +2,21 @@
 /* CSS Document */
 
 @media (min-width: 768px) {
-.modal-dialog {
-    max-width: 600px;
+	.modal-dialog {
+		max-width: 600px;
+	}
+	body {
+		overflow-y:hidden;
+	}
+	.main-footer {
+		position: absolute;
+	}
 }
+
+@media (max-width:767px) {
+	.nav-tabs {
+		flex-wrap: inherit;
+		height: 40px;
+		overflow-x: auto;
+	}
 }

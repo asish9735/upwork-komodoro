@@ -6186,7 +6186,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .tooltip {
   position: absolute;
-  z-index: 1070;
+  z-index: 1049;
   display: block;
   margin: 0;
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -20342,7 +20342,7 @@ html.maximized-card {
 .card-body.p-0 .table tfoot > tr > td:first-of-type,
 .card-body.p-0 .table tbody > tr > th:first-of-type,
 .card-body.p-0 .table tbody > tr > td:first-of-type {
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 }
 
 .card-body.p-0 .table thead > tr > th:last-of-type,
@@ -20351,7 +20351,7 @@ html.maximized-card {
 .card-body.p-0 .table tfoot > tr > td:last-of-type,
 .card-body.p-0 .table tbody > tr > th:last-of-type,
 .card-body.p-0 .table tbody > tr > td:last-of-type {
-  padding-right: 1.5rem;
+  padding-right: 1.25rem;
 }
 
 .table-hover tbody tr.expandable-body:hover {

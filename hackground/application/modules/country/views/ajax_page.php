@@ -1,6 +1,6 @@
 <?php if($page == 'add'){ ?>
 <div class="modal-header">
-	<h5 class="modal-title"><?php echo $title;?></h5>
+	<h4 class="modal-title"><?php echo $title;?></h4>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	  <span aria-hidden="true">&times;</span></button>
 	
@@ -83,7 +83,7 @@ function onsuccess(res){
 
 <?php if($page == 'edit'){ ?>
 <div class="modal-header">
-	<h5 class="modal-title"><?php echo $title;?></h5>
+	<h4 class="modal-title"><?php echo $title;?></h4>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	  <span aria-hidden="true">&times;</span></button>
 	

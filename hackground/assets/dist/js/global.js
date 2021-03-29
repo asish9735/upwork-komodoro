@@ -190,6 +190,8 @@ function starRating(ratingElem) {
 } 
 $(document).ready(function () {
 starRating('.star-rating');
-var h=$(window).height()-$('footer').height()-$('.main-header').height();
+if ($(this).width() > 992) {
+	var h=$(window).height()-$('footer').height()-$('.main-header').height();
 	$('.content-wrapper').css({ height:h+"px"});
-})
+}
+});

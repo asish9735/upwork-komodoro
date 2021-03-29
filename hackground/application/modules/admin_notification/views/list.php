@@ -46,15 +46,14 @@
               <table class="table table-hover">
                 <tbody>
 				<tr>
-					<th style="width:3%">
-						
-						  <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
-							<label for="all_item"></label>
-					</th>
-                  <th style="width:10%">ID</th>
-                  <th style="width:70%">Notification</th>
-                  <th style="width:10%">Date</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+				  <th style="width:20px">
+                    <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
+                    <label for="all_item"></label>
+				  </th>
+                  <th>ID</th>
+                  <th style="min-width:300px; width:85%">Notification</th>
+                  <th>Date</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
@@ -77,7 +76,7 @@
 					<div><small class="text-muted"> <i class="icon-feather-clock"></i> <?php echo format_date_time($v['created_date']); ?></small></div>
 				  </td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
+                  <td align="right">
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					
 					

@@ -1,58 +1,56 @@
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
-    </section>
+<!-- Content Wrapper. Contains page content -->
 
-	 <!-- Content Filter -->
-	<?php $this->layout->load_filter(); ?>
-	
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
-			<?php if(ALLOW_TRASH_VIEW){ ?>
-			<?php if(get('show') && get('show') == 'trash'){ ?>
-			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
-			<?php }else{ ?>
-			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="icon-feather-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
-			<?php } ?>
-			<?php } ?>
-		   
-		   <?php if(!get('show')){ ?>
-			<div class="btn-group" id="global_action_btn" style="display:none">
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
-			   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="fa  fa-thumbs-o-down"></i></button>
-			</div>
-			&nbsp;
-			<?php } ?>
-           
+<div class="content-wrapper"> 
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <h1> <?php echo $main_title ? $main_title : '';?> <small><?php echo $second_title ? $second_title : '';?></small> </h1>
+      </div>
+      <div class="col-sm-6 col-12"> <?php echo $breadcrumb ? $breadcrumb : '';?> </div>
+    </div>
+  </section>
+  
+  <!-- Content Filter -->
+  <?php $this->layout->load_filter(); ?>
+  
+  <!-- Main content -->
+  <section class="content"> 
+    
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
+        <div class="box-tools pull-right">
+          <?php if(ALLOW_TRASH_VIEW){ ?>
+          <?php if(get('show') && get('show') == 'trash'){ ?>
+          <a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
+          <?php }else{ ?>
+          <a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="icon-feather-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
+          <?php } ?>
+          <?php } ?>
+          <?php if(!get('show')){ ?>
+          <div class="btn-group" id="global_action_btn" style="display:none">
+            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="fa  fa-thumbs-o-down"></i></button>
           </div>
+          &nbsp;
+          <?php } ?>
         </div>
-       
-		<div class="box-body table-responsive no-padding" id="main_table">
-              <table class="table table-hover">
-                <tbody>
-				<tr>
-                  <th style="width:40%">Project</th>
-                  <th style="width:15%">Contractor</th>
-                  <th style="width:15%">Credit</th>
-                  <th style="width:15%">Debit</th>
-                  <th style="width:20%">Status</th>
-                  <!--<th class="text-right" style="padding-right:20px;">Action</th>-->
-                </tr>
-				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+      </div>
+      <div class="box-body table-responsive no-padding" id="main_table">
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th style="width:40%">Project</th>
+              <th style="width:15%">Contractor</th>
+              <th style="width:15%">Credit</th>
+              <th style="width:15%">Debit</th>
+              <th style="width:20%">Status</th>
+              <!--<th class="text-right" style="padding-right:20px;">Action</th>--> 
+            </tr>
+            <?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
 				if($v['status'] == '1'){
 					$status = '<span class="badge badge-success">Active</span>';
@@ -61,13 +59,13 @@
 				}
 				
 				?>
-				<tr>
-                  <td><a href="<?php echo base_url('proposal/list_record?project_id='.$v['project_id']); ?>"><?php echo $v['project_title']; ?></a></td>
-                  <td><a href="<?php echo base_url('member/list_record?member_id='.$v['bidder_info']['member_id']); ?>"><?php echo $v['bidder_info']['member_name']; ?></a></td>
-                  <td><span class="text-green"><?php echo get_setting('site_currency').$v['credit']; ?></span></td>
-                  <td><span class="text-red"><?php echo get_setting('site_currency').$v['debit']; ?></span></td>
-                  <td><?php echo $status; ?></td>
-				  <!--
+            <tr>
+              <td><a href="<?php echo base_url('proposal/list_record?project_id='.$v['project_id']); ?>"><?php echo $v['project_title']; ?></a></td>
+              <td><a href="<?php echo base_url('member/list_record?member_id='.$v['bidder_info']['member_id']); ?>"><?php echo $v['bidder_info']['member_name']; ?></a></td>
+              <td><span class="text-green"><?php echo get_setting('site_currency').$v['credit']; ?></span></td>
+              <td><span class="text-red"><?php echo get_setting('site_currency').$v['debit']; ?></span></td>
+              <td><?php echo $status; ?></td>
+              <!--
                   <td class="text-right" style="padding-right:20px;">
 					<?php if($v['status'] != DELETE_STATUS){ ?>
 					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="fa fa-edit green <?php echo ICON_SIZE;?>"></i></a>
@@ -77,53 +75,46 @@
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php } ?>
 					
-				  </td>-->
-                </tr>
-				<?php } }else{  ?>
-				<tr>
-                  <td colspan="10"><?php echo NO_RECORD; ?></td>
-                 </tr>
-				<?php } ?>
-                
-               </tbody>
-			  </table>
-			  
-			  <?php if($show_total){ ?>
-			  <table class="table">
-				<tr>
-					<th>Total Escrowed Amount: <span class="text-green"><?php echo get_setting('site_currency').number_format($credit_total, 2); ?></span></th>
-					<th>Total Released Amount: <span class="text-red"><?php echo get_setting('site_currency').number_format($debit_total, 2); ?></span></th>
-					<th>Total Remaining Amount: <span class="text-blue"><?php echo get_setting('site_currency').number_format($remaining_total, 2); ?></span></th>
-				</tr>
-			  </table>
-			  <?php } ?>
-			  
-        </div>
-		 <!-- /.box-body -->
-
+				  </td>--> 
+            </tr>
+            <?php } }else{  ?>
+            <tr>
+              <td colspan="10"><?php echo NO_RECORD; ?></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+        <?php if($show_total){ ?>
+        <table class="table">
+          <tr>
+            <th>Total Escrowed Amount: <span class="text-green"><?php echo get_setting('site_currency').number_format($credit_total, 2); ?></span></th>
+            <th>Total Released Amount: <span class="text-red"><?php echo get_setting('site_currency').number_format($debit_total, 2); ?></span></th>
+            <th>Total Remaining Amount: <span class="text-blue"><?php echo get_setting('site_currency').number_format($remaining_total, 2); ?></span></th>
+          </tr>
+        </table>
+        <?php } ?>
       </div>
-      <!-- /.box -->
-	  <?php if($links){?>
-		<nav>
-			<ul class="pagination justify-content-center">
-			<?php echo $links;?>
-			</ul>
-		</nav>
-		 <?php }?>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
-  
-<div class="modal fade" id="ajaxModal">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		 
-		</div>
-	  </div>
+      <!-- /.box-body --> 
+      
+    </div>
+    <!-- /.box -->
+    <?php if($links){?>
+    <nav>
+      <ul class="pagination justify-content-center">
+        <?php echo $links;?>
+      </ul>
+    </nav>
+    <?php }?>
+  </section>
+  <!-- /.content --> 
 </div>
+<!-- /.content-wrapper -->
 
+<div class="modal fade" id="ajaxModal">
+  <div class="modal-dialog">
+    <div class="modal-content"> </div>
+  </div>
+</div>
 <script>
 
 function add(){
@@ -278,4 +269,4 @@ $(function(){
 	
 	
 });
-</script>
+</script> 

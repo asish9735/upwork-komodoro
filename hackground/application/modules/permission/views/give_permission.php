@@ -75,7 +75,7 @@
 				
 				<?php if($child){foreach($child as $key => $child_menu){ ?>
 				
-				<tr class="child_menu childof-<?php echo $menu['id'];?> sub_trno_<?php echo $menu['id'];?>" style="display:none;">
+				<tr class="tr-none child_menu childof-<?php echo $menu['id'];?> sub_trno_<?php echo $menu['id'];?>" style="display:none;">
 					
 				<td>&nbsp;</td>
                    <td>
@@ -83,7 +83,7 @@
 					<div><small><?php echo $child_menu['menu_desc'];?></small></div>
 				  </td>
                   <td><?php echo $child_menu['menu_code']; ?></td>
-                  <td class="text-right" style="padding-right:10px;">
+                  <td align="right">
 						<span class="check-inline">
 						<input type="checkbox" class="magic-checkbox child_menu_<?php echo $menu['id']; ?>" name="menu_code[]" value="<?php echo $child_menu['menu_code'].'|'.$child_menu['id'];?>" id="item_<?php echo $child_menu['id'];?>" data-menu-id="<?php echo $child_menu['id']; ?>" <?php echo in_array($child_menu['menu_code'], $user_permission) ? 'checked' : '';?>>
 						<label for="item_<?php echo $child_menu['id'];?>"></label>
@@ -101,17 +101,17 @@
                </tbody>
 			  </table>
 				<div class="p-3 text-right">
-					<a href="<?php echo base_url('permission/list_menu'); ?>" class="btn btn-secondary">Cancel</a>
-					<button type="submit" class="btn btn-site " style="margin-right:10px;">Save Changes</button>
+					<button type="submit" class="btn btn-site mr-2">Save</button>
+                    <a href="<?php echo base_url('permission/list_menu'); ?>" class="btn btn-secondary">Cancel</a>
 				</div>
 			</form>
 			<?php }else{  ?>
-				<div style="padding: 20px;">
-					<div class="callout callout-warning">
+				<div class="p-3">
+					<div class="callout callout-warning mb-0">
 						<h4>No Role Selected</h4>
-						<p>Please select a role first to given permission</p>
+						<p class="mb-0">Please select a role first to given permission</p>
 					</div>
-              </div>
+              	</div>
 			<?php } ?>
         </div>
 		 <!-- /.box-body -->
@@ -137,11 +137,13 @@
 function toggleSubMenu(parent_id, ele){
     if($(ele).is('.opened-subchild')){
         $('.childof-'+parent_id).slideToggle();
+		$('.childof-'+parent_id).addClass('tr-block');
     }else{
         $('.opened-subchild').removeClass('opened-subchild');
         $(ele).addClass('opened-subchild');
         $('.child_menu').hide();
         $('.childof-'+parent_id).slideDown();
+		$('.childof-'+parent_id).removeClass('tr-none');
     }
     
 }
