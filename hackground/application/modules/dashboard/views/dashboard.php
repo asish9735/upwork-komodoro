@@ -36,7 +36,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-purple">
             <div class="inner">
               <h3><?php echo $withdrawn_request_count; ?></h3>
 
@@ -96,7 +96,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-purple">
+          <div class="small-box bg-cyan">
             <div class="inner">
               <h3><?php echo $users_freelancer_count; ?></h3>
               <p>Total Freelancer</p>
@@ -147,7 +147,7 @@
               <p>Dispute</p>
             </div>
             <div class="icon">
-              <i class="ion icon-feather-x-circle"></i>
+              <i class="ion icon-feather-alert-circle"></i>
             </div>
             <a href="<?php echo base_url('dispute/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -162,7 +162,7 @@
               <p>Milestones</p>
             </div>
             <div class="icon">
-              <i class="ion icon-material-outline-account-balance-wallet"></i>
+              <i class="ion icon-feather-bar-chart"></i>
             </div>
             <a href="<?php echo base_url('offers/milestone'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -201,13 +201,13 @@
         <!-- ./col -->
         <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-maroon">
+          <div class="small-box bg-orange">
             <div class="inner">
               <h3><?php echo $message_count; ?></h3>
               <p>Message board</p>
             </div>
             <div class="icon">
-              <i class="ion icon-feather-mail"></i>
+              <i class="ion icon-line-awesome-comments-o"></i>
             </div>
             <a href="<?php echo base_url('message/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -222,7 +222,7 @@
               <p>Invoice</p>
             </div>
             <div class="icon">
-              <i class="ion ion-file"></i>
+              <i class="ion icon-feather-file"></i>
             </div>
             <a href="<?php echo base_url('invoice/list_record'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -231,7 +231,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-gray">
             <div class="inner">
               <h3><?php echo $offer_count; ?></h3>
               <p>Total Offer</p>
@@ -246,7 +246,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-sm-6 col-12">
           <!-- small box -->
-          <div class="small-box bg-orange">
+          <div class="small-box bg-pink">
             <div class="inner">
               <h3><?php echo $escrow_count; ?></h3>
               <p>Escrow</p>
