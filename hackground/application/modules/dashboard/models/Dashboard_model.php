@@ -25,11 +25,46 @@ class Dashboard_model extends CI_Model{
 	public function get_contract_count(){
 		return $this->db->where('contract_status', 1)->count_all_results('project_contract');
 	}
-	
-	public function get_user_count(){
-		return $this->db->count_all_results('member');
+	public function get_offer_count(){
+		return $this->db->count_all_results('project_contract');
 	}
 	
+	public function get_user_count($type=''){
+		if($type=='freelancer'){
+			return $this->db->where('is_employer',0)->count_all_results('member');
+		}
+		elseif($type=='employer'){
+			return $this->db->where('is_employer',1)->count_all_results('member');
+		}
+		else{
+			return $this->db->count_all_results('member');
+		}
+	}
+	public function get_contact_request_count(){
+		return $this->db->count_all_results('contact');
+	}
+	public function get_dispute_count(){
+		return $this->db->count_all_results('project_contract_dispute');
+	}
+	public function get_milestone_count(){
+		return $this->db->count_all_results('project_contract_milestone');
+	}
+	public function get_bid_count(){
+		return $this->db->count_all_results('project_bids');
+	}
+	public function get_review_count(){
+		return $this->db->count_all_results('contract_reviews');
+	}
+	public function get_invoice_count(){
+		return $this->db->count_all_results('invoice');
+	}
+	public function get_message_count(){
+		return $this->db->count_all_results('conversations');
+	}
+	public function get_escrow_count(){
+		return $this->db->count_all_results('project_payment_escrow');
+	}
+
 	public function project_statics(){
 		$date = date('Y-m-d');
 		$records = array();
@@ -63,7 +98,23 @@ class Dashboard_model extends CI_Model{
 		
 		return $records;
 	}
-	
+	public function transaction_statics(){
+		/* $date = date('Y-m-d');
+		$records = array();
+		for($i=0; $i <= 12; $i++){
+			$date_key = date('m', strtotime("-$i month"));
+			$date_year = date('Y', strtotime("-$i month"));
+			$res1 = $this->db->selct('sum(')->where("MONTH(member_register_date) = $date_key and YEAR(member_register_date) = $date_year and is_employer=1")->count_all_results('member');
+			$res2 = $this->db->where("MONTH(member_register_date) = $date_key and YEAR(member_register_date) = $date_year and is_employer=0")->count_all_results('member');
+			$records[] = array(
+				'item1' => $res1,
+				'item2' => $res2,
+				'y' => date('Y-m', strtotime("-$i month")),
+			);
+		}
+		
+		return $records; */
+	}
 	
 	
 	/* public function getWorkRecords(){

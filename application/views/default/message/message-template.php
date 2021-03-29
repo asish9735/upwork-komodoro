@@ -513,7 +513,7 @@ Vue.component('active-chat-body', {
 	<div class="message-reply">
 		<textarea class="form-control" cols="1" rows="1" placeholder="Your Message" data-autoresize v-model="message" @keypress.enter="sendOnEnter"></textarea>
 		<div class="uploadButton">
-			<input class="uploadButton-input" v-on:change="sendAttachment()" ref="file" type="file" accept="image/*, application/pdf" id="upload" multiple="">
+			<input class="uploadButton-input" v-on:change="sendAttachment()" ref="file" type="file"  id="upload" multiple="">
 			<label class="uploadButton-button ripple-effect" for="upload"><i class="icon-feather-paperclip"></i></label>
 		</div>
 		<button class="btn btn-site" @click.prevent="sendMsg" :disabled="sent_status === 'sending'"><i class="icon-feather-send" title="Send"></i></button>

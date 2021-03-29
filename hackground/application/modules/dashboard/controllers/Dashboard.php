@@ -20,9 +20,22 @@ class Dashboard extends MX_Controller {
 		$this->data['unread_notification_count'] = $this->dashboard->get_unread_notification_count();
 		$this->data['withdrawn_request_count'] = $this->dashboard->get_withdrawn_count();
 		$this->data['users_count'] = $this->dashboard->get_user_count();
-		
+		$this->data['users_freelancer_count'] = $this->dashboard->get_user_count('freelancer');
+		$this->data['users_employer_count'] = $this->dashboard->get_user_count('employer');
+		$this->data['contact_request_count'] = $this->dashboard->get_contact_request_count();
+		$this->data['dispute_count'] = $this->dashboard->get_dispute_count();
+		$this->data['milestone_count'] = $this->dashboard->get_milestone_count();
+		$this->data['bid_count'] = $this->dashboard->get_bid_count();
+		$this->data['review_count'] = $this->dashboard->get_review_count();
+		$this->data['invoice_count'] = $this->dashboard->get_invoice_count();
+		$this->data['message_count'] = $this->dashboard->get_message_count();
+		$this->data['offer_count'] = $this->dashboard->get_offer_count();
+		$this->data['escrow_count'] = $this->dashboard->get_escrow_count();
+
+
 		$this->data['statics']['project'] = $this->dashboard->project_statics();
 		$this->data['statics']['member'] = $this->dashboard->member_statics();
+		$this->data['statics']['transaction'] = $this->dashboard->transaction_statics();
 		//get_print($this->data['statics']['member']);
 		$this->layout->view('dashboard', $this->data);
        
