@@ -3,7 +3,7 @@
 		<form role="form" id="add_form" action="<?php echo $action; ?>" onsubmit="submitForm(this, event)">
 			<input type="hidden" name="ID" value="<?php echo $member_id;?>"/>
 			<input type="hidden" name="page" value="<?php echo $page;?>"/>
-			<div class="box-body">
+			
 					<div class="form-group">
 						<label for="timezone">Timezone</label>
 						<input type="text" class="form-control" name="member_address[member_timezone]" value="<?php echo !empty($detail['member_address']['member_timezone']) ? $detail['member_address']['member_timezone'] : '' ;?>"/>
@@ -56,12 +56,9 @@
 						<input type="text" class="form-control" name="member_address[member_mobile]" value="<?php echo !empty($detail['member_address']['member_mobile']) ? $detail['member_address']['member_mobile'] : '' ;?>"/>
 					</div>
 					
-				<!-- /.box-body -->
-				<div class="box-footer">
-					<button type="submit" class="btn-block btn btn-primary">Save</button>
-				</div>
+					<button type="submit" class="btn btn-site">Save</button>
 	
-			</div>
+			
 		</form>
 </div>
 </div>

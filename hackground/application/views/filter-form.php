@@ -1,9 +1,9 @@
 <style>
 .advance-search-panel{
 	background-color: #fff;
-	color:#aaa;
-    padding: 12px;
-    margin-top: 10px;
+	box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+    padding: 1rem;
+    margin-top: 1rem;
 }
 </style>
 <?php 
@@ -70,7 +70,7 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 			<input class="form-control" placeholder="Search..." name="term" value="<?php echo !empty($srch['term']) ? $srch['term'] : '';?>">
 
 			<div class="input-group-append">
-			  <button type="submit" class="btn btn-site"><i class="fa fa-search"></i></button>
+			  <button type="submit" class="btn btn-site"><i class="icon-feather-search"></i></button>
 			</div>
 		  </div>
 	</div>
@@ -104,14 +104,14 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 		 ?>
 	
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm">
 			<label>Category</label>
 			<select class="form-control" name="category">
 				<option value="">-select-</option>
 				<?php print_select_option($category, 'category_id', 'category_name', $srch['category']);?>
 			</select>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm">
 			<label>Type</label>
 			<select class="form-control" name="project_type">
 			<option value="" >-select-</option>
@@ -121,8 +121,9 @@ if(in_array($url_segment, $similar_search_module)){ ?>
 			</select>
 		</div>
 		
-		<div class="col-sm-12">
-			<button class="btn btn-sm btn-site" style="margin-top: 10px; margin-bottom: 15px;">Filter</button>
+		<div class="col-sm-auto">
+        	<label class="d-block">&nbsp;</label>
+			<button class="btn btn-site"><i class="icon-feather-filter"></i> Filter</button>
 		</div>
 	</div>
 	

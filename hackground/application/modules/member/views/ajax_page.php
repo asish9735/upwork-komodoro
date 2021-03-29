@@ -1,7 +1,7 @@
 <?php if($page == 'add'){ ?>
 
 <div class="modal-header">
-  <h5 class="modal-title"><?php echo $title;?></h5>
+  <h4 class="modal-title"><?php echo $title;?></h4>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
@@ -69,7 +69,7 @@ function onsuccess(res){
 <?php } ?>
 <?php if($page == 'edit'){ ?>
 <div class="modal-header">
-  <h5 class="modal-title"><?php echo $title;?></h5>
+  <h4 class="modal-title"><?php echo $title;?></h4>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
@@ -147,17 +147,13 @@ function onsuccess(res){
         <label for="is_login_0">No</label>
       </div>
     </div>
-    <button type="submit" class="btn-block btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-site">Save</button>
   </form>
 </div>
 </div>
 <script>
 
-
-
 init_plugin();
-
-
 
 function submitForm(form, evt){
 
@@ -166,8 +162,6 @@ function submitForm(form, evt){
 	ajaxSubmit($(form), onsuccess);
 
 }
-
-
 
 function onsuccess(res){
 
@@ -178,18 +172,15 @@ function onsuccess(res){
 	}
 
 }
-
-
-
 </script>
 <?php } ?>
 <?php if($page == 'user_badge'){ ?>
 <div class="modal-header">
-  <h5 class="modal-title"><?php echo $title;?></h5>
+  <h4 class="modal-title"><?php echo $title;?></h4>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
-  <form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
+   <form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
     <input type="hidden" name="ID" value="<?php echo $ID; ?>"/>
     <div class="form-group">
       <label class="form-label">Badge</label>
@@ -201,17 +192,11 @@ function onsuccess(res){
       <?php } ?>
     </div>
     <button type="submit" class="btn btn-site">Save</button>
-  </form>
+   </form>
 </div>
 </div>
 <script>
-
-
-
 init_plugin();
-
-
-
 function submitForm(form, evt){
 
 	evt.preventDefault();
@@ -219,9 +204,6 @@ function submitForm(form, evt){
 	ajaxSubmit($(form), onsuccess);
 
 }
-
-
-
 function onsuccess(res){
 
 	if(res.cmd && res.cmd == 'reload'){
@@ -231,8 +213,5 @@ function onsuccess(res){
 	}
 
 }
-
-
-
 </script>
 <?php } ?>
