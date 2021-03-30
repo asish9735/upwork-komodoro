@@ -7,7 +7,8 @@ class Layout {
     private $footer;
     private $scriptsrc;
     private $theme;
-	private $title;
+	private $meta_title;
+	private $meta_description;
 	private $meta;
 	private $css;
 	private $js;
@@ -15,7 +16,8 @@ class Layout {
     {
         $this->ci = &get_instance();
 		$this->theme =  THEME ;
-		$this->title = "";
+		$this->meta_title = "";
+		$this->meta_description = "";
 		$this->meta = array();
         $this->header = $this->theme."/inc/header";
         $this->footer = $this->theme."/inc/footer";
@@ -71,22 +73,25 @@ class Layout {
 	}
 	
 	private function _getHeader(){
-		$data['title'] = $this->title;
+		$data['meta_title'] = $this->meta_title;
+		$data['meta_description'] = $this->meta_description;
 		return $data;
 	}
 	
 	public function set_title($title=''){
-		$this->title = $title;
+		$this->meta_title = $title;
 	}
 	
 	public function set_meta($key='' , $val=''){
 		$this->meta[$key] = $val;
+		if($key=='description'){
+			$this->meta_description =$val;
+		}
 	}
 	
 	private function get_meta(){
 		return $this->meta;
 	}
-	
 	public function load_meta(){
 		foreach($this->meta as $meta_key => $meta_val){
 			echo '<meta name="'.$meta_key.'" content="'.$meta_val.'">';

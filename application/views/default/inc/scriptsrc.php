@@ -1,5 +1,26 @@
+<?php
+$currentLang=$this->config->item('language');
+//$seo_images=array(LOGO);
+$curreentDir="ltr";
+if($currentLang=='ar'){
+	$curreentDir="rtl";
+}
+$canonical=VPATH.uri_string();
+$canonicals[]=$canonical;
+$title=strip_tags(($meta_title? $meta_title : get_setting('site_title')));
+$description=strip_tags(($meta_description? $meta_description : get_setting('site_title')));
+
+$seo_title=substr($title,0,70);
+$seo_description=substr($description,0,160);
+$fb_app_id=get_setting('fb_app_id');
+$google_client_id=get_setting('google_client_id');
+$tw_page_username=get_setting('tw_page_username');
+$tw_creator_username=get_setting('tw_creator_username');
+$website_name=get_setting('website_name');
+
+?>
 <!doctype html>
-<html lang="en">
+<html lang="<?php D($currentLang);?>" dir="<?php D($curreentDir);?>">
 <head>
 
 <!-- Basic Page Needs
@@ -9,6 +30,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="shortcut icon" href="<?php echo IMAGE;?>favicon.png" type="image/x-icon">
 <?php $this->layout->load_meta(); ?>
+
+<meta name="robots" content="index, follow" /> <!--– Means index and follow this web page.-->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<?php D($canonical);?>" />
+<meta name="twitter:url" content="<?php D($canonical);?>" />
+
+<meta property="og:title" content="<?php D($title);?>" />
+<meta property="og:description" content="<?php D($description);?>" />
+<meta property="og:site_name" content="<?php D($website_name);?>" />
+<?php if($fb_app_id){?>
+<meta property="fb:app_id" content="<?php D($fb_app_id);?>" />
+<?php }?>
+<?php if($google_client_id){?>
+<meta name="google-signin-client_id" content="<?php D($google_client_id);?>">
+<?php }?>
+<!--<meta name="twitter:card" content="" />-->
+<meta name="twitter:title" content="<?php D($title);?>" />
+<meta name="twitter:description" content="<?php D($description);?>" />
+<?php /* if($seo_images){
+	foreach($seo_images as $image){
+	?>
+<meta property="og:image" content="<?php D($image);?>" />
+<meta name="twitter:image" content="<?php D($image);?>" />
+<?php 	
+	}
+} */?>
+<?php if($tw_page_username){?>
+<meta name="twitter:site" content="<?php D($tw_page_username)?>" /> <!--@username-->
+<?php }?>
+<?php if($tw_creator_username){?>
+<meta name="twitter:creator" content="<?php D($tw_creator_username)?>" /> <!--@username-->
+<?php }?>
+<meta name="author" content="<?php D($website_name);?>" />
+<meta name="organization" content="<?php D($website_name);?>" />
+<link rel="shortcut icon" href="<?php D(FAVICON)?>" type="image/x-icon">
+
+
+
+
+<?php foreach($canonicals as $url){?>
+<link rel="canonical" href="<?php D($url);?>" /> <!--all dublicate url put-->
+<?php }?>
 <!--<style type="">
 	@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&subset=latin-ext");
 </style>-->

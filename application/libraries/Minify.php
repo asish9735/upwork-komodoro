@@ -637,7 +637,7 @@ class Minify
 		
 		foreach ($files as $file)
 		{
-			$output[] = $this->html_tags ? sprintf($template, base_url($file)) : base_url($file);
+			$output[] = $this->html_tags ? sprintf($template, SITE_URL.$file) : SITE_URL.$file;
 		}
 		if ( ! empty($output))
 		{

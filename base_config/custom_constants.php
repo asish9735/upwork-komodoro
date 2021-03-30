@@ -50,6 +50,9 @@ define('API_FAIL',					'0');
 /* APP CONSTANTS */
 define('DEFAULT_EXPIRATION_DAYS',	'1');
 
+define('ATTACHMENT_ALL',	array('jpg'));
+
+
 /* 
 API_SUCCESS = 1 (Operation complete)
 API_FAIL = 0 (Operation Fail) 

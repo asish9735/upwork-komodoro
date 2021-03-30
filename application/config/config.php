@@ -76,7 +76,13 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'en';
+$config['languages']    = [
+  'en' => 'en',
+  'de' => 'de',
+  'ru' => 'ru',
+  'ar' => 'ar'
+];
 
 /* default language abbreviation */
 

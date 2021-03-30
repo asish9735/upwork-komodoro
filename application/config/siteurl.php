@@ -15,6 +15,7 @@ $config['registerURL'] = 'sign-up/';
 $config['logoutURL'] = 'logout/';
 $config['dashboardURL'] = 'dashboard/';
 $config['settingsURL'] = 'settings/';
+$config['SetLanguage'] = 'home/setlanguage';
 $config['VerifyURL'] = 'verify-user/'; #router
 $config['resetPasswordURL'] = 'user/resetpassword';
 $config['ForgotVerifyURL'] = 'verify-user-forgot/'; #router

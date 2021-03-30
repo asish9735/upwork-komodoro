@@ -31,7 +31,7 @@ if($loggedUser){
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="<?php echo SITE_URL;?>"><img src="<?php echo IMAGE;?>logo.png" data-sticky-logo="<?php echo IMAGE;?>logo.png" data-transparent-logo="<?php echo IMAGE;?>logo2.png" alt=""></a>
+					<a href="<?php echo base_url();?>"><img src="<?php echo IMAGE;?>logo.png" data-sticky-logo="<?php echo IMAGE;?>logo.png" data-transparent-logo="<?php echo IMAGE;?>logo2.png" alt=""></a>
 				</div>				
 				
 			</div>
@@ -63,6 +63,12 @@ if($loggedUser){
 					<li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>">Register</a></li>
                     <li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>">Post A Job</a></li>
 					<?php }?>
+					<?php /* if($this->config->item('language')=='ar'){?>
+					<li><a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang " data-language="en">EN</a></li>
+					<?php }?>
+					<?php if($this->config->item('language')=='en'){?>
+					<li><a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang" data-language="ar">AR</a></li>
+					<?php } */?>
 					</ul>
 				</nav>
 				<!--<div class="clearfix"></div>-->

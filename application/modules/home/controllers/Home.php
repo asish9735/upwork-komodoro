@@ -94,5 +94,22 @@ class Home extends MX_Controller {
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
 		$this->layout->view('membership',$this->data);
 	}
+	public function setlanguage(){
+		$msg=array();
+		$i=0;
+		$default_lang=get_setting('default_lang');
+		$msg['status']='OK';
+		$previous_lang=post('preflang');
+		$current_lang=post('newlang');
+		$refeffer=$this->input->post('currentlink').'/';
+		$replace=$previous_lang.'/';
+		$new_location_slug=$current_lang.'/';
+		if($default_lang==$current_lang){
+			$new_location_slug='';
+		}
+		$refeffer=rtrim(str_replace($replace,'',$refeffer),'/');
+		$msg['refeffer']=SITE_URL.$new_location_slug.$refeffer;				
+		echo json_encode($msg);
+	}
 	
 }

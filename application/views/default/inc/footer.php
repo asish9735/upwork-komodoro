@@ -235,6 +235,16 @@ function updateheadscroll(type){
 		scrollbar.find('.simplebar-track').hide();
 	}		
 }
+function upldateLanguage(ev){
+	var language=$(ev).data('language');
+	var previous_lang='<?php D($this->config->item('language'))?>';
+	if(previous_lang==language){
+		return false;
+	}
+	$.post('<?php D(get_link('SetLanguage'))?>',{currentlink:"<?php D(uri_string());?>",newlang:language,preflang:previous_lang},function(response){
+		window.location.href=response['refeffer']+"<?php if($_SERVER['QUERY_STRING']){D('?'.$_SERVER['QUERY_STRING']);}?>";
+	},'JSON');
+}
 $(window).load(function(){
 	if(typeof mainload == 'function'){
 		mainload();
