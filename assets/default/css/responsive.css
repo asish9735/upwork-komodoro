@@ -64,6 +64,9 @@ html {
 	ul.top-list{
 		columns: 4;
 	}
+	#talent_list .job-listing h4.job-listing-title {
+		max-width: 330px;
+	}
 	
 }
 

@@ -30,7 +30,7 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 		<div class="job-listing-description">	
 			<div class="freelancer-about">
 			<div class="freelancer-intro">		
-            	<h5><a href="<?php echo $freelancer['profile_link'];?>"><?php echo $freelancer['member_name'];?></a></h5>				
+            	<h5 class="mb-2"><a href="<?php echo $freelancer['profile_link'];?>"><?php echo $freelancer['member_name'];?></a></h5>				
 				<h4 class="job-listing-title"><?php echo $freelancer['member_heading'];?></h4>				
 				<div class="freelancer-rating">
 					<div class="star-rating" data-rating="<?php echo round($freelancer['avg_rating'],1);?>"></div>
