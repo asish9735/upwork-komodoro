@@ -51,7 +51,8 @@
 							<?php
 						}
 					}
-				  ?><span>&nbsp;</span>
+				  ?>
+                  <span class="icon-feather-corner-down-right"></span>
                  </div>
                  </td>
                  <!--  <td><?php echo $v['message']; ?></td> -->

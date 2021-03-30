@@ -34,16 +34,16 @@
 			<?php } ?>
 		   
 		   <?php if(!get('show')){ ?>
-			<div class="btn-group" id="global_action_btn" style="display:none">
+			<div class="btn-group mr-2" id="global_action_btn" style="display:none">
 			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
 			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
-			   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="fa  fa-thumbs-o-down"></i></button>
+			   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="icon-feather-thumbs-down"></i></button>
 			</div>
 			&nbsp;
 			<?php } ?>
             <button type="button" class="btn btn-site btn-sm" onclick="add()">
-              <i class="icon-feather-plus"></i>
-				<?php echo $add_btn;?>
+                <i class="icon-feather-plus"></i>
+				<span class="d-none d-sm-inline"><?php echo $add_btn;?></span>
 			</button>
           </div>
         </div>
@@ -86,11 +86,9 @@
                   <td><?php echo $v['name']; ?></td>
                  
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
+                  <td align="right">
 					<?php if($v['status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
 					<?php } ?>

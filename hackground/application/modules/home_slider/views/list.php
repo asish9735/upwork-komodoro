@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+    <div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php // echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
     <!-- Main content -->
@@ -45,7 +49,7 @@
               <table class="table table-hover">
                 <tbody>
 				<tr>
-					<th style="width:3%">
+					<th style="width:30px">
 						
 						  <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
 							<label for="all_item"></label>
@@ -53,7 +57,7 @@
                   <th style="width:10%">ID</th>
                   <th style="width:60%">Banner</th>
                   <th style="width:10%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
@@ -80,11 +84,9 @@
                   	<?php }?>
                   </td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
+                  <td align="right">
 					<?php if($v['status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
 					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash red <?php echo ICON_SIZE;?>"></i></a>
 					<?php } ?>

@@ -21,68 +21,16 @@ $contract_term_url=base_url('offers/contract_term/'.md5($contractDetails->contra
 $endcontract_url='#';
 ?>
 
-<style>
-.panel {
-    background-color: #fff;
-}
-.panel-body {
-    padding: 1.333rem;
-}
-ul.totalList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    /* align-items: center; */
-    align-content: center;
-    text-align: center;
-    background-color: #fff;
-    margin-bottom: 0;
-    overflow: hidden;
-}
-ul.totalList > li {
-    flex: 1;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: -1px;
-    padding: 1rem;
-}
-ul.totalList > li > span {
-    display: block;
-    margin-top: 0.5rem;
-}
-.relative {
-    position: relative;
-}
-
-.panel-header {
-    border-bottom: 1px solid #ddd;
-    padding: 1rem 1.333rem;
-}
-.toggleUD {
-    font-size: 2rem;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    line-height: 0;
-}
-.number {
-    position: absolute;
-    left: 1.25rem;
-    top: 0.75rem;
-}
-.milestone-item {
-    padding-left: 1.25rem;
-}
-</style>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+      <div class="row">
+      <div class="col-sm-6 col-12">
+        <h1> <?php echo $main_title ? $main_title : '';?></h1>
+      </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+    </div>
     </section>
 
 	 <!-- Content Filter -->
@@ -90,15 +38,15 @@ ul.totalList > li > span {
 	
     <!-- Main content -->
     <section class="content">
-	<div class="">
-    <h1><?php echo $contractDetails->contract_title;?></h1>
+	
+    <h3><?php echo $contractDetails->contract_title;?></h3>
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>">Milestones & Earnings</a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
     </ul>
-    <div class="row">
-      <div class="col-lg-9">
+    
+
         <div class="panel mb-4">
           <div class="panel-body">
             <ul class="totalList mb-0">
@@ -175,9 +123,9 @@ ul.totalList > li > span {
       </div>
 	  
     </div>
-  </div>
+	
 	</section>
-</div>
+
 
 <?php if($is_owner){?>
 <div id="add_fund_modal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">

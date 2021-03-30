@@ -72,6 +72,7 @@
 				  <p class="mb-1"><a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $v['sender_id']?>" target="_blank"><img src="<?php echo $logo_from;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['review_from']; ?></a></p>
 				  <span>&nbsp;</span>
 				  <p class="mb-0"><a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $v['receiver_id']?>" target="_blank"><img src="<?php echo $logo_to;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /><?php echo $v['review_to']; ?></a></p>
+                  <span class="icon-feather-corner-down-right"></span>
                   </div>
 				  </td>
                   <td>

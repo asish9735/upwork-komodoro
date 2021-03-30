@@ -1,68 +1,60 @@
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-	<div class="row">
+<!-- Content Wrapper. Contains page content -->
+
+<div class="content-wrapper"> 
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="row">
       <div class="col-sm-6 col-12">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-		 <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-	  </div>
+        <h1> <?php echo $main_title ? $main_title : '';?> <small><?php echo $second_title ? $second_title : '';?></small> </h1>
+      </div>
       <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
-	</div>
-    </section>
-
-	 <!-- Content Filter -->
-	<?php $this->layout->load_filter(); ?>
-	
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header border-bottom-0">
-          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
-          <div class="card-tools">
-			<?php if(ALLOW_TRASH_VIEW){ ?>
-			<?php if(get('show') && get('show') == 'trash'){ ?>
-			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
-			<?php }else{ ?>
-			<a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="icon-feather-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
-			<?php } ?>
-			<?php } ?>
-		   
-		   <?php if(!get('show')){ ?>
-			<div class="btn-group" id="global_action_btn" style="display:none">
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
-			  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="fa fa-thumbs-up"></i></button>
-			   <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="fa  fa-thumbs-down"></i></button>
-			</div>
-			&nbsp;
-			<?php } ?>
-            <button type="button" class="btn btn-site btn-sm" onclick="add()">
-              <i class="icon-feather-plus"></i>
-				<?php echo $add_btn;?>
-			</button>
+    </div>
+  </section>
+  
+  <!-- Content Filter -->
+  <?php $this->layout->load_filter(); ?>
+  
+  <!-- Main content -->
+  <section class="content"> 
+    
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header border-bottom-0">
+        <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+        <div class="card-tools">
+          <?php if(ALLOW_TRASH_VIEW){ ?>
+          <?php if(get('show') && get('show') == 'trash'){ ?>
+          <a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
+          <?php }else{ ?>
+          <a href="<?php echo base_url($curr_controller.$curr_method.'?show=trash');?>" type="button" class="btn btn-box-tool"><i class="icon-feather-trash <?php echo ICON_SIZE;?>"></i> Show Trash</a>&nbsp;&nbsp;
+          <?php } ?>
+          <?php } ?>
+          <?php if(!get('show')){ ?>
+          <div class="btn-group mr-2" id="global_action_btn" style="display:none">
+            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete selected" onclick="deleteSelected()"><i class="icon-feather-trash"></i></button>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make active" onclick="changeStatusAll(1)"><i class="icon-feather-thumbs-up"></i></button>
+            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Make inactive" onclick="changeStatusAll(0)"><i class="icon-feather-thumbs-down"></i></button>
           </div>
+          &nbsp;
+          <?php } ?>
+          <button type="button" class="btn btn-site btn-sm" onclick="add()"> <i class="icon-feather-plus"></i> <span class="d-none d-sm-inline"><?php echo $add_btn;?></span> </button>
         </div>
-       
-		<div class="card-body table-responsive p-0" id="main_table">
-              <table class="table table-hover">
-                <tbody>
-				<tr>
-					<th style="width:3%">
-						  <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
-							<label for="all_item"></label>
-					</th>
-					<th style="width:10%">ID</th>
-                  <th style="width:10%">Logo</th>
-                  <th style="width:40%">Name</th>
-                  <th style="width:10%">Order</th>
-                  <th style="width:10%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
-                </tr>
-				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+      </div>
+      <div class="card-body table-responsive p-0" id="main_table">
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th style="width:3%"> <input type="checkbox" class="check_all_main magic-checkbox" data-target=".check_all" id="all_item">
+                <label for="all_item"></label>
+              </th>
+              <th style="width:10%">ID</th>
+              <th style="width:10%">Logo</th>
+              <th style="width:40%">Name</th>
+              <th style="width:10%">Order</th>
+              <th style="width:10%">Status</th>
+              <th class="text-right" style="padding-right:20px;">Action</th>
+            </tr>
+            <?php if(count($list) > 0){foreach($list as $k => $v){ 
 				$status = '';
 				if($v['testimonial_status'] == ACTIVE_STATUS){
 					$status = '<a href="'.JS_VOID.'"  data-toggle="tooltip" title="Make inactive" onclick="changeStatus(0, \''.$v[$primary_key].'\',this)"><span class="badge badge-success">Active</span></a>';
@@ -78,60 +70,47 @@
 				}
 				
 				?>
-				<tr>
-					<td>
-						
-						<input type="checkbox" class="check_all magic-checkbox" name="ID[]" value="<?php echo $v[$primary_key]; ?>" id="item_<?php echo $v[$primary_key];?>">
-						<label for="item_<?php echo $v[$primary_key];?>"></label>
-						
-					</td>
-                  <td><?php echo $v[$primary_key]; ?></td>
-				  <td style="vertical-align: middle;"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /></td>
-                  <td><?php echo $v['name']; ?><br><?php echo $v['company_name']; ?></td>
-				  <td><?php echo $v['display_order']; ?></td>
-                  <td><?php echo $status; ?></td>
-                  <td align="right">
-					<?php if($v['testimonial_status'] != DELETE_STATUS){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>
-					&nbsp;
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
-					<?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
-					<?php } ?>
-					
-				  </td>
-                </tr>
-				<?php } }else{  ?>
-				<tr>
-                  <td colspan="10"><?php echo NO_RECORD; ?></td>
-                 </tr>
-				<?php } ?>
-                
-               </tbody>
-			  </table>
-        </div>
-		 <!-- /.box-body -->		 
+            <tr>
+              <td><input type="checkbox" class="check_all magic-checkbox" name="ID[]" value="<?php echo $v[$primary_key]; ?>" id="item_<?php echo $v[$primary_key];?>">
+                <label for="item_<?php echo $v[$primary_key];?>"></label></td>
+              <td><?php echo $v[$primary_key]; ?></td>
+              <td style="vertical-align: middle;"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /></td>
+              <td><?php echo $v['name']; ?><br>
+                <?php echo $v['company_name']; ?></td>
+              <td><?php echo $v['display_order']; ?></td>
+              <td><?php echo $status; ?></td>
+              <td align="right"><?php if($v['testimonial_status'] != DELETE_STATUS){ ?>
+                <a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
+                <?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
+                <a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
+                <?php } ?></td>
+            </tr>
+            <?php } }else{  ?>
+            <tr>
+              <td colspan="10"><?php echo NO_RECORD; ?></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
       </div>
-      <!-- /.box -->
-		<nav>
-			<ul class="pagination justify-content-center">
-				<?php echo $links;?>
-			</ul>
-		</nav>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
-  
-<div class="modal fade" id="ajaxModal">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		 
-		</div>
-	  </div>
+      <!-- /.box-body --> 
+    </div>
+    <!-- /.box -->
+    <nav>
+      <ul class="pagination justify-content-center">
+        <?php echo $links;?>
+      </ul>
+    </nav>
+  </section>
+  <!-- /.content --> 
 </div>
+<!-- /.content-wrapper -->
 
+<div class="modal fade" id="ajaxModal">
+  <div class="modal-dialog">
+    <div class="modal-content"> </div>
+  </div>
+</div>
 <script>
 
 function add(){
@@ -286,4 +265,4 @@ $(function(){
 	
 	
 });
-</script>
+</script> 

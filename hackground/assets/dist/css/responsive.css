@@ -26,4 +26,10 @@
 		height: 40px;
 		overflow-x: auto;
 	}
+	.table td:not(:last-child) {
+		white-space: nowrap;
+		max-width: 320px;
+		overflow:hidden;
+		text-overflow: ellipsis;
+	}
 }

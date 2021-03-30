@@ -79,9 +79,7 @@
                   <td><?php echo date('d M, Y', strtotime($v['date'])); ?></td>
                   <td><?php echo $status; ?></td>
                   <td align="right">
-					<a href="<?php echo JS_VOID; ?>" onclick="view_message(this)" data-message="<?php echo htmlentities(json_encode($v)); ?>" data-toggle="tooltip" title="View Message"><i class="icon-feather-mail text-success <?php echo ICON_SIZE;?>"></i></a>				
-					<a href="<?php echo JS_VOID; ?>" onclick="reply('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Reply"><i class="fa fa-mail-reply red <?php echo ICON_SIZE;?>"></i></a>
-					<a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
+					<a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="view_message(this)" data-message="<?php echo htmlentities(json_encode($v)); ?>" data-toggle="tooltip" title="View Message"><i class="icon-feather-mail text-success <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="reply('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Reply"><i class="icon-feather-corner-up-left text-primary <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
 				 </td>
                 </tr>
 				<?php } }else{  ?>

@@ -56,19 +56,18 @@ if($is_owner){
 							*/ }
 						}elseif($contractDetails->contract_status==1){
 						?>
-						<div class="mx-auto alert alert-success text-center">
-						<p class="mb-0"> <i class="icon-material-outline-check-circle text-success"></i> Offer Accepted. </p>
-						</div>
+						<p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i> Offer Accepted.</span></p>
 						<?php	
 						}elseif($contractDetails->contract_status==2){
 						?>
-						<div class="mx-auto alert alert-warning text-center">
-						<p class="mb-0"> <i class="icon-material-outline-check-circle text-danger"></i> Offer Rejected</p>
-						</div>
+						<p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> Offer Rejected</span></p>
 						<?php	
 						}?>
 						<div class="card mb-4">
-						<div class="card-header"><h4><?php echo $contractDetails->contract_title;?></h4></div>
+						<div class="card-header">
+                        <h4><?php echo $contractDetails->contract_title;?></h4>
+                        
+                        </div>
 						<div class="card-body">
 						<?php if($contractDetails->contract_details){?>
 						<p><?php echo nl2br($contractDetails->contract_details);?></p>

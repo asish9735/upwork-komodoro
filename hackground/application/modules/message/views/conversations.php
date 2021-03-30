@@ -104,7 +104,7 @@ padding:25px 20px;
 		<div class="card-body">
 		<p><b>Project Name:</b> <a href="<?php echo SITE_URL;?>p/<?php echo  $conversation_details->project->project_url; ?>" target="_blank"><?php echo $conversation_details->project->project_title;?></a></p>
 
-		<div class="reviewTo ml-4">
+		<div class="reviewTo">
 		<?php 
 		if($conversation_details->group) {
 			foreach($conversation_details->group as $g=>$member){
@@ -115,7 +115,7 @@ padding:25px 20px;
 			}
 		}
 		?>
-        <span>&nbsp;</span>
+        <span class="icon-feather-corner-down-right"></span>
         </div>
 		</div>
 		</div>
@@ -155,7 +155,7 @@ if($file->is_image){
 		<i class="fa fa-file bg-purple"></i>
 	<?php }?>
 	<div class="timeline-item">
-		<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M, Y H:i:s',strtotime($conversation->sending_date)); ?></span>
+		<span class="time"><i class="icon-feather-clock"></i> <?php echo date('d M, Y H:i:s',strtotime($conversation->sending_date)); ?></span>
 
 		<h3 class="timeline-header"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a> <?php if($conversation->is_edited){?> edited the message<?php }?></h3>
 
@@ -179,7 +179,7 @@ if($file->is_image){
 	<!-- timeline icon -->
 	<i class="fa fa-comments bg-yellow"></i>
 	<div class="timeline-item">
-		<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M,Y H:i:s',strtotime($conversation->sending_date)); ?></span>
+		<span class="time"><i class="icon-feather-clock"></i> <?php echo date('d M, Y H:i:s',strtotime($conversation->sending_date)); ?></span>
 
 		<h3 class="timeline-header"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a> <?php if($conversation->is_edited){?> edited the message<?php }?></h3>
 
@@ -196,7 +196,7 @@ if($file->is_image){
 <li style="padding-left:30px">
 	<!-- timeline icon -->
 	<div class="timeline-item">
-		<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M,Y H:i:s',strtotime($edited->edit_date)); ?></span>
+		<span class="time"><i class="icon-feather-clock"></i> <?php echo date('d M, Y H:i:s',strtotime($edited->edit_date)); ?></span>
 
 		<h3 class="timeline-header"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a></h3>
 
@@ -211,7 +211,7 @@ if($file->is_image){
 	<i class="fa fa-trash bg-red"></i>
 
 	<div class="timeline-item">
-	<span class="time"><i class="fa fa-clock-o"></i> <?php echo date('d M, Y H:i:s',strtotime($conversation->is_deleted)); ?></span>
+	<span class="time"><i class="icon-feather-clock"></i> <?php echo date('d M, Y H:i:s',strtotime($conversation->is_deleted)); ?></span>
 	<h3 class="timeline-header  no-border"><a  href="<?php echo base_url('member/list_record'); ?>?member_id=<?php echo $conversation->sender_id;?>" target="_blank"><img height="32" src="<?php echo getMemberLogo($conversation->sender_id); ?>" class="img-responsive message-image"> <?php echo $sender_user_name; ?></a> deleted this message</h3>
 	</div>
     </li>

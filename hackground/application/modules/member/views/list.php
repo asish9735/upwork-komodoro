@@ -95,11 +95,9 @@
                   <td><?php echo $user_tag; ?></td>
                   <td><?php echo $v['access_user_email']; ?></td>
                   <td class="text-center">
-					<i class="icon-feather-mail <?php echo ICON_SIZE;?> <?php echo $email_ver_class; ?>" data-toggle="tooltip" title="<?php echo $email_ver_txt;?>"></i>
-					&nbsp;
-					<i class="icon-feather-phone <?php echo ICON_SIZE;?> <?php echo $phone_ver_class; ?>" data-toggle="tooltip" title="<?php echo $phone_ver_txt;?>"></i>
+					<i class="icon-feather-mail <?php echo ICON_SIZE;?> <?php echo $email_ver_class; ?> mr-1" data-toggle="tooltip" title="<?php echo $email_ver_txt;?>"></i>
+					<i class="icon-feather-phone <?php echo ICON_SIZE;?> <?php echo $phone_ver_class; ?> mr-1" data-toggle="tooltip" title="<?php echo $phone_ver_txt;?>"></i>
 					<?php if($v['is_employer'] != '1'){ ?>
-					&nbsp;
 					<i class="icon-feather-file <?php echo ICON_SIZE;?> <?php echo $doc_ver_class; ?>" data-toggle="tooltip" title="<?php echo $doc_ver_txt;?>"></i>
 					<?php } ?>
 				  </td>

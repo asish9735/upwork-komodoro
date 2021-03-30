@@ -11,7 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --blue: #007bff;
+  --blue: #64be43;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -24,7 +24,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: #64be43;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -4841,8 +4841,8 @@ input[type="button"].btn-block {
 
 .card-footer {
   padding: 0.75rem 1.25rem;
-  background-color: rgba(0, 0, 0, 0);
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 0 solid rgba(0, 0, 0, 0.125);
 }
 
 .card-footer:last-child {
@@ -6186,7 +6186,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .tooltip {
   position: absolute;
-  z-index: 1070;
+  z-index: 1049;
   display: block;
   margin: 0;
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -10109,7 +10109,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #007bff !important;
+  color: #64be43 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -11811,7 +11811,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   margin-left: .8rem;
   margin-right: .5rem;
   margin-top: -3px;
-  max-height: 40px;
+  max-height: 33px;
   width: auto;
 }
 
@@ -12026,7 +12026,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 #sidebar-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
   bottom: 0;
   display: none;
   left: 0;
@@ -14036,7 +14036,7 @@ body.text-sm .control-sidebar {
 }
 
 .navbar-primary {
-  background-color: #007bff;
+  background-color: #64be43;
 }
 
 .navbar-secondary {
@@ -14084,7 +14084,7 @@ body.text-sm .control-sidebar {
 }
 
 .navbar-blue {
-  background-color: #007bff;
+  background-color: #64be43;
 }
 
 .navbar-indigo {
@@ -20534,12 +20534,14 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   .col-xl-3 .small-box h3,
   .col-lg-3 .small-box h3,
   .col-md-3 .small-box h3 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 }
+
 .small-box p {
   font-size: 1rem;
 }
+
 .small-box p > small {
   color: #f8f9fa;
   display: block;
@@ -30113,7 +30115,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-blue {
-  background-color: #007bff !important;
+  background-color: #64be43 !important;
 }
 
 .bg-blue,

@@ -46,7 +46,7 @@
                   <th style="width:10%">Type</th>
                   <th style="width:30%">User</th>
                   <th style="width:5%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
 					$logo = getMemberLogo($v[$primary_key]);
@@ -86,21 +86,19 @@
                   <td><?php echo $project_tag; ?></td>
                   <td><a href="<?php echo base_url('member/list_record?member_id='.$v['member_id']); ?>"><img src="<?php echo $logo;?>" class="rounded-circle mr-2" alt="User Image" height="32" width="32" /> <?php echo $v['member_name']; ?></a> </td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:15px;">
+                  <td align="right">
                   <div class="dropdown">
                       <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo $status_txt; ?>
                       </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="<?php echo SITE_URL;?>p/<?php echo $v['project_url']; ?>" target="_blank">View Details</a>
                         <a class="dropdown-item" href="<?php echo JS_VOID;?>" onclick="editProject('<?php echo $v[$primary_key]; ?>')">Edit Project Details</a> 
-                        <a class="dropdown-item" href="<?php echo base_url('project_application/list_record/?project_id='.$v[$primary_key]); ?>" target="_blank">View Applications</a>      
+                        <a class="dropdown-item" href="<?php echo base_url('project_application/list_record/?project_id='.$v[$primary_key]); ?>" target="_blank">View Applications</a>
                         <a class="dropdown-item" href="<?php echo base_url('offers/list_record?project_id='.$v[$primary_key]); ?>">View Offers</a>      
                         <a class="dropdown-item" href="<?php echo base_url('offers/contracts?project_id='.$v[$primary_key]); ?>">View Contracts</a>      
                         <a class="dropdown-item" href="<?php echo base_url('offers/milestone?project_id='.$v[$primary_key]); ?>">View Milestone</a>      
-                        <a class="dropdown-item" href="<?php echo base_url('project_escrow/list_record?project_id='.$v[$primary_key]); ?>">Escrow</a>      
-                        
-                        
+                        <a class="dropdown-item" href="<?php echo base_url('project_escrow/list_record?project_id='.$v[$primary_key]); ?>">Escrow</a>                                             
                       </div>
                    </div>   
                   

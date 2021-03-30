@@ -21,20 +21,26 @@
 	
       <!-- Default box -->
       <div class="card">
-        <div class="card-header border-bottom-0">
-          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+        <div class="card-header border-0">
+          <div class="row">
+      	  <div class="col-md-6 col-12">
+          <h3 class="card-title mb-2 mb-md-0"><?php echo $title ? $title : '';?></h3>
+          </div>
+          <div class="col-md-6 col-12">
           <div class="card-tools">
           <form action="<?php echo base_url($curr_controller.'csv')?>" method="get" target="_blank">
           	<input type="hidden"  name="type" value="transaction"/>
           	<div class="input-group">
-				<input type="text" class="datepicker form-control" id="fromdate" name="daterange" style="min-width:350px"/>
+				<input type="text" class="datepicker form-control" id="fromdate" name="daterange"/>
 				<div class="input-group-append">
-				  	<button type="submit" class="btn btn-success"><i class="fa fa-download"></i> Download CSV</button>
+				  	<button type="submit" class="btn btn-site"><i class="icon-feather-download"></i> Download CSV</button>
 				</div>
 		  	</div>
           </form>
           
 			<!--<a href="<?php echo base_url($curr_controller.'csv')?>?type=transaction" target="_blank" class="btn btn-success">Download CSV</a>-->
+          </div>
+          </div>
           </div>
         </div>
        
@@ -67,7 +73,7 @@
                   <td><?php echo format_date_time($v['created_date']); ?></td>
                   <td><?php echo $status; ?></td>                 
                   <td align="right">
-					<span data-toggle="tooltip" title="View Detail" data-placement="left" onclick="view_txn_detail('<?php echo $v['wallet_transaction_id']; ?>')"><i class="icon-feather-info <?php echo ICON_SIZE;?>"></i></span>
+					<a href="javascipt:void(0)" data-toggle="tooltip" title="View Detail" data-placement="left" onclick="view_txn_detail('<?php echo $v['wallet_transaction_id']; ?>')"><i class="icon-feather-info <?php echo ICON_SIZE;?>"></i></a>
 				  </td>
                 </tr>
 				<?php } }else{  ?>
