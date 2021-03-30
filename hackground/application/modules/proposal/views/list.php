@@ -52,9 +52,9 @@
 					$logo = getMemberLogo($v[$primary_key]);
 				$project_tag = '';
 				if($v['is_hourly'] == '1'){
-					$project_tag = '<span class="badge badge-info">Hourly</span>';
+					$project_tag = '<span class="badge badge-hourly">Hourly</span>';
 				}else if($v['is_fixed'] == '1'){
-					$project_tag = '<span class="badge badge-dark">Fixed</span>';
+					$project_tag = '<span class="badge badge-fixed">Fixed</span>';
 				}
 				
 				$status = $status_txt = '';

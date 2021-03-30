@@ -1,8 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
-
-
+@media (min-width: 0) {
+	html {
+		font-size: 15px;
+	}
+}
 @media (min-width: 768px) {
 	.modal-dialog {
 		max-width: 600px;

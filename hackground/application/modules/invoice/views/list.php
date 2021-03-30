@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	<!-- Content Filter -->
@@ -32,7 +36,7 @@
                   <th style="width:25%">Info</th>
                   <th style="width:10%" class="text-center">Date</th>
                   <th style="width:10%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php $currency = get_setting('site_currency'); 
 				if(count($list) > 0){foreach($list as $k => $v){ 
@@ -68,20 +72,11 @@
                   <td><?php echo implode('',$info); ?></td>
                   <td class="text-center"><?php echo format_date_time($v['invoice_date']); ?></td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
-					<div class="btn-group">
-					  <button type="button" class="btn btn-default"><?php echo $status_txt; ?></button>
-					 
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						<span class="caret"></span>
-						<span class="sr-only">Toggle Dropdown</span>
-					  </button>
-					  <ul class="dropdown-menu" role="menu">
-					  	<li><a target="_blank" href="<?php echo $invoice_url; ?>"><i class="fa fa-info-circle"></i> Invoice details</a></li>
-						
-						
-						
-					  </ul>
+                  <td align="right">
+					<div class="dropdown">
+					  <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $status_txt; ?></button>					 					  <div class="dropdown-menu" role="menu">
+					  	<a class="dropdown-item" target="_blank" href="<?php echo $invoice_url; ?>">Invoice details</a>												
+					  </div>
 					</div>
 				  </td>
                 </tr>
