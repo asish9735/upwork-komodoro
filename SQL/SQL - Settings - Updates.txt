@@ -6,3 +6,4 @@ update `pref_settings` set setting_value=(SELECT `wallet_id` FROM `pref_wallet` 
 update `pref_settings` set setting_value=(SELECT `wallet_id` FROM `pref_wallet` where title='Bank Wallet') where setting_key='BANK_WALLET';
 update `pref_settings` set setting_value=(SELECT `wallet_id` FROM `pref_wallet` where title='Dispute Wallet') where setting_key='DISPUTE_WALLET';
 update `pref_settings` set setting_value=(SELECT `wallet_id` FROM `pref_wallet` where title='Withdraw Wallet') where setting_key='WITHDRAW_WALLET';
+update `pref_settings` set setting_value=(SELECT `wallet_id` FROM `pref_wallet` where title='Stripe Wallet') where setting_key='STRIPE_WALLET';
