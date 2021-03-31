@@ -298,6 +298,41 @@
 		  </div>
 		  
 		</div>
+    <div class="row">
+		  <div class="col-sm-6 col-12">
+			<!-- solid sales graph -->
+			  <div class="box box-solid bg-pink">
+				<div class="box-header">
+				  <i class="fa fa-th"></i>
+
+				  <h3 class="box-title">Add Fund Graph</h3>
+
+				</div>
+				<div class="box-body border-radius-none">
+				  <div class="chart" id="addfund-chart" style="height: 250px;"></div>
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->
+		  </div>
+		  
+		  <div class="col-sm-6 col-12">
+				<div class="box box-solid bg-purple">
+					<div class="box-header">
+					  <i class="fa fa-th"></i>
+
+					  <h3 class="box-title">Profit Graph</h3>
+
+					  
+					</div>
+					<div class="box-body border-radius-none">
+					  <div class="chart" id="profit-chart" style="height: 250px;"></div>
+					</div>
+					<!-- /.box-body -->
+				</div>
+		  </div>
+		  
+		</div>
 	  
 
 
@@ -315,6 +350,8 @@
 <script>
 var project_statistics = <?php echo json_encode($statics['project']);?>;
 var member_statistics = <?php echo json_encode($statics['member']);?>;
+var addfund_statistics = <?php echo json_encode($statics['addfund']);?>;
+var profit_statistics = <?php echo json_encode($statics['profit']);?>;
 var line = new Morris.Line({
     element          : 'line-chart',
     resize           : true,
@@ -371,4 +408,40 @@ var line = new Morris.Line({
     hideHover : 'auto'
   });
 
+  var addfund = new Morris.Line({
+    element          : 'addfund-chart',
+    resize           : true,
+	  data			 : addfund_statistics,
+    xkey             : 'y',
+    ykeys            : ['item1'],
+    labels           : ['Item 1'],
+    lineColors       : ['#efefef'],
+    lineWidth        : 2,
+    hideHover        : 'auto',
+    gridTextColor    : '#fff',
+    gridStrokeWidth  : 0.4,
+    pointSize        : 4,
+    pointStrokeColors: ['#efefef'],
+    gridLineColor    : '#efefef',
+    gridTextFamily   : 'Open Sans',
+    gridTextSize     : 10
+  });
+  var profit = new Morris.Line({
+    element          : 'profit-chart',
+    resize           : true,
+	  data			 : profit_statistics,
+    xkey             : 'y',
+    ykeys            : ['item1'],
+    labels           : ['Item 1'],
+    lineColors       : ['#efefef'],
+    lineWidth        : 2,
+    hideHover        : 'auto',
+    gridTextColor    : '#fff',
+    gridStrokeWidth  : 0.4,
+    pointSize        : 4,
+    pointStrokeColors: ['#efefef'],
+    gridLineColor    : '#efefef',
+    gridTextFamily   : 'Open Sans',
+    gridTextSize     : 10
+  });
 </script>

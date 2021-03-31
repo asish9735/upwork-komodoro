@@ -98,22 +98,53 @@ class Dashboard_model extends CI_Model{
 		
 		return $records;
 	}
-	public function transaction_statics(){
-		/* $date = date('Y-m-d');
+	public function transaction_statics($type=''){
+		 $date = date('Y-m-d');
 		$records = array();
 		for($i=0; $i <= 12; $i++){
 			$date_key = date('m', strtotime("-$i month"));
 			$date_year = date('Y', strtotime("-$i month"));
-			$res1 = $this->db->selct('sum(')->where("MONTH(member_register_date) = $date_key and YEAR(member_register_date) = $date_year and is_employer=1")->count_all_results('member');
-			$res2 = $this->db->where("MONTH(member_register_date) = $date_key and YEAR(member_register_date) = $date_year and is_employer=0")->count_all_results('member');
+			if($type=='addfund'){
+				$amount=0;
+				$wallet_ids=array(get_setting('SITE_PROFIT_WALLET'),get_setting('BANK_WALLET'));
+	
+				$res = $this->db->select("sum(tr.debit) as debit")
+				->from('wallet_transaction_row tr')
+				->join('wallet_transaction t', 't.wallet_transaction_id=tr.wallet_transaction_id', 'LEFT')
+				->where_in('tr.wallet_id', $wallet_ids)
+				->where('MONTH(t.transaction_date)', $date_key)
+				->where('YEAR(t.transaction_date)', $date_year)
+				->where('t.status', 1)
+				->get()
+				->row_array();
+				if($res){
+					$amount=$res['debit'];
+				}
+
+			}elseif($type=='profit'){
+				$amount=0;
+				$wallet_id=get_setting('SITE_PROFIT_WALLET');
+				$res = $this->db->select("sum(tr.credit) as credit")
+				->from('wallet_transaction_row tr')
+				->join('wallet_transaction t', 't.wallet_transaction_id=tr.wallet_transaction_id', 'LEFT')
+				->where('tr.wallet_id', $wallet_id)
+				->where('MONTH(t.transaction_date)', $date_key)
+				->where('YEAR(t.transaction_date)', $date_year)
+				->where('t.status', 1)
+				->get()
+				->row_array();
+				if($res){
+					$amount=$res['credit'];
+				}
+			}
+			
 			$records[] = array(
-				'item1' => $res1,
-				'item2' => $res2,
+				'item1' => ($amount ? $amount:0),
 				'y' => date('Y-m', strtotime("-$i month")),
 			);
 		}
 		
-		return $records; */
+		return $records; 
 	}
 	
 	

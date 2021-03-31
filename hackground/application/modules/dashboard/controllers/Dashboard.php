@@ -35,7 +35,8 @@ class Dashboard extends MX_Controller {
 		
 		$this->data['statics']['project'] = $this->dashboard->project_statics();
 		$this->data['statics']['member'] = $this->dashboard->member_statics();
-		$this->data['statics']['transaction'] = $this->dashboard->transaction_statics();
+		$this->data['statics']['addfund'] = $this->dashboard->transaction_statics('addfund');
+		$this->data['statics']['profit'] = $this->dashboard->transaction_statics('profit');
 		$this->data['main_title'] = 'Dashboard';
 		$this->data['title'] = 'Dashboard';
 		$breadcrumb = array(
