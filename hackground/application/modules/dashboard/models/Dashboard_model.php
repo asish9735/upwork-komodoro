@@ -106,7 +106,7 @@ class Dashboard_model extends CI_Model{
 			$date_year = date('Y', strtotime("-$i month"));
 			if($type=='addfund'){
 				$amount=0;
-				$wallet_ids=array(get_setting('ADD_FUND_PAYPAL'),get_setting('ADD_FUND_STRIPE'),get_setting('BANK_WALLET'));
+				$wallet_ids=array(get_setting('PAYPAL_WALLET'),get_setting('STRIPE_WALLET'),get_setting('BANK_WALLET'));
 	
 				$res = $this->db->select("sum(tr.debit) as debit")
 				->from('wallet_transaction_row tr')
