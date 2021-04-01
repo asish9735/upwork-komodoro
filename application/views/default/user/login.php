@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="form-group">        	
             <label for="" class="control-label" style="display:none;">
             <input type="checkbox"> Remember Me </label>
-            <a href="<?php echo BASE_URL;?>user/forgot" class="pull-right">Forgot Password?</a>                
+            <a href="<?php echo BASE_URL;?>user/forgot">Forgot Password?</a>                
         </div>
         <button class="btn btn-site btn-block" id="signInBTN">Log In</button>
         

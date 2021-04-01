@@ -9,5 +9,20 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['how_it_works'] ='how_it_works';
+$lang['how_it_works'] ='How it works';
+$lang['contact_us'] ='Contact Us';
+$lang['load_more'] ='Load More';
+$lang['projects'] ='Projects';
+$lang['dashboard'] ='Dashboard';
+$lang['professionals'] ='Professionals';
+$lang['login'] ='Log In';
+$lang['register'] ='Register';
+$lang['post_a_job'] ='Post A Job';
+$lang['get_started'] ='Get Started';
+$lang['settings'] ='Settings';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+
+
 

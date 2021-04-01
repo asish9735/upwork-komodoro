@@ -39,7 +39,7 @@
               <button class="btn btn-white"><i class="icon-feather-search"></i></button>
             </div>
           </div>
-          <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white mr-2">Get Started</a> <a href="#" hidden class="btn btn-outline-black">Watch Tutorial</a> </div>
+          <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white mr-2"><?php echo __('get_started','Get Started'); ?></a> <a href="#" hidden class="btn btn-outline-black">Watch Tutorial</a> </div>
       </div>
     </div>
   </div>

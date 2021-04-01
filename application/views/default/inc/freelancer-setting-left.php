@@ -97,7 +97,7 @@ if($loggedUser){
                     	</div>
 
 						<ul>
-							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
 							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> Messages <!--<span class="nav-tag">2</span>--></a></li>
 							<li><a href="<?php echo URL::get_link('NotificationURL');?>"><i class="icon-material-outline-notifications-active"></i> Notification <!--<span class="nav-tag">2</span>--></a></li>
 							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> Favourite</a></li>
