@@ -75,9 +75,14 @@ $website_name=get_setting('website_name');
 <!--<style type="">
 	@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&subset=latin-ext");
 </style>-->
+<?php if($currentLang == 'ar'){ ?>
+<link href="<?=CSS?>bootstrap.rtl.css" rel="stylesheet" type="text/css">
+<?php }else{ ?>
+<link href="<?=CSS?>bootstrap.css" rel="stylesheet" type="text/css">
+<?php } ?>
 
 <?php
-$this->minify->add_css('bootstrap.css');
+//$this->minify->add_css('bootstrap.css');
 $this->minify->add_css('icons.css');
 $this->minify->add_css('theme.css');
 $load_css=$this->layout->load_css(); 
@@ -91,6 +96,12 @@ $this->minify->add_css('responsive.css');
 $this->minify->add_css('colors/green.css');
 echo $this->minify->deploy_css(FALSE, 'header.min.css');
 ?>
+
+<?php if($currentLang == 'ar'){ ?>
+<link href="<?=CSS?>lang_ar.css" rel="stylesheet" type="text/css">
+<?php }else{ ?>
+<link href="<?=CSS?>lang_en.css" rel="stylesheet" type="text/css">
+<?php } ?>
 
 <script type="text/javascript">
     var VPATH = '<?php echo base_url();?>';
