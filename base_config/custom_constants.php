@@ -50,7 +50,7 @@ define('API_FAIL',					'0');
 /* APP CONSTANTS */
 define('DEFAULT_EXPIRATION_DAYS',	'1');
 
-define('ATTACHMENT_ALL',	array('jpg'));
+//define('ATTACHMENT_ALL',	array('jpg'));
 
 
 /* 
