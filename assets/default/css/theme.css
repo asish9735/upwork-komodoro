@@ -68,8 +68,6 @@ img {
 	/*border-right: 1px solid #e0e0e0;*/
 	height: 100%;
 	vertical-align: top;
-	padding-right: 25px;
-	margin-right: 20px;
 }
 #logo img {
 	height: 60px;
@@ -107,12 +105,9 @@ header.fullwidth .container {
 	flex: 1;
 }
 #header .right-side {
-	float: right;
-	text-align: right;
 	width: auto;
 	display: inline-block;
 	position: absolute;
-	right: 30px;
 	background-color: #fff;
 	flex: 1;
 }
@@ -1908,9 +1903,8 @@ ul.footer-social-links li a:hover {
 	font-weight: 400 !important;
 }
 .footer-links ul {
-	font-size: 0.933rem;
+	font-size: 0.938rem;
 	list-style: none;
-	text-align: left;
 	margin: 0;
 	padding: 0;
 }
@@ -2129,11 +2123,9 @@ display: block
 ------------------------------------- */
 #backtotop {
 	position: fixed;
-	right: 0;
 	opacity: 0;
 	visibility: hidden;
 	bottom: 25px;
-	margin: 0 25px 0 0;
 	z-index: 999;
 	transition: 0.35s;
 	transform: translateY(10px);
@@ -3873,7 +3865,6 @@ text-align: center;
 .job-listing .job-listing-company-logo {
 	flex: 1;
 	max-width: 64px;
-	margin-right: 1rem;
 	position: relative;
 }
 .job-listing .job-listing-company-logo img {
@@ -6026,7 +6017,6 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 	font-weight: 500;	
 	position: relative;
 	top: -3px;
-	margin-left: 6px;
 } 
 /* No stars */
 .star-rating.no-stars .star {
@@ -6161,13 +6151,9 @@ color: #ffc600;
 	position: relative;
 	margin-bottom:1rem
 }
-.input-with-icon-left input {
-	padding-left: 36px;
-}
 .input-with-icon-left i {
 	position: absolute;
     top: 0;
-    left: 12px;
     color: #a0a0a0;
 	font-style: normal;
     text-align: center;
@@ -11786,7 +11772,6 @@ a.dashboard-responsive-nav-trigger {
 /* 1st Level */
 .dashboard-nav ul li {
 	display: block;
-	border-left: 2px solid transparent;
 	transition: 0.3s;
 	line-height: 25px;
 }
@@ -11973,7 +11958,6 @@ flex: 1;
 	flex: 0 0 48px;
 	height: 48px;
 	display: flex;
-	margin-right: 1rem;
 	text-align: center;
 }
 .fun-fact-icon i {
@@ -12205,7 +12189,6 @@ ul.dashboard-box-list > li:hover {
 ------------------------------------- */
 .buttons-to-right, .dashboard-box-list .button.to-right {
 	position: absolute;
-	right: 1.25rem;
 	top: 50%;
 	transform: translateY(-50%);
 	opacity: 0;

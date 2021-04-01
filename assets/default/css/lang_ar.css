@@ -1,0 +1,433 @@
+@charset "utf-8";
+/* CSS Document */
+
+.pull-right {
+	float:left !important
+}
+#logo {
+	float:right;
+	padding-left: 45px;
+	margin-left: 20px;
+}
+#header .right-side {
+	float: left;
+	left: 30px;
+}
+ul.display-inline li {
+	margin-left:20px
+}
+ul.display-inline li:last-child {
+	margin-left:0
+}
+#navigation, #navigation ul li {
+	float: right;
+}
+.intro-search-button {
+	margin-right: 0;
+}
+.intro-banner-search-form .input-with-icon input {
+	padding-right: 45px;
+}
+.intro-banner-search-form .input-with-icon i {
+	right: 12px;
+	left: auto;
+}
+.job-listing .job-listing-company-logo {
+	margin-left: 1rem
+}
+.newsletter button {
+	margin-right: 10px
+}
+#footer h4 i {
+	margin-left: 5px;
+}
+.buttons-to-right, .dashboard-box-list .button.to-right {
+	left: 1.25rem;
+}
+.photo-box-content {	
+	right: 20px
+}
+.social-login-buttons button {
+	margin-left: 15px
+}
+.input-with-icon-left .form-control,
+.input-with-icon-left input.with-border	 {
+	padding-right: 40px
+}
+.input-with-icon-left i {
+    right: 12px;
+}
+.fun-fact {
+	margin-left: 25px
+}
+.fun-fact-icon {
+	margin-left: 1rem;
+}
+.simplebar-track {
+	left: 0
+}
+.simplebar-scrollbar {
+	left: 6px
+}
+.header-widget {
+	float: right
+}
+.list-3 li:before, .list-2 li:before, .list-1 li:before {
+	right: 0;
+}
+.list-3 li, .list-2 li, .list-1 li {
+	padding-right: 24px;
+}
+.list-3 li:before {
+	content: "\e910";
+}
+.header-widget:last-of-type {
+	padding-left: 0;
+	float: left;
+	border-left: none;
+}
+.fun-fact-text {
+	margin-right: 20px
+}
+.dashboard-nav ul li {
+	border-right: 2px solid transparent
+}
+.dashboard-nav ul li a i {
+	margin-left: 8px
+}
+.header-notifications-dropdown {
+	left: -15px
+}
+.user-name {
+	padding: 2px 15px 0 0;
+}
+.searchbox .input-group:before {
+	right: 18px
+}
+/*.searchbox .input-group .form-control {
+    padding-right: 40px
+}*/
+.tokenize > .tokens-container > .token, .tokenize > .tokens-container > .placeholder, .tokenize > .tokens-container > .token-search {
+	margin-left:5px
+}
+.bootstrap-select.btn-group button {
+	padding-left: 1.65rem;
+	text-align:right
+}
+.skill_search .chip {
+    margin-left: 6px;
+	padding-left: 1.5rem;
+}
+.skill_search .chip > a {
+    left: 0.5rem;
+}
+.copy-url .copy-url-button {
+	border-radius:4px 0 0 4px
+}
+.single-page-header .left-side {
+	padding-left: 25px;
+}
+.single-page-header .header-image {
+	margin-left: 25px
+}
+.boxed-list-headline h3 i,
+.single-page-header .header-details ul li img.flag,
+ul.skills li {
+	margin-left: 5px
+}
+.share-buttons-content span {
+	margin-right: 10px
+}
+.share-buttons-icons {
+	right: 5px
+}
+.single-page-header .header-details li {
+	margin-left: 20px
+}
+.star-rating:after {
+	margin-right: 6px
+}
+.freelancers-list-layout .freelancer-overview .freelancer-name {
+	margin: 0 20px 0 0;
+}
+.boxed-list-item .item-details .detail-item {
+	margin-left: 15px
+}
+.icon-round{		
+	margin-right: 10px;
+}
+.mm-menu {
+	right: 0
+}
+.home-banner .carousel-indicators{
+    right: auto;
+}
+.how-steps{
+	left: -2rem;
+}
+#backtotop {
+	left: 25px;
+}
+@media only screen and (min-width: 768px) {
+.banner-search:before{
+    transform: rotate(-115deg) translate(20%, 70%);
+}
+}
+ @media all and (max-width:175px) {
+ html.mm-opening .mm-menu.mm-opened~.mm-slideout {
+ -webkit-transform: translate(-140px, 0);
+ -ms-transform: translate(-140px, 0);
+ transform: translate(-140px, 0);
+ -webkit-transform: translate3d(-140px, 0, 0);
+ transform: translate3d(-140px, 0, 0)
+}
+}
+ @media all and (min-width:550px) {
+ html.mm-opening .mm-menu.mm-opened~.mm-slideout {
+ -webkit-transform: translate(-440px, 0);
+ -ms-transform: translate(-440px, 0);
+ transform: translate(-440px, 0);
+ -webkit-transform: translate3d(-440px, 0, 0);
+ transform: translate3d(-440px, 0, 0)
+}
+}
+em.mm-counter {
+	left:45px
+}
+em.mm-counter+a.mm-next+a, em.mm-counter+a.mm-next+span {
+	margin-left: 90px
+}
+em.mm-counter+a.mm-fullsubopen {
+	padding-right: 0
+}
+em.mm-counter+a.mm-fullsubopen+a, em.mm-counter+a.mm-fullsubopen+span {
+	padding-left: 90px
+}
+.mm-listview em.mm-counter+.mm-next.mm-fullsubopen+a, .mm-listview em.mm-counter+.mm-next.mm-fullsubopen+span {
+	padding-left: 90px;
+}
+
+@media (max-width: 991px) {
+ .fullwidth .header-widget:last-of-type, .header-widget:last-of-type {
+ padding:0 15px;
+ float: right;
+}
+ .mmenu-trigger {
+ margin: 0 0 0 -5px;
+ float: left;
+}
+/* #header .right-side .header-widget {
+ border-left: 1px solid #e0e0e0;
+}*/
+#header .right-side {
+	left: 20px;
+}
+.single-page-header .left-side {
+    padding-left: 0;
+}
+.fun-fact {
+	margin-left: 15px
+}
+}
+
+ @media (max-width: 768px) {
+ .user-menu .header-notifications-dropdown, .header-notifications-dropdown {
+ left: -10px;
+}
+}
+
+.hamburger {
+	right: 5px
+}
+.mm-prev:before {
+	-webkit-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	transform: rotate(135deg);
+	right: 23px;
+	left: auto
+}
+.mm-next:after {
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	left: 23px;
+	right: auto
+}
+.mm-navbar .mm-btn:first-child {
+	right: 0
+}
+.mm-navbar .mm-btn:last-child {
+	text-align: left;
+	left: 0
+}
+ol.counter-list {
+	padding-right: 20px
+}
+ol.counter-list li:after {
+	right: -2.5em;
+	text-align: left;
+}
+
+.featuredimg {
+	left:-9px;
+}
+.block a.edit, .block a.icon-round {
+	float:left
+}
+#slide-nav .navbar-toggle {
+    float: right
+}
+.langDropdown {	
+    margin-left: 1.25rem;
+}
+.language {
+	margin-right:10px
+}
+.radio-inline, .checkbox-inline {
+	padding-right:0
+}
+.radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+	margin-right:10px;
+}
+.magic-radio + label, .magic-checkbox + label {
+	padding-right: 28px;
+}
+.magic-radio + label:before, .magic-checkbox + label:before {
+	right: 0;
+}
+.magic-checkbox + label:after {
+	right: 7px;
+}
+.magic-radio + label:after {
+	right: 5px
+}
+div.dataTables_paginate {
+    text-align: left;
+}
+.conversation_loop.other .starred {
+	left:-25px;
+}
+.conversation_loop.me .starred {
+	right:-25px;
+}
+.messagtext2 > a .fa-comment {
+	margin-left:5px
+}
+.messagtext2 > a > p {
+	margin-right: 25px
+}
+.setting-circle, .menu_hide {
+	left:5px;
+}
+.quicknav {	
+	left: -280px;
+}
+.ecdevsec .user-sidebar-container .sidebar-close-alt {
+	left: 15px
+}
+.headnotification {
+	margin-left:15px
+}
+.secondary_info {
+	left:0
+}
+ul.tab li {
+	float:right;
+	margin-right:5px;
+}
+ul.tab li:first-child {
+	margin-right:0;
+}
+.msg-count {
+	left:0;
+}
+.table thead > tr > th.sorting,
+.table thead > tr > td.sorting {
+	padding-left:30px
+}
+div.dataTables_wrapper div.dataTables_filter input {
+	margin-right:0.5em
+}
+.pagination li a i {
+	transform: rotate(180deg)
+}
+.messages-container-inner .messages-inbox {
+	border-left: 1px solid #eaeaea
+}
+.message-action {
+	left: 1rem
+}
+.input-with-icon i {
+	left: 1rem
+}
+.messages-inbox ul li a.active {
+    border-right: 3px solid transparent
+}
+.messages-container-inner .messages-inbox .message-avatar {
+	right: 20px;
+}
+.messages-inbox .message-by {
+	margin-right: 85px
+}
+.messages-container-inner .messages-inbox .message-by {
+	margin-right: 55px
+}
+.messages-container-inner .messages-inbox .filtertable .message-by {
+	margin-right: 60px
+}
+.message-bubble .message-text {
+	margin-right: 55px;
+}
+.message-bubble.me .message-text {
+	margin-right: 0;
+	margin-left: 55px;
+}
+.header-notifications-dropdown:before {
+	left: 43px;
+}
+.user-menu .header-notifications-dropdown:before {
+	left: 25px;
+}
+.job-listing .job-listing-footer ul li {
+	margin-left: 1rem;
+}
+.messages-headline .avatar {
+	margin-left: 6px
+}
+.searchbox .input-group > .input-group-append > .btn {
+	margin-right:1px
+}
+.user-who-bid > span{
+	margin-right: 2px;
+}
+
+@media (min-width: 768px) {
+
+.navbar-right .dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+}	
+.signup:before {
+	background-color:#29b6f6;
+}
+.signup:after {		
+	background-color:#2C597A;	
+}
+
+}
+@media (min-width: 992px) {
+.process .border-right {
+    border-left: 1px solid #e1e1e1
+}
+.process .border-left {
+    border-right: 1px solid #e1e1e1
+}
+
+}
+
+ @media (max-width: 991px) {
+	.message-bubble.me .message-text{
+		margin:0;
+	}
+}
+/* END CSS */

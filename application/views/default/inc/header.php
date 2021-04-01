@@ -43,32 +43,32 @@ if($loggedUser){
             	<!-- Main Navigation -->
 				<nav id="navigation">
 					<ul id="responsive">                    
-                    <li><a href="<?php D(get_link('CMShowitworks'))?>">How It Works</a></li>
-                    <li><a href="<?php D(get_link('conatctURL'))?>">Contact Us</a></li>
+                    <li><a href="<?php D(get_link('CMShowitworks'))?>"><?php echo __('how_it_works','How It Works'); ?></a></li>
+                    <li><a href="<?php D(get_link('conatctURL'))?>"><?php echo __('contact_us','Contact Us'); ?></a></li>
 					<?php if($loggedUser){
 						if($this->access_member_type=='C'){
 						?>
-						<li><a href="<?php echo URL::get_link('search_freelancer'); ?>">Professionals</a></li>
-						<li><a href="<?php D(get_link('postprojectURL'))?>">Post a Job</a></li>
+						<li><a href="<?php echo URL::get_link('search_freelancer'); ?>"><?php echo __('professionals','Professionals'); ?></a></li>
+						<li><a href="<?php D(get_link('postprojectURL'))?>"><?php echo __('',''); ?>Post a Job</a></li>
 						<?php }
 						if($this->access_member_type=='F'){
 						?>
-						<li><a href="<?php echo URL::get_link('search_job'); ?>">Projects</a></li>
+						<li><a href="<?php echo URL::get_link('search_job'); ?>"><?php echo __('projects','Projects'); ?></a></li>
 						<?php }?>
-						<li><a href="<?php echo URL::get_link('dashboardURL'); ?>">Dashboard</a></li>
+						<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><?php echo __('dashboard','Dashboard'); ?></a></li>
 					<?php }else{?>
-					<li><a href="<?php echo URL::get_link('search_job'); ?>">Projects</a></li>
-					<li><a href="<?php echo URL::get_link('search_freelancer'); ?>">Professionals</a></li>
-                    <li class="d-sm-none"><a href="<?php echo URL::get_link('loginURL'); ?>">Log In</a></li>
-					<li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>">Register</a></li>
-                    <li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>">Post A Job</a></li>
+					<li><a href="<?php echo URL::get_link('search_job'); ?>"><?php echo __('projects','Projects'); ?></a></li>
+					<li><a href="<?php echo URL::get_link('search_freelancer'); ?>"><?php echo __('',''); ?><?php echo __('professionals','Professionals'); ?></a></li>
+                    <li class="d-sm-none"><a href="<?php echo URL::get_link('loginURL'); ?>"><?php echo __('login','Log In'); ?></a></li>
+					<li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>"><?php echo __('register','Register'); ?></a></li>
+                    <li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>"><?php echo __('post_a_job','Post A Job'); ?></a></li>
 					<?php }?>
-					<?php /* if($this->config->item('language')=='ar'){?>
+					<?php if($this->config->item('language')=='ar'){?>
 					<li><a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang " data-language="en">EN</a></li>
 					<?php }?>
 					<?php if($this->config->item('language')=='en'){?>
 					<li><a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang" data-language="ar">AR</a></li>
-					<?php } */?>
+					<?php } ?>
 					</ul>
 				</nav>
 				<!--<div class="clearfix"></div>-->
@@ -77,9 +77,9 @@ if($loggedUser){
 			<?php if(!is_login_user()){ ?>
 				<div class="header-widget hide-on-mobile_ d-none d-sm-block">
 					<ul class="display-inline">
-                    	<li><a href="<?php echo URL::get_link('loginURL'); ?>"><img src="<?php echo IMAGE;?>login_16.png" alt=""> Log In</a></li>
-						<li><a href="<?php echo URL::get_link('registerURL'); ?>"><img src="<?php echo IMAGE;?>register_16.png" alt=""> Register</a></li>
-                    	<li><a href="<?php echo URL::get_link('registerURL'); ?>" class="btn btn-site text-white"><img src="<?php echo IMAGE;?>post_20.png" alt=""> Post A Job</a></li>
+                    	<li><a href="<?php echo URL::get_link('loginURL'); ?>"><img src="<?php echo IMAGE;?>login_16.png" alt=""> <?php echo __('login','Log In'); ?></a></li>
+						<li><a href="<?php echo URL::get_link('registerURL'); ?>"><img src="<?php echo IMAGE;?>register_16.png" alt=""> <?php echo __('register','Register'); ?></a></li>
+                    	<li><a href="<?php echo URL::get_link('registerURL'); ?>" class="btn btn-site text-white"><img src="<?php echo IMAGE;?>post_20.png" alt=""> <?php echo __('post_a_job','Post A Job'); ?>b</a></li>
 					</ul>
                 </div>
 			<?php }else{ ?>
@@ -95,7 +95,7 @@ if($loggedUser){
 						<!-- Dropdown -->
 						<div class="header-notifications-dropdown">
 							<div class="header-notifications-headline">
-								<h4>Notifications</h4>
+								<h4><?php echo __('',''); ?>Notifications</h4>
 								<button class="mark-as-read" title="Mark all as read" data-tippy-placement="left" hidden>
 									<i class="icon-feather-check-square"></i>
 								</button>
@@ -105,7 +105,7 @@ if($loggedUser){
 									<ul id="header-notification-list">
 										
 									</ul>
-									<a id="load_more_notification_btn" href="javascript:void(0)" style="display:none;">Load more</a>
+									<a id="load_more_notification_btn" href="javascript:void(0)" style="display:none;"><?php echo __('load_more','Load more'); ?></a>
 								</div>
 							</div>
 							<a href="<?php echo get_link('NotificationURL');?>" style="display:none" class="header-notifications-button button-sliding-icon viewallbtnnotification">View All Notifications<i class="icon-material-outline-arrow-right-alt"></i></a>
@@ -122,7 +122,7 @@ if($loggedUser){
 						<div class="header-notifications-dropdown">
 
 							<div class="header-notifications-headline">
-								<h4>Messages</h4>
+								<h4><?php echo __('',''); ?>Messages</h4>
 								<button class="mark-as-read" title="Mark all as read" data-tippy-placement="left" hidden>
 									<i class="icon-feather-check-square"></i>
 								</button>
@@ -133,7 +133,7 @@ if($loggedUser){
 									<ul id="header-message-list">
 										
 									</ul>
-									<a id="load_more_msg_btn" href="javascript:void(0)" style="display:none;">Load more</a>
+									<a id="load_more_msg_btn" href="javascript:void(0)" style="display:none;"><?php echo __('load_more','Load more'); ?></a>
 								</div>
 							</div>
 
@@ -179,9 +179,9 @@ if($loggedUser){
 						</div>
 						
 						<ul class="user-menu-small-nav">
-							<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-							<li><a href="<?php echo URL::get_link('settingsURL'); ?>"><i class="icon-material-outline-settings"></i> Settings</a></li>
-							<li><a href="<?php echo URL::get_link('logoutURL'); ?>"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+							<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('settingsURL'); ?>"><i class="icon-material-outline-settings"></i> <?php echo __('settings','Settings'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('logoutURL'); ?>"><i class="icon-material-outline-power-settings-new"></i> <?php echo __('','Logout'); ?></a></li>
 						</ul>
 
 						</div>

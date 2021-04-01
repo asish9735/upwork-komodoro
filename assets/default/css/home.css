@@ -38,7 +38,6 @@
 .home-banner .carousel-indicators{
     margin: 0;
     width: auto;
-    left: auto;
     bottom: 20px;
     transform: rotate(90deg) translate(-20px, 0px);
 }
@@ -58,7 +57,7 @@
 	height: 150%;
     width: 70%;
     background-color: var(--siteColor);
-    transform: rotate(-65deg) translate(20%, -30%);
+    /*transform: rotate(-65deg) translate(20%, -30%);*/
 }
 }
 
