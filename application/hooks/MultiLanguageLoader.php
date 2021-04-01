@@ -23,6 +23,9 @@
 	        $ci->load->language('global');
 	        $ci->load->language('popup');
 	        $moduleL=$ci->router->fetch_class();
+			if(!file_exists(APPPATH.'language/'.$ci->config->item('language').'/'.$moduleL.'_lang.php')){
+				file_put_contents(APPPATH.'language/'.$ci->config->item('language').'/'.$moduleL.'_lang.php', '');
+			}
 	        $ci->load->language($moduleL);
    		}
    		function __($key,$default=''){

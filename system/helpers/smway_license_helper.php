@@ -2004,7 +2004,7 @@ if(!function_exists('get_active_lang')){
 }
 
 
-if(!function_exists('__')){
+/* if(!function_exists('__')){
 	
 	
 	function __($lang_key='', $default_val=''){
@@ -2020,7 +2020,7 @@ if(!function_exists('__')){
 		
 	}
 	
-}
+} */
 if ( ! function_exists('getData'))
 {
 	function getData($data=array()){
