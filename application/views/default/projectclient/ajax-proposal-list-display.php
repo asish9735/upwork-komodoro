@@ -15,7 +15,7 @@ if($req_type=='invite'){
 elseif($all_data){?>
     <ul class="dashboard-box-list if-button">
     <?php foreach($all_data as $k=>$bid){
-    	//get_print($bid,true);
+    	//get_print($bid,false);
     $logo=getMemberLogo($bid->member_id);
     $profile_link=get_link('viewprofileURL')."/".$bid->member_id;
     $application_link=get_link('viewapplicationURLAJAX')."/".$projects['project_id'].'/'.$bid->bid_id;
@@ -40,7 +40,7 @@ elseif($all_data){?>
 
                         <!-- Details -->
                         <span class="freelancer-detail-item"> <?php D($bid->member_heading);?></span>
-                        <p class="margin-bottom-10">Rating: <?php D($bid->avg_review);?>  <span class="pipe">|</span> Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D($bid->bid_duration);?> Days<?php }?></p>
+                        <p class="margin-bottom-10">Rating: <?php D($bid->avg_review);?>  <?php if($projects['project_settings']->is_fixed==1){?><span class="pipe">|</span> Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D(getAllBidDuration($bid->bid_duration)); }  }?></p>
 
                         <!-- Rating -->
                         <div class="freelancer-rating d-none">
