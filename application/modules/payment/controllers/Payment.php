@@ -998,7 +998,7 @@ class Payment extends MX_Controller {
 							'membership_id'=>$membership_id,
 							'is_free'=>0,
 							//'membership_expire_date'=>$membership_expire_date,
-							'max_bid'=>$membership->membership_bids,
+							'max_bid'=>$membership->membership_bid,
 							'max_portfolio'=>$membership->membership_portfolio,
 							'max_skills'=>$membership->membership_skills,
 							'commission_percent'=>$membership->membership_commission_percent,
