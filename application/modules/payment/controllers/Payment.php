@@ -494,8 +494,42 @@ class Payment extends MX_Controller {
 			$this->data['formdata']['currency_code']=$site_currency_code;
 			$this->data['formdata']['amount_converted']=$amount;
 			$this->data['formdata']['item_name']='Add Fund From';
+			$this->data['formdata']['pay_for']=$type;
 			$this->layout->view('stripe-form', $this->data);
-		}else{
+		}
+		elseif($type=='membership' && $id){
+			list($enc_membership_id,$duration)=explode('-',$id);
+			$site_currency_code=CurrencyCode();
+			$unique_id=$this->member_id.'-'.time();
+			$this->load->model('membership/membership_model');
+			$membership=$this->membership_model->getMembershipDetails($enc_membership_id);
+			if($membership){
+				$this->session->set_userdata('enc_membership_id_duration',$id);
+				$amount=($duration=='month' ? $membership->price_per_month:$membership->price_per_year);
+				$feeCalculation=generateProcessingFee('stripe',$amount);
+				$processing_fee=$feeCalculation['processing_fee'];
+				$this->data['formdata']=array(
+				'amount'=>$amount+$processing_fee,
+				'org_amt'=>$amount,
+				'fee'=>$processing_fee,
+				'return_url'=>get_link('membershipURL').'?refer=paymentsuccess',
+				'cancel_url'=>get_link('membershipURL').'?refer=paymenterror',
+				'notify_url'=>get_link('StripeNotify').$type.'/'.$unique_id,
+				'custom'=>md5('PPAY-'.$unique_id),
+				'member_id'=>$this->member_id,
+				'member_email'=>getFieldData('member_email','member','member_id',$this->member_id),
+				);
+				$this->data['formdata']['currency_code']=$site_currency_code;
+				$this->data['formdata']['amount_converted']=$amount;
+				$this->data['formdata']['item_name']='Membership - '.$membership->name;
+				$this->data['formdata']['pay_for']=$type;
+				$this->layout->view('stripe-form', $this->data);
+			}
+			else{
+				redirect(get_link('membershipURL'));
+			}
+		}
+		else{
 			redirect(get_link('AddFundURL'));
 		}
 	}
@@ -527,7 +561,46 @@ class Payment extends MX_Controller {
 				$msg['custom'] = $this->data['formdata']['custom'];
 				$msg['id'] = $unique_id;
 			}
-		}else{
+		}
+		elseif($type=='membership' && $amount>0){
+			$id=$this->session->userdata('enc_membership_id_duration');
+			if($id){
+				list($enc_membership_id,$duration)=explode('-',$id);
+				$this->load->model('membership/membership_model');
+				$membership=$this->membership_model->getMembershipDetails($enc_membership_id);
+				if($membership){
+					$site_currency_code=CurrencyCode();
+					$unique_id=$this->member_id.'-'.time();
+					$feeCalculation=generateProcessingFee('stripe',$amount);
+					$processing_fee=$feeCalculation['processing_fee'];
+					$this->data['formdata']=array(
+					'amount'=>$amount+$processing_fee,
+					'org_amt'=>$amount,
+					'fee'=>$processing_fee,
+					'notify_url'=>get_link('StripeNotify').$type.'/'.$unique_id,
+					'custom'=>md5('PPAY-'.$unique_id),
+					'member_id'=>$this->member_id,
+					'membership_id'=>$membership->membership_id,
+					'membership_duration'=>$duration,
+					);
+					$this->data['formdata']['amount_converted']=$amount;
+					$transansaction_data=array('payment_type'=>'STRIPE','content_key'=> $this->data['formdata']['custom']);
+					$transansaction_data['request_value']=json_encode( $this->data['formdata']);
+					$ins=insert_record('online_transaction_data',$transansaction_data,TRUE);
+					if($ins){
+						$msg['status'] = 'OK';
+						$msg['amount'] = $this->data['formdata']['amount'];
+						$msg['custom'] = $this->data['formdata']['custom'];
+						$msg['id'] = $unique_id;
+					}
+				}
+				else{
+					$msg['status'] = 'FAIL';
+					$msg['error'] = 'Invalid amount';	
+				}
+			}
+		}
+		else{
 			$msg['status'] = 'FAIL';
 			$msg['error'] = 'Invalid amount';
 		}
@@ -540,7 +613,7 @@ class Payment extends MX_Controller {
 		$msg=array();
 		$secret_key = get_setting('stripe_secret_key'); 
 		
-		
+		$type=$this->input->post('pay_for');
 		$token  = $this->input->post('token');
 		$payamount = $this->input->post('amount');
 		$method=post('method');
@@ -585,6 +658,7 @@ class Payment extends MX_Controller {
 				$stripe_payment=$payment_gross;
 				$total=$payment_request->org_amt;
 				$order_fee=$payment_request->fee;
+				if($type=='addfund'){
 
 				$stripe_details=getWallet(get_setting('STRIPE_WALLET'));
 				$stripe_wallet_id=$stripe_details->wallet_id;
@@ -663,7 +737,10 @@ class Payment extends MX_Controller {
 					);
 					$this->notification_model->savenotification($notificationData);*/	
 				}
-					
+				}	
+				elseif($type=='membership'){
+
+				}
 				
 				
 				
@@ -703,6 +780,32 @@ class Payment extends MX_Controller {
 			'custom'=>md5('PPAY-'.$unique_id),
 			'member_id'=>$this->member_id,
 			);
+		}
+		elseif($type=='membership' && $id){
+			$unique_id=$this->member_id.'-'.time();
+			list($enc_membership_id,$duration)=explode('-',$id);
+			$this->load->model('membership/membership_model');
+			$membership=$this->membership_model->getMembershipDetails($enc_membership_id);
+			if($membership){
+				$amount=($duration=='month' ? $membership->price_per_month:$membership->price_per_year);
+				$feeCalculation=generateProcessingFee('paypal',$amount);
+				$processing_fee=$feeCalculation['processing_fee'];
+				$this->data['formdata']=array(
+				'amount'=>$amount+$processing_fee,
+				'org_amt'=>$amount,
+				'fee'=>$processing_fee,
+				'return_url'=>get_link('membershipURL').'?refer=paymentsuccess',
+				'cancel_url'=>get_link('membershipURL').'?refer=paymenterror',
+				'notify_url'=>get_link('PaypalNotify').$type.'/'.$unique_id,
+				'custom'=>md5('PPAY-'.$unique_id),
+				'member_id'=>$this->member_id,
+				'membership_id'=>$membership->membership_id,
+				'membership_duration'=>$duration,
+				);
+			}
+			else{
+				redirect(get_link('membershipURL'));
+			}
 		}
 		else{
 			redirect(get_link('AddFundURL'));
@@ -854,6 +957,143 @@ class Payment extends MX_Controller {
 						);
 						$this->notification_model->savenotification($notificationData);*/	
 					}
+				}
+				elseif($type=='membership'){
+					$membership_id=$payment_request->membership_id;
+					$membership_duraion=$payment_request->membership_duration;
+					$this->load->model('membership/membership_model');
+					$membership=$this->membership_model->getMembershipDetails(md5($membership_id));
+					if($membership){
+						$member_details=getWalletMember($payment_request->member_id);
+						$member_wallet_id=$member_details->wallet_id;
+						$member_wallet_balance=$member_details->balance;
+
+						$site_details=getWallet(get_setting('SITE_PROFIT_WALLET'));
+						$reciver_wallet_id=$site_details->wallet_id;
+						$reciver_wallet_balance=$site_details->balance;
+
+						$paypal_details=getWallet(get_setting('PAYPAL_WALLET'));
+						$paypal_wallet_id=$paypal_details->wallet_id;
+						$paypal_wallet_balance=$paypal_details->balance;
+
+						$fee_wallet_details=getWallet(get_setting('PROCESSING_FEE_WALLET'));
+						$fee_wallet_id=$fee_wallet_details->wallet_id;
+						$fee_wallet_balance=$fee_wallet_details->balance;
+
+
+
+						$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_PAYPAL');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+						if($wallet_transaction_id){
+						$member_membership_log=array(
+							'member_id'=>$payment_request->member_id,
+							'membership_id'=>$membership_id,
+							'membership_duration'=>$membership_duraion,
+							'reg_date'=>date('Y-m-d H:i:s'),
+						);
+						insert_record('member_membership_log',$member_membership_log);
+						$check=$this->db->select('is_free,membership_expire_date')->where('member_id',$payment_request->member_id)->from('member_membership')->get()->row();
+						$member_membership=array(
+							'membership_id'=>$membership_id,
+							'is_free'=>0,
+							//'membership_expire_date'=>$membership_expire_date,
+							'max_bid'=>$membership->membership_bids,
+							'max_portfolio'=>$membership->membership_portfolio,
+							'max_skills'=>$membership->membership_skills,
+							'commission_percent'=>$membership->membership_commission_percent,
+						);
+						if($membership_duraion=='year'){
+							$dura='+ 1 year';
+						}else{
+							$dura='+ 1 month';
+						}
+						if($check){
+							if($check->is_free){
+								$membership_expire_date=date('Y-m-d',strtotime($dura));
+							}else{
+								$membership_expire_date=date('Y-m-d',strtotime($dura,strtotime($check->membership_expire_date)));
+							}
+							$member_membership['membership_expire_date']=$membership_expire_date;
+							updateTable('member_membership',$member_membership,array('member_id'=>$payment_request->member_id));
+						}else{
+							$membership_expire_date=date('Y-m-d',strtotime($dura));
+							$member_membership['membership_expire_date']=$membership_expire_date;
+							$member_membership['member_id']=$payment_request->member_id;
+							insert_record('member_membership',$member_membership);
+						}
+						
+						updateTable('online_transaction_data',array('status'=>1,'tran_id'=>$wallet_transaction_id),array('content_key'=>$verify_token));
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$paypal_wallet_id,'debit'=>$paypal_payment,'description_tkey'=>'Online_payment_from','relational_data'=>'Paypal');
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+						'FW'=>$paypal_details->title,
+						'TW'=>$member_details->name.' wallet',	
+						'TP'=>'Payment_Payment',
+						));
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$member_wallet_id,'credit'=>$paypal_payment,'description_tkey'=>'Online_payment_from','relational_data'=>'Paypal');
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+							'FW'=>$paypal_details->title,
+							'TW'=>$member_details->name.' wallet',	
+							'TP'=>'Wallet_Topup',
+							));
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+						
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$member_wallet_id,'debit'=>$order_fee,'description_tkey'=>'Paypal_fee','relational_data'=>$order_fee);
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+							'FW'=>$member_details->name.' wallet',
+							'TW'=>$fee_wallet_details->title,	
+							'TP'=>'Processing_Fee',
+							));
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+						
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$fee_wallet_id,'credit'=>$order_fee,'description_tkey'=>'Paypal_fee','relational_data'=>$order_fee);
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+							'FW'=>$paypal_details->title,
+							'TW'=>$fee_wallet_details->title,	
+							'TP'=>'Processing_Fee',
+							));
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+
+
+
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$member_wallet_id,'debit'=>$total,'description_tkey'=>'MSID','relational_data'=>$membership_id);
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+							'FW'=>$member_details->name.' wallet',
+							'TW'=>$site_details->title,
+							'TP'=>'Membership_Payment',
+							));
+						insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+						
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'MSID','relational_data'=>$membership_id);
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+							'FW'=>$member_details->name.' wallet',
+							'TW'=>$site_details->title,
+							'TP'=>'Membership_Payment',
+							));
+						insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+						
+						
+						$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
+						updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
+						wallet_balance_check($fee_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						
+						$new_balance_paypal=displayamount($paypal_wallet_balance,2)-displayamount($paypal_payment,2);
+						updateTable('wallet',array('balance'=>$new_balance_paypal),array('wallet_id'=>$paypal_wallet_id));
+						wallet_balance_check($paypal_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						
+						$new_balance=displayamount($reciver_wallet_balance,2)+displayamount($total,2);
+						updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$reciver_wallet_id));
+						wallet_balance_check($reciver_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						
+
+
+						
+						}	
+
+
+					}
+
 				}
 			}else{
 					error_log('invalid request log for token '.$verify_token);

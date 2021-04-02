@@ -80,5 +80,7 @@ $route['help']='cms/help';
 $route['help/(:any)']='cms/help_details/$1';
 $route['contact-us']='cms/contactus';
 $route['enterprise']='home/enterprise';
-$route['membership']='home/membership';
+$route['membership']='membership/index';
+$route['process-membership/(:any)/(:any)']='membership/select_membership/$1/$2';
+
 $route['contact-request-check']='cms/submit_contact';

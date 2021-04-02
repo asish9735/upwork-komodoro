@@ -12,6 +12,8 @@ class Message extends MX_Controller {
 			$this->access_member_type=$this->loggedUser['ACC_P_TYP'];
 			$this->member_id=$this->loggedUser['MID'];
 			$this->organization_id=$this->loggedUser['OID'];
+		}elseif($this->router->fetch_method()=='update_service'){
+
 		}else{
 			redirect(URL::get_link('loginURL').'?ref=dashboardURL');
 		}
@@ -199,17 +201,20 @@ class Message extends MX_Controller {
 	}
 	
 	public function update_service(){
-		if(!is_dir(UPLOAD_PATH.'updates')){
-			mkdir(UPLOAD_PATH.'updates');
-		}
-		$member_id = $this->member_id;
-		$u_file = UPLOAD_PATH.'updates/user_'.$member_id.'.update'; 
-		if(file_exists($u_file)){
-			$content = file_get_contents($u_file);
+		if($this->loggedUser){
+			if(!is_dir(UPLOAD_PATH.'updates')){
+				mkdir(UPLOAD_PATH.'updates');
+			}
+			$member_id = $this->member_id;
+			$u_file = UPLOAD_PATH.'updates/user_'.$member_id.'.update'; 
+			if(file_exists($u_file)){
+				$content = file_get_contents($u_file);
+			}else{
+				$content = '0';
+			}
 		}else{
 			$content = '0';
 		}
-		
 		header('Content-Type: text/event-stream');
 		header('Cache-Control: no-cache');
 		//echo "id: ".time() . PHP_EOL;

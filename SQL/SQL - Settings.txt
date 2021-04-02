@@ -78,7 +78,10 @@ INSERT INTO `pref_settings` (`id`, `title`, `setting_key`, `setting_value`, `edi
 (55, 'Enable Bank Withdraw', 'enable_bank_withdraw', '1', 1, 0, 0, 'payment'),
 (56, 'Withdraw Wallet', 'WITHDRAW_WALLET', '28', 0, 0, 0, 'constants'),
 (57, 'Add fund by Stripe', 'ADD_FUND_STRIPE', '8', 0, 0, 0, 'constants'),
-(58, 'Stripe Wallet', 'STRIPE_WALLET', '19', 0, 0, 4, 'constants');
+(58, 'Stripe Wallet', 'STRIPE_WALLET', '19', 0, 0, 4, 'constants'),
+(59, 'Membership payment by Paypal', 'MEMBERSHIP_PAYMENT_PAYPAL', '9', 0, 0, 0, 'constants'),
+(60, 'Membership payment by Stripe', 'MEMBERSHIP_PAYMENT_STRIPE', '10', 0, 0, 0, 'constants'),
+(61, 'Membership payment by Wallet', 'MEMBERSHIP_PAYMENT_WALLET', '11', 0, 0, 0, 'constants');
 
 
 CREATE TABLE IF NOT EXISTS `pref_setting_group` (
@@ -116,4 +119,7 @@ INSERT INTO `pref_wallet_transaction_type` (`wallet_transaction_type_id`, `title
 (5, 'ADD_FUND_BY_ADMIN', 'Add Fund By Admin'),
 (6, 'ESCROW_DISPUTE', 'Project Payment Towards dispute'),
 (7, 'DISPUTE_RESOLVE', 'Project Payment Dispute Resolve'),
-(8, 'ADD_FUND_STRIPE', 'Add fund by Stripe');
+(8, 'ADD_FUND_STRIPE', 'Add fund by Stripe'),
+(9, 'MEMBERSHIP_PAYMENT_PAYPAL', 'Membership payment by Paypal'),
+(10, 'MEMBERSHIP_PAYMENT_STRIPE', 'Membership payment by Stripe'),
+(11, 'MEMBERSHIP_PAYMENT_WALLET', 'Membership payment by Wallet');

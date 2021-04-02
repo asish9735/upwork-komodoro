@@ -726,3 +726,22 @@ ALTER TABLE `pref_project_contract_dispute` ADD `is_send_to_admin` BOOLEAN NOT N
 --------
 INSERT INTO `pref_wallet` ( `user_id`, `title`, `balance`, `withdrawn`, `used_purchases`, `pending_clearance`, `month_earnings`) VALUES
 ( 0, 'Stripe Wallet', 0.00, '0', '0', '0', '0');
+----------02042021---------
+CREATE TABLE `pref_membership` ( `membership_id` INT NOT NULL AUTO_INCREMENT , `membership_bid` SMALLINT NOT NULL , `membership_portfolio` SMALLINT NOT NULL , `membership_skills` SMALLINT NOT NULL , `membership_status` BOOLEAN NOT NULL , PRIMARY KEY (`membership_id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE TABLE `pref_membership_names` ( `membership_id` INT NOT NULL , `name` VARCHAR(200) NOT NULL , `description` TEXT NOT NULL , `lang` INT NOT NULL ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `pref_membership_names` ADD UNIQUE( `membership_id`, `lang`);
+ALTER TABLE `pref_membership` ADD `membership_commission_percent` FLOAT(6,2) NOT NULL AFTER `membership_skills`;
+CREATE TABLE `pref_membership_badge` (
+  `membership_id` int(11) NOT NULL,
+  `badge_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `pref_membership_badge` ADD UNIQUE KEY `membership_id` (`membership_id`,`badge_id`);
+ALTER TABLE `pref_membership` ADD `display_order` TINYINT NOT NULL AFTER `membership_status`;
+ALTER TABLE `pref_membership_names` CHANGE `lang` `lang` CHAR(2) NOT NULL;
+ALTER TABLE `pref_membership` ADD `price_per_month` DECIMAL(10,2) NOT NULL AFTER `membership_commission_percent`, ADD `price_per_year` DECIMAL(10,2) NOT NULL AFTER `price_per_month`;
+
+CREATE TABLE `pref_member_membership` ( `member_id` INT NOT NULL , `membership_id` INT NOT NULL , `is_free` INT NOT NULL , `membership_expire_date` DATE NOT NULL , `max_bid` INT NOT NULL , `max_portfolio` INT NOT NULL , `max_skills` INT NOT NULL , `commission_percent` FLOAT(6,2) NOT NULL , UNIQUE (`member_id`)) ENGINE = InnoDB;
+ALTER TABLE `pref_member_membership` CHANGE `is_free` `is_free` BOOLEAN NOT NULL;
+CREATE TABLE `pref_member_membership_log` ( `member_id` INT NOT NULL , `membership_id` INT NOT NULL , `membership_duration` CHAR(6) NOT NULL , `reg_date` DATETIME NOT NULL , `log_id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`log_id`)) ENGINE = InnoDB;
+
+

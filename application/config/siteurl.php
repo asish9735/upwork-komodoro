@@ -87,6 +87,8 @@ $config['CMSprivacypolicy'] = 'privacy-policy'; #router
 $config['CMSrefundpolicy'] = 'refund-policy'; #router
 $config['enterpriseURL'] = 'enterprise'; #router
 $config['membershipURL'] = 'membership'; #router
+$config['processMembershipURL'] = 'process-membership'; #router
+$config['processMembershipFormCheckAJAXURL'] = 'membership/processmembership';
 $config['CMShelp'] = 'help'; #router
 $config['CMShowitworks'] = 'how-it-works'; #router
 

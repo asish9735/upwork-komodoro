@@ -37,7 +37,7 @@ function pay_stripe(ptype){
 		return false;
 	}
 	$.post("<?php echo get_link('RequestPaymentStripe');?>", 
-       {pay_for: 'addfund', method: ptype}, function(data) {
+       {pay_for: "<?php D($formdata['pay_for'])?>", method: ptype}, function(data) {
         if (data["status"] == "OK") {
 			if(ptype=='ali'){
 				pay_stripe_ali(data["amount"],data["custom"]);
@@ -85,7 +85,7 @@ function stripe_checkout(amount,custom) {
     key: stripe_key,
     token: function(token) {
       // Send the charge through
-      $.post("<?php echo get_link('MakePaymentStripe');?>",{token: token.id, amount: amount,'custom':custom}, function(data) {
+      $.post("<?php echo get_link('MakePaymentStripe');?>",{token: token.id, amount: amount,'custom':custom,pay_for: "<?php D($formdata['pay_for'])?>"}, function(data) {
         if (data["status"] == "OK") {
           window.location.href="<?php echo get_link('AddFundURL').'?refer=paymentsuccess&method=stripe_card';?>";
         } else {
