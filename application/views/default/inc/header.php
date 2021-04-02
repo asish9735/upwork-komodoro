@@ -95,7 +95,7 @@ if($loggedUser){
 						<!-- Dropdown -->
 						<div class="header-notifications-dropdown">
 							<div class="header-notifications-headline">
-								<h4><?php echo __('',''); ?>Notifications</h4>
+								<h4><?php echo __('notifications','Notifications'); ?></h4>
 								<button class="mark-as-read" title="Mark all as read" data-tippy-placement="left" hidden>
 									<i class="icon-feather-check-square"></i>
 								</button>
@@ -122,7 +122,7 @@ if($loggedUser){
 						<div class="header-notifications-dropdown">
 
 							<div class="header-notifications-headline">
-								<h4><?php echo __('',''); ?>Messages</h4>
+								<h4><?php echo __('messages','Messages'); ?></h4>
 								<button class="mark-as-read" title="Mark all as read" data-tippy-placement="left" hidden>
 									<i class="icon-feather-check-square"></i>
 								</button>
@@ -137,7 +137,7 @@ if($loggedUser){
 								</div>
 							</div>
 
-							<a href="<?php echo get_link('MessageURL');?>" style="display:none" class="header-notifications-button button-sliding-icon viewallbtnmessage">View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
+							<a href="<?php echo get_link('MessageURL');?>" style="display:none" class="header-notifications-button button-sliding-icon viewallbtnmessage"><?php echo __('',''); ?>View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
 						</div>
 					</div>
 
@@ -181,7 +181,7 @@ if($loggedUser){
 						<ul class="user-menu-small-nav">
 							<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
 							<li><a href="<?php echo URL::get_link('settingsURL'); ?>"><i class="icon-material-outline-settings"></i> <?php echo __('settings','Settings'); ?></a></li>
-							<li><a href="<?php echo URL::get_link('logoutURL'); ?>"><i class="icon-material-outline-power-settings-new"></i> <?php echo __('','Logout'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('logoutURL'); ?>"><i class="icon-material-outline-power-settings-new"></i> <?php echo __('logout','Logout'); ?></a></li>
 						</ul>
 
 						</div>

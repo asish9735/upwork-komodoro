@@ -266,7 +266,6 @@ top: -8px;
 	padding: 0;
 	position: absolute;
 	top: calc(100% - 10px);
-	right: -15px;
 	text-align: left;
 	z-index: 100;
 	transform: scale(0.95);
@@ -11852,7 +11851,6 @@ a.dashboard-responsive-nav-trigger {
 .dashboard-nav ul li ul li {
 	background-color: transparent;
 	border: none;
-	padding-left: 63px;
 	position: relative;
 	margin: 0;
 }
@@ -11882,7 +11880,6 @@ a.dashboard-responsive-nav-trigger {
 	text-indent: 0;
 	top: 1px;
 	position: absolute;
-	right: 1.25rem;
 	top: 15px;
 }
 .dashboard-nav ul li.active-submenu a:after, .dashboard-nav ul li.active a:after/*, .dashboard-nav ul li:hover a:after*/ {
@@ -11933,7 +11930,6 @@ a.dashboard-responsive-nav-trigger {
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 	border-radius: 0.25rem;
 	padding: 1rem;
-	margin-right: 20px;
 	margin-bottom: 20px;
 	display: flex;
 	flex-wrap: wrap;

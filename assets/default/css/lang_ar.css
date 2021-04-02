@@ -58,7 +58,7 @@ ul.display-inline li:last-child {
     right: 12px;
 }
 .fun-fact {
-	margin-left: 25px
+	margin-left: 20px
 }
 .fun-fact-icon {
 	margin-left: 1rem;
@@ -95,6 +95,13 @@ ul.display-inline li:last-child {
 .dashboard-nav ul li a i {
 	margin-left: 8px
 }
+.dashboard-nav ul li a:after {
+	left: 1.25rem;
+}
+.dashboard-nav ul li ul li {
+	padding-right: 50px;
+}
+
 .header-notifications-dropdown {
 	left: -15px
 }
