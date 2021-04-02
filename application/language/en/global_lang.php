@@ -20,9 +20,31 @@ $lang['register'] ='Register';
 $lang['post_a_job'] ='Post A Job';
 $lang['get_started'] ='Get Started';
 $lang['settings'] ='Settings';
+$lang['messages'] ='Messages';
+$lang['logout'] ='Logout';
+$lang['my_profile'] ='My profile';
+$lang['finance'] ='Finance';
+$lang['notifications'] ='Notifications';
+$lang['favourite'] ='Favourite';
+$lang['reviews'] ='Reviews';
 $lang[''] ='';
 $lang[''] ='';
 $lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+
+
+
+
+
+
+
+
 
 
 
