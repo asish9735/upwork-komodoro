@@ -12,7 +12,7 @@ class Membership extends MX_Controller {
 			$this->access_member_type=$this->loggedUser['ACC_P_TYP'];
 			$this->member_id=$this->loggedUser['MID'];
 		}else{
-			//redirect(URL::get_link('loginURL').'?ref=membershipURL');
+			redirect(URL::get_link('loginURL').'?ref=membershipURL');
 		}
 		$this->data['curr_class'] = $this->router->fetch_class();
 		$this->data['curr_method'] = $this->router->fetch_method();
