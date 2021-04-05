@@ -22,8 +22,8 @@ $invoice_url=get_link('InvoiceURL');
 		     <section class=" workLogData"></section>
 			 <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
 		    </div>
-		    <div class="container text-center padding-bottom-40">
-	            <button class="btn btn-primary" id="load_more" data-page = "0">Load more..</button>
+		    <div class="text-center">
+	            <button class="btn btn-site mt-3" id="load_more" data-page="0">Load more..</button>
 	        </div>
 
 		</div>

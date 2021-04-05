@@ -225,24 +225,27 @@ if($login_user_id){
                 <div class="panel-header"><h4>Share &amp; Bookmark</h4></div>
 				<div class="panel-body">					
 					<!-- Copy URL -->
-					<div class="copy-url mb-3">
+					<div class="input-group copy-url mb-3">
 						<input type="text" class="form-control" id="copy-url" value="">
-						<button class="copy-url-button ripple-effect" data-clipboard-target="#copy-url" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button>
+						<div class="input-group-append"><button class="copy-url-button ripple-effect" data-clipboard-target="#copy-url" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button></div>
 					</div>
 
 					<!-- Share Buttons -->
 					<div class="freelancer-socials">
-						<ul class="social-links">
+						<ul class="social-links d-flex">
 							<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $ProjectDetailsURL;?>" target="_blank" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
 							<li><a href="https://twitter.com/home?status=<?php echo $ProjectDetailsURL;?>" target="_blank" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
 							<li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $ProjectDetailsURL;?>&title=&summary=&source=" target="_blank" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-						</ul>
+						
                       <!-- Bookmark icon -->
 					  <?php if(!$is_owner){?>
-					  <span style=" position: absolute; right: 0; top: 0;">
-						<a href="<?php echo VZ;?>" class="btn btn-circle btn-light mr-2 action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-feather-heart"></i></a>
+					  <li class="ml-auto">
+                      <span>
+						<a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-feather-heart"></i></a>
 					  </span>
+                      </li>
 					  <?php }?>
+                      </ul>
 				    </div>
 				</div>
                 </div>

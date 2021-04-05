@@ -29,9 +29,6 @@
 	color:#fff;
 	background-color:var(--siteColor);
 }
- .message-bubble.me .message-text:before {
-	border-left:6px solid rgb(100 190 67 / 0.1);
-}
 .message-bubble.me .message-text{
 	background-color: rgb(100 190 67 / 0.1);
 }
@@ -77,13 +74,13 @@
  .boxed-list-item .item-details .detail-item a:hover,
  .job-overview .job-overview-inner ul li i,
  .dashboard-nav ul:before,
- .dashboard-nav ul li.active-submenu a i,
+ /*.dashboard-nav ul li.active-submenu a i,*/
  .dashboard-nav ul li.active a i,
  .dashboard-nav ul li:hover a i,
- .dashboard-nav ul li.active-submenu a,
+ /*.dashboard-nav ul li.active-submenu a,*/
  .dashboard-nav ul li:hover a,
  .dashboard-nav ul li.active a,
- .dashboard-nav ul li.active-submenu a:after,
+ /*.dashboard-nav ul li.active-submenu a:after,*/
  .dashboard-nav ul li.active a:after,
  .dashboard-nav ul li:hover a:after,
  .help-icon,
@@ -184,7 +181,7 @@
      border:1px solid var(--siteColor);
 }
  .payment-tab-trigger > input:checked ~ label::before,
- .dashboard-nav ul li.active-submenu,
+ /*.dashboard-nav ul li.active-submenu,*/
  .dashboard-nav ul li.active,
  .dashboard-nav ul li:hover {
      border-color:var(--siteColor);
@@ -353,10 +350,10 @@
  a.apply-now-button:hover {
      box-shadow: 0 2px 8px rgba(100,190,67,0.35);
 }
- .dashboard-nav ul li.active-submenu, .dashboard-nav ul li.active, .dashboard-nav ul li:hover {
+/*.dashboard-nav ul li.active-submenu,*/ .dashboard-nav ul li.active, .dashboard-nav ul li:hover {
      background-color: rgba(100,190,67,0.1);
 }
- .dashboard-nav ul li.active-submenu a:after, .dashboard-nav ul li.active a:after/*, .dashboard-nav ul li:hover a:after*/ {
+/*.dashboard-nav ul li.active-submenu a:after,*/ .dashboard-nav ul li.active a:after/*, .dashboard-nav ul li:hover a:after*/ {
      background: rgba(100,190,67,0.13);
 }
  .dashboard-box-list .button {

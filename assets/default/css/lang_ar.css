@@ -86,6 +86,16 @@ ul.display-inline li:last-child {
 	float: left;
 	border-left: none;
 }
+.header-notifications {
+	padding-left: 15px;
+}
+.header-notifications:last-child {
+	margin-left: -15px;
+}
+.header-notifications-content.with-icon .notification-text{	
+	padding-left:5px;
+	padding-right:20px;
+}
 .fun-fact-text {
 	margin-right: 20px
 }
@@ -93,20 +103,19 @@ ul.display-inline li:last-child {
 	border-right: 2px solid transparent
 }
 .dashboard-nav ul li a i {
-	margin-left: 8px
+	margin-left: 5px
 }
 .dashboard-nav ul li a:after {
 	left: 1.25rem;
 }
 .dashboard-nav ul li ul li {
-	padding-right: 50px;
+	padding-right: 40px;
 }
-
 .header-notifications-dropdown {
-	left: -15px
+	left: 0
 }
 .user-name {
-	padding: 2px 15px 0 0;
+	padding-right: 1rem;
 }
 .searchbox .input-group:before {
 	right: 18px
@@ -128,14 +137,11 @@ ul.display-inline li:last-child {
 .skill_search .chip > a {
     left: 0.5rem;
 }
-.copy-url .copy-url-button {
-	border-radius:4px 0 0 4px
-}
 .single-page-header .left-side {
-	padding-left: 25px;
+	padding-left: 1.25rem;
 }
 .single-page-header .header-image {
-	margin-left: 25px
+	margin-left: 1.25rem
 }
 .boxed-list-headline h3 i,
 .single-page-header .header-details ul li img.flag,
@@ -159,6 +165,9 @@ ul.skills li {
 }
 .boxed-list-item .item-details .detail-item {
 	margin-left: 15px
+}
+.boxed-list-item .item-details .star-rating {
+	margin-left: 1rem;
 }
 .icon-round{		
 	margin-right: 10px;
@@ -274,7 +283,6 @@ ol.counter-list li:after {
 	right: -2.5em;
 	text-align: left;
 }
-
 .featuredimg {
 	left:-9px;
 }
@@ -296,6 +304,9 @@ ol.counter-list li:after {
 .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
 	margin-right:10px;
 }
+.radio-inline {
+	margin-right:1rem
+}
 .magic-radio + label, .magic-checkbox + label {
 	padding-right: 28px;
 }
@@ -311,6 +322,9 @@ ol.counter-list li:after {
 div.dataTables_paginate {
     text-align: left;
 }
+/*
+LTR SPACE
+*/
 .conversation_loop.other .starred {
 	left:-25px;
 }
@@ -361,6 +375,12 @@ div.dataTables_wrapper div.dataTables_filter input {
 .messages-container-inner .messages-inbox {
 	border-left: 1px solid #eaeaea
 }
+.messages-container-inner .message-by-headline span {
+	left: 1rem;
+}
+.message-by-headline span {
+	float: left;
+}
 .message-action {
 	left: 1rem
 }
@@ -382,12 +402,67 @@ div.dataTables_wrapper div.dataTables_filter input {
 .messages-container-inner .messages-inbox .filtertable .message-by {
 	margin-right: 60px
 }
+.message-bubble {
+	padding-left:40px;
+}
+.message-bubble.me {
+	padding-right:40px;
+	padding-left:0;
+}
+.message-bubble .message-avatar {
+	right: 0;
+}
+/* Message Bubble "me" */
+.message-bubble.me .message-avatar {
+	left: 0;
+	right: auto;
+}
 .message-bubble .message-text {
 	margin-right: 55px;
 }
 .message-bubble.me .message-text {
+	float: left;
 	margin-right: 0;
 	margin-left: 55px;
+}
+.fav-star{
+	right:-5px;
+}
+.message-bubble.me .fav-star{
+	left: auto;
+	right: -5px
+}
+.fixed-action-btn {
+    left: -30px;
+}
+.message-bubble.me .fixed-action-btn {
+    left: auto;
+	right: -30px;
+}
+.fixed-action-btn ul {
+    right: 15px;
+}
+.message-bubble.me .fixed-action-btn ul {
+	left: 15px;
+    right: auto;
+}
+/* Arrow */
+.message-bubble .message-text:before {
+	border-left: 6px solid #eee;
+	left: auto;
+	right: -6px;
+}
+.message-bubble.me .message-text:before {
+	border-left: none;
+	border-right: 6px solid rgb(100 190 67 / 0.1);
+	right: auto;
+	left: -6px;
+}
+.message-reply .uploadButton {
+	margin:0.1rem auto 0 1rem;
+}
+.attachmentFile {
+	border-right: 1px solid #dee2e6;
 }
 .header-notifications-dropdown:before {
 	left: 43px;
@@ -407,6 +482,45 @@ div.dataTables_wrapper div.dataTables_filter input {
 .user-who-bid > span{
 	margin-right: 2px;
 }
+.pricing-group > .btn {
+    margin-left: 1.25rem;
+}
+.range_inputs .btn:first-child{
+	margin-right:2px;
+}
+.status-icon, .notification-avatar:after, .user-avatar:after {
+	left: 0;
+}
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+	float:right;
+}
+.bootstrap-select.btn-group .dropdown-toggle .caret {
+	left: 20px;
+}
+ul.totalList > li {
+    border-left: 1px solid #dfdfdf;
+}
+ul.totalList > li:last-child {
+	border-left:none
+}
+.job-overview .job-overview-inner ul li {
+	padding-right: 2rem;
+}
+.job-overview .job-overview-inner ul li i {
+	right: 0;
+}
+.single-page-header .salary-box {
+	margin-right: auto;
+}
+.toggleUD {
+    left: 1.25rem;
+}
+.number {
+    right: 1.25rem;
+}
+.milestone-item {
+	padding-right:1.25rem
+}
 
 @media (min-width: 768px) {
 
@@ -419,6 +533,13 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 .signup:after {		
 	background-color:#2C597A;	
+}
+ul.totalList > li:nth-child(4n) {
+	border-left:none
+}
+.brr-0 {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 }

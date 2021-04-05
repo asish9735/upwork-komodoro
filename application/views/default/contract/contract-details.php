@@ -23,7 +23,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 
 <section class="section">
   <div class="container">
-    <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
+    <h1><?php echo $contractDetails->contract_title;?></h1>
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>">Milestones & Earnings</a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>

@@ -21,14 +21,14 @@ $currency=priceSymbol();
 			<div class="content with-padding">	
 				<label class="form-label">Select date for which you want your transaction history</label>
 				<form action="" method="get">
-				<div class="row">
-					<div class="col-md-6">                    	
+				<div class="row row-10">
+					<div class="col-md-6 col-12">                    	
 						<div class="input-with-icon-left">
 		                    <i class="icon-feather-calendar"></i>
 		                    <input type="text" name="searchdate" id="searchdate" class="form-control datepicker" value="<?php if($this->input->get('searchdate')){echo $this->input->get('searchdate');}?>">
 						</div>						
 					</div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-12">
                     	<button class="btn btn-site" name="search" value="1">Go</button>
                         &nbsp;
                         <button class="btn btn-site"  name="CSV" value="1">Download CSV</button>

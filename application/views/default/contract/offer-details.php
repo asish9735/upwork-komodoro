@@ -19,7 +19,7 @@ if($is_owner){
 <section class="section">
 	<?php //echo $left_panel;?>
     <div class="container">
-        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
+        <h1><?php echo $contractDetails->contract_title;?></h1>
         				
         <?php 
         if($contractDetails->contract_status==0){

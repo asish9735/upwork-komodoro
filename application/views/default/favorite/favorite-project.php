@@ -63,7 +63,7 @@ if($list){
 	}
 }else{
 ?>
-<li><p>No record</p></li>
+<li class="justify-content-center">No record</li>
 <?php
 }
 ?>

@@ -32,6 +32,10 @@ if($loggedUser){
 	));	
 	$memberDataBasic->badges=$badges;
 	$memberDataBasic->balance=getFieldData('balance','wallet','user_id',$this->member_id);
+	$page_class=$this->router->fetch_class();
+	$page_method=$this->router->fetch_method();
+	$page_key=$page_class.'_'.$page_method;
+	//print_r($page_key);
 }
 ?>
 <!-- Dashboard Sidebar -->
@@ -97,19 +101,19 @@ if($loggedUser){
                     	</div>
 
 						<ul>
-							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
-							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> <?php echo __('messages','Messages'); ?> <!--<span class="nav-tag">2</span>--></a></li>
-							<li><a href="<?php echo URL::get_link('NotificationURL');?>"><i class="icon-material-outline-notifications-active"></i> <?php echo __('notifications','Notifications'); ?> <!--<span class="nav-tag">2</span>--></a></li>
-							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> <?php echo __('favourite','Favourite'); ?></a></li>
-							<li><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-rate-review"></i> <?php echo __('reviews','Reviews'); ?></a></li>
+							<li class="<?php echo ($page_key == 'dashboard_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
+							<li class="<?php echo ($page_key == 'message_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> <?php echo __('messages','Messages'); ?> <!--<span class="nav-tag">2</span>--></a></li>
+							<li class="<?php echo ($page_key == 'notification_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('NotificationURL');?>"><i class="icon-material-outline-notifications-active"></i> <?php echo __('notifications','Notifications'); ?> <!--<span class="nav-tag">2</span>--></a></li>
+							<li class="<?php echo ($page_key == 'favorite_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> <?php echo __('favourite','Favourite'); ?></a></li>
+							<li class="<?php echo ($page_key == 'reviews_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-rate-review"></i> <?php echo __('reviews','Reviews'); ?></a></li>
 						</ul>
 						<ul data-submenu-title="Finance">
 							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('finance','Finance'); ?></a>
 								<ul>
-									<li><a href="<?php D(get_link('AddFundURL'))?>"><?php echo __('',''); ?>Add Fund</a></li>
-									<li><a href="<?php D(get_link('TransactionHistoryURL'))?>"><?php echo __('',''); ?>Transaction</a></li>
-									<li><a href="<?php D(get_link('WithdrawURL'))?>"><?php echo __('',''); ?>Withdraw</a></li>
-									<li><a href="<?php D(get_link('InvoiceURL'))?>"><?php echo __('',''); ?>Invoice</a></li>
+									<li class="<?php echo ($page_key == 'finance_addfund') ? 'active' : '' ;?>"><a href="<?php D(get_link('AddFundURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> Add Fund</a></li>
+									<li class="<?php echo ($page_key == 'finance_transaction') ? 'active' : '' ;?>"><a href="<?php D(get_link('TransactionHistoryURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> Transaction</a></li>
+									<li class="<?php echo ($page_key == 'finance_withdraw') ? 'active' : '' ;?>"><a href="<?php D(get_link('WithdrawURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> Withdraw</a></li>
+									<li class="<?php echo ($page_key == 'invoice_listdata') ? 'active' : '' ;?>"><a href="<?php D(get_link('InvoiceURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> Invoice</a></li>
 								</ul>	
 							</li>
 						</ul>
@@ -123,9 +127,9 @@ if($loggedUser){
 							</li>-->
 							<li><a href="#"><i class="icon-material-outline-assignment"></i> <?php echo __('projects','Projects'); ?></a>
 								<ul>
-									<li><a href="<?php D(get_link('myBidsURL'))?>"><?php echo __('',''); ?>My Proposals</a></li>
-									<li><a href="<?php D(get_link('OfferList'))?>"><?php echo __('',''); ?>My Offers </a></li>
-									<li><a href="<?php D(get_link('ContractList'))?>"><?php echo __('',''); ?>My Contract </a></li>
+									<li class="<?php echo ($page_key == 'projectfreelancer_bids') ? 'active' : '' ;?>"><a href="<?php D(get_link('myBidsURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> My Proposals</a></li>
+									<li class="<?php echo ($page_key == 'contract_offerlist') ? 'active' : '' ;?>"><a href="<?php D(get_link('OfferList'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> My Offers </a></li>
+									<li class="<?php echo ($page_key == 'contract_index') ? 'active' : '' ;?>"><a href="<?php D(get_link('ContractList'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> My Contract </a></li>
 									<!--<li><a href="dashboard-manage-tasks.html">Manage Tasks <span class="nav-tag">2</span></a></li>
 									<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
 									<li><a href="dashboard-my-active-bids.html">My Active Bids <span class="nav-tag">4</span></a></li>
@@ -137,9 +141,9 @@ if($loggedUser){
 						<ul>
 							<li><a href="<?php echo URL::get_link('settingaccountInfoURL')?>"><i class="icon-material-outline-settings"></i> <?php echo __('settings','Settings'); ?></a>
 								<ul>
-									<li><a href="<?php echo URL::get_link('settingaccountInfoURL');?>"><?php echo __('',''); ?>Contact info</a></li>
-									<li><a href="<?php echo URL::get_link('settingpasswordURL');?>"><?php echo __('',''); ?>Password & security</a></li>
-									<li><a href="<?php echo URL::get_link('myprofileAJAXURL');?>"><?php echo __('my_profile','My profile'); ?></a></li>
+									<li class="<?php echo ($page_key == 'settings_contact_info') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingaccountInfoURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> Contact info</a></li>
+									<li class="<?php echo ($page_key == 'password_security_password') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingpasswordURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> Password & security</a></li>
+									<li><a href="<?php echo URL::get_link('myprofileAJAXURL');?>"><i class="icon-feather-check"></i> <?php echo __('my_profile','My profile'); ?></a></li>
 								</ul>
 							
 							</li>

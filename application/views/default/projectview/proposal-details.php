@@ -471,5 +471,7 @@ var  main = function(){
 		}
 		//alert(btn);
 	})
+	
 }
 </script>
+<script src="<?php echo JS;?>rating/star-rating.js"></script>

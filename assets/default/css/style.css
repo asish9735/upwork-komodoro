@@ -268,7 +268,6 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 	 visibility: visible;
 }
 .mycustom-modal .modal-header {
-
     border-radius: 3px;
     padding: 17px 21px;
     background-color: #5c5c5c;
@@ -280,6 +279,9 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 .mycustom-modal .modal-header h4{
 	    font-size:1.4rem;
 	    color: #fff
+}
+.mycustom-modal{
+	border:none;
 }
 .language-input .radio{
 	display: block;
@@ -760,10 +762,6 @@ ul.langList > li:last-child {
     flex-grow: 1;
 	/*margin-bottom:1rem*/
 }
-.brr-0 {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
 .edit_logo_btn {
     position: absolute; 
 	top: calc(50% - 15px);
@@ -786,14 +784,11 @@ ul.totalList {
 }
 ul.totalList > li {
 	flex: 1;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dfdfdf;
     margin-bottom: -1px;
     padding: 1rem;
 }
-/*ul.totalList > li:last-child {
-	border-right:none
-}*/
+
 ul.totalList > li > span {
 	display: block;
     margin-top: 0.5rem;
@@ -897,7 +892,6 @@ ul.skill-tags > li {
 	font-size: 1.5rem;
     position: absolute;
     top: 12px;
-    right: 1.25rem;
     line-height: 0;
 }
 .toggleUD.active {
@@ -948,14 +942,7 @@ ul.dashboard-box-list.if-double-button > li {
 }
 .number {
 	position: absolute;
-    left: 1.25rem;
     top: 0.75rem;
-}
-.milestone-item {
-	padding-left:1.25rem
-}
-.radio-inline {
-	margin-right:1rem
 }
 .btn-group .btn-outline-black{
 	border-color: #ddd;
@@ -983,7 +970,6 @@ ul.dashboard-box-list.if-double-button > li {
 	margin-bottom: -1rem;
 }
 .pricing-group > .btn {
-    margin-right: 1.25rem;
     margin-bottom: 1rem;
     padding: 1rem;
 	cursor: pointer;
@@ -1055,11 +1041,6 @@ ul.dashboard-box-list.if-double-button > li {
 }
 .was-validated .notick:invalid, .notick.is-invalid,.was-validated .notick:valid, .notick.is-valid{
 	background-image:none;	
-}
-
-
-.attachmentFile {
-	border-left: 1px solid #dee2e6;
 }
 .attachmentFile ul> li{
 	border-bottom:1px solid #ddd
@@ -1346,7 +1327,6 @@ ul.list-group-0 > li{
 }
 
 .fav-star{
-	right:-5px;
 	font-size: 1rem;
 	top: -5px;
     background: #fff;
@@ -1424,10 +1404,6 @@ ul.list-group-0 > li{
 .message-bubble:hover .fav-star, .message-bubble .fav-star.active{
 	display:block;
 }
-.message-bubble.me .fav-star{
-	left: -5px;
-	right:auto
-}
 .fav-star.active .icon-material-outline-star-border:before{
 	content: "\e988";
 }
@@ -1460,16 +1436,10 @@ ul.list-group-0 > li{
 }
 .fixed-action-btn {
     position: absolute;
-    right: -30px;
     bottom: 0;
     z-index: 997;
 }
-.message-bubble.me .fixed-action-btn {
-    left: -30px;
-	right: auto;
-}
 .fixed-action-btn ul {
-    left: 15px;
 	font-size:0;    
     position: absolute;
     bottom: 0;
@@ -1480,10 +1450,6 @@ ul.list-group-0 > li{
     height: 100%;
     width: 90px;
     visibility: hidden;
-}
-.message-bubble.me .fixed-action-btn ul {
-	left: auto;
-    right: 15px;
 }
 .fixed-action-btn.active ul,
 .fixed-action-btn:hover ul{
@@ -1532,6 +1498,31 @@ ul.list-group-0 > li{
 .message-quote hr{
 	margin:0.5rem 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
