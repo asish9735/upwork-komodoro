@@ -40,6 +40,9 @@ $currency=priceSymbol();
 <!-- Page Content
 ================================================== -->
 <div class="container">
+<?php if($limit_over){?>
+        <div class="alert alert-warning">Max limit over, please upgrade your membership plan. <a href="<?php echo get_link('membershipURL');?>">Click here</a> to upgrade</div>
+    <?php }else{?>
   <form action="" method="post" accept-charset="utf-8" id="applyprojectform" class="form-horizontal" role="form" name="applyprojectform" onsubmit="return false;">
     <?php /*?><input type="hidden" name="pid" value="<?php echo $projectData['project']->project_id;?>"/>
 			<input type="hidden" id="is_hourly" value="<?php if($projectData['project_settings']->is_hourly==1){echo 1;}else{echo 0;}?>"/>-->
@@ -278,8 +281,9 @@ $currency=priceSymbol();
             (this client require cover letter)
             <?php }?>
           </label>
-          <textarea class="form-control" rows="4" id="bid_details" name="bid_details"><?php if($getBidDetails && $getBidDetails->bid_details){echo $getBidDetails->bid_details;}?>
-</textarea>
+          <textarea class="form-control" rows="4" id="bid_details" name="bid_details">
+          <?php if($getBidDetails && $getBidDetails->bid_details){echo $getBidDetails->bid_details;}?>
+          </textarea>
         </div>
         <div class="form-group">
           <label>Attachments</label>
@@ -318,6 +322,7 @@ $currency=priceSymbol();
       <button class="btn btn-secondary backbtnapply">Back</button>
     </div>
   </form>
+<?php }?>
 </div>
 <div class="dashboard-footer-spacer"></div>
 <script type="text/javascript">

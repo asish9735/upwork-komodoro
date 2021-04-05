@@ -986,3 +986,36 @@ if (!function_exists('isFavouriteJob')) {
 		return $ci->db->where('project_id',$project_id)->where('member_id',$member_id)->from('favorite_project')->count_all_results();
 	}
 }
+if (!function_exists('updateMembershipUser')) {
+	function updateMembershipUser($member_id='') {
+		$ci = &get_instance();
+		$membership_id=get_setting('FREE_MEMBERSHIP_ID');
+		$membership=getData(array(
+			'select'=>'b.membership_id,b.membership_bid,b.membership_portfolio,b.membership_skills,b.membership_commission_percent,b.price_per_month,b.price_per_year,l.name,l.description',
+			'table'=>'membership b',
+			'join'=>array(array('table'=>'membership_names l','on'=>"(l.membership_id=b.membership_id and l.lang='".$lang."')",'position'=>'left')),
+			'where'=>array('b.membership_status'=>1,'b.membership_id'=>$membership_id),
+			'single_row'=>TRUE
+		));
+		if($membership){
+			$dura='+ 1 month';
+			$member_membership=array(
+				'membership_id'=>$membership->membership_id,
+				'is_free'=>1,
+				//'membership_expire_date'=>$membership_expire_date,
+				'max_bid'=>$membership->membership_bid,
+				'max_portfolio'=>$membership->membership_portfolio,
+				'max_skills'=>$membership->membership_skills,
+				'commission_percent'=>$membership->membership_commission_percent,
+			);
+			$membership_expire_date=date('Y-m-d',strtotime($dura));
+			$member_membership['membership_expire_date']=$membership_expire_date;
+			$ci->db->where('is_free',0)->where('membership_expire_date <',date('Y-m-d'));
+			if($member_id){
+				$ci->db->where('member_id',$member_id);
+			}
+			return $ci->db->update('member_membership',$member_membership);
+		}	
+	}
+}
+

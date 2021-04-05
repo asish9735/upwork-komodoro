@@ -412,7 +412,14 @@ class Profileview extends MX_Controller {
 					'where'=>array('m_p.member_id'=>$member_id,'m_p.portfolio_id'=>$dataid),
 					'single_row'=>true,
 					));
-				}	
+					$this->data['limit_over']=0;
+				}else{
+					$this->data['limit_over']=1;
+					$membership=getMembershipData($member_id,array('portfolio'));
+					if($membership['max_portfolio'] > $membership['used_portfolio']){
+						$this->data['limit_over']=0;
+					}
+				}
 				$this->data['memberInfo']=$memberportfolio;
 				$this->data['all_category']=getAllCategory();
 				$all_category_subchild=array();
@@ -831,11 +838,27 @@ class Profileview extends MX_Controller {
 				}
 				elseif($form_type=='skill')
 				{
+					
+					
 					if($i==0){
 						$all_skill=post('skills');
-						delete_record('member_skills',array('member_id'=>$member_id));
 						if($all_skill){
 							$sk=explode(',',$all_skill);
+							$membership=getMembershipData($member_id,array('skills'));
+							if($membership['max_skills'] >= count($sk)){
+
+							}else{
+								$msg['status'] = 'FAIL';
+								$msg['errors'][$i]['id'] = 'skills';
+								$msg['errors'][$i]['message'] = 'Max limit over, please upgrade your membership plan.';
+								$i++;
+								unset($_POST);
+								echo json_encode($msg);
+								die;
+							}
+						}
+						delete_record('member_skills',array('member_id'=>$member_id));
+						if($all_skill){
 							foreach($sk as $ord=>$skill_id){
 								insert_record('member_skills',array('member_id'=>$member_id,'skill_id'=>$skill_id,'member_skills_order'=>$ord),TRUE);
 							}

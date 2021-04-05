@@ -128,6 +128,15 @@ class Membership extends MX_Controller {
 				$ID = post('ID');
 				unset($post['ID']);
 				$update = $this->membership->updateRecord($post, $ID);
+				if($update){
+					$member_membership=array(
+						'max_bid' => !empty($post['membership_bid']) ? $post['membership_bid'] : '0',
+						'max_portfolio' => !empty($post['membership_portfolio']) ? $post['membership_portfolio'] : '0',
+						'max_skills' => !empty($post['membership_skills']) ? $post['membership_skills'] : '0',
+						'commission_percent' => !empty($post['membership_commission_percent']) ? $post['membership_commission_percent'] : '0',
+					);
+					$this->db->where('membership_id',$ID)->update('member_membership',$member_membership);
+				}
 				$this->api->cmd('reload');
 			}else{
 				$errors = validation_errors_array();

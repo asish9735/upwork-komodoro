@@ -68,7 +68,10 @@ class User extends MX_Controller {
 						}
 						$LAST_PCI=$this->user_model->getLastActive($customerData->access_user_id);
 						$customer=array('LID'=>$LAST_PCI['LID'],'ACC_P_TYP'=>$LAST_PCI['TYP'],'OID'=>$LAST_PCI['OID'],'MID'=>$LAST_PCI['MID'],'UNAME'=>$LAST_PCI['UNAME']);
-						$this->session->set_userdata('loggedUser',$customer);	
+						$this->session->set_userdata('loggedUser',$customer);
+						if($LAST_PCI['TYP']=='F'){
+							getMembershipData($LAST_PCI['MID']);
+						}
 						$msg['status'] = 'OK';
 						$msg['customsuccess'] = 'successContain';
 						
@@ -207,6 +210,10 @@ class User extends MX_Controller {
 						$customer=array('LID'=>$LAST_PCI['LID'],'ACC_P_TYP'=>$LAST_PCI['TYP'],'OID'=>$LAST_PCI['OID'],'MID'=>$LAST_PCI['MID'],'UNAME'=>$LAST_PCI['UNAME']);
 						$this->session->set_userdata('loggedUser',$customer);
 						$id=insert_record('profile_verify_token',$insdataToken,TRUE);
+
+						if(post('user_type')=='F'){
+							getMembershipData($member_id);
+						}
 					}
 					
 					if($token){

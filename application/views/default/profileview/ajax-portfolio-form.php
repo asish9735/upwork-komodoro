@@ -9,9 +9,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php }else{?>
         <h4 class="modal-title">Add portfolio</h4>
         <?php }?>
+        <?php if($limit_over==0){?>
         <button type="button" class="btn btn-success pull-right" onclick="SavePortfolio(this)">Save</button>
+      <?php }?>
       </div>
     <div class="modal-body">
+    <?php if($limit_over){?>
+        <div class="alert alert-warning">Max limit over, please upgrade your membership plan. <a href="<?php echo get_link('membershipURL');?>">Click here</a> to upgrade</div>
+    <?php }else{?>
 	    <form action="" method="post" accept-charset="utf-8" id="portfolioform" class="form-horizontal" role="form" name="portfolioform" onsubmit="return false;">  
 				<input  type="hidden" value="<?php echo $formtype;?>" id="formtype" name="formtype"/>
 				<input  type="hidden" value="<?php echo $dataid;?>" id="dataid" name="dataid"/>
@@ -102,7 +107,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     </div>
                 </div> 
-       			</form>
+       		</form>
+    <?php }?>
     </div>
 <script type="text/javascript" src="<?php echo JS;?>upload-drag-file.js"></script>
 <script type="text/javascript">

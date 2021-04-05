@@ -2227,11 +2227,92 @@ if ( ! function_exists('updateTable'))
 
 	}
 }
-
+if (!function_exists('getMembershipData')) {
+	function getMembershipData($member_id='',$filter=array()) {
+		$lang = get_active_lang();
+		$ci = &get_instance();
+		$maxdata=array();
+		$res=array('status'=>0);
+		$addedit=0;
+		$check=getData(array(
+			'select'=>'m.membership_id,m.membership_expire_date,m.is_free,m.max_bid,m.max_portfolio,m.max_skills,m.commission_percent',
+			'table'=>'member_membership m',
+			'where'=>array('m.member_id'=>$member_id),
+			'single_row'=>TRUE
+			));
+		if($check){
+			$maxdata=array('max_bid'=>$check->max_bid,'max_portfolio'=>$check->max_portfolio,'max_skills'=>$check->max_skills,'commission_percent'=>$check->commission_percent);
+			if($check->is_free==0 && date('Y-m-d') > $check->membership_expire_date){
+				$addedit=2;
+			}
+		}else{
+			$addedit=1;
+		}
+		if($addedit>0){
+			$membership_id=get_setting('FREE_MEMBERSHIP_ID');
+			$membership=getData(array(
+				'select'=>'b.membership_id,b.membership_bid,b.membership_portfolio,b.membership_skills,b.membership_commission_percent,b.price_per_month,b.price_per_year,l.name,l.description',
+				'table'=>'membership b',
+				'join'=>array(array('table'=>'membership_names l','on'=>"(l.membership_id=b.membership_id and l.lang='".$lang."')",'position'=>'left')),
+				'where'=>array('b.membership_status'=>1,'b.membership_id'=>$membership_id),
+				'single_row'=>TRUE
+				));
+			if($membership){
+				$member_membership=array(
+					'membership_id'=>$membership_id,
+					'is_free'=>1,
+					//'membership_expire_date'=>$membership_expire_date,
+					'max_bid'=>$membership->membership_bid,
+					'max_portfolio'=>$membership->membership_portfolio,
+					'max_skills'=>$membership->membership_skills,
+					'commission_percent'=>$membership->membership_commission_percent,
+				);
+				$dura='+ 1 month';
+				$membership_expire_date=date('Y-m-d',strtotime($dura));
+				$member_membership['membership_expire_date']=$membership_expire_date;
+				
+				if($addedit==1){
+					$member_membership['member_id']=$member_id;
+					insert_record('member_membership',$insdata);
+					$res['status']=1;
+				}else{
+					updateTable('member_membership',$insdata,array('member_id'=>$member_id));
+					$res['status']=1;
+				}
+				$maxdata=array('max_bid'=>$member_membershi['max_bid'],'max_portfolio'=>$member_membershi['max_portfolio'],'max_skills'=>$member_membershi['max_skills'],'commission_percent'=>$member_membershi['commission_percent']);
+			}
+		}
+		if($filter){
+			if(in_array('bid',$filter)){
+				$res['max_bid']=$maxdata['max_bid'];
+				$res['used_bid']=$ci->db->where('MONTH(bid_date)',date('m'))->where('YEAR(bid_date)',date('Y'))->where('member_id',$member_id)->count_all_results('project_bids');
+			}
+			elseif(in_array('portfolio',$filter)){
+				$res['max_portfolio']=$maxdata['max_portfolio'];
+				$res['used_portfolio']=$ci->db->where('member_id',$member_id)->where('portfolio_status',1)->count_all_results('member_portfolio');
+			}
+			elseif(in_array('skills',$filter)){
+				$res['max_skills']=$maxdata['max_skills'];
+				$res['used_skills']=$ci->db->where('member_id',$member_id)->count_all_results('member_skills');
+			}
+			elseif(in_array('commission',$filter)){
+				$res['commission']=$maxdata['commission_percent'];
+			}
+		}
+		return $res;
+	}
+}
 if ( ! function_exists('getSiteCommissionFee'))
 {
 	function getSiteCommissionFee($member_id='',$project_id=''){
-		return 5;
+		$commission=5;
+		$membership=getMembershipData($member_id,array('commission'));
+		if($membership){
+			if(array_key_exists('commission',$membership)){
+				$commission=round($membership['commission'],2);
+			}
+		}
+		return $commission;
 	}
 }
 if ( ! function_exists('generateProcessingFee'))

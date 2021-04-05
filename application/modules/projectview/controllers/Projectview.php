@@ -331,7 +331,11 @@ class Projectview extends MX_Controller {
 				'order'=>array(array('p_q.project_question_id','asc'))
 			);
 			
-			
+			$this->data['limit_over']=1;
+			$membership=getMembershipData($member_id,array('bid'));
+			if($membership['max_bid'] > $membership['used_bid']){
+				$this->data['limit_over']=0;
+			}
 			$this->data['project_question']=getData($arr);
 			$this->layout->view('apply-project', $this->data);
 		}else{
@@ -794,7 +798,7 @@ class Projectview extends MX_Controller {
 					
 					if($i==0){
 					
-						$bid_site_fee=getSiteCommissionFee($bid);
+						$bid_site_fee=0;
 						$bid_amount=0;
 						$bid_id=NULL;
 						$getBidDetails=getData(array(
@@ -805,6 +809,7 @@ class Projectview extends MX_Controller {
 						));
 						if($getBidDetails){
 							$bid_id=$getBidDetails->bid_id;
+							$bid_site_fee=getSiteCommissionFee($bid);
 						}
 						
 						

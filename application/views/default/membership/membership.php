@@ -53,7 +53,9 @@
             <li><?php echo $row->membership_commission_percent;?>% commission</li>
           </ul>
         </div>
+        <?php if($row->price_per_month>0){?>
         <a href="<?php D(VZ);?>" data-id="<?php D(md5($row->membership_id));?>" class=" select-membership btn <?php echo ($k==1 ? 'btn-white':'btn-site')?>  btn-block">Select Plan</a> 
+      <?php }?>
       </div>
       <?php
       }
