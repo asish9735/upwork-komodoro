@@ -79,6 +79,19 @@ class Membership extends MX_Controller {
 			$this->data['form_action'] = base_url($this->data['curr_controller'].'edit');
 			$this->data['detail'] = $this->membership->getDetail($id);
 			$this->data['title'] = 'Edit Membership';
+		}else if($page == 'user_badge'){
+			$this->load->model('badge/badge_model');
+			$id = get('id');
+
+			$this->data['ID']= $id;
+
+			$this->data['form_action'] = base_url($this->data['curr_controller'].'save_user_badge');
+
+			$this->data['detail'] = $this->membership->getDetail($id);
+			$this->data['badges'] = $this->badge_model->getAllBadges();
+			$this->data['user_badge'] = $this->membership->getUserBadge($id);
+			$this->data['user_badge_array'] = get_k_value_from_array($this->data['user_badge'], 'ID');
+			$this->data['title'] = 'Membership Badge';
 		}
 		$this->load->view('ajax_page', $this->data);
 	}
@@ -247,6 +260,31 @@ class Membership extends MX_Controller {
 
 		}
 		
+		$this->api->out();
+	}
+	public function save_user_badge(){
+
+		if(post() && $this->input->is_ajax_request()){
+
+			$ID = post('ID');
+			$badge = post('user_badge');
+			$this->db->where('membership_id', $ID)->delete('membership_badge');
+			
+			if($badge && count($badge) > 0){
+				$user_badge = array();
+				foreach($badge as $b){
+					$user_badge[] = array(
+						'membership_id' => $ID,
+						'badge_id' => $b,
+					);	
+				}
+				$this->db->insert_batch('membership_badge', $user_badge);
+			}
+			$this->api->cmd('reload');
+
+		}else{
+			$this->api->set_error('invalid_request', 'Invalid Request');
+		}
 		$this->api->out();
 	}
 	

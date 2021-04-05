@@ -73,7 +73,9 @@
               <td><?php echo $v['name']; ?></td>
               <td><?php echo $v['display_order']; ?></td>
               <td><?php echo $status; ?></td>
-              <td align="right"><?php if($v['membership_status'] != DELETE_STATUS){ ?>
+              <td align="right">
+			  <a class="mr-1" href="<?php echo JS_VOID;?>" onclick="badge('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Badges"><i class="icon-feather-settings text-success <?php echo ICON_SIZE;?>"></i></a></a> 
+			  <?php if($v['membership_status'] != DELETE_STATUS){ ?>
                 <a href="<?php echo JS_VOID; ?>" class="mr-1" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a><a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>')"data-toggle="tooltip" title="Delete"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
                 <?php }elseif(ALLOW_PERMANENT_DELETE){ ?>
                 <a href="<?php echo JS_VOID; ?>" onclick="return deleteRecord('<?php echo $v[$primary_key]; ?>', true)"data-toggle="tooltip" title="Delete Permanently"><i class="icon-feather-trash text-danger <?php echo ICON_SIZE;?>"></i></a>
@@ -116,7 +118,10 @@ function edit(id){
 	var url = '<?php echo base_url($curr_controller.'load_ajax_page?page='.$edit_command);?>&id='+id;
 	load_ajax_modal(url);
 }
-
+function badge(id){
+	var url = '<?php echo base_url($curr_controller.'load_ajax_page?page=user_badge');?>&id='+id;
+	load_ajax_modal(url);
+}
 function deleteRecord(id, permanent){
 	permanent = permanent || false;
 	var c = confirm('Are you sure to delete this record ?');

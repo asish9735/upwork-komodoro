@@ -172,3 +172,44 @@ function onsuccess(res){
 
 </script>
 <?php } ?>
+<?php if($page == 'user_badge'){ ?>
+<div class="modal-header">
+  <h4 class="modal-title"><?php echo $title;?></h4>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+   <form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
+    <input type="hidden" name="ID" value="<?php echo $ID; ?>"/>
+    <div class="form-group">
+      <label class="form-label">Badge</label>
+      <?php foreach($badges as $k => $v){ ?>
+      <div class="checkbox-block">
+        <input type="checkbox" name="user_badge[]" value="<?php echo $v['badge_id'];?>" class="magic-checkbox" id="user_badge_<?php echo $v['badge_id'];?>" <?php echo in_array($v['badge_id'], $user_badge_array) ? 'checked' : '';?>>
+        <label for="user_badge_<?php echo $v['badge_id'];?>"><?php echo $v['name'];?> <img src="<?php echo $v['icon_image_url']; ?>" width="24"/></label>
+      </div>
+      <?php } ?>
+    </div>
+    <button type="submit" class="btn btn-site">Save</button>
+   </form>
+</div>
+</div>
+<script>
+init_plugin();
+function submitForm(form, evt){
+
+	evt.preventDefault();
+
+	ajaxSubmit($(form), onsuccess);
+
+}
+function onsuccess(res){
+
+	if(res.cmd && res.cmd == 'reload'){
+
+		location.reload();
+
+	}
+
+}
+</script>
+<?php } ?>

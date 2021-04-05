@@ -156,7 +156,17 @@ class Membership_model extends CI_Model{
 		$result = $this->db->order_by('b.name', 'ASC')->get()->result_array();
 		return $result;
 	}
-	
+	public function getUserBadge($membership_id=''){
+		$default_lang = admin_default_lang();
+		$this->db->select('m_b.badge_id as ID, b.name')
+				->from('membership_badge m_b')
+				->join('badges_names b', 'b.badge_id=m_b.badge_id')
+				->where('b.lang', $default_lang);
+		$this->db->where('m_b.membership_id', $membership_id);
+		
+		$result = $this->db->get()->result_array();
+		return $result;
+	}
 	
 }
 

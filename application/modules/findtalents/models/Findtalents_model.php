@@ -91,13 +91,50 @@ class Findtalents_model extends CI_Model {
 					$result[$k]['user_skill'] = $this->skill_model->getUserSkill($v['member_id']);
 					$result[$k]['profile_link'] = URL::get_link('viewprofileURL').'/'.$v['member_id'];
 					$result[$k]['user_logo'] = getMemberLogo($v['member_id']);
-					$result[$k]['badges'] =getData(array(
+				
+					$badge_ids=array();
+					$member_badges=getData(array(
+						'select'=>'m.badge_id',
+						'table'=>'member_badges as m',
+						'where'=>array('m.member_id'=>$v['member_id']),
+					));
+					if($member_badges){
+						foreach($member_badges as $b=>$row){
+							$badge_ids[]=$row->badge_id;
+						}
+					}
+					$membership_id=getFieldData('membership_id','member_membership','member_id',$v['member_id']);
+					if($membership_id){
+						$membership_badges=getData(array(
+							'select'=>'m.badge_id',
+							'table'=>'membership_badge as m',
+							'where'=>array('m.membership_id'=>$membership_id),
+						));
+						if($membership_badges){
+							foreach($membership_badges as $b=>$row){
+								$badge_ids[]=$row->badge_id;
+							}
+						}
+					}
+					$badges=new stdClass();
+					if($badge_ids){
+						$badges=getData(array(
+							'select'=>'b.icon_image,b_n.name,b_n.description',
+							'table'=>'badges as b',
+							'join'=>array(array('table'=>'badges_names as b_n','on'=>"(b.badge_id=b_n.badge_id and b_n.lang='".get_active_lang()."')",'position'=>'left')),
+							'where'=>array('b.status'=>1),
+							'where_in'=>array('b.badge_id'=>$badge_ids),
+							'order'=>array(array('b.display_order','asc')),
+						));
+					}
+					$result[$k]['badges'] =$badges;
+					/* $result[$k]['badges'] =getData(array(
 				'select'=>'b.icon_image,b_n.name,b_n.description',
 				'table'=>'member_badges as m',
 				'join'=>array(array('table'=>'badges as b','on'=>'m.badge_id=b.badge_id','position'=>'left'),array('table'=>'badges_names as b_n','on'=>"(b.badge_id=b_n.badge_id and b_n.lang='".get_active_lang()."')",'position'=>'left')),
 				'where'=>array('m.member_id'=>$v['member_id'],'b.status'=>1),
 				'order'=>array(array('b.display_order','asc')),
-			));
+			)); */
 				}
 			}
 			
