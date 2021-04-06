@@ -86,6 +86,7 @@ class Payment_model extends MX_Controller {
 							'TW'=>$member_details->name.' wallet',	
 							'TP'=>'Payment_Payment',
 							));
+							insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
 						}	
 					}
 				}
@@ -234,7 +235,6 @@ class Payment_model extends MX_Controller {
 						
 						updateTable('online_transaction_data',array('status'=>1),array('content_key'=>$verify_token));
 				
-						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
 						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$member_wallet_id,'credit'=>$stripe_payment,'description_tkey'=>'Online_payment_from','relational_data'=>'Stripe');
 						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
 							'FW'=>$stripe_details->title,
