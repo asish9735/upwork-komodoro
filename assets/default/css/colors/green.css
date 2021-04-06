@@ -32,6 +32,12 @@
 .message-bubble.me .message-text{
 	background-color: rgb(100 190 67 / 0.1);
 }
+.message-bubble .message-text.message-deleted{
+	background-color: rgb(220 53 69 / 0.1);
+}
+.message-bubble.me .message-text.message-deleted:before {
+    border-right: 6px solid rgb(220 53 69 / 0.1);
+}
  a,
  .header-widget .log-in-button:hover i,
  .notification-text span.color,
