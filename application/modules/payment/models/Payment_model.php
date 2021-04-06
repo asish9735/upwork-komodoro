@@ -203,7 +203,7 @@ class Payment_model extends MX_Controller {
 							'reg_date'=>date('Y-m-d H:i:s'),
 						);
 						insert_record('member_membership_log',$member_membership_log);
-						$check=$this->db->select('is_free,membership_expire_date')->where('member_id',$payment_request->member_id)->from('member_membership')->get()->row();
+						$check=$this->db->select('is_free,membership_expire_date,membership_id')->where('member_id',$payment_request->member_id)->from('member_membership')->get()->row();
 						$member_membership=array(
 							'membership_id'=>$membership_id,
 							'is_free'=>0,
@@ -221,8 +221,10 @@ class Payment_model extends MX_Controller {
 						if($check){
 							if($check->is_free){
 								$membership_expire_date=date('Y-m-d',strtotime($dura));
-							}else{
+							}elseif($membership_id==$check->membership_id){
 								$membership_expire_date=date('Y-m-d',strtotime($dura,strtotime($check->membership_expire_date)));
+							}else{
+								$membership_expire_date=date('Y-m-d',strtotime($dura));
 							}
 							$member_membership['membership_expire_date']=$membership_expire_date;
 							updateTable('member_membership',$member_membership,array('member_id'=>$payment_request->member_id));
@@ -307,6 +309,7 @@ class Payment_model extends MX_Controller {
 				'single_row'=>TRUE
 			));
 			if($transaction_data){
+				$payment_request=json_decode($transaction_data->request_value);
 				$wallet_transaction_id=$transaction_data->tran_id;
 				$type=$payment_request->type;
 				if($wallet_transaction_id){
