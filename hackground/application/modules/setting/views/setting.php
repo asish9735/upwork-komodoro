@@ -72,7 +72,7 @@
 				<tr>
 			      <td><?php echo $v['title']; ?></td>
                   <td><?php echo $v['setting_key']; ?></td>
-                  <td><?php echo $v['setting_value']; ?></td>
+                  <td style="width:40%;word-break: break-all;"><?php echo $v['setting_value']; ?></td>
                   <td class="text-right" style="padding-right:15px;">	
 					<?php if($v['editable'] == 1){ ?>
 					<a href="<?php echo JS_VOID; ?>" onclick="edit('<?php echo $v[$primary_key]; ?>')" data-toggle="tooltip" title="Edit" data-placement="top"><i class="icon-feather-edit text-success <?php echo ICON_SIZE;?>"></i></a>

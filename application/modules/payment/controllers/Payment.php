@@ -14,7 +14,7 @@ class Payment extends MX_Controller {
 			$this->access_member_type=$this->loggedUser['ACC_P_TYP'];
 			$this->member_id=$this->loggedUser['MID'];
 			$this->organization_id=$this->loggedUser['OID'];
-		}elseif($this->router->fetch_method()=='paypalnotify' || $this->router->fetch_method()=='ngeniusnotify'){
+		}elseif($this->router->fetch_method()=='paypalnotify' || $this->router->fetch_method()=='stripenotify' || $this->router->fetch_method()=='ngeniusnotify'){
 			
 		}else{
 			redirect(get_link('loginURL'));
@@ -484,17 +484,38 @@ class Payment extends MX_Controller {
 			'amount'=>$amount+$processing_fee,
 			'org_amt'=>$amount,
 			'fee'=>$processing_fee,
-			'return_url'=>get_link('AddFundURL').'?refer=paymentsuccess',
-			'cancel_url'=>get_link('AddFundURL').'?refer=paymenterror',
-			'notify_url'=>get_link('StripeNotify').$type.'/'.$unique_id,
+			//'notify_url'=>get_link('StripeNotify').$type.'/'.$unique_id,
 			'custom'=>md5('PPAY-'.$unique_id),
 			'member_id'=>$this->member_id,
-			'member_email'=>getFieldData('member_email','member','member_id',$this->member_id),
+			'type'=>$type
 			);
-			$this->data['formdata']['currency_code']=$site_currency_code;
 			$this->data['formdata']['amount_converted']=$amount;
-			$this->data['formdata']['item_name']='Add Fund From';
-			$this->data['formdata']['pay_for']=$type;
+			$transansaction_data=array('payment_type'=>'STRIPE','content_key'=> $this->data['formdata']['custom']);
+			$transansaction_data['request_value']=json_encode( $this->data['formdata']);
+			
+
+			$this->load->library('stripe');
+			$stripe = $this->stripe->load();
+			$checkout_session = \Stripe\Checkout\Session::create([
+				'payment_method_types' => ['card'], //alipay, card, ideal, fpx, bacs_debit, bancontact, giropay, p24, eps, sofort, sepa_debit, grabpay, or afterpay_clearpay
+				'line_items' => [[
+				  'price_data' => [
+					'currency' => CurrencyCode(),
+					'unit_amount' => $amount*100,
+					'product_data' => [
+					  'name' => 'Add Fund From '.get_setting('website_name'),
+					  //'images' => [LOGO],
+					],
+				  ],
+				  'quantity' => 1,
+				]],
+				'client_reference_id'=>$this->data['formdata']['custom'],
+				'mode' => 'payment',
+				'success_url' => get_link('AddFundURL').'?refer=paymentsuccess',
+				'cancel_url' => get_link('AddFundURL').'?refer=paymenterror',
+			  ]);
+			  $this->data['checkout_session']=$checkout_session;
+			$ins=insert_record('online_transaction_data',$transansaction_data,TRUE);
 			$this->layout->view('stripe-form', $this->data);
 		}
 		elseif($type=='membership' && $id){
@@ -532,7 +553,70 @@ class Payment extends MX_Controller {
 		else{
 			redirect(get_link('AddFundURL'));
 		}
+
 	}
+	public function stripenotify(){
+		$this->load->library('stripe');
+		$stripe = $this->stripe->load();
+		// You can find your endpoint's secret in your webhook settings
+		$endpoint_secret=get_setting('stripe_endpoint_secret');
+		$payload = @file_get_contents('php://input');
+		$sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
+		$event = null;
+		file_put_contents(UPLOAD_PATH.'stripe.log', $payload);
+		try {
+		  $event = \Stripe\Webhook::constructEvent(
+			$payload, $sig_header, $endpoint_secret
+		  );
+		} catch(\UnexpectedValueException $e) {
+		  // Invalid payload
+		  http_response_code(400);
+		  exit();
+		} catch(\Stripe\Exception\SignatureVerificationException $e) {
+		  // Invalid signature
+		  http_response_code(400);
+		  exit();
+		}
+		$this->load->model('payment_model','payment');
+		switch ($event->type) {
+			case 'checkout.session.completed':
+			  $session = $event->data->object;
+		  
+			  // Save an order in your database, marked as 'awaiting payment'
+			  $this->payment->stripe_create_transaction($session);
+		  
+			  // Check if the order is paid (e.g., from a card payment)
+			  //
+			  // A delayed notification payment will have an `unpaid` status, as
+			  // you're still waiting for funds to be transferred from the customer's
+			  // account.
+			  if ($session->payment_status == 'paid') {
+				// Fulfill the purchase
+				$this->payment->stripe_paid_transaction($session);
+			  }
+		  
+			  break;
+		  
+			case 'checkout.session.async_payment_succeeded':
+			  $session = $event->data->object;
+		  
+			  // Fulfill the purchase
+			  $this->payment->stripe_paid_transaction($session);
+		  
+			  break;
+		  
+			case 'checkout.session.async_payment_failed':
+			  $session = $event->data->object;
+		  
+			  // Send an email to the customer asking them to retry their order
+			  $this->payment->stripe_failed_transaction($session);
+		  
+			  break;
+		  }
+		
+		  http_response_code(200);
+	}
+
 	public function request_payment_stripe(){
 		checkrequestajax();
 		$amount=$this->session->userdata('add_fund_amt');

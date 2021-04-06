@@ -82,7 +82,8 @@ INSERT INTO `pref_settings` (`id`, `title`, `setting_key`, `setting_value`, `edi
 (59, 'Membership payment by Paypal', 'MEMBERSHIP_PAYMENT_PAYPAL', '9', 0, 0, 0, 'constants'),
 (60, 'Membership payment by Stripe', 'MEMBERSHIP_PAYMENT_STRIPE', '10', 0, 0, 0, 'constants'),
 (61, 'Membership payment by Wallet', 'MEMBERSHIP_PAYMENT_WALLET', '11', 0, 0, 0, 'constants'),
-(62, 'Free Membership ID', 'FREE_MEMBERSHIP_ID', '1', 1, 0, 0, 'custom');
+(62, 'Free Membership ID', 'FREE_MEMBERSHIP_ID', '1', 1, 0, 0, 'custom'),
+(63, 'Stripe Endpoint Secret', 'stripe_endpoint_secret', 'whsec_M9B9L7rT3YbcDxG0dtXFyF1ywTqVud1t', 1, 0, 9, 'payment');
 
 
 CREATE TABLE IF NOT EXISTS `pref_setting_group` (

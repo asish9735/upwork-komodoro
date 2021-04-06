@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
 $enable_paypal=get_setting('enable_paypal');
 $enable_stripe=get_setting('enable_stripe');
+$enable_stripe=0;
 $payfor=1;
 $p=0;
 $sub_total=0;
