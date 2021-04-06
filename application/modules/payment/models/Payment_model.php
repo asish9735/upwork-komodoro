@@ -269,7 +269,7 @@ class Payment_model extends MX_Controller {
 							'TW'=>$site_details->title,
 							'TP'=>'Membership_Payment',
 							));
-						insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
 						
 						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'MSID','relational_data'=>$membership_id);
 						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
@@ -277,7 +277,7 @@ class Payment_model extends MX_Controller {
 							'TW'=>$site_details->title,
 							'TP'=>'Membership_Payment',
 							));
-						insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
 						
 						$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
 						updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
