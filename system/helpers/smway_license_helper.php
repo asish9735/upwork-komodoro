@@ -2273,10 +2273,10 @@ if (!function_exists('getMembershipData')) {
 				
 				if($addedit==1){
 					$member_membership['member_id']=$member_id;
-					insert_record('member_membership',$insdata);
+					insert_record('member_membership',$member_membership);
 					$res['status']=1;
 				}else{
-					updateTable('member_membership',$insdata,array('member_id'=>$member_id));
+					updateTable('member_membership',$member_membership,array('member_id'=>$member_id));
 					$res['status']=1;
 				}
 				$maxdata=array('max_bid'=>$member_membershi['max_bid'],'max_portfolio'=>$member_membershi['max_portfolio'],'max_skills'=>$member_membershi['max_skills'],'commission_percent'=>$member_membershi['commission_percent']);
