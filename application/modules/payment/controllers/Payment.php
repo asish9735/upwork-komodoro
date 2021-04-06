@@ -489,11 +489,11 @@ class Payment extends MX_Controller {
 			'member_id'=>$this->member_id,
 			'type'=>$type
 			);
-			$this->data['formdata']['amount_converted']=$amount;
+			$this->data['formdata']['amount_converted']=$this->data['formdata']['amount'];
 			$transansaction_data=array('payment_type'=>'STRIPE','content_key'=> $this->data['formdata']['custom']);
 			$transansaction_data['request_value']=json_encode( $this->data['formdata']);
 			
-
+			$amount=$this->data['formdata']['amount'];
 			$this->load->library('stripe');
 			$stripe = $this->stripe->load();
 			$checkout_session = \Stripe\Checkout\Session::create([
