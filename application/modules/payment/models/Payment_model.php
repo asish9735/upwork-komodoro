@@ -23,7 +23,7 @@ class Payment_model extends MX_Controller {
 			if($transaction_data){
 				$payment_request=json_decode($transaction_data->request_value);
 				//updateTable('organization',array('is_payment_verified'=>1),array('member_id'=>$payment_request->member_id));
-				$stripe_payment==$payment_request->amount;
+				$stripe_payment=$payment_request->amount;
 				$total=$payment_request->org_amt;
 				$order_fee=$payment_request->fee;
 				$type=$payment_request->type;
