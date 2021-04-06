@@ -530,20 +530,43 @@ class Payment extends MX_Controller {
 				$feeCalculation=generateProcessingFee('stripe',$amount);
 				$processing_fee=$feeCalculation['processing_fee'];
 				$this->data['formdata']=array(
-				'amount'=>$amount+$processing_fee,
-				'org_amt'=>$amount,
-				'fee'=>$processing_fee,
-				'return_url'=>get_link('membershipURL').'?refer=paymentsuccess',
-				'cancel_url'=>get_link('membershipURL').'?refer=paymenterror',
-				'notify_url'=>get_link('StripeNotify').$type.'/'.$unique_id,
-				'custom'=>md5('PPAY-'.$unique_id),
-				'member_id'=>$this->member_id,
-				'member_email'=>getFieldData('member_email','member','member_id',$this->member_id),
+					'amount'=>$amount+$processing_fee,
+					'org_amt'=>$amount,
+					'fee'=>$processing_fee,
+					//'notify_url'=>get_link('StripeNotify').$type.'/'.$unique_id,
+					'custom'=>md5('PPAY-'.$unique_id),
+					'member_id'=>$this->member_id,
+					'type'=>$type,
+					'membership_id'=>$membership->membership_id,
+					'membership_duration'=>$duration,
 				);
-				$this->data['formdata']['currency_code']=$site_currency_code;
-				$this->data['formdata']['amount_converted']=$amount;
-				$this->data['formdata']['item_name']='Membership - '.$membership->name;
-				$this->data['formdata']['pay_for']=$type;
+				$this->data['formdata']['amount_converted']=$this->data['formdata']['amount'];
+				$transansaction_data=array('payment_type'=>'STRIPE','content_key'=> $this->data['formdata']['custom']);
+				$transansaction_data['request_value']=json_encode( $this->data['formdata']);
+				
+				$amount=$this->data['formdata']['amount'];
+				$this->load->library('stripe');
+				$stripe = $this->stripe->load();
+				$checkout_session = \Stripe\Checkout\Session::create([
+					'payment_method_types' => ['card'], //alipay, card, ideal, fpx, bacs_debit, bancontact, giropay, p24, eps, sofort, sepa_debit, grabpay, or afterpay_clearpay
+					'line_items' => [[
+					'price_data' => [
+						'currency' => CurrencyCode(),
+						'unit_amount' => $amount*100,
+						'product_data' => [
+						'name' => 'Membership: '.$membership->name.' From '.get_setting('website_name'),
+						//'images' => [LOGO],
+						],
+					],
+					'quantity' => 1,
+					]],
+					'client_reference_id'=>$this->data['formdata']['custom'],
+					'mode' => 'payment',
+					'success_url' => get_link('membershipURL').'?refer=paymentsuccess',
+					'cancel_url' => get_link('membershipURL').'?refer=paymenterror',
+				]);
+				$this->data['checkout_session']=$checkout_session;
+				$ins=insert_record('online_transaction_data',$transansaction_data,TRUE);
 				$this->layout->view('stripe-form', $this->data);
 			}
 			else{
