@@ -525,27 +525,88 @@ ul.totalList > li:last-child {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+.ribbon-top-right {
+    right: -15px;
+}
+.ribbon-top-right span {
+    left: 30px;
+    transform: rotate(45deg);
+}
+ul.dashboard-box-list.if-button > li {
+    padding-right: 64px;
+}
+ul.dashboard-box-list.if-double-button > li {
+    padding-right: 100px;
+}
+.dashboard-box .freelancer-overview .freelancer-name {
+	text-align: left;
+	margin-left:1.25rem;
+}
+.comment-by .status {
+    right: 0;
+}
+.comments ul li ul {
+	margin: 0 0 0 64px;
+}
+.comment-content {
+	padding: 0 0 0 100px;
+}
+.comments ul li ul {
+	border-left: 1px solid #e0e0e0;
+	padding-left: 25px;
+}
+.comments ul li ul li:before {
+	left: -25px;
+}
+.comment-content strong {
+	padding-right: 5px;
+}
+.avatar {
+	float: left;
+	left: 0px;
+}
+.dashboard-box-footer .backbtnproject {
+	margin-right:0.5rem
+}
+.dropdown-menu > li > a {
+	padding-right: 35px;
+}
+.thumbnail_sec > a.ico {	
+	margin-left:0.5rem;
+}
+.myradio .btn-group .btn + .btn {
+	margin-left:1rem
+}
+.checkbox label {
+	padding-left: 30px;
+}
+.checkbox label span.checkbox-icon {
+	left: 0;
+}
+
 
 @media (min-width: 768px) {
-.signup:before {
-	background-color:#2C597A;
-}
-.signup:after {		
-	background-color:#29b6f6;	
-}
-ul.totalList > li:nth-child(4n) {
-	border-right:none
-}
+	.signup:before {
+		background-color:#2C597A;
+	}
+	.signup:after {		
+		background-color:#29b6f6;	
+	}
+	ul.totalList > li:nth-child(4n) {
+		border-right:none
+	}
 
 }
-@media (min-width: 992px) {
-.process .border-right {
-    border-right: 1px solid #e1e1e1
-}
-.process .border-left {
-    border-left: 1px solid #e1e1e1
-}
-
+@media only screen and (min-width: 992px) {
+	.freelancer-actions {
+		margin-left: 98px;
+	}
+	.process .border-right {
+		border-right: 1px solid #e1e1e1
+	}
+	.process .border-left {
+		border-left: 1px solid #e1e1e1
+	}
 }
 
  @media (max-width: 991px) {

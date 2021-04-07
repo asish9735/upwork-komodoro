@@ -2898,20 +2898,12 @@ blockquote {
 .comments ul li, .comments ul li ul li, .comments ul li ul li ul li, .comments ul li ul li ul li {
 	margin: 1rem 0 0 0;
 }
-.comments ul li ul {
-	margin: 0 0 0 64px;
-}
 .comment-content p {
 	margin: 3px 0 0 0;
 	line-height: 26px;
 }
 .comment-content {
 	color: #666;
-	padding: 0 0 0 100px;
-}
-.comments ul li ul {
-	border-left: 1px solid #e0e0e0;
-	padding-left: 25px;
 }
 .comments ul li ul li:before {
 	content: "";
@@ -2921,7 +2913,6 @@ blockquote {
 	display: inline-block;
 	position: absolute;
 	top: 30px;
-	left: -25px;
 }
 .comments ul li {
 	position: relative;
@@ -2938,7 +2929,6 @@ blockquote {
 	padding-bottom:0;
 }
 .comment-content strong {
-	padding-right: 5px;
 	color: #666;
 }
 .comment-content > span {
@@ -2953,10 +2943,8 @@ body .comment-content p {
 }
 .avatar {
 	display: inline-block;
-	float: left;
 	padding: 0 17px 0 0;
 	position: absolute;
-	left: 0px;
 	top: -5px;
 }
 .avatar img {
@@ -3000,7 +2988,6 @@ body .comment-content p {
 	margin: 0px 0 0 0;
 	float: none;
 	display: block;
-	text-align: left;
 	font-size: 0.875rem;
 }
  @media (max-width: 767px) {
@@ -6516,7 +6503,6 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 .checkbox label {
 	position: relative;
 	cursor: pointer;
-	padding-left: 30px;
 	line-height: 25px;
 	font-weight: 400;
 }
@@ -6535,7 +6521,6 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	border-radius: 2px;
 	transition: 0.3s;
 	position: absolute;
-	left: 0;
 	top: 1px;
 }
 .checkbox input + label span.checkbox-icon:after {
@@ -10387,8 +10372,7 @@ select.bs-select-hidden, select.selectpicker {
 	float: left;
 	padding: 10px 5px;
 	margin: -4px 0 0 0;
-	font-size: 15px;
-	text-align: left;
+	font-size: 0.938rem;
 	list-style: none;
 	background-color: #fff;
 	border: none;
@@ -10405,7 +10389,6 @@ select.bs-select-hidden, select.selectpicker {
 .dropdown-menu > li > a {
 	display: block;
 	padding: 7px 10px;
-	padding-right: 35px;
 	clear: both;
 	font-weight: normal;
 	line-height: 21px;
@@ -12422,8 +12405,7 @@ ul.dashboard-box-list > li:hover {
 	align-items: center;
 }
 .dashboard-box .freelancer-overview .freelancer-name {
-	text-align: left;
-	margin: 0 0 0 1.25rem;
+	margin: 0;
 	width: 100%;
 }
 .dashboard-box .freelancer-overview .freelancer-avatar {

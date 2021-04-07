@@ -35,6 +35,9 @@ body {
 	font-family:'FSJoey', Helvetica, sans-serif;
 	font-weight:500;
 }
+.btn-link:hover {
+	text-decoration: none;
+}
 .btn-white{
 	background-color:#fff;
 	color: var(--siteColor);
@@ -558,7 +561,6 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 	color: #40de00
 }
 .thumbnail_sec > a.ico {	
-	margin-left:0.5rem;
 	vertical-align: middle;
 }
 
@@ -575,20 +577,13 @@ padding: 2rem 1rem;
 .myradio .btn-group > .btn:hover {
 	background-color:#eee;
 }
-.myradio .btn-group .btn + .btn {
-margin-left:1rem
-}
-.myradio .btn-group > .btn:last-child {
-    margin-right: 0;
-}
-
 .myradio .btn-group > .btn:active, .myradio .btn-group > .btn.active {
     color: var(--siteColor);
     background-color: #ebffe3;
     border-color: var(--siteColor);
 }
 .myradio .btn-group > .btn i {
-font-size:2rem
+	font-size:2rem
 }
 .icon-material-OneTime:before{
 	content: "\e907";
@@ -839,10 +834,6 @@ ul.totalList > li > span {
 	padding:1rem 1.25rem;
     border-top: 1px solid #e4e4e4;
 }
-.dashboard-box-footer .backbtnproject {
-	margin-right:0.5rem
-}
-
 .btn-light.active {
 	background-color: #40de00 !important;
     color: #fff !important;
@@ -882,10 +873,8 @@ ul.skill-tags > li {
     padding-left: 15px;
 	
 }
-
 .comment-by .status {
     position: absolute;
-    right: 0;
     top: 6px;
 }
 .toggleUD {
@@ -910,7 +899,6 @@ ul.skill-tags > li {
 }
 .ribbon-top-right {
     top: -10px;
-    right: -10px;
 }
 .ribbon span {
     position: absolute;
@@ -927,15 +915,7 @@ ul.skill-tags > li {
     letter-spacing: 1px;
 }
 .ribbon-top-right span {
-    left: 30px;
-    top: 30px;
-    transform: rotate(45deg);
-}
-ul.dashboard-box-list.if-button > li {
-    padding-right: 50px;
-}
-ul.dashboard-box-list.if-double-button > li {
-    padding-right: 100px;
+    top: 25px;
 }
 .section {
 	padding:2rem 0
