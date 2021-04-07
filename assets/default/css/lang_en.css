@@ -422,6 +422,9 @@ RTL SPACE
 	margin-left: 0;
 	margin-right: 55px;
 }
+.message-bubble.me .message-text.message-deleted:before {
+    border-left-color: rgb(220 53 69 / 0.1);
+}
 .fav-star{
 	right:-5px;
 }
