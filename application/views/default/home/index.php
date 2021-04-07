@@ -31,7 +31,7 @@
     <div class="row align-items-center h-100">
       <div class="col-md-7 col-12">
         <div class="banner-headline">
-          <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit</h2>
+          <h2><?php echo __('home_page_banner_header','Lorem ipsum dolor sit amet consectetur adipiscing elit');?></h2>
           <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--></p>
           <div class="input-group mb-3" hidden>
             <input type="text" class="form-control" placeholder="Search projects or professionals" />
