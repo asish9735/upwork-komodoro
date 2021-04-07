@@ -12870,10 +12870,10 @@ opacity: 1;
 	border-radius: 0.25rem;
 	background-color: #fff;
 }
-/* Scrollbar Adjustments */
+/* Scrollbar Adjustments
 .messages-inbox ul {
 	max-height: 557px;
-}
+} */
 .message-content-inner {
 	max-height: 400px;
 }
