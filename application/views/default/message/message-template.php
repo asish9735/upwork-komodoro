@@ -149,8 +149,8 @@ Vue.component('active-chat-header', {
 								<div>Size: {{message.attachment.file_size | formatFileSize }}</div>
 							</div>
 						</div>
-						<p v-if="message.is_deleted" class="text-danger">
-							This message is deleted {{message.is_deleted | formatTime }} 
+						<p v-if="message.is_deleted" class="text-danger jgkjgk">
+							This message is deleted <span class="time">{{message.is_deleted | formatTime }}</span>
 						</p>
 						<p v-if="message.is_deleted == null">
                         <span v-html="$options.filters.formatMsg(message.message, _self.term)"></span>

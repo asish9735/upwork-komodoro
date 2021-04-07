@@ -422,6 +422,9 @@ div.dataTables_wrapper div.dataTables_filter input {
 	margin-right: 0;
 	margin-left: 55px;
 }
+.message-bubble.me .message-text.message-deleted:before {
+    border-right-color: rgb(220 53 69 / 0.1);
+}
 .fav-star{
 	right:-5px;
 }
