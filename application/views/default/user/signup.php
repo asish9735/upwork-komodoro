@@ -14,22 +14,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
      <div id="agree_termsError" class="error-msg5 error alert-error alert alert-danger" style="display:none"></div>
     <div id="step_1">
-   <h2 class="text-center m-0">Sign Up </h2>
+   <h2 class="text-center m-0"><?php echo __('user_page_signup_header','Sign Up');?> </h2>
    <div class="m-lg-3 d-none d-sm-block"> </div>
     <div class="input-with-icon-left">
         <i class="icon-feather-user"></i>    	         	
-        <input type="text" class="form-control" value="" name="name" id="name" placeholder="Enter Name">
+        <input type="text" class="form-control" value="" name="name" id="name" placeholder="<?php echo __('user_page_signup_name_placeholder','Enter Name');?>">
         <span id="nameError" class="rerror"></span>
     </div>
     <div class="input-with-icon-left">
         <i class="icon-feather-mail"></i>      	          	
-        <input type="text" class="form-control" value="" name="email" id="email" placeholder="Email Address">
+        <input type="text" class="form-control" value="" name="email" id="email" placeholder="<?php echo __('user_page_signup_email_placeholder','Email Address');?>">
         <span id="emailError" class="rerror"></span>
     </div>    
-    <button class="btn btn-site btn-block mb-3 signUpBTN">Sign Up</button>    
+    <button class="btn btn-site btn-block mb-3 signUpBTN"><?php echo __('user_page_signup_button','Sign Up');?></button>    
    </div>
     <div id="step_2" style="display: none">
-     <h2 class="text-center m-0">Complete your account</h2>
+     <h2 class="text-center m-0"><?php echo __('user_page_signup_account','Complete your account');?></h2>
      <div class="m-lg-3 d-none d-sm-block"> </div>
      <p id="select_email" class="text-center"></p>
         <div class="account-type">
@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <button class="btn btn-site btn-block signUpBTN">Submit</button>
     </div>
     </form>
-    <p class="text-center small mb-0">Already have an account? <a href="<?php URL::getLink('login'); ?>">Log In</a></p>
+    <p class="text-center small mb-0"><?php echo __('user_page_signup_have_account','Already have an account?');?> <a href="<?php URL::getLink('login'); ?>"><?php echo __('user_page_signup_login','Log In');?></a></p>
     </div>    
    </div>
        

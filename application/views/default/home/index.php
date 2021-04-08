@@ -32,7 +32,7 @@
       <div class="col-md-7 col-12">
         <div class="banner-headline">
           <h2><?php echo __('home_page_banner_header','Lorem ipsum dolor sit amet consectetur adipiscing elit');?></h2>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--></p>
+          <p><?php echo __('home_page_banner_p_tag','Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');?> <!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--></p>
           <div class="input-group mb-3" hidden>
             <input type="text" class="form-control" placeholder="Search projects or professionals" />
             <div class="input-group-append">
@@ -49,8 +49,8 @@
 <section class="section">
   <div class="container">
     <div class="section-headline centered mb-4">
-      <h2>Popular Category</h2>
-      <p>Below are the lists of popular job categories. The freelancers can find a suitable job category and pick up an ideal job that matches their expertise as well as professional experience.</p>
+      <h2><?php echo __('home_page_job_categories_h2_tag','Popular Category')?></h2>
+      <p><?php echo __('home_page_job_categories_p_tag','Below are the lists of popular job categories. The freelancers can find a suitable job category and pick up an ideal job that matches their expertise as well as professional experience.')?></p>
     </div>
     <div class="row row-10">
  <?php
@@ -160,8 +160,8 @@ if($cms_temp){
 <section class="section pt-0 full-width-carousel-fix">
   <div class="container">
     <div class="section-headline centered mb-3">
-      <h2>Hire Professionals</h2>
-      <p>Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+      <h2><?php echo __('home_page_freelancers_categories_h2_tag','Hire Professionals');?></h2>
+      <p><?php echo __('home_page_freelancers_categories_p_tag','Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.');?></p>
     </div>
     <div class="default-slick-carousel freelancers-container freelancers-grid-layout"> 
 <?php
@@ -187,7 +187,7 @@ if($cms_temp){
               <div class="star-rating" data-rating="<?php echo round($freelancer['avg_rating'],2);?>"></div>
             </div>
             <p><?php echo $skills_name; ?></p>
-            <a href="<?php echo $freelancer['profile_link'];?>" class="btn btn-outline-site btn-block">View Profile</a> </div>
+            <a href="<?php echo $freelancer['profile_link'];?>" class="btn btn-outline-site btn-block"><?php echo __('home_page_categories_view_profile','View Profile');?></a> </div>
         </div>
       </div>
 <?php 
@@ -298,7 +298,7 @@ if($cms_temp){
 <div class="container">
 <!-- Section Headline -->
 <div class="section-headline centered">
-  <h2>Client's Feedback</h2>
+  <h2><?php echo __('home_page_feedback_header','Client Feedback');?></h2>
   <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>-->
 </div>
 <div class="testimonial-style-5 testimonial-slider-2 poss--relative">     
@@ -347,10 +347,10 @@ if($cms_temp){
             	<div class="card text-center">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE;?>icon_hire.png" alt="icon hire" class="mb-3">
-                    	<h3>I want to hire a</h3>
-                        <h2>Professionals</h2>                        
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                        <a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-outline-site">Post A Job</a>
+                    	<h3><?php echo __('home_page_choose_acc_hire_h3_tag','I want to hire a');?></h3>
+                        <h2><?php echo __('home_page_choose_acc_hire_h2_tag','Professionals');?></h2>                        
+                        <p><?php echo __('home_page_choose_acc_hire_p_tag','');?></p>
+                        <a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_hire_a_tag','Post A Job');?></a>
                     </div>
                 </div>
             </aside>
@@ -358,10 +358,10 @@ if($cms_temp){
             	<div class="card text-center">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE;?>icon_job.png" alt="icon job" class="mb-3">
-                    	<h3>I'm looking for</h3>
-                        <h2>Projects</h2>                        
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-site">Get Started</a>
+                    	<h3><?php echo __('home_page_choose_acc_job_h3_tag','I am looking for');?></h3>
+                        <h2><?php echo __('home_page_choose_acc_job_h2_tag','Projects');?></h2>                        
+                        <p><?php echo __('home_page_choose_acc_job_p_tag','');?></p>
+                        <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_job_a_tag','Get Started');?></a>
                     </div>
                 </div>
             </aside>
@@ -375,8 +375,8 @@ if($cms_temp){
 <div class="container">
     <!-- Section Headline -->
     <div class="section-headline centered">
-      <h2>Trusted Partners</h2>
-      <p>Trusted by 10M+ businesses</p>
+      <h2><?php echo __('home_page_partner_section_h2_tag','Trusted Partners');?></h2>
+      <p><?php echo __('home_page_partner_section_p_tag','Trusted by 10M+ businesses')?></p>
     </div>	
     <div class="logo-carousel">   
     <?php 
@@ -405,7 +405,7 @@ if($cms_temp){
 <div class="container">
     <!-- Section Headline -->
     <div class="section-headline centered mb-4">
-      <h2>Top Skills</h2>
+      <h2><?php echo __('home_page_top_skill_h2_tag','Top Skills')?></h2>
     </div>
     <ul class="list list-2 top-list">
     <?php if($popular_skills){
