@@ -1089,7 +1089,8 @@ class Payment extends MX_Controller {
 
 
 
-						$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_PAYPAL');
+						//$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_PAYPAL');
+						$wallet_transaction_type_id=get_setting('ADD_FUND_PAYPAL');
 						$current_datetime=date('Y-m-d H:i:s');
 						$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
 						if($wallet_transaction_id){
@@ -1164,7 +1165,21 @@ class Payment extends MX_Controller {
 							));
 						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
 
+						$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
+						updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
+						wallet_balance_check($fee_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						
+						$new_balance_paypal=displayamount($paypal_wallet_balance,2)-displayamount($paypal_payment,2);
+						updateTable('wallet',array('balance'=>$new_balance_paypal),array('wallet_id'=>$paypal_wallet_id));
+						wallet_balance_check($paypal_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						
 
+
+
+						$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_PAYPAL');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+						if($wallet_transaction_id){
 
 						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$member_wallet_id,'debit'=>$total,'description_tkey'=>'MSID','relational_data'=>$membership_id);
 						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
@@ -1181,22 +1196,13 @@ class Payment extends MX_Controller {
 							'TP'=>'Membership_Payment',
 							));
 						insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+						}
 						
-						
-						$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
-						updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
-						wallet_balance_check($fee_wallet_id,array('transaction_id'=>$wallet_transaction_id));
-						
-						$new_balance_paypal=displayamount($paypal_wallet_balance,2)-displayamount($paypal_payment,2);
-						updateTable('wallet',array('balance'=>$new_balance_paypal),array('wallet_id'=>$paypal_wallet_id));
-						wallet_balance_check($paypal_wallet_id,array('transaction_id'=>$wallet_transaction_id));
 						
 						$new_balance=displayamount($reciver_wallet_balance,2)+displayamount($total,2);
 						updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$reciver_wallet_id));
 						wallet_balance_check($reciver_wallet_id,array('transaction_id'=>$wallet_transaction_id));
 						
-
-
 						
 						}	
 

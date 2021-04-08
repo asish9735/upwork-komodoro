@@ -75,7 +75,8 @@ class Payment_model extends MX_Controller {
 						$fee_wallet_id=$fee_wallet_details->wallet_id;
 						$fee_wallet_balance=$fee_wallet_details->balance;
 
-						$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_STRIPE');
+						$wallet_transaction_type_id=get_setting('ADD_FUND_STRIPE');
+						//$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_STRIPE');
 						$current_datetime=date('Y-m-d H:i:s');
 						$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>0,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
 						if($wallet_transaction_id){
@@ -190,8 +191,8 @@ class Payment_model extends MX_Controller {
 						$fee_wallet_balance=$fee_wallet_details->balance;
 
 
-
-						$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_STRIPE');
+						$wallet_transaction_type_id=get_setting('ADD_FUND_STRIPE');
+						//$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_STRIPE');
 						$current_datetime=date('Y-m-d H:i:s');
 	
 						if($wallet_transaction_id){
@@ -260,8 +261,21 @@ class Payment_model extends MX_Controller {
 							'TP'=>'Processing_Fee',
 							));
 						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
+						
+						$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
+						updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
+						wallet_balance_check($fee_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						
+						$new_balance_stripe=displayamount($stripe_wallet_balance,2)-displayamount($stripe_payment,2);
+						updateTable('wallet',array('balance'=>$new_balance_stripe),array('wallet_id'=>$stripe_wallet_id));
+						wallet_balance_check($stripe_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						
 
 
+						$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_STRIPE');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>0,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+						if($wallet_transaction_id){
 
 						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$member_wallet_id,'debit'=>$total,'description_tkey'=>'MSID','relational_data'=>$membership_id);
 						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
@@ -278,14 +292,8 @@ class Payment_model extends MX_Controller {
 							'TP'=>'Membership_Payment',
 							));
 						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
-						
-						$new_balance_fee=displayamount($fee_wallet_balance,2)+displayamount($order_fee,2);
-						updateTable('wallet',array('balance'=>$new_balance_fee),array('wallet_id'=>$fee_wallet_id));
-						wallet_balance_check($fee_wallet_id,array('transaction_id'=>$wallet_transaction_id));
-						
-						$new_balance_stripe=displayamount($stripe_wallet_balance,2)-displayamount($stripe_payment,2);
-						updateTable('wallet',array('balance'=>$new_balance_stripe),array('wallet_id'=>$stripe_wallet_id));
-						wallet_balance_check($stripe_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						}
+
 						
 						$new_balance=displayamount($reciver_wallet_balance,2)+displayamount($total,2);
 						updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$reciver_wallet_id));

@@ -53,6 +53,9 @@ class Membership extends MX_Controller {
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
 		$this->data['membership']=$this->membership_model->getMembershipDetails($enc_membership_id);
 		$this->data['duration']=$duration;
+
+		$this->data['member_details']=getWalletMember($this->member_id);
+	
 		$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
 		$this->layout->view('selected-membership',$this->data);
 	}
@@ -64,72 +67,93 @@ class Membership extends MX_Controller {
 		$membership=$this->membership_model->getMembershipDetails($enc_membership_id);
 		if($membership){
 			if($method=='wallet'){
+				$membership_id=$membership->membership_id;
+				$membership_duraion=$duration;
+
+				$amount=($duration=='month' ? $membership->price_per_month:$membership->price_per_year);
 				$processing_fee=0;
-				$total=$featured_fee+$processing_fee;
-				$seller_details=getMemberDetails($this->member_id,array('main'=>1));
-				$seller_wallet_id=$seller_details['member']->wallet_id;
-				$seller_wallet_balance=$seller_details['member']->balance;
-				$site_details=getWallet(get_option_value('SITE_PROFIT_WALLET'));
+				$total=$amount+$processing_fee;
+				$member_details=getWalletMember($this->member_id);
+				$member_wallet_id=$member_details->wallet_id;
+				$member_wallet_balance=$member_details->balance;
+
+				$site_details=getWallet(get_setting('SITE_PROFIT_WALLET'));
 				$reciver_wallet_id=$site_details->wallet_id;
 				$reciver_wallet_balance=$site_details->balance;
-				//$issuer_relational_data=get_option_value('website_name');
-				$recipient_relational_data=$seller_details['member']->member_name;
-				if($seller_details && $seller_details['member']->balance>$total){
-					$wallet_transaction_type_id=get_option_value('FEATURED_PAYMENT_WALLET');
+
+
+				if($member_details && $member_wallet_balance>=$total){
+					$wallet_transaction_type_id=get_setting('MEMBERSHIP_PAYMENT_WALLET');
 					$current_datetime=date('Y-m-d H:i:s');
-					$wallet_transaction_id=insertTable('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
+					$wallet_transaction_id=insert_record('wallet_transaction',array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime),TRUE);
 					if($wallet_transaction_id){
 						
 						
-						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$seller_wallet_id,'debit'=>$total,'description_tkey'=>'PID','relational_data'=>$proposal_id);
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$member_wallet_id,'debit'=>$total,'description_tkey'=>'MSID','relational_data'=>$membership_id);
 						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
-								'FW'=>$seller_details['member']->member_name.' wallet',
-								'TW'=>$site_details->title,
-								'TP'=>'Featured_Payment',
-								));
-						insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							'FW'=>$member_details->name.' wallet',
+							'TW'=>$site_details->title,
+							'TP'=>'Membership_Payment',
+						));
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
 						
-						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'Transfer_from','relational_data'=>$recipient_relational_data);
+						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'MSID','relational_data'=>$membership_id);
 						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
-								'FW'=>$seller_details['member']->member_name.' wallet',
-								'TW'=>$site_details->title,
-								'TP'=>'Featured_Payment',
-								));
-						insertTable('wallet_transaction_row',$insert_wallet_transaction_row);
+							'FW'=>$member_details->name.' wallet',
+							'TW'=>$site_details->title,
+							'TP'=>'Membership_Payment',
+						));
+						insert_record('wallet_transaction_row',$insert_wallet_transaction_row);
 						
-						$seller_new_balance=displayamount($seller_wallet_balance,2)-displayamount($total,2);
-						updateTable('wallet',array('balance'=>$seller_new_balance),array('wallet_id'=>$seller_wallet_id));
-						wallet_balance_check($seller_wallet_id,array('transaction_id'=>$wallet_transaction_id));
+						$member_new_balance=displayamount($member_wallet_balance,2)-displayamount($total,2);
+						updateTable('wallet',array('balance'=>$member_new_balance),array('wallet_id'=>$member_wallet_id));
+						wallet_balance_check($member_wallet_id,array('transaction_id'=>$wallet_transaction_id));
 						
 						$new_balance=displayamount($reciver_wallet_balance,2)+displayamount($total,2);
 						updateTable('wallet',array('balance'=>$new_balance),array('wallet_id'=>$reciver_wallet_id));
 						wallet_balance_check($reciver_wallet_id,array('transaction_id'=>$wallet_transaction_id));
 						
-						$featured_end_date=date('Y-m-d H:i:s',strtotime('+'.$featured_duration.' days'));
-						updateTable('proposal_settings',array('proposal_featured'=>1,'featured_end_date'=>$featured_end_date),array('proposal_id'=>$proposal_id));
-						
-						
-						$RECEIVER_EMAIL=$seller_details['member']->member_email;
-						$url=get_link('manageproposalURL');
-						$template='featured';
-						$data_parse=array(
-						'SELLER_NAME'=>getUserName($seller_details['member']->member_id),
-						'PROPOSAL_URL'=>$url,
+						$member_membership_log=array(
+							'member_id'=>$this->member_id,
+							'membership_id'=>$membership_id,
+							'membership_duration'=>$membership_duraion,
+							'reg_date'=>date('Y-m-d H:i:s'),
 						);
-						SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
-						loadModel('notifications/notification_model');
-						$notificationData=array(
-						'sender_id'=>0,
-						'receiver_id'=>$seller_details['member']->member_id,
-						'template'=>'featured',
-						'url'=>$this->config->item('manageproposalURL'),
-						'content'=>json_encode(array('PID'=>$proposal_id)),
+						insert_record('member_membership_log',$member_membership_log);
+						$check=$this->db->select('is_free,membership_expire_date,membership_id')->where('member_id',$this->member_id)->from('member_membership')->get()->row();
+						$member_membership=array(
+							'membership_id'=>$membership_id,
+							'is_free'=>0,
+							//'membership_expire_date'=>$membership_expire_date,
+							'max_bid'=>$membership->membership_bid,
+							'max_portfolio'=>$membership->membership_portfolio,
+							'max_skills'=>$membership->membership_skills,
+							'commission_percent'=>$membership->membership_commission_percent,
 						);
-						$this->notification_model->savenotification($notificationData);
-						
-							
+						if($membership_duraion=='year'){
+							$dura='+ 1 year';
+						}else{
+							$dura='+ 1 month';
+						}
+						if($check){
+							if($check->is_free){
+								$membership_expire_date=date('Y-m-d',strtotime($dura));
+							}elseif($membership_id==$check->membership_id){
+								$membership_expire_date=date('Y-m-d',strtotime($dura,strtotime($check->membership_expire_date)));
+							}else{
+								$membership_expire_date=date('Y-m-d',strtotime($dura));
+							}
+							$member_membership['membership_expire_date']=$membership_expire_date;
+							updateTable('member_membership',$member_membership,array('member_id'=>$this->member_id));
+						}else{
+							$membership_expire_date=date('Y-m-d',strtotime($dura));
+							$member_membership['membership_expire_date']=$membership_expire_date;
+							$member_membership['member_id']=$this->member_id;
+							insert_record('member_membership',$member_membership);
+						}
+	
 						$msg['status'] = 'OK';
-						$msg['redirect'] =get_link('manageproposalURL').'?ref=paymentsuccess';
+						$msg['redirect'] =get_link('membershipURL').'?refer=paymentsuccess';
 					}else{
 						$msg['status'] = 'FAIL';
 						$msg['message'] = 'transaction error';

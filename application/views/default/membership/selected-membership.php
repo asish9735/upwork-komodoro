@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
 $enable_paypal=get_setting('enable_paypal');
 $enable_stripe=get_setting('enable_stripe');
+$enable_wallet=1;
 $payfor=1;
 $p=0;
 $sub_total=0;
@@ -37,7 +38,7 @@ if($membership){
                                 <?php echo $currency;?><?php echo $membership->price_per_year;?>/year
                             <?php }?>
 						</p>
-						<p><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
+						<p class="processing-fee"><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
 					</div>
 				</div>
 				
@@ -48,7 +49,17 @@ if($membership){
 			<h3><?php D(__('cart_checkout_page_Payment_Options',"Payment Options"));?></h3>
 			</div>
 			<div class="content with-padding">	
-             <div class="btn-group btn-group-toggle pricing-group" data-toggle="buttons">                        
+             <div class="btn-group btn-group-toggle pricing-group" data-toggle="buttons"> 
+			 <?php if($enable_wallet == 1 && $member_details->balance>$sub_total){
+            	$feeCalculation=generateProcessingFee('wallet',$sub_total);
+            $p++;
+            ?>            
+            <label for="wallet" class="btn btn-outline-black">
+            <input type="radio" name="method" id="wallet" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+            <?php D(__('paymentmethod_page_Pay_By_Wallet',"Pay With Wallet"));?><br/>
+            <img src="<?php D(IMAGE)?>wallet.png" style="max-height:64px">
+            </label>
+            <?php } ?>                       
             <?php if($enable_paypal == 1){
             	$feeCalculation=generateProcessingFee('paypal',$sub_total);
             $p++;
@@ -73,6 +84,13 @@ if($membership){
             
             </div>
             </div>
+			<?php if($enable_wallet ==1){ ?>
+			<form style="display:none" action="" class="checkoutForm" method="post" id="wallet-form" onsubmit="return processCheckout(this);return false;">
+				<input type="hidden" name="method" value="wallet">
+				<input type="hidden" name="payfor" value="<?php D($payfor)?>">
+				<button type="submit" name="wallet" class="btn btn-site saveBTN"><?php D(__('paymentmethod_page_Pay_With_Wallet',"Pay With Wallet"));?> </button>
+			</form>
+			<?php } ?>
 			<?php if($enable_paypal ==1){ ?>
 			<form style="display:none" action="" class="checkoutForm" method="post" id="paypal-form" onsubmit="return processCheckout(this);return false;">
 				<input type="hidden" name="method" value="paypal">
@@ -106,7 +124,7 @@ $('input[name="method"]').change(function(){
 	var fee=$(this).data('processing-fee');
 	var feetext=$(this).data('processing-fee-text');
 	$('.checkoutForm').hide();
-	if(id=='shopping-balance'){
+	if(id=='wallet'){
 		$('.processing-fee').hide();
 	}else{
 		$('.processing-fee').show();
@@ -114,6 +132,7 @@ $('input[name="method"]').change(function(){
 	$('.processing-fee ec').html(fee);
 	$('.total-price').html('<?php echo $currency; ?>'+amount);
 	$('.processingFeeText').html(feetext);
+	
 	$('#'+id+'-form').show();
 	var payamount=<?php echo $sub_total;?>;
 	$('.saveBTN').removeAttr('disabled');

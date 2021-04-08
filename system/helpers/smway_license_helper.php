@@ -2336,6 +2336,10 @@ function generateProcessingFee($type,$amount=0){
 		$processing_fee_fixed=get_setting('ngenius_processing_fee_fixed');
 		$processing_fee_percent=get_setting('ngenius_processing_fee_percent');
 		$is_valid=1;
+	}elseif($type=='wallet'){
+		$processing_fee_fixed=0;
+		$processing_fee_percent=0;
+		$is_valid=1;
 	}elseif($type=='bank'){
 		$processing_fee_fixed=0;
 		$processing_fee_percent=0;
