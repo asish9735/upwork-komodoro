@@ -572,13 +572,25 @@ class Contract extends MX_Controller {
 				}
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractMilestoneDetails']->owner=$owner['project_owner'];
+				$this->data['contractMilestoneDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
+				
 				$this->data['contractMilestoneDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractMilestoneDetails']->contractor_id),
 					'single_row'=>true
 				));
 
+				
 				$this->data['contractMilestoneDetails']->submission=getData(array(
 					'select'=>'s.submission_id,s.contract_milestone_id,s.submission_description,s.submission_attachment,s.submission_date,s.is_approved,s.update_date,s.change_reason',
 					'table'=>'project_contract_milestone_submission s',
@@ -630,7 +642,7 @@ class Contract extends MX_Controller {
 					//echo $this->db->last_query();
 				if($this->data['contractDetails']){
 					$contract_milestone_id=$this->data['contractDetails']->contract_milestone_id;
-					updateTable('project_contract_milestone_submission',array('is_approved'=>2,'update_date'=>date('Y-m-d H:i:s'),'change_reason'=>'auto cancle'),array('contract_milestone_id'=>$contract_milestone_id,'is_approved'=>0));
+					updateTable('project_contract_milestone_submission',array('is_approved'=>2,'update_date'=>date('Y-m-d H:i:s'),'change_reason'=>'auto cancelled'),array('contract_milestone_id'=>$contract_milestone_id,'is_approved'=>0));
 					$project_contract_milestone_submission=array(
 					'contract_milestone_id'=>$contract_milestone_id,
 					'submission_description'=>post('details'),

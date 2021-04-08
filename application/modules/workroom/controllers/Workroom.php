@@ -46,12 +46,23 @@ class Workroom extends MX_Controller {
 
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
+
 				$this->data['contractDetails']->total_bill=$this->workroom_model->getTotalBillAmount($project_id,$contract_id);
 				$this->data['contractDetails']->in_escrow=$this->workroom_model->getEscrowAmount($project_id,$contract_id);
 				$this->data['contractDetails']->milestone_paid=$this->workroom_model->getMilestonePaid($project_id,$contract_id);
@@ -150,9 +161,20 @@ class Workroom extends MX_Controller {
 				
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
@@ -227,12 +249,23 @@ class Workroom extends MX_Controller {
 				
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
+				
 				$this->data['contractDetails']->in_escrow=$this->workroom_model->getEscrowAmount($project_id,$contract_id);
 				$this->data['contractDetails']->milestone_paid=$this->workroom_model->getMilestonePaid($project_id,$contract_id);
 				$this->data['contractDetails']->balance_remain=$this->data['contractDetails']->contract_amount-$this->data['contractDetails']->milestone_paid;
@@ -955,9 +988,19 @@ class Workroom extends MX_Controller {
 				
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
@@ -1014,9 +1057,19 @@ class Workroom extends MX_Controller {
 				
 				$owner=getProjectDetails($project_id,array('project_owner'));
 				$this->data['contractDetails']->owner=$owner['project_owner'];
+				$this->data['contractDetails']->owner->statistics=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$owner['project_owner']->member_id),
+					'single_row'=>TRUE
+				));
 				$this->data['contractDetails']->contractor=getData(array(
-					'select'=>'m.member_id,m.member_name',
+					'select'=>'m.member_id,m.member_name,mb.member_heading,ms.avg_rating',
 					'table'=>'member m',
+					'join'=>array(
+						array('table'=>'member_basic as mb','on'=>'m.member_id=mb.member_id','position'=>'left'),
+						array('table'=>'member_statistics as ms','on'=>'m.member_id=ms.member_id','position'=>'left')
+					),
 					'where'=>array('m.member_id'=>$this->data['contractDetails']->contractor_id),
 					'single_row'=>true
 				));
@@ -1026,7 +1079,22 @@ class Workroom extends MX_Controller {
 				if($owner['project_owner']->member_id==$this->member_id){
 					$this->data['is_owner']=1;
 				}
-				$this->data['pending_contract']=1;
+				$unpaid_invoice=getData(array(
+					'select'=>'i.invoice_id',
+					'table'=>'project_contract_invoice p_i',
+					'join'=>array(
+						array('table'=>'invoice as i','on'=>'p_i.invoice_id=i.invoice_id','position'=>'left')
+					),
+					'where'=>array('p_i.contract_id'=>$contract_id,'i.invoice_status'=>0),
+					'return_count'=>true
+				));
+				$unpaid_worklog=getData(array(
+					'select'=>'l.log_id',
+					'table'=>'project_contract_hour_log l',
+					'where'=>array('l.contract_id'=>$contract_id,'l.log_status'=>1,'l.invoice_id'=>NULL),
+					'return_count'=>true
+				));
+				$this->data['pending_contract']=$unpaid_worklog+$unpaid_invoice;
 				$this->data['reviews']=get_contract_view($contract_id,$this->member_id);
 			}else{
 				redirect(get_link('dashboardURL'));

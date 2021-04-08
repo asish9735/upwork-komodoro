@@ -2,9 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
 //get_print($contractDetails,FALSE);
+$profile_url='';
 if($is_owner){
 	$logo=getMemberLogo($contractDetails->contractor->member_id);
 	$name=$contractDetails->contractor->member_name;
+	$profile_url="href='".get_link('viewprofileURL').'/'.$contractDetails->contractor->member_id."' target='_blank'";
 }else{
 	$logo=getCompanyLogo($contractDetails->owner->organization_id);
 	if($contractDetails->owner->organization_name){
@@ -60,8 +62,17 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
       </div>
       <div class="col-lg-3">
         <div class="card text-center mx-auto">
-          <div class="card-body"> <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
+          <div class="card-body"> 
+		  	<a <?php echo $profile_url;?>>
+		  	<img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
             <h5 class="card-title"><?php echo $name;?></h5>
+			</a>
+			<?php if($is_owner){?>
+			<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
+			<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
+			<?php }else{ ?>
+			<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
+			<?php }?>
             <?php if($contractDetails->is_pause){?>
             <p class="alert alert-warning">Contract Pause</p>
             <?php }?>

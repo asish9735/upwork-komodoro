@@ -74,7 +74,7 @@ if($is_owner){
         <span class="number"><?php echo $m+1;?>.</span>
         <div class="milestone-item">
             <b><?php echo ucfirst($milestone->milestone_title);?></b><br>
-            <b>Budget:</b> <?php echo $milestone->milestone_amount;?> <br> 
+            <b>Budget:</b> <?php echo $currency.$milestone->milestone_amount;?> <br> 
             <b>Due Date:</b> <i class="icon-feather-calendar text-muted"></i> <?php echo $milestone->milestone_due_date; ?>
         </div>				
         </li>

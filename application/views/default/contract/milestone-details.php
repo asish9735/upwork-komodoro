@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
 $ProjectDetailsURL=get_link('myProjectDetailsURL')."/".$contractMilestoneDetails->project_url;
 //get_print($contractMilestoneDetails,FALSE);
+$profile_url='';
 if($is_owner){
 	$logo=getMemberLogo($contractMilestoneDetails->contractor->member_id);
 	$name=$contractMilestoneDetails->contractor->member_name;
+	$profile_url="href='".get_link('viewprofileURL').'/'.$contractMilestoneDetails->contractor->member_id."' target='_blank'";
 }else{
 	$logo=getCompanyLogo($contractMilestoneDetails->owner->organization_id);
 	if($contractMilestoneDetails->owner->organization_name){
@@ -36,12 +38,12 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                 <?php }else{
                 	if(!$contractMilestoneDetails->is_escrow){
 				?>
-				
+				<span class="badge badge-warning">Milestone not started.</span>
 				<?php		
 					}
                 	
                 }?>
-                <span class="badge badge-warning">Milestone not started.</span>
+                
               </div>
             </div>
             <div class="panel mb-4">
@@ -181,8 +183,16 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
           <div class="col-lg-3">
             <div class="card text-center mx-auto">
               <div class="card-body">
+			  	<a <?php echo $profile_url;?>>
                 <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
                 <h5 class="card-title mb-0"><?php echo $name;?></h5>
+				</a>
+				<?php if($is_owner){?>
+            	<p class="text-muted mb-0"><?php D($contractMilestoneDetails->contractor->member_heading);?></p>
+            	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractMilestoneDetails->contractor->avg_rating,1);?>"></div> 
+				<?php }else{ ?>
+					<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractMilestoneDetails->owner->statistics->avg_rating,1);?>"></div>
+				<?php }?>
                
               </div>
             </div>

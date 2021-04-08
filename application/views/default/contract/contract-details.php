@@ -2,9 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
 //get_print($contractDetails,FALSE);
+$profile_url='';
 if($is_owner){
 	$logo=getMemberLogo($contractDetails->contractor->member_id);
 	$name=$contractDetails->contractor->member_name;
+	$profile_url="href='".get_link('viewprofileURL').'/'.$contractDetails->contractor->member_id."' target='_blank'";
 }else{
 	$logo=getCompanyLogo($contractDetails->owner->organization_id);
 	if($contractDetails->owner->organization_name){
@@ -171,7 +173,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 				<li class="list-group-item w-100 d-flex align-self-center">
               <a href="<?php echo get_link('MilestoneDetails').'/'.md5($milestone->contract_milestone_id);?>" class="text-dark"> <span class="number"><?php echo $m+1;?>.</span>
               <div class="milestone-item"> <b><?php echo ucfirst($milestone->milestone_title);?></b><br>
-                <b>Budget:</b> <?php echo $milestone->milestone_amount;?> <br>
+                <b>Budget:</b> <?php echo $currency.$milestone->milestone_amount;?> <br>
                 <?php if($milestone->is_approved){?>
                 <b>Completed:</b><?php echo $milestone->approved_date;}else{?><b>Due Date:</b> <?php echo $milestone->milestone_due_date; }?> </div>
               </a>
@@ -204,8 +206,10 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
       <div class="col-lg-3">
         <div class="card text-center mx-auto">
           <div class="card-body">
+			<a <?php echo $profile_url;?>>
             <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
             <h5 class="card-title mb-0"><?php echo $name;?></h5>
+			</a>
             <?php if($is_owner){?>
             	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
             	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
