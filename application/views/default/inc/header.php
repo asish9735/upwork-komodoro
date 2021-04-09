@@ -63,13 +63,8 @@ if($loggedUser){
 					<li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>"><?php echo __('register','Register'); ?></a></li>
                     <li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>"><?php echo __('post_a_job','Post A Job'); ?></a></li>
 					<?php }?>
-					<?php if($this->config->item('language')=='ar'){?>
-					<li><a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang " data-language="en">EN</a></li>
-					<?php }?>
-					<?php if($this->config->item('language')=='en'){?>
-					<li><a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang" data-language="ar">AR</a></li>
-					<?php } ?>
-					</ul>
+					
+				  </ul>
 				</nav>
 				<!--<div class="clearfix"></div>-->
 				<!-- Main Navigation / End -->
@@ -79,7 +74,7 @@ if($loggedUser){
 					<ul class="display-inline">
                     	<li><a href="<?php echo URL::get_link('loginURL'); ?>"><img src="<?php echo IMAGE;?>login_16.png" alt=""> <?php echo __('login','Log In'); ?></a></li>
 						<li><a href="<?php echo URL::get_link('registerURL'); ?>"><img src="<?php echo IMAGE;?>register_16.png" alt=""> <?php echo __('register','Register'); ?></a></li>
-                    	<li><a href="<?php echo URL::get_link('registerURL'); ?>" class="btn btn-site text-white"><img src="<?php echo IMAGE;?>post_20.png" alt=""> <?php echo __('post_a_job','Post A Job'); ?>b</a></li>
+                    	<li><a href="<?php echo URL::get_link('registerURL'); ?>" class="btn btn-site text-white"><img src="<?php echo IMAGE;?>post_20.png" alt=""> <?php echo __('post_a_job','Post A Job'); ?></a></li>
 					</ul>
                 </div>
 			<?php }else{ ?>
@@ -146,7 +141,6 @@ if($loggedUser){
 
 				<!-- User Menu -->
 				<div class="header-widget">
-
 					<!-- Messages -->
 					<div class="header-notifications user-menu">
 						<div class="header-notifications-trigger">
@@ -186,10 +180,18 @@ if($loggedUser){
 
 						</div>
 					</div>
-
 				</div>
 				<!-- User Menu / End -->
+                
 				<?php } ?>
+                <div class="header-widget">
+                	<?php if($this->config->item('language')=='ar'){?>
+					<a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang log-in-button" data-language="en" title="EN"><img src="<?php echo IMAGE;?>flags/en.svg" alt="" height="18" width="24" style="border-radius:0.2rem;"></a>
+					<?php }?>
+					<?php if($this->config->item('language')=='en'){?>
+					<a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang log-in-button" data-language="ar" title="AR"><img src="<?php echo IMAGE;?>flags/ae.svg" alt="" height="18" width="24" style="border-radius:0.2rem;"></a>
+					<?php } ?>
+                </div>
 				<!-- Mobile Navigation Button -->
 				<span class="mmenu-trigger">
 					<button class="hamburger hamburger--collapse" type="button">

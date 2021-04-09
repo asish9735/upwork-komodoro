@@ -20,14 +20,13 @@ if($is_owner){
 	<?php //echo $left_panel;?>
     <div class="container">
         <h1><?php echo $contractDetails->contract_title;?></h1>
-        				
+        <div class="d-lg-none mb-3">				
         <?php 
         if($contractDetails->contract_status==0){
             if($current_member!=$contractDetails->offer_by){
             ?>
-            <p>You have a new offer. 
-            <button class="btn btn-success btn-sm acceptbtn ml-2">Accept</button>
-            <button class="btn btn-danger btn-sm denybtn ml-2">Reject</button></p>
+            <button class="btn btn-success btn-sm acceptbtn mr-2">Offer Accept</button>
+            <button class="btn btn-danger btn-sm denybtn mr-2">Offer Reject</button>
             <?php	
             }
         }elseif($contractDetails->contract_status==1){
@@ -41,6 +40,7 @@ if($is_owner){
         <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> Offer Rejected</span></p>        
         <?php	
         }?>
+        </div>
         <div class="row">
         <div class="col-lg-9">
         <div class="panel mb-4">
@@ -111,6 +111,27 @@ if($is_owner){
         
         </div>
         <div class="col-lg-3">
+        <div class="d-none d-lg-block">				
+        <?php 
+        if($contractDetails->contract_status==0){
+            if($current_member!=$contractDetails->offer_by){
+            ?>
+            <button class="btn btn-success btn-block acceptbtn">Offer Accept</button>
+            <button class="btn btn-danger btn-block denybtn mb-3">Offer Reject</button>
+            <?php	
+            }
+        }elseif($contractDetails->contract_status==1){
+        ?>
+        
+        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i> Offer Accepted.</span></p>
+        
+        <?php	
+        }elseif($contractDetails->contract_status==2){
+        ?>
+        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> Offer Rejected</span></p>        
+        <?php	
+        }?>
+        </div>
         <div class="card text-center mx-auto">
             <div class="card-body">
             <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>                    

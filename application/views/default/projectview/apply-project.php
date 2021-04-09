@@ -18,8 +18,9 @@ $currency=priceSymbol();
             <?php D(ucfirst($projectData['project']->project_title));?>
           </h1>
           <p>
-            <?php D($projectData['project_category']->category_subchild_name);?>, 
-			<?php D($projectData['project_category']->category_name);?>
+            <?php D($projectData['project_category']->category_subchild_name);?>
+            ,
+            <?php D($projectData['project_category']->category_name);?>
           </p>
         </div>
       </div>
@@ -40,9 +41,9 @@ $currency=priceSymbol();
 <!-- Page Content
 ================================================== -->
 <div class="container">
-<?php if($limit_over){?>
-        <div class="alert alert-warning">Max limit over, please upgrade your membership plan. <a href="<?php echo get_link('membershipURL');?>">Click here</a> to upgrade</div>
-    <?php }else{?>
+  <?php if($limit_over){?>
+  <div class="alert alert-warning">Max limit over, please upgrade your membership plan. <a href="<?php echo get_link('membershipURL');?>">Click here</a> to upgrade</div>
+  <?php }else{?>
   <form action="" method="post" accept-charset="utf-8" id="applyprojectform" class="form-horizontal" role="form" name="applyprojectform" onsubmit="return false;">
     <?php /*?><input type="hidden" name="pid" value="<?php echo $projectData['project']->project_id;?>"/>
 			<input type="hidden" id="is_hourly" value="<?php if($projectData['project_settings']->is_hourly==1){echo 1;}else{echo 0;}?>"/>-->
@@ -69,9 +70,9 @@ $currency=priceSymbol();
             <hr />
             <div class="row">
               <div class="col-sm-8">
-                <h4><?php echo $bid_site_fee;?>% Service Fee</h4>
+                <h4 class="mb-0"><?php echo $bid_site_fee;?>% Service Fee</h4>
               </div>
-              <div class="col-sm-4 text-sm-right"><span class="f20"><?php echo $currency;?> <span class="total_fee">0.00</span></span></div>
+              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height: 1.2;"><?php echo $currency;?> <span class="total_fee">0.00</span></span></div>
             </div>
             <hr />
             <div class="row">
@@ -122,7 +123,6 @@ $currency=priceSymbol();
                   <label for="description">Description</label>
                   <input type="text" name="milestone_title_<?php echo $pmid;?>" id="milestone_title_<?php echo $pmid;?>" class="form-control" value="<?php echo $milestone->bid_milestone_title;?>">
                 </div>
-                
               </div>
               <div class="col-md-3 col-12">
                 <div class="form-group">
@@ -138,13 +138,14 @@ $currency=priceSymbol();
                     <?php }?>
                     <input type="text" name="milestone_amount_<?php echo $pmid;?>" id="milestone_amount_<?php echo $pmid;?>" class="milestone_amount form-control" value="<?php echo $milestone->bid_milestone_amount;?>" onKeyUp="updateTotal()" style="border-radius:0.25rem">
                     <?php if($k>0){?>
-                    <div class="input-group-append ml-3"><button class="btn btn-danger btn-circle mt-1" onclick="removeRow(this)" style="border-radius:50%; font-size:1.125rem;"><i class="icon-feather-x"></i></button></div>
+                    <div class="input-group-append ml-3">
+                      <button class="btn btn-danger btn-circle mt-1" onclick="removeRow(this)" style="border-radius:50%; font-size:1.125rem;"><i class="icon-feather-x"></i></button>
+                    </div>
                   </div>
                   <?php }?>
                 </div>
               </div>
             </div>
-            
             <?php }
 			}else{?>
             <div class="row milestone_row_parent">
@@ -171,7 +172,8 @@ $currency=priceSymbol();
             <?php }?>
           </div>
           <a href="javascript:" class="btn btn-sm btn-success addMilestone"><i class="icon-feather-plus"></i> Add Milestone</a>
-          <div class="padding-top-20" style="max-width:720px">
+          <div class="panel border bg-light mt-3">
+            <div class="panel-body">
             <div class="row">
               <div class="col-sm-8">
                 <h4>Total price of project</h4>
@@ -181,16 +183,17 @@ $currency=priceSymbol();
             <hr />
             <div class="row">
               <div class="col-sm-8">
-                <h4><?php echo $bid_site_fee;?>% Service Fee</h4>
+                <h4 class="mb-0"><?php echo $bid_site_fee;?>% Service Fee</h4>
               </div>
-              <div class="col-sm-4 text-sm-right"><span class="f20"><?php echo $currency;?> <span class="total_fee">0.00</span></span></div>
+              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height:1.2;"><?php echo $currency;?> <span class="total_fee">0.00</span></span></div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-8">
-                <h4>You'll Receive</h4>
+                <h4 class="mb-0">You'll Receive</h4>
                 <span>Your estimated payment, after service fees</span></div>
-              <div class="col-sm-4 text-sm-right"><span class="f20"><?php echo $currency;?> <span class="total_recive">0.00</span></span></div>
+              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height:1.2;"><?php echo $currency;?> <span class="total_recive">0.00</span></span></div>
+            </div>
             </div>
           </div>
         </div>
@@ -211,9 +214,9 @@ $currency=priceSymbol();
             <hr />
             <div class="row">
               <div class="col-sm-8">
-                <h4><?php echo $bid_site_fee;?>% Service Fee</h4>
+                <h4 class="mb-0"><?php echo $bid_site_fee;?>% Service Fee</h4>
               </div>
-              <div class="col-sm-4 text-sm-right"><span class="f20"><?php echo $currency;?> <span class="total_fee">0.00</span></span></div>
+              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height:1.2;"><?php echo $currency;?> <span class="total_fee">0.00</span></span></div>
             </div>
             <hr />
             <div class="row">
@@ -281,9 +284,7 @@ $currency=priceSymbol();
             (this client require cover letter)
             <?php }?>
           </label>
-          <textarea class="form-control" rows="4" id="bid_details" name="bid_details">
-          <?php if($getBidDetails && $getBidDetails->bid_details){echo $getBidDetails->bid_details;}?>
-          </textarea>
+          <textarea class="form-control" rows="4" id="bid_details" name="bid_details"><?php if($getBidDetails && $getBidDetails->bid_details){echo $getBidDetails->bid_details;}?></textarea>
         </div>
         <div class="form-group">
           <label>Attachments</label>
@@ -322,7 +323,7 @@ $currency=priceSymbol();
       <button class="btn btn-secondary backbtnapply">Back</button>
     </div>
   </form>
-<?php }?>
+  <?php }?>
 </div>
 <div class="dashboard-footer-spacer"></div>
 <script type="text/javascript">

@@ -93,7 +93,7 @@ body {
 
 /* additional class start */
 .f20 {
-	font-size:1.333rem
+	font-size:1.25rem
 }
 /* additional class end */
 
@@ -783,10 +783,12 @@ ul.totalList > li {
     margin-bottom: -1px;
     padding: 1rem;
 }
-
 ul.totalList > li > span {
 	display: block;
     margin-top: 0.5rem;
+}
+ul.totalList > li > i {
+	font-size: 1.25rem;
 }
 .not-found {	
     color: #dc3139;
@@ -1478,7 +1480,13 @@ ul.list-group-0 > li{
 .message-quote hr{
 	margin:0.5rem 0;
 }
-
+.attachment-box i.icon-feather-download {
+	right: 1rem;
+    font-size: 1.125rem;
+}
+.panel.border{
+	box-shadow:none;
+}
 
 
 

@@ -128,6 +128,15 @@ $logo=getMemberLogo($member_id);
                 </div>
               </li>
               <?php }?>
+              <li class="milestone-contain">
+              	<div class="boxed-list-item"> 
+                <h4 class="mb-0">Total Bids:</h4>
+                <h4 class="mb-0 ml-auto">
+                  <ec id="profile-hourly-data">
+                    <?php D(priceSymbol().priceFormat($proposaldetails['proposal']->bid_amount));?>
+                  </ec>
+                </h4></div>
+              </li>
             </ul>
         </div>
         
@@ -164,7 +173,7 @@ $logo=getMemberLogo($member_id);
 					if($val->file && file_exists(UPLOAD_PATH.'projects-files/projects-applications/'.$val->file)){
 						$path_parts = pathinfo($val->name);
 				?>
-              <a href="<?php echo UPLOAD_HTTP_PATH.'projects-files/projects-applications/'.$val->file;?>" target="_blank" class="attachment-box "><span><?php echo $path_parts['filename'];?></span><i><?php echo strtoupper($path_parts['extension']);?></i></a>
+              <a href="<?php echo UPLOAD_HTTP_PATH.'projects-files/projects-applications/'.$val->file;?>" target="_blank" class="attachment-box "><span><?php echo $path_parts['filename'];?></span><i><?php echo strtoupper($path_parts['extension']);?></i><i class="icon-feather-download"></i></a>
               <?php
 					}	
 				}
@@ -349,8 +358,8 @@ $logo=getMemberLogo($member_id);
     </div>
   </div>
 </div>
-<script>
 
+<script>
 function view_application(application_url){
 	var redirectWindow = window.open(application_url, '_blank');
     redirectWindow.location;

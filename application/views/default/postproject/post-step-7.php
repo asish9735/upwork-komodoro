@@ -50,9 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <p id="preview_attachment"></p>
         </div>
       </div>
-      <div class="submit-field mb-0">
+      <div class="submit-field">
         <label>Screen question (optional)</label>
         <div id="preview_question_sec" style="display: none"></div>
+      </div>
+      <div class="submit-field mb-0">  
         <label>Required cover letter</label>
         <p id="preview_is_cover_required"></p>
       </div>
@@ -72,13 +74,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="headline">
     	<h4><b>Visibility </b> <a href="javascript:void(0)" class="edit-project float-right btn btn-outline-secondary btn-circle" data-popup="5" data-tippy-placement="top" title="Edit Visibility"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
-    <div class="content with-padding">
-      <div class="submit-field mb-0">        
-        <label>Project visibility</label>
-        <p id="preview_projectVisibility"></p>
-        <hr />
-        <label>Freelancer need</label>
-        <p id="preview_no_of_freelancer"></p>
+    <div class="content with-padding padding-bottom-0">      
+      <div class="row">
+        <div class="col-xl-6">
+            <div class="submit-field">        
+                <label>Project visibility</label>
+                <p id="preview_projectVisibility"></p>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="submit-field"> 
+                <label>Freelancer need</label>
+                <p id="preview_no_of_freelancer"></p>
+      		</div>
+        </div>
       </div>
     </div>
   </div>

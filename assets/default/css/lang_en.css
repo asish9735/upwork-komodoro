@@ -583,6 +583,9 @@ ul.dashboard-box-list.if-double-button > li {
 .checkbox label span.checkbox-icon {
 	left: 0;
 }
+.dashboard-status-button{
+	margin-left:5px;
+}
 
 
 @media (min-width: 768px) {

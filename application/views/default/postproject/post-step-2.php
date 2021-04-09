@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="content with-padding">    
             <div class="submit-field">
                 <label>Description about project</label>
-                <textarea  class="form-control" name="description" id="description"><?php if($projectData){echo $projectData['project_additional']->project_description;}?></textarea>
+                <textarea rows="4" class="form-control" name="description" id="description"><?php if($projectData){echo $projectData['project_additional']->project_description;}?></textarea>
                 <span id="descriptionError" class="rerror"></span>
 
             </div>

@@ -173,7 +173,7 @@ $logo=getMemberLogo($bid);
             <div class="panel-body">
               <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" id="bid_details" name="bid_details"></textarea>
+                <textarea rows="4" class="form-control" id="bid_details" name="bid_details"></textarea>
               </div>
               <div class="form-group">
                 <label>Attachments</label>
@@ -185,19 +185,16 @@ $logo=getMemberLogo($bid);
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-body">
-              <div class="form-group">
+              
                 <div class="checkbox">
                   <input type="checkbox" id="i_agree" name="i_agree" value="1">
                   <label for="i_agree"><span class="checkbox-icon"></span> Yes, I understand and agree to the <a href="#">Terms of Service</a>, including the <a href="#">User Agreement</a> and <a href="#">Privacy Policy</a></label>
                 </div>
                 <div id="i_agreeError" class="rerror"></div>
-              </div>
+              
             </div>
           </div>
+          
           <div class="padding-bottom-15 padding-top-15">
             <button class="btn btn-site nextbtnapply">Hire
             <?php D(ucwords($memberInfo->member_name))?>

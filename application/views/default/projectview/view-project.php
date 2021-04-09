@@ -71,19 +71,19 @@ if($login_user_id){
     </div>
     
     <ul class="totalList">
-    <li><b>Payment Type</b> <br> <?php if($projectData['project_settings']->is_hourly==1){D('<i class="icon-feather-tag"></i> <br>');D('Hourly');}else{D('<i class="icon-feather-clock"></i> <br>');D('Fixed');}?> </li>
-    <li><b>Experience Level</b> <br><i class="icon-feather-<?php D($projectData['project_settings']->experience_level_key)?>"></i><br><?php D($projectData['project_settings']->experience_level_name)?> </li>
+    <li><b>Payment Type</b> <br> <?php if($projectData['project_settings']->is_hourly==1){D('<i class="text-site icon-feather-tag"></i> <br>');D('Hourly');}else{D('<i class="text-site icon-feather-clock"></i> <br>');D('Fixed');}?> </li>
+    <li><b>Experience Level</b> <br><i class="text-site icon-feather-<?php D($projectData['project_settings']->experience_level_key)?>"></i><br><?php D($projectData['project_settings']->experience_level_name)?> </li>
     <?php if($projectData['project_settings']->is_hourly==1){?>
-    <li><b>Project Duration</b> <br><i class="icon-line-awesome-<?php D($projectData['project_settings']->hourly_duration)?>"></i><br><?php D(getAllProjectDuration($projectData['project_settings']->hourly_duration)['name']);?> </li>
-    <li><b>Time Required</b> <br><i class="icon-feather-<?php D($projectData['project_settings']->hourly_time_required)?>"></i><br><?php D(getAllProjectDurationTime($projectData['project_settings']->hourly_time_required)['name']);?> </li>
+    <li><b>Project Duration</b> <br><i class="text-site icon-line-awesome-<?php D($projectData['project_settings']->hourly_duration)?>"></i><br><?php D(getAllProjectDuration($projectData['project_settings']->hourly_duration)['name']);?> </li>
+    <li><b>Time Required</b> <br><i class="text-site icon-feather-<?php D($projectData['project_settings']->hourly_time_required)?>"></i><br><?php D(getAllProjectDurationTime($projectData['project_settings']->hourly_time_required)['name']);?> </li>
     <?php }?>
     
     <li><b>Project Type</b>
-    	<br><i class="icon-material-<?php D($projectData['project_settings']->project_type_code);?>"></i><br>
+    	<br><i class="text-site icon-material-<?php D($projectData['project_settings']->project_type_code);?>"></i><br>
         <?php D(getAllProjectType($projectData['project_settings']->project_type_code)['name']);?>
     </li>
     <li><b>No of freelancer</b>
-    	<br><i class="icon-feather-user"></i><br>
+    	<br><i class="text-site icon-feather-user"></i><br>
         <?php D($projectData['project']->project_member_required);?>
     </li>
 </ul>
@@ -168,7 +168,7 @@ if($login_user_id){
 				<a href="<?php echo $ApplyProjecURL;?>" class="apply-now-button btn btn-site mb-3">
 				<?php
 				if($is_already_bid){
-					echo 'Revise Proposal';
+					echo 'Revised Proposal';
 				}else{
 					echo 'Submit Proposal';
 				}
@@ -191,7 +191,7 @@ if($login_user_id){
                             </li>
                             <li>
                                 <i class="icon-material-outline-location-on"></i>
-                                <p><?php D($projectData['clientInfo']['client_address']['country'])?></p>
+                                <p><?php D($projectData['clientInfo']['client_address']['country'])?>&nbsp;</p>
                                 <span><?php D($projectData['clientInfo']['client_address']['location'])?></span>
                             </li>
                             <li>
