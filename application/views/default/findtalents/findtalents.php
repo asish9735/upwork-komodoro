@@ -1,7 +1,7 @@
 <section class="section findtalentpage">
 <div class="container">
 	<div class="dashboard-headline">
-    	<h1>Professionals</h1>
+    	<h1><?php echo __('findtalents_page_header','Professionals');?></h1>
     </div>
 	<?php //print_r($all_location);?>
 	<div class="row">
@@ -11,7 +11,7 @@
 			<form id="filterForm">			
 				<!-- Location -->
 				<div class="sidebar-widget">
-					<h5>Location</h5>
+					<h5><?php echo __('findtalents_page_location','Location');?></h5>
 					<select name="country" class="selectpicker default"  title="All locations"  data-live-search="true">
 						<option value="">All</option>
 						<?php if($all_location){
@@ -28,7 +28,7 @@
 
 				<!-- Keywords -->
 				<div class="sidebar-widget" hidden>
-					<h5>Keywords</h5>
+					<h5><?php echo __('findtalents_page_keyword','Keywords');?></h5>
 					<div class="keywords-container">
 						<div class="keyword-input-container">
 							<input type="text" class="form-control keyword-input" placeholder="e.g. task title"/>
@@ -43,7 +43,7 @@
 
 				<!-- Tags -->
 				<div class="sidebar-widget">
-					<h5>Skills</h5>
+					<h5><?php echo __('findtalents_page_skills','Skills');?></h5>
 
 					<div class="tags-container skillContaintag">
 						<?php
@@ -65,12 +65,12 @@
 
 					<!-- More Skills -->
 					<div class="submit-field">
-					<input type="text"  class="form-control input-text with-border tagsinput_skill" placeholder="skills"/>
+					<input type="text"  class="form-control input-text with-border tagsinput_skill" placeholder="<?php echo __('findtalents_page_skills_placeholder','skills');?>"/>
 					</div>
 				</div>
 				<!-- Hourly Rate -->
 				<div class="sidebar-widget">
-					<h5>Hourly Rate</h5>
+					<h5><?php echo __('findtalents_page_hourly','Hourly Rate');?></h5>
 					<div class="margin-top-25"></div>
 
 					<!-- Range Slider -->
@@ -84,23 +84,23 @@
 		</div>
 		<div class="col-xl-9 col-lg-8 col-12">
 
-		<h3 class="page-title">Search Results</h3>
+		<h3 class="page-title"><?php echo __('findtalents_page_search_result','Search Results');?></h3>
         <div class="row">
     		<div class="col-md-8 col-12">
             <div class="search-box input-group">
-				<input type="text" class="form-control" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" name="term" placeholder="Find talents by name" form="filterForm"/>
-                <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()">Search</button></div>
+				<input type="text" class="form-control" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" name="term" placeholder="<?php echo __('findtalents_page_talent_by_name','Find talents by name');?>" form="filterForm"/>
+                <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><?php echo __('findtalents_page_search','Search');?></button></div>
 			</div>
 		</div>
     	<div class="col-md-4 col-12">
             <div class="sort-by">
             	<div class="sort-by">
-                <span>Sort by:</span>
+                <span><?php echo __('findtalents_page_sort_by','Sort by:');?></span>
 				<select class="selectpicker hide-tick" name="order_by" form="filterForm" onchange="filterForm()">
-						<option value="default" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='default'){echo 'selected';}?>>Relevance</option>
-                        <option value="default" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='rating'){echo 'selected';}?>>Rating</option>
-                        <option value="latest" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='latest'){echo 'selected';}?>>Newest</option>
-                        <option value="old" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='old'){echo 'selected';}?>>Oldest</option>
+						<option value="default" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='default'){echo 'selected';}?>><?php echo __('findtalents_page_relevance','Relevance');?></option>
+                        <option value="default" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='rating'){echo 'selected';}?>><?php echo __('findtalents_page_rating','Rating');?></option>
+                        <option value="latest" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='latest'){echo 'selected';}?>><?php echo __('findtalents_page_newest','Newest');?></option>
+                        <option value="old" <?php if($searchdata && array_key_exists('order_by',$searchdata) && $searchdata['order_by']=='old'){echo 'selected';}?>><?php echo __('findtalents_page_oldest','Oldest');?></option>
                         <!--<option value="random">Random</option>-->
                     </select>
                 </div>
@@ -118,7 +118,7 @@
 			</div>
 			<!-- Freelancers List Container / End -->
 			
-			<div class="text-center"><button class="btn btn-site" id="load_more_btn">Load More</button></div>
+			<div class="text-center"><button class="btn btn-site" id="load_more_btn"><?php echo __('findtalents_page_load_more','Load More');?></button></div>
 			
 			<!-- Pagination -->
 					<div class="pagination-container margin-top-20" hidden>
