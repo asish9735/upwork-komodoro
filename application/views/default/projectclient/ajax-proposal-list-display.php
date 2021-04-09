@@ -40,7 +40,7 @@ elseif($all_data){?>
 
                         <!-- Details -->
                         <span class="freelancer-detail-item"> <?php D($bid->member_heading);?></span>
-                        <p class="margin-bottom-10">Rating: <?php D($bid->avg_review);?>  <?php if($projects['project_settings']->is_fixed==1){?><span class="pipe">|</span> Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D(getAllBidDuration($bid->bid_duration)); }  }?></p>
+                        <p class="margin-bottom-10">Rating: <div class="star-rating" data-rating="<?php D(round($bid->avg_review,1));?>"></div>  <?php if($projects['project_settings']->is_fixed==1){?><span class="pipe">|</span> Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D(getAllBidDuration($bid->bid_duration)); }  }?></p>
 
                         <!-- Rating -->
                         <div class="freelancer-rating d-none">
@@ -229,4 +229,5 @@ function make_hire(pid,mid){
 	var redirectWindow = window.open("<?php echo get_link('HireProjectURL');?>/"+pid+"/"+mid, '_blank');
     redirectWindow.location;
 }
+starRating('.star-rating');
 </script>

@@ -64,9 +64,9 @@ $logo=getMemberLogo($member_id);
         </div>
         <div class="right-side">
           <div class="ml-auto" style="min-width: 150px;">
-          	<p class="mb-0">Job Success <strong>50%</strong></p>
+          	<p class="mb-0">Job Success <strong><?php echo $memberInfo->success_rate;?>%</strong></p>
             <div class="progress" style="max-width:200px; height:6px">
-              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $memberInfo->success_rate;?>%" aria-valuenow="<?php echo $memberInfo->success_rate;?>" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             
           </div>

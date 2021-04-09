@@ -117,9 +117,9 @@ class Projectclient extends MX_Controller {
 						if($this->data['all_data']){
 							foreach($this->data['all_data'] as $k=>$bids){
 								$this->data['all_data'][$k]->country_info=getAllCountry(array('country_code'=>$bids->member_country));
-								$this->data['all_data'][$k]->totalearn=0;
+								/* $this->data['all_data'][$k]->totalearn=0;
 								$this->data['all_data'][$k]->avg_review=0;
-								$this->data['all_data'][$k]->success_rate=0;
+								$this->data['all_data'][$k]->success_rate=0; */
 							}
 						}
 							

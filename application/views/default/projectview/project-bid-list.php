@@ -163,10 +163,11 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 	      },
 	      success: function(data){
 	        $(target).html(data);
-	        starRating('.star-rating');
+	        
 	      }
   		})
 	});
 	load_count(<?php D($projectData['project']->project_id);?>);
 }
+
 </script>

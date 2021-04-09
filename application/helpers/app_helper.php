@@ -737,14 +737,14 @@ if ( ! function_exists('getBidsListDetails'))
 {
 function getBidsListDetails($project_id='',$param=array(),$count=FALSE){
 	$r=array(
-		'select'=>'b.bid_id,b.bid_amount,b.bid_by_project,b.bid_duration,b.bid_details,b.bid_date,b.is_archive,b.is_shortlisted,b.is_interview,b.is_hired,b.member_id,b.organization_id,m.member_name,m.is_email_verified,m_b.member_heading,m_b.member_hourly_rate,m_a.member_country,m_l.logo',
+		'select'=>'b.bid_id,b.bid_amount,b.bid_by_project,b.bid_duration,b.bid_details,b.bid_date,b.is_archive,b.is_shortlisted,b.is_interview,b.is_hired,b.member_id,b.organization_id,m.member_name,m.is_email_verified,m_b.member_heading,m_b.member_hourly_rate,m_a.member_country,m_l.logo,m_s.avg_rating as avg_review,m_s.total_earning as totalearn,m_s.no_of_reviews,m_s.success_rate',
 		'table'=>'project_bids b',
 		'join'=>array(
 			array('table'=>'member m','on'=>'b.member_id=m.member_id','position'=>'left'),
 			array('table'=>'member_address m_a','on'=>'b.member_id=m_a.member_id','position'=>'left'),
 			array('table'=>'member_basic m_b','on'=>'b.member_id=m_b.member_id','position'=>'left'),
 			array('table'=>'member_logo m_l','on'=>'b.member_id=m_l.member_id','position'=>'left'),
-
+			array('table'=>'member_statistics m_s','on'=>'b.member_id=m_s.member_id','position'=>'left'),
 		),
 		'where'=>array('b.project_id'=>$project_id),
 		);
