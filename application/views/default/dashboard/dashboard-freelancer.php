@@ -11,41 +11,41 @@
     <div class="dashboard-content-inner">
       <?php if(!$is_email_verified){?>
       <div class="mx-auto alert alert-warning text-center">
-        <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> Your email is not verified. <a href="<?php D(VZ);?>" class="btn btn-site btn-sm ml-2 resendEmail">Resend Email</a></p>
+        <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> <?php echo __('dashboard_freelancer_email_not_verify','Your email is not verified.');?> <a href="<?php D(VZ);?>" class="btn btn-site btn-sm ml-2 resendEmail"><?php echo __('dashboard_freelancer_resend_email','Resend Email');?></a></p>
       </div>
       <?php }elseif(!$is_doc_verified){?>
       <div class="mx-auto alert alert-warning text-center">
-        <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> Please verify your profile. <a href="<?php echo URL::get_link('verifyDocumentURL');?>" class="btn btn-site btn-sm ml-2">Verify Now</a></p>
+        <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i> <?php echo __('dashboard_freelancer_verify_profile','Please verify your profile.');?> <a href="<?php echo URL::get_link('verifyDocumentURL');?>" class="btn btn-site btn-sm ml-2"><?php echo __('dashboard_freelancer_verify_now','Verify Now');?></a></p>
       </div>
       <?php }?>
       <div class="fun-facts-container">
         <div class="fun-fact" hidden>
-          <div class="fun-fact-text"> <span>Available Bids</span>
+          <div class="fun-fact-text"> <span><?php echo __('dashboard_freelancer_available_bids','Available Bids');?></span>
             <h4><strong>50</strong></h4>
           </div>
         </div>
         <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('TransactionHistoryURL');?>'">
           <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>money.png" alt="" /></div>
-          <div class="fun-fact-text"> <span>Earned</span>
+          <div class="fun-fact-text"> <span><?php echo __('dashboard_freelancer_earned','Earned');?></span>
             <h4><?php D($currency);?><strong><?php D(priceFormat($memberInfo->total_earning));?></strong></h4>
           </div>    
         </div>
         <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('ContractList');?>'">
           <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" /></div>
-          <div class="fun-fact-text"> <span>Total Contracts</span>
+          <div class="fun-fact-text"> <span><?php echo __('dashboard_freelancer_total_contracts','Total Contracts');?></span>
             <h4><strong><?php D($memberInfo->total_jobs);?></strong></h4>
           </div>
         </div>
         <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('OfferList');?>'">
           <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>discount.png" alt="" /></div>
-          <div class="fun-fact-text"> <span>Total Offers</span>
+          <div class="fun-fact-text"> <span><?php echo __('dashboard_freelancer_total_offer','Total Offers');?></span>
             <h4><strong><?php D($memberInfo->total_offer);?></strong></h4>
           </div>
         </div>
         <div class="fun-fact">
           
           <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>clock.png" alt="" /></div>
-          <div class="fun-fact-text"> <span>Total Working Hour</span>
+          <div class="fun-fact-text"> <span><?php echo __('dashboard_freelancer_woring_hour','Total Working Hour');?></span>
             <h4><strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong></h4>
           </div>
         </div>
@@ -54,7 +54,7 @@
       <div class="dashboard-box "> 
         <!-- Headline -->
         <div class="headline">
-          <h3>Invitation for offer</h3>
+          <h3><?php echo __('dashboard_freelancer_invitation_offer','Invitation for offer');?></h3>
         </div>
         <div class="content">
           <ul class="dashboard-box-list">
@@ -74,15 +74,15 @@
                             <!-- Job Listing Footer -->
                             <div class="job-listing-footer if-button">
                                 <ul>
-                                    <li><b>Budget:</b> <?php D($currency.$v['contract_amount']);?><?php if($v['is_hourly']==1){echo'/hr';}?></li>
-                                    <li><b>Date:</b> <?php D($v['contract_date']);?></li>
+                                    <li><b><?php echo __('dashboard_freelancer_budget','Budget:');?></b> <?php D($currency.$v['contract_amount']);?><?php if($v['is_hourly']==1){echo'/hr';}?></li>
+                                    <li><b><?php echo __('dashboard_freelancer_date','Date:');?></b> <?php D($v['contract_date']);?></li>
                                     <li>
                                     	<?php if($v['contract_status']==1){?>
-                                        <span class="dashboard-status-button green">Approved</span>
+                                        <span class="dashboard-status-button green"><?php echo __('dashboard_freelancer_approved','Approved');?></span>
                                         <?php }elseif($v['contract_status']==2){?>
-                                        <span class="dashboard-status-button red">Rejected</span>
+                                        <span class="dashboard-status-button red"><?php echo __('dashboard_freelancer_rejected','Rejected');?></span>
                                         <?php }elseif($v['contract_status']==0){?>
-                                        <span class="dashboard-status-button yellow">Pending</span>
+                                        <span class="dashboard-status-button yellow"><?php echo __('dashboard_freelancer_pending','Pending');?></span>
                                         <?php }?>
                                     </li>
                                 </ul>
@@ -110,7 +110,7 @@
       <div class="dashboard-box "> 
         <!-- Headline -->
         <div class="headline">
-          <h3>Invitation for bids</h3>
+          <h3><?php echo __('dashboard_freelancer_invitation_bids','Invitation for bids');?></h3>
         </div>
         <div class="content">
           <ul class="dashboard-box-list">
@@ -130,17 +130,17 @@
                             <!-- Job Listing Footer -->
                             <div class="job-listing-footer if-button">
                                 <ul>
-                                <li><i class="icon-material-outline-access-time"></i> Posted <?php D(get_time_ago($v['project_posted_date']));?></li>
-                                <li><b>Date:</b> <?php D($v['invite_date']);?></li>
+                                <li><i class="icon-material-outline-access-time"></i><?php echo __('dashboard_freelancer_posted','Posted');?><?php D(get_time_ago($v['project_posted_date']));?></li>
+                                <li><b><?php echo __('dashboard_freelancer_date','Date:');?></b> <?php D($v['invite_date']);?></li>
                                 <li><?php if($v['is_hourly']){?>
                                 <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
                                 <?php }else{?>
                                 <span class="dashboard-status-button green"><?php D('Fixed');?></span>
                                 <?php }?>
                                 <?php if($v['bid_id']){?>
-                                  <span class="dashboard-status-button green">Already Bid</span>
+                                  <span class="dashboard-status-button green"><?php echo __('dashboard_freelancer_already_bid','Already Bid');?></span>
                                 <?php }else{?>
-                                  <span class="dashboard-status-button yellow">Pending</span>
+                                  <span class="dashboard-status-button yellow"><?php echo __('dashboard_freelancer_pending','Pending');?></span>
                                 <?php }?>
                                 </li>
                                 </ul>
@@ -167,7 +167,7 @@
       <div class="dashboard-box "> 
         <!-- Headline -->
         <div class="headline">
-          <h3>Activity Feed</h3>
+          <h3><?php echo __('dashboard_freelancer_activity_feed','Activity Feed');?></h3>
         </div>
         <div class="content">
           <ul class="dashboard-box-list activity-feed">
@@ -216,7 +216,7 @@
             }
           }else{
            ?>
-          <li>No record found</li>
+          <li><?php echo __('dashboard_freelancer_No_record_found','No record found');?></li>
            <?php 
           }
           ?>           
@@ -226,7 +226,7 @@
       <div class="dashboard-box "> 
         <!-- Headline -->
         <div class="headline">
-          <h3>Recent contract</h3>
+          <h3><?php echo __('dashboard_freelancer_recent_contract','Recent contract');?></h3>
         </div>
         <div class="content">
           <ul class="dashboard-box-list">
@@ -259,7 +259,7 @@
                     <!-- Job Listing Footer -->
                     <div class="job-listing-footer if-button">
                       <ul>
-                        <li><b>Budget:</b>
+                        <li><b><?php echo __('dashboard_freelancer_budget','Budget:');?></b>
                           <?php D($currency.$v['contract_amount']);?>
                           <?php if($v['is_hourly']==1){echo'/hr';}?>
                         </li>
@@ -268,11 +268,11 @@
                         </li>
                         <li>
                           <?php if($v['is_contract_ended']==1){?>
-                          <span class="dashboard-status-button blue">Completed On:
+                          <span class="dashboard-status-button blue"><?php echo __('dashboard_freelancer_complete_on','Completed On:');?>
                           <?php D($v['contract_end_date']);?>
                           </span>
                           <?php }else{?>
-                          <span class="dashboard-status-button green">In Process</span>
+                          <span class="dashboard-status-button green"><?php echo __('dashboard_freelancer_in_process','In Process');?></span>
                           <?php }?>
                         </li>
                       </ul>
@@ -285,7 +285,7 @@
               
             </li>
             <?php } }else{ ?>
-            <li>No record found</li>
+            <li><?php echo __('dashboard_freelancer_No_record_found','No record found');?></li>
             <?php }?>
           </ul>
         </div>
@@ -297,12 +297,12 @@
           <!-- Dashboard Box -->
           <div class="dashboard-box main-box-in-row">
 						<div class="headline">
-							<h3><i class="icon-feather-bar-chart-2"></i> Earning Statics</h3>
+							<h3><i class="icon-feather-bar-chart-2"></i><?php echo __('dashboard_freelancer_earning_statics','Earning Statics');?></h3>
 							<div class="sort-by" hidden>
 								<select class="selectpicker hide-tick">
-									<option>Last 6 Months</option>
-									<option>This Year</option>
-									<option>This Month</option>
+									<option><?php echo __('dashboard_freelancer_last_month','Last 6 Months');?></option>
+									<option><?php echo __('dashboard_freelancer_this_year','This Year');?></option>
+									<option><?php echo __('dashboard_freelancer_this_month','This Month');?></option>
 								</select>
 							</div>
 						</div>
@@ -319,7 +319,7 @@
           <!-- Dashboard Box -->
           <div class="dashboard-box main-box-in-row">
             <div class="headline">
-              <h3><i class="icon-feather-pie-chart-2"></i> Project Statics</h3>
+              <h3><i class="icon-feather-pie-chart-2"></i><?php echo __('dashboard_freelancer_project_statics','Project Statics');?></h3>
             </div>
             <div class="content"> 
               <!-- Chart -->
