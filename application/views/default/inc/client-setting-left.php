@@ -61,30 +61,30 @@ if($loggedUser){
                     </div>
                 </div>
 						<ul data-submenu-title="Start">
-							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> Messages <!--<span class="nav-tag">2</span>--></a></li>
-							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> Favourite</a></li>
-							<li><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
+							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i><?php echo __('dashboard','Dashboard');?></a></li>
+							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i>  <?php echo __('messages','Messages');?><!--<span class="nav-tag">2</span>--></a></li>
+							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i><?php echo __('favourite','Favourite'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-rate-review"></i> <?php echo __('reviews','Reviews'); ?></a></li>
 						</ul>
 						<ul data-submenu-title="Finance">
-							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> Finance</a>
+							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('finance','Finance');?></a>
 								<ul>
-									<li><a href="<?php D(get_link('AddFundURL'))?>">Add Fund</a></li>
-									<li><a href="<?php D(get_link('TransactionHistoryURL'))?>">Transaction</a></li>
-									<li><a href="<?php D(get_link('WithdrawURL'))?>">Withdraw</a></li>
-									<li><a href="<?php D(get_link('InvoiceURL'))?>">Invoice</a></li>
+									<li><a href="<?php D(get_link('AddFundURL'))?>"><?php echo __('add_fund','Add Fund');?></a></li>
+									<li><a href="<?php D(get_link('TransactionHistoryURL'))?>"><?php echo __('transaction','Transaction')?></a></li>
+									<li><a href="<?php D(get_link('WithdrawURL'))?>"><?php echo __('withdraw','Withdraw');?></a></li>
+									<li><a href="<?php D(get_link('InvoiceURL'))?>"><?php echo __('invoice','Invoice');?></a></li>
 								</ul>	
 							</li>
 						</ul>
 						<ul data-submenu-title="Organize and Manage">
-							<li><a href="#"><i class="icon-material-outline-business-center"></i> Projects</a>
+							<li><a href="#"><i class="icon-material-outline-business-center"></i><?php echo __('projects','Projects');?></a>
 								<ul>
 									<!--<li><a href="<?php D(get_link('myprojectrecentClientURL'))?>">My Projects</a></li>-->
-									<li><a href="<?php D(get_link('myProjectClientURL'))?>">All Posting</a></li>
-									<li><a href="<?php D(get_link('OfferList'))?>">All Offers </a></li>
-									<li><a href="<?php D(get_link('ContractList'))?>">All Contract </a></li>
+									<li><a href="<?php D(get_link('myProjectClientURL'))?>"><?php echo __('all_posting','All Posting');?></a></li>
+									<li><a href="<?php D(get_link('OfferList'))?>"><?php echo __('all_offers','All Offers');?></a></li>
+									<li><a href="<?php D(get_link('ContractList'))?>"><?php echo __('all_contracts','All Contract');?></a></li>
 									<!--<li><a href="<?php D(get_link('myContractClientURL'))?>">All Contracts</a></li>-->
-									<li><a href="<?php D(get_link('postprojectURL'))?>">Post a Job</a></li>
+									<li><a href="<?php D(get_link('postprojectURL'))?>"><?php echo __('post_a_job','Post a Job');?></a></li>
 								</ul>	
 							</li>
 							<!--<li><a href="#"><i class="icon-material-outline-assignment"></i> Tasks</a>
@@ -98,15 +98,15 @@ if($loggedUser){
 						</ul>
 
 						<ul data-submenu-title="Account">
-							<li><a href="<?php D(get_link('settingclientaccountInfoURL'))?>"><i class="icon-material-outline-settings"></i> Settings</a>
+							<li><a href="<?php D(get_link('settingclientaccountInfoURL'))?>"><i class="icon-material-outline-settings"></i><?php echo __('settings','Settings');?></a>
 								<ul>
-									<li><a href="<?php D(get_link('settingclientaccountInfoURL'))?>">Contact info</a></li>
-									<li><a href="<?php D(get_link('settingpasswordURL'))?>">Password & security</a></li>
+									<li><a href="<?php D(get_link('settingclientaccountInfoURL'))?>"><?php echo __('contact_info','Contact info');?></a></li>
+									<li><a href="<?php D(get_link('settingpasswordURL'))?>"><?php echo __('password_security','Password & security');?></a></li>
 								</ul>
 							
 							</li>
 							
-							<li><a href="<?php D(get_link('logoutURL'))?>"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+							<li><a href="<?php D(get_link('logoutURL'))?>"><i class="icon-material-outline-power-settings-new"></i><?php echo __('logout','Logout');?></a></li>
 						</ul>
 						
 					</div>

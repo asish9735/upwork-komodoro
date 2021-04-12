@@ -27,3 +27,21 @@ $lang['finance'] ='المالية';
 $lang['notifications'] ='إشعارات';
 $lang['favourite'] ='المفضل';
 $lang['reviews'] ='المراجعات';
+$lang['add_fund'] ='إضافة تمويل';
+$lang['transaction'] ='عملية';
+$lang['withdraw'] ='ينسحب';
+$lang['invoice'] ='فاتورة';
+$lang['my_proposals'] ='مقترحاتي';
+$lang['my_offers'] ='عروضي';
+$lang['my_contract'] ='عقدي';
+$lang['contact_info'] ='معلومات الاتصال';
+$lang['password_security'] ='كلمة المرور والأمان';
+$lang['all_posting'] ='كل النشر';
+$lang['all_offers'] ='كل العروض';
+$lang['all_contracts'] ='كل العقد';
+
+
+
+
+
+
