@@ -25,14 +25,15 @@
     </div>
   </div>
 </div>
-<?php }?>
+<?php }?> 
+
 <div class="banner-search">
   <div class="container h-100">
     <div class="row align-items-center h-100">
       <div class="col-md-7 col-12">
         <div class="banner-headline">
-          <h2><?php echo __('home_page_banner_header','Lorem ipsum dolor sit amet consectetur adipiscing elit');?></h2>
-          <p><?php echo __('home_page_banner_p_tag','Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');?> <!--Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--></p>
+          <h2><?php echo __('home_page_banner_header','Welcome to the new gen of hiring where bright ideas turn into reality.');?></h2>
+          <p><?php echo __('home_page_banner_p_tag','Your only job platform to find the best talents, flexible job opportunities and handsome payment.');?></p>
           <div class="input-group mb-3" hidden>
             <input type="text" class="form-control" placeholder="Search projects or professionals" />
             <div class="input-group-append">
@@ -49,8 +50,8 @@
 <section class="section">
   <div class="container">
     <div class="section-headline centered mb-4">
-      <h2><?php echo __('home_page_job_categories_h2_tag','Popular Category')?></h2>
-      <p><?php echo __('home_page_job_categories_p_tag','Below are the lists of popular job categories. The freelancers can find a suitable job category and pick up an ideal job that matches their expertise as well as professional experience.')?></p>
+      <h2><?php echo __('home_page_job_categories_h2_tag','Popular Services')?></h2>
+      <p><?php echo __('home_page_job_categories_p_tag','Find the most talented professionals from wherever you are. Hire easily and get your projects delivered in no time. Choose between the most trending categories and get them onboard.')?></p>
     </div>
     <div class="row row-10">
  <?php
@@ -160,8 +161,8 @@ if($cms_temp){
 <section class="section pt-0 full-width-carousel-fix">
   <div class="container">
     <div class="section-headline centered mb-3">
-      <h2><?php echo __('home_page_freelancers_categories_h2_tag','Hire Professionals');?></h2>
-      <p><?php echo __('home_page_freelancers_categories_p_tag','Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.');?></p>
+      <h2><?php echo __('home_page_freelancers_categories_h2_tag','Hire the Best Talents');?></h2>
+      <p><?php echo __('home_page_freelancers_categories_p_tag','Collaborate with the top tier freelancers for your brands and turn your vision into reality. Have a look at the most experienced, talented and thoroughly-bred professionals.');?></p>
     </div>
     <div class="default-slick-carousel freelancers-container freelancers-grid-layout"> 
 <?php
@@ -298,7 +299,7 @@ if($cms_temp){
 <div class="container">
 <!-- Section Headline -->
 <div class="section-headline centered">
-  <h2><?php echo __('home_page_feedback_header','Client Feedback');?></h2>
+  <h2><?php echo __('home_page_feedback_header','Client Testimonials');?></h2>
   <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>-->
 </div>
 <div class="testimonial-style-5 testimonial-slider-2 poss--relative">     
@@ -347,9 +348,9 @@ if($cms_temp){
             	<div class="card text-center">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE;?>icon_hire.png" alt="icon hire" class="mb-3">
-                    	<h3><?php echo __('home_page_choose_acc_hire_h3_tag','I want to hire a');?></h3>
+                    	<h3><?php echo __('home_page_choose_acc_hire_h3_tag','Finding professionals to hire?');?></h3>
                         <h2><?php echo __('home_page_choose_acc_hire_h2_tag','Professionals');?></h2>                        
-                        <p><?php echo __('home_page_choose_acc_hire_p_tag','');?></p>
+                        <p><?php echo __('home_page_choose_acc_hire_p_tag','Your perfect talent waits! Hire the most qualified applicants from thousands of freelancers and get the job done. Find out why Upwork Clone Script is trusted by hundreds of employers.');?></p>
                         <a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_hire_a_tag','Post A Job');?></a>
                     </div>
                 </div>
@@ -358,9 +359,9 @@ if($cms_temp){
             	<div class="card text-center">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE;?>icon_job.png" alt="icon job" class="mb-3">
-                    	<h3><?php echo __('home_page_choose_acc_job_h3_tag','I am looking for');?></h3>
+                    	<h3><?php echo __('home_page_choose_acc_job_h3_tag','Are you looking for projects?');?></h3>
                         <h2><?php echo __('home_page_choose_acc_job_h2_tag','Projects');?></h2>                        
-                        <p><?php echo __('home_page_choose_acc_job_p_tag','');?></p>
+                        <p><?php echo __('home_page_choose_acc_job_p_tag','Browse through millions of job posts, view local and international projects, discover new companies, gain trust and build a promising freelancing career. Know about the job nature, use your skill and get hired.');?></p>
                         <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_job_a_tag','Get Started');?></a>
                     </div>
                 </div>

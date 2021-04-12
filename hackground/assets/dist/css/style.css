@@ -2548,9 +2548,6 @@ box-shadow:0 2px 3px rgba(0, 0, 0, 0.125)
 .login-logo a, .register-logo a {
 	color:#444
 }
-.login-page, .register-page {
-	background:#d2d6de
-}
 .login-box, .register-box {
 	width:360px;
 	margin:7% auto

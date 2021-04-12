@@ -39,7 +39,16 @@ $lang['password_security'] ='كلمة المرور والأمان';
 $lang['all_posting'] ='كل النشر';
 $lang['all_offers'] ='كل العروض';
 $lang['all_contracts'] ='كل العقد';
-
+$lang['share_facebook'] ='انشر في الفيسبوك';
+$lang['share_twitter'] ='حصة على التغريد';
+$lang['share_linkedin'] ='انشر على لينكد إن';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
 
 
 

@@ -39,7 +39,16 @@ $lang['password_security'] ='Password & security';
 $lang['all_posting'] ='All Posting';
 $lang['all_offers'] ='All Offers';
 $lang['all_contracts'] ='All Contract';
-
+$lang['share_facebook'] ='Share on Facebook';
+$lang['share_twitter'] ='Share on Twitter';
+$lang['share_linkedin'] ='Share on LinkedIn';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
+$lang[''] ='';
 
 
 

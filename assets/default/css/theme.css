@@ -7233,7 +7233,12 @@ width: 50px !important;
 }
 .photo-box.small .photo-box-content p {
 	color: #777;
+	display: -webkit-box;
 	font-size:0.933rem;
+	-webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .photo-box.small .photo-box-content span {
 	color: #fff;
