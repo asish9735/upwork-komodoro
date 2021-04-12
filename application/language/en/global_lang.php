@@ -39,16 +39,58 @@ $lang['password_security'] ='Password & security';
 $lang['all_posting'] ='All Posting';
 $lang['all_offers'] ='All Offers';
 $lang['all_contracts'] ='All Contract';
+
 $lang['share_facebook'] ='Share on Facebook';
 $lang['share_twitter'] ='Share on Twitter';
 $lang['share_linkedin'] ='Share on LinkedIn';
+//---- FOOTER----------
+$lang['category'] ='Category';
+$lang['business'] ='Business';
+$lang['digital_marketing'] ='Digital Marketing';
+$lang['graphics_design'] ='Graphics &amp; Design';
+$lang['sitemap'] ='Sitemap';
+$lang['lifestyle'] ='Lifestyle';
+$lang['music_audio'] ='Music &amp; Audio';
+$lang['programming_tech'] ='';
+$lang['video_animation'] ='';
+$lang['writing_translation'] ='Writing &amp; Translation';
+
+$lang['browse'] ='Browse';
+$lang['about_us'] ='About Us';
+$lang['enterprise'] ='Enterprise';
+$lang['faqs'] ='FAQs';
+$lang['membership'] ='Membership';
+$lang['privacy_policy'] ='Privacy Policy';
+$lang['refund_policy'] ='Refund Policy';
+$lang['terms_conditions'] ='Terms &amp; Conditions';
+$lang['company'] ='Company';
+$lang['freelancer_by_skill'] ='Freelancers by Skill';
+$lang['freelancer_by_location'] ='Freelancers by Location';
+$lang['find_projects'] ='Find Projects';
+$lang['find_professionals'] ='Find Professionals';
+$lang['freelancer_in_uk'] ='Freelancers in UK';
+$lang['freelancer_in_usa'] ='Freelancers in USA';
+$lang['freelancer_in_canada'] ='Freelancers in Canada';
+$lang['freelancer_in_australia'] ='Freelancers in Australia';
+$lang['jobs_in_usa'] ='Jobs in USA';
+$lang['resources'] ='Resources';
+$lang['business_resources'] ='Business Resources';
+$lang['customer_stories'] ='Customer Stories';
+$lang['customer_support'] ='Customer Support';
+$lang['hiring_headquarters'] ='Hiring Headquarters';
+$lang['payroll_services'] ='Payroll Services';
+$lang['trust_safety'] ='Trust &amp; Safety';
+$lang['all_rights_reserved'] ='All Rights Reserved';
+$lang['copyright'] ='Copyright';
 $lang[''] ='';
 $lang[''] ='';
-$lang[''] ='';
-$lang[''] ='';
-$lang[''] ='';
-$lang[''] ='';
-$lang[''] ='';
+
+
+
+
+
+
+
 
 
 

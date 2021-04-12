@@ -518,8 +518,8 @@ $currency=priceSymbol();
 				clearErrors();
 				if (msg['status'] == 'OK') {
 					bootbox.alert({
-						title: 'Apply Project',
-						message: 'Application successfully sent',
+						title: 'Project Applied Successfully!',
+						message: 'Your submission has been received. You will receive a confirmation shortly in the provided email ID.',
 						size: 'small',
 						buttons: {
 							ok: {

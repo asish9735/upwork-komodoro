@@ -6,65 +6,65 @@
       <div class="row"> 
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3>Category</h3>
+            <h3><?php echo __('category','Category');?></h3>
             <ul>
-              <li><a href="#"><span>Business</span></a></li>
-              <li><a href="#"><span>Digital Marketing</span></a></li>
-              <li><a href="#"><span>Graphics &amp; Design</span></a></li>              
-              <li><a href="#"><span>Lifestyle</span></a></li>
-              <li><a href="#"><span>Music &amp; Audio</span></a></li>
-              <li><a href="#"><span>Programming &amp; Tech</span></a></li>
-              <li><a href="#"><span>Sitemap</span></a></li>
-              <li><a href="#"><span>Video &amp; Animation</span></a></li>
-              <li><a href="#"><span>Writing &amp; Translation</span></a></li>
+              <li><a href="#"><span><?php echo __('business','Business');?></span></a></li>
+              <li><a href="#"><span><?php echo __('digital_marketing','Digital Marketing');?></span></a></li>
+              <li><a href="#"><span><?php echo __('graphics_design','Graphics &amp; Design');?></span></a></li>              
+              <li><a href="#"><span><?php echo __('lifestyle','Lifestyle');?></span></a></li>
+              <li><a href="#"><span><?php echo __('music_audio','Music &amp; Audio');?></span></a></li>
+              <li><a href="#"><span><?php echo __('programming_tech','Programming &amp; Tech');?></span></a></li>
+              <li><a href="#"><span><?php echo __('sitemap','Sitemap');?></span></a></li>
+              <li><a href="#"><span><?php echo __('video_animation','Video &amp; Animation');?></span></a></li>
+              <li><a href="#"><span><?php echo __('writing_translation','Writing &amp; Translation');?></span></a></li>
             </ul>
           </div>
         </div>
         <!-- Links -->
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3>Browse</h3>
+            <h3><?php echo __('browse','Browse');?></h3>
             <ul>
-              <li><a href="#"><span>Freelancers by Skill</span></a></li>
-              <li><a href="#"><span>Freelancers by Location</span></a></li>
-              <li><a href="#"><span>Find Projects</span></a></li>
-              <li><a href="#"><span>Find Professionals</span></a></li>
-              <li><a href="#"><span>Freelancers in UK</span></a></li>
-              <li><a href="#"><span>Freelancers in USA</span></a></li>
-              <li><a href="#"><span>Freelancers in Canada</span></a></li>
-              <li><a href="#"><span>Freelancers in Australia</span></a></li>
-              <li><a href="#"><span>Jobs in USA</span></a></li>
+              <li><a href="#"><span><?php echo __('freelancer_by_skill','Freelancers by Skill');?></span></a></li>
+              <li><a href="#"><span><?php echo __('freelancer_by_location','Freelancers by Location');?></span></a></li>
+              <li><a href="#"><span><?php echo __('find_projects','Find Projects');?></span></a></li>
+              <li><a href="#"><span><?php echo __('find_professionals','Find Professionals');?></span></a></li>
+              <li><a href="#"><span><?php echo __('freelancer_in_uk','Freelancers in UK');?></span></a></li>
+              <li><a href="#"><span><?php echo __('freelancer_in_usa','Freelancers in USA');?></span></a></li>
+              <li><a href="#"><span><?php echo __('freelancer_in_canada','Freelancers in Canada');?></span></a></li>
+              <li><a href="#"><span><?php echo __('freelancer_in_australia','Freelancers in Australia');?></span></a></li>
+              <li><a href="#"><span><?php echo __('jobs_in_usa','Jobs in USA');?></span></a></li>
             </ul>
           </div>
         </div>
         <!-- Links -->
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3>Company</h3>
+            <h3><?php echo __('company','Company');?></h3>
             <ul>
-              <li><a href="<?php D(get_link('CMSaboutus'))?>"><span>About Us</span></a></li>                                                        
-              <li><a href="<?php D(get_link('conatctURL'))?>"><span>Contact Us</span></a></li>
-              <li><a href="<?php D(get_link('enterpriseURL'))?>"><span>Enterprise</span></a></li>
-              <li><a href="<?php D(get_link('CMShelp'))?>"><span>FAQs</span></a></li>              
-              <li><a href="<?php D(get_link('CMShowitworks'))?>"><span>How it works</span></a></li>
-              <li><a href="<?php D(get_link('membershipURL'))?>"><span>Membership</span></a></li>
-              <li><a href="<?php D(get_link('CMSprivacypolicy'))?>"><span>Privacy Policy</span></a></li>
-              <li><a href="<?php D(get_link('CMSrefundpolicy'))?>"><span>Refund Policy</span></a></li>
-              <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span>Terms &amp; Conditions</span></a></li>              
+              <li><a href="<?php D(get_link('CMSaboutus'))?>"><span><?php echo __('about_us','About Us');?></span></a></li>                                                        
+              <li><a href="<?php D(get_link('conatctURL'))?>"><span><?php echo __('contact_us','Contact Us');?></span></a></li>
+              <li><a href="<?php D(get_link('enterpriseURL'))?>"><span><?php echo __('enterprise','Enterprise');?></span></a></li>
+              <li><a href="<?php D(get_link('CMShelp'))?>"><span><?php echo __('faqs','FAQs');?></span></a></li>              
+              <li><a href="<?php D(get_link('CMShowitworks'))?>"><span><?php echo __('how_it_works','How it works');?></span></a></li>
+              <li><a href="<?php D(get_link('membershipURL'))?>"><span><?php echo __('membership','Membership');?></span></a></li>
+              <li><a href="<?php D(get_link('CMSprivacypolicy'))?>"><span><?php echo __('privacy_policy','Privacy Policy');?></span></a></li>
+              <li><a href="<?php D(get_link('CMSrefundpolicy'))?>"><span><?php echo __('refund_policy','Refund Policy');?></span></a></li>
+              <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span><?php echo __('terms_conditions','Terms &amp; Conditions');?></span></a></li>              
             </ul>
           </div>
         </div>        
         <!-- Links -->
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3>Resources</h3>
+            <h3><?php echo __('resources','Resources');?></h3>
             <ul>
-              <li><a href="#"><span>Business Resources</span></a></li>
-              <li><a href="#"><span>Customer Stories</span></a></li>
-              <li><a href="#"><span>Customer Support</span></a></li>
-              <li><a href="#"><span>Hiring Headquarters</span></a></li>              
-              <li><a href="#"><span>Payroll Services</span></a></li>
-              <li><a href="#"><span>Trust &amp; Safety</span></a></li>
+              <li><a href="#"><span><?php echo __('business_resources','Business Resources');?></span></a></li>
+              <li><a href="#"><span><?php echo __('customer_stories','Customer Stories');?></span></a></li>
+              <li><a href="#"><span><?php echo __('customer_support','Customer Support');?></span></a></li>
+              <li><a href="#"><span><?php echo __('hiring_headquarters','Hiring Headquarters');?></span></a></li>              
+              <li><a href="#"><span><?php echo __('payroll_services','Payroll Services');?></span></a></li>
+              <li><a href="#"><span><?php echo __('trust_safety','Trust &amp; Safety');?></span></a></li>
             </ul>
           </div>
         </div>                
@@ -88,7 +88,7 @@
           </ul>
 	  </div>              
       <div class="col text-center">
-        	<p>&copy; Copyright 2020 Demo.com. All Rights Reserved</p>
+        	<p>&copy; <?php echo __('copyright','Copyright');?> 2020 Demo.com. <?php echo __('all_rights_reserved','All Rights Reserved');?></p>
         </div>
       
       <!-- Right Side -->
