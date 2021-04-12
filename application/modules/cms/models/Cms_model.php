@@ -5,7 +5,7 @@ class Cms_model extends MX_Controller {
 
 	function __construct()
 	{
-		
+		$this->lang = get_active_lang();
 			parent::__construct();
 	}
 	public function getTempContent($page=''){
@@ -21,7 +21,7 @@ class Cms_model extends MX_Controller {
 				$arr=array(
 					'select'=>'c.part_id,c.part_class,c.part_content',
 					'table'=>'cms_temp_part as c',
-					'where'=>array('c.cms_key'=>$sec->cms_key),
+					'where'=>array('c.cms_key'=>$sec->cms_key,'c.lang'=>$this->lang),
 					'order'=>array(array('c.part_order','asc'))
 				);
 				$section[$k]->part=getData($arr);

@@ -1991,8 +1991,10 @@ if(!function_exists('get_active_lang')){
 	
 	
 	function get_active_lang(){
+		$ci = &get_instance();
 		$default_lang = get_default_lang();
-		$lang = get_session('active_lang');
+	//	$lang = get_session('active_lang');
+		$lang = $ci->config->item('language');
 		if(!$lang){
 			$lang = $default_lang;
 		}
