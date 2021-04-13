@@ -27,6 +27,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span id="emailError" class="rerror"></span>
     </div>    
     <button class="btn btn-site btn-block mb-3 signUpBTN"><?php echo __('user_page_signup_button','Sign Up');?></button>    
+    <div class="social-login-separator"><span><?php echo __('user_page_login_separetor','OR');?></span></div>
+        <div class="social-login-buttons mb-3">
+            <button class="facebook-login ripple-effect fb_login_btn"><i class="icon-brand-facebook-f"></i> <?php echo __('user_page_login_facebook','Log In via Facebook');?></button>
+            <button class="google-login ripple-effect google_login_btn"><i class="icon-brand-google"></i> <?php echo __('user_page_login_google','Log In via Google');?></button>
+        </div>
    </div>
     <div id="step_2" style="display: none">
      <h2 class="text-center m-0"><?php echo __('user_page_signup_account','Complete your account');?></h2>
@@ -97,3 +102,4 @@ function nextstep(res){
 
 </div>  
 </section>
+<?php $this->layout->view('inc/social-login','',true);?>
