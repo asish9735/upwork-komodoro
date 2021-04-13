@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if(!$is_editable){
 ?>
 <style>
+.portfolio-action-btn .edit_account_btn{
+	display: block !important;
+}
 .edit_account_btn, .delete_account_btn, .edit_logo_btn {
 	display: none !important;
 }
@@ -669,7 +672,14 @@ function check_login(succ, fail){
 	});
 }
 var  main = function(){
-	
+	$('#edit-profile-page').on('click','.edit_account_btn',function(){
+		$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+		$('#myModal').modal('show');
+		var formtype=$(this).attr('data-popup');
+		$.get( "<?php echo get_link('editprofileAJAXURL')?>",{'formtype':formtype,'Okey':$(this).attr('data-popup-id')}, function( data ) {
+			setTimeout(function(){ $( "#myModal .mycustom-modal").html( data );$('.selectpicker').selectpicker('refresh');if(formtype=='skill'){load_tag_input(bh);}},1000)
+		});
+	});
 	load_data('language');
 	load_data('employment');
 	load_data('education');

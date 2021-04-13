@@ -275,10 +275,35 @@ class Profileview extends MX_Controller {
 	}
 	public function get_form(){
 		checkrequestajax();
-		if($this->access_member_type=='E'){
+		$form_type=get('formtype');
+		if($form_type=='portfolio_view'){
+			$dataid=get('Okey');
+				$memberportfolio=array();
+				if($dataid){
+					$memberportfolio=getData(array(
+					'select'=>'m_p.portfolio_id,m_p.portfolio_title,m_p.portfolio_description,m_p.portfolio_complete_date,m_p.portfolio_url,m_p.category_id,m_p.category_subchild_id,m_p.portfolio_image,c_n.category_name,cs_n.category_subchild_name',
+					'table'=>'member_portfolio as m_p',
+					'join'=>array(array('table'=>'category_names as c_n','on'=>"(m_p.category_id=c_n.category_id and c_n.category_lang='".get_active_lang()."')",'position'=>'left'),array('table'=>'category_subchild_names as cs_n','on'=>"(m_p.category_subchild_id=cs_n.category_subchild_id and cs_n.category_subchild_lang='".get_active_lang()."')",'position'=>'left')),
+					'where'=>array('m_p.portfolio_id'=>$dataid),
+					'single_row'=>true,
+					));
+				}	
+				$this->data['memberInfo']=$memberportfolio;
+				$this->data['all_category']=getAllCategory();
+				$all_category_subchild=array();
+				if($memberportfolio && $memberportfolio->category_id){
+					$all_category_subchild=getAllSubCategory($memberportfolio->category_id);
+				}
+				$this->data['all_category_subchild']=$all_category_subchild;
+				$this->data['formtype']=$form_type;
+				$this->data['dataid']=$dataid;
+				$this->layout->view('ajax-portfolio-view', $this->data,TRUE);
+			//die;
+		}
+		elseif($this->access_member_type=='E'){
 			redirect(get_link('dashboardURL'));
 		}
-		if($this->loggedUser){
+		elseif($this->loggedUser){
 			$member_id=$this->member_id;	
 			$form_type=get('formtype');
 			if($form_type=='heading'){
