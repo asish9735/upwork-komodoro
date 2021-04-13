@@ -131,20 +131,36 @@ class User extends MX_Controller {
 		if(post('step')){
 			$step=post('step');
 		}
-		if($step>=1){
+		if($step>=1 && $step!=3){
 			$this->form_validation->set_rules('name', 'Name', 'required|trim|xss_clean');
 			$this->form_validation->set_rules('email', 'Email', 'required|trim|xss_clean|valid_email|is_unique[access_panel.access_user_email]',array('is_unique' => 'This email already exists. Please use the reset password link'));
 		}
-		if($step==2){
+		if($step==2 || $step==3){
 			$this->form_validation->set_rules('country', 'Country name', 'required|trim|xss_clean');
 			$this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean|max_length[15]|min_length[6]|alpha_numeric');
 			$this->form_validation->set_rules('user_type', 'User type', 'required|trim|xss_clean');
 			
 			if(post('user_type') && post('user_type')=='F'){
-			$this->form_validation->set_rules('username', 'username', 'required|trim|xss_clean|is_unique[member.member_username]',array('is_unique' => 'Already exists'));
+				$this->form_validation->set_rules('username', 'username', 'required|trim|xss_clean|is_unique[member.member_username]',array('is_unique' => 'Already exists'));
 			}
 		}
-		
+		if($step==3){
+			$solial_log=$this->session->userdata('solial_log');
+			if(!$solial_log){
+				$this->form_validation->set_rules('solial_log', 'error', 'required');
+			}else{
+				$email=$solial_log['email'];
+				if(!$email){
+					$this->form_validation->set_rules('email', 'Email', 'required');
+				}else{
+					$check=$this->db->where('access_user_email',$email)->count_all_results('access_panel');
+					if($check){
+						$this->form_validation->set_rules('email', 'Email', 'required',array('required' => 'This email already exists. Please use the reset password link'));	
+					}
+				}
+				
+			}
+		}
 		
 		if($this->form_validation->run( )== FALSE){
 			$error=validation_errors_array();
@@ -172,30 +188,45 @@ class User extends MX_Controller {
 				$msg['calback'] = 'nextstep';
 				$msg['calbackdata'] = array('email'=>post('email'));
 				
-			}elseif($step==2){
+			}elseif($step==2 || $step==3){
 				$pass=post('password');
 				$hash = $this->bcrypt->hash_password($pass);
-				$dataPost=array(
+				if($step==3){
+					$dataPost=array(
+						'access_user_email'=>$solial_log['email'],
+						'access_user_password'=>$hash,
+						'login_status'=>1,
+					);
+					$email=$solial_log['email'];
+					$name=$solial_log['name'];
+				}else{
+					$dataPost=array(
 						'access_user_email'=>trim(post('email')),
 						'access_user_password'=>$hash,
 						'login_status'=>1,
 					);
+					$email=trim(post('email'));
+					$name=trim(post('name'));
+				}
 				$LID=insert_record('access_panel',$dataPost,TRUE);
 				if($LID){
 					$token = md5(time().'-'.$LID);
-					$code=md5(post('email'));
+					$code=md5($email);
 					$username=NULL;
 					if(post('username')){
 						$username=post('username');
 					}
-					$insdata=array('access_user_id'=>$LID,'member_name'=>trim(post('name')),'member_email'=>trim(post('email')),'member_register_date'=>date('Y-m-d H:i:s'),'member_username'=>$username);
+					$insdata=array('access_user_id'=>$LID,'member_name'=>$name,'member_email'=>$email,'member_register_date'=>date('Y-m-d H:i:s'),'member_username'=>$username);
 					if(post('user_type')=='E'){
 						$insdata['is_employer']=1;
+					}
+					if($step==3){
+						$insdata['is_email_verified']=1;
 					}
 					$member_id=insert_record('member',$insdata,TRUE);
 					if(post('user_type')=='E'){
 						$organization_name=$insdata['member_name'];
-						$organization_id=insert_record('organization',array('organization_name'=>$organization_name,'organization_email'=>trim(post('email')),'organization_register_date'=>date('Y-m-d H:i:s'),'member_id'=>$member_id),TRUE);
+						$organization_id=insert_record('organization',array('organization_name'=>$organization_name,'organization_email'=>$email,'organization_register_date'=>date('Y-m-d H:i:s'),'member_id'=>$member_id),TRUE);
 						if($organization_id){
 							insert_record('organization_address',array('organization_id'=>$organization_id,'organization_country'=>post('country')),FALSE);
 						}
@@ -209,24 +240,27 @@ class User extends MX_Controller {
 						$LAST_PCI=$this->user_model->getLastActive($LID);
 						$customer=array('LID'=>$LAST_PCI['LID'],'ACC_P_TYP'=>$LAST_PCI['TYP'],'OID'=>$LAST_PCI['OID'],'MID'=>$LAST_PCI['MID'],'UNAME'=>$LAST_PCI['UNAME']);
 						$this->session->set_userdata('loggedUser',$customer);
-						$id=insert_record('profile_verify_token',$insdataToken,TRUE);
-
+						if($step==2){
+							$id=insert_record('profile_verify_token',$insdataToken,TRUE);
+						}
 						if(post('user_type')=='F'){
 							getMembershipData($member_id);
 						}
 					}
 					
 					if($token){
-						$url=URL::get_link('VerifyURL').$token;
-						$template='email-verification';
-						$data_parse=array(
-						'MEMBER_NAME'=>$profile_name,
-						'VERIFICATION_URL'=>$url,
-						);
-						$to=post('email');
-						//$to='asish9735@gmail.com';
-						SendMail($to,$template,$data_parse);
-						
+						if($step==2){
+							$url=URL::get_link('VerifyURL').$token;
+							$template='email-verification';
+							$data_parse=array(
+							'MEMBER_NAME'=>$profile_name,
+							'VERIFICATION_URL'=>$url,
+							);
+							$to=post('email');
+							//$to='asish9735@gmail.com';
+							SendMail($to,$template,$data_parse);
+							
+						}
 						$template='new-registration';
 						$data_parse=array(
 						'MEMBER_URL'=>ADMIN_URL.'member/list_record',
@@ -240,6 +274,7 @@ class User extends MX_Controller {
 						$msg['name'] = $profile_name;
 						//$msg['redirect'] = VPATH."user-signup-verify";
 						$msg['redirect'] =URL::get_link('dashboardURL');
+						$this->session->unset_userdata('solial_log');
 					}else{
 						$msg['status'] = 'FAIL';
 						$msg['errors'][$i]['id'] = 'email';
@@ -482,7 +517,106 @@ class User extends MX_Controller {
 		$this->api->out();
 		
 	}
+	public function applogin_check($type='')
+	{
+		$this->load->library('form_validation');
+		checkrequestajax();
+		$i=0;
+		$msg=array();
+		if($this->input->post() && $type){
+			if($type=='facebook' || $type=='google'){
+				/*$url='https://graph.facebook.com/oauth/access_token?client_id=1225948780930403&client_secret=45db911b706fabb4256965e3ff6e75d2&grant_type=client_credentials';
+				$valid=checkvalidfacebook($url);
+				$url='https://graph.facebook.com/v5.0/'.post('id').'/?access_token='.$valid->access_token;
+				$valid=checkvalidfacebook($url);
+				var_dump($valid);*/
+				$this->form_validation->set_rules('id', __('accesspanel_id','id'), 'required|trim|xss_clean');
+				//$this->form_validation->set_rules('name', 'name', 'required|trim|xss_clean');
+				$this->form_validation->set_rules('email', __('accesspanel_lang_signup_Email','Email'), 'required|trim|xss_clean|valid_email');
+				if ($this->form_validation->run() == FALSE){
+					$error=validation_errors_array();
+					if($error){
+						foreach($error as $key=>$val){
+							$msg['status'] = 'FAIL';
+			    			$msg['errors'][$i]['id'] = $key;
+			    			$msg['errors'][$i]['message'] = $val;
+			    			if($key=='email'){
+								$msg['errors'][$i]['message'] = __('accesspanel_lang_email_not_exists','Email not exists or not valid from api');
+							}
+			   				$i++;
+						}
+					}
+				}
+				else{
+					$customerData=getData(array(
+					'select'=>'a.access_user_id,a.access_user_password,login_status',
+					'table'=>'access_panel a',
+					'where'=>array('a.access_user_email'=>trim(post('email'))),
+					'single_row'=>true,
+					));
+					if($customerData){
+						if($customerData->login_status==1){
+							$LAST_PCI=$this->user_model->getLastActive($customerData->access_user_id);
+							$customer=array('LID'=>$customerData->access_user_id,'LAST_PCI'=>$LAST_PCI['LAST_PCI'],'ACC_P_TYP'=>$LAST_PCI['TYP'],'MID'=>$LAST_PCI['MID'],'OID'=>$LAST_PCI['OID'],'UNAME'=>NULL);
+							$this->session->set_userdata('loggedUser',$customer);	
+							$msg['status'] = 'OK';
+							$msg['customsuccess'] = 'successContain';
+							$msg['redirect'] =get_link('dashboardURL');
+							if($this->input->post('ref')){
+								$refferURL=$this->input->post('ref');
+								if($this->config->item($refferURL)){
+									$msg['redirect'] =get_link($refferURL);
+								}
+							}elseif($this->input->post('refer')){
+								$refferURL=get_link('homeURL').'/'.$this->input->post('refer');
+								$msg['redirect'] =$refferURL;
+							}
+						}
+					}
+					else{
+						$solial_log=array(
+							'id'=>trim(post('id')),
+							'email'=>trim(post('email')),
+							'name'=>trim(post('name')),
+						);
+						$this->session->set_userdata('solial_log',$solial_log);
 
+						$msg['status'] = 'OK';
+						$msg['customsuccess'] = 'successContain';
+						$msg['redirect'] =get_link('SocialRegURL');
+						if($this->input->post('ref')){
+							$refferURL=$this->input->post('ref');
+							$msg['redirect'].='?ref='.$refferURL;
+						}elseif($this->input->post('refer')){
+							$refferURL=$this->input->post('refer');
+							$msg['redirect'].='?refer='.$refferURL;
+						}
+						
+					}
+					
+				}
+				
+			}
+	
+		}
+	unset($_POST);
+	echo json_encode($msg);		
+	}
+	public function social_signup() {
+		$breadcrumb = array(
+			array(
+				'title'=>'Signup',
+				'path'=>''
+			)
+		);
+		$this->data['solial_log']=$this->session->userdata('solial_log');
+		if(!$this->data['solial_log']){
+			redirect(URL::get_link('homeURL'));
+		}
+		$this->data['country']=getAllCountry();
+		$this->data['breadcrumb']=breadcrumb($breadcrumb,'Signup');
+		$this->layout->view('social-signup', $this->data);
+	}
 	
 	
 	public function signup_check() {

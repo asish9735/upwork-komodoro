@@ -127,6 +127,7 @@ echo $this->minify->deploy_js(FALSE, 'footer.min.js');
 
 <!-- Main Script Loading --> 
 <script>
+var is_login="<?php echo ($this->session->userdata('loggedUser') ? 1:0)?>";
 $(document).ready(function(){
 	
 	if(typeof main == 'function'){
@@ -135,7 +136,7 @@ $(document).ready(function(){
   if(typeof mainpart == 'function'){
     mainpart();
 	}
-	
+	if(is_login==1){
 	if(typeof AppService !== 'undefined'){
 		AppService.setUrl('<?php echo base_url('message/update_service'); ?>');
 		AppService.init();
@@ -159,7 +160,7 @@ $(document).ready(function(){
 		});
 		
 	};
-	
+}
 	
 	
 	

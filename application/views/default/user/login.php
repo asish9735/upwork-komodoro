@@ -33,21 +33,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <div class="social-login-separator"><span><?php echo __('user_page_login_separetor','OR');?></span></div>
         <div class="social-login-buttons mb-3">
-            <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> <?php echo __('user_page_login_facebook','Log In via Facebook');?></button>
-            <button class="google-login ripple-effect"><i class="icon-brand-google"></i> <?php echo __('user_page_login_google','Log In via Google');?></button>
+            <button class="facebook-login ripple-effect fb_login_btn"><i class="icon-brand-facebook-f"></i> <?php echo __('user_page_login_facebook','Log In via Facebook');?></button>
+            <button class="google-login ripple-effect google_login_btn"><i class="icon-brand-google"></i> <?php echo __('user_page_login_google','Log In via Google');?></button>
         </div>
         </form>
         <p class="text-center small mb-0"><?php echo __('user_page_login_no_account','');?> <a href="<?php URL::getLink('signup'); ?>"><?php echo __('user_page_login_register','Register Now');?></a></p>
         </div>        
        </div>
-<script type="text/javascript">
-var main = function(){
-		$('#signInBTN').click(function(){
-			console.log('ok');
-			FormPost(this,'Login_form');
-		});	
-	}
-</script>
-
 </div>  
 </section>
+
+<script type="text/javascript">
+var main= function(){
+	$('#signInBTN').click(function(){
+       // console.log('ok');
+        FormPost(this,'Login_form');
+    });
+}
+</script>
+<?php $this->layout->view('inc/social-login','',true);?>
