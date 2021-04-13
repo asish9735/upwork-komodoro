@@ -2,13 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
         <?php if($dataid){?>
-        <h4 class="modal-title">Change language</h4>
+        <h4 class="modal-title"><?php echo __('profileview_language_change','Change language');?></h4>
         <?php }else{?>
-        <h4 class="modal-title">Add language</h4>
+        <h4 class="modal-title"><?php echo __('profileview_language_add','Add language');?></h4>
         <?php }?>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveLanguage(this)">Save</button>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveLanguage(this)"><?php echo __('profileview_save','Save');?></button>
       </div>
     <div class="modal-body">
     <form action="" method="post" accept-charset="utf-8" id="languageform" class="form-horizontal" role="form" name="languageform" onsubmit="return false;">  
@@ -17,12 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php if($memberInfo && $memberInfo->language_id){?>
     <input  type="hidden" value="<?php echo $memberInfo->language_id;?>" id="language" name="language"/>        
         <div class="submit-field">
-            <h5>Language:</h5> 
+            <h5><?php echo __('profileview_language','Language:');?></h5> 
             <p><?php D($memberInfo->language_name);?></p>
         </div>
     <?php }else{?>       	
         <div class="submit-field remove_arrow_select">
-            <h5>Language:</h5>  
+            <h5><?php echo __('profileview_language','Language:');?></h5>  
             <select name="language" id="language"  class="selectpicker browser-default" title="Select language" data-live-search="true">
                 <?php
                 if($alllanguage){
@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php }?>
     	
         <div class="submit-field remove_arrow_select">
-            <h5>Proficiency:</h5>  
+            <h5><?php echo __('profileview_language_proficiency','Proficiency:');?></h5>  
             <div class="language-input margin-top-0">
             <?php
                 if($language_preference){

@@ -70,13 +70,13 @@ if($login_user_id){
         </div>
         <div class="right-side">        	
           <div class="ml-auto" style="min-width: 150px;">          	
-            <p class="mb-0">Job Success <strong><?php echo $memberInfo->success_rate;?>%</strong></p>
+            <p class="mb-0"><?php echo __('profileview_profile_job_success','Job Success');?> <strong><?php echo $memberInfo->success_rate;?>%</strong></p>
             <div class="progress" style="max-width:200px; height:6px;margin-bottom:10px">
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $memberInfo->success_rate;?>%" aria-valuenow="<?php echo $memberInfo->success_rate;?>" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
 			<?php if(!$is_editable){?>
-			<a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-site hire-member btn-sm mr-2">Hire Freelancer</a>
-            <a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-outline-site invite-member btn-sm mr-2">Invite to Job</a>			
+			<a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-site hire-member btn-sm mr-2"><?php echo __('profileview_profile_hire_freelancer','Hire Freelancer');?></a>
+            <a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-outline-site invite-member btn-sm mr-2"><?php echo __('profileview_profile_invite','Invite to Job');?></a>			
 			<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($member_id);?>"><i class="icon-feather-heart"></i></a>		
 			<?php }?>
           </div>
@@ -95,7 +95,7 @@ if($login_user_id){
         <!-- Page Content -->
         <div class="panel mb-4" id="job-about">
           <div class="panel-header d-flex">
-            <h4 class="show_edit_btn">About</h4>
+            <h4 class="show_edit_btn"><?php echo __('profileview_profile_about','About');?></h4>
             <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="overview" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a>
           </div>
           <div class="panel-body">
@@ -108,7 +108,7 @@ if($login_user_id){
         <!-- Boxed List -->
         <div class="boxed-list mb-4" id="job-experience">
           <div class="boxed-list-headline">
-            <h4>Work History and Feedback</h4>
+            <h4><?php echo __('profileview_profile_hist_feed','Work History and Feedback');?></h4>
           </div>
 			<div id="profile-reviews-data"></div>
           
@@ -122,7 +122,7 @@ if($login_user_id){
         
         <div class="boxed-list mb-4" id="job-portfolio">
           <div class="boxed-list-headline d-flex">
-            <h4>Portfolio </h4>
+            <h4><?php echo __('profileview_profile_protfolio','Portfolio');?> </h4>
             <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="portfolio" data-tippy-placement="top" title="Add">
               <icon class="icon-feather-plus"></icon>
               </a>
@@ -137,7 +137,7 @@ if($login_user_id){
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline d-flex">
-            <h4>Employment History</h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="employment" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
+            <h4><?php echo __('profileview_profile_em_history','Employment History');?></h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="employment" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
               </a>
           </div>
           <div id="profile-employment-data"> </div>
@@ -146,7 +146,7 @@ if($login_user_id){
         
         <div class="panel mb-4">
             <div class="panel-header d-flex">
-              <h4>Skills</h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="skill" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a>
+              <h4><?php echo __('profileview_profile_skill','Skills');?></h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="skill" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a>
             </div>
             <div class="panel-body task-tags" id="profile-skill-data"> </div>
           </div>
@@ -154,7 +154,7 @@ if($login_user_id){
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline d-flex">
-            <h4>Education</h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="education" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
+            <h4><?php echo __('profileview_profile_education','Education');?></h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="education" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
               </a>
           </div>
           <div id="profile-education-data"> </div>
@@ -171,7 +171,7 @@ if($login_user_id){
               <!-- Profile Overview -->
               <ul class="list-group-0">
                 <li>
-                <span>Hourly Rate </span>
+                <span><?php echo __('profileview_profile_hou_rate','Hourly Rate');?> </span>
                 <strong>
                   <ec id="profile-hourly-data">
                     <?php if($memberInfo->member_hourly_rate && $memberInfo->member_hourly_rate>0){D(priceSymbol().priceFormat($memberInfo->member_hourly_rate));}elseif(!$is_editable){D('Not set');}else{D('Set');}?>
@@ -179,23 +179,23 @@ if($login_user_id){
                   <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-right ml-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
                 </li>
                 <li>
-                	<span>Total Working Hour</span>
+                	<span><?php echo __('profileview_profile_work_hour','Total Working Hour');?></span>
                 	<strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong>                
                 </li>
                 <li>
-                  <span>Earned</span>
+                  <span><?php echo __('profileview_profile_earned','Earned');?></span>
                   <strong>
                   <?php D(priceSymbol().priceFormat($memberInfo->total_earning));?>
                   </strong>
                 </li>
                 <li>
-                <span>Jobs</span>
+                <span><?php echo __('profileview_profile_job','Jobs');?></span>
                 <strong>
                   <?php D($memberInfo->total_jobs);?>
                   </strong>
                 </li>
                 <li> 
-                <span>Availability</span>
+                <span><?php echo __('profileview_profile_availability','Availability');?></span>
                 <strong>
                   <ec id="profile-availability-data">
                     <?php if($memberInfo->not_available_until){
@@ -225,27 +225,27 @@ if($login_user_id){
               <!-- Indicator -->
               <div class="indicator"> <strong>88%</strong>
                 <div class="indicator-bar" data-indicator-percentage="88"><span></span></div>
-                <span>Job Success</span> </div>
+                <span><?php echo __('profileview_profile_job_success','Job Success');?></span> </div>
               
               <!-- Indicator -->
               <div class="indicator"> <strong>100%</strong>
                 <div class="indicator-bar" data-indicator-percentage="100"><span></span></div>
-                <span>Recommendation</span> </div>
+                <span><?php echo __('profileview_profile_recommendation','Recommendation');?></span> </div>
               
               <!-- Indicator -->
               <div class="indicator"> <strong>90%</strong>
                 <div class="indicator-bar" data-indicator-percentage="90"><span></span></div>
-                <span>On Time</span> </div>
+                <span><?php echo __('profileview_profile_on_time','On Time');?></span> </div>
               
               <!-- Indicator -->
               <div class="indicator"> <strong>80%</strong>
                 <div class="indicator-bar" data-indicator-percentage="80"><span></span></div>
-                <span>On Budget</span> </div>
+                <span><?php echo __('profileview_profile_on_budget','On Budget');?></span> </div>
             </div>
           </div>
           <div class="panel mb-4">
             <div class="panel-header d-flex">
-              <h4>Language</h4>
+              <h4><?php echo __('profileview_profile_language','Language');?></h4>
               <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="language" data-tippy-placement="top" title="Add language"><i class="icon-feather-plus"></i></a>
             </div>
             <div class="panel-body" id="profile-language-data"> </div>
@@ -253,14 +253,14 @@ if($login_user_id){
           
           <!-- Widget -->
           <div class="sidebar-widget d-none">
-            <h3>Attachments</h3>
-            <div class="attachments-container"> <a href="#" class="attachment-box"><span>Cover Letter</span><i>PDF</i></a> <a href="#" class="attachment-box"><span>Contract</span><i>DOCX</i></a> </div>
+            <h3><?php echo __('profileview_profile_attachment','Attachments');?></h3>
+            <div class="attachments-container"> <a href="#" class="attachment-box"><span><?php echo __('profileview_profile_letter','Cover Letter');?></span><i>PDF</i></a> <a href="#" class="attachment-box"><span><?php echo __('profileview_profile_contract','Contract');?></span><i>DOCX</i></a> </div>
           </div>
           
           <!-- Sidebar Widget -->
           <div class="panel mb-4">
             <div class="panel-header">
-              <h4>Share</h4>
+              <h4><?php echo __('profileview_profile_share','Share');?></h4>
             </div>
             <div class="panel-body">                             
               <!-- Copy URL -->
@@ -618,9 +618,9 @@ function SaveHeading(ev){
         <input  type="hidden" value="logo" id="formtype" name="formtype"/>
         <div class="modal-header"> 
           <!-- <button type="submit" class="btn btn-success float-right avatar-save">Done</button>-->
-          <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-          <h4 class="modal-title">Change Avatar</h4>
-          <button  class="btn btn-success float-right avatar-save" type="submit">Save</button>
+          <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
+          <h4 class="modal-title"><?php echo __('profileview_profile_avatar','Change Avatar');?></h4>
+          <button  class="btn btn-success float-right avatar-save" type="submit"><?php echo __('profileview_save','Save');?></button>
         </div>
         <div class="modal-body">
           <div class="avatar-body"> 
@@ -628,13 +628,13 @@ function SaveHeading(ev){
             <div class="avatar-upload">
               <input type="hidden" class="avatar-src" name="avatar_src">
               <input type="hidden" class="avatar-data" name="avatar_data">
-              <label for="avatarInput"> Profile Picture</label>
+              <label for="avatarInput"><?php echo __('profileview_logo_profile_pic','Profile Picture');?> </label>
               <div class="uploadButton margin-top-0">
                 <input class="uploadButton-input avatar-input" type="file" id="avatarInput" name="avatar_file">
-                <label class="uploadButton-button" for="avatarInput">Upload Files</label>
-                <span class="uploadButton-file-name">Maximum file size: 2 MB</span> </div>
+                <label class="uploadButton-button" for="avatarInput"><?php echo __('profileview_logo_upload_files','Upload Files');?></label>
+                <span class="uploadButton-file-name"><?php echo __('profileview_logo_max_size','Maximum file size: 2 MB');?></span> </div>
             </div>
-            <p class="green-text">File must be gif, jpg, png, jpeg.</p>
+            <p class="green-text"><?php echo __('profileview_logo_file_format','File must be gif, jpg, png, jpeg.');?></p>
           </div>
           
           <!-- Crop and preview -->

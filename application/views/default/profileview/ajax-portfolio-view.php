@@ -10,8 +10,8 @@ if($memberInfo->portfolio_image){
 }
 ?>
  <div class="modal-header">        
-    <h4 class="modal-title">View portfolio</h4>
-    <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+    <h4 class="modal-title"><?php echo __('profileview_portfolia_view','View portfolio');?></h4>
+    <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
 </div>
 <div class="modal-body">
     <div class="row">
@@ -30,9 +30,9 @@ if($memberInfo->portfolio_image){
         <aside class="col-lg-4 col-12">
             <p><b><?php if($memberInfo){D($memberInfo->portfolio_title);}?></b> <?php if($memberInfo && $memberInfo->portfolio_url){?><a href="<?php D($memberInfo->portfolio_url);?>" target="_blank"><i class="icon-feather-external-link"></i></a><?php }?></p>    
             <?php if($memberInfo && $memberInfo->category_name){?>
-            <p class="mb-0"> Category: <?php D($memberInfo->category_name);?> </p>
+            <p class="mb-0"><?php echo __('profileview_portfolia_view_category','Category:');?>  <?php D($memberInfo->category_name);?> </p>
             <?php if($memberInfo && $memberInfo->category_subchild_name){?>
-            <p class="mb-0"> Sub Category: <?php D($memberInfo->category_subchild_name);?> </p>
+            <p class="mb-0"><?php echo __('profileview_portfolia_view_sub_category','Sub Category:');?>  <?php D($memberInfo->category_subchild_name);?> </p>
             <?php }?>
             <?php }?>
             <p><?php if($memberInfo){D(nl2br($memberInfo->portfolio_description));}?></p>

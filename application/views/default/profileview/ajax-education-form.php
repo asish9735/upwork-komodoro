@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($memberInfo,TRUE);
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
         <?php if($dataid){?>
-        <h4 class="modal-title">Change education</h4>
+        <h4 class="modal-title"><?php echo __('profileview_education_change','Change education');?></h4>
         <?php }else{?>
-        <h4 class="modal-title">Add education</h4>
+        <h4 class="modal-title"><?php echo __('profileview_education_add','Add education');?></h4>
         <?php }?>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveEducation(this)">Save</button>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveEducation(this)"><?php echo __('profileview_save','Save');?></button>
       </div>
     <div class="modal-body">
 	    <div class="row">
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<h5>School</h5>
+								<h5><?php echo __('profileview_education_school','School');?></h5>
 								<input type="text" class="form-control input-text with-border" value="<?php if($memberInfo){D($memberInfo->education_school);}?>" name="school" id="school">
 								<span id="schoolError" class="rerror"></span>
 							</div>
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-6">
 							<div class="submit-field remove_arrow_select">
-								<h5>Dates Attended</h5>
+								<h5><?php echo __('profileview_education_date_attend','Dates Attended');?></h5>
 								<select name="from_year" id="from_year" data-size="4" class="selectpicker browser-default" title="From" data-live-search="true">
 			            		<?php
 								for($i=date('Y');$i>=1940;$i--){
@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<h5>Degree (Optional)</h5>
+								<h5><?php echo __('profileview_education_degree','Degree (Optional)');?></h5>
 								<input type="text" class="form-control input-text with-border" value="<?php if($memberInfo){D($memberInfo->education_degree);}?>" name="degree" id="degree">
 								<span id="degreeError" class="rerror"></span>
 							</div>
@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<h5>Area of Study (Optional)</h5>
+								<h5><?php echo __('profileview_education_area_study','Area of Study (Optional)');?></h5>
 								<input type="text" class="form-control input-text with-border" value="<?php if($memberInfo){D($memberInfo->education_area_of_study);}?>" name="area_of_study" id="area_of_study">
 								<span id="area_of_studyError" class="rerror"></span>
 							</div>
@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<h5>Description (Optional)</h5>
+								<h5><?php echo __('profileview_education_description','Description (Optional)');?></h5>
 								<textarea  class="form-control input-text with-border" name="description" id="description"><?php if($memberInfo){D($memberInfo->education_description);}?></textarea>
 								<span id="descriptionError" class="rerror"></span>
 							</div>

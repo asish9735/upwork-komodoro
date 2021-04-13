@@ -3,19 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($memberInfo,TRUE);
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
         <?php if($dataid){?>
-        <h4 class="modal-title">Change portfolio</h4>
+        <h4 class="modal-title"><?php echo __('profileview_portfolia_change','Change portfolio');?></h4>
         <?php }else{?>
-        <h4 class="modal-title">Add portfolio</h4>
+        <h4 class="modal-title"><?php echo __('profileview_portfolia_add','Add portfolio');?></h4>
         <?php }?>
         <?php if($limit_over==0){?>
-        <button type="button" class="btn btn-success pull-right" onclick="SavePortfolio(this)">Save</button>
+        <button type="button" class="btn btn-success pull-right" onclick="SavePortfolio(this)"><?php echo __('profileview_save','Save');?></button>
       <?php }?>
       </div>
     <div class="modal-body">
     <?php if($limit_over){?>
-        <div class="alert alert-warning">Max limit over, please upgrade your membership plan. <a href="<?php echo get_link('membershipURL');?>">Click here</a> to upgrade</div>
+        <div class="alert alert-warning"><?php echo __('profileview_portfolia_limit_over','Max limit over, please upgrade your membership plan.');?> <a href="<?php echo get_link('membershipURL');?>"><?php echo __('profileview_portfolia_click_here','Click here');?></a> <?php echo __('profileview_portfolia_to_upgrade','to upgrade');?></div>
     <?php }else{?>
 	    <form action="" method="post" accept-charset="utf-8" id="portfolioform" class="form-horizontal" role="form" name="portfolioform" onsubmit="return false;">  
 				<input  type="hidden" value="<?php echo $formtype;?>" id="formtype" name="formtype"/>
@@ -23,24 +23,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        			<div class="row">
        			<div class="col-lg-6 col-12">
                 	<div class="submit-field">
-                        <h5>Project Title</h5>
+                        <h5><?php echo __('profileview_portfolia_project_title','Project Title');?></h5>
                         <input type="text" class="form-control" value="<?php if($memberInfo){D($memberInfo->portfolio_title);}?>" name="title" id="title">
                         <span id="titleError" class="rerror"></span>
                     </div>
                     <div class="submit-field">
-                        <h5>Project URL (Optional)</h5>
+                        <h5><?php echo __('profileview_portfolia_project_url','Project URL (Optional)');?></h5>
                         <input type="text" class="form-control" value="<?php if($memberInfo){D($memberInfo->portfolio_url);}?>" name="url" id="url">
                         <span id="urlError" class="rerror"></span>
                     </div>
        				<div class="submit-field">
-                        <h5>Project Overview</h5>
+                        <h5><?php echo __('profileview_portfolia_project_overview','Project Overview');?></h5>
                         <textarea  class="form-control" name="description" id="description"><?php if($memberInfo){D($memberInfo->portfolio_description);}?></textarea>
                         <span id="descriptionError" class="rerror"></span>
                     </div>
        			</div>
        			<div class="col-lg-6 col-12">
                 	<div class="submit-field remove_arrow_select">
-                        <h5>Category</h5>
+                        <h5><?php echo __('profileview_portfolia_category','Category');?></h5>
                         <select name="category" id="category" data-size="4" class="selectpicker browser-default" title="Category" data-live-search="true">
                         <?php
                         if($all_category){
@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span id="sub_categoryError" class="rerror"></span>
                     </div>
                     <div class="submit-field">
-                        <h5>Completion Date (Optional)</h5>
+                        <h5><?php echo __('profileview_portfolia_complete_date','Completion Date (Optional)');?></h5>
                         <input type="date" class="form-control" value="<?php if($memberInfo && $memberInfo->portfolio_complete_date){D(date('Y-m-d',strtotime($memberInfo->portfolio_complete_date)));}?>" name="complete_date" id="complete_date" min="1990-12-31" max="<?php echo D(date('Y-m-d',strtotime('+5 year')));?>" placeholder="DD-MM-YYYY">
                         <span id="complete_dateError" class="rerror"></span>
                     </div>
@@ -83,10 +83,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-lg-12 col-12">
                     <div class="submit-field">
-                        <label>Image</label>                
+                        <label><?php echo __('profileview_portfolia_image','Image');?></label>                
                         <input type="file" name="fileinput" id="fileinput">
                         <div class="upload-area" id="uploadfile">
-                            <p>Drag &amp; drop file here<br /> or<br /> <span class="text-site">click</span> to select file</p>
+                            <p><?php echo __('profileview_portfolia_drag','Drag');?> &amp;<?php echo __('profileview_portfolia_drop_file','drop file here');?> <br /><?php echo __('profileview_portfolia_or','or');?> <br /> <span class="text-site"><?php echo __('profileview_portfolia_click','click');?></span><?php echo __('profileview_portfolia_select_file','to select file');?></p>
                         </div>
                         <div id="uploadfile_container">
                     <?php  

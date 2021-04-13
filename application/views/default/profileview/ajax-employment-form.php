@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($memberInfo,TRUE);
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
         <?php if($dataid){?>
-        <h4 class="modal-title">Change employment</h4>
+        <h4 class="modal-title"><?php echo __('profileview_employment_change','Change employment')?></h4>
         <?php }else{?>
-        <h4 class="modal-title">Add employment</h4>
+        <h4 class="modal-title"><?php echo __('profileview_employment_add','Add employment')?></h4>
         <?php }?>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveEmployment(this)">Save</button>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveEmployment(this)"><?php echo __('profileview_save','Save');?></button>
       </div>
     <div class="modal-body">
 	    <div class="row">
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<h5>Company</h5>
+								<h5><?php echo __('profileview_employment_company','Company');?></h5>
 								<input type="text" class="form-control input-text with-border" value="<?php if($memberInfo){D($memberInfo->employment_company);}?>" name="company" id="company">
 								<span id="companyError" class="rerror"></span>
 							</div>
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-6">
 							<div class="submit-field">
-								<h5>Location</h5>
+								<h5><?php echo __('profileview_employment_location','Location');?></h5>
 								<input type="text" class="form-control input-text with-border" value="<?php if($memberInfo){D($memberInfo->employment_city);}?>" name="city" id="city">
 								<span id="cityError" class="rerror"></span>
 							</div>
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<h5>Title</h5>
+								<h5><?php echo __('profileview_employment_title','Title');?></h5>
 								<input type="text" class="form-control input-text with-border" value="<?php if($memberInfo){D($memberInfo->employment_title);}?>" name="title" id="title">
 								<span id="titleError" class="rerror"></span>
 							</div>
@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field remove_arrow_select">
-								<h5>Role</h5>
+								<h5><?php echo __('profileview_employment_role','Role');?></h5>
 								<select name="role" id="role" data-size="4" class="selectpicker browser-default" title="Select role" data-live-search="true">
 			            		<?php
 			            		if($role){
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-6">
 							<div class="submit-field remove_arrow_select">
-								<h5>Period from</h5>
+								<h5><?php echo __('profileview_employment_period_from','Period from');?></h5>
 								<select name="frommonth" id="frommonth" data-size="4" class="selectpicker browser-default" title="Select month" data-live-search="true">
 			            		<?php
 			            		if($month){
@@ -121,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row" id="is_working_now" <?php if($memberInfo && $memberInfo->employment_is_working_on==1){echo 'style="display:none"';}?>>
 						<div class="col-xl-6">
 							<div class="submit-field remove_arrow_select">
-								<h5>Period to</h5>
+								<h5><?php echo __('profileview_employment_period_to','Period to');?></h5>
 								<select name="tomonth" id="tomonth" data-size="4" class="selectpicker browser-default" title="Select month" data-live-search="true">
 			            		<?php
 			            		if($month){
@@ -157,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		       				<div class="submit-field">
 								<div class="checkbox">
 									<input type="checkbox" name="employment_is_working_on" id="employment_is_working_on" value="1" <?php if($memberInfo && $memberInfo->employment_is_working_on==1){echo 'checked';}?>  onchange="$('#is_working_now').toggle();">
-									<label for="employment_is_working_on"><span class="checkbox-icon"></span> I currently work here</label>
+									<label for="employment_is_working_on"><span class="checkbox-icon"></span><?php echo __('profileview_employment_work_here','I currently work here');?> </label>
 								</div>
 							</div>
 						</div>
@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        				<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<h5>Description (Optional)</h5>
+								<h5><?php echo __('profileview_education_description','Description (Optional)');?></h5>
 								<textarea  class="form-control input-text with-border" name="description" id="description"><?php if($memberInfo){D($memberInfo->employment_description);}?></textarea>
 								<span id="descriptionError" class="rerror"></span>
 							</div>
