@@ -42,7 +42,7 @@
 <div class="login-box">
     <div class="login-logo">
 		<?php /*?><b><?php echo get_setting('site_title')?></b><?php */?>
-        <img src="<?php echo ADMIN_IMAGES;?>logo.png" alt="<?php echo get_setting('site_title');?>" height="42" />
+        <img src="<?php echo ADMIN_IMAGES;?>logo.png" alt="<?php echo get_setting('site_title');?>" height="64" />
     </div>
     
     <!-- /.login-logo -->
