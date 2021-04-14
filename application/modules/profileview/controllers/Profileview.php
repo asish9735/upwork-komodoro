@@ -939,7 +939,7 @@ class Profileview extends MX_Controller {
 					}
 					if(post('complete_date')){  
 						$this->form_validation->set_message('valid_date', 'The Date field must be dd-mm-yyyy');
-						$this->form_validation->set_rules('complete_date', 'Date', 'required|trim|xss_clean|valid_date[dmY]');
+						$this->form_validation->set_rules('complete_date', 'Date', 'required|trim|xss_clean|valid_date[Ymd]');
 						
 					}
 					if ($this->form_validation->run() == FALSE){

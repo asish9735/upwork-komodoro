@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $files=json_decode($memberInfo->portfolio_image);
                     ?>
                             <div id="thumbnail_1" data-name="<?php echo $files->file;?>" class="thumbnail_sec">
-                                <input type="hidden" name="projectfileprevious[]" value='<?php D($memberInfo->portfolio_image)?>'/>
+                                <input type="hidden" name="projectfileprevious" value='<?php D($memberInfo->portfolio_image)?>'/>
                                 <a href="<?php echo UPLOAD_HTTP_PATH.'member-portfolio/'.$files->file;?>" target="_blank"><?php echo $files->name;?></a>
                                 <a href="javascript:void(0)" class="text-danger ripple-effect ico float-right" onclick="$(this).parent().remove()">
                                 <i class="icon-feather-trash"></i>
