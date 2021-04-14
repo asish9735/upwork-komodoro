@@ -1,6 +1,6 @@
 <div class="single-page-header bg-site">
 	<div class="container">		
-		<h1 class="text-center">Help</h1>
+		<h1 class="text-center"><?php echo __('cms_help','Help');?></h1>
 	</div>
 </div>
 <section class="section">

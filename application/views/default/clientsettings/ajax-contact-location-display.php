@@ -6,13 +6,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="row">
     <div class="col-md-4">
         <div class="submit-field">
-            <h5>Owner</h5>
+            <h5><?php echo __('contact_company_location_owner','Owner');?></h5>
             <p><?php ucwords(D($organizationInfo->member_name));?></p>
         </div>
     </div>
     <div class="col-md-4">
         <div class="submit-field">
-            <h5>Phone</h5>
+            <h5><?php echo __('contact_company_location_phone','Phone');?></h5>
             <?php if($organizationInfo->organization_mobile){?>
             <p><?php D($organizationInfo->organization_mobile_code." "); D($organizationInfo->organization_mobile)?></p>
             <?php }?>
@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="col-md-4">
         <div class="submit-field">
-            <h5>VAT ID</h5>
+            <h5><?php echo __('contact_company_location_vat','VAT ID');?></h5>
             <?php if($organizationInfo->organization_vat_number){?>
             <p><?php D($organizationInfo->organization_vat_number)?></p>
             <?php }?>
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php if($organizationInfo->organization_timezone){?>
         <div class="col-md-4">
             <div class="submit-field">
-                <h5>Time Zone</h5>
+                <h5><?php echo __('contact_company_location_time','Time Zone');?></h5>
                 <p><?php D($organizationInfo->organization_timezone)?></p>
             </div>
         </div>
@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="col-md-4">
         <div class="submit-field">
-            <h5>Address</h5>
+            <h5><?php echo __('contact_company_location_address','Address');?></h5>
             <p>
             <?php if($organizationInfo->organization_address_1){?>
             <?php D($organizationInfo->organization_address_1)?><br/>

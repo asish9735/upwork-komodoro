@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <section class="section">
   <div class="container">   
-  		<p><a href="<?php D(get_link('CMShelp'))?>">Back to Help</a></p>
+  		<p><a href="<?php D(get_link('CMShelp'))?>"><?php echo __('cms_help_details','Back to Help');?></a></p>
         
     	<?php D(html_entity_decode($details->description)); ?>
     </div>

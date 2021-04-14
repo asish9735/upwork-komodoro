@@ -16,14 +16,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-4">
         <!-- Account Type -->
         <div class="submit-field">
-            <h5>Tagline</h5>
+            <h5><?php echo __('contact_company_diplay_tagline','Tagline');?></h5>
             <p><?php D($organizationInfo->organization_heading)?></p>
         </div>
     </div>
     <div class="col-md-4">
         <!-- Account Type -->
         <div class="submit-field">
-            <h5>Description</h5>
+            <h5><?php echo __('contact_company_diplay_description','Description');?></h5>
             <p><?php D($organizationInfo->organization_info)?></p>
         </div>
     </div>

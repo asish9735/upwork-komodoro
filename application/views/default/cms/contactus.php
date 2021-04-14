@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <section class="section">
   <div class="container"> 
   <div class="dashboard-headline">
-	<h1>Contact Us</h1>
+	<h1><?php echo __('cms_contactus','Contact Us');?></h1>
   </div>    
   <div class="row">  
   <aside class="col-md-8 col-12">
@@ -14,27 +14,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<form id="contact_form">
 	<div id="server_status"></div>
 	<div class="form-field">
-        <label class="form-label">What is your inquiry about? <span class="req">*</span></label>
+        <label class="form-label"><?php echo __('cms_contactus_inquiry','What is your inquiry about?');?> <span class="req">*</span></label>
         <input type="text" class="form-control"  name="inquiry"/>
     </div>
     <div class="form-field">
-    	<label class="form-label">Your email address <span class="req">*</span></label>
+    	<label class="form-label"><?php echo __('cms_contactus_email','Your email address');?> <span class="req">*</span></label>
     	<input type="email" class="form-control"  name="email"/>
     </div>
     <div class="form-field">
-    	<label class="form-label">Description <span class="req">*</span></label>
+    	<label class="form-label"><?php echo __('cms_contactus_description','Description');?> <span class="req">*</span></label>
     	<textarea rows="3" class="form-control"  name="description"></textarea>
-        <p class="help-text">Please enter the details of your request. A member of our support staff will respond as soon as possible.</p>
+        <p class="help-text"><?php echo __('cms_contactus_respons','Please enter the details of your request. A member of our support staff will respond as soon as possible.');?></p>
     </div>
     <div class="form-field">
-    	<label class="form-label">Attachments</label>
+    	<label class="form-label"><?php echo __('cms_contactus_attachment','Attachments');?></label>
     	<div class="uploadButton">
             <input class="uploadButton-input" name="attachment" type="file" accept="image/*, application/pdf" id="upload1" />
-            <label class="uploadButton-button ripple-effect" for="upload1">Upload Files</label>
-            <span class="uploadButton-file-name">Images or pdf that might be helpful in describing your job</span>
+            <label class="uploadButton-button ripple-effect" for="upload1"><?php echo __('cms_contactus_upload','Upload Files');?></label>
+            <span class="uploadButton-file-name"><?php echo __('cms_contactus_helpful','Images or pdf that might be helpful in describing your job');?></span>
         </div>
     </div>
-    <button type="submit" class="btn btn-site">Submit</button>
+    <button type="submit" class="btn btn-site"><?php echo __('cms_contactus_submit','Submit');?></button>
     </form>
   </div>
   </div>
@@ -43,14 +43,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="media single_ctinfo">
         <div class="ctinfo_icon"><i class="icon-line-awesome-building"></i></div>
         <div class="media-body">
-            <h4>Our Office</h4>
+            <h4><?php echo __('cms_contactus_office','Our Office');?></h4>
             <span>425 Berry Street, CA 93584 <br>New York, USA</span>
         </div>								
     </div>
     <div class="media single_ctinfo">
         <div class="ctinfo_icon"><i class="icon-line-awesome-envelope"></i></div>
         <div class="media-body">
-            <h4>Drop A Mail</h4>
+            <h4><?php echo __('cms_contactus_mail','Drop A Mail');?></h4>
             <a href="#">info@demo.com</a><br />
             <a href="#">user@sitename.com</a>
         </div>								
@@ -58,14 +58,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="media single_ctinfo">
         <div class="ctinfo_icon"><i class="icon-line-awesome-phone-square"></i></div>
         <div class="media-body">
-            <h4>Call Us</h4>
+            <h4><?php echo __('cms_contactus_call','Call Us');?></h4>
             9876543210<br />
             (012) 3456-789
         </div>								
     </div>
     <div class="media single_ctinfo">        
         <div class="media-body">
-        	<h4 class="mb-3">Social Links</h4>
+        	<h4 class="mb-3"><?php echo __('cms_contactus_social','Social Links');?></h4>
             <div class="freelancer-socials">
                 <ul class="social-links">
                     <li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
