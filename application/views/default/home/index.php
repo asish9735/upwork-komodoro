@@ -181,7 +181,7 @@ if($cms_temp){
               <a href="<?php echo $freelancer['profile_link'];?>"><img src="<?php echo $freelancer['user_logo'];?>" alt="professional01"></a> </div>
             <!-- Name -->
             <div class="freelancer-name">
-              <h4><a href="<?php echo $freelancer['profile_link'];?>"><?php echo $freelancer['member_name'];?> <?php if($freelancer['country_code_short']){?><img class="flag" src="<?php echo IMAGE;?>flags/<?php echo strtolower($freelancer['country_code_short']);?>.svg" alt="" title="<?php echo $freelancer['country_name'];?>" data-tippy-placement="top"></a><?php }?></h4>
+              <h4><a href="<?php echo $freelancer['profile_link'];?>"><?php echo $freelancer['member_name'];?></a> <?php if($freelancer['country_code_short']){?><img class="flag" src="<?php echo IMAGE;?>flags/<?php echo strtolower($freelancer['country_code_short']);?>.svg" alt="" title="<?php echo $freelancer['country_name'];?>" data-tippy-placement="top"><?php }?></h4>
               <span><?php echo $freelancer['member_heading'];?></span> </div>
             <!-- Rating -->
             <div class="freelancer-rating">
