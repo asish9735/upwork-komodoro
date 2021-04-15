@@ -40,8 +40,8 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
           <div class="panel-header relative">
             <h4>Invoice List </h4>
           </div>
-          <div class="panel-body">
-          <ul class="nav nav-tabs mb-3">
+          <div class="panel-body p-0">
+          <ul class="nav nav-tabs">
 	      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>">All</a> </li>
 	      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=pending">Pending</a> </li>
 	      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=completed">Paid</a> </li>
@@ -52,8 +52,8 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 	     <section class=" workLogData"></section>
 		 <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
 	    </div>
-	    <div class="container text-center padding-bottom-40">
-            <button class="btn btn-primary" id="load_more" data-page = "0">Load more..</button>
+	    <div class="text-center">
+            <button class="btn btn-site mt-3 mb-3" id="load_more" data-page = "0">Load more..</button>
         </div>
           </div>
         </div>
@@ -65,7 +65,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
           <div class="card-body"> 
 		  	<a <?php echo $profile_url;?>>
 		  	<img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
-            <h5 class="card-title"><?php echo $name;?></h5>
+            <h4 class="card-title mb-0"><?php echo $name;?></h4>
 			</a>
 			<?php if($is_owner){?>
 			<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>

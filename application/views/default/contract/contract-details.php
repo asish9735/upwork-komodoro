@@ -32,7 +32,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>"><?php echo __('contract_details_term','Terms & Settings');?></a> </li>
     </ul>
     <div class="row">
-      <div class="col-lg-9">
+      <div class="col-lg-9 col-12">
         <div class="panel mb-4">
           <div class="panel-body">
             <ul class="totalList mb-0">
@@ -209,12 +209,12 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
           </div>
         </div>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-3 col-12">
         <div class="card text-center mx-auto">
           <div class="card-body">
 			<a <?php echo $profile_url;?>>
             <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
-            <h5 class="card-title mb-0"><?php echo $name;?></h5>
+            <h4 class="card-title mb-0"><?php echo $name;?></h4>
 			</a>
             <?php if($is_owner){?>
             	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>

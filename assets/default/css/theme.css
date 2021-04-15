@@ -132,9 +132,9 @@ header.fullwidth .container {
 .header-widget {
 	display: inline-block;
 	height: 100%;
-	/*border-left: 1px solid #e0e0e0;*/
+	/*border-left: 1px solid #e0e0e0;
 	padding: 0 15px;
-	float: left;
+	float: left;*/
 }
 .fullwidth .header-widget:last-of-type {
 	float: right;
@@ -196,13 +196,13 @@ display: none;
  .header-widget .log-in-button i,  .header-widget .log-in-button i:hover {
 color: #555;
 }
- .header-widget .log-in-button {
+/* .header-widget .log-in-button {
  background-color: #f0f0f0;
  border-radius: 0.25rem;
  height: 46px;
  width: 46px;
  text-align: center;
-}
+}*/
  .transparent-header .header-widget .log-in-button i,  .transparent-header .header-widget .log-in-button {
  background-color: #fff;
  color: #333;
@@ -238,18 +238,16 @@ top: -8px;
 .header-notifications-trigger span {
 	position: absolute;
 	display: inline-block;
-	top: -15px;
-	margin-left: -10px;
+	top: -5px;
 	font-weight: 700;
-	height: 19px;
-	width: 19px;
-	line-height: 19px;
+	height: 20px;
+	width: 20px;
+	line-height: 20px;
 	text-align: center;
 	color: #fff;
 	font-size: 11px;
 	background-color: #66676b;
 	border-radius: 50%;
-	position: relative;
 }
 /* Header User Menu Dropdown */
 .header-notifications-dropdown {
@@ -1658,7 +1656,6 @@ height: auto;
 float: left;
 }
 .fullwidth .header-widget:last-of-type,  .header-widget:last-of-type {
- padding-right: 15px;
  float: left;
 }
  #header .right-side {
@@ -1677,14 +1674,12 @@ float: left;
  border-right: 1px solid #e0e0e0;
  margin-right: -1px;
 }*/
- .header-widget {
-padding: 0 15px;
+
+.header-notifications:first-child {
+	margin-right: -5px;
 }
- .header-notifications:first-child {
-margin-right: -5px;
-}
- #header-container.cloned {
-display: none;
+#header-container.cloned {
+	display: none;
 }
 }
  @media (max-width: 767px) {

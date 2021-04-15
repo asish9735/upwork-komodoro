@@ -38,15 +38,16 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
       <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
         </ul>
         <div class="row">
-          <div class="col-lg-9">
+          <div class="col-lg-9 col-12">
 			 <div class="card mb-4">
               <div class="card-header">
                 <h4>Contract info</h4>
               </div>
                <div class="card-body">
-                <div class="row">
+                
 	               <?php if($pending_contract==0){?>
 	               <?php if($is_owner){?>
+                   <div class="row mb-3">
 	               <div class="col-sm-6"><h5>Your Feedback to Contractor</h5></div>
 	               <div class="col-sm-6">
 	              		<?php if($reviews){
@@ -62,7 +63,9 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 							}
 	              		}?>
 	               </div>
-	                <div class="col-sm-6"><h5>Contractor's Feedback to You</h5></div>
+	               </div>
+                   <div class="row mb-3">
+                   <div class="col-sm-6"><h5>Contractor's Feedback to You</h5></div>
 	               <div class="col-sm-6">
 	               <?php if($reviews){
 	              			if($reviews['review_to_me']){
@@ -84,7 +87,9 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 	              	<?php }?>
 	               		
 	               </div>
+                   </div>
 	               <?php }else{?>
+                   <div class="row mb-3">
 	               <div class="col-sm-6"><h5>Your Feedback to Client</h5></div>
 	               <div class="col-sm-6">
 	               		<?php if($reviews){
@@ -100,7 +105,9 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 							}
 	              		}?>
 	               </div>
-	                <div class="col-sm-6"><h5>Client's Feedback to You</h5></div>
+	               </div>
+                   <div class="row mb-3">
+                   <div class="col-sm-6"><h5>Client's Feedback to You</h5></div>
 	               <div class="col-sm-6">
 	               	<?php if($reviews){
 	              			if($reviews['review_to_me']){
@@ -121,16 +128,16 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 	              		<p>No review yet.</p>
 	              	<?php }?>
 	               </div>
+                   </div>
 	               <?php }?>
 	               <?php }?>
+                   <div class="row mb-3">
 	               <div class="col-sm-6"><h5>Contract Date</h5></div>
 	               <div class="col-sm-6"><p><?php echo $contractDetails->contract_date;?></p></div>
-	               
-	               <div class="col-sm-12">
-	               <h5>Description of Work</h5>
-	               	<p><?php echo nl2br($contractDetails->contract_details);?></p>
 	               </div>
-	            </div>
+	               
+	               <h5>Description of Work</h5>
+	               	<p><?php echo nl2br($contractDetails->contract_details);?></p>	               
                </div>
                <div class="card-footer">
                	<h5 class="mb-0">Contract ID: <?php echo $contractDetails->contract_id;?></h5>
@@ -139,12 +146,12 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
             
           </div>
 			
-          <div class="col-lg-3">          
+          <div class="col-lg-3 col-12">          
             <div class="card text-center mx-auto">
               <div class="card-body">
 			  	<a <?php echo $profile_url;?>>
               	<img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
-                <h5 class="card-title"><?php echo $name;?></h5>
+                <h4 class="card-title mb-0"><?php echo $name;?></h4>
                 </a>
 				<?php if($is_owner){?>
 				<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>

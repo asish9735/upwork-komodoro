@@ -16,7 +16,7 @@ if($all_projects){
 ?>
 <li>
 	<!-- Job Listing -->
-	<div class="job-listing width-adjustment">
+	<div class="job-listing width-adjustment_">
 
 		<!-- Job Listing Details -->
 		<div class="job-listing-details">

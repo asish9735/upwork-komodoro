@@ -144,7 +144,7 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
           <div class="card-body"> 
 		  	<a <?php echo $profile_url;?>>
 		  	<img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">
-            <h5 class="card-title"><?php echo $name;?></h5>
+            <h4 class="card-title mb-0"><?php echo $name;?></h4>
 			</a>
 			<?php if($is_owner){?>
 			<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>

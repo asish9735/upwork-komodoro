@@ -67,7 +67,8 @@ ul.display-inline li:last-child {
 	right: 6px
 }
 .header-widget {
-	float: left
+	float: left;
+	padding-right:15px;
 }
 .list-3 li:before, .list-2 li:before, .list-1 li:before {
 	left: 0;
@@ -88,6 +89,9 @@ RTL SPACE
 }
 .header-notifications:last-child {
 	margin-right: -15px;
+}
+.header-notifications-trigger span {
+	right: -7px;
 }
 .header-notifications-content.with-icon .notification-text{	
 	padding-left:20px;
@@ -222,8 +226,8 @@ em.mm-counter+a.mm-fullsubopen+a, em.mm-counter+a.mm-fullsubopen+span {
 }
 @media (max-width: 991px) {
  .fullwidth .header-widget:last-of-type, .header-widget:last-of-type {
- padding:0 15px;
- float: left;
+	padding-right: 15px;
+	float: left;
 }
  .mmenu-trigger {
  margin: 0 -5px 0 0;

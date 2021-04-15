@@ -39,8 +39,9 @@ elseif($all_data){?>
                         <h4><a data-href="<?php echo $application_link;?>" href="<?php D(VZ);?>" data-btn="application-dtl" class="proposal-btn"><?php D($bid->member_name);?> </a> </h4>
 
                         <!-- Details -->
-                        <span class="freelancer-detail-item"> <?php D($bid->member_heading);?></span>
-                        <p class="margin-bottom-10">Rating: <div class="star-rating" data-rating="<?php D(round($bid->avg_review,1));?>"></div>  <?php if($projects['project_settings']->is_fixed==1){?><span class="pipe">|</span> Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D(getAllBidDuration($bid->bid_duration)); }  }?></p>
+                        <span class="freelancer-detail-item d-block"> <?php D($bid->member_heading);?></span>
+                        <div class="star-rating mb-2" data-rating="<?php D(round($bid->avg_review,1));?>"></div>
+						<?php if($projects['project_settings']->is_fixed==1){?><span class="pipe">|</span> Delivery Time: <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D(getAllBidDuration($bid->bid_duration)); }  }?>
 
                         <!-- Rating -->
                         <div class="freelancer-rating d-none">
