@@ -19,13 +19,13 @@ $currency=priceSymbol();
         
         <!-- Headline -->
         <div class="headline">
-          <h3>All Contracts</h3>
+          <h3><?php echo __('contract_list_all_contract','All Contracts');?></h3>
         </div>
         <div class="content">
           <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>">All</a></li>
-            <li class="nav-item"><a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>?show=pending">In Progress</a></li>
-            <li class="nav-item"><a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>?show=completed">Completed</a></li>
+            <li class="nav-item"><a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>"><?php echo __('contract_list_all','All');?></a></li>
+            <li class="nav-item"><a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>?show=pending"><?php echo __('contract_list_in_progress','In Progress');?></a></li>
+            <li class="nav-item"><a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo get_link('ContractList');?>?show=completed"><?php echo __('contract_details_complete','Completed');?></a></li>
           </ul>
           <ul class="dashboard-box-list">
             <?php if($list){foreach($list as $k => $v){ 
@@ -49,28 +49,28 @@ $currency=priceSymbol();
                     <!-- Job Listing Footer -->
                     <div class="job-listing-footer if-button">
                       <ul>
-                        <li><b>Budget:</b>
+                        <li><b><?php echo __('contract_details_budgets','Budget:');?></b>
                           <?php D($currency.$v['contract_amount']);?>
                           <?php if($v['is_hourly']==1){echo'/hr';}?>
                         </li>
-                        <li><b>Date:</b>
+                        <li><b><?php echo __('contract_details_date','Date:');?></b>
                           <?php D($v['contract_date']);?>
                         </li>
                         <li><?php if($v['contract_status']==1){?>
-                          <span class="dashboard-status-button green">Approved</span>
+                          <span class="dashboard-status-button green"><?php echo __('contract_list_approved','Approved');?></span>
                           <?php }elseif($v['contract_status']==2){?>
-                          <span class="dashboard-status-button red">Rejected</span>
+                          <span class="dashboard-status-button red"><?php echo __('contract_list_rejected','Rejected');?></span>
                           <?php }elseif($v['contract_status']==0){?>
-                          <span class="dashboard-status-button yellow">Pending</span>
+                          <span class="dashboard-status-button yellow"><?php echo __('contract_details_pending','Pending');?></span>
                           <?php }?>
                         </li>
                         <li><!--<b>Status:</b>-->
                           <?php if($v['is_contract_ended']==1){?>
-                          <span class="dashboard-status-button blue">Completed On:
+                          <span class="dashboard-status-button blue"><?php echo __('contract_list_completed_on','Completed On:');?>
                           <?php D($v['contract_end_date']);?>
                           </span>
                           <?php }else{?>
-                          <span class="dashboard-status-button green">In Process</span>
+                          <span class="dashboard-status-button green"><?php echo __('contract_list_in_process','In Process');?></span>
                           <?php }?>
                         </li>
                       </ul>
@@ -83,7 +83,7 @@ $currency=priceSymbol();
               
             </li>
             <?php } }else{ ?>
-            <li>No record found</li>
+            <li><?php echo __('contract_list_no_recoard','No record found');?></li>
             <?php }?>
           </ul>
         </div>

@@ -10,71 +10,71 @@ if($contractDetails->is_hourly){
 ?>
 <section class="section">
 <div class="container">
-      <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+      <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i><?php echo __('contract_end_b_contract','Back to Contract');?> </a>
       
-        <h1 class="display-4">Leave Feedback</h1>
+        <h1 class="display-4"><?php echo __('contract_end_l_feedback','Leave Feedback');?></h1>
         <div class="row">
           <div class="col-lg-9">
 <form action="" method="post" accept-charset="utf-8" id="endcontractform" class="form-horizontal" role="form" name="endcontractform" onsubmit="return false;">  
             <div class="panel mb-4">
               <div class="panel-header">
-                <h4>Details</h4>
+                <h4><?php echo __('contract_end_details','Details');?></h4>
               </div>
               <div class="panel-body">
               <?php if($is_owner){?>
-              <p><b>Contractor:</b> <?php echo $contractDetails->contractor->member_name;?></p>
+              <p><b><?php echo __('contract_end_contractor','Contractor:');?></b> <?php echo $contractDetails->contractor->member_name;?></p>
               <?php }else{?>
-              <p><b>Client:</b> <?php echo ($contractDetails->owner->organization_name ? $contractDetails->owner->organization_name:$contractDetails->owner->member_name);?></p>
+              <p><b><?php echo __('contract_end_client','Client:');?></b> <?php echo ($contractDetails->owner->organization_name ? $contractDetails->owner->organization_name:$contractDetails->owner->member_name);?></p>
               <?php }?>
-                <p><b>Contract Title:</b> <?php echo $contractDetails->contract_title;?></p>
+                <p><b><?php echo __('contract_end_c_title','Contract Title:');?></b> <?php echo $contractDetails->contract_title;?></p>
               
               </div>
             </div>
             <div class="panel mb-4">
               <div class="panel-header d-flex">
-                <h4 class="mt-2">Public Feedback</h4>
+                <h4 class="mt-2"><?php echo __('contract_end_p_feedback','Public Feedback');?></h4>
                
                 </div>
               <div class="panel-body">
               <?php if($is_owner){?>
-               <p>This feedback will share on your contracttor profile after they have left feedback to you. </p>
-                <h5>Feedback to Contracttor</h5>
+               <p><?php echo __('contract_end_this_feedback','This feedback will share on your contracttor profile after they have left feedback to you.');?> </p>
+                <h5><?php echo __('contract_end_f_contractor','Feedback to Contracttor');?></h5>
                  <div class="">
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_skills"></div>
                 	</div>
-                	<div class="col-auto">Skills</div>
+                	<div class="col-auto"><?php echo __('contract_end_skills','Skills');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_quality"></div>
                 	</div>
-                	<div class="col-auto">Quality</div>
+                	<div class="col-auto"><?php echo __('contract_end_quility','Quality');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_availability"></div>
                 	</div>
-                	<div class="col-auto">Availability</div>
+                	<div class="col-auto"><?php echo __('contract_end_availability','Availability');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_deadlines"></div>
                 	</div>
-                	<div class="col-auto">Deadlines</div>
+                	<div class="col-auto"><?php echo __('contract_end_deadline','Deadlines');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_communication"></div>
                 	</div>
-                	<div class="col-auto">Communication</div>
+                	<div class="col-auto"><?php echo __('contract_end_communication','Communication');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_cooperation"></div>
                 	</div>
-                	<div class="col-auto">Cooperation</div>
+                	<div class="col-auto"><?php echo __('contract_end_coorperation','Cooperation');?></div>
                 </div>
                 
                 	
@@ -85,55 +85,55 @@ if($contractDetails->is_hourly){
                 
                 
                 <?php }else{?>
-                <p>This feedback will share on your client profile after they have left feedback to you. </p>
-                <h5>Feedback to Client</h5>
+                <p><?php echo __('contract_end_this_feedback','This feedback will share on your client profile after they have left feedback to you.');?> </p>
+                <h5><?php echo __('contract_end_f_client','Feedback to Client');?></h5>
                 <div class="">
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_skills"></div>
                 	</div>
-                	<div class="col-auto">Skills</div>
+                	<div class="col-auto"><?php echo __('contract_end_skills','Skills');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_quality"></div>
                 	</div>
-                	<div class="col-auto">Quality Of Requirements</div>
+                	<div class="col-auto"><?php echo __('contract_end_q_requirement','Quality Of Requirements');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_availability"></div>
                 	</div>
-                	<div class="col-auto">Availability</div>
+                	<div class="col-auto"><?php echo __('contract_end_availability','Availability');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_deadlines"></div>
                 	</div>
-                	<div class="col-auto">Set Reasonable Deadlines</div>
+                	<div class="col-auto"><?php echo __('contract_end_s_deadlines','Set Reasonable Deadlines');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_communication"></div>
                 	</div>
-                	<div class="col-auto">Communication</div>
+                	<div class="col-auto"><?php echo __('contract_end_communication','Communication');?></div>
                 </div>
                 <div class="form-group row">
                 	<div class="col-auto">
                 		<div id="modal_rating_cooperation"></div>
                 	</div>
-                	<div class="col-auto">Cooperation</div>
+                	<div class="col-auto"><?php echo __('contract_end_coorperation','Cooperation');?></div>
                 </div>
                 
                 	
                 </div>
                 <?php }?>
-                <h5>Total Score: <span id="modal_avg_rating_view">0</span></h5>
+                <h5><?php echo __('contract_end_total_score','Total Score:');?> <span id="modal_avg_rating_view">0</span></h5>
                 
                 
                 
                 <div class="form-group">
-	                <label><b>Share your experience</b></label>
+	                <label><b><?php echo __('contract_end_s_experience','Share your experience');?></b></label>
 	                <textarea class="form-control" id="comment" name="comment"></textarea>
 	              </div>
               
@@ -151,8 +151,8 @@ if($contractDetails->is_hourly){
 				
             </div>
             <div class="padding-bottom-15 padding-top-15">	
-				<button class="btn btn-site nextbtnapply">Submit Feedback</button> &nbsp;
-				<button class="btn btn-secondary backbtnapply">Cancel</button>
+				<button class="btn btn-site nextbtnapply"><?php echo __('contract_end_sub_feedback','Submit Feedback');?></button> &nbsp;
+				<button class="btn btn-secondary backbtnapply"><?php echo __('contract_end_cancel','Cancel');?></button>
 			</div>
 </form>
           </div>

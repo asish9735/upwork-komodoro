@@ -27,21 +27,21 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 <div class="container">
         <h1><?php echo $contractDetails->contract_title;?></h1>
         <ul class="nav nav-tabs mb-3">
-          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>">Milestones & Earnings</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('contract_details_milestone','Milestones & Earnings');?></a> </li>
+          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_term_url;?>"><?php echo __('contract_details_term','Terms & Settings');?></a> </li>
         </ul>
         <div class="row">
           <div class="col-lg-9">
 			 <div class="card mb-4">
               <div class="card-header">
-                <h4>Contract info</h4>
+                <h4><?php echo __('contract_term_contract_info','Contract info');?></h4>
               </div>
                <div class="card-body">
                 <div class="row">
                  <?php if($pending_contract==0){?>
 	               <?php if($is_owner){?>
-	               <div class="col-sm-6"><h5>Your Feedback to Contractor</h5></div>
+	               <div class="col-sm-6"><h5><?php echo __('contract_details_feed_contarctor','Your Feedback to Contractor');?></h5></div>
 	               <div class="col-sm-6">
 	              		<?php if($reviews){
 	              			if($reviews['review_by_me']){
@@ -51,12 +51,12 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 						<?php		
 							}else{
 						?>
-						<button class="btn btn-site btn-sm mb-5 SubmitReview">Submit Review</button>
+						<button class="btn btn-site btn-sm mb-5 SubmitReview"><?php echo __('contract_term_s_review','Submit Review');?></button>
 						<?php		
 							}
 	              		}?>
 	               </div>
-	                <div class="col-sm-6"><h5>Contractor's Feedback to You</h5></div>
+	                <div class="col-sm-6"><h5><?php echo __('contract_details_feed_you',"Contractor's Feedback to You");?></h5></div>
 	               <div class="col-sm-6">
 	               <?php if($reviews){
 	              			if($reviews['review_to_me']){
@@ -65,21 +65,21 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 						<div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div>
 	               		<p><?php echo nl2br($reviews['review_to_me']->review_comments);?></p>
 	               			<?php }else{?>
-	               			<p>After submit review you will able to see client review.</p>
+	               			<p><?php echo __('contract_term_after_submit','After submit review you will able to see client review.');?></p>
 						<?php	
 								}
 							}else{
 						?>
-						<p>No review yet.</p>
+						<p><?php echo __('contract_term_no_review','No review yet.');?></p>
 						<?php		
 							}
 	              	}else{?>
-	              		<p>No review yet.</p>
+	              		<p><?php echo __('contract_term_no_review','No review yet.');?></p>
 	              	<?php }?>
 	               		
 	               </div>
 	               <?php }else{?>
-	               <div class="col-sm-6"><h5>Your Feedback to Client</h5></div>
+	               <div class="col-sm-6"><h5><?php echo __('contract_details_feed_client','Your Feedback to Client');?></h5></div>
 	               <div class="col-sm-6">
 	               		<?php if($reviews){
 	              			if($reviews['review_by_me']){
@@ -89,12 +89,12 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 						<?php		
 							}else{
 						?>
-						<button class="btn btn-site btn-sm mb-5 SubmitReview">Submit Review</button>
+						<button class="btn btn-site btn-sm mb-5 SubmitReview"><?php echo __('contract_term_s_review','Submit Review');?></button>
 						<?php		
 							}
 	              		}?>
 	               </div>
-	                <div class="col-sm-6"><h5>Client's Feedback to You</h5></div>
+	                <div class="col-sm-6"><h5><?php echo __('contract_details_client_you',"Client's Feedback to You");?></h5></div>
 	               <div class="col-sm-6">
 	               	<?php if($reviews){
 	              			if($reviews['review_to_me']){
@@ -103,31 +103,31 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 						<div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div>
 	               		<p><?php echo nl2br($reviews['review_to_me']->review_comments);?></p>
 	               			<?php }else{?>
-	               			<p>After submit review you will able to see client review. </p>
+	               			<p><?php echo __('contract_term_after_submit','After submit review you will able to see client review.');?> </p>
 						<?php	
 								}
 							}else{
 						?>
-						<p>No review yet.</p>
+						<p><?php echo __('contract_term_no_review','No review yet.');?></p>
 						<?php		
 							}
 	              	}else{?>
-	              		<p>No review yet.</p>
+	              		<p><?php echo __('contract_term_no_review','No review yet.');?></p>
 	              	<?php }?>
 	               </div>
 	               <?php }?>
 	               <?php }?>
-	               <div class="col-sm-6"><h5>Contract Date</h5></div>
+	               <div class="col-sm-6"><h5><?php echo __('contract_term_c_date','Contract Date');?></h5></div>
 	               <div class="col-sm-6"><p><?php echo $contractDetails->contract_date;?></p></div>
 	               
 	               <div class="col-sm-12">
-	               <h5>Description of Work</h5>
+	               <h5><?php echo __('contract_term_d_work','Description of Work');?></h5>
 	               	<p><?php echo nl2br($contractDetails->contract_details);?></p>
 	               </div>
 	            </div>
                </div>
                <div class="card-footer">
-               	<h5 class="mb-0">Contract ID: <?php echo $contractDetails->contract_id;?></h5>
+               	<h5 class="mb-0"><?php echo __('contract_term_c_id','Contract ID:');?> <?php echo $contractDetails->contract_id;?></h5>
                </div>
             </div>
             
@@ -146,11 +146,11 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
             	<?php }else{ ?>
              	<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
             	<?php }?>
-            	<a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block">View Offer <!--<i class="icon-feather-external-link"></i>--></a>
+            	<a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block"><?php echo __('contract_term_view_offer','View Offer');?> <!--<i class="icon-feather-external-link"></i>--></a>
                 <?php if($contractDetails->bid_id){?>
-                <a href="<?php echo $application_link;?>" target="_blank" class="btn btn-site btn-block">Original Proposal</a>
+                <a href="<?php echo $application_link;?>" target="_blank" class="btn btn-site btn-block"><?php echo __('contract_term_o_proposal','Original Proposal');?></a>
                 <?php }?>
-                <a href="<?php echo $ProjectDetailsURL;?>" target="_blank" class="btn btn-web btn-block">Original Job Posting</a>
+                <a href="<?php echo $ProjectDetailsURL;?>" target="_blank" class="btn btn-web btn-block"><?php echo __('contract_term_job_posting','Original Job Posting');?></a>
 
               </div>
             </div>

@@ -28,9 +28,9 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 <div class="container">
         <h1><?php echo $contractDetails->contract_title;?></h1>
         <ul class="nav nav-tabs mb-3">
-          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>">Milestones & Earnings</a> </li>
-          <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('contract_details_milestone','Milestones & Earnings');?></a> </li>
+          <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
+          <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>"><?php echo __('contract_details_term','Terms & Settings');?></a> </li>
         </ul>
         <div class="row">
           <div class="col-lg-9">
@@ -44,17 +44,17 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 										<active-chat-body :active_chat="active_chat" :login_user="login_user" v-on:update-message="updateMessage" :new_message_received="lastMessageReceived" v-on:new-attachment="updateAttachment"></active-chat-body>
 									</div>
 									<div v-else>
-										<h3>Select chat</h3>
+										<h3><?php echo __('contract_message_chat','Select chat');?></h3>
 									</div>
 								</div>
 								<!-- Message Content -->
 								<div class="attachmentFile">
-									<div class="messages-headline"><h4>Attachments</h4><p class="mb-0">All Files</p></div>
+									<div class="messages-headline"><h4><?php echo __('contract_message_attachment','Attachments');?></h4><p class="mb-0"><?php echo __('contract_message_all_files','All Files');?></p></div>
 									<div v-if="active_chat" class="attachScrollbar" data-simplebar>
 										<conversation-attachment :active_chat="active_chat" :refresh_attachment="refresh_attachment"></conversation-attachment>
 									</div>
 									<div v-else>
-										<h3>Select chat</h3>
+										<h3><?php echo __('contract_message_chat','Select chat');?></h3>
 									</div>
 								</div>
 							</div>
