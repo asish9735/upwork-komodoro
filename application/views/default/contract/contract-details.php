@@ -27,30 +27,30 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
   <div class="container">
     <h1><?php echo $contractDetails->contract_title;?></h1>
     <ul class="nav nav-tabs mb-3">
-      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>">Milestones & Earnings</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
+      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>"><?php echo __('contract_details_milestone','Milestones & Earnings');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>"><?php echo __('contract_details_term','Terms & Settings');?></a> </li>
     </ul>
     <div class="row">
       <div class="col-lg-9">
         <div class="panel mb-4">
           <div class="panel-body">
             <ul class="totalList mb-0">
-              <li><b>Budget</b> <span> <?php echo $currency.$contractDetails->contract_amount;?></span> </li>
-              <li><b>In Escrow</b> <span><?php echo $currency.$contractDetails->in_escrow;?></span> </li>
-              <li><b>Milestones Paid</b><span><?php echo $currency.$contractDetails->milestone_paid;?></span></li>
+              <li><b><?php echo __('contract_details_budget','Budget');?></b> <span> <?php echo $currency.$contractDetails->contract_amount;?></span> </li>
+              <li><b><?php echo __('contract_details_escrow','In Escrow');?></b> <span><?php echo $currency.$contractDetails->in_escrow;?></span> </li>
+              <li><b><?php echo __('contract_details_milestone','Milestones Paid');?></b><span><?php echo $currency.$contractDetails->milestone_paid;?></span></li>
               <?php if($not_started_contract){?>
-              <li><b>Not Started</b><span><?php echo $currency.$contractDetails->not_started;?></span></li>
+              <li><b><?php echo __('contract_details_not_start','Not Started');?></b><span><?php echo $currency.$contractDetails->not_started;?></span></li>
               <?php }?>
               <?php if($contractDetails->disputed){?>
-              <li><b>Total Disputed</b><span><?php echo $currency.$contractDetails->disputed;?></span></li>
-			  <li><b>Refunded</b> <span><?php echo $currency.$contractDetails->refund_earn;?></span> </li>
+              <li><b><?php echo __('contract_details_disputed','Total Disputed');?></b><span><?php echo $currency.$contractDetails->disputed;?></span></li>
+			  <li><b><?php echo __('contract_details_refund','Refunded');?></b> <span><?php echo $currency.$contractDetails->refund_earn;?></span> </li>
               <?php }?>
-              <li><b>Remaining</b> <span><?php echo $currency.$contractDetails->balance_remain;?></span> </li>
+              <li><b><?php echo __('contract_details_remaining','Remaining');?></b> <span><?php echo $currency.$contractDetails->balance_remain;?></span> </li>
               <?php if($is_owner){?>
-              <li><b>Spent</b> <span><?php echo $currency.$contractDetails->earning;?></span> </li>
+              <li><b><?php echo __('contract_details_spent','Spent');?></b> <span><?php echo $currency.$contractDetails->earning;?></span> </li>
               <?php }else{?>
-              <li><b>Total Earning</b> <span><?php echo $currency.$contractDetails->earning;?></span> </li>
+              <li><b><?php echo __('contract_details_earning','Total Earning');?></b> <span><?php echo $currency.$contractDetails->earning;?></span> </li>
               <?php }?>
             </ul>
           </div>
@@ -58,7 +58,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
         <?php
         if($not_started_contract){
 			?>
-		<p class="alert alert-warning text-center"><?php echo $not_started_contract;?> milestone not started.</p>	
+		<p class="alert alert-warning text-center"><?php echo $not_started_contract;?><?php echo __('contract_details_mile_not_start','milestone not started.');?> </p>	
 			<?php
 		}
         ?>
@@ -67,7 +67,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 		?>
 		<div class="panel mb-4">
           <div class="panel-header relative">
-            <h4>Disputed (<?php echo count($contractDetails->disputed_milestone);?>)</h4>
+            <h4><?php echo __('contract_details_disputed','Disputed');?> (<?php echo count($contractDetails->disputed_milestone);?>)</h4>
           </div>
           <div class="panel-body" >
             <ul class="list-group">
@@ -78,18 +78,18 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 				<li class="list-group-item w-100 d-flex align-self-center">
               <span class="number"><?php echo $m+1;?>.</span>
               <div class="milestone-item"> <b><?php echo ucfirst($milestone->milestone_title);?></b><br>
-                <b>Amount:</b> <?php echo $milestone->milestone_amount;?> <br>
-                <b>Date:</b> <?php echo $milestone->dispute_date;?> <br>
+                <b><?php echo __('contract_details_amount','Amount:');?></b> <?php echo $milestone->milestone_amount;?> <br>
+                <b><?php echo __('contract_details_date','Date:');?></b> <?php echo $milestone->dispute_date;?> <br>
                 <?php if($milestone->dispute_status==1){?>
-                <b>Status:</b> <span class="badge badge-success">Resolved</span>
+                <b><?php echo __('contract_details_status','Status:');?></b> <span class="badge badge-success"><?php echo __('contract_details_resolve','Resolved');?></span>
                 <?php
                 }else{
-                ?><b>Status:</b> <span class="badge badge-warning">Pending</span>
+                ?><b><?php echo __('contract_details_status','Status:');?></b> <span class="badge badge-warning"><?php echo __('contract_details_pending','Pending');?></span>
                 <?php }?> 
                 </div>
              
               <div class="ml-auto align-self-center">
-              <a href="<?php echo get_link('DisputeDetails').'/'.md5($milestone->contract_milestone_id);?>" class="btn btn-site btn-sm">View</a>
+              <a href="<?php echo get_link('DisputeDetails').'/'.md5($milestone->contract_milestone_id);?>" class="btn btn-site btn-sm"><?php echo __('contract_details_view','View');?></a>
               </div>
               
               </li>
@@ -108,57 +108,57 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 		?>
 		<div class="panel mb-4">
 			<div class="panel-header relative">
-            <h4>End Contract</h4>
+            <h4><?php echo __('contract_details_end_contract','End Contract');?></h4>
           </div>
           <div class="panel-body">
           <?php
           if($contractDetails->is_contract_ended){
 		  	?>
-		  <p>Contract Ended on <?php echo $contractDetails->contract_end_date;?></p>	
+		  <p><?php echo __('contract_details_end_contract_on','Contract Ended on');?> <?php echo $contractDetails->contract_end_date;?></p>	
 		  	<?php
 		  }
 		 // get_print($reviews);
           if($reviews){
 			  if($reviews['review_by_me'] && $reviews['review_to_me']){
 			  ?>
-              <div class="row">
+			  <div class="row">
 			  <div class="col-sm-6">
               <h5>
 			  <?php if($is_owner){?>
-			  	Your Feedback to Contractor
+			  	<?php echo __('contract_details_feed_contarctor','Your Feedback to Contractor');?>
 			  <?php }else{?>
-			   Your Feedback to Client
+			   <?php echo __('contract_details_feed_client','Your Feedback to Client');?>
 			  <?php }?>
 			  </h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
 			  <div class="col-sm-6">
               <h5>
 			  <?php if($is_owner){?>
-			  	Contractor's Feedback to You
+			  	<?php echo __('contract_details_feed_you',"Contractor's Feedback to You");?>
 			  <?php }else{?>
-			  Client's Feedback to You
+			  <?php echo __('contract_details_client_you',"Client's Feedback to You");?>
 			  <?php }?>
 			  </h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div></div>
-              </div>
+			  </div>
 			  <?php	
 			  }elseif($reviews['review_by_me'] && !$reviews['review_to_me']){
 			  	?>
 			  <div class="row">
-              <div class="col-sm-6"><h5>Your Feedback</h5></div>
+			  <div class="col-sm-6"><h5><?php echo __('contract_details_your_feedback','Your Feedback');?></h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
               </div>
-			  <p>Client not send feedback yet.</p>
+			  <p><?php echo __('contract_details_not_feedback','Client not send feedback yet.');?></p>
 			  <?php
 			  	
 			  }elseif(!$reviews['review_by_me']){
 			  ?>
-			 <a href="<?php echo $endcontract_url;?>" class="btn btn-site">Send Feedback</a>
+			 <a href="<?php echo $endcontract_url;?>" class="btn btn-site"><?php echo __('contract_details_send_feedback','Send Feedback');?></a>
 			  <?php
 			  }	
 		  }else{
 		  ?>
-		  <a href="<?php echo $endcontract_url;?>" class="btn btn-site">End Contract Now</a>
+		  <a href="<?php echo $endcontract_url;?>" class="btn btn-site"><?php echo __('contract_details_end_contracts','End Contract Now');?></a>
 		  <?php	
 		  }
           ?>
@@ -169,7 +169,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
         ?>
         <div class="panel mb-4">
           <div class="panel-header relative">
-            <h4>Milestone (<?php echo count($contractDetails->milestone);?>) <a href="javascript:void(0)" onclick="showMilestone()" class="toggleUD milestoneToggle"><i class="icon-feather-chevron-down"></i></a></h4>
+            <h4><?php echo __('contract_details_milestones','Milestone');?> (<?php echo count($contractDetails->milestone);?>) <a href="javascript:void(0)" onclick="showMilestone()" class="toggleUD milestoneToggle"><i class="icon-feather-chevron-down"></i></a></h4>
           </div>
           <div class="panel-body" id="milestone" style="display:none">
             <ul class="list-group">
@@ -179,9 +179,9 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 				<li class="list-group-item w-100 d-flex align-self-center">
               <a href="<?php echo get_link('MilestoneDetails').'/'.md5($milestone->contract_milestone_id);?>" class="text-dark"> <span class="number"><?php echo $m+1;?>.</span>
               <div class="milestone-item"> <b><?php echo ucfirst($milestone->milestone_title);?></b><br>
-                <b>Budget:</b> <?php echo $currency.$milestone->milestone_amount;?> <br>
+                <b><?php echo __('contract_details_budgets','Budget:');?></b> <?php echo $currency.$milestone->milestone_amount;?> <br>
                 <?php if($milestone->is_approved){?>
-                <b>Completed:</b><?php echo $milestone->approved_date;}else{?><b>Due Date:</b> <?php echo $milestone->milestone_due_date; }?> </div>
+                <b><?php echo __('contract_details_complete','Completed:');?></b><?php echo $milestone->approved_date;}else{?><b>Due Date:</b> <?php echo $milestone->milestone_due_date; }?> </div>
               </a>
               <div class="ml-auto align-self-center">
               <?php 
@@ -197,7 +197,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
               <?php }
               }
               ?>
-              <a href="<?php echo get_link('MilestoneDetails').'/'.md5($milestone->contract_milestone_id);?>" class="btn btn-site btn-sm">View</a>
+              <a href="<?php echo get_link('MilestoneDetails').'/'.md5($milestone->contract_milestone_id);?>" class="btn btn-site btn-sm"><?php echo __('contract_details_view','View');?></a>
               </div>
               
               </li>
@@ -226,13 +226,13 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
             <?php if($is_owner){?>
             <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block mt-2">
             <icon class="icon-material-outline-add"></icon>
-            New Contract</a> <!--<a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
+            <?php echo __('contract_details_n_contract','New Contract');?></a> <!--<a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
             <icon class="icon-material-outline-add"></icon>
             Add Fund</a>-->
             <?php if($pending_contract){?>
             <a href="<?php echo $make_dispute_url;?>" class="btn btn-danger btn-block">
             <icon class="icon-line-awesome-warning"></icon>
-            Make Dispute</a>
+            <?php echo __('contract_details_m_disputed','Make Dispute');?></a>
             <?php }?>
             <?php }?>
           </div>
