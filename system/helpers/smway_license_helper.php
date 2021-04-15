@@ -2173,12 +2173,16 @@ if(!function_exists('getFieldData')){
 }
 if(!function_exists('getMemberLogo')){
 	function getMemberLogo($member_id=''){
-	$userimage=IMAGE.'default/thumb/default-member-logo.svg';
-	$logo=getFieldData('logo','member_logo','','',array('status'=>1,'member_id'=>$member_id));
-	if($logo && file_exists(UPLOAD_PATH.'member-logo/'.$logo)){
-		$userimage=UPLOAD_HTTP_PATH.'member-logo/'.$logo;
-	}
-	return $userimage;
+		$organization_id=getFieldData('organization_id','organization','member_id',$member_id);
+		if($organization_id){
+			return getCompanyLogo($organization_id);
+		}
+		$userimage=IMAGE.'default/thumb/default-member-logo.svg';
+		$logo=getFieldData('logo','member_logo','','',array('status'=>1,'member_id'=>$member_id));
+		if($logo && file_exists(UPLOAD_PATH.'member-logo/'.$logo)){
+			$userimage=UPLOAD_HTTP_PATH.'member-logo/'.$logo;
+		}
+		return $userimage;
 }
 }
 if(!function_exists('getCompanyLogo')){
