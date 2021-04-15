@@ -104,8 +104,8 @@ if($loggedUser){
 							<li class="<?php echo ($page_key == 'dashboard_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
 							<li class="<?php echo ($page_key == 'message_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> <?php echo __('messages','Messages'); ?> <!--<span class="nav-tag">2</span>--></a></li>
 							<li class="<?php echo ($page_key == 'notification_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('NotificationURL');?>"><i class="icon-material-outline-notifications-active"></i> <?php echo __('notifications','Notifications'); ?> <!--<span class="nav-tag">2</span>--></a></li>
-							<li class="<?php echo ($page_key == 'favorite_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i> <?php echo __('favourite','Favourite'); ?></a></li>
-							<li class="<?php echo ($page_key == 'reviews_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-rate-review"></i> <?php echo __('reviews','Reviews'); ?></a></li>
+							<li class="<?php echo ($page_key == 'favorite_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-feather-heart"></i> <?php echo __('favourite','Favourite'); ?></a></li>
+							<li class="<?php echo ($page_key == 'reviews_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-star-border"></i> <?php echo __('reviews','Reviews'); ?></a></li>
 						</ul>
 						<ul data-submenu-title="Finance">
 							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('finance','Finance'); ?></a>

@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php if($portfolio->portfolio_complete_date){?>
             <span><?php D(dateFormat($portfolio->portfolio_complete_date,'M d, Y'));?></span>
 			<?php }else{?>
-            <div style="height:28px;margin-top: 8px;">&nbsp;</div>
+            <div style="height:24px;margin-top: 5px;">&nbsp;</div>
 			<?php }?>
 		</div>
 	</div>

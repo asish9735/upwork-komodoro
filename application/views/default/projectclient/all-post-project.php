@@ -25,8 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <ul class="dashboard-box-list" id="ajax_table"></ul>
                     <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
                 </div>
-                <div class="container text-center padding-bottom-40">
-                    <button class="btn btn-primary" id="load_more" data-page = "0">Load more..</button>
+                <div class="text-center">
+                    <button class="btn btn-site mb-3" id="load_more" data-page = "0">Load more..</button>
                 </div>
 
             </div>

@@ -25,6 +25,10 @@ if($loggedUser){
 		'single_row'=>true,
 	));	
 	$memberDataBasic->balance=getFieldData('balance','wallet','user_id',$this->member_id);
+	$page_class=$this->router->fetch_class();
+	$page_method=$this->router->fetch_method();
+	$page_key=$page_class.'_'.$page_method;
+	//print_r($page_key);
 }
 ?>
 <!-- Dashboard Sidebar
@@ -61,18 +65,18 @@ if($loggedUser){
                     </div>
                 </div>
 						<ul data-submenu-title="Start">
-							<li class="active"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i><?php echo __('dashboard','Dashboard');?></a></li>
-							<li><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i>  <?php echo __('messages','Messages');?><!--<span class="nav-tag">2</span>--></a></li>
-							<li><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-material-outline-star-border"></i><?php echo __('favourite','Favourite'); ?></a></li>
-							<li><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-rate-review"></i> <?php echo __('reviews','Reviews'); ?></a></li>
+							<li class="<?php echo ($page_key == 'dashboard_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i><?php echo __('dashboard','Dashboard');?></a></li>
+							<li class="<?php echo ($page_key == 'message_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i>  <?php echo __('messages','Messages');?><!--<span class="nav-tag">2</span>--></a></li>
+							<li class="<?php echo ($page_key == 'favorite_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-feather-heart"></i><?php echo __('favourite','Favourite'); ?></a></li>
+							<li class="<?php echo ($page_key == 'reviews_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-star-border"></i> <?php echo __('reviews','Reviews'); ?></a></li>
 						</ul>
 						<ul data-submenu-title="Finance">
 							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('finance','Finance');?></a>
 								<ul>
-									<li><a href="<?php D(get_link('AddFundURL'))?>"><?php echo __('add_fund','Add Fund');?></a></li>
-									<li><a href="<?php D(get_link('TransactionHistoryURL'))?>"><?php echo __('transaction','Transaction')?></a></li>
-									<li><a href="<?php D(get_link('WithdrawURL'))?>"><?php echo __('withdraw','Withdraw');?></a></li>
-									<li><a href="<?php D(get_link('InvoiceURL'))?>"><?php echo __('invoice','Invoice');?></a></li>
+									<li class="<?php echo ($page_key == 'finance_addfund') ? 'active' : '' ;?>"><a href="<?php D(get_link('AddFundURL'))?>"><i class="icon-feather-check"></i> <?php echo __('add_fund','Add Fund');?></a></li>
+									<li class="<?php echo ($page_key == 'finance_transaction') ? 'active' : '' ;?>"><a href="<?php D(get_link('TransactionHistoryURL'))?>"><i class="icon-feather-check"></i> <?php echo __('transaction','Transaction')?></a></li>
+									<li class="<?php echo ($page_key == 'finance_withdraw') ? 'active' : '' ;?>"><a href="<?php D(get_link('WithdrawURL'))?>"><i class="icon-feather-check"></i> <?php echo __('withdraw','Withdraw');?></a></li>
+									<li class="<?php echo ($page_key == 'invoice_listdata') ? 'active' : '' ;?>"><a href="<?php D(get_link('InvoiceURL'))?>"><i class="icon-feather-check"></i> <?php echo __('invoice','Invoice');?></a></li>
 								</ul>	
 							</li>
 						</ul>
@@ -80,11 +84,11 @@ if($loggedUser){
 							<li><a href="#"><i class="icon-material-outline-business-center"></i><?php echo __('projects','Projects');?></a>
 								<ul>
 									<!--<li><a href="<?php D(get_link('myprojectrecentClientURL'))?>">My Projects</a></li>-->
-									<li><a href="<?php D(get_link('myProjectClientURL'))?>"><?php echo __('all_posting','All Posting');?></a></li>
-									<li><a href="<?php D(get_link('OfferList'))?>"><?php echo __('all_offers','All Offers');?></a></li>
-									<li><a href="<?php D(get_link('ContractList'))?>"><?php echo __('all_contracts','All Contract');?></a></li>
+									<li class="<?php echo ($page_key == 'projectclient_all') ? 'active' : '' ;?>"><a href="<?php D(get_link('myProjectClientURL'))?>"><i class="icon-feather-check"></i> <?php echo __('all_posting','All Posting');?></a></li>
+									<li class="<?php echo ($page_key == 'contract_offerlist') ? 'active' : '' ;?>"><a href="<?php D(get_link('OfferList'))?>"><i class="icon-feather-check"></i> <?php echo __('all_offers','All Offers');?></a></li>
+									<li class="<?php echo ($page_key == 'contract_index') ? 'active' : '' ;?>"><a href="<?php D(get_link('ContractList'))?>"><i class="icon-feather-check"></i> <?php echo __('all_contracts','All Contract');?></a></li>
 									<!--<li><a href="<?php D(get_link('myContractClientURL'))?>">All Contracts</a></li>-->
-									<li><a href="<?php D(get_link('postprojectURL'))?>"><?php echo __('post_a_job','Post a Job');?></a></li>
+									<li><a href="<?php D(get_link('postprojectURL'))?>"><i class="icon-feather-check"></i> <?php echo __('post_a_job','Post a Job');?></a></li>
 								</ul>	
 							</li>
 							<!--<li><a href="#"><i class="icon-material-outline-assignment"></i> Tasks</a>
@@ -100,8 +104,8 @@ if($loggedUser){
 						<ul data-submenu-title="Account">
 							<li><a href="<?php D(get_link('settingclientaccountInfoURL'))?>"><i class="icon-material-outline-settings"></i><?php echo __('settings','Settings');?></a>
 								<ul>
-									<li><a href="<?php D(get_link('settingclientaccountInfoURL'))?>"><?php echo __('contact_info','Contact info');?></a></li>
-									<li><a href="<?php D(get_link('settingpasswordURL'))?>"><?php echo __('password_security','Password & security');?></a></li>
+									<li class="<?php echo ($page_key == 'settings_contact_info') ? 'active' : '' ;?>"><a href="<?php D(get_link('settingclientaccountInfoURL'))?>"><i class="icon-feather-check"></i> <?php echo __('contact_info','Contact info');?></a></li>
+									<li class="<?php echo ($page_key == 'password_security_password') ? 'active' : '' ;?>"><a href="<?php D(get_link('settingpasswordURL'))?>"><i class="icon-feather-check"></i> <?php echo __('password_security','Password & security');?></a></li>
 								</ul>
 							
 							</li>

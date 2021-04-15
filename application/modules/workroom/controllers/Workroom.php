@@ -969,6 +969,7 @@ class Workroom extends MX_Controller {
 		if($this->loggedUser){
 			$this->load->model('workroom_model');
 			$this->layout->set_js(array(
+				'jquery.nicescroll.min.js',
 				'utils/helper.js',
 				'bootbox_custom.js',
 				'mycustom.js',

@@ -43,9 +43,7 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
               <li><b>Total Bill</b> <span> <?php echo $currency.displayamount($contractDetails->total_bill,2);?></span> </li>
               <li><b>In Escrow</b> <span><?php echo $currency.$contractDetails->in_escrow;?></span> </li>
               <li><b>Amount Paid</b><span><?php echo $currency.$contractDetails->milestone_paid;?></span></li>
-              <li><b>Remaining</b> <span><?php echo $currency.displayamount($contractDetails->balance_remain,2);?></span> </li>
-            </ul>
-            <ul class="totalList mb-0">
+              <li><b>Remaining</b> <span><?php echo $currency.displayamount($contractDetails->balance_remain,2);?></span> </li>            
               <li><b>Total Hour</b> 
               <span> 
                <?php 
@@ -72,7 +70,7 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 				?>
 				<?php echo $hour;?>hr <?php echo $minutes;?>min	
 				</span>
-			</li>
+			  </li>
               <li><b>Yet To Bill</b><span><?php echo $currency.displayamount($contractDetails->yet_to_bill,2);?></span></li>
             </ul>
           </div>
@@ -96,6 +94,7 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
           if($reviews){
 			  if($reviews['review_by_me'] && $reviews['review_to_me']){
 			  ?>
+              <div class="row">
 			  <div class="col-sm-6"><h5>
 			  <?php if($is_owner){?>
 			  	Your Feedback to Contractor
@@ -112,11 +111,14 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 			  <?php }?>
 			  </h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div></div>
+              </div>
 			  <?php	
 			  }elseif($reviews['review_by_me'] && !$reviews['review_to_me']){
 			  	?>
-			  <div class="col-sm-6"><h5>Your Feedback</h5></div>
+			  <div class="row">
+              <div class="col-sm-6"><h5>Your Feedback</h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
+              </div>
 			  <p>Client not send feedback yet.</p>
 			  <?php
 			  	

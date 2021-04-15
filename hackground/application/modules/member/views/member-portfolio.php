@@ -4,21 +4,17 @@
 				<?php foreach($detail['member_portfolio'] as $k => $v){ ?>
 				<li class="list-group-item">
 					<div class="row">
-						<div class="col-sm-8">
-							<h4><?php echo $v['portfolio_title'];?> </h4>
-							
-							<p class="mb-2"><span class="badge badge-success"><?php echo !empty($v['sub_category']['name']) ? $v['sub_category']['name'] : '';?></span> &nbsp; <i class="icon-feather-calendar"></i> <?php echo !empty($v['portfolio_complete_date']) ? ' '.date('d M,Y', strtotime($v['portfolio_complete_date'])) : ''; ?></p>
-							
-							
-							<div class="mt-2"><?php echo $v['portfolio_description'];?></div>
-							
+						<div class="col">
+							<h4><?php echo $v['portfolio_title'];?> </h4>							
+							<p class="mb-2"><span class="badge badge-success"><?php echo !empty($v['sub_category']['name']) ? $v['sub_category']['name'] : '';?></span> &nbsp; <i class="icon-feather-calendar"></i> <?php echo !empty($v['portfolio_complete_date']) ? ' '.date('d M,Y', strtotime($v['portfolio_complete_date'])) : ''; ?></p>							
 						</div>
-						<div class="col-sm-4 text-right">
+						<div class="col-auto">
 							<a href="<?php echo JS_VOID;?>" onclick="edit_data('<?php echo $v['portfolio_id'];?>')" title="Edit" class="btn btn-sm btn-outline-success"><i class="icon-feather-edit"></i></a>
 							&nbsp;
 							<a href="<?php echo JS_VOID;?>" onclick="delete_data('<?php echo $v['portfolio_id'];?>')" title="Remove" class="btn btn-sm btn-outline-danger"><i class="icon-feather-trash"></i></a>
 						</div>
 					</div>
+                    <div class="mt-2"><?php echo $v['portfolio_description'];?></div>
 				</li>
 				<?php } ?>
 			</ul>

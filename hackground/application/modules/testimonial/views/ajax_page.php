@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
       <label for="description_<?php echo $v;?>">Description (<?php echo $v;?>)</label>
-      <textarea  class="form-control reset_field" id="name_<?php echo $v;?>" name="lang[description][<?php echo $v; ?>]" autocomplete="off"></textarea>
+      <textarea rows="4" class="form-control reset_field" id="name_<?php echo $v;?>" name="lang[description][<?php echo $v; ?>]" autocomplete="off"></textarea>
     </div>
     <?php } ?>
     <?php $this->load->view('upload_file_component', array('input_name' => 'logo', 'label' => 'Logo',  'url' => base_url('testimonial/upload_file'))); ?>
@@ -92,7 +92,7 @@ function onsuccess(res){
     </div>
     <div class="form-group">
       <label for="description_<?php echo $v;?>">Description (<?php echo $v;?>)</label>
-      <textarea  class="form-control reset_field" id="name_<?php echo $v;?>" name="lang[description][<?php echo $v; ?>]" autocomplete="off"><?php echo !empty($detail['lang']['description'][$v]) ? $detail['lang']['description'][$v] : '';?></textarea>
+      <textarea rows="4" class="form-control reset_field" id="name_<?php echo $v;?>" name="lang[description][<?php echo $v; ?>]" autocomplete="off"><?php echo !empty($detail['lang']['description'][$v]) ? $detail['lang']['description'][$v] : '';?></textarea>
     </div>
     <?php } ?>
     <?php if(!empty($detail['logo']) && file_exists(LC_PATH.'testimonial-icon/'.$detail['logo'])){ ?>

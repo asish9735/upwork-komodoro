@@ -121,7 +121,9 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
           if($reviews){
 			  if($reviews['review_by_me'] && $reviews['review_to_me']){
 			  ?>
-			  <div class="col-sm-6"><h5>
+              <div class="row">
+			  <div class="col-sm-6">
+              <h5>
 			  <?php if($is_owner){?>
 			  	Your Feedback to Contractor
 			  <?php }else{?>
@@ -129,7 +131,8 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 			  <?php }?>
 			  </h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
-			  <div class="col-sm-6"><h5>
+			  <div class="col-sm-6">
+              <h5>
 			  <?php if($is_owner){?>
 			  	Contractor's Feedback to You
 			  <?php }else{?>
@@ -137,11 +140,14 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 			  <?php }?>
 			  </h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div></div>
+              </div>
 			  <?php	
 			  }elseif($reviews['review_by_me'] && !$reviews['review_to_me']){
 			  	?>
-			  <div class="col-sm-6"><h5>Your Feedback</h5></div>
+			  <div class="row">
+              <div class="col-sm-6"><h5>Your Feedback</h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
+              </div>
 			  <p>Client not send feedback yet.</p>
 			  <?php
 			  	
