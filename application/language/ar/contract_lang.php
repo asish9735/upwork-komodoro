@@ -121,61 +121,18 @@ $lang['contract_dispute_drag_drop'] = 'قم بسحب وإسقاط الملف ه�
 $lang['contract_dispute_or'] = 'أو';
 $lang['contract_dispute_click'] = 'انقر لتحديد الملف';
 
+// ------------------------milestone-details-------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$lang['contract_milestone_title'] = 'لقب:';
+$lang['contract_milestone_app_date'] = 'تاريخ الموافقة:';
+$lang['contract_milestone_submission'] = 'تسليم';
+$lang['contract_milestone_sub_Work'] = 'إرسال العمل';
+$lang['contract_milestone_wo_submitted'] = 'قدم العمل';
+$lang['contract_milestone_reject'] = 'رفض';
+$lang['contract_milestone_got_apporoved'] = 'تمت الموافقة على التقديم في:';
+$lang['contract_milestone_got_rejected'] = 'تم رفض التقديم';
+$lang['contract_milestone_reason'] = 'سبب:';
+$lang['contract_milestone_reject_Work'] = 'رفض العمل';
 
 
 

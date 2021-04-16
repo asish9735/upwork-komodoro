@@ -21,24 +21,24 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
 
 <section class="section">
 <div class="container">
-      <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+      <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i><?php echo __('contract_end_b_contract','Back to Contract');?> </a>
       
         <h1><?php echo $contractMilestoneDetails->contract_title;?></h1>
         <div class="row">
           <div class="col-lg-9">
             <div class="panel mb-4">
               <div class="panel-header">
-                <h4>Details</h4>
+                <h4><?php echo __('contract_end_details','Details');?></h4>
               </div>
               <div class="panel-body">
-                <p class="mb-2"><b>Title:</b> <?php echo $contractMilestoneDetails->milestone_title;?></p>
-                <p class="mb-2"><b>Due date:</b> <i class="icon-feather-calendar text-muted"></i> <?php echo $contractMilestoneDetails->milestone_due_date;?></p>
+                <p class="mb-2"><b><?php echo __('contract_milestone_title','Title:');?></b> <?php echo $contractMilestoneDetails->milestone_title;?></p>
+                <p class="mb-2"><b><?php echo __('contract_dispute_deu_date','Due date:');?></b> <i class="icon-feather-calendar text-muted"></i> <?php echo $contractMilestoneDetails->milestone_due_date;?></p>
                 <?php if($contractMilestoneDetails->is_approved==1){?>
-                <p><b>Approved Date:</b> <i class="icon-feather-calendar text-muted"></i> <?php echo $contractMilestoneDetails->approved_date;?></p>
+                <p><b><?php echo __('contract_milestone_app_date','Approved Date:');?></b> <i class="icon-feather-calendar text-muted"></i> <?php echo $contractMilestoneDetails->approved_date;?></p>
                 <?php }else{
                 	if(!$contractMilestoneDetails->is_escrow){
 				?>
-				<span class="badge badge-warning">Milestone not started.</span>
+				<span class="badge badge-warning"><?php echo __('contract_details_mile_not_start','Milestone not started.');?></span>
 				<?php		
 					}
                 	
@@ -48,13 +48,13 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
             </div>
             <div class="panel mb-4">
               <div class="panel-header d-flex">
-                <h4 class="mt-2">Submission</h4>
+                <h4 class="mt-2"><?php echo __('contract_milestone_submission','Submission');?></h4>
                  <?php if(!$is_owner && $contractMilestoneDetails->is_approved!=1){
                  	if($contractMilestoneDetails->is_escrow){
                  	?>
                 <a href="javascript:void(0)" class="btn btn-site  float-right submit_work ml-auto">
                 <icon class="icon-material-outline-add"></icon>
-                Submit Work</a> 
+                <?php echo __('contract_milestone_sub_Work','Submit Work');?></a> 
                 <?php }}?>
                 </div>
               <div class="panel-body">
@@ -67,21 +67,21 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                       <div class="comment-content p-0">
                         <div class="arrow-comment"></div>
                         <div class="comment-by">
-                        <h4 class="mb-1"><i class="icon-feather-arrow-right text-success"></i> <b>Work Submitted</b></h4>
+                        <h4 class="mb-1"><i class="icon-feather-arrow-right text-success"></i> <b><?php echo __('contract_milestone_wo_submitted','Work Submitted');?></b></h4>
                         <span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->submission_date;?></span>
                           <?php if($submission->is_approved==1){?>
-                          <span class="status badge badge-success">Approved</span>
+                          <span class="status badge badge-success"><?php echo __('contract_list_approved','Approved');?></span>
                           <?php } elseif($submission->is_approved==2){?>
-                          <span class="status badge badge-danger">Rejected</span>
+                          <span class="status badge badge-danger"><?php echo __('contract_list_rejected','Rejected');?></span>
                           <?php }else{
 	if($is_owner){ 
 	?>
-                          <div class="status"><button class="btn btn-success acceptbtn" data-sid="<?php echo $submission->submission_id;?>">Accept</button>&nbsp;
-                          <button class="btn btn-danger denybtn" data-sid="<?php echo $submission->submission_id;?>">Reject</button></div>
+                          <div class="status"><button class="btn btn-success acceptbtn" data-sid="<?php echo $submission->submission_id;?>"><?php echo __('contract_dispute_accept','Accept');?></button>&nbsp;
+                          <button class="btn btn-danger denybtn" data-sid="<?php echo $submission->submission_id;?>"><?php echo __('contract_milestone_reject','Reject');?></button></div>
                           <?php
 	}else{
 	?>
-                          <span class="status badge badge-warning">Pending</span>
+                          <span class="status badge badge-warning"><?php echo __('contract_details_pending','Pending');?></span>
                           <?php	
 	}
 								   }
@@ -109,7 +109,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                         <li>
                           <div class="comment-content p-0">
                             <div class="arrow-comment"></div>
-                            <div class="comment-by"><b class="text-success">Submission got approved On:</b> <span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->update_date;?></span> </div>
+                            <div class="comment-by"><b class="text-success"><?php echo __('contract_milestone_got_apporoved','Submission got approved On:');?></b> <span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->update_date;?></span> </div>
                           </div>
                         </li>
                       </ul>
@@ -118,8 +118,8 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                         <li>
                           <div class="comment-content p-0">
                             <div class="arrow-comment"></div>
-                            <div class="comment-by"><b class="text-danger">Submission got rejected</b> <span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->update_date;?></span> </div>
-                            <p><b>Reason:</b> <?php echo nl2br($submission->change_reason);?></p>
+                            <div class="comment-by"><b class="text-danger"><?php echo __('contract_milestone_got_rejected','Submission got rejected');?></b> <span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->update_date;?></span> </div>
+                            <p><b><?php echo __('contract_milestone_reason','Reason:');?></b> <?php echo nl2br($submission->change_reason);?></p>
                           </div>
                         </li>
                       </ul>
@@ -173,7 +173,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                 <?php 
 	            	}
 	            }else{?>
-                    <li class="text-center text-danger">No record found</li>
+                    <li class="text-center text-danger"><?php echo __('contract_list_no_recoard','No record found');?></li>
                     <?php }?>
                   </ul>
                 </section>
@@ -206,25 +206,25 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Submit Work</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveWork(this)">Send</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('contract_end_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('contract_milestone_sub_Work','Submit Work');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveWork(this)"><?php echo __('contract_dispute_send','Send');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col">
             <form action="" method="post" accept-charset="utf-8" id="workform" class="form-horizontal" role="form" name="workform" onsubmit="return false;">
               <div class="form-group">
-                <label><b>Description</b></label>
+                <label><b><?php echo __('contract_dispute_description','Description');?></b></label>
                 <textarea class="form-control" id="details" name="details"></textarea>
               </div>
               <div class="form-group">
-                <label><b>Attachments</b></label>
+                <label><b><?php echo __('contract_message_attachment','Attachments');?></b></label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                  <h4 class="mb-0">Drag and Drop file here<br/>
-                    Or<br/>
-                    Click to select file</h4>
+                  <h4 class="mb-0"><?php echo __('contract_dispute_drag_drop','Drag and Drop file here');?><br/>
+                    <?php echo __('contract_dispute_or','Or');?><br/>
+                    <?php echo __('contract_dispute_click','Click to select file');?></h4>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>
@@ -240,9 +240,9 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Reject Work</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="ActionWork(this)">Send</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('');?>Cancel</button>
+        <h4 class="modal-title"><?php echo __('contract_milestone_reject_Work','Reject Work');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="ActionWork(this)"><?php echo __('contract_dispute_send','Send');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -250,7 +250,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
             <form action="" method="post" accept-charset="utf-8" id="workactionform" class="form-horizontal" role="form" name="workactionform" onsubmit="return false;">
               <input type="hidden" name="sid" id="sid" value="0"/>
               <div class="form-group">
-                <label><b>Reason</b></label>
+                <label><b><?php echo __('contract_milestone_reason','Reason');?></b></label>
                 <textarea class="form-control" id="reason" name="reason"></textarea>
               </div>
             </form>

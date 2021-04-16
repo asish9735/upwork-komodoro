@@ -124,5 +124,18 @@ $lang['contract_dispute_drag_drop'] = 'Drag and Drop file here';
 $lang['contract_dispute_or'] = 'Or';
 $lang['contract_dispute_click'] = 'Click to select file';
 
+// ------------------------milestone-details-------------------------
+
+$lang['contract_milestone_title'] = 'Title:';
+$lang['contract_milestone_app_date'] = 'Approved Date:';
+$lang['contract_milestone_submission'] = 'Submission';
+$lang['contract_milestone_sub_Work'] = 'Submit Work';
+$lang['contract_milestone_wo_submitted'] = 'Work Submitted';
+$lang['contract_milestone_reject'] = 'Reject';
+$lang['contract_milestone_got_apporoved'] = 'Submission got approved On:';
+$lang['contract_milestone_got_rejected'] = 'Submission got rejected';
+$lang['contract_milestone_reason'] = 'Reason:';
+$lang['contract_milestone_reject_Work'] = 'Reject Work';
+
 
 ?>
