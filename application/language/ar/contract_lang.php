@@ -134,20 +134,19 @@ $lang['contract_milestone_got_rejected'] = 'تم رفض التقديم';
 $lang['contract_milestone_reason'] = 'سبب:';
 $lang['contract_milestone_reject_Work'] = 'رفض العمل';
 
+// --------------------------------offer-details--------------------------
+$lang['contract_offer_accept'] = 'عرض قبول';
+$lang['contract_offer_reject'] = 'عرض رفض';
+$lang['contract_offer_accepted'] = 'عرض قبول';
+$lang['contract_offer_rejected'] = 'العرض مرفوض';
+$lang['contract_offer_term'] = 'مصطلح';
+$lang['contract_offer_h_rate'] = 'المعدل بالساعة:';
+$lang['contract_offer_m_limit'] = 'الحد الأقصى:';
+$lang['contract_offer_m_hour'] = 'السماح بالساعة اليدوية:';
+$lang['contract_offer_attachment'] = 'مرفق';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ---------------------------offer-list---------------------
+$lang['contract_offer_all'] = 'كل العروض';
 
 
 

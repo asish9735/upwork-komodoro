@@ -19,7 +19,7 @@ $currency=priceSymbol();
         <div class="dashboard-box margin-top-0">
             <!-- Headline -->
             <div class="headline">
-                <h3>All Offers</h3>
+                <h3><?php echo __('contract_offer_all','All Offers');?></h3>
             </div>
             <div class="content">
                 <ul class="dashboard-box-list">
@@ -36,15 +36,15 @@ $currency=priceSymbol();
                                     <h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a></h4>                                    <!-- Job Listing Footer -->
                                     <div class="job-listing-footer if-button">
                                         <ul>
-                                            <li><b>Budget:</b> <?php D($currency.$v['contract_amount']);?><?php if($v['is_hourly']==1){echo'/hr';}?></li>
-                                            <li><b>Date:</b> <?php D($v['contract_date']);?></li>
+                                            <li><b><?php echo __('contract_details_budgets','Budget:');?></b> <?php D($currency.$v['contract_amount']);?><?php if($v['is_hourly']==1){echo'/hr';}?></li>
+                                            <li><b><?php echo __('contract_details_date','Date:');?></b> <?php D($v['contract_date']);?></li>
                                             <li>
 											<?php if($v['contract_status']==1){?>
-                                            <span class="dashboard-status-button green">Approved</span>
+                                            <span class="dashboard-status-button green"><?php echo __('contract_list_approved','Approved');?></span>
                                             <?php }elseif($v['contract_status']==2){?>
-                                            <span class="dashboard-status-button red">Rejected</span>
+                                            <span class="dashboard-status-button red"><?php echo __('contract_list_rejected','Rejected');?></span>
                                             <?php }elseif($v['contract_status']==0){?>
-                                            <span class="dashboard-status-button yellow">Pending</span>
+                                            <span class="dashboard-status-button yellow"><?php echo __('contract_details_pending','Pending');?></span>
                                             <?php }?>
                                             </li>
                                         </ul>
@@ -60,7 +60,7 @@ $currency=priceSymbol();
                         </div>									
                     </li>
                     <?php } }else{ ?>
-                    <li>No record found</li>
+                    <li><?php echo __('contract_list_no_recoard','No record found');?></li>
                     <?php }?>        
                 </ul>                                
             </div>            

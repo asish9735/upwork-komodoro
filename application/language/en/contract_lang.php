@@ -137,5 +137,17 @@ $lang['contract_milestone_got_rejected'] = 'Submission got rejected';
 $lang['contract_milestone_reason'] = 'Reason:';
 $lang['contract_milestone_reject_Work'] = 'Reject Work';
 
+// --------------------------------offer-details--------------------------
+$lang['contract_offer_accept'] = 'Offer Accept';
+$lang['contract_offer_reject'] = 'Offer Reject';
+$lang['contract_offer_accepted'] = 'Offer Accepted';
+$lang['contract_offer_rejected'] = 'Offer Rejected';
+$lang['contract_offer_term'] = 'Term';
+$lang['contract_offer_h_rate'] = 'Hourly Rate:';
+$lang['contract_offer_m_limit'] = 'Max Limit:';
+$lang['contract_offer_m_hour'] = 'Allow Manual Hour:';
+$lang['contract_offer_attachment'] = 'Attachment';
 
+// ---------------------------offer-list---------------------
+$lang['contract_offer_all'] = 'All Offers';
 ?>

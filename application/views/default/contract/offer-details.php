@@ -25,26 +25,26 @@ if($is_owner){
         if($contractDetails->contract_status==0){
             if($current_member!=$contractDetails->offer_by){
             ?>
-            <button class="btn btn-success btn-sm acceptbtn mr-2">Offer Accept</button>
-            <button class="btn btn-danger btn-sm denybtn mr-2">Offer Reject</button>
+            <button class="btn btn-success btn-sm acceptbtn mr-2"><?php echo __('contract_offer_accept','Offer Accept');?></button>
+            <button class="btn btn-danger btn-sm denybtn mr-2"><?php echo __('contract_offer_reject','Offer Reject');?></button>
             <?php	
             }
         }elseif($contractDetails->contract_status==1){
         ?>
         
-        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i> Offer Accepted.</span></p>
+        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i><?php echo __('contract_offer_accepted','Offer Accepted.');?> </span></p>
         
         <?php	
         }elseif($contractDetails->contract_status==2){
         ?>
-        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> Offer Rejected</span></p>        
+        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i><?php echo __('contract_offer_rejected','Offer Rejected');?> </span></p>        
         <?php	
         }?>
         </div>
         <div class="row">
         <div class="col-lg-9">
         <div class="panel mb-4">
-        <div class="panel-header"><h4>Details</h4></div>
+        <div class="panel-header"><h4><?php echo __('contract_end_details','Details');?></h4></div>
         <div class="panel-body">
         <?php if($contractDetails->contract_details){?>
         <p><?php echo nl2br($contractDetails->contract_details);?></p>
@@ -54,17 +54,17 @@ if($is_owner){
         </div>
         <?php if($contractDetails->is_hourly){?>
         <div class="panel mb-4">
-        <div class="panel-header relative"><h4>Term </h4></div>	
+        <div class="panel-header relative"><h4><?php echo __('contract_offer_term','Term');?> </h4></div>	
         <div class="panel-body">
-        <p><b>Hourly Rate:</b> <?php echo $currency.$contractDetails->contract_amount;?> /hr</p>
-        <p><b>Max Limit:</b> <?php if($contractDetails->max_hour_limit){echo round($contractDetails->max_hour_limit).' hr/week';}else{echo 'No limit';}?></p>
-        <p><b>Allow Manual Hour:</b> <?php if($contractDetails->allow_manual_hour){echo 'Yes';}else{echo 'No';}?></p>
+        <p><b><?php echo __('contract_offer_h_rate','Hourly Rate:');?></b> <?php echo $currency.$contractDetails->contract_amount;?> /hr</p>
+        <p><b><?php echo __('contract_offer_m_limit','Max Limit:');?></b> <?php if($contractDetails->max_hour_limit){echo round($contractDetails->max_hour_limit).' hr/week';}else{echo 'No limit';}?></p>
+        <p><b><?php echo __('contract_offer_m_hour','Allow Manual Hour:');?></b> <?php if($contractDetails->allow_manual_hour){echo 'Yes';}else{echo 'No';}?></p>
         </div>
         
         </div>	
         <?php }else{?>
         <div class="panel mb-4">
-        <div class="panel-header relative"><h4>Milestone (<?php echo count($contractDetails->milestone);?>)</h4> <a href="javascript:void(0)" onclick="showMilestone()" class="toggleUD milestoneToggle"><i class="icon-feather-chevron-down"></i></a></div>
+        <div class="panel-header relative"><h4><?php echo __('contract_details_milestones','Milestone');?> (<?php echo count($contractDetails->milestone);?>)</h4> <a href="javascript:void(0)" onclick="showMilestone()" class="toggleUD milestoneToggle"><i class="icon-feather-chevron-down"></i></a></div>
         <div class="panel-body" id="milestone" style="display:none">
         <ul class="list-group ">
         <?php if($contractDetails->milestone){
@@ -74,8 +74,8 @@ if($is_owner){
         <span class="number"><?php echo $m+1;?>.</span>
         <div class="milestone-item">
             <b><?php echo ucfirst($milestone->milestone_title);?></b><br>
-            <b>Budget:</b> <?php echo $currency.$milestone->milestone_amount;?> <br> 
-            <b>Due Date:</b> <i class="icon-feather-calendar text-muted"></i> <?php echo $milestone->milestone_due_date; ?>
+            <b><?php echo __('contract_details_budgets','Budget:');?></b> <?php echo $currency.$milestone->milestone_amount;?> <br> 
+            <b><?php echo __('contract_dispute_deu_date','Due Date:');?></b> <i class="icon-feather-calendar text-muted"></i> <?php echo $milestone->milestone_due_date; ?>
         </div>				
         </li>
         <?php		
@@ -90,7 +90,7 @@ if($is_owner){
         <?php }?>
         <?php if($contractDetails->contract_attachment){?>
         <div class="panel mb-4">
-        <div class="panel-header relative"><h4>Attachment</h4><a href="javascript:void(0)" onclick="showAttach()" class="toggleUD attachmentToggle"><i class="icon-feather-chevron-down"></i></a></div>
+        <div class="panel-header relative"><h4><?php echo __('contract_offer_attachment','Attachment');?></h4><a href="javascript:void(0)" onclick="showAttach()" class="toggleUD attachmentToggle"><i class="icon-feather-chevron-down"></i></a></div>
         <div class="panel-body" id="attachment" style="display:none">
         <div class="attachments-container">
           <?php
@@ -116,19 +116,19 @@ if($is_owner){
         if($contractDetails->contract_status==0){
             if($current_member!=$contractDetails->offer_by){
             ?>
-            <button class="btn btn-success btn-block acceptbtn">Offer Accept</button>
-            <button class="btn btn-danger btn-block denybtn mb-3">Offer Reject</button>
+            <button class="btn btn-success btn-block acceptbtn"><?php echo __('contract_offer_accept','Offer Accept');?></button>
+            <button class="btn btn-danger btn-block denybtn mb-3"><?php echo __('contract_offer_reject','Offer Reject');?></button>
             <?php	
             }
         }elseif($contractDetails->contract_status==1){
         ?>
         
-        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i> Offer Accepted.</span></p>
+        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i><?php echo __('contract_offer_accepted','Offer Accepted.');?></span></p>
         
         <?php	
         }elseif($contractDetails->contract_status==2){
         ?>
-        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> Offer Rejected</span></p>        
+        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i><?php echo __('contract_offer_rejected','Offer Rejected');?></span></p>        
         <?php	
         }?>
         </div>
