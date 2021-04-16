@@ -30,7 +30,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 
 <section class="section">
 <div class="container">
-		<a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i> Back to Contract</a>
+		<a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i><?php echo __('contract_dispute_b_contract','Back to Contract');?> </a>
         <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
       
         <div class="row">
@@ -39,15 +39,15 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 		  if($contractDetails->is_send_to_admin==1){
 			  if($contractDetails->dispute_status==1){
 		  ?>
-			<div class="text-center mb-2"><span class="status badge badge-success btn-block">Dispute closed by admin</span></div>
+			<div class="text-center mb-2"><span class="status badge badge-success btn-block"><?php echo __('contract_dispute_close_admin','Dispute closed by admin');?></span></div>
 			<ul class="totalList mb-3">
-                	<li><b>Total</b> <span ><?php echo $currency;?><?php echo $contractDetails->milestone_amount;?></span></li>
-                	<li><b>Commission</b> <span ><?php echo $currency;?><?php echo $contractDetails->commission_amount;?></span></li>
-                	<li><b>To Client</b> <span ><?php echo $currency;?><?php echo $contractDetails->owner_amount;?></span></li>
-                	<li><b>To Freelancer</b> <span ><?php echo $currency;?><?php echo $contractDetails->contractor_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_total','Total');?></b> <span ><?php echo $currency;?><?php echo $contractDetails->milestone_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_commision','Commission');?></b> <span ><?php echo $currency;?><?php echo $contractDetails->commission_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_to_client','To Client');?></b> <span ><?php echo $currency;?><?php echo $contractDetails->owner_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_to_freelancer','To Freelancer');?></b> <span ><?php echo $currency;?><?php echo $contractDetails->contractor_amount;?></span></li>
             </ul>
 		<?php }else{ ?>
-			<div class="text-center mb-2"><span class="status badge badge-warning btn-block">Request sent to admin</span></div>
+			<div class="text-center mb-2"><span class="status badge badge-warning btn-block"><?php echo __('contract_dispute_sent_admin','Request sent to admin');?></span></div>
 			
 			<?php 
 			}
@@ -60,16 +60,17 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
          	<div class="mb-3 panel">
          	<div class="panel-body">
             <?php if($submission->is_approved==1){?>
-                  <span class="badge badge-success float-right">Approved</span>
+                  <span class="badge badge-success float-right"><?php echo __('contract_list_approved','Approved');?></span>
                   <?php } elseif($submission->is_approved==2){?>
-                  <span class="badge badge-danger float-right">Rejected</span>
+                  <span class="badge badge-danger float-right"><?php echo __('contract_list_rejected','Rejected');?></span>
                   <?php 
                   }elseif($submission->submitted_by==$current_user_id){
                   ?>
-                  <span class="badge badge-warning float-right">Waiting for action</span>
+                  <span class="badge badge-warning float-right"><?php echo __('contract_dispute_w_action',
+				'Waiting for action');?></span>
                   <?php	
                   }else{?>
-                  <span class="badge badge-warning float-right">Pending</span>
+                  <span class="badge badge-warning float-right"><?php echo __('contract_details_pending','Pending');?></span>
                  <?php	 }?>
          	<p class="mb-2"><span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->submission_date;?></span></p>
             <p><?php echo nl2br($submission->submission_description);?></p>
@@ -90,17 +91,17 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
             <?php }?>
             
                 <ul class="totalList mb-3">
-                	<li><b>Total</b> <span ><?php echo $currency;?><?php echo $contractDetails->milestone_amount;?></span></li>
-                	<li><b>Commission</b> <span ><?php echo $currency;?><?php echo $submission->commission_amount;?></span></li>
-                	<li><b>To Client</b> <span ><?php echo $currency;?><?php echo $submission->owner_amount;?></span></li>
-                	<li><b>To Freelancer</b> <span ><?php echo $currency;?><?php echo $submission->contractor_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_total','Total');?></b> <span ><?php echo $currency;?><?php echo $contractDetails->milestone_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_commision','Commission');?></b> <span ><?php echo $currency;?><?php echo $submission->commission_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_to_client','To Client');?></b> <span ><?php echo $currency;?><?php echo $submission->owner_amount;?></span></li>
+                	<li><b><?php echo __('contract_dispute_to_freelancer','To Freelancer');?></b> <span ><?php echo $currency;?><?php echo $submission->contractor_amount;?></span></li>
                 </ul>
                
                 
                   <?php if($submission->is_approved==0 && $submission->submitted_by!=$current_user_id){?>
 				  <?php if($contractDetails->is_send_to_admin==0){?>
-                  <div class="text-center"><button class="btn btn-success btn-sm acceptbtn" data-sid="<?php echo $submission->submission_id;?>">Accept</button>&nbsp;
-                  <button class="btn btn-primary btn-sm submit_offer" data-sid="<?php echo $submission->submission_id;?>">New Offer Request</button></div>
+                  <div class="text-center"><button class="btn btn-success btn-sm acceptbtn" data-sid="<?php echo $submission->submission_id;?>"><?php echo __('contract_dispute_accept','Accept');?></button>&nbsp;
+                  <button class="btn btn-primary btn-sm submit_offer" data-sid="<?php echo $submission->submission_id;?>"><?php echo __('contract_dispute_new_offer','New Offer Request');?></button></div>
                   <?php 
 				  }
   					}
@@ -121,17 +122,17 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                         <active-chat-body :active_chat="active_chat" :login_user="login_user" v-on:update-message="updateMessage" :new_message_received="lastMessageReceived" v-on:new-attachment="updateAttachment"></active-chat-body>
                     </div>
                     <div v-else>
-                        <h3>Select chat</h3>
+                        <h3><?php echo __('contract_message_chat','Select chat');?></h3>
                     </div>
                 </div>
                 <!-- Message Content -->
                 <div class="attachmentFile">
-                    <div class="messages-headline"><h4>Attachments</h4><p class="mb-0">All Files</p></div>
+                    <div class="messages-headline"><h4><?php echo __('contract_message_attachment','Attachments');?></h4><p class="mb-0"><?php echo __('contract_message_all_files','All Files');?></p></div>
                     <div v-if="active_chat" class="attachScrollbar" data-simplebar>
                         <conversation-attachment :active_chat="active_chat" :refresh_attachment="refresh_attachment"></conversation-attachment>
                     </div>
                     <div v-else>
-                        <h3>Select chat</h3>
+                        <h3><?php echo __('contract_message_chat','Select chat');?></h3>
                     </div>
                 </div>
             </div>
@@ -152,8 +153,8 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                 <?php if($contractDetails->dispute_status==0){	
 				if($contractDetails->is_send_to_admin==0){
 				?>
-				<a href="javascript:void(0)" class="btn btn-site submit_offer"><icon class="icon-material-outline-add"></icon> Submit Offer</a>
-				<a href="javascript:void(0)" class="btn btn-dark  submit_send_to_admin"><icon class="icon-material-outline-account"></icon> Send to admin</a>
+				<a href="javascript:void(0)" class="btn btn-site submit_offer"><icon class="icon-material-outline-add"></icon><?php echo __('contract_dispute_submit_offer','Submit Offer');?> </a>
+				<a href="javascript:void(0)" class="btn btn-dark  submit_send_to_admin"><icon class="icon-material-outline-account"></icon><?php echo __('contract_dispute_s_admin','Send to admin');?> </a>
                 
 				<?php
 				}else{
@@ -164,37 +165,37 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                 </div> 
             </div>
             <div class="card">
-                 <div class="card-header"><h4>Project</h4></div>     
+                 <div class="card-header"><h4><?php echo __('contract_dispute_project','Project');?></h4></div>     
                
                 <?php if($contractDetails->submission){
           	foreach($contractDetails->submission as $k=>$submission){
           	?>
             <div class="card-body border-bottom">
             <?php if($submission->is_approved==1){?>
-                  <span class="status badge badge-success float-right"><i class="fa fa-reply"></i> Approved</span>
+                  <span class="status badge badge-success float-right"><i class="fa fa-reply"></i> <?php echo __('contract_list_approved','Approved');?></span>
                   <?php } elseif($submission->is_approved==2){?>
-                  <span class="status badge badge-danger float-right"><i class="fa fa-reply"></i> Rejected</span>
+                  <span class="status badge badge-danger float-right"><i class="fa fa-reply"></i><?php echo __('contract_list_rejected','Rejected');?> </span>
                   <?php 
                   }elseif($submission->submitted_by==$current_user_id){
                   ?>
-                  <span class="status badge badge-warning float-right"><i class="fa fa-reply"></i> Waiting for action</span>
+                  <span class="status badge badge-warning float-right"><i class="fa fa-reply"></i> <?php echo __('contract_dispute_w_action','Waiting for action');?></span>
                   <?php	
                   }else{?>
-                  <span class="status badge badge-warning float-right"><i class="fa fa-reply"></i> Pending</span>
+                  <span class="status badge badge-warning float-right"><i class="fa fa-reply"></i> <?php echo __('contract_details_pending','Pending');?></span>
                   <?php	
 
 					}
 				  ?>
           	 <?php 
           	 if($submission->submitted_by==$contractDetails->contractor->member_id){?>
-          	 <p><b>From:</b> <?php echo $name_contractor;?></p>
+          	 <p><b><?php echo __('contract_dispute_from','From:');?></b> <?php echo $name_contractor;?></p>
           	 <?php }else{?>
-          	 <p><b>From:</b> <?php echo $name_owner;?></p>
+          	 <p><b><?php echo __('contract_dispute_from','From:');?></b> <?php echo $name_owner;?></p>
           	 <?php }?>
           	 <span class="date"><i class="icon-feather-calendar"></i> <?php echo $submission->submission_date;?></span>
           	 <ul class="mb-0">
-            	<li><b>To Client:</b> <span ><?php echo $currency;?><?php echo $submission->owner_amount;?></span></li>
-            	<li><b>To Freelancer:</b> <span ><?php echo $currency;?><?php echo $submission->contractor_amount;?></span></li>
+            	<li><b><?php echo __('contract_dispute_to_client','To Client:');?></b> <span ><?php echo $currency;?><?php echo $submission->owner_amount;?></span></li>
+            	<li><b><?php echo __('contract_dispute_to_freelancer','To Freelancer:');?></b> <span ><?php echo $currency;?><?php echo $submission->contractor_amount;?></span></li>
                 </ul>
                   
                 </div>
@@ -203,7 +204,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
           	
           	<?php }
           	}else{?>
-          	<div class="card-body"><p>No pffer yet</p></div>
+          	<div class="card-body"><p><?php echo __('contract_dispute_pffer','No pffer yet');?></p></div>
           	<?php }?>
           	              
             </div>
@@ -216,9 +217,9 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Submit Offer</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveOffer(this)">Send</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('contract_end_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('contract_dispute_submit_offer','Submit Offer');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveOffer(this)"><?php echo __('contract_dispute_send','Send');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -226,15 +227,15 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
             <form action="" method="post" accept-charset="utf-8" id="offerform" class="form-horizontal" role="form" name="offerform" onsubmit="return false;">
             <div class="row mb-4 text-center border-bottom pb-2 bg-light">
             	<div class="col-lg-4">
-                <label><b>Total Disputed Amount:</b> </label>
+                <label><b><?php echo __('contract_dispute_total_ammount','Total Disputed Amount:');?></b> </label>
                 <h3><?php echo $currency;?><?php echo $contractDetails->milestone_amount;?></h3>
                 </div>
             	<div class="col-lg-4">
-                <label><b>Commission Amount:</b> </label>
+                <label><b><?php echo __('contract_dispute_comm_ammount','Commission Amount:');?></b> </label>
                 <h3><?php echo $currency;?><?php echo $site_fee_amount;?></h3>
                 </div>
                 <div class="col-lg-4">
-                <label><b>Remain Amount:</b> </label>
+                <label><b><?php echo __('contract_dispute_remain_ammount','Remain Amount:');?></b> </label>
                 <h3><?php echo $currency;?><?php echo displayamount($remain_amount,2);?></h3>
                 </div>
             </div>
@@ -242,7 +243,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
               <div class="row">
               	<div class="col-lg-6">
               		<div class="form-group">
-		                <label><b>To Client</b></label>
+		                <label><b><?php echo __('contract_dispute_to_client','To Client');?></b></label>
 		                <div class="input-with-icon-left">
 		                  <i><?php echo $currency;?></i>
 		                  <input type="text" name="to_client" id="to_client" class="form-control" value="0" onkeypress="return isNumberKey(this)" onkeyup="updateFullPayment(this)">
@@ -251,7 +252,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
               	</div>
               	<div class="col-lg-6">
               		<div class="form-group">
-		                <label><b>To Freelance</b></label>
+		                <label><b><?php echo __('contract_dispute_to_freelancer','To Freelance');?></b></label>
 		                <div class="input-with-icon-left">
 		                  <i><?php echo $currency;?></i>
 		                	<input type="text" class="form-control" name="to_freelancer" id="to_freelancer" value="0" onkeyup="updateFullPayment(this)"/>
@@ -262,16 +263,16 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
               	
               </div>
               <div class="form-group">
-                <label><b>Description</b></label>
+                <label><b><?php echo __('contract_dispute_description','Description');?></b></label>
                 <textarea class="form-control" id="details" name="details"></textarea>
               </div>
               <div class="form-group">
-                <label><b>Attachments</b></label>
+                <label><b><?php echo __('contract_message_attachment','Attachments');?></b></label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                  <h4 class="mb-0">Drag and Drop file here<br/>
-                    Or<br/>
-                    Click to select file</h4>
+                  <h4 class="mb-0"><?php echo __('contract_dispute_drag_drop','Drag and Drop file here');?><br/>
+				  <?php echo __('contract_dispute_or','Or');?><br/>
+                    <?php echo __('contract_dispute_click','Click to select file');?></h4>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>

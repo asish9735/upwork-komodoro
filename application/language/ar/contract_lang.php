@@ -116,6 +116,14 @@ $lang['contract_dispute_send'] = 'إرسال';
 $lang['contract_dispute_total_ammount'] = 'إجمالي المبلغ المتنازع عليه:';
 $lang['contract_dispute_comm_ammount'] = 'مبلغ العمولة:';
 $lang['contract_dispute_remain_ammount'] = 'المبلغ المتبقي:';
+$lang['contract_dispute_description'] = 'وصف';
+$lang['contract_dispute_drag_drop'] = 'قم بسحب وإسقاط الملف هنا';
+$lang['contract_dispute_or'] = 'أو';
+$lang['contract_dispute_click'] = 'انقر لتحديد الملف';
+
+
+
+
 
 
 

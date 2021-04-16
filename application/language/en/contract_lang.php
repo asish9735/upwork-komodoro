@@ -119,6 +119,10 @@ $lang['contract_dispute_send'] = 'Send';
 $lang['contract_dispute_total_ammount'] = 'Total Disputed Amount:';
 $lang['contract_dispute_comm_ammount'] = 'Commission Amount:';
 $lang['contract_dispute_remain_ammount'] = 'Remain Amount:';
+$lang['contract_dispute_description'] = 'Description';
+$lang['contract_dispute_drag_drop'] = 'Drag and Drop file here';
+$lang['contract_dispute_or'] = 'Or';
+$lang['contract_dispute_click'] = 'Click to select file';
 
 
 ?>
