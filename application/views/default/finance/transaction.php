@@ -16,10 +16,10 @@ $currency=priceSymbol();
 			</div>-->
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i> Transaction</h3>
+			<h3><i class="icon-material-outline-credit-card text-site"></i><?php echo __('finace_transaction','Transaction');?></h3>
 			</div>
 			<div class="content with-padding">	
-				<label class="form-label">Select date for which you want your transaction history</label>
+				<label class="form-label"><?php echo __('finace_transaction_select_date','Select date for which you want your transaction history');?></label>
 				<form action="" method="get">
 				<div class="row row-10">
 					<div class="col-md-6 col-12">                    	
@@ -29,9 +29,9 @@ $currency=priceSymbol();
 						</div>						
 					</div>
                     <div class="col-md-6 col-12">
-                    	<button class="btn btn-site" name="search" value="1">Go</button>
+                    	<button class="btn btn-site" name="search" value="1"><?php echo __('finace_transaction_go','Go');?></button>
                         &nbsp;
-                        <button class="btn btn-site"  name="CSV" value="1">Download CSV</button>
+                        <button class="btn btn-site"  name="CSV" value="1"><?php echo __('finace_transaction_D_csv','Download CSV');?></button>
                     </div>
 				</div>
 				</form>
@@ -45,28 +45,28 @@ $currency=priceSymbol();
 				<div class="fun-fact" data-fun-fact-color="#37bf00">
                 	<div class="fun-fact-icon"><img src="<?php echo IMAGE;?>wallet.png" alt="" /></div>
                     <div class="fun-fact-text ml-1">
-                        <span>Current Balance</span>
+                        <span><?php echo __('finace_transaction_C_balance','Current Balance');?></span>
                         <h4><?php echo $currency.priceFormat($current_balance);?></h4>
                     </div>
                 </div>
                 <div class="fun-fact" data-fun-fact-color="#37bf00">
                 	<div class="fun-fact-icon"><img src="<?php echo IMAGE;?>credit-card.png" alt="" /></div>
                     <div class="fun-fact-text ml-1">
-                        <span>Total Credit</span>
+                        <span><?php echo __('finace_transaction_T_credit','Total Credit');?></span>
                         <h4> <?php echo $currency.priceFormat($total_credit);?></h4>
                     </div>
                 </div>
                 <div class="fun-fact" data-fun-fact-color="#f00">
                     <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>debit-card.png" alt="" /></div>
                     <div class="fun-fact-text ml-1">
-                        <span>Total Debit</span>
+                        <span><?php echo __('finace_transaction_T_debit','Total Debit');?></span>
                         <h4> <?php echo $currency.priceFormat($total_debit);?></h4>
                     </div>
                 </div>                
            </div>
             <div class="dashboard-box">
                 <div class="headline">
-                    <h3><i class="icon-feather-dollar-sign text-site"></i> Transaction Details</h3>
+                    <h3><i class="icon-feather-dollar-sign text-site"></i><?php echo __('finace_transaction_T_details','Transaction Details');?></h3>
                 </div>
                 <div class="content">
                     <ul class="dashboard-box-list">
@@ -96,18 +96,18 @@ $currency=priceSymbol();
 								</li>
 								<li>T<?php echo $row['wallet_transaction_id'];?></li>
 								<li><b><?php if($row['Amount']>0){echo 'Credit';}else{echo 'Debit';}?>:</b> <?php echo $currency;?><?php echo priceFormat(abs($row['Amount']));?></li>
-								<li><b>Date:</b> <?php echo $row['transaction_date'];?></li>
+								<li><b><?php echo __('finace_transaction_date','Date:');?></b> <?php echo $row['transaction_date'];?></li>
 							</ul>
 						</div>   
 						<!-- Buttons -->
 						<div class="buttons-to-right single-right-button always-visible" hidden>
-							<a href="#" class="button">Button</a>
+							<a href="#" class="button"><?php echo __('finace_transaction_button','Button');?></a>
 						</div>                         
                     </li>
 					<?php						
 					}
 					}else{?>     
-					<li><p>No record found</p></li>
+					<li><p><?php echo __('finace_transaction_no_record','No record found');?></p></li>
 					<?php }?>
                     </ul>
 				</div>

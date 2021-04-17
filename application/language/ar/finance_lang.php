@@ -16,4 +16,20 @@ $lang['finace_add_acc_number'] = 'رقم حساب';
 $lang['finace_add_swift_code'] = 'رمز السرعة';
 $lang['finace_add_iban'] = 'ذاهبون';
 
+// ---------------------transacion--------------------
+$lang['finace_transaction'] = 'عملية';
+$lang['finace_transaction_select_date'] = 'حدد التاريخ الذي تريد سجل معاملاتك فيه';
+$lang['finace_transaction_go'] = 'اذهب';
+$lang['finace_transaction_D_csv'] = 'تنزيل ملف CSV';
+$lang['finace_transaction_C_balance'] = 'الرصيد الحالي';
+$lang['finace_transaction_T_credit'] = 'إجمالي الائتمان';
+$lang['finace_transaction_T_debit'] = 'إجمالي الخصم';
+$lang['finace_transaction_T_details'] = 'تفاصيل الصفقه';
+$lang['finace_transaction_date'] = 'تاريخ:';
+$lang['finace_transaction_button'] = 'زر';
+$lang['finace_transaction_no_record'] = 'لا يوجد سجلات';
+// --------------------------withdraw-------------------------
+$lang['finace_transaction_add_new'] = 'اضف جديد';
+$lang['finace_transaction_add_new_method'] = 'أضف طريقة دفع جديدة.';
+
 ?>

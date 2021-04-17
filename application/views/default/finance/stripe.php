@@ -19,7 +19,7 @@ $sub_total=0;
 			</div>-->
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i> Amount</h3>
+			<h3><i class="icon-material-outline-credit-card text-site"></i><?php echo __('finace_add_fund_amount','Amount');?></h3>
 			</div>
 			<div class="content with-padding">	
 				<div class="row">
@@ -28,7 +28,7 @@ $sub_total=0;
 		                    <i><?php echo $currency;?></i>
 		                    <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="0" onkeyup="updateTotal('add_fund')" onkeypress="return isNumberKey(event)" value="<?php if($this->input->get('pre_amount')){echo get('pre_amount');}?>">
 						</div>
-						<p><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
+						<p><b><?php echo __('finace_add_fund_P_fee','Processing Fee:');?></b> <ec class="processingFeeText">0</ec></p>
 					</div>
 				</div>
 				

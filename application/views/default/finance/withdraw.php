@@ -21,7 +21,7 @@ $sub_total=0;
 			</div>-->
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i> Amount</h3>
+			<h3><i class="icon-material-outline-credit-card text-site"></i><?php echo __('finace_add_fund_amount','Amount');?> </h3>
 			</div>
 			<div class="content with-padding">	
 				<div class="row">
@@ -30,7 +30,7 @@ $sub_total=0;
 		                    <i><?php echo $currency;?></i>
 		                    <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="0" onkeyup="updateTotal('add_fund')" onkeypress="return isNumberKey(event)">
 						</div>
-						<p class="processing-fee" style="display:none"><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
+						<p class="processing-fee" style="display:none"><b><?php echo __('finace_add_fund_P_fee','Processing Fee:');?></b> <ec class="processingFeeText">0</ec></p>
 					</div>
 				</div>
 				
@@ -40,7 +40,7 @@ $sub_total=0;
 			<div class="headline">
 			<h3>
 			<i class="icon-material-outline-credit-card text-site"></i> <?php D(__('cart_checkout_page_Withdraw_Options',"Withdraw Options"));?>
-			<button class="btn btn-sm btn-site float-right add_new_method"><i class="icon-feather-plus"></i> Add new</button>
+			<button class="btn btn-sm btn-site float-right add_new_method"><i class="icon-feather-plus"></i><?php echo __('finace_transaction_add_new','Add new');?></button>
 			</h3>
 			</div>
 			<div class="content with-padding">	
@@ -109,7 +109,7 @@ $sub_total=0;
             <a href="<?php echo VZ;?>" class="card-box mx-auto add_new_method">
                 <div class="card-body text-center">
                 	<h1><i class="icon-line-awesome-plus-circle"></i></h1>
-                    <p>Add new payment method.</p>	
+                    <p><?php echo __('finace_transaction_add_new_method','Add new payment method.');?></p>	
                 </div>
             </a>
 			<?php	
