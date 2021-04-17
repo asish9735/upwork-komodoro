@@ -16,11 +16,11 @@ $sub_total=0;
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner" >		
 			<div class="dashboard-headline">
-				<h3>Add fund to your wallet</h3>				
+				<h3><?php echo __('finace_add_fund_wallet','Add fund to your wallet');?></h3>				
 			</div>
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3>Amount</h3>
+			<h3><?php echo __('finace_add_fund_amount','Amount');?></h3>
 			</div>
 			<div class="content with-padding">	
 				<div class="row">
@@ -29,7 +29,7 @@ $sub_total=0;
 		                    <i><?php echo $currency;?></i>
 		                    <input type="text" name="amount" id="amount" class="form-control text-right" placeholder="0" onkeyup="updateTotal('add_fund')" onkeypress="return isNumberKey(event)" value="<?php if($this->input->get('pre_amount')){echo get('pre_amount');}?>">
 						</div>
-						<p><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
+						<p><b><?php echo __('finace_add_fund_P_fee','Processing Fee:');?></b> <ec class="processingFeeText">0</ec></p>
 					</div>
 				</div>
 				

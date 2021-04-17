@@ -6,9 +6,9 @@ $enable_stripe=0;
 $enable_bank=get_setting('enable_bank_withdraw');
 ?>
 <div class="modal-header">
-<button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-    <h4 class="modal-title">Payment Method</h4> 
-    <button type="button" class="btn btn-success pull-right" onclick="SaveAccount(this)">Save</button>
+<button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('finace_add_cancel','Cancel');?></button>
+    <h4 class="modal-title"><?php echo __('Payment Method','Payment Method');?></h4> 
+    <button type="button" class="btn btn-success pull-right" onclick="SaveAccount(this)"><?php echo __('finace_add_save','Save');?></button>
 </div>
 <div class="modal-body">
 <form action="" method="post" accept-charset="utf-8" id="withdrawmethodform" class="form-horizontal" role="form" name="withdrawmethodform" onsubmit="return false;">  
@@ -16,53 +16,53 @@ $enable_bank=get_setting('enable_bank_withdraw');
     <div class="row">
      <div class="col">
                 <div class="submit-field remove_arrow_select">
-                    <label>Select Method</label>
+                    <label><?php echo __('finace_add_fund_S_method','Select Method');?></label>
                     <select  data-live-search="true" name="payment_method" id="payment_method"  class="selectpicker browser-default">
-                        <option value="">Select</option>	
+                        <option value=""><?php echo __('finace_add_select','Select');?></option>	
                         <?php if($enable_paypal){?>	
-						<option value="paypal">Paypal</option>		
+						<option value="paypal"><?php echo __('finace_add_paypal','Paypal');?></option>		
                         <?php }?>
                         <?php if($enable_stripe){?>	
-						<option value="stripe">Stripe</option>	
+						<option value="stripe"><?php echo __('finace_add_strip','Stripe');?></option>	
                         <?php }?>
                         <?php if($enable_bank){?>		
-						<option value="bank">Bank</option>		
+						<option value="bank"><?php echo __('finace_add_bank','Bank');?></option>		
                         <?php }?>
 					</select>
 					<span id="payment_methodError" class="rerror"></span>
 				</div>
                 <div class="paypal_container default_container" style="display:none">
                     <div class="submit-field ">
-                        <label>Account Email id</label>
+                        <label><?php echo __('finace_add_email_id','Account Email id');?></label>
                         <input type="text"  class="form-control" name="paypal_address" id="paypal_address" value="">
                         <span id="paypal_addressError" class="rerror"></span>
                     </div>
                 </div>
                 <div class="stripe_container default_container" style="display:none">
                     <div class="submit-field ">
-                        <label>Account Email id</label>
+                        <label><?php echo __('finace_add_email_id','Account Email id');?></label>
                         <input type="text"  class="form-control" name="stripe_address" id="stripe_address" value="">
                         <span id="stripe_addressError" class="rerror"></span>
                     </div>
                 </div>
                 <div class="bank_container default_container" style="display:none">
                     <div class="submit-field ">
-                        <label>Bank Name</label>
+                        <label><?php echo __('finace_add_bank_name','Bank Name');?></label>
                         <input type="text"  class="form-control" name="bank_name" id="bank_name" value="">
                         <span id="bank_nameError" class="rerror"></span>
                     </div>
                     <div class="submit-field ">
-                        <label>Account Number</label>
+                        <label><?php echo __('finace_add_acc_number','Account Number');?></label>
                         <input type="text"  class="form-control" name="bank_ac_number" id="bank_ac_number" value="">
                         <span id="bank_ac_numberError" class="rerror"></span>
                     </div>
                     <div class="submit-field ">
-                        <label>Swift Code</label>
+                        <label><?php echo __('finace_add_swift_code','Swift Code');?></label>
                         <input type="text"  class="form-control" name="bank_swift_code" id="bank_swift_code" value="">
                         <span id="bank_swift_codeError" class="rerror"></span>
                     </div>
                     <div class="submit-field ">
-                        <label>IBAN</label>
+                        <label><?php echo __('finace_add_iban','IBAN');?></label>
                         <input type="text"  class="form-control" name="bank_iban" id="bank_iban" value="">
                         <span id="bank_ibanError" class="rerror"></span>
                     </div>
