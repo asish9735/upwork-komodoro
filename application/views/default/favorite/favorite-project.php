@@ -11,7 +11,7 @@ $currency=priceSymbol();
 			<!-- Dashboard Headline -->
 			<div class="dashboard-box margin-top-0">
 				<div class="headline">
-                    <h3><i class="icon-material-outline-assignment"></i> <?php if($bookmark_type=='freelancer'){?>My favorite freelancer<?php }else{?>My favorite projects<?php }?></h3>
+                    <h3><i class="icon-material-outline-assignment"></i> <?php if($bookmark_type=='freelancer'){?><?php echo __('favorite_freelancer','My favorite freelancer');?><?php }else{?><?php echo __('favorite_freelancer_project','My favorite projects');?><?php }?></h3>
 				</div>
 				
 				<div class="content">
@@ -38,9 +38,9 @@ if($list){
 					<?php if($favorite->is_fixed==1){
 					?>
 					
-					<li><b>Fixed Price:</b> <?php if($budget){echo $currency.priceFormat($budget);}?></li>
+					<li><b><?php echo __('favorite_freelancer_F_price','Fixed Price:');?></b> <?php if($budget){echo $currency.priceFormat($budget);}?></li>
 					<?php }?>
-					<li><b>Industry:</b> <?php D($favorite->category_name);?></li>
+					<li><b><?php echo __('favorite_freelancer_industry','Industry:');?></b> <?php D($favorite->category_name);?></li>
 					<li><i class="icon-feather-clock text-site"></i> <?php D(get_time_ago($favorite->project_posted_date));?></li>
 				</ul>
 			</div>
@@ -63,7 +63,7 @@ if($list){
 	}
 }else{
 ?>
-<li class="justify-content-center">No record</li>
+<li class="justify-content-center"><?php echo __('favorite_freelancer_no_record','No record');?></li>
 <?php
 }
 ?>

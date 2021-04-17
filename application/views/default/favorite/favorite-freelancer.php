@@ -12,7 +12,7 @@ $currency=priceSymbol();
 			<!-- Dashboard Headline -->
 			<div class="dashboard-box margin-top-0">
 				<div class="headline">
-                    <h3><i class="icon-material-outline-assignment"></i> <?php if($bookmark_type=='freelancer'){?>My favorite freelancer<?php }else{?>My favorite projects<?php }?></h3>
+                    <h3><i class="icon-material-outline-assignment"></i> <?php if($bookmark_type=='freelancer'){?><?php echo __('favorite_freelancer','My favorite freelancer');?><?php }else{?><?php echo __('favorite_freelancer_project','My favorite projects');?><?php }?></h3>
 				</div>
 				
 				<div class="content">
@@ -55,8 +55,8 @@ if($list){
 			</div>
 			<div class="job-listing-footer mb-3">
 				<ul>
-					<li><b>Hourly Rate:</b> <?php echo $favorite->member_hourly_rate > 0 ? $currency.  priceFormat($favorite->member_hourly_rate) . ' / hr' : ' - ';?></li>
-					<li><b>Earnings:</b><?php D($currency.displayamount($favorite->total_earning,2));?></li>
+					<li><b><?php echo __('favorite_freelancer_H_rate','Hourly Rate:');?></b> <?php echo $favorite->member_hourly_rate > 0 ? $currency.  priceFormat($favorite->member_hourly_rate) . ' / hr' : ' - ';?></li>
+					<li><b><?php echo __('favorite_freelancer_earning','Earnings:');?></b><?php D($currency.displayamount($favorite->total_earning,2));?></li>
 					<li><i class="icon-feather-map-pin"></i> <?php echo $favorite->country_name;?></li>
 				</ul>
 			</div>
@@ -79,7 +79,7 @@ if($list){
 	}
 }else{
 ?>
-<li><p>No record</p></li>
+<li><p><?php echo __('favorite_freelancer_no_record','No record');?></p></li>
 <?php
 }
 ?>
