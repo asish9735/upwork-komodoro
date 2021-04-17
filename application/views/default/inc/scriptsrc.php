@@ -28,7 +28,6 @@ $website_name=get_setting('website_name');
 <title><?php echo !empty($title) ? $title : get_setting('site_title'); ?></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="shortcut icon" href="<?php echo IMAGE;?>favicon.png" type="image/x-icon">
 <?php $this->layout->load_meta(); ?>
 
 <meta name="robots" content="index, follow" /> <!--– Means index and follow this web page.-->
