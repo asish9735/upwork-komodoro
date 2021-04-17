@@ -75,7 +75,7 @@
 ?>
       
     </div>
-    <div class="text-center" hidden><a href="#" class="btn btn-site">View All Category</a></div>
+    <div class="text-center" hidden><a href="#" class="btn btn-site"><?php echo __('home_page_view_category','View All Category');?></a></div>
   </div>
 </section>
 <!-- Popular Job Categories / End -->

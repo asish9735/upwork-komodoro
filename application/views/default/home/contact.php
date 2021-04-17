@@ -16,7 +16,7 @@ $current_banner = !empty($banner[0]) ? $banner[0] : null;
 <div class="contact-location-info margin-bottom-65">                    
     <div id="single-job-map-container">
         <div id="singleListingMap" data-latitude="37.777842" data-longitude="-122.391805" data-map-icon="im im-icon-Hamburger"></div>
-        <a href="#" id="streetView">Street View</a>
+        <a href="#" id="streetView"><?php echo __('home_page_contact_street_view','Street View');?></a>
     </div>
 </div>
 
