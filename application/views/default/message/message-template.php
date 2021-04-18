@@ -8,7 +8,7 @@
 </div>
 <div class="attachScrollbar" data-simplebar>
 <ul>
-	<li v-for="chat_user in chatUserList" :class="{'active-message': active_chat && (chat_user.member_id==active_chat.member_id)}">
+	<li v-for="chat_user in chatUserList" :class="{'active-message': active_chat && (chat_user.conversations_id==active_chat.conversations_id)}">
 		<a href="#" @click.prevent="setActiveChat(chat_user)">
 			<div class="message-avatar">
 				<i class="status-icon" :class="{'status-online': chat_user.online_status, 'status-offline': !chat_user.online_status}"></i>
