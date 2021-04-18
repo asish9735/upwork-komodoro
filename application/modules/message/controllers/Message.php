@@ -133,7 +133,7 @@ class Message extends MX_Controller {
 		$json['status'] = 1;
 		if(post() && !empty($_FILES['file']['name'])){
 			$config['upload_path'] = UPLOAD_PATH.'message-attachments';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|doc|docx';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|doc|docx|xl|xls|zip|txt';
 			$config['encrypt_name']  = TRUE;
 			if(!is_dir($config['upload_path'])){
 				mkdir($config['upload_path']);
