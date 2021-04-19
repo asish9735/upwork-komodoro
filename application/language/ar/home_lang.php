@@ -124,6 +124,26 @@ $lang['home_page_findjob_php'] = 'بي أتش بي';
 $lang['home_page_findjob_mysql_admin'] = 'إدارة MySQL';
 $lang['home_page_findjob_api_develop'] = 'تطوير API';
 
+// -------------------------------findtalent----------------------
+
+$lang['home_page_findtalent_skill'] = 'مهارات';
+$lang['home_page_findtalent_sort_by'] = 'ترتيب حسب:';
+$lang['home_page_findtalent_david_peterson'] = 'ديفيد بيترسون';
+$lang['home_page_findtalent_ios_expert'] = 'iOS Expert + Node Dev';
+$lang['home_page_findtalent_rate'] = 'معدل';
+$lang['home_page_findtalent_job_success'] = 'النجاح الوظيفي';
+$lang['home_page_findtalent_leverge'] = 'استفد من أطر العمل الرشيقة لتوفير ملخص قوي لمحات عامة عالية المستوى. تعزز المناهج التكرارية لاستراتيجية الشركة التفكير التعاوني لتعزيز القيمة الإجمالية.';
+$lang['home_page_findtalent_accounting'] = 'محاسبة';
+$lang['home_page_findtalent_analytics'] = 'تحليلات';
+$lang['home_page_findtalent_B_licening'] = 'ترخيص العلامة التجارية';
+$lang['home_page_findtalent_B_development'] = 'تطوير الاعمال';
+$lang['home_page_findtalent_F_management'] = 'ادارة مالية';
+$lang['home_page_findtalent_london'] = 'لندن';
+
+
+
+
+
 
 
 ?>

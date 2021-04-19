@@ -123,6 +123,23 @@ $lang['home_page_findjob_php'] = 'PHP';
 $lang['home_page_findjob_mysql_admin'] = 'MySQL Administration';
 $lang['home_page_findjob_api_develop'] = 'API Development';
 
+// -------------------------------findtalent----------------------
+
+$lang['home_page_findtalent_skill'] = 'Skills';
+$lang['home_page_findtalent_sort_by'] = 'Sort by:';
+$lang['home_page_findtalent_david_peterson'] = 'David Peterson';
+$lang['home_page_findtalent_ios_expert'] = 'iOS Expert + Node Dev';
+$lang['home_page_findtalent_rate'] = 'Rate';
+$lang['home_page_findtalent_job_success'] = 'Job Success';
+$lang['home_page_findtalent_leverge'] = 'Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value.';
+$lang['home_page_findtalent_accounting'] = 'Accounting';
+$lang['home_page_findtalent_analytics'] = 'Analytics';
+$lang['home_page_findtalent_B_licening'] = 'Brand Licensing';
+$lang['home_page_findtalent_B_development'] = 'Business Development';
+$lang['home_page_findtalent_F_management'] = 'Financial Management';
+$lang['home_page_findtalent_london'] = 'London';
+
+
 
 
 
