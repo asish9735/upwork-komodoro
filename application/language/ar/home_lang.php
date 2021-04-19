@@ -58,8 +58,71 @@ $lang['home_page_enterprice_hourly_work'] = 'للعمل كل ساعة ، أرس�
 $lang['home_page_enterprice_multiple_payment'] = 'خيارات دفع متعددة:';
 $lang['home_page_enterprice_best_you'] = 'اختر طريقة الدفع التي تناسبك ، من الإيداع المباشر أو PayPal إلى التحويل البنكي والمزيد.';
 
+// ---------------------------findjobs------------------------
 
-
+$lang['home_page_findjob_location'] = 'موقع';
+$lang['home_page_findjob_keywords'] = 'الكلمات الدالة';
+$lang['home_page_findjob_category'] = 'فئة';
+$lang['home_page_findjob_A_support'] = 'دعم المشرف';
+$lang['home_page_findjob_C_service'] = 'خدمة العملاء';
+$lang['home_page_findjob_D_analytics'] = 'تحليلات البيانات';
+$lang['home_page_findjob_D_creative'] = 'التصميم والإبداع';
+$lang['home_page_findjob_legal'] = 'قانوني';
+$lang['home_page_findjob_S_developing'] = 'تطوير البرمجيات';
+$lang['home_page_findjob_It'] = 'تكنولوجيا المعلومات والشبكات';
+$lang['home_page_findjob_writing'] = 'جاري الكتابة';
+$lang['home_page_findjob_translation'] = 'ترجمة';
+$lang['home_page_findjob_S_marketing'] = 'المبيعات والتسويق';
+$lang['home_page_findjob_job_type'] = 'نوع الوظيفة';
+$lang['home_page_findjob_freelance'] = 'حسابهم الخاص';
+$lang['home_page_findjob_fulltime'] = 'وقت كامل';
+$lang['home_page_findjob_parttime'] = 'دوام جزئى';
+$lang['home_page_findjob_internship'] = 'التدريب الداخلي';
+$lang['home_page_findjob_temporary'] = 'مؤقت';
+$lang['home_page_findjob_tags'] = 'العلامات';
+$lang['home_page_findjob_front_dev'] = 'تطوير الواجهة الأمامية';
+$lang['home_page_findjob_angular'] = 'الزاوي';
+$lang['home_page_findjob_react'] = 'تتفاعل';
+$lang['home_page_findjob_vue'] = 'شبيبة';
+$lang['home_page_findjob_web_app'] = 'تطبيقات الويب';
+$lang['home_page_findjob_design'] = 'التصميم';
+$lang['home_page_findjob_wordpress'] = 'وورد';
+$lang['home_page_findjob_S_result'] = 'نتائج البحث';
+$lang['home_page_findjob_relevance'] = 'ملاءمة';
+$lang['home_page_findjob_newest'] = 'الأحدث';
+$lang['home_page_findjob_oldest'] = 'الأقدم';
+$lang['home_page_findjob_random'] = 'عشوائي';
+$lang['home_page_findjob_search'] = 'يبحث';
+$lang['home_page_findjob_food_delivery'] = 'الغذاء Delviery موبايل التطبيق';
+$lang['home_page_findjob_high_level'] = 'استفد من أطر العمل الرشيقة لتوفير ملخص قوي لمحات عامة عالية المستوى. تعزيز النهج التكرارية لاستراتيجية الشركة.';
+$lang['home_page_findjob_ios'] = 'iOS';
+$lang['home_page_findjob_android'] = 'ذكري المظهر';
+$lang['home_page_findjob_M_apps'] = 'تطبيقات الموبايل';
+$lang['home_page_findjob_design'] = 'التصميم';
+$lang['home_page_findjob_F_price'] = 'سعر ثابت';
+$lang['home_page_findjob_bid_now'] = 'المزايدة الآن';
+$lang['home_page_findjob_san_franc'] = 'سان فرانسيسكو';
+$lang['home_page_findjob_full_time'] = 'وقت كامل';
+$lang['home_page_findjob_D_ago'] = '2 منذ أيام';
+$lang['home_page_findjob_E_to_ger'] = '2000 كلمة من الإنجليزية إلى الألمانية';
+$lang['home_page_findjob_rea_time'] = 'أحضر إلى الطاولة استراتيجيات الفوز لضمان الهيمنة والمحتوى الذي ينشئه المستخدم في الوقت الفعلي سيكون له نقاط اتصال متعددة.';
+$lang['home_page_findjob_copywriting'] = 'التأليف';
+$lang['home_page_findjob_translating'] = 'جار الترجمة';
+$lang['home_page_findjob_editing'] = 'التحرير';
+$lang['home_page_findjob_fix_python'] = 'إصلاح كود Python Selenium';
+$lang['home_page_findjob_capitalize'] = 'استفد من الفاكهة المتدلية لتحديد نشاط ذي قيمة مضافة لملعب الكرة في الاختبار التجريبي. تجاوز الفجوة الرقمية بملفات.';
+$lang['home_page_findjob_python'] = 'بايثون';
+$lang['home_page_findjob_flask'] = 'قارورة';
+$lang['home_page_findjob_api'] = 'تطوير API';
+$lang['home_page_findjob_H_rate'] = 'المعدل بالساعة';
+$lang['home_page_findjob_Word_install'] = 'تثبيت ثيم WordPress';
+$lang['home_page_findjob_relationship'] = 'تآزر تمامًا مع العلاقات الضريبية على الموارد عبر الأسواق المتخصصة الرائدة. صقل خدمة العملاء باحتراف بأفكار قوية.';
+$lang['home_page_findjob_T_install'] = 'تثبيت موضوع';
+$lang['home_page_findjob_php_core'] = 'إصلاحات موقع PHP Core';
+$lang['home_page_findjob_objectively'] = 'ابتكار منتجات مصنعة ممكّنة بشكل موضوعي بينما المنصات الموازية إجراءات اختبار قابلة للتوسيع لإمداد موثوق.';
+$lang['home_page_findjob_php'] = 'بي أتش بي';
+$lang['home_page_findjob_mysql_admin'] = 'إدارة MySQL';
+$lang['home_page_findjob_api_develop'] = 'تطوير API';
 
 
 
