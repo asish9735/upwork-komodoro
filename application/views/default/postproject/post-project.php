@@ -21,13 +21,13 @@ echo '</pre>'; */
 					<div class="dashboard-nav-inner">
 
 						<ul id="postJobStepItem" class="margin-top-50">
-							<li class="active"><a ><i class="icon-line-awesome-pencil"></i> Title <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-line-awesome-pencil-square-o"></i> Description <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-line-awesome-file-text"></i> Details <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-line-awesome-lightbulb-o"></i> Expertise <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-material-outline-visibility"></i> Visibility <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-material-outline-monetization-on"></i> Budget <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-material-baseline-star-border"></i> Review</a></li>
+							<li class="active"><a ><i class="icon-line-awesome-pencil"></i><?php echo __('postproject_title','Title');?><i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+							<li><a><i class="icon-line-awesome-pencil-square-o"></i><?php echo __('postproject_description','Description');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+							<li><a><i class="icon-line-awesome-file-text"></i><?php echo __('postproject_details','Details');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+							<li><a><i class="icon-line-awesome-lightbulb-o"></i><?php echo __('postproject_expertise','Expertise');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+							<li><a><i class="icon-material-outline-visibility"></i><?php echo __('postproject_visibility','Visibility');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+							<li><a><i class="icon-material-outline-monetization-on"></i><?php echo __('postproject_budget','Budget');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+							<li><a><i class="icon-material-baseline-star-border"></i><?php echo __('postproject_review','Review');?> </a></li>
 						</ul>
 						
 					</div>

@@ -5,8 +5,14 @@ $lang['postproject_share_project'] = 'شارك هذا المشروع:';
 $lang['postproject_back_to_project'] = 'العودة إلى مشاريعي';
 $lang['postproject_edit_project'] = 'تحرير المشروع';
 $lang['postproject_view_project'] = 'عرض مشروع';
-$lang['postproject_'] = '';
-$lang['postproject_'] = '';
-$lang['postproject_'] = '';
-$lang['postproject_'] = '';
+
+$lang['postproject_title'] = 'لقب ';
+$lang['postproject_description'] = 'وصف';
+$lang['postproject_details'] = 'تفاصيل';
+$lang['postproject_expertise'] = 'خبرة';
+$lang['postproject_visibility'] = 'الرؤية';
+$lang['postproject_budget'] = 'الدخل';
+$lang['postproject_review'] = 'إعادة النظر';
+
+
 ?>
