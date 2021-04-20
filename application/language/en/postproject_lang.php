@@ -13,4 +13,15 @@ $lang['postproject_expertise'] = 'Expertise';
 $lang['postproject_visibility'] = 'Visibility';
 $lang['postproject_budget'] = 'Budget';
 $lang['postproject_review'] = 'Review';
+$lang['postproject_project_name'] = 'Name of your project';
+$lang['postproject_category'] = 'Category';
+$lang['postproject_back'] = 'Back';
+$lang['postproject_next'] = 'Next';
+$lang['postproject_description_about'] = 'Description about project';
+$lang['postproject_project_attachment'] = 'Project attachment';
+$lang['postproject_drag'] = 'Drag';
+$lang['postproject_drop_file'] = 'drop file here';
+$lang['postproject_or'] = 'or';
+$lang['postproject_click'] = 'click';
+$lang['postproject_select_file'] = 'to select file';
 ?>

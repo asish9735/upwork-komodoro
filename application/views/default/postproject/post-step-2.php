@@ -6,21 +6,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="dashboard-box margin-top-0">
     <!-- Headline -->
     <div class="headline">
-        <h3> Description </h3>
+        <h3><?php echo __('postproject_description','Description');?>  </h3>
     </div>
     <div class="content with-padding">    
             <div class="submit-field">
-                <label>Description about project</label>
+                <label><?php echo __('postproject_description_about','Description about project');?></label>
                 <textarea rows="4" class="form-control" name="description" id="description"><?php if($projectData){echo $projectData['project_additional']->project_description;}?></textarea>
                 <span id="descriptionError" class="rerror"></span>
 
             </div>
         
             <div class="submit-field">
-                <label>Project attachment</label>                
+                <label><?php echo __('postproject_project_attachment','Project attachment');?></label>                
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                    <p>Drag &amp; drop file here<br /> or<br /> <span class="text-site">click</span> to select file</p>
+                    <p><?php echo __('postproject_drag','Drag');?> &amp;<?php echo __('postproject_drop_file','drop file here');?> <br /><?php echo __('postproject_or','or');?> <br /> <span class="text-site"><?php echo __('click','click');?></span><?php echo __('postproject_select_file','to select file');?> </p>
                 </div>
                 <div id="uploadfile_container">
                 <?php if($projectData && $projectData['project_files']){

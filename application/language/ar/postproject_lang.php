@@ -13,6 +13,17 @@ $lang['postproject_expertise'] = 'خبرة';
 $lang['postproject_visibility'] = 'الرؤية';
 $lang['postproject_budget'] = 'الدخل';
 $lang['postproject_review'] = 'إعادة النظر';
+$lang['postproject_project_name'] = 'اسم مشروعك';
+$lang['postproject_category'] = 'فئة';
+$lang['postproject_back'] = 'عودة';
+$lang['postproject_next'] = 'التالي';
+$lang['postproject_description_about'] = 'وصف عن المشروع';
+$lang['postproject_project_attachment'] = 'مرفق المشروع';
+$lang['postproject_drag'] = 'يجر';
+$lang['postproject_drop_file'] = 'قم بإسقاط الملف هنا';
+$lang['postproject_or'] = 'أو';
+$lang['postproject_click'] = 'انقر';
+$lang['postproject_select_file'] = 'لتحديد الملف';
 
 
 ?>
