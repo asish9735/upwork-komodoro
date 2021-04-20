@@ -7,11 +7,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="dashboard-box margin-top-0">
         <!-- Headline -->
         <div class="headline">
-            <h3> Details </h3>
+            <h3><?php echo __('postproject_details','Details');?>  </h3>
         </div>
         <div class="content with-padding">
             <div class="submit-field myradio mb-0">
-                <label>What type of project you have ?</label>
+                <label><?php echo __('postproject_what_type_project','What type of project you have ?');?></label>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <?php if($all_projectType){
                     foreach($all_projectType as $key=>$keydata){
@@ -37,11 +37,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="dashboard-box">
         <!-- Headline -->
         <div class="headline">
-            <h3> Screen Question (optional) </h3>
+            <h3><?php echo __('postproject_screen_question','Screen Question (optional)');?> </h3>
         </div>
         <div class="content with-padding">
             <div class="submit-field mb-0">
-                <label>Add screen question / require a cover letter </label>
+                <label><?php echo __('postproject_add_screen','Add screen question / require a cover letter');?> </label>
                 <div id="addQuestion_container">
                 <?php if($projectData && $projectData['project_question']){
                 		$question_previous=$projectData['project_question'];
@@ -61,20 +61,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 
                 </div>
                 <span id="questionError" class="rerror"></span>
-                <a href="javascript:void(0)" class="btn btn-outline-success" id="addQuestion">+ Add </a>    
+                <a href="javascript:void(0)" class="btn btn-outline-success" id="addQuestion"><?php echo __('postproject_add','+ Add');?> </a>    
             </div>
 
             <div class="mt-3" id="is_cover_required_display" style="display: none">
                 <div class="checkbox">
                     <input type="checkbox" name="is_cover_required" id="is_cover_required" value="1" checked>
-                    <label for="is_cover_required"><span class="checkbox-icon"></span> Required cover letter</label>
+                    <label for="is_cover_required"><span class="checkbox-icon"></span><?php echo __('postproject_cover_letter','Required cover letter');?> </label>
                 </div>
             </div>
             
         </div>
         <div class="dashboard-box-footer">
-            <button class="btn btn-secondary backbtnproject" data-step="3">Back</button>
-            <button class="btn btn-site nextbtnproject" data-step="3">Next</button>
+            <button class="btn btn-secondary backbtnproject" data-step="3"><?php echo __('postproject_back','Back');?></button>
+            <button class="btn btn-site nextbtnproject" data-step="3"><?php echo __('postproject_next','Next');?></button>
         </div>
     </div>
 				

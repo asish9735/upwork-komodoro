@@ -7,25 +7,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box margin-top-0"> 
     <!-- Headline -->
     <div class="headline">
-      <h3> Budget </h3>
+      <h3><?php echo __('postproject_budget','Budget');?>  </h3>
     </div>
     <div class="content with-padding">
       <div class="submit-field myradio">
-        <label>How would you like to pay freelancer ?</label>
+        <label><?php echo __('postproject_how_pay','How would you like to pay freelancer ?');?></label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn <?php if($projectData && $projectData['project_settings']->is_hourly==1){echo "active";}?>">
             <input type="radio" class="project_payment_type" id="defaultInlineHourly" name="projectPaymentType" value="hourly" autocomplete="off" <?php if($projectData && $projectData['project_settings']->is_hourly==1){echo "checked";}?>>
             <i class="icon-feather-clock"></i><br>
-            Hourly </label>
+            <?php echo __('postproject_hourly','Hourly');?> </label>
           <label class="btn <?php if($projectData && $projectData['project_settings']->is_fixed==1){echo "active";}?>">
             <input type="radio" class="project_payment_type" id="defaultInlineFixed" name="projectPaymentType" value="fixed" autocomplete="off" <?php if($projectData && $projectData['project_settings']->is_fixed==1){echo "checked";}?>>
             <i class="icon-feather-tag"></i><br>
-            Fixed </label>
+            <?php echo __('postproject_fixed','Fixed');?> </label>
         </div>
         <div class="clearfix"></div>
         <span id="projectPaymentTypeError" class="rerror"></span> </div>
       <div class="submit-field myradio">
-        <label>Experience level required?</label>
+        <label><?php echo __('postproject_experience_level','Experience level required?');?></label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <?php if($all_projectExperienceLevel){
 										foreach($all_projectExperienceLevel as $key=>$keydata){
@@ -45,14 +45,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="row fixed_project_display" <?php if($projectData && $projectData['project_settings']->is_fixed==1){}else{?>style="display: none" <?php }?>>
       	<div class="col-xl-6">
         <div class="submit-field mb-0">
-          <label>Do you have a specific budget?</label>
+          <label><?php echo __('postproject_specific_budget','Do you have a specific budget?');?></label>
           <input type="text" class="form-control" name="fixed_budget" id="fixed_budget" value="<?php if($projectData && $projectData['project_settings']->budget){echo $projectData['project_settings']->budget;}?>">
           <span id="fixed_budgetError" class="rerror"></span> </div>
         </div>
       </div>
       <div class="hourly_project_display" <?php if($projectData && $projectData['project_settings']->is_hourly==1){}else{?>style="display: none" <?php }?>>
         <div class="submit-field myradio">
-          <label>Project duration</label>
+          <label><?php echo __('postproject_project_duration','Project duration');?></label>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <?php if($all_projectDuration){
 										foreach($all_projectDuration as $key=>$keydata){
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="hourly_project_display" style="display: none">
         <div class="submit-field myradio mb-0">
-          <label>Time required for this project</label>
+          <label><?php echo __('postproject_time_required','Time required for this project');?></label>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <?php if($all_projectDurationTime){
 										foreach($all_projectDurationTime as $key=>$keydata){
@@ -92,8 +92,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
     <div class="dashboard-box-footer">
-      <button class="btn btn-secondary backbtnproject" data-step="6">Back</button>
-      <button class="btn btn-site nextbtnproject" data-step="6">Next</button>
+      <button class="btn btn-secondary backbtnproject" data-step="6"><?php echo __('postproject_back','Back');?></button>
+      <button class="btn btn-site nextbtnproject" data-step="6"><?php echo __('postproject_next','Next');?></button>
     </div>
   </div>
 </div>

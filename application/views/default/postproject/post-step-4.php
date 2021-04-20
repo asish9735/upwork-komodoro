@@ -7,11 +7,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="dashboard-box margin-top-0">
         <!-- Headline -->
         <div class="headline">
-            <h3> Expertise </h3>
+            <h3><?php echo __('postproject_expertise','Expertise');?>  </h3>
         </div>
         <div class="content with-padding">    
             <div class="submit-field mb-0">
-                <label>Select required skills</label>
+                <label><?php echo __('postproject_required_skills','Select required skills');?></label>
                 <div class="keywords-list skillContaintag"></div>
 			   <input  class="form-control tagsinput_skill" name="skills" id="skills" value="">
                 <span id="skillsError" class="rerror"></span>
@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
         <div class="dashboard-box-footer">
-            <button class="btn btn-secondary backbtnproject" data-step="4">Back</button>
-            <button class="btn btn-site nextbtnproject" data-step="4">Next</button>
+            <button class="btn btn-secondary backbtnproject" data-step="4"><?php echo __('postproject_back','Back');?></button>
+            <button class="btn btn-site nextbtnproject" data-step="4"><?php echo __('postproject_next','Next');?></button>
         </div>
     </div>
 				
