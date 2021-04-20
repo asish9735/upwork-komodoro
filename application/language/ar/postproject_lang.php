@@ -45,6 +45,17 @@ $lang['postproject_experience_level'] = 'مستوى الخبرة المطلوب�
 $lang['postproject_specific_budget'] = 'هل لديك ميزانية محددة؟';
 $lang['postproject_project_duration'] = 'مدة المشروع';
 $lang['postproject_time_required'] = 'الوقت المطلوب لهذا المشروع';
+$lang['postproject_review_post'] = 'مراجعة ونشر';
+$lang['postproject_project_category'] = 'فئة المشروع';
+$lang['postproject_test_check'] = 'فحص الاختبار';
+$lang['postproject_attachment'] = 'مرفق';
+$lang['postproject_project_type'] = 'نوع المشروع';
+$lang['postproject_project_visibility'] = 'رؤية المشروع';
+$lang['postproject_freelancer_need'] = 'حاجة لحسابهم الخاص';
+$lang['postproject_h_fixed_price'] = 'بالساعة أو السعر الثابت';
+$lang['postproject_experience_level'] = 'مستوى الخبرة';
+$lang['postproject_project_time'] = 'وقت المشروع';
+$lang['postproject_post'] = 'بريد';
 
 
 ?>

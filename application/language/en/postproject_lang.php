@@ -45,4 +45,17 @@ $lang['postproject_experience_level'] = 'Experience level required?';
 $lang['postproject_specific_budget'] = 'Do you have a specific budget?';
 $lang['postproject_project_duration'] = 'Project duration';
 $lang['postproject_time_required'] = 'Time required for this project';
+$lang['postproject_review_post'] = 'Review and Post';
+$lang['postproject_project_category'] = 'Project category';
+$lang['postproject_test_check'] = 'test check';
+$lang['postproject_attachment'] = 'Attachment';
+$lang['postproject_project_type'] = 'Type of project';
+$lang['postproject_project_visibility'] = 'Project visibility';
+$lang['postproject_freelancer_need'] = 'Freelancer need';
+$lang['postproject_h_fixed_price'] = 'Hourly or Fixed price';
+$lang['postproject_experience_level'] = 'Experience level';
+$lang['postproject_project_time'] = 'Project Time';
+$lang['postproject_post'] = 'Post';
+
+
 ?>
