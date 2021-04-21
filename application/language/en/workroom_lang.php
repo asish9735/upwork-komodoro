@@ -12,6 +12,38 @@ $lang['workroom_worklog_got_rejected'] = 'Submission got rejected';
 $lang['workroom_worklog_reason'] = 'Reason:';
 $lang['workroom_worklog_no_record'] = 'No record';
 
+$lang['workroom_details_overview'] = 'Overview';
+$lang['workroom_details_work_logs'] = 'Work Logs';
+$lang['workroom_details_invoices'] = 'Invoices';
+$lang['workroom_details_message_file'] = 'Messages & Files';
+$lang['workroom_details_term'] = 'Terms & Settings';
+$lang['workroom_details_total_bill'] = 'Total Bill';
+$lang['workroom_details_in_escrow'] = 'In Escrow';
+$lang['workroom_details_amount_paid'] = 'Amount Paid';
+$lang['workroom_details_remaining'] = 'Remaining';
+$lang['workroom_details_total_hour'] = 'Total Hour';
+$lang['workroom_details_accepted'] = 'Accepted';
+$lang['workroom_details_to_bill'] = 'Yet To Bill';
+$lang['workroom_details_end_contract'] = 'End Contract';
+$lang['workroom_details_end_contract_on'] = 'Contract Ended on';
+$lang['workroom_details_feedback_to_contractor'] = 'Your Feedback to Contractor';
+$lang['workroom_details_feedback_to_client'] = 'Your Feedback to Client';
+$lang['workroom_details_contractor_to_you'] = "Contractor's Feedback to You";
+$lang['workroom_details_client_to_you'] = "Client's Feedback to You";
+$lang['workroom_details_your_feedback'] = 'Your Feedback';
+$lang['workroom_details_client_not_feedback'] = 'Client not send feedback yet.';
+$lang['workroom_details_send_feedback'] = 'Send Feedback';
+$lang['workroom_details_end_contract'] = 'End Contract Now';
+$lang['workroom_details_contract_pause'] = 'Contract Pause';
+$lang['workroom_details_new_contract'] = 'New Contract';
+$lang['workroom_details_add_fund'] = 'Add Fund';
+$lang['workroom_details_resume_contract'] = 'Resume Contract';
+$lang['workroom_details_pause_contract'] = 'Pause Contract';
+$lang['workroom_details_cancel'] = 'Cancel';
+$lang['workroom_details_add_fund_escrow'] = 'Add Fund To Escrow';
+$lang['workroom_details_add'] = 'Add';
+$lang['workroom_details_amount'] = 'Amount';
+
 
 
 ?>

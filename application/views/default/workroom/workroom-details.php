@@ -29,22 +29,22 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
   <div class="container">
     <h1><?php echo $contractDetails->contract_title;?></h1>
     <ul class="nav nav-tabs mb-3">
-      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>">Overview</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_worklog_url;?>">Work Logs</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_invoice_url;?>">Invoices</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
+      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>"><?php echo __('workroom_details_overview','Overview');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_details_work_logs','Work Logs');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_invoice_url;?>"><?php echo __('workroom_details_invoices','Invoices');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('workroom_details_message_file','Messages & Files');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>"><?php echo __('workroom_details_term','Terms & Settings');?></a> </li>
     </ul>
     <div class="row">
       <div class="col-lg-9">
         <div class="panel mb-4">
           <div class="panel-body">
           <ul class="totalList mb-0">
-              <li><b>Total Bill</b> <span> <?php echo $currency.displayamount($contractDetails->total_bill,2);?></span> </li>
-              <li><b>In Escrow</b> <span><?php echo $currency.$contractDetails->in_escrow;?></span> </li>
-              <li><b>Amount Paid</b><span><?php echo $currency.$contractDetails->milestone_paid;?></span></li>
-              <li><b>Remaining</b> <span><?php echo $currency.displayamount($contractDetails->balance_remain,2);?></span> </li>            
-              <li><b>Total Hour</b> 
+              <li><b><?php echo __('workroom_details_total_bill','Total Bill');?></b> <span> <?php echo $currency.displayamount($contractDetails->total_bill,2);?></span> </li>
+              <li><b><?php echo __('workroom_details_in_escrow','In Escrow');?></b> <span><?php echo $currency.$contractDetails->in_escrow;?></span> </li>
+              <li><b><?php echo __('workroom_details_amount_paid','Amount Paid');?></b><span><?php echo $currency.$contractDetails->milestone_paid;?></span></li>
+              <li><b><?php echo __('workroom_details_remaining','Remaining');?></b> <span><?php echo $currency.displayamount($contractDetails->balance_remain,2);?></span> </li>            
+              <li><b><?php echo __('workroom_details_total_hour','Total Hour');?></b> 
               <span> 
                <?php 
               	$hour=floor($contractDetails->total_hour/60);
@@ -53,7 +53,7 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 				<?php echo $hour;?>hr <?php echo $minutes;?>min	
 				</span> 
 			  </li>
-              <li><b>Accepted</b> 
+              <li><b><?php echo __('workroom_details_accepted','Accepted');?></b> 
               <span> 
                <?php 
               	$hour=floor($contractDetails->total_approved/60);
@@ -62,7 +62,7 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 				<?php echo $hour;?>hr <?php echo $minutes;?>min	
 				</span> 
 			  </li>
-              <li><b>Pending</b>
+              <li><b><?php echo __('workroom_worklog_pending','Pending');?></b>
               <span> 
                <?php 
               	$hour=floor($contractDetails->total_pending/60);
@@ -71,7 +71,7 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 				<?php echo $hour;?>hr <?php echo $minutes;?>min	
 				</span>
 			  </li>
-              <li><b>Yet To Bill</b><span><?php echo $currency.displayamount($contractDetails->yet_to_bill,2);?></span></li>
+              <li><b><?php echo __('workroom_details_to_bill','Yet To Bill');?></b><span><?php echo $currency.displayamount($contractDetails->yet_to_bill,2);?></span></li>
             </ul>
           </div>
         </div>
@@ -81,13 +81,13 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 		?>
 		<div class="panel mb-4">
 			<div class="panel-header relative">
-            <h4>End Contract</h4>
+            <h4><?php echo __('workroom_details_end_contract','End Contract');?></h4>
           </div>
            <div class="panel-body">
           <?php
           if($contractDetails->is_contract_ended){
 		  	?>
-		  <p>Contract Ended on <?php echo $contractDetails->contract_end_date;?></p>	
+		  <p><?php echo __('workroom_details_end_contract_on','Contract Ended on');?> <?php echo $contractDetails->contract_end_date;?></p>	
 		  	<?php
 		  }
 		 // get_print($reviews);
@@ -97,17 +97,17 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
               <div class="row">
 			  <div class="col-sm-6"><h5>
 			  <?php if($is_owner){?>
-			  	Your Feedback to Contractor
+			  	<?php echo __('workroom_details_feedback_to_contractor','Your Feedback to Contractor');?>
 			  <?php }else{?>
-			   Your Feedback to Client
+			   <?php echo __('workroom_details_feedback_to_client','Your Feedback to Client');?>
 			  <?php }?>
 			  </h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
 			  <div class="col-sm-6"><h5>
 			  <?php if($is_owner){?>
-			  	Contractor's Feedback to You
+			  	<?php echo __('workroom_details_contractor_to_you',"Contractor's Feedback to You");?>
 			  <?php }else{?>
-			  Client's Feedback to You
+			  <?php echo __('workroom_details_client_to_you',"Client's Feedback to You");?>
 			  <?php }?>
 			  </h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_to_me']->average_review;?>"></div></div>
@@ -116,20 +116,20 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 			  }elseif($reviews['review_by_me'] && !$reviews['review_to_me']){
 			  	?>
 			  <div class="row">
-              <div class="col-sm-6"><h5>Your Feedback</h5></div>
+              <div class="col-sm-6"><h5><?php echo __('workroom_details_your_feedback','Your Feedback');?></h5></div>
 			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
               </div>
-			  <p>Client not send feedback yet.</p>
+			  <p><?php echo __('workroom_details_client_not_feedback','Client not send feedback yet.');?></p>
 			  <?php
 			  	
 			  }elseif(!$reviews['review_by_me']){
 			  ?>
-			 <a href="<?php echo $endcontract_url;?>" class="btn btn-site">Send Feedback</a>
+			 <a href="<?php echo $endcontract_url;?>" class="btn btn-site"><?php echo __('workroom_details_send_feedback','Send Feedback');?></a>
 			  <?php
 			  }	
 		  }else{
 		  ?>
-		  <a href="<?php echo $endcontract_url;?>" class="btn btn-site">End Contract Now</a>
+		  <a href="<?php echo $endcontract_url;?>" class="btn btn-site"><?php echo __('workroom_details_end_contract','End Contract Now');?></a>
 		  <?php	
 		  }
           ?>
@@ -153,22 +153,22 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 			<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
 			<?php }?>
             <?php if($contractDetails->is_pause){?>
-            <p class="alert alert-warning">Contract Pause</p>
+            <p class="alert alert-warning"><?php echo __('workroom_details_contract_pause','Contract Pause');?></p>
             <?php }?>
             <?php if($is_owner){?>
             <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block">
             <icon class="icon-material-outline-add"></icon>
-            New Contract</a> <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
+            <?php echo __('workroom_details_new_contract','New Contract');?></a> <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
             <icon class="icon-material-outline-add"></icon>
-            Add Fund</a>
+            <?php echo __('workroom_details_add_fund','Add Fund');?></a>
             <?php if($contractDetails->is_pause){?>
             <a href="<?php echo VZ;?>" class="btn btn-warning btn-block start_contract">
             <icon class="icon-feather-pause-circle"></icon>
-           Resume Contract</a>
+           <?php echo __('workroom_details_resume_contract','Resume Contract');?></a>
            <?php }else{?>
            <a href="<?php echo VZ;?>" class="btn btn-warning btn-block pause_contract">
             <icon class="icon-feather-pause-circle"></icon>
-           Pause Contract</a>
+           <?php echo __('workroom_details_pause_contract','Pause Contract');?></a>
            <?php }?>
             <?php }else{?>
             <?php /*if($contractDetails->allow_manual_hour){
@@ -192,16 +192,16 @@ $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Add Fund To Escrow</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)">Add</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('workroom_details_add_fund_escrow','Add Fund To Escrow');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)"><?php echo __('workroom_details_add','Add');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col">
             <form action="" method="post" accept-charset="utf-8" id="addfundform" class="form-horizontal" role="form" name="addfundform" onsubmit="return false;">
               <div class="form-group">
-                <label><b>Amount</b></label>
+                <label><b><?php echo __('workroom_details_amount','Amount');?></b></label>
                 <input class="form-control" type="text" id="amount" name="amount" value="0" onkeypress="return isNumberKey(this)">
               </div>
             </form>
