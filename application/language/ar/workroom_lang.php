@@ -54,6 +54,16 @@ $lang['workroom_message_select_chat'] = 'حدد الدردشة';
 $lang['workroom_message_attachments'] = 'المرفقات';
 $lang['workroom_message_all_files'] = 'كل الملفات';
 
+$lang['workroom_term_contract_info'] = 'معلومات العقد';
+$lang['workroom_term_submit_review'] = 'إرسال المراجعة';
+$lang['workroom_term_after_submit'] = 'بعد تقديم المراجعة ، ستتمكن من رؤية مراجعة العميل.';
+$lang['workroom_term_no_review'] = 'لا مراجعة حتى الآن.';
+$lang['workroom_term_contract_date'] = 'تاريخ العقد';
+$lang['workroom_term_description_work'] = 'وصف العمل';
+$lang['workroom_term_contract_ID'] = 'معرف العقد:';
+$lang['workroom_term_view_Offer'] = 'عرض';
+$lang['workroom_term_view_proposal'] = 'عرض الاقتراح الأصلي';
+$lang['workroom_term_view_job_proposal'] = 'عرض الوظيفة الأصلية';
 
 
 ?>

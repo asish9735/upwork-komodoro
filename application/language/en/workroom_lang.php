@@ -55,6 +55,17 @@ $lang['workroom_message_select_chat'] = 'Select chat';
 $lang['workroom_message_attachments'] = 'Attachments';
 $lang['workroom_message_all_files'] = 'All Files';
 
+$lang['workroom_term_contract_info'] = 'Contract info';
+$lang['workroom_term_submit_review'] = 'Submit Review';
+$lang['workroom_term_after_submit'] = 'After submit review you will able to see client review.';
+$lang['workroom_term_no_review'] = 'No review yet.';
+$lang['workroom_term_contract_date'] = 'Contract Date';
+$lang['workroom_term_description_work'] = 'Description of Work';
+$lang['workroom_term_contract_ID'] = 'Contract ID:';
+$lang['workroom_term_view_Offer'] = 'View Offer';
+$lang['workroom_term_view_proposal'] = 'View Original Proposal';
+$lang['workroom_term_view_job_proposal'] = 'View Original Job Posting';
+
 
 
 
