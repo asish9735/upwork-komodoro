@@ -28,24 +28,24 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
   <div class="container">
     <h1><?php echo $contractDetails->contract_title;?></h1>
     <ul class="nav nav-tabs mb-3">
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>">Overview</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_worklog_url;?>">Work Logs</a> </li>
-      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_invoice_url;?>">Invoices</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('workroom_details_overview','Overview');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_details_work_logs','Work Logs');?></a> </li>
+      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_invoice_url;?>"><?php echo __('workroom_details_invoices','Invoices');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('workroom_details_message_file','Messages & Files');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>"><?php echo __('workroom_details_term','Terms & Settings');?></a> </li>
     </ul>
     <div class="row">
       <div class="col-lg-9">
       	<div class="panel mb-4">
           <div class="panel-header relative">
-            <h4>Invoice List </h4>
+            <h4><?php echo __('workroom_invoice_list','Invoice List');?> </h4>
           </div>
           <div class="panel-body p-0">
           <ul class="nav nav-tabs">
-	      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>">All</a> </li>
-	      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=pending">Pending</a> </li>
-	      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=completed">Paid</a> </li>
-	       <li class="nav-item"> <a class="nav-link <?php if($show=='rejected'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=rejected">Rejected</a> </li>
+	      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>"><?php echo __('workroom_invoice_all','All');?></a> </li>
+	      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=pending"><?php echo __('workroom_worklog_pending','Pending');?></a> </li>
+	      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=completed"><?php echo __('workroom_invoice_paid','Paid');?></a> </li>
+	       <li class="nav-item"> <a class="nav-link <?php if($show=='rejected'){?>active<?php }?>" href="<?php echo $contract_invoice_url;?>?show=rejected"><?php echo __('workroom_worklog_rejected','Rejected');?></a> </li>
 	       
 	    </ul>
 	    <div class="dashboard-box margin-top-0">
@@ -53,7 +53,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 		 <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
 	    </div>
 	    <div class="text-center">
-            <button class="btn btn-site mt-3 mb-3" id="load_more" data-page = "0">Load more..</button>
+            <button class="btn btn-site mt-3 mb-3" id="load_more" data-page = "0"><?php echo __('workroom_invoice_load_more','Load more..');?></button>
         </div>
           </div>
         </div>
@@ -74,20 +74,20 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 			<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
 			<?php }?>
             <?php if($contractDetails->is_pause){?>
-            <p class="alert alert-warning">Contract Pause</p>
+            <p class="alert alert-warning"><?php echo __('workroom_details_contract_pause','Contract Pause');?></p>
             <?php }?>
             <?php if($is_owner){?>
             <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block">
             <icon class="icon-material-outline-add"></icon>
-            New Contract</a> <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
+            <?php echo __('workroom_details_new_contract','New Contract');?></a> <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
             <icon class="icon-material-outline-add"></icon>
-            Add Fund</a>
+            <?php echo __('workroom_details_add_fund','Add Fund');?></a>
             <?php }else{?>
             <?php if($contractDetails->allow_manual_hour){
             	if($contractDetails->is_pause!=1){?>
             <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_manual_hour">
             <icon class="icon-material-outline-add"></icon>
-            Add Hour</a>
+            <?php echo __('workroom_invoice_add_hour','Add Hour');?></a>
             <?php }
             }
             }?>
@@ -103,16 +103,16 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Add Fund To Escrow</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)">Add</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('workroom_details_add_fund_escrow','Add Fund To Escrow');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)"><?php echo __('workroom_details_add','Add');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col">
             <form action="" method="post" accept-charset="utf-8" id="addfundform" class="form-horizontal" role="form" name="addfundform" onsubmit="return false;">
               <div class="form-group">
-                <label><b>Amount</b></label>
+                <label><b><?php echo __('workroom_details_amount','Amount');?></b></label>
                 <input class="form-control" type="text" id="amount" name="amount" value="0" onkeypress="return isNumberKey(this)">
               </div>
             </form>
@@ -127,9 +127,9 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Reject Invoice</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="ActionInvoice(this)">Send</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('workroom_invoice_reject_invoice','Reject Invoice');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="ActionInvoice(this)"><?php echo __('workroom_invoice_send','Send');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -137,7 +137,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
             <form action="" method="post" accept-charset="utf-8" id="invoiceactionform" class="form-horizontal" role="form" name="invoiceactionform" onsubmit="return false;">
               <input type="hidden" name="sid" id="sid" value="0"/>
               <div class="form-group">
-                <label><b>Reason</b></label>
+                <label><b><?php echo __('workroom_worklog_reason','Reason');?></b></label>
                 <textarea class="form-control" id="reason" name="reason"></textarea>
               </div>
             </form>

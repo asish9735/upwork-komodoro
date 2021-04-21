@@ -44,6 +44,20 @@ $lang['workroom_details_add_fund_escrow'] = 'Add Fund To Escrow';
 $lang['workroom_details_add'] = 'Add';
 $lang['workroom_details_amount'] = 'Amount';
 
+$lang['workroom_invoice_list'] = 'Invoice List';
+$lang['workroom_invoice_all'] = 'All';
+$lang['workroom_invoice_paid'] = 'Paid';
+$lang['workroom_invoice_load_more'] = 'Load more..';
+$lang['workroom_invoice_add_hour'] = 'Add Hour';
+$lang['workroom_invoice_reject_invoice'] = 'Reject Invoice';
+$lang['workroom_invoice_send'] = 'Send';
+$lang['workroom_message_select_chat'] = 'Select chat';
+$lang['workroom_message_attachments'] = 'Attachments';
+$lang['workroom_message_all_files'] = 'All Files';
+
+
+
+
 
 
 ?>

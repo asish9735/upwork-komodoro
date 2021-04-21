@@ -43,6 +43,16 @@ $lang['workroom_details_cancel'] = 'يلغي';
 $lang['workroom_details_add_fund_escrow'] = 'إضافة أموال إلى حساب الضمان';
 $lang['workroom_details_add'] = 'يضيف';
 $lang['workroom_details_amount'] = 'كمية';
+$lang['workroom_invoice_list'] = 'قائمة الفاتورة';
+$lang['workroom_invoice_all'] = 'الجميع';
+$lang['workroom_invoice_paid'] = 'مدفوع';
+$lang['workroom_invoice_load_more'] = 'تحميل المزيد..';
+$lang['workroom_invoice_add_hour'] = 'أضف ساعة';
+$lang['workroom_invoice_reject_invoice'] = 'رفض الفاتورة';
+$lang['workroom_invoice_send'] = 'إرسال';
+$lang['workroom_message_select_chat'] = 'حدد الدردشة';
+$lang['workroom_message_attachments'] = 'المرفقات';
+$lang['workroom_message_all_files'] = 'كل الملفات';
 
 
 
