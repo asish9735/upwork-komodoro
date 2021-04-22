@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="card text-center d-flex align-items-center" style="min-height:250px; flex-direction: inherit;">
         <div class="card-body">
             <img src="<?php echo IMAGE;?>checkmark.png" alt="" class="mb-3" />
-            <h1 class="h4 mb-4">Your account has been activated successfully.</h1>
-            <a href="<?php D(get_link('homeURL'))?>" class="btn btn-site mb-2">Back to Home</a>
+            <h1 class="h4 mb-4"><?php echo __('user_page_verify_account','Your account has been activated successfully.');?></h1>
+            <a href="<?php D(get_link('homeURL'))?>" class="btn btn-site mb-2"><?php echo __('user_page_success_back_home','Back to Home');?></a>
 		</div>
         </div>
 	</aside>        
@@ -42,8 +42,8 @@ bootbox.alert({
         <div class="card text-center d-flex align-items-center" style="min-height:250px; flex-direction: inherit;">
         <div class="card-body">
             <img src="<?php echo IMAGE;?>close-circle.png" alt="" class="mb-3" />
-            <h1 class="h4 mb-4">Your account activation link is invalid.</h1>
-            <a href="<?php D(get_link('homeURL'))?>" class="btn btn-site mb-2">Back to Home</a>
+            <h1 class="h4 mb-4"><?php echo __('user_page_verify_account_invalid','Your account activation link is invalid.');?></h1>
+            <a href="<?php D(get_link('homeURL'))?>" class="btn btn-site mb-2"><?php echo __('user_page_success_back_home','Back to Home');?></a>
 		</div>
         </div>
 	</aside>        

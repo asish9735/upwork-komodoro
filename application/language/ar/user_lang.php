@@ -21,6 +21,15 @@ $lang['user_page_signup_account'] = 'أكمل حسابك';
 $lang['user_page_signup_have_account'] = 'هل لديك حساب؟';
 $lang['user_page_signup_login'] = 'تسجيل الدخول';
 
+$lang['user_page_forget_submit'] = 'إرسال';
+$lang['user_page_success_thank_you'] = 'شكرا لك على التسجيل';
+$lang['user_page_success_please_check'] = 'يرجى التحقق من صندوق الوارد الخاص بك للتحقق من بريدك الإلكتروني.';
+$lang['user_page_success_back_home'] = 'العودة إلى المنزل';
+$lang['user_page_resetpass_strength'] = 'الخضوع ل';
+$lang['user_page_social_freelancer'] = 'مستقل';
+$lang['user_page_social_employer'] = 'صاحب العمل';
+$lang['user_page_verify_account'] = 'تم تفعيل حسابك بنجاح.';
+$lang['user_page_verify_account_invalid'] = 'رابط تفعيل حسابك غير صالح.';
 
 
 

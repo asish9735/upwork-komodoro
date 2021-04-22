@@ -24,12 +24,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="account-type">
             <div>
                 <input type="radio" name="user_type" id="freelancer-radio" class="account-type-radio" value="F" checked  onclick="$('.for_individual').show()">
-                <label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Freelancer</label>
+                <label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i><?php echo __('user_page_social_freelancer','Freelancer');?> </label>
             </div>
 
             <div>
                 <input type="radio" name="user_type" id="employer-radio" class="account-type-radio" value="E" onclick="$('.for_individual').hide()">
-                <label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Employer</label>
+                <label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i><?php echo __('user_page_social_employer','Employer');?> </label>
             </div>
         </div>
         <div class="input-with-icon-left">
@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <span id="passwordError" class="rerror"></span>
         </div>
         <span id="emailError" class="rerror"></span>
-         <button class="btn btn-site btn-block signUpBTN">Submit</button>
+         <button class="btn btn-site btn-block signUpBTN"><?php echo __('user_page_forget_submit','Submit');?></button>
     </div>
     </form>
     <p class="text-center small mb-0"><?php echo __('user_page_signup_have_account','Already have an account?');?> <a href="<?php URL::getLink('login'); ?>"><?php echo __('user_page_signup_login','Log In');?></a></p>

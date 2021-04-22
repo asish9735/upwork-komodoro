@@ -5,7 +5,7 @@
         <div class="general-form">
         <div class="general-body">
          <form action="" method="post" accept-charset="utf-8" id="forgotform" class="form-horizontal" role="form" name="forgotform" onsubmit="saveForgotpassword(this);return false;">              
-       <h1 class="text-center m-0">Forgot Password</h1>
+       <h1 class="text-center m-0"><?php echo __('user_page_login_password_forget','Forgot Password');?></h1>
        <div class="m-lg-3 d-none d-sm-block"> </div>
        <div id="agree_termsError" class="error-msg5 error alert-error alert alert-danger" style="display:none"></div>
          <input type="hidden" name="refer" value="" readonly="readonly">
@@ -14,9 +14,9 @@
             <input type="text" class="form-control" value="" name="forgot_email" id="forgot_email" placeholder="Email Address">
             <span id="forgot_emailError" class="rerror"></span> 
           </div>                                          
-        <button class="btn btn-site btn-block mb-3 saveBTN" id="submit-btn">Submit</button>
+        <button class="btn btn-site btn-block mb-3 saveBTN" id="submit-btn"><?php echo __('user_page_forget_submit','Submit');?></button>
         </form>
-        <p class="text-center small mb-0">Don't have an account? <a href="<?php URL::getLink('signup'); ?>">Register Now</a></p>
+        <p class="text-center small mb-0"><?php echo __('user_page_login_no_account',"Don't have an account?");?> <a href="<?php URL::getLink('signup'); ?>"><?php echo __('user_page_login_register','Register Now');?></a></p>
         </div>        
        </div>
 	</aside>

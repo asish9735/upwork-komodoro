@@ -22,6 +22,17 @@ $lang['user_page_signup_account'] = 'Complete your account';
 $lang['user_page_signup_have_account'] = 'Already have an account?';
 $lang['user_page_signup_login'] = 'Log In';
 
+$lang['user_page_forget_submit'] = 'Submit';
+$lang['user_page_success_thank_you'] = 'Thank you for registration';
+$lang['user_page_success_please_check'] = 'Please check your inbox to verify your email.';
+$lang['user_page_success_back_home'] = 'Back to Home';
+$lang['user_page_resetpass_strength'] = 'Strength';
+
+$lang['user_page_social_freelancer'] = 'Freelancer';
+$lang['user_page_social_employer'] = 'Employer';
+
+$lang['user_page_verify_account'] = 'Your account has been activated successfully.';
+$lang['user_page_verify_account_invalid'] = 'Your account activation link is invalid.';
 
 
 

@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="input-group-append">
                     <span class="input-group-text" id="meter">
                         <div id="meter_wrapper">
-                            <span id="pass_type"><span class="move-up-js text-dark">Strength</span></span>
+                            <span id="pass_type"><span class="move-up-js text-dark"><?php echo __('user_page_resetpass_strength','Strength');?></span></span>
                             <!--<div id="meter"></div>-->
                         </div>
                     </span>
