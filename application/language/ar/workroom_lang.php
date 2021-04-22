@@ -65,5 +65,18 @@ $lang['workroom_term_view_Offer'] = 'عرض';
 $lang['workroom_term_view_proposal'] = 'عرض الاقتراح الأصلي';
 $lang['workroom_term_view_job_proposal'] = 'عرض الوظيفة الأصلية';
 
+$lang['workroom_worklog_waiting_invoice'] = 'في انتظار الفاتورة';
+$lang['workroom_worklog_select_all'] = 'اختر الكل';
+$lang['workroom_worklog_create_invoice'] = 'إنشاء فاتورة';
+$lang['workroom_worklog_reject_work'] = 'رفض العمل';
+$lang['workroom_worklog_add_manual_H'] = 'أضف ساعة يدوية';
+$lang['workroom_worklog_title'] = 'لقب';
+$lang['workroom_worklog_description'] = 'وصف';
+$lang['workroom_worklog_drag_drop'] = 'قم بسحب وإسقاط الملف هنا';
+$lang['workroom_worklog_or'] = 'أو';
+$lang['workroom_worklog_select_file'] = 'انقر لتحديد الملف';
+$lang['workroom_worklog_send_invoice'] = 'إرسال الفاتورة';
+
+
 
 ?>

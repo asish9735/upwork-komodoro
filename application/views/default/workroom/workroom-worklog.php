@@ -28,24 +28,24 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
   <div class="container">
     <h1><?php echo $contractDetails->contract_title;?></h1>
     <ul class="nav nav-tabs mb-3">
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>">Overview</a> </li>
-      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_worklog_url;?>">Work Logs</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_invoice_url;?>">Invoices</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>">Messages & Files</a> </li>
-      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>">Terms & Settings</a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('workroom_details_overview','Overview');?></a> </li>
+      <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_details_work_logs','Work Logs');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_invoice_url;?>"><?php echo __('workroom_details_invoices','Invoices');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('workroom_details_message_file','Messages & Files');?></a> </li>
+      <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_term_url;?>"><?php echo __('workroom_details_term','Terms & Settings');?></a> </li>
     </ul>
     <div class="row">
       <div class="col-lg-9">
       	<div class="panel mb-4">
           <div class="panel-header relative">
-            <h4>Work Logs </h4>
+            <h4><?php echo __('workroom_details_work_logs','Work Logs');?> </h4>
           </div>
           <div class="panel-body">
           <ul class="nav nav-tabs mb-3">
-	      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>">All</a> </li>
-	      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>?show=pending">Pending</a> </li>
-	      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>?show=completed">Waiting For Invoice</a> </li>
-	       <li class="nav-item"> <a class="nav-link <?php if($show=='rejected'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>?show=rejected">Rejected</a> </li>
+	      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_invoice_all','All');?></a> </li>
+	      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>?show=pending"><?php echo __('workroom_worklog_pending','Pending');?></a> </li>
+	      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>?show=completed"><?php echo __('workroom_worklog_waiting_invoice','Waiting For Invoice');?></a> </li>
+	       <li class="nav-item"> <a class="nav-link <?php if($show=='rejected'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>?show=rejected"><?php echo __('workroom_worklog_rejected','Rejected');?></a> </li>
 	       
 	    </ul>
 	    <div class="">
@@ -53,9 +53,9 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 	    <div class="pb-4">
 			<div class="checkbox">
 			  <input type="checkbox" value="1" id="pending_invoice_all">
-			  <label for="pending_invoice_all"><span class="checkbox-icon"></span>Select All</label>
+			  <label for="pending_invoice_all"><span class="checkbox-icon"></span><?php echo __('workroom_worklog_select_all','Select All');?></label>
 			</div>
-			<div class="float-right"> <button class="btn btn-site creatinvoice">Create Invoice</button> </div>
+			<div class="float-right"> <button class="btn btn-site creatinvoice"><?php echo __('workroom_worklog_create_invoice','Create Invoice');?></button> </div>
 	    </div>
 	       
 	       <div class="clearfix"></div>
@@ -64,7 +64,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 		 <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
 	    </div>
 	    <div class="container text-center padding-bottom-40">
-            <button class="btn btn-primary" id="load_more" data-page = "0">Load more..</button>
+            <button class="btn btn-primary" id="load_more" data-page = "0"><?php echo __('workroom_invoice_load_more','Load more..');?></button>
         </div>
           </div>
         </div>
@@ -85,21 +85,21 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 			<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
 			<?php }?>
             <?php if($contractDetails->is_pause){?>
-            <p class="alert alert-warning">Contract Pause</p>
+            <p class="alert alert-warning"><?php echo __('workroom_details_contract_pause','Contract Pause');?></p>
             <?php }?>
             <?php if($is_owner){?>
             <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block">
             <icon class="icon-material-outline-add"></icon>
-            New Contract</a> <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
+            <?php echo __('workroom_details_new_contract','New Contract');?></a> <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
             <icon class="icon-material-outline-add"></icon>
-            Add Fund</a>
+            <?php echo __('workroom_details_add_fund','Add Fund');?></a>
             <?php }else{?>
             <?php if($contractDetails->allow_manual_hour){
 	            	if($contractDetails->is_pause!=1){
 					?>
 					 <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_manual_hour">
 	            <icon class="icon-material-outline-add"></icon>
-	            Add Hour</a>
+	            <?php echo __('workroom_invoice_add_hour','Add Hour');?></a>
 					<?php	
 					}
             	}
@@ -116,16 +116,16 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Add Fund To Escrow</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)">Add</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('workroom_details_add_fund_escrow','Add Fund To Escrow');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)"><?php echo __('workroom_details_add','Add');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col">
             <form action="" method="post" accept-charset="utf-8" id="addfundform" class="form-horizontal" role="form" name="addfundform" onsubmit="return false;">
               <div class="form-group">
-                <label><b>Amount</b></label>
+                <label><b><?php echo __('workroom_details_amount','Amount');?></b></label>
                 <input class="form-control" type="text" id="amount" name="amount" value="0" onkeypress="return isNumberKey(this)">
               </div>
             </form>
@@ -140,9 +140,9 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Reject Work</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="ActionWork(this)">Send</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('workroom_worklog_reject_work','Reject Work');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="ActionWork(this)"><?php echo __('workroom_invoice_send','Send');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -150,7 +150,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
             <form action="" method="post" accept-charset="utf-8" id="workactionform" class="form-horizontal" role="form" name="workactionform" onsubmit="return false;">
               <input type="hidden" name="sid" id="sid" value="0"/>
               <div class="form-group">
-                <label><b>Reason</b></label>
+                <label><b><?php echo __('workroom_worklog_reason','Reason');?></b></label>
                 <textarea class="form-control" id="reason" name="reason"></textarea>
               </div>
             </form>
@@ -166,9 +166,9 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Add Manual Hour</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveLog(this)">Add</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('workroom_worklog_add_manual_H','Add Manual Hour');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveLog(this)"><?php echo __('workroom_details_add','Add');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -178,19 +178,19 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
             	<div class="row">
             		<div class="col-sm-4">
             		  <div class="form-group">
-		                <label><b>Start Date</b></label>
+		                <label><b><?php echo __('workroom_worklog_start_date','Start Date');?></b></label>
 		                <input class="form-control datepicker_from" type="text" id="start_date" name="start_date" value="">
 		              </div>
             		</div>
             		<div class="col-sm-4">
             		  <div class="form-group">
-		                <label><b>End Date</b></label>
+		                <label><b><?php echo __('workroom_worklog_end_date','End Date');?></b></label>
 		                <input class="form-control datepicker_to" type="text" id="end_date" name="end_date" value="">
 		              </div>
             		</div>
             		<div class="col-sm-4">
             			<div class="form-group">
-                <label><b>Duration</b></label>
+                <label><b><?php echo __('workroom_worklog_duration','Duration');?></b></label>
                 <div class="input-group">
                 <input class="form-control" type="text" id="duration_hour" name="duration_hour" value="0" onkeypress="return isNumberKey(this)">
                 <div class="input-group-append"><span class="input-group-text">hr</span></div>
@@ -204,20 +204,20 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
             
             
               <div class="form-group">
-                <label><b>Title</b></label>
+                <label><b><?php echo __('workroom_worklog_title','Title');?></b></label>
                 <input type="text" class="form-control" id="title" name="title" value="">
               </div>
               <div class="form-group">
-                <label><b>Description</b></label>
+                <label><b><?php echo __('workroom_worklog_description','Description');?></b></label>
                 <textarea class="form-control" id="details" name="details"></textarea>
               </div>
               <div class="form-group">
-                <label><b>Attachments</b></label>
+                <label><b><?php echo __('workroom_message_attachments','Attachments');?></b></label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                  <h4 class="mb-0">Drag and Drop file here<br/>
-                    Or<br/>
-                    Click to select file</h4>
+                  <h4 class="mb-0"><?php echo __('workroom_worklog_drag_drop','Drag and Drop file here');?><br/>
+				  <?php echo __('workroom_worklog_or','Or');?> <br/>
+                    <?php echo __('workroom_worklog_select_file','Click to select file');?></h4>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>
@@ -235,9 +235,9 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Send Invoice</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SendInvoice(this)">Send</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('workroom_worklog_send_invoice','Send Invoice');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SendInvoice(this)"><?php echo __('workroom_invoice_send','Send');?></button>
       </div>
       <div class="modal-body">
         <div class="row">

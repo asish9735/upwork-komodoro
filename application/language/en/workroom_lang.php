@@ -66,6 +66,18 @@ $lang['workroom_term_view_Offer'] = 'View Offer';
 $lang['workroom_term_view_proposal'] = 'View Original Proposal';
 $lang['workroom_term_view_job_proposal'] = 'View Original Job Posting';
 
+$lang['workroom_worklog_waiting_invoice'] = 'Waiting For Invoice';
+$lang['workroom_worklog_select_all'] = 'Select All';
+$lang['workroom_worklog_create_invoice'] = 'Create Invoice';
+$lang['workroom_worklog_reject_work'] = 'Reject Work';
+$lang['workroom_worklog_add_manual_H'] = 'Add Manual Hour';
+$lang['workroom_worklog_title'] = 'Title';
+$lang['workroom_worklog_description'] = 'Description';
+$lang['workroom_worklog_drag_drop'] = 'Drag and Drop file here';
+$lang['workroom_worklog_or'] = 'Or';
+$lang['workroom_worklog_select_file'] = 'Click to select file';
+$lang['workroom_worklog_send_invoice'] = 'Send Invoice';
+
 
 
 
