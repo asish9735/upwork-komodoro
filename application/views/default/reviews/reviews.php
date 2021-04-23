@@ -12,7 +12,7 @@ $currency=priceSymbol();
 			<!-- Dashboard Headline -->
 			<div class="dashboard-box margin-top-0">
 				<div class="headline">
-                    <h3><i class="icon-material-outline-rate-review"></i> Reviews</h3>
+                    <h3><i class="icon-material-outline-rate-review"></i><?php echo __('review_reviews','Reviews');?> </h3>
 				</div>
 				
 				<div class="content">
@@ -50,7 +50,7 @@ if($list){
 	}
 }else{
 ?>
-<li><p>No record</p></li>
+<li><p></i><?php echo __('review_no_record','No record');?></p></li>
 <?php
 }
 ?>
