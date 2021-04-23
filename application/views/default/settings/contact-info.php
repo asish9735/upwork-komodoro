@@ -11,14 +11,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
-				<h3>Contact Info</h3>				
+				<h3><?php echo __('setting_contact_info','Contact Info');?></h3>				
 			</div>
 			<!-- Dashboard Box -->
             <div class="dashboard-box margin-top-0">
 
                     <!-- Headline -->
                     <div class="headline d-flex">
-                        <h3>Account </h3>  
+                        <h3><?php echo __('setting_contact_account','Account');?> </h3>  
                         <a href="<?php echo VZ;?>" class="btn btn-circle btn-outline-site edit_account_info" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a>                      
                     </div>
 
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <!-- Headline -->
                     <div class="headline d-flex">
-                        <h3>Location</h3>
+                        <h3><?php echo __('setting_contact_location','Location');?></h3>
                         <a href="<?php echo VZ;?>" class="btn btn-circle btn-outline-site edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a>                        
                     </div>
 
@@ -193,9 +193,9 @@ var  main = function(){
           <input  type="hidden" value="logo" id="formtype" name="formtype"/>
             <div class="modal-header">
              <!-- <button type="submit" class="btn btn-success pull-right avatar-save">Done</button>-->
-               <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        		<h4 class="modal-title">Change Avatar</h4>
-        		<button  class="btn btn-success pull-right avatar-save" type="submit">Save</button>
+               <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('setting_contact_info_cancel','Cancel');?></button>
+        		<h4 class="modal-title"><?php echo __('setting_contact_change_avatar','Change Avatar');?></h4>
+        		<button  class="btn btn-success pull-right avatar-save" type="submit"><?php echo __('setting_contact_Save','Save');?></button>
             </div>
             <div class="modal-body">
               <div class="avatar-body">
@@ -203,18 +203,18 @@ var  main = function(){
                 <div class="avatar-upload">
                   	<input type="hidden" class="avatar-src" name="avatar_src">
                   	<input type="hidden" class="avatar-data" name="avatar_data">
-                  	<label for="avatarInput"> Profile Picture</label>
+                  	<label for="avatarInput"><?php echo __('setting_contact_profile_picture','Profile Picture');?> </label>
 
                   			<div class="uploadButton margin-top-0">
 								<input class="uploadButton-input avatar-input" type="file" id="avatarInput" name="avatar_file">
-								<label class="uploadButton-button" for="avatarInput">Upload Files</label>
-								<span class="uploadButton-file-name">Maximum file size: 2 MB</span>
+								<label class="uploadButton-button" for="avatarInput"><?php echo __('setting_contact_upload_file','Upload Files');?></label>
+								<span class="uploadButton-file-name"<?php echo __('setting_contact_max_size','Maximum file size: 2 MB');?>></span>
 							</div>
                   		
                   	</div>
 	                
 					
-                  	<p class="green-text">File must be gif, jpg, png, jpeg.</p>               
+                  	<p class="green-text"><?php echo __('setting_contact_file_format','File must be gif, jpg, png, jpeg.');?></p>               
                 </div>
 
                 <!-- Crop and preview -->

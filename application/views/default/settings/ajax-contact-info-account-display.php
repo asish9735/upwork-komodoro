@@ -26,18 +26,18 @@ $display_email=$firs_part."@".$d[1];
 <div class="row">
     <div class="col-sm">
         <div class="form-field">
-            <label class="mb-1">User ID</label>
+            <label class="mb-1"><?php echo __('setting_contact_info_user_id','User ID');?></label>
             <p><?php D($memberInfo->member_username)?></p>
         </div>
         <div class="form-field">
-            <label class="mb-1">Name</label>
+            <label class="mb-1"><?php echo __('setting_contact_info_name','Name');?></label>
             <p><?php ucwords(D($memberInfo->member_name));?></p>
         </div>
 	</div>
     <div class="col-sm">
         <!-- Account Type -->
         <div class="form-field mb-0">
-            <label class="mb-1">Email</label>
+            <label class="mb-1"><?php echo __('setting_contact_info_email','Email');?></label>
             <p><?php D($display_email)?></p>
         </div>
     </div>

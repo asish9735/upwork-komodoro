@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php if($memberInfo->member_mobile){?>
 			<div class="col-md-4">
 				<div class="submit-field">
-					<label>Phone</label>
+					<label><?php echo __('setting_contact_info_phone','Phone');?></label>
 					<p><?php D($memberInfo->member_mobile_code." "); D($memberInfo->member_mobile)?></p>
 				</div>
 			</div>
