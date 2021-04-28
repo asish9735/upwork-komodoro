@@ -47,6 +47,33 @@ $lang['projectview_apply_to_select'] = 'to select file';
 $lang['projectview_apply_submit_proposal'] = 'Submit Proposal';
 $lang['projectview_apply_back'] = 'Back';
 
+$lang['projectview_hire'] = 'Hire';
+$lang['projectview_job_listing'] = 'Job Listing';
+$lang['projectview_job_project_title'] = 'Project Title:';
+$lang['projectview_job_contract_title'] = 'Contract Title';
+$lang['projectview_job_terms'] = 'Terms';
+$lang['projectview_job_payment_term'] = 'Payment Term';
+$lang['projectview_job_fixed'] = 'Fixed';
+$lang['projectview_job_hourly'] = 'Hourly';
+$lang['projectview_job_profile_picture'] ="'s profile rate is";
+$lang['projectview_job_weely_limit'] ='Weekly Limit';
+$lang['projectview_job_alloe_long_time'] ='Allow freelancer to log time manually if needed';
+$lang['projectview_job_total_amount'] ='Total Amount';
+$lang['projectview_job_deposit_escrow'] ='Deposit into Escrow';
+$lang['projectview_job_deposite_project'] ='Deposit for the whole project';
+$lang['projectview_job_D_lesser_amount'] ='Deposit a lesser amount to cover the first milestone';
+$lang['projectview_job_work_description'] ='Work Description';
+$lang['projectview_job_drag_drop'] ='Drag and Drop file here';
+$lang['projectview_job_yes_understand'] ='Yes, I understand and agree to the';
+$lang['projectview_job_term_service'] ='Terms of Service';
+$lang['projectview_job_including_the'] ='including the';
+$lang['projectview_job_user_agreement'] ='User Agreement';
+$lang['projectview_job_and'] ='and';
+$lang['projectview_job_privacy_policy'] ='Privacy Policy';
+$lang['projectview_job_title'] ='Title';
+$lang['projectview_job_leverage'] ='Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.';
+
+
 
 
 ?>

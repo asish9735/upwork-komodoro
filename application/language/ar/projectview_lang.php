@@ -47,6 +47,34 @@ $lang['projectview_apply_to_select'] = 'لتحديد الملف';
 $lang['projectview_apply_submit_proposal'] = 'إرسال الاقتراح';
 $lang['projectview_apply_back'] = 'عودة';
 
+$lang['projectview_hire'] = 'توظيف';
+$lang['projectview_job_listing'] = 'قائمة العمل';
+$lang['projectview_job_project_title'] = 'عنوان المشروع:';
+$lang['projectview_job_contract_title'] = 'عنوان العقد';
+$lang['projectview_job_terms'] = 'مصطلحات';
+$lang['projectview_job_payment_term'] = 'شروط الدفع';
+$lang['projectview_job_fixed'] = 'مثبت';
+$lang['projectview_job_hourly'] = 'ساعيا';
+$lang['projectview_job_profile_picture'] ="معدل الملف الشخصي لـ";
+$lang['projectview_job_weely_limit'] ='الحد الأسبوعي';
+$lang['projectview_job_alloe_long_time'] ='اسمح للمحترف المستقل بتسجيل الوقت يدويًا إذا لزم الأمر';
+$lang['projectview_job_total_amount'] ='المبلغ الإجمالي';
+$lang['projectview_job_deposit_escrow'] ='الإيداع في حساب الضمان';
+$lang['projectview_job_deposite_project'] ='الإيداع للمشروع بأكمله';
+$lang['projectview_job_D_lesser_amount'] ='قم بإيداع مبلغ أقل لتغطية المرحلة الأولى';
+$lang['projectview_job_work_description'] ='وصف العمل';
+$lang['projectview_job_drag_drop'] ='قم بسحب وإسقاط الملف هنا';
+$lang['projectview_job_yes_understand'] ='نعم ، أفهم وأوافق على';
+$lang['projectview_job_term_service'] ='شروط الخدمة';
+$lang['projectview_job_including_the'] ='بما في ذلك';
+$lang['projectview_job_user_agreement'] ='اتفاقية المستخدم';
+$lang['projectview_job_and'] ='و';
+$lang['projectview_job_privacy_policy'] ='سياسة الخصوصية';
+$lang['projectview_job_title'] ='لقب';
+$lang['projectview_job_leverage'] ='استفد من أطر العمل الرشيقة لتوفير ملخص قوي لمحات عامة عالية المستوى. تعزز المناهج التكرارية لاستراتيجية الشركة التفكير التعاوني لتعزيز عرض القيمة الشاملة. تنمية النظرة الشاملة للعالم للابتكار التخريبي من خلال التنوع والتمكين في مكان العمل.';
+
+
+
 
 
 ?>

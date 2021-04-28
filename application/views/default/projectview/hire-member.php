@@ -23,7 +23,7 @@ $logo=getMemberLogo($bid);
             <ec id="crop-avatar-dashboard" style="width: 100%"><img src="<?php D($logo);?>" alt=""></ec>
           </div>
           <div class="header-details">
-            <h1>Hire, </h1>
+            <h1><?php echo __('projectview_hire','Hire');?> </h1>
             <h3>
               <?php D(ucwords($memberInfo->member_name))?>
             </h3>
@@ -44,38 +44,38 @@ $logo=getMemberLogo($bid);
           <!-- Page Content -->
           <div class="panel mb-4">
             <div class="panel-header">
-              <h4 class="panel-title show_edit_btn">Job Listing </h4>
+              <h4 class="panel-title show_edit_btn"><?php echo __('projectview_job_listing','Job Listing');?> </h4>
             </div>
             <div class="panel-body">
-              <p><strong>Project Title:</strong> <a href="<?php echo get_link('myProjectDetailsURL')."/".$projects['project']->project_url;?>" target="_blank">
+              <p><strong><?php echo __('projectview_job_project_title','Project Title:');?></strong> <a href="<?php echo get_link('myProjectDetailsURL')."/".$projects['project']->project_url;?>" target="_blank">
                 <?php D(ucfirst($projects['project']->project_title));?> <i class="icon-feather-external-link"></i></a></p>
               <div class="form-group">
-                <label><b>Contract Title</b></label>
+                <label><b><?php echo __('projectview_job_contract_title','Contract Title');?></b></label>
                 <input type="text" name="title" id="title" class="form-control input-text with-border" value="<?php D(ucfirst($projects['project']->project_title));?>" >
               </div>
             </div>
           </div>
           <div class="panel mb-4">
             <div class="panel-header">
-              <h4 class="panel-title">Terms </h4>
+              <h4 class="panel-title"><?php echo __('projectview_job_terms','Terms');?> </h4>
             </div>
             <div class="panel-body">
               <div class="form-group">
-                <label><b>Payment Term</b></label>                                
+                <label><b><?php echo __('projectview_job_payment_term','Payment Term');?></b></label>                                
                 <div class="radio radio-inline">
                   <input id="payment_fixed" name="is_hourly" class="is_hourly" value="0" type="radio" <?php if($is_hourly==1){}else{echo 'checked';}?> >
-                  <label for="payment_fixed"><span class="radio-label"></span> Fixed</label>
+                  <label for="payment_fixed"><span class="radio-label"></span><?php echo __('projectview_job_fixed','Fixed');?> </label>
                 </div>
                 <div class="radio radio-inline">
                   <input id="payment_hourly" name="is_hourly" class="is_hourly" value="1" type="radio" <?php if($is_hourly==1){echo 'checked';}?>>
-                  <label for="payment_hourly"><span class="radio-label"></span> Hourly</label>
+                  <label for="payment_hourly"><span class="radio-label"></span><?php echo __('projectview_job_hourly','Hourly');?> </label>
                 </div>
               </div>
               <div class="is_hourly_wrapper" style="display: none">
               
                 <div class="row">
                   <div class="col-sm-6 col-12">
-                  <label><b>Hourly Rate</b></label>
+                  <label><b><?php echo __('projectview_apply_hourly_rate','Hourly Rate');?></b></label>
                   <div class="input-with-icon-left">
                   <i><?php echo priceSymbol();?></i>
                   <input type="text" name="bid_amount_hourly" id="bid_amount_hourly" class="form-control" value="<?php if($getBidDetails && $is_hourly==1){echo $getBidDetails->bid_amount;}elseif($memberInfo->member_hourly_rate){echo $memberInfo->member_hourly_rate;}else{echo '0.00';}?>" onkeyup="updatePaymentHourly(this)">
@@ -83,13 +83,13 @@ $logo=getMemberLogo($bid);
                   </div>
                 </div>
                 
-                <h6 class="text-info"><?php D(ucwords($memberInfo->member_name))?> 's profile rate is <?php echo $currency.$memberInfo->member_hourly_rate;?> /hr</h6>
+                <h6 class="text-info"><?php D(ucwords($memberInfo->member_name))?><?php echo __('projectview_job_profile_picture',"'s profile rate is");?>  <?php echo $currency.$memberInfo->member_hourly_rate;?> /hr</h6>
                  
                 <div class="form-group">
                   
 				<div class="row">
                   <div class="col-sm-6 col-12">
-                    <label><b>Weekly Limit</b></label>
+                    <label><b><?php echo __('projectview_job_weely_limit','Weekly Limit');?></b></label>
                     <div class="input-group">
                       <input type="text" name="max_hour_limit" id="max_hour_limit" class="form-control" value="10" onkeyup="updatePaymentHourly(this)">
                       <div class="input-group-append"><span class="input-group-text max_week_payment"></span></div>
@@ -100,14 +100,14 @@ $logo=getMemberLogo($bid);
                 
                 <div class="checkbox d-none">
                     <input type="checkbox" name="allow_manual_hour" id="chekcbox1" value="1" checked>
-                    <label for="chekcbox1"><span class="checkbox-icon"></span> Allow freelancer to log time manually if needed</label>
+                    <label for="chekcbox1"><span class="checkbox-icon"></span><?php echo __('projectview_job_alloe_long_time','Allow freelancer to log time manually if needed');?> </label>
                 </div>
                 
               </div>
               <div class="is_fixed_wrapper">
                 <div class="row">
                   <div class="col-sm-6 col-12">
-                  <label><b>Total Amount</b></label>
+                  <label><b><?php echo __('projectview_job_total_amount','Total Amount');?></b></label>
                   <div class="input-with-icon-left">
                   <i><?php echo priceSymbol();?></i>
                   <input type="text" name="bid_amount" id="bid_amount" class="form-control" value="0" onkeyup="updateFullPayment(this)">
@@ -115,50 +115,50 @@ $logo=getMemberLogo($bid);
                   </div>
                 </div>
                 <div class="form-group">
-                  <label><b>Deposit into Escrow</b></label>
+                  <label><b><?php echo __('projectview_job_deposit_escrow','Deposit into Escrow');?></b></label>
                   <div class="radio">
                     <input id="payment_at_project" name="bid_by_project" class="project_payment_type" value="1" type="radio" checked>
                     <label for="payment_at_project"><span class="radio-label"></span>
-                      <ec class="full_amount">Deposit for the whole project</ec>
+                      <ec class="full_amount"><?php echo __('projectview_job_deposite_project','Deposit for the whole project');?></ec>
                     </label>
                   </div>
                   <br>
                   <div class="radio">
                     <input id="payment_at_milestone" name="bid_by_project" class="project_payment_type" value="0" type="radio" >
-                    <label for="payment_at_milestone"><span class="radio-label"></span> Deposit a lesser amount to cover the first milestone</label>
+                    <label for="payment_at_milestone"><span class="radio-label"></span><?php echo __('projectview_job_D_lesser_amount','Deposit a lesser amount to cover the first milestone');?> </label>
                   </div>
                 </div>
                 <div class="payment_milestone_wrapper"  style="display: none">
-                  <h4>How many milestones do you want to include?</h4>
+                  <h4><?php echo __('projectview_apply_how_milestone','How many milestones do you want to include?');?></h4>
                   <div id="milestone_wrapper">
                     <div class="row row-10 milestone_row_parent">
                       <div class="col-sm-6 col-xs-12">
                         <input type="hidden" name="milestone_id[]" class="milestone_row" value="1"/>
                         <div class="form-group">
-                          <label for="title"><b>Description</b></label>
+                          <label for="title"><b><?php echo __('projectview_apply_description','Description');?></b></label>
                           <input type="text" name="milestone_title_1" id="milestone_title_1" class="form-control">
                         </div>
                       </div>
                       <div class="col-sm-3 col-xs-12">
                         <div class="form-group">
-                          <label for="title"><b>Due date</b></label>
+                          <label for="title"><b><?php echo __('projectview_apply_due_date','Due date');?></b></label>
                           <input type="text" name="milestone_due_date_1" id="milestone_due_date_1" class="datepicker form-control">
                         </div>
                       </div>
                       <div class="col-sm-3 col-xs-12">
                         <div class="form-group">
-                          <label for="title"><b>Amount</b></label>
+                          <label for="title"><b><?php echo __('projectview_apply_amount','Amount');?></b></label>
                           <input type="text" name="milestone_amount_1" id="milestone_amount_1" class="milestone_amount form-control">
                         </div>
                       </div>
                     </div>
                   </div>
-                  <a href="javascript:" class="btn btn-site btn-sm addMilestone"><i class="icon-feather-plus"></i> Add milestone</a> </div>
+                  <a href="javascript:" class="btn btn-site btn-sm addMilestone"><i class="icon-feather-plus"></i><?php echo __('projectview_apply_add_milestone','Add milestone');?> </a> </div>
                 <div class="payment_project_wrapper">
-                  <h4>What is the full amount you'd like to bid for this job?</h4>
+                  <h4><?php echo __('projectview_apply_full_ammount',"What is the full amount you'd like to bid for this job?");?></h4>
                   <div class="padding-top-20" style="max-width:720px">
                     <div class="form-group">
-                      <label for="title"><b>Due date</b></label>
+                      <label for="title"><b><?php echo __('projectview_apply_due_date','Due date');?></b></label>
                       <input type="text" name="milestone_due_date" id="milestone_due_date" class="form-control datepicker" value="">
                     </div>
                   </div>
@@ -168,27 +168,27 @@ $logo=getMemberLogo($bid);
           </div>
           <div class="panel">
             <div class="panel-header">
-              <h4 class="panel-title">Work Description</h4>
+              <h4 class="panel-title"><?php echo __('projectview_job_work_description','Work Description');?></h4>
             </div>
             <div class="panel-body">
               <div class="form-group">
-                <label>Description</label>
+                <label><?php echo __('projectview_apply_description','Description')?></label>
                 <textarea rows="4" class="form-control" id="bid_details" name="bid_details"></textarea>
               </div>
               <div class="form-group">
-                <label>Attachments</label>
+                <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                  <p>Drag and Drop file here<br/>
-                    Or<br/>
-                    <span class="text-site">Click</span> to select file</p>
+                  <p><?php echo __('projectview_job_drag_drop','Drag and Drop file here');?><br/>
+                  <?php echo __('projectview_apply_or','Or');?> <br/>
+                    <span class="text-site"><?php echo __('projectview_apply_click','Click');?></span> <?php echo __('projectview_apply_to_select','to select file');?></p>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>
               
                 <div class="checkbox">
                   <input type="checkbox" id="i_agree" name="i_agree" value="1">
-                  <label for="i_agree"><span class="checkbox-icon"></span> Yes, I understand and agree to the <a href="#">Terms of Service</a>, including the <a href="#">User Agreement</a> and <a href="#">Privacy Policy</a></label>
+                  <label for="i_agree"><span class="checkbox-icon"></span> <?php echo __('projectview_job_yes_understand','Yes, I understand and agree to the');?> <a href="#"><?php echo __('projectview_job_term_service','Terms of Service');?></a>,<?php echo __('projectview_job_including_the','including the');?>  <a href="#"><?php echo __('projectview_job_user_agreement','User Agreement');?></a><?php echo __('projectview_job_and','and');?>  <a href="#"><?php echo __('projectview_job_privacy_policy','Privacy Policy');?></a></label>
                 </div>
                 <div id="i_agreeError" class="rerror"></div>
               
@@ -196,11 +196,11 @@ $logo=getMemberLogo($bid);
           </div>
           
           <div class="padding-bottom-15 padding-top-15">
-            <button class="btn btn-site nextbtnapply">Hire
+            <button class="btn btn-site nextbtnapply"><?php echo __('projectview_hire','Hire');?>
             <?php D(ucwords($memberInfo->member_name))?>
             </button>
             &nbsp;
-            <button class="btn btn-secondary backbtnapply">Back</button>
+            <button class="btn btn-secondary backbtnapply"><?php echo __('projectview_apply_back','Back');?></button>
           </div>
         </div>
         
@@ -209,8 +209,8 @@ $logo=getMemberLogo($bid);
           <div class="sidebar-container">
             <div class="panel mb-4">
               <div class="panel-body">
-                <label>Title</label>
-                <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+                <label><?php echo __('projectview_job_title','Title');?></label>
+                <p><?php echo __('projectview_job_leverage','Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.');?></p>
               </div>
             </div>
           </div>
