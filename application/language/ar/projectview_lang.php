@@ -73,6 +73,22 @@ $lang['projectview_job_privacy_policy'] ='سياسة الخصوصية';
 $lang['projectview_job_title'] ='لقب';
 $lang['projectview_job_leverage'] ='استفد من أطر العمل الرشيقة لتوفير ملخص قوي لمحات عامة عالية المستوى. تعزز المناهج التكرارية لاستراتيجية الشركة التفكير التعاوني لتعزيز عرض القيمة الشاملة. تنمية النظرة الشاملة للعالم للابتكار التخريبي من خلال التنوع والتمكين في مكان العمل.';
 
+$lang['projectview_bid_details'] ='تفاصيل';
+$lang['projectview_bid_application'] ='التطبيقات';
+$lang['projectview_bid_manage_proposal'] ='إدارة الاقتراحات';
+$lang['projectview_bid_proposal'] ='عرض';
+$lang['projectview_bid_archive'] ='أرشيف';
+$lang['projectview_bid_shortlisted'] ='القائمة المختصرة';
+$lang['projectview_bid_interview'] ='مقابلة';
+$lang['projectview_bid_invite'] ='يدعو';
+$lang['projectview_bid_sort_by'] ='ترتيب حسب:';
+$lang['projectview_bid_relevance'] ='ملاءمة';
+$lang['projectview_bid_newest'] ='الأحدث';
+$lang['projectview_bid_oldest'] ='الأقدم';
+$lang['projectview_bid_random'] ='عشوائي';
+$lang['projectview_bid_filter'] ='منقي';
+$lang['projectview_bid_view_by'] ='عرض بواسطة:';
+$lang['projectview_bid_hired'] ='استأجرت';
 
 
 

@@ -73,6 +73,24 @@ $lang['projectview_job_privacy_policy'] ='Privacy Policy';
 $lang['projectview_job_title'] ='Title';
 $lang['projectview_job_leverage'] ='Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.';
 
+$lang['projectview_bid_details'] ='Details';
+$lang['projectview_bid_application'] ='Applications';
+$lang['projectview_bid_manage_proposal'] ='Manage Proposals';
+$lang['projectview_bid_proposal'] ='Proposal';
+$lang['projectview_bid_archive'] ='Archive';
+$lang['projectview_bid_shortlisted'] ='Shortlisted';
+$lang['projectview_bid_interview'] ='Interview';
+$lang['projectview_bid_invite'] ='Invite';
+$lang['projectview_bid_sort_by'] ='Sort by:';
+$lang['projectview_bid_relevance'] ='Relevance';
+$lang['projectview_bid_newest'] ='Newest';
+$lang['projectview_bid_oldest'] ='Oldest';
+$lang['projectview_bid_random'] ='Random';
+$lang['projectview_bid_filter'] ='Filter';
+$lang['projectview_bid_view_by'] ='View by:';
+$lang['projectview_bid_hired'] ='hired';
+
+
 
 
 

@@ -19,7 +19,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 					<?php if($projectData['project_settings']->is_fixed==1){?>
 					<div class="right-side">
 						<div class="salary-box">
-							<div class="salary-type">Fixed Budget</div>
+							<div class="salary-type"><?php echo __('projectview_apply_fixed_budget','Fixed Budget');?></div>
 							<div class="salary-amount"><?php D(priceSymbol().priceFormat($projectData['project_settings']->budget));?></div>
 						</div>
 					</div>
@@ -30,38 +30,38 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 <div class="container">
 <ul class="nav nav-tabs mb-3">
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo $ProjectDetailsURL;?>">Details</a>
+    <a class="nav-link" href="<?php echo $ProjectDetailsURL;?>"><?php echo __('projectview_bid_details','Details');?></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="<?php echo $ProjectApplicationURL;?>">Applications</a>
+    <a class="nav-link active" href="<?php echo $ProjectApplicationURL;?>"><?php echo __('projectview_bid_application','Applications');?></a>
   </li>
 </ul>
 
 <!-- Dashboard Headline -->
 <div class="dashboard-headline">
-    <h3>Manage Proposals</h3>
+    <h3><?php echo __('projectview_bid_manage_proposal','Manage Proposals');?></h3>
 </div>
     
 					
 					
 <ul class="nav nav-tabs mb-3" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#proposal" role="tab">Proposal <span id="show_count_total_proposal"></span></a>
+        <a class="nav-link active" data-toggle="tab" href="#proposal" role="tab"><?php echo __('projectview_bid_proposal','Proposal');?> <span id="show_count_total_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#archive" role="tab">Archive <span id="show_count_archive_proposal"></span></a>
+        <a class="nav-link" data-toggle="tab" href="#archive" role="tab"><?php echo __('projectview_bid_archive','Archive');?> <span id="show_count_archive_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#shortlisted" role="tab">Shortlisted <span id="show_count_shortlisted_proposal"></span></a>
+        <a class="nav-link" data-toggle="tab" href="#shortlisted" role="tab"><?php echo __('projectview_bid_shortlisted','Shortlisted');?> <span id="show_count_shortlisted_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#interview" role="tab">Interview <span id="show_count_interview_proposal"></span></a>
+        <a class="nav-link" data-toggle="tab" href="#interview" role="tab"><?php echo __('projectview_bid_interview','Interview');?> <span id="show_count_interview_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#invite" role="tab">Invite <span id="show_count_invite_proposal"></span></a>
+        <a class="nav-link" data-toggle="tab" href="#invite" role="tab"><?php echo __('projectview_bid_invite','Invite');?> <span id="show_count_invite_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#hired" role="tab">Hire <span id="show_count_hired_proposal"></span></a>
+        <a class="nav-link" data-toggle="tab" href="#hired" role="tab"><?php echo __('projectview_hire','Hire');?> <span id="show_count_hired_proposal"></span></a>
     </li>
 </ul>
 
@@ -75,19 +75,19 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 	</div>
     
     <div class="sort-by">
-    <span>Sort by:</span>
+    <span><?php echo __('projectview_bid_sort_by','Sort by:');?></span>
     <select class="selectpicker hide-tick">
-        <option>Relevance</option>
-        <option>Newest</option>
-        <option>Oldest</option>
-        <option>Random</option>
+        <option><?php echo __('projectview_bid_relevance','Relevance');?></option>
+        <option><?php echo __('projectview_bid_newest','Newest');?></option>
+        <option><?php echo __('projectview_bid_oldest','Oldest');?></option>
+        <option><?php echo __('projectview_bid_random','Random');?></option>
     </select>
     </div>
     <div class="sort-group">
-		<a href="javascript:void(0)" class="btn btn-outline-success"><i class="icon-feather-filter"></i> Filter</a>
+		<a href="javascript:void(0)" class="btn btn-outline-success"><i class="icon-feather-filter"></i><?php echo __('projectview_bid_filter','Filter');?> </a>
 	</div>
     <div class="sort-group text-right">
-    <span>View by:</span>
+    <span><?php echo __('projectview_bid_view_by','View by:');?></span>
     <a href="#" class="btn btn-outline-success"><i class="icon-feather-grid"></i></a> &nbsp;
     <a href="#" class="btn btn-outline-success active"><i class="icon-feather-list"></i></a>
 	</div>
@@ -96,12 +96,12 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 
 
 <div class="tab-content dashboard-box_ margin-top-0 margin-bottom-30">
-    <div class="tab-pane active" id="proposal" role="tabpanel">proposal</div>
-    <div class="tab-pane" id="archive" role="tabpanel">archive</div>
-    <div class="tab-pane" id="shortlisted" role="tabpanel">shortlist</div>
-    <div class="tab-pane" id="interview" role="tabpanel">interview</div>
+    <div class="tab-pane active" id="proposal" role="tabpanel"><?php echo __('projectview_bid_proposal','proposal');?></div>
+    <div class="tab-pane" id="archive" role="tabpanel"><?php echo __('projectview_bid_archive','archive');?></div>
+    <div class="tab-pane" id="shortlisted" role="tabpanel"><?php echo __('projectview_bid_shortlisted','shortlist');?></div>
+    <div class="tab-pane" id="interview" role="tabpanel"><?php echo __('projectview_bid_interview','interview');?></div>
     <div class="tab-pane" id="invite" role="tabpanel"></div>
-    <div class="tab-pane" id="hired" role="tabpanel">hired</div>
+    <div class="tab-pane" id="hired" role="tabpanel"><?php echo __('projectview_bid_hired','hired');?></div>
 </div>
 				
 			</div>
