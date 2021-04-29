@@ -356,7 +356,8 @@ var chart_pie = new Chart(ctx_pie, {
 					backgroundColor: [ "<?php echo implode('","',$pie_chart_project['color'])?>" ],
 					label: 'Dataset 1'
 				}],
-				labels: [ "<?php echo implode('","',$pie_chart_project['label'])?>"]
+				labels: [ "<?php echo implode('","',$pie_chart_project['label'])?>"],
+				position: 'right',
 			},
 			options: {
 				responsive: true

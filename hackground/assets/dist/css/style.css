@@ -4855,7 +4855,9 @@ ul.totalList > li > span {
 .main-sidebar {
     box-shadow: 0 0 20px 0 rgb(0 0 0 / 10%);
 }
-
+.sidebar .os-content{
+	padding:0 !important;
+}
 
 
 

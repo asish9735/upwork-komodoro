@@ -11753,7 +11753,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   display: block;
   font-size: 1.25rem;
   line-height: 1.5;
-  padding: 0.8125rem 0.5rem;
+  padding: 0.55rem 0.5rem;
   transition: width 0.3s ease-in-out;
   white-space: nowrap;
 }
@@ -11808,10 +11808,10 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 .brand-link .brand-image {
   /*float: left;*/
   line-height: .8;
-  margin-left: .8rem;
+  margin-left: .5rem;
   margin-right: .5rem;
   margin-top: -3px;
-  max-height: 40px;
+  max-height: 50px;
   width: auto;
 }
 
