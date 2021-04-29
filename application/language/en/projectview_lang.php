@@ -119,6 +119,25 @@ $lang['projectview_proposal_pdf'] ='PDF';
 $lang['projectview_proposal_contract'] ='Contract';
 $lang['projectview_proposal_docx'] ='DOCX';
 
+$lang['projectview_view_project_description'] ='Project Description';
+$lang['projectview_view_payment_type'] ='Payment Type';
+$lang['projectview_view_experience_level'] ='Experience Level';
+$lang['projectview_view_project_duration'] ='Project Duration';
+$lang['projectview_view_time_required'] ='Time Required';
+$lang['projectview_view_project_type'] ='Project Type';
+$lang['projectview_view_N_freelancer'] ='No of freelancer';
+$lang['projectview_view_skills_required'] ='Skills Required';
+$lang['projectview_view_screening_question'] ='Screening Question';
+$lang['projectview_view_hires'] ='Hires';
+$lang['projectview_view_posted'] ='Posted';
+$lang['projectview_view_client_information'] ='Client Information';
+$lang['projectview_view_reviews'] ='reviews';
+$lang['projectview_view_of'] ='of';
+$lang['projectview_view_total_posted'] ='total project posted';
+$lang['projectview_view_total_spent'] ='total spent';
+$lang['projectview_view_member_since'] ='Member since:';
+$lang['projectview_view_share'] ='Share';
+$lang['projectview_view_bookmark'] ='Bookmark';
 
 
 

@@ -119,6 +119,26 @@ $lang['projectview_proposal_pdf'] ='بي دي إف';
 $lang['projectview_proposal_contract'] ='اتفافية';
 $lang['projectview_proposal_docx'] ='ملف DOCX';
 
+$lang['projectview_view_project_description'] ='وصف المشروع';
+$lang['projectview_view_payment_type'] ='نوع الدفع';
+$lang['projectview_view_experience_level'] ='مستوى الخبرة';
+$lang['projectview_view_project_duration'] ='مدة المشروع';
+$lang['projectview_view_time_required'] ='الوقت اللازم';
+$lang['projectview_view_project_type'] ='نوع المشروع';
+$lang['projectview_view_N_freelancer'] ='لا يعمل بالقطعة';
+$lang['projectview_view_skills_required'] ='المهارات المطلوبة';
+$lang['projectview_view_screening_question'] ='سؤال الفرز';
+$lang['projectview_view_hires'] ='التوظيف';
+$lang['projectview_view_posted'] ='تم النشر';
+$lang['projectview_view_client_information'] ='معلومات العميل';
+$lang['projectview_view_reviews'] ='المراجعات';
+$lang['projectview_view_of'] ='من';
+$lang['projectview_view_total_posted'] ='تم نشر إجمالي المشروع';
+$lang['projectview_view_total_spent'] ='إجمال الصرف';
+$lang['projectview_view_member_since'] ='عضو منذ:';
+$lang['projectview_view_share'] ='يشارك';
+$lang['projectview_view_bookmark'] ='المرجعية';
+
 
 
 ?>

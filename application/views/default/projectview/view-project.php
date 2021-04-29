@@ -31,7 +31,7 @@ if($login_user_id){
 					<div class="right-side">                    	
 					<?php if($projectData['project_settings'] && $projectData['project_settings']->is_fixed==1){?>                    	
 						<div class="salary-box">
-							<div class="salary-type">Fixed Budget</div>
+							<div class="salary-type"><?php echo __('projectview_apply_fixed_budget','Fixed Budget');?></div>
 							<div class="salary-amount"><?php D(priceSymbol().priceFormat($projectData['project_settings']->budget));?></div>
 						</div>					
 					<?php }?>
@@ -43,10 +43,10 @@ if($login_user_id){
 <div class="container">
 <ul class="nav nav-tabs mb-3">
   <li class="nav-item">
-    <a class="nav-link active" href="<?php echo $ProjectDetailsURL;?>">Details</a>
+    <a class="nav-link active" href="<?php echo $ProjectDetailsURL;?>"><?php echo __('projectview_bid_details','Details');?></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo $ProjectApplicationURL;?>">Applications</a>
+    <a class="nav-link" href="<?php echo $ProjectApplicationURL;?>"><?php echo __('projectview_bid_application','Applications');?></a>
   </li>
 </ul>
 </div>
@@ -62,7 +62,7 @@ if($login_user_id){
 		<div class="col-xl-8 col-lg-8">
 			<!-- Description -->
 			<div class="panel mb-4">
-            	<div class="panel-header"><h4>Project Description</h4></div>
+            	<div class="panel-header"><h4><?php echo __('projectview_view_project_description','Project Description');?></h4></div>
                 <div class="panel-body">
 					<p><?php D(nl2br($projectData['project_additional']->project_description));?></p>
                 
@@ -71,18 +71,18 @@ if($login_user_id){
     </div>
     
     <ul class="totalList">
-    <li><b>Payment Type</b> <br> <?php if($projectData['project_settings']->is_hourly==1){D('<i class="text-site icon-feather-tag"></i> <br>');D('Hourly');}else{D('<i class="text-site icon-feather-clock"></i> <br>');D('Fixed');}?> </li>
-    <li><b>Experience Level</b> <br><i class="text-site icon-feather-<?php D($projectData['project_settings']->experience_level_key)?>"></i><br><?php D($projectData['project_settings']->experience_level_name)?> </li>
+    <li><b><?php echo __('projectview_view_payment_type','Payment Type');?></b> <br> <?php if($projectData['project_settings']->is_hourly==1){D('<i class="text-site icon-feather-tag"></i> <br>');D('Hourly');}else{D('<i class="text-site icon-feather-clock"></i> <br>');D('Fixed');}?> </li>
+    <li><b><?php echo __('projectview_view_experience_level','Experience Level');?></b> <br><i class="text-site icon-feather-<?php D($projectData['project_settings']->experience_level_key)?>"></i><br><?php D($projectData['project_settings']->experience_level_name)?> </li>
     <?php if($projectData['project_settings']->is_hourly==1){?>
-    <li><b>Project Duration</b> <br><i class="text-site icon-line-awesome-<?php D($projectData['project_settings']->hourly_duration)?>"></i><br><?php D(getAllProjectDuration($projectData['project_settings']->hourly_duration)['name']);?> </li>
-    <li><b>Time Required</b> <br><i class="text-site icon-feather-<?php D($projectData['project_settings']->hourly_time_required)?>"></i><br><?php D(getAllProjectDurationTime($projectData['project_settings']->hourly_time_required)['name']);?> </li>
+    <li><b><?php echo __('projectview_view_project_duration','Project Duration');?></b> <br><i class="text-site icon-line-awesome-<?php D($projectData['project_settings']->hourly_duration)?>"></i><br><?php D(getAllProjectDuration($projectData['project_settings']->hourly_duration)['name']);?> </li>
+    <li><b><?php echo __('projectview_view_time_required','Time Required');?></b> <br><i class="text-site icon-feather-<?php D($projectData['project_settings']->hourly_time_required)?>"></i><br><?php D(getAllProjectDurationTime($projectData['project_settings']->hourly_time_required)['name']);?> </li>
     <?php }?>
     
-    <li><b>Project Type</b>
+    <li><b><?php echo __('projectview_view_project_type','Project Type');?></b>
     	<br><i class="text-site icon-material-<?php D($projectData['project_settings']->project_type_code);?>"></i><br>
         <?php D(getAllProjectType($projectData['project_settings']->project_type_code)['name']);?>
     </li>
-    <li><b>No of freelancer</b>
+    <li><b><?php echo __('projectview_view_N_freelancer','No of freelancer');?></b>
     	<br><i class="text-site icon-feather-user"></i><br>
         <?php D($projectData['project']->project_member_required);?>
     </li>
@@ -95,7 +95,7 @@ if($login_user_id){
 <?php if($projectData['project_files']){?>
 			<!-- Atachments -->
 			<div class="panel mb-4">
-            	<div class="panel-header"><h4>Attachments</h4></div>
+            	<div class="panel-header"><h4><?php echo __('projectview_proposal_attachment','Attachments');?></h4></div>
                 <div class="panel-body">
 				<div class="attachments-container">
 				<?php foreach($projectData['project_files'] as $f=>$file){
@@ -111,7 +111,7 @@ if($login_user_id){
 <?php if($projectData['project_skills']){?>
 			<!-- Skills -->
 			<div class="panel mb-4">
-            	<div class="panel-header"><h4>Skills Required</h4></div>
+            	<div class="panel-header"><h4><?php echo __('projectview_view_skills_required','Skills Required');?></h4></div>
                 <div class="panel-body">
 				<div class="task-tags">
 				<?php foreach($projectData['project_skills'] as $f=>$skill){?>
@@ -128,7 +128,7 @@ if($login_user_id){
 <?php if($projectData['project_question']){?>
 			<!-- Atachments -->
 			<div class="panel mb-4">
-            	<div class="panel-header"><h4>Screening Question</h4></div>
+            	<div class="panel-header"><h4><?php echo __('projectview_view_screening_question','Screening Question');?></h4></div>
                 <div class="panel-body">				
 				<div class="question-container">
 				<?php foreach($projectData['project_question'] as $q=>$question){
@@ -141,16 +141,16 @@ if($login_user_id){
 <?php }?>
 
 <ul class="totalList">
-            <li><b>Proposal</b>
+            <li><b><?php echo __('projectview_bid_proposal','Proposal');?></b>
                 <span><?php D($projectData['proposal']['total_proposal'])?></span>
             </li>
-            <li><b>Invite</b>
+            <li><b><?php echo __('projectview_bid_invite','Invite');?></b>
                 <span><?php D($projectData['proposal']['total_invite'])?></span>
             </li>
-            <li><b>Interview</b>
+            <li><b><?php echo __('projectview_bid_interview','Interview');?></b>
             	<span><?php D($projectData['proposal']['total_interview'])?></span>
             </li>
-            <li><b>Hires</b>
+            <li><b><?php echo __('projectview_view_hires','Hires');?></b>
             	<span><?php D($projectData['proposal']['total_hires'])?></span>
             </li>
         </ul>
@@ -161,7 +161,7 @@ if($login_user_id){
 		<!-- Sidebar -->
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container">
-            <div class="countdown green mb-3">Posted <?php D(get_time_ago($projectData['project']->project_posted_date));?></div>
+            <div class="countdown green mb-3"><?php echo __('projectview_view_posted','Posted');?> <?php D(get_time_ago($projectData['project']->project_posted_date));?></div>
 			<?php if(!$is_owner){
 				if($is_already_bid && $is_already_bid->is_hired!=1){
 				?>
@@ -175,14 +175,14 @@ if($login_user_id){
 				?>
 				</a>
 			<?php }elseif(!$is_already_bid){ ?>
-				<a href="<?php echo $ApplyProjecURL;?>" class="apply-now-button btn btn-site mb-3">Submit Proposal</a>
+				<a href="<?php echo $ApplyProjecURL;?>" class="apply-now-button btn btn-site mb-3"><?php echo __('projectview_apply_submit_proposal','Submit Proposal');?></a>
 			<?php	
 				}
 			}?>
 				
 
 				<div class="job-overview mb-4">
-					<div class="job-overview-headline"><h4>Client Information</h4></div>
+					<div class="job-overview-headline"><h4><?php echo __('projectview_view_client_information','Client Information');?></h4></div>
 					<div class="job-overview-inner">
                         <ul>
                             <li>
@@ -201,20 +201,20 @@ if($login_user_id){
                             <li>
                                 <i class="icon-material-outline-star-border"></i>
                                 <div class="star-rating w-100" data-rating="<?php D($projectData['clientInfo']['client_review_rating']['rating'])?>"></div>
-                                <span><?php D($projectData['clientInfo']['client_review_rating']['rating'])?> of <?php D($projectData['clientInfo']['client_review_rating']['review'])?> reviews</span>
+                                <span><?php D($projectData['clientInfo']['client_review_rating']['rating'])?><?php echo __('projectview_view_of','of');?>  <?php D($projectData['clientInfo']['client_review_rating']['review'])?><?php echo __('projectview_view_reviews','reviews');?> </span>
                             </li>
                             <li>
                                 <i class="icon-material-outline-business-center"></i>
-                                <p><?php D($projectData['clientInfo']['client_project_info']['total_project'])?> total project posted</p>
+                                <p><?php D($projectData['clientInfo']['client_project_info']['total_project'])?><?php echo __('projectview_view_total_posted','total project posted');?> </p>
                                 <span><?php D($projectData['clientInfo']['client_project_info']['total_hired'])?> hires<!--, <?php D($projectData['clientInfo']['client_project_info']['total_active'])?> active--></span>
                             </li>
                             <li>
                                 <i class="icon-material-outline-local-atm"></i>
-                                <p><?php D(priceSymbol().priceFormat($projectData['clientInfo']['client_total_payment']));?> total spent</p>
+                                <p><?php D(priceSymbol().priceFormat($projectData['clientInfo']['client_total_payment']));?> <?php echo __('projectview_view_total_spent','total spent');?></p>
                             </li>
                             <li>
                                 <i class="icon-material-outline-access-time"></i>                                
-                                <p><strong>Member since:</strong> <span><?php D(dateFormat($projectData['clientInfo']['client_member_since'],'M d, Y'))?></span></p>
+                                <p><strong><?php echo __('projectview_view_member_since','Member since:');?></strong> <span><?php D(dateFormat($projectData['clientInfo']['client_member_since'],'M d, Y'))?></span></p>
                             </li>
                         </ul>
 					</div>
@@ -222,7 +222,7 @@ if($login_user_id){
 
 				<!-- Sidebar Widget -->
                 <div class="panel">
-                <div class="panel-header"><h4>Share &amp; Bookmark</h4></div>
+                <div class="panel-header"><h4><?php echo __('projectview_view_share','Share');?> &amp; <?php echo __('projectview_view_bookmark','Bookmark');?></h4></div>
 				<div class="panel-body">					
 					<!-- Copy URL -->
 					<div class="input-group copy-url mb-3">
