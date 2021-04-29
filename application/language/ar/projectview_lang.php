@@ -90,6 +90,34 @@ $lang['projectview_bid_filter'] ='منقي';
 $lang['projectview_bid_view_by'] ='عرض بواسطة:';
 $lang['projectview_bid_hired'] ='استأجرت';
 
+$lang['projectview_proposal_job_success'] ='النجاح الوظيفي';
+$lang['projectview_proposal_about'] ='حول';
+$lang['projectview_proposal_milestone'] ='منعطف';
+$lang['projectview_proposal_amount'] ='كمية:';
+$lang['projectview_proposal_due_date'] ='تاريخ الاستحقاق:';
+$lang['projectview_proposal_total_bids'] ='إجمالي العطاءات:';
+$lang['projectview_proposal_work_history'] ='تاريخ العمل وردود الفعل';
+$lang['projectview_proposal_portfolio'] ='ملف';
+$lang['projectview_proposal_employment_history'] ='تاريخ التوظيف';
+$lang['projectview_proposal_education'] ='تعليم';
+$lang['projectview_proposal_unarchive'] ='أخرج من الأرشيف';
+$lang['projectview_proposal_shortlist'] ='القائمة المختصرة';
+$lang['projectview_proposal_message'] ='رسالة';
+$lang['projectview_proposal_hour'] ='ساعة';
+$lang['projectview_proposal_bids'] ='العطاءات';
+$lang['projectview_proposal_earned'] ='حصل';
+$lang['projectview_proposal_jobs'] ='وظائف';
+$lang['projectview_proposal_total_hour'] ='إجمالي ساعات العمل';
+$lang['projectview_proposal_availability'] ='التوفر';
+$lang['projectview_proposal_recommendation'] ='توصية';
+$lang['projectview_proposal_on_time'] ='في الوقت المناسب';
+$lang['projectview_proposal_on_budget'] ='على الميزانية';
+$lang['projectview_proposal_language'] ='لغة';
+$lang['projectview_proposal_social_profiles'] ='لمحات اجتماعية';
+$lang['projectview_proposal_skills'] ='مهارات';
+$lang['projectview_proposal_pdf'] ='بي دي إف';
+$lang['projectview_proposal_contract'] ='اتفافية';
+$lang['projectview_proposal_docx'] ='ملف DOCX';
 
 
 

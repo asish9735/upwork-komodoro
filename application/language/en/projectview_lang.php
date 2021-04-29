@@ -90,6 +90,34 @@ $lang['projectview_bid_filter'] ='Filter';
 $lang['projectview_bid_view_by'] ='View by:';
 $lang['projectview_bid_hired'] ='hired';
 
+$lang['projectview_proposal_job_success'] ='Job Success';
+$lang['projectview_proposal_about'] ='About';
+$lang['projectview_proposal_milestone'] ='Milestone';
+$lang['projectview_proposal_amount'] ='Amount:';
+$lang['projectview_proposal_due_date'] ='Due date:';
+$lang['projectview_proposal_total_bids'] ='Total Bids:';
+$lang['projectview_proposal_work_history'] ='Work History and Feedback';
+$lang['projectview_proposal_portfolio'] ='Portfolio';
+$lang['projectview_proposal_employment_history'] ='Employment History';
+$lang['projectview_proposal_education'] ='Education';
+$lang['projectview_proposal_unarchive'] ='Unarchive';
+$lang['projectview_proposal_shortlist'] ='Shortlist';
+$lang['projectview_proposal_message'] ='Message';
+$lang['projectview_proposal_hour'] ='Hour';
+$lang['projectview_proposal_bids'] ='Bids';
+$lang['projectview_proposal_earned'] ='Earned';
+$lang['projectview_proposal_jobs'] ='Jobs';
+$lang['projectview_proposal_total_hour'] ='Total Working Hour';
+$lang['projectview_proposal_availability'] ='Availability';
+$lang['projectview_proposal_recommendation'] ='Recommendation';
+$lang['projectview_proposal_on_time'] ='On Time';
+$lang['projectview_proposal_on_budget'] ='On Budget';
+$lang['projectview_proposal_language'] ='Language';
+$lang['projectview_proposal_social_profiles'] ='Social Profiles';
+$lang['projectview_proposal_skills'] ='Skills';
+$lang['projectview_proposal_pdf'] ='PDF';
+$lang['projectview_proposal_contract'] ='Contract';
+$lang['projectview_proposal_docx'] ='DOCX';
 
 
 

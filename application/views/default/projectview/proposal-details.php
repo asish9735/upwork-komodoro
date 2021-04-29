@@ -64,7 +64,7 @@ $logo=getMemberLogo($member_id);
         </div>
         <div class="right-side">
           <div class="ml-auto" style="min-width: 150px;">
-          	<p class="mb-0">Job Success <strong><?php echo $memberInfo->success_rate;?>%</strong></p>
+          	<p class="mb-0"><?php echo __('projectview_proposal_job_success','Job Success');?> <strong><?php echo $memberInfo->success_rate;?>%</strong></p>
             <div class="progress" style="max-width:200px; height:6px">
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $memberInfo->success_rate;?>%" aria-valuenow="<?php echo $memberInfo->success_rate;?>" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
@@ -85,7 +85,7 @@ $logo=getMemberLogo($member_id);
         <!-- Page Content -->
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title">About </h4>
+            <h4 class="panel-title"><?php echo __('projectview_proposal_about','About');?> </h4>
           </div>
           <div class="panel-body">
             <ec id="profile-overview-data">
@@ -95,7 +95,7 @@ $logo=getMemberLogo($member_id);
         </div>
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title">Cover Letter </h4>
+            <h4 class="panel-title"><?php echo __('projectview_proposal_cover_letter','Cover Letter');?> </h4>
           </div>
           <div class="panel-body">
             <ec id="profile-overview-data">
@@ -111,7 +111,7 @@ $logo=getMemberLogo($member_id);
           
         <div class="boxed-list mb-4">
             <div class="boxed-list-headline">
-                <h3>Milestone</h3>
+                <h3><?php echo __('projectview_proposal_milestone','Milestone');?></h3>
             </div>
             <ul class="boxed-list-ul">
               <?php foreach($proposaldetails['proposal']->project_bid_milestones as $k=>$val){?>
@@ -121,8 +121,8 @@ $logo=getMemberLogo($member_id);
                   <div class="item-content">
                     <h4><?php echo ucfirst($val->bid_milestone_title);?></h4>
                     <div class="item-details margin-top-7">
-                      <div class="detail-item"><i class="icon-material-outline-account-balance-wallet"></i> Amount: <?php echo priceSymbol().priceFormat($val->bid_milestone_amount);?></div>
-                      <div class="detail-item"><i class="icon-material-outline-date-range"></i> Due date: <?php echo $val->bid_milestone_due_date;?></div>
+                      <div class="detail-item"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('projectview_proposal_amount','Amount:');?> <?php echo priceSymbol().priceFormat($val->bid_milestone_amount);?></div>
+                      <div class="detail-item"><i class="icon-material-outline-date-range"></i><?php echo __('projectview_proposal_due_date','Due date:');?>  <?php echo $val->bid_milestone_due_date;?></div>
                     </div>
                   </div>
                 </div>
@@ -130,7 +130,7 @@ $logo=getMemberLogo($member_id);
               <?php }?>
               <li class="milestone-contain">
               	<div class="boxed-list-item"> 
-                <h4 class="mb-0">Total Bids:</h4>
+                <h4 class="mb-0"><?php echo __('projectview_proposal_total_bids','Total Bids:');?></h4>
                 <h4 class="mb-0 ml-auto">
                   <ec id="profile-hourly-data">
                     <?php D(priceSymbol().priceFormat($proposaldetails['proposal']->bid_amount));?>
@@ -144,7 +144,7 @@ $logo=getMemberLogo($member_id);
         <?php if($proposaldetails['project_question']){?>
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title">Question </h4>
+            <h4 class="panel-title"><?php echo __('projectview_proposal_question','Question');?> </h4>
           </div>
           <div class="panel-body">
             <?php
@@ -163,7 +163,7 @@ $logo=getMemberLogo($member_id);
         <?php if($proposaldetails['proposal']->bid_attachment){?>
         <div class="panel mb-4">
           <div class="panel-header">
-            <h4 class="panel-title">Attachments </h4>
+            <h4 class="panel-title"><?php echo __('projectview_proposal_attachment','Attachments');?> </h4>
           </div>
           <div class="panel-body">
             <div class="attachments-container">
@@ -186,7 +186,7 @@ $logo=getMemberLogo($member_id);
                <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3>Work History and Feedback</h3>
+            <h3><?php echo __('projectview_proposal_work_history','Work History and Feedback');?></h3>
           </div>
 			<div id="profile-reviews-data"></div>
           
@@ -200,7 +200,7 @@ $logo=getMemberLogo($member_id);
         
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h4>Portfolio </h4>
+            <h4><?php echo __('projectview_proposal_portfolio','Portfolio');?> </h4>
           </div>
           <ul class="boxed-list-ul">
             <li>
@@ -212,7 +212,7 @@ $logo=getMemberLogo($member_id);
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3>Employment History </h3>
+            <h3><?php echo __('projectview_proposal_employment_history','Employment History');?> </h3>
           </div>
           <div id="profile-employment-data"> </div>
         </div>
@@ -220,7 +220,7 @@ $logo=getMemberLogo($member_id);
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline">
-            <h3>Education </h3>
+            <h3><?php echo __('projectview_proposal_education','Education');?> </h3>
           </div>
           <div id="profile-education-data"> </div>
         </div>
@@ -236,17 +236,17 @@ $logo=getMemberLogo($member_id);
               <?php if($proposaldetails['proposal']->is_hired){?>
               <?php }else{?>
               <?php if($proposaldetails['proposal']->is_archive){?>
-              <a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn btn btn-secondary btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Unarchive</a>
+              <a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn btn btn-secondary btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i><?php echo __('projectview_proposal_unarchive','Unarchive');?> </a>
               <?php }elseif($proposaldetails['proposal']->is_shortlisted){?>
-              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-phone"></i> Interview</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
+              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i><?php echo __('projectview_hire','Hire');?> </a> <a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-phone"></i> <?php echo __('projectview_bid_interview','Interview');?></a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i><?php echo __('projectview_bid_archive','Archive');?> </a>
               <?php }elseif($proposaldetails['proposal']->is_interview){?>
-              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
+              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i><?php echo __('projectview_hire','Hire');?> </a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i><?php echo __('projectview_bid_archive','Archive');?> </a>
               <?php }else{?>
-              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i> Hire</a> <a href="<?php D(VZ);?>" data-btn="shortlisted-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-star"></i> Shortlist</a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> Archive</a>
+              <a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-success btn-block"><i class="icon-material-outline-check"></i><?php echo __('projectview_hire','Hire');?> </a> <a href="<?php D(VZ);?>" data-btn="shortlisted-btn" class="proposal-btn btn btn-info btn-block"><i class="icon-feather-star"></i> <?php echo __('projectview_proposal_shortlist','Shortlist');?></a> <a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-danger btn-block" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i><?php echo __('projectview_bid_archive','Archive');?> </a>
               <?php
  	}
 }?>
-<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn btn btn-primary btn-block"><i class="icon-feather-mail"></i> Message</a>
+<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn btn btn-primary btn-block"><i class="icon-feather-mail"></i><?php echo __('projectview_proposal_message','Message');?> </a>
               <div class="mb-3"></div>
               
               <!-- Profile Overview -->
@@ -254,9 +254,9 @@ $logo=getMemberLogo($member_id);
                 <li class="overview-item">
                 <span>
                   <?php if($is_hourly){?>
-                  Hour
+                    <?php echo __('projectview_proposal_hour','Hour');?> 
                   <?php }else{?>
-                  Bids
+                    <?php echo __('projectview_proposal_bids','Bids');?>
                   <?php }?>
                   </span>
                 <strong>
@@ -264,21 +264,21 @@ $logo=getMemberLogo($member_id);
                     <?php D(priceSymbol().priceFormat($proposaldetails['proposal']->bid_amount));?>
                   </ec>
                 </strong></li>
-                <li><span>Earned</span>
+                <li><span><?php echo __('projectview_proposal_earned','Earned');?></span>
                 <strong>
                   <?php D(priceSymbol().priceFormat($memberInfo->total_earning));?>
                   </strong></li>
                 <li class="overview-item">
-                <span>Jobs</span>
+                <span><?php echo __('projectview_proposal_jobs','Jobs');?></span>
                 <strong>
                   <?php D($memberInfo->total_jobs);?>
                   </strong>
                 </li>
                 <li>
-                <span>Total Working Hour</span>
+                <span><?php echo __('projectview_proposal_total_hour','Total Working Hour');?></span>
                 <strong><?php D(displayamount($memberInfo->total_working_hour,2));?></strong>                
                 </li>
-                <li> <span>Availability</span> 
+                <li> <span><?php echo __('projectview_proposal_availability','Availability');?></span> 
                 <strong>
                   <ec id="profile-availability-data">
                     <?php if($memberInfo->not_available_until){
@@ -301,34 +301,34 @@ $logo=getMemberLogo($member_id);
               <!-- Indicator -->
               <div class="indicator"> <strong>88%</strong>
                 <div class="indicator-bar" data-indicator-percentage="88"><span></span></div>
-                <span>Job Success</span> </div>
+                <span><?php echo __('projectview_proposal_job_success','Job Success');?></span> </div>
               
               <!-- Indicator -->
               <div class="indicator"> <strong>100%</strong>
                 <div class="indicator-bar" data-indicator-percentage="100"><span></span></div>
-                <span>Recommendation</span> </div>
+                <span><?php echo __('projectview_proposal_recommendation','Recommendation');?></span> </div>
               
               <!-- Indicator -->
               <div class="indicator"> <strong>90%</strong>
                 <div class="indicator-bar" data-indicator-percentage="90"><span></span></div>
-                <span>On Time</span> </div>
+                <span><?php echo __('projectview_proposal_on_time','On Time');?></span> </div>
               
               <!-- Indicator -->
               <div class="indicator"> <strong>80%</strong>
                 <div class="indicator-bar" data-indicator-percentage="80"><span></span></div>
-                <span>On Budget</span> </div>
+                <span><?php echo __('projectview_proposal_on_budget','On Budget');?></span> </div>
             </div>
           </div>
           <div class="panel mb-4">
             <div class="panel-header">
-              <h4>Language </h4>
+              <h4><?php echo __('projectview_proposal_language','Language');?> </h4>
             </div>
             <div class="panel-body" id="profile-language-data"> </div>
           </div>
           <!-- Widget -->
           <div class="panel mb-4 d-none">
             <div class="panel-header">
-              <h3>Social Profiles</h3>
+              <h3><?php echo __('projectview_proposal_social_profiles','Social Profiles');?></h3>
             </div>
             <div class="panel-body freelancer-socials">
               <ul>
@@ -343,15 +343,15 @@ $logo=getMemberLogo($member_id);
           <!-- Widget -->
           <div class="panel mb-4">
             <div class="panel-header">
-              <h4>Skills </h4>
+              <h4><?php echo __('projectview_proposal_skills','Skills');?> </h4>
             </div>
             <div class="panel-body task-tags" id="profile-skill-data"> </div>
           </div>
           
           <!-- Widget -->
           <div class="sidebar-widget d-none">
-            <h3>Attachments</h3>
-            <div class="attachments-container"> <a href="#" class="attachment-box"><span>Cover Letter</span><i>PDF</i></a> <a href="#" class="attachment-box"><span>Contract</span><i>DOCX</i></a> </div>
+            <h3><?php echo __('projectview_proposal_attachment','Attachments');?></h3>
+            <div class="attachments-container"> <a href="#" class="attachment-box"><span><?php echo __('projectview_proposal_cover_letter','Cover Letter');?></span><i><?php echo __('projectview_proposal_pdf','PDF');?></i></a> <a href="#" class="attachment-box"><span><?php echo __('projectview_proposal_contract','Contract');?></span><i><?php echo __('projectview_proposal_docx','DOCX');?></i></a> </div>
           </div>
         </div>
       </div>
