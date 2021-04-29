@@ -28,8 +28,8 @@ $status=getAllProjectStatus($projectDetails->project_status);
 				<!-- Job Listing Footer -->
 				<div class="job-listing-footer if-button">
 					<ul>                    	
-						<li><i class="icon-material-outline-access-time"></i> <b>Posted:</b> <?php D(get_time_ago($projectDetails->bid_date));?></li>
-						<li><i class="icon-material-outline-account-balance-wallet"></i> <b>Bid:</b> <?php D($projectDetails->bid_amount);?> <!--<span><?php /* if($projectDetails->is_hourly){?>Hourly<?php }else{?>Fixed<?php }*/?></span>--></li>
+						<li><i class="icon-material-outline-access-time"></i> <b><?php echo __('projectfreelancer_list_posted','Posted:');?></b> <?php D(get_time_ago($projectDetails->bid_date));?></li>
+						<li><i class="icon-material-outline-account-balance-wallet"></i> <b><?php echo __('projectfreelancer_list_bid','Bid:');?></b> <?php D($projectDetails->bid_amount);?> <!--<span><?php /* if($projectDetails->is_hourly){?>Hourly<?php }else{?>Fixed<?php }*/?></span>--></li>
                         <li>
 						<?php if($projectDetails->is_hourly){?>
                         <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
