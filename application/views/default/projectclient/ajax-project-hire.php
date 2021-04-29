@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Hire freelancer</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveInvite(this)">Process</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('projectclient_hire_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('projectclient_hire_freelancer','Hire freelancer');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveInvite(this)"><?php echo __('projectclient_hire_process','Process');?></button>
 </div>
 <div class="modal-body">
 	<div class="row">
@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-xl-12">
 						<div class="content with-padding">
 							<div class="submit-field remove_arrow_select">
-							<label>Select Project</label>
+							<label><?php echo __('projectclient_hire_select_project','Select Project');?></label>
 								<select name="project_id" id="project_id" data-size="4" class="selectpicker browser-default"  data-live-search="true">
 								<?php
 								if($all_projects){

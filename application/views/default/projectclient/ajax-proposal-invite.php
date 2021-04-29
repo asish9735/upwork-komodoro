@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Invite user</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveInvite(this)">Invite</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('projectclient_hire_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('projectclient_invite_user','Invite user');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveInvite(this)"><?php echo __('projectclient_invite','Invite');?></button>
       </div>
     <div class="modal-body">
 	    <div class="row">
@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="row">
 						<div class="col-xl-12">
 							<div class="submit-field">
-								<p>Put all email address by comma separated for invitation to your project</p>
+								<p><?php echo __('projectclient_invite_put_all','Put all email address by comma separated for invitation to your project');?></p>
 								
 								<div class="keywords-list inviteContaintag">
 									
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="clearfix"></div>
 								<input  class="form-control input-text with-border tagsinput_skill" name="emails" id="emails" data-role="tagsinput" >
 								<span id="emailsError" class="rerror"></span>
-								<span id="invalidemailError" class="rerror invalid-feedback"><span class=" icon-line-awesome-exclamation-circle" aria-hidden="true"></span>Invalid email address</span>
+								<span id="invalidemailError" class="rerror invalid-feedback"><span class=" icon-line-awesome-exclamation-circle" aria-hidden="true"></span><?php echo __('projectclient_invite_invalid_email','Invalid email address');?></span>
 							</div>
 						</div>
        				</div>

@@ -19,14 +19,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <!-- Headline -->
                 <div class="headline">
-                    <h3>My Posted Projects</h3>
+                    <h3><?php echo __('projectclient_proposa_posted_project','My Posted Projects');?></h3>
                 </div>
                 <div class="content">
                     <ul class="dashboard-box-list" id="ajax_table"></ul>
                     <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-site mb-3" id="load_more" data-page = "0">Load more..</button>
+                    <button class="btn btn-site mb-3" id="load_more" data-page = "0"><?php echo __('projectclient_proposa_load_more','Load more..');?></button>
                 </div>
 
             </div>

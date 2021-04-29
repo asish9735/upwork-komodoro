@@ -36,18 +36,18 @@ $status=getAllProjectStatus($projectDetails->project_status);
 				<!-- Job Listing Footer -->
 				<div class="job-listing-footer">
 					<ul>                    	
-						<li><i class="icon-material-outline-access-time"></i> Posted <?php D(get_time_ago($projectDetails->project_posted_date));?></li>
+						<li><i class="icon-material-outline-access-time"></i><?php echo __('projectclient_list_posted','Posted');?>  <?php D(get_time_ago($projectDetails->project_posted_date));?></li>
 						<li><i class="icon-material-outline-info"></i> <?php if($projectDetails->is_visible_anyone){?><?php D('Public');?>- <?php }?><?php D($status['name']);?></li>                    </ul>
 				</div>
                 </div>
                 <ul class="job-task-info">
-                	<li><strong><?php D($projectDetails->bids);?></strong><span>Bids</span></li>
-                    <li><strong><?php D($projectDetails->message);?></strong><span>Messages</span></li>
-                    <li><strong><?php D($projectDetails->hired);?></strong><span>Hired</span></li>
+                	<li><strong><?php D($projectDetails->bids);?></strong><span><?php echo __('projectclient_list_bids','Bids');?></span></li>
+                    <li><strong><?php D($projectDetails->message);?></strong><span><?php echo __('projectclient_list_messages','Messages');?></span></li>
+                    <li><strong><?php D($projectDetails->hired);?></strong><span><?php echo __('projectclient_list_hired','Hired');?></span></li>
                 </ul>
 				<!-- Buttons -->
                 <div class="buttons-to-right_ always-visible_">
-                    <a href="<?php D($link_bid);?>" class="btn btn-sm btn-site <?php if($projectDetails->project_status==PROJECT_DRAFT){ D('disabled');}?>">Manage Proposal <span class="button-info"><?php D($projectDetails->bids);?></span></a>
+                    <a href="<?php D($link_bid);?>" class="btn btn-sm btn-site <?php if($projectDetails->project_status==PROJECT_DRAFT){ D('disabled');}?>"><?php echo __('projectclient_list_M_proposal','Manage Proposal');?> <span class="button-info"><?php D($projectDetails->bids);?></span></a>
                     <?php if(!$projectDetails->hired){?><a href="<?php echo $edit_link;?>" class="btn btn-sm btn-secondary ico" data-tippy-placement="top"title="Edit"><i class="icon-feather-edit"></i></a><?php }?>
                     <a hidden href="#" class="btn btn-sm btn-danger ico" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
                 </div>

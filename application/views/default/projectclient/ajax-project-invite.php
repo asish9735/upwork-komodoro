@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Invite user</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="SaveInvite(this)">Invite</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('projectclient_hire_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('projectclient_invite_user','Invite user');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="SaveInvite(this)"><?php echo __('projectclient_invite','Invite');?></button>
 </div>
 <div class="modal-body">
 	<div class="row">
