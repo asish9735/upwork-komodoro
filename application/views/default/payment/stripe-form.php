@@ -10,7 +10,7 @@ $sub_total=0;
 ?>
 <section class="pgLoad" style="background-color: #fff;">
 	<?php load_view('inc/spinner',array('size'=>36));?> <br />
-	<p>Processing your payment. Please wait...</p>
+	<p><?php echo __('payment_paypal_form_processing','Processing your payment. Please wait...');?></p>
 
 </section>	
 <script src="https://js.stripe.com/v3/"></script>

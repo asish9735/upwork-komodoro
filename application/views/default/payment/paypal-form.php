@@ -24,7 +24,7 @@ window.setTimeout(function(){
 </script>
 <section class="pgLoad" style="background-color: #fff;">
 	<?php load_view('inc/spinner',array('size'=>36));?> <br />
-	<p>Processing your payment. Please wait...</p>
+	<p><?php echo __('payment_paypal_form_processing','Processing your payment. Please wait...');?></p>
 
 <form action="<?php D($formdata['url']);?>" method="post" style="display: none">
     <input name="amount" type="hidden" value="<?php D($formdata['amount_converted']);?>">
