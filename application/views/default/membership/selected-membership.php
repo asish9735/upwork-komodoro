@@ -33,12 +33,12 @@ if($membership){
 					<div class="col-md-4">
 						<p><b>Amount : </b>
                             <?php if($duration=='month'){?>
-		                    <?php echo $currency;?><?php echo $membership->price_per_month;?>/month
+		                    <?php echo $currency;?><?php echo $membership->price_per_month;?><?php echo __('membership_month','/month');?>
                             <?php }else{?>
-                                <?php echo $currency;?><?php echo $membership->price_per_year;?>/year
+                                <?php echo $currency;?><?php echo $membership->price_per_year;?><?php echo __('membership_year','/year');?>
                             <?php }?>
 						</p>
-						<p class="processing-fee"><b>Processing Fee:</b> <ec class="processingFeeText">0</ec></p>
+						<p class="processing-fee"><b><?php echo __('membership_processing_fee','Processing Fee:');?></b> <ec class="processingFeeText">0</ec></p>
 					</div>
 				</div>
 				
@@ -106,7 +106,7 @@ if($membership){
 			</form>
 			<?php } ?>		
         <?php }else{?>
-            <div class="alert alert-danger">Error in process</div>
+            <div class="alert alert-danger"><?php echo __('membership_eror_process','Error in process');?></div>
         <?php }?>
 		</div>
 	</div>

@@ -5,8 +5,8 @@
 		<div class="dashboard-content-inner" >
     <!-- Section Headline -->
     <div class="section-headline centered margin-top-0 mb-3">
-      <h2>Membership Plans</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <h2><?php echo __('membership_plans','Membership Plans');?></h2>
+      <p><?php echo __('membership_plans_p_tag','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.');?></p>
     </div>
     <?php 
    //get_print($membership,false); 
@@ -15,11 +15,11 @@
       <div class="billing-cycle-radios mb-4">
         <div class="radio billed-monthly-radio">
           <input id="radio-5" name="radio-payment-type" type="radio" checked value="month">
-          <label for="radio-5"><span class="radio-label"></span> Billed Monthly</label>
+          <label for="radio-5"><span class="radio-label"></span><?php echo __('membership_billed_monthly','Billed Monthly');?> </label>
         </div>
         <div class="radio billed-yearly-radio">
           <input id="radio-6" name="radio-payment-type" type="radio" value="year">
-          <label for="radio-6"><span class="radio-label"></span> Billed Yearly <span class="small-label">Save 10%</span></label>
+          <label for="radio-6"><span class="radio-label"></span><?php echo __('membership_billed_yearly','Billed Yearly');?>  <span class="small-label"><?php echo __('membership_sav_10','Save 10%');?></span></label>
         </div>
       </div>
     <!-- Pricing Plans Container -->
@@ -35,26 +35,26 @@
         <?php if($row->price_per_month>0){?>
         <div class="pricing-plan-label billed-monthly-label"><strong><?php echo $currency;?><?php echo $row->price_per_month;?></strong>/ mo<?php if($k==1){echo '*';}?></div>
         <?php }else{?>
-        <div class="pricing-plan-label billed-monthly-label"><strong>Free</strong></div>
+        <div class="pricing-plan-label billed-monthly-label"><strong><?php echo __('membership_free','Free');?></strong></div>
         <?php }?>
         <?php if($row->price_per_year>0){?>
         <div class="pricing-plan-label billed-yearly-label"><strong><?php echo $currency;?><?php echo $row->price_per_year;?></strong>/ yr</div>
         <?php }else{?>
-        <div class="pricing-plan-label billed-yearly-label"><strong>Free</strong></div>
+        <div class="pricing-plan-label billed-yearly-label"><strong><?php echo __('membership_free','Free');?></strong></div>
         <?php }?>
 
         <img src="<?php echo IMAGE;?>badge_<?php echo ($k==1 ? 'white':'green')?>.png" alt="badge" class="mb-2">
-        <div class="pricing-plan-features"> <strong>Features</strong>
+        <div class="pricing-plan-features"> <strong><?php echo __('membership_features','Features');?></strong>
           <ul class="list list-2">
             <li><?php echo $row->description;?></li>
-            <li><?php echo $row->membership_bid;?> bids</li>
-            <li><?php echo $row->membership_portfolio;?> portfolio</li>
-            <li><?php echo $row->membership_skills;?> skills</li>
-            <li><?php echo $row->membership_commission_percent;?>% commission</li>
+            <li><?php echo $row->membership_bid;?><?php echo __('membership_bids','bids');?> </li>
+            <li><?php echo $row->membership_portfolio;?><?php echo __('membership_portfolio','portfolio');?> </li>
+            <li><?php echo $row->membership_skills;?> <?php echo __('membership_skills','skills');?></li>
+            <li><?php echo $row->membership_commission_percent;?><?php echo __('membership_commission','% commission');?></li>
           </ul>
         </div>
         <?php if($row->price_per_month>0){?>
-        <a href="<?php D(VZ);?>" data-id="<?php D(md5($row->membership_id));?>" class=" select-membership btn <?php echo ($k==1 ? 'btn-white':'btn-site')?>  btn-block">Select Plan</a> 
+        <a href="<?php D(VZ);?>" data-id="<?php D(md5($row->membership_id));?>" class=" select-membership btn <?php echo ($k==1 ? 'btn-white':'btn-site')?>  btn-block"><?php echo __('membership_select_plan','Select Plan');?></a> 
       <?php }?>
       </div>
       <?php

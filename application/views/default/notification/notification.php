@@ -21,7 +21,7 @@ $currency=priceSymbol();
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3>All Notifications</h3>
+							<h3><?php echo __('notification_all','All Notifications');?></h3>
 						</div>
 
 						<div class="content">
@@ -72,7 +72,7 @@ $currency=priceSymbol();
 								}
 							}else{
 							?>
-							<li>No record found</li>
+							<li><?php echo __('notification_no_record_F','No record found');?></li>
 							<?php 
 							}
 							?>           
