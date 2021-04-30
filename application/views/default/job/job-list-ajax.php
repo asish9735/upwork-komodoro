@@ -23,9 +23,9 @@ if($login_user_id){
 				$duration=getAllProjectDuration($v['hourly_duration']);
 				$durationtime=getAllProjectDurationTime($v['hourly_time_required']);
 				?>
-			<b>Est. Time:</b>  <span><?php D($duration['name']);?>, <?php D($durationtime['name']);?></span>
+			<b><?php echo __('job_joblist_est_time','Est. Time:');?></b>  <span><?php D($duration['name']);?>, <?php D($durationtime['name']);?></span>
 			<?php }else{?>
-			<b>Est. Budget:</b> <span><?php echo $budget > 0 ? priceSymbol(). $budget : '';?></span>
+			<b><?php echo __('job_joblist_est_budget','Est. Budget:');?></b> <span><?php echo $budget > 0 ? priceSymbol(). $budget : '';?></span>
 			<?php }?>
 			</p>
 			
@@ -43,7 +43,7 @@ if($login_user_id){
 	<div class="task-listing-bid">
 		<div class="task-listing-bid-inner">
 			<div class="task-offers text-md-right">                 
-            	<a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-site">Send Proposal</a>                       
+            	<a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-site"><?php echo __('job_joblist_send_proposal','Send Proposal');?></a>                       
             </div>
 			     
 		</div>
@@ -52,8 +52,8 @@ if($login_user_id){
 	<div class="task-listing-footer">
 		<ul>
         	
-        	<li><div class="verified-badge" title="Verified Employer" data-tippy-placement="top"></div> Payment Verified </li>
-            <li><i class="icon-feather-heart"></i> Proposals: <b><?php echo $v['total_proposal'];?></b></li>
+        	<li><div class="verified-badge" title="Verified Employer" data-tippy-placement="top"></div><?php echo __('');?> Payment Verified </li>
+            <li><i class="icon-feather-heart"></i><?php echo __('job_joblist_proposal','Proposals:');?>  <b><?php echo $v['total_proposal'];?></b></li>
 			<li><i class="icon-feather-map-pin"></i>
 				<?php D($v['clientInfo']['client_address']['country'])?>
 				<span><?php D($v['clientInfo']['client_address']['location'])?></span>
