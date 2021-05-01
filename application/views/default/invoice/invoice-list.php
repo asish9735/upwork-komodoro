@@ -9,13 +9,13 @@ $invoice_url=get_link('InvoiceURL');
 	<div class="dashboard-content-container" >
 		<div class="dashboard-content-inner">
 			<div class="dashboard-headline">
-				<h3>Invoice list</h3>				
+				<h3><?php echo __('invoice_list_invoice','Invoice list');?></h3>				
 			</div>
 	        <ul class="nav nav-tabs mb-3">
-		      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $invoice_url;?>">All</a> </li>
-		      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=pending">Pending</a> </li>
-		      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=completed">Paid</a> </li>
-		       <li class="nav-item"> <a class="nav-link <?php if($show=='rejected'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=rejected">Rejected</a> </li>
+		      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $invoice_url;?>"><?php echo __('invoice_list_all','All');?></a> </li>
+		      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=pending"><?php echo __('invoice_pending','Pending');?></a> </li>
+		      <li class="nav-item"> <a class="nav-link <?php if($show=='completed'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=completed"><?php echo __('invoice_list_paid','Paid');?></a> </li>
+		       <li class="nav-item"> <a class="nav-link <?php if($show=='rejected'){?>active<?php }?>" href="<?php echo $invoice_url;?>?show=rejected"><?php echo __('invoice_list_rejected','Rejected');?></a> </li>
 		       
 		    </ul>
 		    <div class="dashboard-box margin-top-0">
@@ -23,7 +23,7 @@ $invoice_url=get_link('InvoiceURL');
 			 <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
 		    </div>
 		    <div class="text-center">
-	            <button class="btn btn-site mt-3" id="load_more" data-page="0">Load more..</button>
+	            <button class="btn btn-site mt-3" id="load_more" data-page="0"><?php echo __('invoice_list_load_more','Load more..');?></button>
 	        </div>
 
 		</div>
@@ -34,9 +34,9 @@ $invoice_url=get_link('InvoiceURL');
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
-        <h4 class="modal-title">Reject Invoice</h4>
-        <button type="button" class="btn btn-success pull-right" onclick="ActionInvoice(this)">Send</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('invoice_list_cancel','Cancel');?></button>
+        <h4 class="modal-title"><?php echo __('invoice_list_reject_invoice','Reject Invoice');?></h4>
+        <button type="button" class="btn btn-success pull-right" onclick="ActionInvoice(this)"><?php echo __('invoice_list_send','Send');?></button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -44,7 +44,7 @@ $invoice_url=get_link('InvoiceURL');
             <form action="" method="post" accept-charset="utf-8" id="invoiceactionform" class="form-horizontal" role="form" name="invoiceactionform" onsubmit="return false;">
               <input type="hidden" name="sid" id="sid" value="0"/>
               <div class="form-group">
-                <label><b>Reason</b></label>
+                <label><b><?php echo __('invoice_list_reason','Reason');?></b></label>
                 <textarea class="form-control" id="reason" name="reason"></textarea>
               </div>
             </form>

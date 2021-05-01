@@ -10,7 +10,7 @@ $recipient_information=unserialize($InvoiceDetails->recipient_information);
 
 <head>
 	<meta charset="utf-8">
-	<title>Invoice</title>
+	<title><?php echo __('invoice_details_invoice','Invoice');?></title>
 	<link rel="stylesheet" href="<?php echo CSS;?>invoice.css">
 </head> 
 
@@ -18,7 +18,7 @@ $recipient_information=unserialize($InvoiceDetails->recipient_information);
 
 <!-- Print Button -->
 <div class="print-button-container">
-	<a href="javascript:window.print()" class="print-button">Print this invoice</a>
+	<a href="javascript:window.print()" class="print-button"><?php echo __('invoice_details_print_this','Print this invoice');?></a>
 </div>
 
 <!-- Invoice -->
@@ -33,8 +33,8 @@ $recipient_information=unserialize($InvoiceDetails->recipient_information);
 		<div class="col-xl-6">	
 
 			<p id="details">
-				<strong>Invoice Number:</strong> #<?php echo make_invoice_number($InvoiceDetails->invoice_number);?> <br>
-				<strong>Issued:</strong> <?php echo dateFormat($InvoiceDetails->invoice_date,'M d, Y')?> <br>
+				<strong><?php echo __('invoice_details_invoice_number','Invoice Number:');?></strong> #<?php echo make_invoice_number($InvoiceDetails->invoice_number);?> <br>
+				<strong><?php echo __('invoice_details_issued','Issued:');?></strong> <?php echo dateFormat($InvoiceDetails->invoice_date,'M d, Y')?> <br>
 				<!--Due 7 days from date of issue-->
 			</p>
 		</div>
@@ -44,11 +44,11 @@ $recipient_information=unserialize($InvoiceDetails->recipient_information);
 	<!-- Client & Supplier -->
 	<div class="row">
 		<div class="col-xl-12">
-			<h2>Invoice</h2>
+			<h2><?php echo __('invoice_details_invoice','Invoice');?></h2>
 		</div>
 
 		<div class="col-xl-6">	
-			<strong class="margin-bottom-5">Issuer</strong>
+			<strong class="margin-bottom-5"><?php echo __('invoice_details_issuer','Issuer');?></strong>
 			<p>
 				<?php echo $issuer_information['I_name'];?> <br>
 				<?php if($issuer_information['I_addr']){?>
@@ -70,7 +70,7 @@ $recipient_information=unserialize($InvoiceDetails->recipient_information);
 		</div>
 
 		<div class="col-xl-6">	
-			<strong class="margin-bottom-5">Recipient</strong>
+			<strong class="margin-bottom-5"><?php echo __('invoice_details_recipient','Recipient');?></strong>
 			<p>
 				<?php echo $recipient_information['R_name'];?> <br>
 				<?php if($recipient_information['R_vat']){?>
@@ -101,11 +101,11 @@ $recipient_information=unserialize($InvoiceDetails->recipient_information);
 		<div class="col-xl-12">
 			<table class="margin-top-20">
 				<tr>
-					<th>Description</th>
-					<th>Unit Price</th>
-					<th>Unit</th>
-					<th>Qty</th>
-					<th>Total</th>
+					<th><?php echo __('invoice_details_description','Description');?></th>
+					<th><?php echo __('invoice_details_unit_price','Unit Price');?></th>
+					<th><?php echo __('invoice_details_unit','Unit');?></th>
+					<th><?php echo __('invoice_details_qty','Qty');?></th>
+					<th><?php echo __('invoice_details_total','Total');?></th>
 				</tr>
 <?php if($InvoiceDetails->invoice_row){
 	foreach($InvoiceDetails->invoice_row as $r=>$invoice_row){
@@ -127,7 +127,7 @@ $recipient_information=unserialize($InvoiceDetails->recipient_information);
 		<div class="col-xl-4 col-xl-offset-8">	
 			<table id="totals">
 				<tr>
-					<th>Total</th> 
+					<th><?php echo __('invoice_total','Total');?></th> 
 					<th><span><?php echo $currency.displayamount($InvoiceDetails->total,2);?></span></th>
 				</tr>
 			</table>

@@ -13,19 +13,19 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 				<h4 class="job-listing-title">
 					<a href="<?php echo $invoice_url;?>" target="_blank"><?php echo make_invoice_number($invoice->invoice_number);?></a>
 					<?php if($invoice->invoice_status==1){?>
-					<span class="dashboard-status-button green">Paid</span>
+					<span class="dashboard-status-button green"><?php echo __('invoice_paid','Paid');?></span>
 					<?php }elseif($invoice->invoice_status==2){?>
-					<span class="dashboard-status-button red">Rejected</span>
+					<span class="dashboard-status-button red"><?php echo __('invoice_rejected','Rejected');?></span>
 					<a href="<?php D(VZ);?>" data-tippy-placement="top" title="<?php echo $invoice->change_reason; ?>"> <i class="icon-feather-info"></i> </a>
 					<?php }else{?>
-					<span class="dashboard-status-button yellow">Pending</span>
+					<span class="dashboard-status-button yellow"><?php echo __('invoice_pending','Pending');?></span>
 					<?php }?>
 				</h4>
 
 				<div class="job-listing-footer if-button">
 					<ul>
-						<li><b>Total:</b> <?php echo $currency.displayamount($invoice->total,2);?></li>
-						<li><b>Date:</b> <?php echo $invoice->invoice_date;?></li>
+						<li><b><?php echo __('invoice_total','Total:');?></b> <?php echo $currency.displayamount($invoice->total,2);?></li>
+						<li><b><?php echo __('invoice_date','Date:');?></b> <?php echo $invoice->invoice_date;?></li>
 					</ul>
 				</div>
 			</div>
@@ -34,8 +34,8 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
         <!-- Buttons -->
 		<div class="buttons-to-right single-right-button always-visible">
 			<?php if($member_id==$invoice->recipient_member_id && $invoice->invoice_status==0){?>
-				<button class="btn btn-success btn-sm acceptbtn" data-sid="<?php echo md5($invoice->invoice_id);?>">Accept</button>&nbsp;
-      			<button class="btn btn-danger btn-sm denybtn" data-sid="<?php echo md5($invoice->invoice_id);?>">Reject</button>
+				<button class="btn btn-success btn-sm acceptbtn" data-sid="<?php echo md5($invoice->invoice_id);?>"><?php echo __('invoice_accept','Accept');?></button>&nbsp;
+      			<button class="btn btn-danger btn-sm denybtn" data-sid="<?php echo md5($invoice->invoice_id);?>"><?php echo __('invoice_reject','Reject');?></button>
 			<?php }?>
 			<a href="<?php echo $invoice_url;?>" target="_blank" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top" data-tippy="" title="View">
 				<i class="icon-feather-eye"></i>
@@ -46,7 +46,7 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 <?php		
 }
 }else{?>
-<li class="justify-content-center text-danger">No record found</li>
+<li class="justify-content-center text-danger"><?php echo __('invoice_no_record_found','No record found');?></li>
 <?php }?>
 </ul>
 
