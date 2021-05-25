@@ -11,7 +11,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * PHP version 5
  *
  * @category  Microsoft
@@ -23,7 +23,6 @@
  */
  
 namespace MicrosoftAzure\Storage\Blob\Models;
-use MicrosoftAzure\Storage\Blob\Models\ContainerAcl;
 
 /**
  * Holds container ACL
@@ -33,39 +32,34 @@ use MicrosoftAzure\Storage\Blob\Models\ContainerAcl;
  * @author    Azure Storage PHP SDK <dmsh@microsoft.com>
  * @copyright 2016 Microsoft Corporation
  * @license   https://github.com/azure/azure-storage-php/LICENSE
- * @version   Release: 0.10.2
  * @link      https://github.com/azure/azure-storage-php
  */
-class GetContainerAclResult
+class GetContainerACLResult
 {
-    /**
-     * @var ContainerAcl
-     */
     private $_containerACL;
-    
-    /**
-     * @var \DateTime
-     */
     private $_lastModified;
 
-    /**
-     * @var string
-     */
     private $_etag;
     
     /**
      * Parses the given array into signed identifiers
-     * 
+     *
      * @param string    $publicAccess container public access
      * @param string    $etag         container etag
      * @param \DateTime $lastModified last modification date
      * @param array     $parsed       parsed response into array
      * representation
-     * 
-     * @return none.
+     *
+     * @internal
+     *
+     * @return self
      */
-    public static function create($publicAccess, $etag, $lastModified, $parsed)
-    {
+    public static function create(
+        $publicAccess,
+        $etag,
+        \DateTime $lastModified,
+        array $parsed = null
+    ) {
         $result = new GetContainerAclResult();
         $result->setETag($etag);
         $result->setLastModified($lastModified);
@@ -77,8 +71,8 @@ class GetContainerAclResult
     
     /**
      * Gets container ACL
-     * 
-     * @return ContainerAcl
+     *
+     * @return ContainerACL
      */
     public function getContainerAcl()
     {
@@ -87,12 +81,12 @@ class GetContainerAclResult
     
     /**
      * Sets container ACL
-     * 
-     * @param ContainerAcl $containerACL value.
-     * 
-     * @return none.
+     *
+     * @param ContainerACL $containerACL value.
+     *
+     * @return void
      */
-    public function setContainerAcl($containerACL)
+    protected function setContainerAcl(ContainerACL $containerACL)
     {
         $this->_containerACL = $containerACL;
     }
@@ -112,9 +106,9 @@ class GetContainerAclResult
      *
      * @param \DateTime $lastModified value.
      *
-     * @return none.
+     * @return void
      */
-    public function setLastModified($lastModified)
+    protected function setLastModified(\DateTime $lastModified)
     {
         $this->_lastModified = $lastModified;
     }
@@ -122,7 +116,7 @@ class GetContainerAclResult
     /**
      * Gets container etag.
      *
-     * @return string.
+     * @return string
      */
     public function getETag()
     {
@@ -134,12 +128,10 @@ class GetContainerAclResult
      *
      * @param string $etag value.
      *
-     * @return none.
+     * @return void
      */
-    public function setETag($etag)
+    protected function setETag($etag)
     {
         $this->_etag = $etag;
     }
 }
-
-

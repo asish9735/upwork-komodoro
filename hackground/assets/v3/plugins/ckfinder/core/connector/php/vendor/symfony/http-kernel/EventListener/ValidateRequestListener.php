@@ -12,22 +12,23 @@
 namespace Symfony\Component\HttpKernel\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Validates Requests.
+ * Validates that the headers and other information indicating the
+ * client IP address of a request are consistent.
  *
  * @author Magnus Nordlander <magnus@fervo.se>
- *
- * @final
  */
 class ValidateRequestListener implements EventSubscriberInterface
 {
     /**
      * Performs the validation.
+     *
+     * @param GetResponseEvent $event
      */
-    public function onKernelRequest(RequestEvent $event)
+    public function onKernelRequest(GetResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {
             return;
@@ -35,21 +36,20 @@ class ValidateRequestListener implements EventSubscriberInterface
         $request = $event->getRequest();
 
         if ($request::getTrustedProxies()) {
+            // This will throw an exception if the headers are inconsistent.
             $request->getClientIps();
         }
-
-        $request->getHost();
     }
 
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents(): array
+    public static function getSubscribedEvents()
     {
-        return [
-            KernelEvents::REQUEST => [
-                ['onKernelRequest', 256],
-            ],
-        ];
+        return array(
+            KernelEvents::REQUEST => array(
+                array('onKernelRequest', 256),
+            ),
+        );
     }
 }

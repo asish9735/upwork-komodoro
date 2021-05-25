@@ -30,8 +30,7 @@ class ObjectUploader implements PromisorInterface
     /**
      * @param S3ClientInterface $client         The S3 Client used to execute
      *                                          the upload command(s).
-     * @param string            $bucket         Bucket to upload the object, or
-     *                                          an S3 access point ARN.
+     * @param string            $bucket         Bucket to upload the object.
      * @param string            $key            Key of the object.
      * @param mixed             $body           Object data to upload. Can be a
      *                                          StreamInterface, PHP stream
@@ -40,9 +39,7 @@ class ObjectUploader implements PromisorInterface
      * @param string            $acl            ACL to apply to the copy
      *                                          (default: private).
      * @param array             $options        Options used to configure the
-     *                                          copy process. Options passed in
-     *                                          through 'params' are added to
-     *                                          the sub command(s).
+     *                                          copy process.
      */
     public function __construct(
         S3ClientInterface $client,
@@ -57,7 +54,10 @@ class ObjectUploader implements PromisorInterface
         $this->key = $key;
         $this->body = Psr7\stream_for($body);
         $this->acl = $acl;
-        $this->options = $options + self::$defaults;
+        $this->options = array_intersect_key(
+            $options + self::$defaults,
+            self::$defaults
+        );
     }
 
     public function promise()
@@ -66,24 +66,29 @@ class ObjectUploader implements PromisorInterface
         $mup_threshold = $this->options['mup_threshold'];
         if ($this->requiresMultipart($this->body, $mup_threshold)) {
             // Perform a multipart upload.
+            $this->options['before_initiate'] = function ($command) {
+                foreach ($this->options['params'] as $k => $v) {
+                    $command[$k] = $v;
+                }
+            };
             return (new MultipartUploader($this->client, $this->body, [
                     'bucket' => $this->bucket,
                     'key'    => $this->key,
                     'acl'    => $this->acl
                 ] + $this->options))->promise();
+        } else {
+            // Perform a regular PutObject operation.
+            $command = $this->client->getCommand('PutObject', [
+                    'Bucket' => $this->bucket,
+                    'Key'    => $this->key,
+                    'Body'   => $this->body,
+                    'ACL'    => $this->acl,
+                ] + $this->options['params']);
+            if (is_callable($this->options['before_upload'])) {
+                $this->options['before_upload']($command);
+            }
+            return $this->client->executeAsync($command);
         }
-
-        // Perform a regular PutObject operation.
-        $command = $this->client->getCommand('PutObject', [
-                'Bucket' => $this->bucket,
-                'Key'    => $this->key,
-                'Body'   => $this->body,
-                'ACL'    => $this->acl,
-            ] + $this->options['params']);
-        if (is_callable($this->options['before_upload'])) {
-            $this->options['before_upload']($command);
-        }
-        return $this->client->executeAsync($command);
     }
 
     public function upload()
@@ -124,7 +129,7 @@ class ObjectUploader implements PromisorInterface
         }
 
         // If body >= 5 MB, then use multipart. [YES]
-        if ($body->isSeekable() && $body->getMetadata('uri') !== 'php://input') {
+        if ($body->isSeekable()) {
             // If the body is seekable, just rewind the body.
             $body->seek(0);
         } else {

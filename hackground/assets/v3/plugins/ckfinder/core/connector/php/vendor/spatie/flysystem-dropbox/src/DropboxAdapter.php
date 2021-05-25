@@ -2,12 +2,12 @@
 
 namespace Spatie\FlysystemDropbox;
 
+use LogicException;
+use Spatie\Dropbox\Client;
+use League\Flysystem\Config;
+use Spatie\Dropbox\Exceptions\BadRequest;
 use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\Adapter\Polyfill\NotSupportingVisibilityTrait;
-use League\Flysystem\Config;
-use League\Flysystem\Util\MimeType;
-use Spatie\Dropbox\Client;
-use Spatie\Dropbox\Exceptions\BadRequest;
 
 class DropboxAdapter extends AbstractAdapter
 {
@@ -176,20 +176,9 @@ class DropboxAdapter extends AbstractAdapter
     {
         $location = $this->applyPathPrefix($directory);
 
-        try {
-            $result = $this->client->listFolder($location, $recursive);
-        } catch (BadRequest $e) {
-            return [];
-        }
+        $result = $this->client->listFolder($location, $recursive);
 
-        $entries = $result['entries'];
-
-        while ($result['has_more']) {
-            $result = $this->client->listFolderContinue($result['cursor']);
-            $entries = array_merge($entries, $result['entries']);
-        }
-
-        if (! count($entries)) {
+        if (! count($result['entries'])) {
             return [];
         }
 
@@ -197,7 +186,7 @@ class DropboxAdapter extends AbstractAdapter
             $path = $this->removePathPrefix($entry['path_display']);
 
             return $this->normalizeResponse($entry, $path);
-        }, $entries);
+        }, $result['entries']);
     }
 
     /**
@@ -229,7 +218,7 @@ class DropboxAdapter extends AbstractAdapter
      */
     public function getMimetype($path)
     {
-        return ['mimetype' => MimeType::detectByFilename($path)];
+        throw new LogicException("The Dropbox API v2 does not support mimetypes. Given path: `{$path}`.");
     }
 
     /**
@@ -245,24 +234,9 @@ class DropboxAdapter extends AbstractAdapter
         return $this->client->getTemporaryLink($path);
     }
 
-    public function getTemporaryUrl(string $path): string
-    {
-        return $this->getTemporaryLink($path);
-    }
-
-    public function getUrl(string $path): string
-    {
-        return $this->getTemporaryLink($path);
-    }
-
     public function getThumbnail(string $path, string $format = 'jpeg', string $size = 'w64h64')
     {
         return $this->client->getThumbnail($path, $format, $size);
-    }
-
-    public function createSharedLinkWithSettings($path, $settings)
-    {
-        return $this->client->createSharedLinkWithSettings($path, $settings);
     }
 
     /**

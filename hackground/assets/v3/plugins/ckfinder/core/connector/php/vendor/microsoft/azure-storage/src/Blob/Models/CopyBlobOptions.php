@@ -11,7 +11,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * PHP version 5
  *
  * @category  Microsoft
@@ -23,6 +23,7 @@
  */
  
 namespace MicrosoftAzure\Storage\Blob\Models;
+
 use MicrosoftAzure\Storage\Common\Internal\Validate;
 
 /**
@@ -33,90 +34,46 @@ use MicrosoftAzure\Storage\Common\Internal\Validate;
  * @author    Azure Storage PHP SDK <dmsh@microsoft.com>
  * @copyright 2016 Microsoft Corporation
  * @license   https://github.com/azure/azure-storage-php/LICENSE
- * @version   Release: 0.10.2
  * @link      https://github.com/azure/azure-storage-php
  */
 class CopyBlobOptions extends BlobServiceOptions
 {
-
-    /**
-     * @var AccessCondition
-     */
-    private $_accessCondition;
-    
-    /**
-     * @var AccessCondition
-     */
-    private $_sourceAccessCondition;
-    
-    /**
-     * @var array
-     */
+    private $_sourceLeaseId;
+    private $_sourceAccessConditions;
     private $_metadata;
-    
-    /**
-     * @var string 
-     */
     private $_sourceSnapshot;
     
     /**
-     * @var string
-     */
-    private $_leaseId;
-    
-    /**
-     * @var sourceLeaseId
-     */
-    private $_sourceLeaseId;
-  
-    /**
-     * Gets access condition
-     * 
-     * @return AccessCondition
-     */
-    public function getAccessCondition()
-    {
-        return $this->_accessCondition;
-    }
-    
-    /**
-     * Sets access condition
-     * 
-     * @param AccessCondition $accessCondition value to use.
-     * 
-     * @return none.
-     */
-    public function setAccessCondition($accessCondition)
-    {
-        $this->_accessCondition = $accessCondition;
-    }
-    
-    /**
      * Gets source access condition
-     * 
-     * @return SourceAccessCondition
+     *
+     * @return AccessCondition[]
      */
-    public function getSourceAccessCondition()
+    public function getSourceAccessConditions()
     {
-        return $this->_sourceAccessCondition;
+        return $this->_sourceAccessConditions;
     }
     
     /**
      * Sets source access condition
-     * 
-     * @param SourceAccessCondition $sourceAccessCondition value to use.
-     * 
-     * @return none.
+     *
+     * @param array $sourceAccessCondition value to use.
+     *
+     * @return void
      */
-    public function setSourceAccessCondition($sourceAccessCondition)
+    public function setSourceAccessConditions($sourceAccessConditions)
     {
-        $this->_sourceAccessCondition = $sourceAccessCondition;
+        if (!is_null($sourceAccessConditions) &&
+            is_array($sourceAccessConditions)) {
+            $this->_sourceAccessConditions = $sourceAccessConditions;
+        } else {
+            $this->_sourceAccessConditions = [$sourceAccessConditions];
+        }
     }
     
     /**
      * Gets metadata.
      *
-     * @return array.
+     * @return array
      */
     public function getMetadata()
     {
@@ -128,16 +85,16 @@ class CopyBlobOptions extends BlobServiceOptions
      *
      * @param array $metadata value.
      *
-     * @return none.
+     * @return void
      */
-    public function setMetadata($metadata)
+    public function setMetadata(array $metadata)
     {
         $this->_metadata = $metadata;
     }
     
     /**
-     * Gets source snapshot. 
-     * 
+     * Gets source snapshot.
+     *
      * @return string
      */
     public function getSourceSnapshot()
@@ -146,37 +103,15 @@ class CopyBlobOptions extends BlobServiceOptions
     }
        
     /**
-     * Sets source snapshot. 
-     * 
+     * Sets source snapshot.
+     *
      * @param string $sourceSnapshot value.
-     * 
-     * @return none
+     *
+     * @return void
      */
     public function setSourceSnapshot($sourceSnapshot)
     {
         $this->_sourceSnapshot = $sourceSnapshot;
-    }
-   
-    /**
-     * Gets lease ID.
-     *
-     * @return string
-     */
-    public function getLeaseId()
-    {
-        return $this->_leaseId;
-    }
-
-    /**
-     * Sets lease ID.
-     *
-     * @param string $leaseId value.
-     * 
-     * @return none
-     */
-    public function setLeaseId($leaseId)
-    {
-        $this->_leaseId = $leaseId;
     }
     
     /**
@@ -193,13 +128,11 @@ class CopyBlobOptions extends BlobServiceOptions
      * Sets source lease ID.
      *
      * @param string $sourceLeaseId value.
-     * 
-     * @return none
+     *
+     * @return void
      */
     public function setSourceLeaseId($sourceLeaseId)
     {
         $this->_sourceLeaseId = $sourceLeaseId;
     }
 }
-
-

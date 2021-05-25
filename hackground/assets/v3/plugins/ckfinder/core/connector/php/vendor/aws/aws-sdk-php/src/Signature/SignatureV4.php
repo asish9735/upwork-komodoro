@@ -15,7 +15,6 @@ class SignatureV4 implements SignatureInterface
     use SignatureTrait;
     const ISO8601_BASIC = 'Ymd\THis\Z';
     const UNSIGNED_PAYLOAD = 'UNSIGNED-PAYLOAD';
-    const AMZ_CONTENT_SHA256_HEADER = 'X-Amz-Content-Sha256';
 
     /** @var string */
     private $service;
@@ -25,41 +24,6 @@ class SignatureV4 implements SignatureInterface
 
     /** @var bool */
     private $unsigned;
-
-    /**
-     * The following headers are not signed because signing these headers
-     * would potentially cause a signature mismatch when sending a request
-     * through a proxy or if modified at the HTTP client level.
-     *
-     * @return array
-     */
-    private function getHeaderBlacklist()
-    {
-        return [
-            'cache-control'         => true,
-            'content-type'          => true,
-            'content-length'        => true,
-            'expect'                => true,
-            'max-forwards'          => true,
-            'pragma'                => true,
-            'range'                 => true,
-            'te'                    => true,
-            'if-match'              => true,
-            'if-none-match'         => true,
-            'if-modified-since'     => true,
-            'if-unmodified-since'   => true,
-            'if-range'              => true,
-            'accept'                => true,
-            'authorization'         => true,
-            'proxy-authorization'   => true,
-            'from'                  => true,
-            'referer'               => true,
-            'user-agent'            => true,
-            'x-amzn-trace-id'       => true,
-            'aws-sdk-invocation-id' => true,
-            'aws-sdk-retry'         => true,
-        ];
-    }
 
     /**
      * @param string $service Service name to use when signing
@@ -91,7 +55,7 @@ class SignatureV4 implements SignatureInterface
         $payload = $this->getPayload($request);
 
         if ($payload == self::UNSIGNED_PAYLOAD) {
-            $parsed['headers'][self::AMZ_CONTENT_SHA256_HEADER] = [$payload];
+            $parsed['headers']['X-Amz-Content-Sha256'] = [$payload];
         }
 
         $context = $this->createContext($parsed, $payload);
@@ -112,40 +76,13 @@ class SignatureV4 implements SignatureInterface
         return $this->buildRequest($parsed);
     }
 
-    /**
-     * Get the headers that were used to pre-sign the request.
-     * Used for the X-Amz-SignedHeaders header.
-     *
-     * @param array $headers
-     * @return array
-     */
-    private function getPresignHeaders(array $headers)
-    {
-        $presignHeaders = [];
-        $blacklist = $this->getHeaderBlacklist();
-        foreach ($headers as $name => $value) {
-            $lName = strtolower($name);
-            if (!isset($blacklist[$lName])
-                && $name !== self::AMZ_CONTENT_SHA256_HEADER
-            ) {
-                $presignHeaders[] = $lName;
-            }
-        }
-        return $presignHeaders;
-    }
-
     public function presign(
         RequestInterface $request,
         CredentialsInterface $credentials,
         $expires,
         array $options = []
     ) {
-
-        $startTimestamp = isset($options['start_time'])
-                            ? $this->convertToTimestamp($options['start_time'], null)
-                            : time();
-
-        $expiresTimestamp = $this->convertToTimestamp($expires, $startTimestamp);
+        $startTimestamp = isset($options['start_time']) ? $this->convertToTimestamp($options['start_time']) : time();
 
         $parsed = $this->createPresignedRequest($request, $credentials);
         $payload = $this->getPresignedPayload($request);
@@ -153,14 +90,11 @@ class SignatureV4 implements SignatureInterface
         $shortDate = substr($httpDate, 0, 8);
         $scope = $this->createScope($shortDate, $this->region, $this->service);
         $credential = $credentials->getAccessKeyId() . '/' . $scope;
-        if ($credentials->getSecurityToken()) {
-            unset($parsed['headers']['X-Amz-Security-Token']);
-        }
         $parsed['query']['X-Amz-Algorithm'] = 'AWS4-HMAC-SHA256';
         $parsed['query']['X-Amz-Credential'] = $credential;
         $parsed['query']['X-Amz-Date'] = gmdate('Ymd\THis\Z', $startTimestamp);
-        $parsed['query']['X-Amz-SignedHeaders'] = implode(';', $this->getPresignHeaders($parsed['headers']));
-        $parsed['query']['X-Amz-Expires'] = $this->convertExpires($expiresTimestamp, $startTimestamp);
+        $parsed['query']['X-Amz-SignedHeaders'] = 'host';
+        $parsed['query']['X-Amz-Expires'] = $this->convertExpires($expires, $startTimestamp);
         $context = $this->createContext($parsed, $payload);
         $stringToSign = $this->createStringToSign($httpDate, $scope, $context['creq']);
         $key = $this->getSigningKey(
@@ -212,9 +146,9 @@ class SignatureV4 implements SignatureInterface
             return self::UNSIGNED_PAYLOAD;
         }
         // Calculate the request signature payload
-        if ($request->hasHeader(self::AMZ_CONTENT_SHA256_HEADER)) {
+        if ($request->hasHeader('X-Amz-Content-Sha256')) {
             // Handle streaming operations (e.g. Glacier.UploadArchive)
-            return $request->getHeaderLine(self::AMZ_CONTENT_SHA256_HEADER);
+            return $request->getHeaderLine('X-Amz-Content-Sha256');
         }
 
         if (!$request->getBody()->isSeekable()) {
@@ -268,7 +202,31 @@ class SignatureV4 implements SignatureInterface
      */
     private function createContext(array $parsedRequest, $payload)
     {
-        $blacklist = $this->getHeaderBlacklist();
+        // The following headers are not signed because signing these headers
+        // would potentially cause a signature mismatch when sending a request
+        // through a proxy or if modified at the HTTP client level.
+        static $blacklist = [
+            'cache-control'       => true,
+            'content-type'        => true,
+            'content-length'      => true,
+            'expect'              => true,
+            'max-forwards'        => true,
+            'pragma'              => true,
+            'range'               => true,
+            'te'                  => true,
+            'if-match'            => true,
+            'if-none-match'       => true,
+            'if-modified-since'   => true,
+            'if-unmodified-since' => true,
+            'if-range'            => true,
+            'accept'              => true,
+            'authorization'       => true,
+            'proxy-authorization' => true,
+            'from'                => true,
+            'referer'             => true,
+            'user-agent'          => true,
+            'x-amzn-trace-id'     => true
+        ];
 
         // Normalize the path as required by SigV4
         $canon = $parsedRequest['method'] . "\n"
@@ -327,14 +285,12 @@ class SignatureV4 implements SignatureInterface
         return substr($qs, 0, -1);
     }
 
-    private function convertToTimestamp($dateValue, $relativeTimeBase = null)
+    private function convertToTimestamp($dateValue)
     {
-        if ($dateValue instanceof \DateTimeInterface) {
+        if ($dateValue instanceof \DateTime) {
             $timestamp = $dateValue->getTimestamp();
         } elseif (!is_numeric($dateValue)) {
-            $timestamp = strtotime($dateValue,
-                                   $relativeTimeBase === null ? time() : $relativeTimeBase
-            );
+            $timestamp = strtotime($dateValue);
         } else {
             $timestamp = $dateValue;
         }
@@ -342,9 +298,9 @@ class SignatureV4 implements SignatureInterface
         return $timestamp;
     }
 
-    private function convertExpires($expiresTimestamp, $startTimestamp)
+    private function convertExpires($expires, $startTimestamp)
     {
-        $duration = $expiresTimestamp - $startTimestamp;
+        $duration = $this->convertToTimestamp($expires) - $startTimestamp;
 
         // Ensure that the duration of the signature is not longer than a week
         if ($duration > 604800) {
@@ -363,10 +319,7 @@ class SignatureV4 implements SignatureInterface
             if (substr($lname, 0, 5) == 'x-amz') {
                 $parsedRequest['query'][$name] = $header;
             }
-            $blacklist = $this->getHeaderBlacklist();
-            if (isset($blacklist[$lname])
-                || $lname === strtolower(self::AMZ_CONTENT_SHA256_HEADER)
-            ) {
+            if ($lname !== 'host') {
                 unset($parsedRequest['headers'][$name]);
             }
         }

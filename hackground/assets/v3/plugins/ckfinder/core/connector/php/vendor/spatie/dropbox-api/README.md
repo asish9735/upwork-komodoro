@@ -56,13 +56,14 @@ Here's an example:
 $client->rpcEndpointRequest('search', ['path' => '', 'query' => 'bat cave']);
 ```
 
-If you need to change the subdomain of the endpoint URL used in the API request, you can prefix the endpoint path with `subdomain::`.
+## Postcardware
 
-Here's an example:
+You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
 
-```php
-$client->rpcEndpointRequest('content::files/get_thumbnail_batch', $parameters);
-```
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+
 
 ## Changelog
 
@@ -82,26 +83,15 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
 
-## Postcardware
-
-You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
-
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
-
-We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
-
 ## Credits
 
 - [Alex Vanderbist](https://github.com/AlexVanderbist)
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
-## Support us
+## About Spatie
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
-
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
-All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 

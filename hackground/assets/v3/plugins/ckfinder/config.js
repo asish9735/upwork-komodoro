@@ -1,6 +1,6 @@
 /*
- Copyright (c) 2007-2019, CKSource - Frederico Knabben. All rights reserved.
- For licensing, see LICENSE.html or https://ckeditor.com/sales/license/ckfinder
+ Copyright (c) 2007-2017, CKSource - Frederico Knabben. All rights reserved.
+ For licensing, see LICENSE.html or http://cksource.com/ckfinder/license
  */
 
 var config = {};

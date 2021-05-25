@@ -11,7 +11,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * PHP version 5
  *
  * @category  Microsoft
@@ -23,6 +23,7 @@
  */
  
 namespace MicrosoftAzure\Storage\Queue\Models;
+
 use MicrosoftAzure\Storage\Common\Internal\Resources;
 use MicrosoftAzure\Storage\Common\Internal\Utilities;
 
@@ -34,7 +35,6 @@ use MicrosoftAzure\Storage\Common\Internal\Utilities;
  * @author    Azure Storage PHP SDK <dmsh@microsoft.com>
  * @copyright 2016 Microsoft Corporation
  * @license   https://github.com/azure/azure-storage-php/LICENSE
- * @version   Release: 0.10.2
  * @link      https://github.com/azure/azure-storage-php
  */
 class Queue
@@ -45,13 +45,13 @@ class Queue
 
     /**
      * Constructor
-     * 
+     *
      * @param string $name queue name.
      * @param string $url  queue url.
-     * 
-     * @return MicrosoftAzure\Storage\Queue\Models\Queue.
+     *
+     * @return Queue
      */
-    function __construct($name, $url)
+    public function __construct($name, $url)
     {
         $this->_name = $name;
         $this->_url  = $url;
@@ -60,7 +60,7 @@ class Queue
     /**
      * Gets queue name.
      *
-     * @return string.
+     * @return string
      */
     public function getName()
     {
@@ -71,8 +71,8 @@ class Queue
      * Sets queue name.
      *
      * @param string $name value.
-     * 
-     * @return none.
+     *
+     * @return void
      */
     public function setName($name)
     {
@@ -82,7 +82,7 @@ class Queue
     /**
      * Gets queue url.
      *
-     * @return string.
+     * @return string
      */
     public function getUrl()
     {
@@ -93,8 +93,8 @@ class Queue
      * Sets queue url.
      *
      * @param string $url value.
-     * 
-     * @return none.
+     *
+     * @return void
      */
     public function setUrl($url)
     {
@@ -104,7 +104,7 @@ class Queue
     /**
      * Gets queue metadata.
      *
-     * @return array.
+     * @return array
      */
     public function getMetadata()
     {
@@ -114,13 +114,12 @@ class Queue
     /**
      * Sets queue metadata.
      *
-     * @param string $metadata value.
-     * 
-     * @return none.
+     * @param array $metadata value.
+     *
+     * @return void
      */
-    public function setMetadata($metadata)
+    public function setMetadata(array $metadata)
     {
         $this->_metadata = $metadata;
     }
 }
-
