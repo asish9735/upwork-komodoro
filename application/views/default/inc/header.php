@@ -16,6 +16,7 @@ if($loggedUser){
 		$profile_name=$member_name;
 	}
 	$profile_type_name=($this->access_member_type =='C'  ? "Client":"Freelancer");
+	$wallet_balance=getFieldData('balance','wallet','user_id',$this->member_id);
 }
 ?>
 <!-- Header Container
@@ -159,7 +160,7 @@ if($loggedUser){
 									<div class="user-name">
 										<p><?php echo $profile_name;?></p>
                                         <span><?php echo $profile_type_name;?></span>
-                                        <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php // D(priceFormat($memberDataBasic->balance));?>499.00</b>
+                                        <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php  D(priceFormat($wallet_balance));?></b>
 									</div>
 								</div>
 								
