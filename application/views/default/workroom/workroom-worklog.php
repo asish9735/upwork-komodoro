@@ -40,7 +40,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
           <div class="panel-header relative">
             <h4><?php echo __('workroom_details_work_logs','Work Logs');?> </h4>
           </div>
-          <div class="panel-body">
+          <div class="panel-body pt-0">
           <ul class="nav nav-tabs mb-3">
 	      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_invoice_all','All');?></a> </li>
 	      <li class="nav-item"> <a class="nav-link <?php if($show=='pending'){?>active<?php }?>" href="<?php echo $contract_worklog_url;?>?show=pending"><?php echo __('workroom_worklog_pending','Pending');?></a> </li>
@@ -63,8 +63,8 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 	     <section class="comments workLogData"></section>
 		 <div class="text-center" id="loader" style="display: none"><?php load_view('inc/spinner',array('size'=>30));?></div>
 	    </div>
-	    <div class="container text-center padding-bottom-40">
-            <button class="btn btn-primary" id="load_more" data-page = "0"><?php echo __('workroom_invoice_load_more','Load more..');?></button>
+	    <div class="text-center">
+            <button class="btn btn-primary mb-3" id="load_more" data-page = "0"><?php echo __('workroom_invoice_load_more','Load more..');?></button>
         </div>
           </div>
         </div>

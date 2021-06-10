@@ -86,7 +86,7 @@ if($show=='completed'){if($is_owner){}else{$is_waiting_invoice=1;}}
 <?php		
 }
 }else{?>
-<p><?php echo __('workroom_worklog_no_record','No record');?></p>
+<li class="text-center text-danger"><?php echo __('workroom_worklog_no_record_found','No record found');?></li>
 <?php }?>
 </ul>
 <?php if($is_owner){?>
