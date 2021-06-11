@@ -187,6 +187,10 @@ $config['downloadTempURL'] = 'welcome/downloadtempfile';
 
 $config['search_job'] = 'job/findjobs';
 $config['actionfavorite_job'] = 'job/action_favorite';
+$config['reportJobFormAjaxURL'] = 'job/action_report_form';
+$config['actionreport_job'] = 'job/action_report';
+
+
 
 $config['search_freelancer'] = 'findtalents/all_list';
 $config['actionfavorite_freelancer'] = 'findtalents/action_favorite';

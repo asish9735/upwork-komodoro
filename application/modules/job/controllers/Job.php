@@ -141,7 +141,73 @@ class Job extends MX_Controller {
 		}
 		echo json_encode($json);
 	}
-	
+	public function action_report_form(){
+		checkrequestajax();
+		$data = $this->input->get();
+		$this->layout->view('ajax-report-form',$data, TRUE);
+	}
+	public function action_report(){
+	if($this->loggedUser){
+		$this->load->library('form_validation');
+		
+		$json['status'] = 0;
+		$project_id_md5 = post('project_id');
+		$project_id=getFieldData('project_id','project','md5(project_id)',$project_id_md5);
+		$member_id = $this->member_id;
+		$action = post('cmd');
+		
+		if($project_id && $member_id){
+			
+			$data = array(
+				'content_id' => $project_id,
+				'reporter_id' => $member_id,
+				'content_type' => 'project',
+			);
+			
+			if($action == 'add'){
+				
+				$this->form_validation->set_rules('reason', 'reason', 'required');
+				$this->form_validation->set_rules('additional_information', 'additional information', 'required');
+				$this->form_validation->set_rules('project_id', 'project', 'required');
+			
+				if($this->form_validation->run()){
+					
+					
+					$data['reason'] = htmlentities(post('reason'));
+					$data['additional_information'] = htmlentities(post('additional_information'));
+					$this->db->insert('reports', $data);
+					
+					$template = 'admin-reported-project';
+					$ad_title =  getFieldData('project_title', 'project', 'project_id', $project_id); 
+					$admin_report_url = ADMIN_URL.'reports/project';
+					$data_parse = array(
+						'TITLE' => $ad_title,
+						'URL' => $admin_report_url, 
+					);
+					$this->admin_notification_model->parse($template, $data_parse, 'reports/project');
+					SendMail(get_setting('admin_email'),$template,$data_parse);
+					
+					$json['status'] = 1;
+				}else{
+					$json['error_html'] = validation_errors('<div class="rerror">', '</div>');
+					$json['status'] = 0;
+				}
+			
+				
+			}else if($action == 'remove'){
+				$this->db->where($data)->delete('reports');
+				$json['status'] = 1;
+			}
+		
+		}
+	}else{
+		$json['status']='FAIL';
+		$json['popup']='login';
+	}
+		
+		echo json_encode($json);
+		
+	}
 
 	
 	

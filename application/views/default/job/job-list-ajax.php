@@ -74,7 +74,7 @@ if($login_user_id){
 			<li><i class="icon-material-outline-access-time"></i> <?php D(get_time_ago($v['project_posted_date']));?></li>      
             <li class="ml-md-auto"><a href="<?php echo VZ;?>" class="btn btn-circle btn-light mr-2 action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-feather-heart"></i></a>
             <!--<a href="#" class="btn btn-circle btn-light active"><i class="icon-feather-heart"></i></a>-->
-            	<a href="#" class="btn btn-circle btn-light"><i class="icon-material-outline-bug-report"></i></a>      
+            	<a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_report" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-material-outline-bug-report"></i></a>      
 			</li>
         </ul>
 	</div>

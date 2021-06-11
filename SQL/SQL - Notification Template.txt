@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `pref_notifications_template` (
   `display_order` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`notification_template_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 --
 -- Truncate table before insert `pref_notifications_template`
@@ -46,7 +46,9 @@ INSERT INTO `pref_notifications_template` (`notification_template_id`, `template
 (26, 'hourly-invoice-accepted', 'Hourly Invoice Accepted by Client', '{TITLE} =>Project Name\r\n{CONTRACT_TITLE}=>Contract Name', 0, 1),
 (27, 'hourly-invoice-rejected', 'Hourly Invoice Reject by Client', '{TITLE} =>Project Name\r\n{CONTRACT_TITLE}=>Contract Name', 0, 1),
 (28, 'new-proposal', 'New Proposal Posted ', '{TITLE}=> Project Title', 0, 1),
-(29, 'project-invitation', 'Invitation for project', '{TITLE}=> Project Title', 0, 1);
+(29, 'project-invitation', 'Invitation for project', '{TITLE}=> Project Title', 0, 1),
+(30, 'dispute-send-to-admin', 'Dispute send to admin', '{TITLE} =>Project Name\r\n{CONTRACT_TITLE}=>Contract Name\r\n{MILESTONE_TITLE}=>Milestone Name', 0, 1),
+(31, 'admin-reported-project', 'Admin Reported Project', 'TITLE', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -57,8 +59,7 @@ INSERT INTO `pref_notifications_template` (`notification_template_id`, `template
 CREATE TABLE IF NOT EXISTS `pref_notifications_template_names` (
   `notification_template_id` int(11) NOT NULL,
   `template_content` text NOT NULL,
-  `lang` char(3) NOT NULL,
-  UNIQUE KEY `notification_template_id` (`notification_template_id`,`lang`)
+  `lang` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -74,9 +75,9 @@ INSERT INTO `pref_notifications_template_names` (`notification_template_id`, `te
 (1, 'New User Registered . Name {FULL_NAME}', 'en'),
 (3, 'New Ad Posted . Title : {TITLE}', 'en'),
 (4, 'Account Deactivitation Request By {NAME} .', 'en'),
-(6, 'Ad \"{AD_TITLE}\" is reported by a user.', 'en'),
+(6, 'Ad "{AD_TITLE}" is reported by a user.', 'en'),
 (5, 'You have a new contact request.', 'en'),
-(7, 'Ad \"{PROJECT_TITLE}\" marked as featured', 'en'),
+(7, 'Ad "{PROJECT_TITLE}" marked as featured', 'en'),
 (2, 'New Document Verification Request. By: {MEMBER_NAME}', 'en'),
 (8, 'Wallet balance error for the wallet {WALLET_ID} after transaction {TRANSACTION_ID}.', 'en'),
 (12, 'New milestone Initiate for the project {TITLE}', 'en'),
@@ -99,4 +100,7 @@ INSERT INTO `pref_notifications_template_names` (`notification_template_id`, `te
 (26, 'Your invoice has been accepted for the project {TITLE}.', 'en'),
 (27, 'Your invoice has been rejected for the project {TITLE}.', 'en'),
 (28, 'You have new proposal for the project {TITLE}.', 'en'),
-(29, 'You have invitation for the project {TITLE}', 'en');
+(29, 'You have invitation for the project {TITLE}', 'en'),
+(30, 'Dispute sent to admin for the project {TITLE}', 'en'),
+(31, 'User reported for the Project {TITLE}', 'en'),
+(31, 'User reported for the Project {TITLE}', 'ar');

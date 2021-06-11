@@ -744,4 +744,18 @@ CREATE TABLE `pref_member_membership` ( `member_id` INT NOT NULL , `membership_i
 ALTER TABLE `pref_member_membership` CHANGE `is_free` `is_free` BOOLEAN NOT NULL;
 CREATE TABLE `pref_member_membership_log` ( `member_id` INT NOT NULL , `membership_id` INT NOT NULL , `membership_duration` CHAR(6) NOT NULL , `reg_date` DATETIME NOT NULL , `log_id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`log_id`)) ENGINE = InnoDB;
 
+--
+--12062021-
+--
+CREATE TABLE `pref_reports` (
+  `id` int(10) NOT NULL,
+  `reporter_id` int(10) NOT NULL,
+  `content_id` int(10) NOT NULL,
+  `content_type` varchar(255) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `additional_information` text NOT NULL,
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `pref_reports` ADD PRIMARY KEY (`id`);
+ALTER TABLE `pref_reports` MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;

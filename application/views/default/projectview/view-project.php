@@ -240,6 +240,9 @@ if($login_user_id){
                       <!-- Bookmark icon -->
 					  <?php if(!$is_owner){?>
 					  <li class="ml-auto">
+					  <span class="mr-2">
+						<a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_report" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-material-outline-bug-report"></i></a>
+					  </span>
                       <span>
 						<a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-feather-heart"></i></a>
 					  </span>
@@ -327,6 +330,7 @@ bootbox.alert({
 </script>
 <?php }?>
 <script>
+var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 var mainpart=function(){
 $('.action_favorite').on('click', function(e){
 		e.preventDefault();
@@ -393,6 +397,75 @@ $('.action_favorite').on('click', function(e){
 			}
 		},'JSON');
 		
-	})
+	});
+	$('.action_report').click(function(e){
+	e.preventDefault();
+	var _self = $(this);
+	var report_project = function(){
+		
+		var data = {
+			project_id: _self.data('pid'),
+			cmd: 'add',
+		};
+		
+		if(data.cmd == 'add'){
+			
+			$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+			$('#myModal').modal('show');
+			
+			$.get("<?php echo get_link('reportJobFormAjaxURL'); ?>",data, function( data ) {
+				setTimeout(function(){ $( "#myModal .mycustom-modal").html( data );},1000)
+			});
+			
+		}else{
+			
+		}
+	};
+	
+	
+	var login_error = function(){
+		
+			bootbox.confirm({
+				title:'<?php D(__('project_view_Save_Search_login_error','Login Error!'));?>',
+				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+				buttons: {
+				'confirm': {
+					label: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					className: 'btn-site pull-right'
+					},
+				'cancel': {
+					label: '<?php D(__('project_view_save_search_button_cancel','Cancel'));?>',
+					className: 'btn-dark pull-left'
+					}
+				},
+				callback: function (result) {
+					if(result){
+					var base_url = '<?php echo base_url();?>';
+					var refer = window.location.href.replace(base_url, '');
+					location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+					}
+				}
+			});
+
+		
+	};
+	
+	
+	check_login(report_project, login_error);
+	
+});
+}
+function check_login(succ, fail){
+	$.get('<?php echo get_link('IsLoginURL'); ?>', function(res){
+		if(res == 1){
+			if(typeof succ == 'function'){
+				succ();
+			}
+		}else{
+			if(typeof fail == 'function'){
+				fail();
+			}
+		}
+	});
 }
 </script>

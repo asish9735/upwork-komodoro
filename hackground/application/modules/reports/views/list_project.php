@@ -47,7 +47,7 @@
 					
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td><a href="<?php echo base_url('member/list_record?member_id='.$v['reporter_id']); ?>"><?php echo $v['member_name']; ?></a></td>
-                 <td><?php echo $v['project_title']; ?></td>
+                 <td><a href="<?php echo base_url('proposal/list_record?project_id='.$v['content_id']); ?>"><?php echo $v['project_title']; ?></a></td>
                  <td><?php echo $v['reason']; ?></td>
                   <td><?php echo $v['additional_information']; ?></td>
                   <td class="text-right" style="padding-right:20px;">

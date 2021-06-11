@@ -163,8 +163,17 @@
 		
 </div>
 </section>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <!-- Modal content-->
+    <div class="modal-content mycustom-modal">
+    <div class="text-center padding-top-50 padding-bottom-50"><?php load_view('inc/spinner',array('size'=>30));?></div>
+    </div>
 
+  </div>
+</div>
 <script>
+var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 var main = function(){	
 	var findJobLoadMore = LoadMore.getInstance();	
 	/* findJobLoadMore.config({
@@ -297,7 +306,76 @@ var main = function(){
 			}
 		},'JSON');
 		
-	})
+	});
+$('#job_list').on('click','.action_report',  function(e){
+	e.preventDefault();
+	var _self = $(this);
+	var report_project = function(){
+		
+		var data = {
+			project_id: _self.data('pid'),
+			cmd: 'add',
+		};
+		
+		if(data.cmd == 'add'){
+			
+			$( "#myModal .mycustom-modal").html( '<div class="text-center padding-top-50 padding-bottom-50">'+SPINNER+'<div>' );
+			$('#myModal').modal('show');
+			
+			$.get("<?php echo get_link('reportJobFormAjaxURL'); ?>",data, function( data ) {
+				setTimeout(function(){ $( "#myModal .mycustom-modal").html( data );},1000)
+			});
+			
+		}else{
+			
+		}
+	};
+	
+	
+	var login_error = function(){
+		
+			bootbox.confirm({
+				title:'<?php D(__('project_view_Save_Search_login_error','Login Error!'));?>',
+				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+				buttons: {
+				'confirm': {
+					label: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					className: 'btn-site pull-right'
+					},
+				'cancel': {
+					label: '<?php D(__('project_view_save_search_button_cancel','Cancel'));?>',
+					className: 'btn-dark pull-left'
+					}
+				},
+				callback: function (result) {
+					if(result){
+					var base_url = '<?php echo base_url();?>';
+					var refer = window.location.href.replace(base_url, '');
+					location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+					}
+				}
+			});
+
+		
+	};
+	
+	
+	check_login(report_project, login_error);
+	
+});
+}
+function check_login(succ, fail){
+	$.get('<?php echo get_link('IsLoginURL'); ?>', function(res){
+		if(res == 1){
+			if(typeof succ == 'function'){
+				succ();
+			}
+		}else{
+			if(typeof fail == 'function'){
+				fail();
+			}
+		}
+	});
 }
 
 

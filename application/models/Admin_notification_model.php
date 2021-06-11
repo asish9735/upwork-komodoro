@@ -33,7 +33,7 @@ class Admin_notification_model extends CI_Model{
 		$this->db->where('n_t.template_key', $template);
 		
 		$result = $this->db->get()->row();
-		if($result->template_content){
+		if($result && $result->template_content){
 			$notification_string_template = $result->template_content;
 		}else{
 			$notification_string_template = '';
