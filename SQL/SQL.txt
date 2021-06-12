@@ -759,3 +759,5 @@ CREATE TABLE `pref_reports` (
 
 ALTER TABLE `pref_reports` ADD PRIMARY KEY (`id`);
 ALTER TABLE `pref_reports` MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+UPDATE `pref_adminmenu` SET `name` = 'Report Incorrect', `title` = 'Report Incorrect', `style_class` = 'icon-material-outline-bug-report', `status` = '1' WHERE `pref_adminmenu`.`id` = 61;
