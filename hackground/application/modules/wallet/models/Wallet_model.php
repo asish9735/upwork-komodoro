@@ -152,7 +152,7 @@ class Wallet_model extends CI_Model{
 	
 	public function getWithdrawnList($srch=array(), $limit=0, $offset=20, $for_list=TRUE){
 		$wallet_transaction_type_id=get_setting('WITHDRAW');
-		$this->db->select('t.*,sum(r.debit-r.credit) as amount,r.description_tkey,r.relational_data,m.member_name,w.balance')
+		$this->db->select('t.*,r.debit as amount,r.description_tkey,r.relational_data,m.member_name,w.balance')
 			->from('wallet_transaction t')
 			->join('wallet_transaction_row r', 'r.wallet_transaction_id=t.wallet_transaction_id','left')
 			->join('wallet as w', 'r.wallet_id=w.wallet_id', 'LEFT')

@@ -162,7 +162,7 @@ class Wallet extends MX_Controller {
 		$this->data['list_total'] = $this->wallet->getWithdrawnList($srch, $limit, $offset, FALSE);
 		
 		$this->load->library('pagination');
-		$config['base_url'] = base_url($this->data['curr_controller'].'txn_list');
+		$config['base_url'] = base_url($this->data['curr_controller'].'withdrawn_list');
 		$config['total_rows'] =$this->data['list_total'];
 		$config['per_page'] = $offset;
 		$config['page_query_string'] = TRUE;
@@ -510,8 +510,8 @@ class Wallet extends MX_Controller {
 				$member_id=getField('user_id','wallet','wallet_id',$result->wallet_id);
 				$RECEIVER_EMAIL=getField('member_email','member','member_id',$member_id);
 				$data_parse=array(
-				'SELLER_NAME'=>getField('member_name','member','member_id',$member_id),
-				'TRANSACTION_URL'=>URL.'transaction-history',
+				'MEMBER_NAME'=>getField('member_name','member','member_id',$member_id),
+				'TRANSACTION_URL'=>SITE_URL.'finance/transaction',
 				);
 				
 				if($sts==2){
@@ -521,19 +521,21 @@ class Wallet extends MX_Controller {
 					$org_balance = $total_credit - $total_debit;
 					update_wallet_balance($wallet_id, $org_balance);
 					
-					$wallet_id=get_option_value('WITHDRAW_WALLET');
+					$wallet_id=get_setting('WITHDRAW_WALLET');
 					$total_debit = $this->wallet->wallet_debit_balance($wallet_id);
 					$total_credit = $this->wallet->wallet_credit_balance($wallet_id);
 					$org_balance = $total_credit + $total_debit;
 					update_wallet_balance($wallet_id, $org_balance);
 					
 					$template='withdrawal-request-approved-by-admin';
-					SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
+					SendMail($RECEIVER_EMAIL,$template,$data_parse);
+
+					
 				}elseif($sts==1){
 					$total=$result->debit;
 					$this->db->set('withdrawn','withdrawn+'.$total,FALSE)->where('wallet_id',$result->wallet_id)->update('wallet');	
 					$template='withdrawal-request-rejected-by-admin';
-					SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
+					SendMail($RECEIVER_EMAIL,$template,$data_parse);
 				}else{
 
 				}

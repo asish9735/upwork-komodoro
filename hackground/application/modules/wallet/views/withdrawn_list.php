@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
         <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -40,6 +44,7 @@
                   <th class="text-right" style="padding-right:20px;">Action</th>
                 </tr>
 				<?php if(count($list) > 0){foreach($list as $k => $v){ 
+					//print_r($v);
 				$status = '';
 				if($v['status'] == '1'){
 					$status = '<span class="badge badge-success">Approved</span>';
@@ -69,14 +74,14 @@
                   	if($v['description_tkey']=='Bank_Transfer'){
 						?>
 						<p><b>Account Number</b>: <?php echo $relational_data->to; ?><br>
-						<b>Account Name</b>: <?php echo $relational_data->ac_name; ?><br>
-						<b>Bank Name</b>: <?php echo $relational_data->bname; ?><br>
-						<b>Bank Code</b>: <?php echo $relational_data->bcode; ?></p>
+						<b>Bank Name</b>: <?php echo $relational_data->name; ?><br>
+						<b>Swift Code</b>: <?php echo $relational_data->swift; ?><br>
+						<b>IBAN</b>: <?php echo $relational_data->iban; ?></p>
 						<?php
 					}else{	
 				  	foreach($relational_data as $r=>$rval){
 					?>
-					<p><b><?php echo ucwords(str_replace('_',' ',$r))?></b>: <?php echo $rval; ?></p>
+					<p class="mb-0"><b><?php echo ucwords(str_replace('_',' ',$r))?></b>: <?php echo $rval; ?></p>
 					<?php	
 					}
 					}
