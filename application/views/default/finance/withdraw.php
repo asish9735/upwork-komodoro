@@ -21,7 +21,7 @@ $sub_total=0;
 			</div>-->
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i><?php echo __('finace_add_fund_amount','Amount');?> </h3>
+				<h3><i class="icon-material-outline-credit-card text-site"></i> <?php echo __('finace_add_fund_amount','Amount');?> </h3>
 			</div>
 			<div class="content with-padding">	
 				<div class="row">

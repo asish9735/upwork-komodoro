@@ -3,7 +3,7 @@
 border-color:silver
 }
 to {
-	border-color:#37bf00
+	border-color:var(--siteColor)
 }
 }
 .magic-checkbox, .magic-radio {
@@ -69,10 +69,10 @@ animation-duration:.4s;
 	width:8px;
 	height:8px;
 	border-radius:50%;
-	background:#37bf00
+	background:var(--siteColor)
 }
 .magic-radio:checked+label:before {
-	border:1px solid #37bf00
+	border:1px solid var(--siteColor)
 }
 .magic-radio:checked[disabled]+label:before {
 	border:1px solid #c9e2f9
@@ -95,8 +95,8 @@ animation-duration:.4s;
 	border-left:0
 }
 .magic-checkbox:checked+label:before {
-	border:#37bf00;
-	background:#37bf00
+	border:var(--siteColor);
+	background:var(--siteColor)
 }
 .magic-checkbox:checked[disabled]+label:before {
 	border:#c9e2f9;

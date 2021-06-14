@@ -110,10 +110,10 @@ if($loggedUser){
 						<ul data-submenu-title="Finance">
 							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('finance','Finance'); ?></a>
 								<ul>
-									<li class="<?php echo ($page_key == 'finance_addfund') ? 'active' : '' ;?>"><a href="<?php D(get_link('AddFundURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('add_fund','Add Fund');?></a></li>
-									<li class="<?php echo ($page_key == 'finance_transaction') ? 'active' : '' ;?>"><a href="<?php D(get_link('TransactionHistoryURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('transaction','Transaction')?></a></li>
-									<li class="<?php echo ($page_key == 'finance_withdraw') ? 'active' : '' ;?>"><a href="<?php D(get_link('WithdrawURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('withdraw','Withdraw');?></a></li>
-									<li class="<?php echo ($page_key == 'invoice_listdata') ? 'active' : '' ;?>"><a href="<?php D(get_link('InvoiceURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('invoice','Invoice');?></a></li>
+									<li class="<?php echo ($page_key == 'finance_addfund') ? 'active' : '' ;?>"><a href="<?php D(get_link('AddFundURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('add_fund','Add Fund');?></a></li>
+									<li class="<?php echo ($page_key == 'finance_transaction') ? 'active' : '' ;?>"><a href="<?php D(get_link('TransactionHistoryURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('transaction','Transaction')?></a></li>
+									<li class="<?php echo ($page_key == 'finance_withdraw') ? 'active' : '' ;?>"><a href="<?php D(get_link('WithdrawURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('withdraw','Withdraw');?></a></li>
+									<li class="<?php echo ($page_key == 'invoice_listdata') ? 'active' : '' ;?>"><a href="<?php D(get_link('InvoiceURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('invoice','Invoice');?></a></li>
 								</ul>	
 							</li>
 						</ul>
@@ -127,9 +127,9 @@ if($loggedUser){
 							</li>-->
 							<li><a href="#"><i class="icon-material-outline-assignment"></i> <?php echo __('projects','Projects'); ?></a>
 								<ul>
-									<li class="<?php echo ($page_key == 'projectfreelancer_bids') ? 'active' : '' ;?>"><a href="<?php D(get_link('myBidsURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('my_proposals','My Proposals');?></a></li>
-									<li class="<?php echo ($page_key == 'contract_offerlist') ? 'active' : '' ;?>"><a href="<?php D(get_link('OfferList'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('my_offers','My Offers');?> </a></li>
-									<li class="<?php echo ($page_key == 'contract_index') ? 'active' : '' ;?>"><a href="<?php D(get_link('ContractList'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('my_contract','My Contract');?> </a></li>
+									<li class="<?php echo ($page_key == 'projectfreelancer_bids') ? 'active' : '' ;?>"><a href="<?php D(get_link('myBidsURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('my_proposals','My Proposals');?></a></li>
+									<li class="<?php echo ($page_key == 'contract_offerlist') ? 'active' : '' ;?>"><a href="<?php D(get_link('OfferList'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('my_offers','My Offers');?> </a></li>
+									<li class="<?php echo ($page_key == 'contract_index') ? 'active' : '' ;?>"><a href="<?php D(get_link('ContractList'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('my_contract','My Contract');?> </a></li>
 									<!--<li><a href="dashboard-manage-tasks.html">Manage Tasks <span class="nav-tag">2</span></a></li>
 									<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
 									<li><a href="dashboard-my-active-bids.html">My Active Bids <span class="nav-tag">4</span></a></li>
@@ -141,8 +141,8 @@ if($loggedUser){
 						<ul>
 							<li><a href="<?php echo URL::get_link('settingaccountInfoURL')?>"><i class="icon-material-outline-settings"></i> <?php echo __('settings','Settings'); ?></a>
 								<ul>
-									<li class="<?php echo ($page_key == 'settings_contact_info') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingaccountInfoURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('contact_info','Contact info');?></a></li>
-									<li class="<?php echo ($page_key == 'password_security_password') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingpasswordURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i><?php echo __('password_security','Password & security');?></a></li>
+									<li class="<?php echo ($page_key == 'settings_contact_info') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingaccountInfoURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('contact_info','Contact info');?></a></li>
+									<li class="<?php echo ($page_key == 'password_security_password') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingpasswordURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('password_security','Password & security');?></a></li>
 									<li><a href="<?php echo URL::get_link('myprofileAJAXURL');?>"><i class="icon-feather-check"></i> <?php echo __('my_profile','My profile'); ?></a></li>
 								</ul>
 							

@@ -522,8 +522,8 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 .upload-area {
     width: 100%;
     max-height: 100px;
-	border: 2px dashed #64be43;
-    border-image-source: url(../images/border-dashed.png);
+	border: 2px dashed var(--siteColor);
+    border-image-source: url('../images/border-dashed.png');
     border-image-slice: 2;
     border-image-repeat: round;
     background-repeat: no-repeat;

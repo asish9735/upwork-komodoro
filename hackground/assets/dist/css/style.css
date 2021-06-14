@@ -2,7 +2,9 @@
 /* CSS Document */
 :root {
  --siteColor: #64be43;
+ --siteColorH:#37bf00;
  --webColor: #333;
+ --webColorH:#222;
 }
 @font-face {
  font-family: 'FSJoey';
@@ -18,6 +20,15 @@ html, body {
 body {
 	background-color: #f4f6f9;
 	overflow-x:hidden;
+}
+.brand-link{
+	height:64px;
+}
+.brand-link > .brand-image{
+	top: 50%;
+    position: relative;
+    transform: translate3d(0,-50%,0);
+	margin-top:0;
 }
 .wrapper {
 	height:100%;
@@ -4321,7 +4332,7 @@ ul, ol, li {
 	color:#fff
 }
 .btn-site:hover, .btn-site:focus {
-	background-color:#37bf00;
+	background-color:var(--siteColorH);
 	color:#fff
 }
 .btn-outline-site {
@@ -4347,11 +4358,11 @@ ul, ol, li {
 }
 .nav-tabs .nav-link.active {
 	background-color:transparent;
-	border-bottom-color:#40de00;
-	color:#40de00
+	border-bottom-color:var(--siteColor);
+	color:var(--siteColor);
 }
 .nav-tabs .nav-link:hover {
-	color:#37bf00
+	color:var(--siteColor)
 }
 .todo-list .magic-checkbox+label {
 	display:inline-block;

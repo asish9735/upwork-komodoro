@@ -16,7 +16,7 @@ $currency=priceSymbol();
 			</div>-->
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><i class="icon-material-outline-credit-card text-site"></i><?php echo __('finace_transaction','Transaction');?></h3>
+			<h3><i class="icon-material-outline-credit-card text-site"></i> <?php echo __('finace_transaction','Transaction');?></h3>
 			</div>
 			<div class="content with-padding">	
 				<label class="form-label"><?php echo __('finace_transaction_select_date','Select date for which you want your transaction history');?></label>
@@ -42,23 +42,23 @@ $currency=priceSymbol();
             </div>
             </div>
 			<div class="fun-facts-container">
-				<div class="fun-fact" data-fun-fact-color="#37bf00">
+				<div class="fun-fact" data-fun-fact-color="#fff">
                 	<div class="fun-fact-icon"><img src="<?php echo IMAGE;?>wallet.png" alt="" /></div>
-                    <div class="fun-fact-text ml-1">
+                    <div class="fun-fact-text">
                         <span><?php echo __('finace_transaction_C_balance','Current Balance');?></span>
                         <h4><?php echo $currency.priceFormat($current_balance);?></h4>
                     </div>
                 </div>
-                <div class="fun-fact" data-fun-fact-color="#37bf00">
+                <div class="fun-fact" data-fun-fact-color="#fff">
                 	<div class="fun-fact-icon"><img src="<?php echo IMAGE;?>credit-card.png" alt="" /></div>
-                    <div class="fun-fact-text ml-1">
+                    <div class="fun-fact-text">
                         <span><?php echo __('finace_transaction_T_credit','Total Credit');?></span>
                         <h4> <?php echo $currency.priceFormat($total_credit);?></h4>
                     </div>
                 </div>
-                <div class="fun-fact" data-fun-fact-color="#f00">
+                <div class="fun-fact" data-fun-fact-color="#fff">
                     <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>debit-card.png" alt="" /></div>
-                    <div class="fun-fact-text ml-1">
+                    <div class="fun-fact-text">
                         <span><?php echo __('finace_transaction_T_debit','Total Debit');?></span>
                         <h4> <?php echo $currency.priceFormat($total_debit);?></h4>
                     </div>
