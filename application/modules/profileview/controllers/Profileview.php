@@ -300,7 +300,7 @@ class Profileview extends MX_Controller {
 				$this->layout->view('ajax-portfolio-view', $this->data,TRUE);
 			//die;
 		}
-		elseif($this->access_member_type=='E'){
+		elseif($this->access_member_type=='C' && $form_type!='getsubcat'){
 			redirect(get_link('dashboardURL'));
 		}
 		elseif($this->loggedUser){
