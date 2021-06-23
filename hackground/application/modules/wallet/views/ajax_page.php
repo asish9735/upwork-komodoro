@@ -221,9 +221,9 @@ if($v['description_tkey']){
 			$tool.=' - ';
 			if($v['description_tkey']=='Bank_Transfer'){
 				$tool.=' <br>Account Number : '.$d->to;
-				$tool.=' <br>Account Name : '.$d->ac_name;
-				$tool.=' <br>Bank Name : '.$d->bname;
-				$tool.=' <br>Bank Code : '.$d->bcode;
+				$tool.=' <br>Bank Name : '.$d->name;
+				$tool.=' <br>Swift Code : '.$d->swift;
+				$tool.=' <br>IBAN : '.$d->iban;
 				
 			}else{
 				foreach($d as $kd=>$vald){
