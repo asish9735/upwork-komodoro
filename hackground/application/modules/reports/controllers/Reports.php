@@ -316,7 +316,7 @@ class Reports extends MX_Controller {
 				if($id && is_array($id)){
 					$this->db->where_in($this->data['primary_key'] ,  $id)->delete($this->data['table']);
 				}else{
-					$this->db->where($this->data['primary_key'] ,  $id)->update($this->data['table'],array('status'=>1));
+					$this->db->where($this->data['primary_key'] ,  $id)->delete($this->data['table']);
 				}
 				
 			}
