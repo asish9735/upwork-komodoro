@@ -34,6 +34,15 @@ class Membership extends MX_Controller {
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
 		$this->data['membership']=$this->membership_model->getMembership();
+		$this->data['selected_membership']=getData(array(
+			'select'=>'m.membership_id,m.membership_expire_date,m.is_free',
+			'table'=>'member_membership m',
+			'where'=>array('m.member_id'=>$this->member_id),
+			'single_row'=>TRUE
+			));
+		if($this->data['selected_membership']){
+			$this->data['selected_membership']->details=$this->membership_model->getMembershipDetails(md5($this->data['selected_membership']->membership_id));
+		}
 		$this->data['left_panel']=$this->layout->view('inc/freelancer-setting-left',$this->data,TRUE,TRUE);
 		$this->layout->view('membership',$this->data);
 	}
