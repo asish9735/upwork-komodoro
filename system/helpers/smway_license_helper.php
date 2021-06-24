@@ -2649,3 +2649,11 @@ if (!function_exists('make_invoice_number')) {
 		return $num;
 	}
 }
+if ( ! function_exists('is_online'))
+{
+function is_online($memberId){
+	$ci = &get_instance();
+    $ci->load->database();
+	return $ci->db->where('user_id',$memberId)->from('online_user')->count_all_results();
+}
+}

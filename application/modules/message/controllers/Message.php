@@ -199,9 +199,28 @@ class Message extends MX_Controller {
 			file_put_contents($u_file, json_encode($data));
 		}
 	}
-	
+	public function online_uer_up(){
+		$is_process=false;
+		if(!$this->session->userdata('lastupdate')){
+			$is_process=true;
+			$this->session->set_userdata('lastupdate',time());
+		}else{
+			$lasttime=$this->session->userdata('lastupdate');
+			if(time() > $lasttime+30){
+				$is_process=true;	
+				$this->session->set_userdata('lastupdate',time());
+			}
+		}
+		if($is_process){
+			$newtime=date('Y-m-d H:i:s',strtotime('-30 second'));
+			$wh=" (last_active < '".$newtime."' or user_id='".$this->member_id."')";
+			$this->db->where($wh)->delete('online_user');
+			$this->db->insert('online_user',array('user_id'=>$this->member_id,'last_active'=>date('y-m-d H:i:s')));
+		}
+	}
 	public function update_service(){
 		if($this->loggedUser){
+			$this->online_uer_up();
 			if(!is_dir(UPLOAD_PATH.'updates')){
 				mkdir(UPLOAD_PATH.'updates');
 			}
