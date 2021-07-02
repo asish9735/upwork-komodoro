@@ -1,3 +1,6 @@
+<?php
+$all_category=getAllCategory(array('limit'=>6));
+?>
 <!-- Footer -->
 <div id="footer">  
   <!-- Footer Middle Section -->
@@ -8,16 +11,15 @@
           <div class="footer-links">
             <h3><?php echo __('category','Category');?></h3>
             <ul>
-              <li><a href="#"><span><?php echo __('business','Business');?></span></a></li>
-              <li><a href="#"><span><?php echo __('digital_marketing','Digital Marketing');?></span></a></li>
-              <li><a href="#"><span><?php echo __('graphics_design','Graphics &amp; Design');?></span></a></li>              
-              <li><a href="#"><span><?php echo __('lifestyle','Lifestyle');?></span></a></li>
-              <li><a href="#"><span><?php echo __('music_audio','Music &amp; Audio');?></span></a></li>
-              <li><a href="#"><span><?php echo __('programming_tech','Programming &amp; Tech');?></span></a></li>
-              <li><a href="#"><span><?php echo __('sitemap','Sitemap');?></span></a></li>
-              <li><a href="#"><span><?php echo __('video_animation','Video &amp; Animation');?></span></a></li>
-              <li><a href="#"><span><?php echo __('writing_translation','Writing &amp; Translation');?></span></a></li>
-            </ul>
+              <?php if($all_category){
+                foreach($all_category as $c=>$category){
+                ?>
+                <li><a href="<?php echo get_link('search_job')?>?category=<?php echo $category->category_id;?>"><span><?php echo $category->category_name;?></span></a></li>
+                <?php
+                }
+              }
+              ?>
+             </ul>
           </div>
         </div>
         <!-- Links -->
@@ -25,15 +27,12 @@
           <div class="footer-links">
             <h3><?php echo __('browse','Browse');?></h3>
             <ul>
-              <li><a href="#"><span><?php echo __('freelancer_by_skill','Freelancers by Skill');?></span></a></li>
-              <li><a href="#"><span><?php echo __('freelancer_by_location','Freelancers by Location');?></span></a></li>
-              <li><a href="#"><span><?php echo __('find_projects','Find Projects');?></span></a></li>
-              <li><a href="#"><span><?php echo __('find_professionals','Find Professionals');?></span></a></li>
-              <li><a href="#"><span><?php echo __('freelancer_in_uk','Freelancers in UK');?></span></a></li>
-              <li><a href="#"><span><?php echo __('freelancer_in_usa','Freelancers in USA');?></span></a></li>
-              <li><a href="#"><span><?php echo __('freelancer_in_canada','Freelancers in Canada');?></span></a></li>
-              <li><a href="#"><span><?php echo __('freelancer_in_australia','Freelancers in Australia');?></span></a></li>
-              <li><a href="#"><span><?php echo __('jobs_in_usa','Jobs in USA');?></span></a></li>
+              <li><a href="<?php D(get_link('search_job'))?>"><span><?php echo __('find_projects','Find Projects');?></span></a></li>
+              <li><a href="<?php D(get_link('search_freelancer'))?>"><span><?php echo __('find_professionals','Find Professionals');?></span></a></li>
+              <li><a href="<?php D(get_link('search_freelancer'))?>?country=GBR"><span><?php echo __('freelancer_in_uk','Freelancers in UK');?></span></a></li>
+              <li><a href="<?php D(get_link('search_freelancer'))?>?country=USA"><span><?php echo __('freelancer_in_usa','Freelancers in USA');?></span></a></li>
+              <li><a href="<?php D(get_link('search_freelancer'))?>?country=CAN"><span><?php echo __('freelancer_in_canada','Freelancers in Canada');?></span></a></li>
+              <li><a href="<?php D(get_link('search_freelancer'))?>?country=AUS"><span><?php echo __('freelancer_in_australia','Freelancers in Australia');?></span></a></li>
             </ul>
           </div>
         </div>
@@ -45,9 +44,6 @@
               <li><a href="<?php D(get_link('CMSaboutus'))?>"><span><?php echo __('about_us','About Us');?></span></a></li>                                                        
               <li><a href="<?php D(get_link('conatctURL'))?>"><span><?php echo __('contact_us','Contact Us');?></span></a></li>
               <li><a href="<?php D(get_link('enterpriseURL'))?>"><span><?php echo __('enterprise','Enterprise');?></span></a></li>
-              <li><a href="<?php D(get_link('CMShelp'))?>"><span><?php echo __('faqs','FAQs');?></span></a></li>              
-              <li><a href="<?php D(get_link('CMShowitworks'))?>"><span><?php echo __('how_it_works','How it works');?></span></a></li>
-              <li><a href="<?php D(get_link('membershipURL'))?>"><span><?php echo __('membership','Membership');?></span></a></li>
               <li><a href="<?php D(get_link('CMSprivacypolicy'))?>"><span><?php echo __('privacy_policy','Privacy Policy');?></span></a></li>
               <li><a href="<?php D(get_link('CMSrefundpolicy'))?>"><span><?php echo __('refund_policy','Refund Policy');?></span></a></li>
               <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span><?php echo __('terms_conditions','Terms &amp; Conditions');?></span></a></li>              
@@ -59,12 +55,9 @@
           <div class="footer-links">
             <h3><?php echo __('resources','Resources');?></h3>
             <ul>
-              <li><a href="#"><span><?php echo __('business_resources','Business Resources');?></span></a></li>
-              <li><a href="#"><span><?php echo __('customer_stories','Customer Stories');?></span></a></li>
-              <li><a href="#"><span><?php echo __('customer_support','Customer Support');?></span></a></li>
-              <li><a href="#"><span><?php echo __('hiring_headquarters','Hiring Headquarters');?></span></a></li>              
-              <li><a href="#"><span><?php echo __('payroll_services','Payroll Services');?></span></a></li>
-              <li><a href="#"><span><?php echo __('trust_safety','Trust &amp; Safety');?></span></a></li>
+              <li><a href="<?php D(get_link('CMShelp'))?>"><span><?php echo __('faqs','FAQs');?></span></a></li>              
+              <li><a href="<?php D(get_link('CMShowitworks'))?>"><span><?php echo __('how_it_works','How it works');?></span></a></li>
+              <li><a href="<?php D(get_link('membershipURL'))?>"><span><?php echo __('membership','Membership');?></span></a></li>
             </ul>
           </div>
         </div>                
@@ -80,15 +73,35 @@
       <!-- Left Side -->
       <div class="col-auto">
       	  <ul class="social-links footer-social-links">
-            <li><a href="#" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-facebook-f"></i></a></li>
-            <li><a href="#" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-twitter"></i></a></li>                
-            <li><a href="#" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-linkedin-in"></i></a></li>
-            <li><a href="#" title="Instagram" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-instagram"></i></a></li>
-            <li><a href="#" title="Youtube" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-youtube"></i></a></li>
+            <<?php 
+          $facebook_url=get_setting('facebook_url');
+          if($facebook_url){?>
+            <li><a href="<?php echo  $facebook_url;?>" title="Facebook" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-facebook-f"></i></a></li>
+          <?php }?>
+          <?php 
+          $twitter_url=get_setting('twitter_url');
+          if($twitter_url){?>
+            <li><a href="<?php echo  $twitter_url;?>" title="Twitter" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-twitter"></i></a></li>                
+          <?php }?>
+          <?php 
+          $linkedin_url=get_setting('linkedin_url');
+          if($linkedin_url){?>
+            <li><a href="<?php echo  $linkedin_url;?>" title="LinkedIn" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-linkedin-in"></i></a></li>
+          <?php }?>
+          <?php 
+          $instagram_url=get_setting('instagram_url');
+          if($instagram_url){?>
+            <li><a href="<?php echo  $instagram_url;?>" title="Instagram" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-instagram"></i></a></li>
+          <?php }?>
+          <?php 
+          $youtube_url=get_setting('youtube_url');
+          if($youtube_url){?>
+            <li><a href="<?php echo  $youtube_url;?>" title="Youtube" data-tippy-placement="bottom" data-tippy-theme="light" target="_blank"><i class="icon-brand-youtube"></i></a></li>
+          <?php }?>
           </ul>
 	  </div>              
       <div class="col text-center">
-        	<p>&copy; <?php echo __('copyright','Copyright');?> 2020 Demo.com. <?php echo __('all_rights_reserved','All Rights Reserved');?></p>
+        	<p>&copy; <?php echo __('copyright','Copyright');?> <?php echo date('Y');?> OriginateSoft.com. <?php echo __('all_rights_reserved','All Rights Reserved');?></p>
         </div>
       
       <!-- Right Side -->

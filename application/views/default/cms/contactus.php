@@ -67,12 +67,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="media-body">
         	<h4 class="mb-3"><?php echo __('cms_contactus_social','Social Links');?></h4>
             <div class="freelancer-socials">
-                <ul class="social-links">
-                    <li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
-                    <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                    <li><a href="#" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-                    <li><a href="#" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
-                    <li><a href="#" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
+            <ul class="social-links">
+                <?php 
+                $facebook_url=get_setting('facebook_url');
+                if($facebook_url){?>
+                    <li><a href="<?php echo  $facebook_url;?>" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+                    <?php }?>
+                <?php 
+                $twitter_url=get_setting('twitter_url');
+                if($twitter_url){?>
+                    <li><a href="<?php echo  $twitter_url;?>" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+                    <?php }?>
+                <?php 
+                $linkedin_url=get_setting('linkedin_url');
+                if($linkedin_url){?>
+                    <li><a href="<?php echo  $linkedin_url;?>" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+                    <?php }?>
+                <?php 
+                $instagram_url=get_setting('instagram_url');
+                if($instagram_url){?>
+                    <li><a href="<?php echo  $instagram_url;?>" title="Instagram" data-tippy-placement="top"><i class="icon-brand-instagram"></i></a></li>
+                    <?php }?>
+                <?php 
+                $youtube_url=get_setting('youtube_url');
+                if($youtube_url){?>
+                    <li><a href="<?php echo  $youtube_url;?>" title="Youtube" data-tippy-placement="top"><i class="icon-brand-youtube"></i></a></li>
+                    <?php }?>  
                 </ul>
             </div>
         </div>								

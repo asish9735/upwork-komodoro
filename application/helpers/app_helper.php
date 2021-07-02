@@ -349,19 +349,37 @@ if ( ! function_exists('getAllSkills'))
 if ( ! function_exists('CurrencySymbol'))
 {
 function CurrencySymbol(){
-    return get_setting('site_currency');
+	if(defined('SITE_CURRENCY')){
+		$site_currency=SITE_CURRENCY;
+	}else{
+		$site_currency=get_setting('site_currency');
+		defined('SITE_CURRENCY') OR define('SITE_CURRENCY',$site_currency); 
+	}
+    return $site_currency;
 }
 }
 if ( ! function_exists('CurrencyCode'))
 {
 function CurrencyCode() {
-    return get_setting('site_currency_code');
+	if(defined('SITE_CURRENCY_CODE')){
+		$site_currency_code=SITE_CURRENCY_CODE;
+	}else{
+		$site_currency_code=get_setting('site_currency_code');
+		defined('SITE_CURRENCY_CODE') OR define('SITE_CURRENCY_CODE',$site_currency_code); 
+	}
+    return $site_currency_code;
 }
 }
 if ( ! function_exists('priceSymbol'))
 {
 	function priceSymbol() {
-	    return get_setting('site_currency');
+	    if(defined('SITE_CURRENCY')){
+			$site_currency=SITE_CURRENCY;
+		}else{
+			$site_currency=get_setting('site_currency');
+			defined('SITE_CURRENCY') OR define('SITE_CURRENCY',$site_currency); 
+		}
+		return $site_currency;
 	}
 }
 if ( ! function_exists('priceFormat'))
@@ -377,14 +395,20 @@ if ( ! function_exists('priceFormat'))
 }
 if ( ! function_exists('getAllCategory'))
 {
-function getAllCategory(){
-	return getData(array(
-				'select'=>'c.category_id,c.category_key,c_n.category_name',
-				'table'=>'category c',
-				'join'=>array(array('table'=>'category_names as c_n','on'=>'c.category_id=c_n.category_id','position'=>'left')),
-				'where'=>array('c.category_status'=>'1','c_n.category_lang'=>get_active_lang()),
-				'order'=>array(array('c.category_order','asc'))
-		));
+function getAllCategory($search=array()){
+	$arr=array(
+		'select'=>'c.category_id,c.category_key,c_n.category_name',
+		'table'=>'category c',
+		'join'=>array(array('table'=>'category_names as c_n','on'=>'c.category_id=c_n.category_id','position'=>'left')),
+		'where'=>array('c.category_status'=>'1','c_n.category_lang'=>get_active_lang()),
+		'order'=>array(array('c.category_order','asc'))
+	);
+	if($search){
+		if(array_key_exists('limit',$search)){
+			$arr['limit']=$search['limit'];
+		}
+	}
+	return getData($arr);
 }
 }
 if ( ! function_exists('getAllSubCategory'))

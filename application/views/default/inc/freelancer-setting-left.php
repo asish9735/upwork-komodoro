@@ -79,8 +79,8 @@ if($loggedUser){
                             </div>
                             
                             <h5>
-                            <i class="icon-feather-clock text-info"></i> <?php if($memberDataBasic->member_hourly_rate && $memberDataBasic->member_hourly_rate>0){D(CURRENCY.priceFormat($memberDataBasic->member_hourly_rate).'/hr');}else{D('Not set');}?> &nbsp; <span class="text-muted">|</span> &nbsp; 
-                            <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php D(priceFormat($memberDataBasic->balance));?></b>
+                            <i class="icon-feather-clock text-info"></i> <?php if($memberDataBasic->member_hourly_rate && $memberDataBasic->member_hourly_rate>0){D(CurrencySymbol().priceFormat($memberDataBasic->member_hourly_rate).'/hr');}else{D('Not set');}?> &nbsp; <span class="text-muted">|</span> &nbsp; 
+                            <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CurrencySymbol();?><b><?php D(priceFormat($memberDataBasic->balance));?></b>
                             <?php /*<i class="icon-feather-calendar text-primary"></i> 
                             <b>
                             <?php if($memberDataBasic->not_available_until){
@@ -94,7 +94,7 @@ if($loggedUser){
                             
                             </b>  */?>
                             </h5>
-                            <!-- <h5><i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b>1500</b></h5> -->
+                            <!-- <h5><i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CurrencySymbol();?><b>1500</b></h5> -->
                             <a href="<?php echo URL::get_link('myprofileAJAXURL');?>" class="btn btn-site btn-block"><?php echo __('my_profile','My profile'); ?></a>
                             
                         	</div>

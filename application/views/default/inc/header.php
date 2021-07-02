@@ -160,7 +160,7 @@ if($loggedUser){
 									<div class="user-name">
 										<p><?php echo $profile_name;?></p>
                                         <span><?php echo $profile_type_name;?></span>
-                                        <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php  D(priceFormat($wallet_balance));?></b>
+                                        <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CurrencySymbol();?><b><?php  D(priceFormat($wallet_balance));?></b>
 									</div>
 								</div>
 								

@@ -60,7 +60,7 @@ if($loggedUser){
                         <h4><?php echo $profile_name;?></h4>
                         <div class="star-rating mb-2" data-rating="<?php echo round($memberDataBasic->avg_rating,1);?>"></div>
                         </div>
-                        <h5> <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CURRENCY;?><b><?php D(priceFormat($memberDataBasic->balance));?></b> <a href="<?php D(get_link('AddFundURL'))?>" class="btn btn-circle btn-outline-site ml-2" style="width: 1.5rem;height: 1.5rem;padding: 0.2rem 0;"><i class="icon-feather-plus"></i></a></h5>
+                        <h5> <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CurrencySymbol();?><b><?php D(priceFormat($memberDataBasic->balance));?></b> <a href="<?php D(get_link('AddFundURL'))?>" class="btn btn-circle btn-outline-site ml-2" style="width: 1.5rem;height: 1.5rem;padding: 0.2rem 0;"><i class="icon-feather-plus"></i></a></h5>
                         
                     </div>
                 </div>

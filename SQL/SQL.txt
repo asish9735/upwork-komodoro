@@ -761,3 +761,16 @@ ALTER TABLE `pref_reports` ADD PRIMARY KEY (`id`);
 ALTER TABLE `pref_reports` MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 UPDATE `pref_adminmenu` SET `name` = 'Report Incorrect', `title` = 'Report Incorrect', `style_class` = 'icon-material-outline-bug-report', `status` = '1' WHERE `pref_adminmenu`.`id` = 61;
+
+--
+--02072021
+--
+
+INSERT INTO `pref_setting_group` (`setting_group_id`, `group_name`, `group_key`, `status`) VALUES
+(NULL, 'Social', 'social', 1);
+INSERT INTO `pref_settings` (`id`, `title`, `setting_key`, `setting_value`, `editable`, `deletable`, `display_order`, `setting_group`) VALUES
+(NULL, 'Facebook Link', 'facebook_url', 'https://facebook.com', 1, 0, 1, 'social'),
+(NULL, 'Twitter Link', 'twitter_url', 'https://twitter.com', 1, 0, 2, 'social'),
+(NULL, 'LinkedIn Link', 'linkedin_url', 'https://linkedin.com', 1, 0, 3, 'social'),
+(NULL, 'Instagram Link', 'instagram_url', 'https://instagram.com', 1, 0, 4, 'social'),
+(NULL, 'Youtube Link', 'youtube_url', 'https://youtube.com', 1, 0, 5, 'social');

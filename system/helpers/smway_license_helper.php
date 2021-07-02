@@ -2372,7 +2372,7 @@ function generateProcessingFee($type,$amount=0){
 			$total_fee_text.=' + ';
 		}
 		if($processing_fee_fixed>0){
-			$total_fee_text.=CURRENCY.$processing_fee_fixed;
+			$total_fee_text.=CurrencySymbol().$processing_fee_fixed;
 		}
 		$data['processing_fee_text']=$total_fee_text;
 		$processing_fee_percent_amt=($amount*$processing_fee_percent)/100;
