@@ -465,9 +465,6 @@ RTL SPACE
 .message-reply .uploadButton {
 	margin:0.1rem 1rem 0 auto;
 }
-.attachmentFile {
-	border-left: 1px solid #dee2e6;
-}
 .header-notifications-dropdown:before {
 	right: 43px;
 }
@@ -544,7 +541,6 @@ ul.dashboard-box-list.if-double-button > li {
 }
 .dashboard-box .freelancer-overview .freelancer-name {
 	text-align: left;
-	margin-left:1.25rem;
 }
 .comment-by .status {
     right: 0;
@@ -602,6 +598,12 @@ ul.dashboard-box-list.if-double-button > li {
 	ul.totalList > li:nth-child(4n) {
 		border-right:none
 	}
+	.dashboard-box .freelancer-overview .freelancer-name {
+		margin-left:1.25rem;
+	}
+	.attachmentFile {
+		border-left: 1px solid #dee2e6;
+	}
 
 }
 @media only screen and (min-width: 992px) {
@@ -616,12 +618,20 @@ ul.dashboard-box-list.if-double-button > li {
 	}
 }
 
- @media (max-width: 991px) {
+ @media (max-width: 991.99px) {
 	.message-bubble.me .message-text{
 		margin:0;
 	}
+	ul.dashboard-box-list.if-button > li.application-list{
+		padding-right:1.25rem;
+	}
+	ul.dashboard-box-list.if-button > li.application-list .freelancer-overview{
+		padding-right:64px;
+	}
 }
-
+ @media (max-width: 767.99px) {
+	
+ }
 
 
 /* END CSS */

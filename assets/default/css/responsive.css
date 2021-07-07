@@ -24,12 +24,11 @@ ul.totalList > li {
 html {
     font-size: 15px;
 }
-.freelancer-actions {
-	margin-left: 85px;
-    min-width: 480px;
-}
 .pricing-group > .btn {
     flex: 0 0 calc(25% - 1.25rem);
+}
+.attachScrollbar {
+	height: 450px
 }
 
 }
@@ -40,6 +39,10 @@ html {
 	}
 	.dashboard-sidebar-inner{
 		height:750px !important;
+	}
+	.freelancer-actions {
+		margin-left: 85px;
+		min-width: 480px;
 	}
 	/*.dashboard-content-inner {
 		min-height: 750px;
@@ -81,7 +84,7 @@ html {
 	}
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
 ul.totalList > li {
 	flex: 0 0 50%;
 }
@@ -103,6 +106,14 @@ ul.totalList > li:nth-child(2n) {
 .job-listing-footer .dashboard-status-button {
     margin: 3px 0;
 }
+.nav-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: inherit;
+}
+	.attachmentFile {
+		border-top: 1px solid #dee2e6;
+	}
 
 }
 

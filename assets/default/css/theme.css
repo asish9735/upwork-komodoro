@@ -2868,6 +2868,7 @@ blockquote {
 }
 .comments h4 {
 	color: #333;
+	font-size: 1.125rem;
 }
 .comments h4 span {
 	display: inline-block;
@@ -4556,9 +4557,9 @@ width: calc(100%);
 	color: #000;
 	font-size: 1.313rem;
 }
-.dashboard-box .freelancer-name h4{
+/*.dashboard-box .freelancer-name h4{
 	font-size: 1.125rem;
-}
+}*/
 img.flag {
 	border-radius: 3px;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
@@ -11441,14 +11442,14 @@ a.apply-now-button i {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-	width: calc(100% + 20px);
+	width: calc(100% + 1.5rem);
 	margin-bottom: -1.5rem;
 }
 .attachment-box {
 	display: flex;
-	margin: 0 20px 20px 0;
+	margin: 0 1.5rem 1.5rem 0;
 	background-color: #f4f4f4;
-	border-radius: 4px 0px 4px 4px;
+	border-radius: 0.25rem 0 0.25rem 0.25rem;
 	font-weight: 600;
 	padding: 15px 20px;
 	padding-bottom: 45px;
@@ -11458,12 +11459,12 @@ a.apply-now-button i {
 	color: #666;
 	position: relative;
 	transition: 0.3s;
-	flex: 0 1 calc(33.3333% - 20px);
+	flex: 0 1 calc(33.3333% - 1.5rem);
 	cursor: default;
 	position: relative;
 }
 .single-page-section .attachment-box {
-	flex: 0 1 calc(33% - 20px);
+	flex: 0 1 calc(33% - 1.5rem);
 }
 .single-page-section .attachments-container {
 	margin-bottom: -1.5rem;
@@ -12509,7 +12510,8 @@ max-width: 100%
 }
  @media (max-width: 767px) {
  .dashboard-box .freelancer-overview .freelancer-avatar {
- width: 64px;
+	width: 64px;
+	display: none;
 }
  .dashboard-box .freelancer-overview .freelancer-avatar .verified-badge {
  transform: scale(0.8);
