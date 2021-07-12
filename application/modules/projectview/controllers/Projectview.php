@@ -663,7 +663,7 @@ class Projectview extends MX_Controller {
 			$member_id=$this->member_id;
 			$organization_id=$this->organization_id;
 			$project_id=getFieldData('project_id','project','md5(project_id)',$pid);
-			$bidder_id=getFieldData('member_id','project_bids','md5(member_id)',$mid);
+			$bidder_id=getFieldData('member_id','member','md5(member_id)',$mid);
 			$this->data['projects']=getProjectDetails($project_id,array('project','project_owner','project_settings'));
 			if($this->data['projects']){
 				$owner_organization_id=$this->data['projects']['project_owner']->organization_id;
