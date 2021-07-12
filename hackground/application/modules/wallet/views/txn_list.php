@@ -73,7 +73,7 @@
                   <td><?php echo format_date_time($v['created_date']); ?></td>
                   <td><?php echo $status; ?></td>                 
                   <td align="right">
-					<a href="javascipt:void(0)" data-toggle="tooltip" title="View Detail" data-placement="left" onclick="view_txn_detail('<?php echo $v['wallet_transaction_id']; ?>')"><i class="icon-feather-info <?php echo ICON_SIZE;?>"></i></a>
+					<a href="javascript:void(0)" data-toggle="tooltip" title="View Detail" data-placement="left" onclick="view_txn_detail('<?php echo $v['wallet_transaction_id']; ?>')"><i class="icon-feather-info <?php echo ICON_SIZE;?>"></i></a>
 				  </td>
                 </tr>
 				<?php } }else{  ?>
