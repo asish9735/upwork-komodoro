@@ -5859,8 +5859,8 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 /* Verified Badge */
 .verified-badge {
 	position: relative;
-	height: 19px;
-	width: 19px;
+	height: 16px;
+	width: 16px;
 	display: inline-block;
 	background-color: #38b653;
 	border-radius: 50%;
@@ -5873,13 +5873,13 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 	font-family: "Feather-Icons";
 	color: #fff;
 	position: relative;
-	top: 0px;
-	line-height: 20px;
+	top: -3px;
+	line-height: 0;
 }
 .job-listing .job-listing-company-logo .verified-badge {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 3px;
+    right: 3px;
 	/*transform: translate(7px, 7px);*/
 }
 /* Long Verified Badge */

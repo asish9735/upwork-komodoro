@@ -1485,8 +1485,15 @@ ul.list-group-0 > li{
 .panel.border{
 	box-shadow:none;
 }
-
-
+.pagination-container {
+    margin: 1.5rem 0 1rem;
+}
+.boxed-list .pagination-container{
+	margin: 1rem
+}
+#job-experience{
+	overflow:hidden
+}
 
 
 

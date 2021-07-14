@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <span id="passwordError" class="rerror"></span>
         </div>
         
-         <button class="btn btn-site btn-block signUpBTN">Submit</button>
+         <button class="btn btn-site btn-block mb-3 signUpBTN">Submit</button>
     </div>
     </form>
     <p class="text-center small mb-0"><?php echo __('user_page_signup_have_account','Already have an account?');?> <a href="<?php URL::getLink('login'); ?>"><?php echo __('user_page_signup_login','Log In');?></a></p>

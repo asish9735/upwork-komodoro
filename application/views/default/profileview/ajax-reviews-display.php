@@ -39,21 +39,21 @@ $cntloop=0;
           
           <!-- Pagination -->
           <div class="clearfix"></div>
-          <div class="pagination-container margin-top-40 margin-bottom-10">
+          <div class="pagination-container">
 <?php
 if($cntloop>1){
 	?>
 <nav class="pagination" id="paggination-review">
 	<ul>
-	<li class="pagination-arrow"><a href="<?php D(VZ);?>" class="ripple-effect btn disabled prevbtn"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
+	<li class="pagination-arrow"><a href="<?php D(VZ);?>" class="disabled prevbtn"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
 	<?php
 	for($i=1;$i<=$cntloop;$i++){
 		?>
-		<li><a href="<?php D(VZ);?>" data-id="<?php D($i);?>" class="ripple-effect pagibtn <?php if($i==1){?>current-page<?php }?>"><?php D($i);?></a></li>
+		<li><a href="<?php D(VZ);?>" data-id="<?php D($i);?>" class="pagibtn <?php if($i==1){?>current-page<?php }?>"><?php D($i);?></a></li>
 		<?php
 	}
 	?>
-	<li class="pagination-arrow"><a href="<?php D(VZ);?>" class="ripple-effect btn nextbtn"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
+	<li class="pagination-arrow"><a href="<?php D(VZ);?>" class="nextbtn"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
 	</ul>
 </nav>
 	<?php
