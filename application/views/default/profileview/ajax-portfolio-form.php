@@ -70,8 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                              ?>
                             </select>
                             </div>
+                            <span id="sub_categoryError" class="rerror"></span>
                         </div>
-                        <span id="sub_categoryError" class="rerror"></span>
                     </div>
                     <div class="submit-field">
                         <h5><?php echo __('profileview_portfolia_complete_date','Completion Date (Optional)');?></h5>
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label><?php echo __('profileview_portfolia_image','Image');?></label>                
                         <input type="file" name="fileinput" id="fileinput">
                         <div class="upload-area" id="uploadfile">
-                            <p><?php echo __('profileview_portfolia_drag','Drag');?> &amp;<?php echo __('profileview_portfolia_drop_file','drop file here');?> <br /><?php echo __('profileview_portfolia_or','or');?> <br /> <span class="text-site"><?php echo __('profileview_portfolia_click','click');?></span><?php echo __('profileview_portfolia_select_file','to select file');?></p>
+                            <p><?php echo __('profileview_portfolia_drag','Drag');?> &amp; <?php echo __('profileview_portfolia_drop_file','drop file here');?> <br /><?php echo __('profileview_portfolia_or','or');?> <br /> <span class="text-site"><?php echo __('profileview_portfolia_click','click');?></span> <?php echo __('profileview_portfolia_select_file','to select file');?></p>
                         </div>
                         <div id="uploadfile_container">
                     <?php  

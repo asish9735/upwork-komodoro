@@ -41,8 +41,8 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
                 <?php if($pending_contract==0){?>
 	            <?php if($is_owner){?>
 	            <div class="row mb-3">
-                <div class="col-sm-6"><h5><?php echo __('contract_details_feed_contarctor','Your Feedback to Contractor');?></h5></div>
-	               <div class="col-sm-6">
+                <div class="col-md-3"><h5><?php echo __('contract_details_feed_contarctor','Your Feedback to Contractor');?></h5></div>
+	               <div class="col-md-9">
 	              		<?php if($reviews){
 	              			if($reviews['review_by_me']){
 						?>
@@ -58,8 +58,8 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 	               </div>
 	            </div>
                 <div class="row mb-3">
-                   <div class="col-sm-6"><h5><?php echo __('contract_details_feed_you',"Contractor's Feedback to You");?></h5></div>
-	               <div class="col-sm-6">
+                   <div class="col-md-3"><h5><?php echo __('contract_details_feed_you',"Contractor's Feedback to You");?></h5></div>
+	               <div class="col-md-9">
 	               <?php if($reviews){
 	              			if($reviews['review_to_me']){
 	              				if($reviews['review_by_me']){
@@ -83,8 +83,8 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 	            </div>
                 <?php }else{?>
 	           <div class="row mb-3">    
-                   <div class="col-sm-6"><h5><?php echo __('contract_details_feed_client','Your Feedback to Client');?></h5></div>
-	               <div class="col-sm-6">
+                   <div class="col-md-3"><h5><?php echo __('contract_details_feed_client','Your Feedback to Client');?></h5></div>
+	               <div class="col-md-9">
 	               		<?php if($reviews){
 	              			if($reviews['review_by_me']){
 						?>
@@ -100,8 +100,8 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
 	               </div>
                </div>
                <div class="row mb-3">    
-	                <div class="col-sm-6"><h5><?php echo __('contract_details_client_you',"Client's Feedback to You");?></h5></div>
-	               <div class="col-sm-6">
+	                <div class="col-md-3"><h5><?php echo __('contract_details_client_you',"Client's Feedback to You");?></h5></div>
+	               <div class="col-md-9">
 	               	<?php if($reviews){
 	              			if($reviews['review_to_me']){
 	              				if($reviews['review_by_me']){
@@ -125,8 +125,8 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
                <?php }?>
 			   <?php }?>
                <div class="row mb-3">
-               <div class="col-sm-6"><h5><?php echo __('contract_term_c_date','Contract Date');?></h5></div>
-               <div class="col-sm-6"><p><?php echo $contractDetails->contract_date;?></p></div>
+               <div class="col-md-3"><h5><?php echo __('contract_term_c_date','Contract Date');?></h5></div>
+               <div class="col-md-9"><p><?php echo $contractDetails->contract_date;?></p></div>
                </div>
                <h5><?php echo __('contract_term_d_work','Description of Work');?></h5>
                <p><?php echo nl2br($contractDetails->contract_details);?></p>
@@ -143,7 +143,7 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
               <div class="card-body">
 			  	<a <?php echo $profile_url;?>>
               	<span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
-                <h5 class="card-title mb-0"><?php echo $name;?></h5>
+                <h4 class="card-title mb-0"><?php echo $name;?></h4>
 				</a>
                 <?php if($is_owner){?>
             	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>

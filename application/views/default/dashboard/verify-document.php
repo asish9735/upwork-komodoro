@@ -76,8 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<h5>Attachment</h5>
 					<div class="">
 						<input type="file" id="upload2" class="d-none" accept="image/*, application/pdf, application/doc, application/docx, application/docs">
-						<div class="upload-area"  id="uploadfile2">
-			                <h4>Drag &nbsp; drop file here or <span class="text-site">click</span> to select file</h4>
+						<div class="upload-area" id="uploadfile2">
+			                <p>Drag &nbsp; drop file here or <span class="text-site">click</span> to select file</p>
 			            </div>
 			            <p><small>Note: Only image and pdf allowed</small></p>
 			            <div id="uploadfile_container_uploadfile2"></div>

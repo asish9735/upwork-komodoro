@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label><?php echo __('postproject_project_attachment','Project attachment');?></label>                
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                    <p><?php echo __('postproject_drag','Drag');?> &amp;<?php echo __('postproject_drop_file','drop file here');?> <br /><?php echo __('postproject_or','or');?> <br /> <span class="text-site"><?php echo __('click','click');?></span><?php echo __('postproject_select_file','to select file');?> </p>
+                    <p><?php echo __('postproject_drag','Drag');?> &amp; <?php echo __('postproject_drop_file','drop file here');?> <br /><?php echo __('postproject_or','or');?> <br /> <span class="text-site"><?php echo __('click','click');?></span> <?php echo __('postproject_select_file','to select file');?> </p>
                 </div>
                 <div id="uploadfile_container">
                 <?php if($projectData && $projectData['project_files']){

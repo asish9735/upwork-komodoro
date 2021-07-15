@@ -23,7 +23,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
 <div class="container">
       <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i><?php echo __('contract_end_b_contract','Back to Contract');?> </a>
       
-        <h1><?php echo $contractMilestoneDetails->contract_title;?></h1>
+        <h1 class="display-4"><?php echo $contractMilestoneDetails->contract_title;?></h1>
         <div class="row">
           <div class="col-lg-9">
             <div class="panel mb-4">
@@ -185,7 +185,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
               <div class="card-body">
 			  	<a <?php echo $profile_url;?>>
                 <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>
-                <h5 class="card-title mb-0"><?php echo $name;?></h5>
+                <h4 class="card-title mb-0"><?php echo $name;?></h4>
 				</a>
 				<?php if($is_owner){?>
             	<p class="text-muted mb-0"><?php D($contractMilestoneDetails->contractor->member_heading);?></p>
@@ -222,9 +222,9 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                 <label><b><?php echo __('contract_message_attachment','Attachments');?></b></label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                  <h4 class="mb-0"><?php echo __('contract_dispute_drag_drop','Drag and Drop file here');?><br/>
+                  <p class="mb-0"><?php echo __('contract_dispute_drag_drop','Drag and Drop file here');?><br/>
                     <?php echo __('contract_dispute_or','Or');?><br/>
-                    <?php echo __('contract_dispute_click','Click to select file');?></h4>
+                    <span class="text-site"><?php echo __('click','click');?></span> <?php echo __('to_select_file','to select file');?></p>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>

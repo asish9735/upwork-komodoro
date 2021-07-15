@@ -171,7 +171,7 @@ $currency=priceSymbol();
             </div>
             <?php }?>
           </div>
-          <a href="javascript:" class="btn btn-sm btn-success addMilestone"><i class="icon-feather-plus"></i><?php echo __('projectview_apply_add_milestone','Add Milestone');?> </a>
+          <a href="javascript:" class="btn btn-sm btn-site addMilestone"><i class="icon-feather-plus"></i><?php echo __('projectview_apply_add','Add');?> </a>
           <div class="panel border bg-light mt-3">
             <div class="panel-body">
             <div class="row">
@@ -290,9 +290,9 @@ $currency=priceSymbol();
           <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>
           <input type="file" name="fileinput" id="fileinput" multiple="true">
           <div class="upload-area" id="uploadfile">
-            <p><?php echo __('projectview_apply_drag','Drag');?> &amp;<?php echo __('projectview_apply_drop_file','drop file here');?> <br />
+            <p><?php echo __('projectview_apply_drag','Drag');?> &amp; <?php echo __('projectview_apply_drop_file','drop file here');?> <br />
             <?php echo __('projectview_apply_or','or');?><br />
-              <span class="text-site"><?php echo __('projectview_apply_click','Click');?></span><?php echo __('projectview_apply_to_select','to select file');?> </p>
+              <span class="text-site"><?php echo __('projectview_apply_click','Click');?></span> <?php echo __('projectview_apply_to_select','to select file');?> </p>
           </div>
           <div id="uploadfile_container">
             <?php if($getBidDetails && $getBidDetails->bid_attachment){

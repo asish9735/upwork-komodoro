@@ -130,7 +130,7 @@
                             <!-- Job Listing Footer -->
                             <div class="job-listing-footer if-button">
                                 <ul>
-                                <li><i class="icon-material-outline-access-time"></i><?php echo __('dashboard_freelancer_posted','Posted');?><?php D(get_time_ago($v['project_posted_date']));?></li>
+                                <li><i class="icon-material-outline-access-time"></i> <?php echo __('dashboard_freelancer_posted','Posted');?> <?php D(get_time_ago($v['project_posted_date']));?></li>
                                 <li><b><?php echo __('dashboard_freelancer_date','Date:');?></b> <?php D($v['invite_date']);?></li>
                                 <li><?php if($v['is_hourly']){?>
                                 <span class="dashboard-status-button yellow"><?php D('Hourly');?></span>

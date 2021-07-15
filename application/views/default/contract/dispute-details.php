@@ -270,9 +270,9 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                 <label><b><?php echo __('contract_message_attachment','Attachments');?></b></label>
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
-                  <h4 class="mb-0"><?php echo __('contract_dispute_drag_drop','Drag and Drop file here');?><br/>
+                  <p class="mb-0"><?php echo __('contract_dispute_drag_drop','Drag and Drop file here');?><br/>
 				  <?php echo __('contract_dispute_or','Or');?><br/>
-                    <?php echo __('contract_dispute_click','Click to select file');?></h4>
+                  <span class="text-site"><?php echo __('click','click');?></span> <?php echo __('to_select_file','to select file');?></p>
                 </div>
                 <div id="uploadfile_container"> </div>
               </div>

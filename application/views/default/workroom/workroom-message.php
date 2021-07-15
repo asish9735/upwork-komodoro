@@ -28,7 +28,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 
 <section class="section">
 <div class="container">
-        <h1><?php echo $contractDetails->contract_title;?></h1>
+        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('workroom_details_overview','Overview');?></a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_details_work_logs','Work Logs');?></a> </li>

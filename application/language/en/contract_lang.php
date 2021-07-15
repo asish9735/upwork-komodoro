@@ -33,7 +33,7 @@ $lang['contract_details_send_feedback'] = 'Send Feedback';
 $lang['contract_details_end_contracts'] = 'End Contract Now';
 $lang['contract_details_milestones'] = 'Milestone';
 $lang['contract_details_budgets'] = 'Budget:';
-$lang['contract_details_complete'] = 'Completed:';
+$lang['contract_details_complete'] = 'Completed';
 $lang['contract_details_n_contract'] = 'New Contract';
 $lang['contract_details_m_disputed'] = 'Make Dispute';
 

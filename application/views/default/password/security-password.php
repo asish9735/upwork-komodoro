@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       
       <!-- Dashboard Headline -->
       <div class="dashboard-headline">
-        <h3><?php echo __('password_security_password','Password');?> &amp;<?php echo __('password_security','Security');?> </h3>
+        <h3><?php echo __('password_security_password','Password');?> &amp; <?php echo __('password_security','Security');?> </h3>
       </div>
             
       <!-- Dashboard Box -->
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <h3><?php echo __('password_security_password','Password');?> <a href="<?php echo VZ;?>" class="ico float-right edit_password" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a></h3>
         </div>
         <div class="content with-padding" id="passwordLoad">
-          <p><i class="icon-material-outline-check-circle text-success"></i><?php echo __('password_securit_password_set','Password has been set');?> </p>
+          <p><i class="icon-material-outline-check-circle text-success"></i> <?php echo __('password_securit_password_set','Password has been set');?> </p>
           <p class="text-muted"><i><?php echo __('password_securit_choose_strong','Choose a strong, unique password that’s at least 6 characters long.');?></i></p>
         </div>
         <div class="content with-padding" id="passwordLoadForm" style="display: none"></div>
@@ -30,16 +30,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Headline -->
         <div class="headline">
-          <h3><i class="icon-material-outline-account-circle"></i><?php echo __('password_securit_two_step','Two-step verification');?>  </h3>
+          <h3><i class="icon-material-outline-account-circle"></i> <?php echo __('password_securit_two_step','Two-step verification');?>  </h3>
         </div>
         <div class="content with-padding padding-bottom-15">
           <div   id="verifyLoad">
             <h5><?php echo __('password_securit_question','Security question');?></h5>
-            <p><i class="icon-material-outline-check-circle text-success"></i><?php echo __('password_securit_question_enabled','Security question has been enabled');?> </p>
+            <p><i class="icon-material-outline-check-circle text-success"></i> <?php echo __('password_securit_question_enabled','Security question has been enabled');?> </p>
             <p><?php echo __('password_securit_confirm_identity','Confirm your identity with a question only you know the answer to.');?></p>
           </div>
         </div>
-        <div class="content with-padding padding-bottom-0"  id="verifyForm" style="display: none"></div>
+        <div class="content with-padding padding-bottom-0" id="verifyForm" style="display: none"></div>
       </div>
       
       <!-- Footer -->

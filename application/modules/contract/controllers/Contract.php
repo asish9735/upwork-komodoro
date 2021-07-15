@@ -62,7 +62,7 @@ class Contract extends MX_Controller {
 			$config['total_rows'] = $this->data['list_total'];
 			$config['per_page'] = $offset;
 			
-			$config['full_tag_open'] = '<div class="pagination-container margin-top-60 margin-bottom-60"><nav class="pagination"><ul>';
+			$config['full_tag_open'] = '<div class="pagination-container"><nav class="pagination"><ul>';
 			$config['full_tag_close'] = '</ul></nav></div>';
 			$config['first_link'] = 'First';
 			$config['first_tag_open'] = '<li class="waves-effect">';
@@ -121,7 +121,7 @@ class Contract extends MX_Controller {
 			$config['total_rows'] = $this->data['list_total'];
 			$config['per_page'] = $offset;
 			
-			$config['full_tag_open'] = '<div class="pagination-container margin-top-60 margin-bottom-60"><nav class="pagination"><ul>';
+			$config['full_tag_open'] = '<div class="pagination-container"><nav class="pagination"><ul>';
 			$config['full_tag_close'] = '</ul></nav></div>';
 			$config['first_link'] = 'First';
 			$config['first_tag_open'] = '<li class="waves-effect">';

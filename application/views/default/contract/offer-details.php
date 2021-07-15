@@ -19,7 +19,7 @@ if($is_owner){
 <section class="section">
 	<?php //echo $left_panel;?>
     <div class="container">
-        <h1><?php echo $contractDetails->contract_title;?></h1>
+        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
         <div class="d-lg-none mb-3">				
         <?php 
         if($contractDetails->contract_status==0){
@@ -123,19 +123,19 @@ if($is_owner){
         }elseif($contractDetails->contract_status==1){
         ?>
         
-        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i><?php echo __('contract_offer_accepted','Offer Accepted.');?></span></p>
+        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i> <?php echo __('contract_offer_accepted','Offer Accepted.');?></span></p>
         
         <?php	
         }elseif($contractDetails->contract_status==2){
         ?>
-        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i><?php echo __('contract_offer_rejected','Offer Rejected');?></span></p>        
+        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> <?php echo __('contract_offer_rejected','Offer Rejected');?></span></p>        
         <?php	
         }?>
         </div>
         <div class="card text-center mx-auto">
             <div class="card-body">
             <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>                    
-            <h5 class="card-title mb-0"><?php echo $name;?></h5>
+            <h4 class="card-title mb-0"><?php echo $name;?></h4>
             <?php if($is_owner){?>
             	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
             	<div class="star-rating" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 

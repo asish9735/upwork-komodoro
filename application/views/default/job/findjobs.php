@@ -11,7 +11,7 @@
     <div class="dashboard-headline">
     	<h1><?php echo __('job_findjobs_projects','Projects');?></h1>
     </div>
-	<h3 class="page-title"><ec class="total_count">0</ec><?php echo __('job_findjobs_jobs_found','jobs found');?> </h3>
+	<h3 class="page-title"><ec class="total_count">0</ec> <?php echo __('job_findjobs_jobs_found','jobs found');?> </h3>
     <form id="filterForm">
     <div class="row row-10">
     	<div class="col-md-6">

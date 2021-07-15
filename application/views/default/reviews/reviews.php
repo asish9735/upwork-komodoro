@@ -12,11 +12,11 @@ $currency=priceSymbol();
 			<!-- Dashboard Headline -->
 			<div class="dashboard-box margin-top-0">
 				<div class="headline">
-                    <h3><i class="icon-material-outline-rate-review"></i><?php echo __('review_reviews','Reviews');?> </h3>
+                    <h3><i class="icon-material-outline-rate-review" style="vertical-align: -3px;"></i> <?php echo __('review_reviews','Reviews');?> </h3>
 				</div>
 				
 				<div class="content">
-                    <ul class="dashboard-box-list" id="ajax_table">
+                    <ul class="dashboard-box-list if-button" id="ajax_table">
 <?php
 if($list){
 	foreach($list as $l=>$review){
