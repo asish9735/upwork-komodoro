@@ -71,7 +71,7 @@ $logo=getMemberLogo($bid);
                   <label for="payment_hourly"><span class="radio-label"></span><?php echo __('projectview_job_hourly','Hourly');?> </label>
                 </div>
               </div>
-              <div class="is_hourly_wrapper" style="display: none">
+              <div class="is_hourly_wrapper" <?php if($is_hourly==1){}else{echo 'style="display: none"';}?> >
               
                 <div class="row">
                   <div class="col-sm-6 col-12">
@@ -104,7 +104,7 @@ $logo=getMemberLogo($bid);
                 </div>
                 
               </div>
-              <div class="is_fixed_wrapper">
+              <div class="is_fixed_wrapper" <?php if($is_hourly==1){echo 'style="display: none"';}else{}?>>
                 <div class="row">
                   <div class="col-sm-6 col-12">
                   <label><b><?php echo __('projectview_job_total_amount','Total Amount');?></b></label>
