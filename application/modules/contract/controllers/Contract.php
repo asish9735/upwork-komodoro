@@ -115,7 +115,7 @@ class Contract extends MX_Controller {
 			$this->data['list_total'] = $this->contract_model->getContracts($srch, $limit, $offset, FALSE);
 			
 			/*Pagination Start*/
-			$config['base_url'] = base_url('dashboard/favorite');
+			$config['base_url'] = base_url('contract/offerlist');
 			$config['page_query_string'] = TRUE;
 			$config['reuse_query_string'] = TRUE;
 			$config['total_rows'] = $this->data['list_total'];
