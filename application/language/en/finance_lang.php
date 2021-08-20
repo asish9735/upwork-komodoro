@@ -31,4 +31,7 @@ $lang['finace_transaction_no_record'] = 'No record found';
 // ---------------------------withdraw------------------------------
 $lang['finace_transaction_add_new'] = 'Add new';
 $lang['finace_transaction_add_new_method'] = 'Add new payment method.';
+$lang['finace_transaction_success'] = 'Success';
+$lang['finace_transaction_pending'] = 'Pending';
+$lang['finace_transaction_rejected'] = 'Rejected';
 ?>

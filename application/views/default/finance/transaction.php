@@ -73,13 +73,13 @@ $currency=priceSymbol();
 					<?php if($list){
 					foreach($list as $k=>$row){
 						$color="waitingcolor";
-						$status_name='Pending';
+						$status_name=__('finace_transaction_pending','Pending');
 						if($row['status']==1){
 							$color="paid";
-							$status_name='Success';
+							$status_name=__('finace_transaction_success','Success');
 						}elseif($row['status']==2){
 							$color="unpaid";
-							$status_name='Rejected';
+							$status_name=__('finace_transaction_rejected','Rejected');
 						}
 					?>
 					<li>

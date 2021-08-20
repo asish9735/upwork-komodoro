@@ -31,5 +31,8 @@ $lang['finace_transaction_no_record'] = 'لا يوجد سجلات';
 // --------------------------withdraw-------------------------
 $lang['finace_transaction_add_new'] = 'اضف جديد';
 $lang['finace_transaction_add_new_method'] = 'أضف طريقة دفع جديدة.';
+$lang['finace_transaction_success'] = 'النجاح';
+$lang['finace_transaction_pending'] = 'قيد الانتظار';
+$lang['finace_transaction_rejected'] = 'مرفوض';
 
 ?>
