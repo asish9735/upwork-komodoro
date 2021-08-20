@@ -34,4 +34,6 @@ $lang['finace_transaction_add_new_method'] = 'Add new payment method.';
 $lang['finace_transaction_success'] = 'Success';
 $lang['finace_transaction_pending'] = 'Pending';
 $lang['finace_transaction_rejected'] = 'Rejected';
+$lang['finace_transaction_credit'] = 'Credit';
+$lang['finace_transaction_debit'] = 'Debit';
 ?>

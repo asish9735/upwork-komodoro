@@ -95,7 +95,7 @@ $currency=priceSymbol();
 							<?php }?>
 								</li>
 								<li>T<?php echo $row['wallet_transaction_id'];?></li>
-								<li><b><?php if($row['Amount']>0){echo 'Credit';}else{echo 'Debit';}?>:</b> <?php echo $currency;?><?php echo priceFormat(abs($row['Amount']));?></li>
+								<li><b><?php if($row['Amount']>0){echo ''.__('finace_transaction_credit','Credit').'';}else{echo ''.__('finace_transaction_debit','Debit').'';}?>:</b> <?php echo $currency;?><?php echo priceFormat(abs($row['Amount']));?></li>
 								<li><b><?php echo __('finace_transaction_date','Date:');?></b> <?php echo $row['transaction_date'];?></li>
 							</ul>
 						</div>   

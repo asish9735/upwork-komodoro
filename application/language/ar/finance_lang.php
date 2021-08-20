@@ -34,5 +34,7 @@ $lang['finace_transaction_add_new_method'] = 'أضف طريقة دفع جديد�
 $lang['finace_transaction_success'] = 'النجاح';
 $lang['finace_transaction_pending'] = 'قيد الانتظار';
 $lang['finace_transaction_rejected'] = 'مرفوض';
+$lang['finace_transaction_credit'] = 'تنسب إليه';
+$lang['finace_transaction_debit'] = 'مدين';
 
 ?>
