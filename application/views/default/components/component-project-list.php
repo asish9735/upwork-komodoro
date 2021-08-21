@@ -7,7 +7,7 @@
 			<div class="photo-box-content">
 				<h3><?php echo strlen($v->title) > 25 ? substr($v->title, 0, 25).'...' : $v->title; ?></h3>
 				<p><?php echo $v->short_dscr; ?></p>
-				<a href="<?php echo base_url('project-detail-'.$v->project_id); ?>" class="btn btn-border">Read More</a>
+				<a href="<?php echo base_url('project-detail-'.$v->project_id); ?>" class="btn btn-border"><?php echo __('component_joblist_read_more','Read More');?></a>
 			</div>
 		</div>
 	</aside>

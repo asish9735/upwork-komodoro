@@ -17,7 +17,7 @@ $detail_url = base_url('rental-detail-'.$v->rental_id);
 	<div class="card-body">
 	<h4><?php echo $v->title;?></h4>
 	<p><?php echo $v->short_dscr;?></p>
-	<a href="<?php echo $detail_url;?>" class="btn btn-border">Rent Now</a>
+	<a href="<?php echo $detail_url;?>" class="btn btn-border"><?php echo __('component_joblist_rent_now','Rent Now');?></a>
 	</div>
 </div>
 </aside>
