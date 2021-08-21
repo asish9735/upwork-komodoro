@@ -4,13 +4,13 @@
 <div class="card">
 			<div class="card-body">
 				<h4><?php echo $v->title;?></h4>
-				<p><b>Experience:</b> <?php echo $v->experience;?></p>
-				<p><b>Skills:</b> <?php echo $v->skills;?></p>
-				<p><b>Salary:</b> <?php echo $v->salary;?></p>
+				<p><b><?php echo __('component_joblist_experience','Experience');?>:</b> <?php echo $v->experience;?></p>
+				<p><b><?php echo __('component_joblist_skill','Skills');?>:</b> <?php echo $v->skills;?></p>
+				<p><b><?php echo __('component_joblist_salary','Salary');?>:</b> <?php echo $v->salary;?></p>
 				<div class="details">
 				<p><?php echo $v->short_dscr;?></p>
-				<a href="javascript:void(0)" class="btn btn-border" onclick="apply_job('<?php echo $v->job_id;?>');">Apply Now</a>
-				<a href="<?php echo base_url('job-detail-'.$v->job_id);?>" class="btn btn-border float-right">View Details</a>
+				<a href="javascript:void(0)" class="btn btn-border" onclick="apply_job('<?php echo $v->job_id;?>');"><?php echo __('component_joblist_apply_now','Apply Now');?></a>
+				<a href="<?php echo base_url('job-detail-'.$v->job_id);?>" class="btn btn-border float-right"><?php echo __('component_joblist_view_details','View Details');?></a>
 				</div>
 			</div>
 		</div>
@@ -23,13 +23,13 @@
 		<div class="card">
 			<div class="card-body">
 				<h4><?php echo $v->title;?></h4>
-				<p><b>Experience:</b> <?php echo $v->experience;?></p>
-				<p><b>Skills:</b> <?php echo $v->skills;?></p>
-				<p><b>Salary:</b> <?php echo $v->salary;?></p>
+				<p><b><?php echo __('component_joblist_experience','Experience');?>:</b> <?php echo $v->experience;?></p>
+				<p><b><?php echo __('component_joblist_skill','Skills');?>:</b> <?php echo $v->skills;?></p>
+				<p><b><?php echo __('component_joblist_salary','Salary');?>:</b> <?php echo $v->salary;?></p>
 				<div class="details">
 				<p><?php echo $v->short_dscr;?></p>
-				<a href="javascript:void(0)" class="btn btn-border" onclick="apply_job('<?php echo $v->job_id;?>');">Apply Now</a>
-				<a href="<?php echo base_url('job-detail-'.$v->job_id);?>" class="btn btn-border float-right">View Details</a>
+				<a href="javascript:void(0)" class="btn btn-border" onclick="apply_job('<?php echo $v->job_id;?>');"><?php echo __('component_joblist_apply_now','Apply Now');?></a>
+				<a href="<?php echo base_url('job-detail-'.$v->job_id);?>" class="btn btn-border float-right"><?php echo __('component_joblist_view_details','View Details');?></a>
 				</div>
 			</div>
 		</div>

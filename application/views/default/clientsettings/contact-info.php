@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
-				<h3>My Info</h3>				
+				<h3><?php echo __('contact_company_my_info','My Info');?></h3>				
 			</div>
 	
 

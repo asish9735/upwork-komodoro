@@ -31,5 +31,6 @@
  $lang['contact_company_account'] = 'Account';
  $lang['contact_company_details'] = 'Company Details';
  $lang['contact_company_contact'] = 'Company Contact';
+ $lang['contact_company_my_info'] = 'My Info';
 
 ?>

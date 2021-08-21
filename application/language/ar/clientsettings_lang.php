@@ -30,6 +30,7 @@
  $lang['contact_company_account'] = 'حساب';
  $lang['contact_company_details'] = 'تفاصيل الشركة';
  $lang['contact_company_contact'] = 'جهة اتصال الشركة';
+ $lang['contact_company_my_info'] = 'معلوماتي';
 
 
 
