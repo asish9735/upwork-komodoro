@@ -27,6 +27,9 @@
  $lang['contact_company_location_city'] = 'مدينة';
  $lang['contact_company_location_state'] = 'حالة';
  $lang['contact_company_location_zip'] = 'أزيز';
+ $lang['contact_company_account'] = 'حساب';
+ $lang['contact_company_details'] = 'تفاصيل الشركة';
+ $lang['contact_company_contact'] = 'جهة اتصال الشركة';
 
 
 

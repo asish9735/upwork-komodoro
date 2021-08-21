@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3><i class="icon-material-outline-account-circle"></i> Account <a href="<?php echo VZ;?>" class="float-right edit_account_info" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>
+							<h3><i class="icon-material-outline-account-circle"></i><?php echo __('contact_company_account','Account');?>  <a href="<?php echo VZ;?>" class="float-right edit_account_info" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>
 							
 						</div>
 
@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3><i class="icon-material-outline-business"></i> Company Details <a href="<?php echo VZ;?>" class="ico float-right edit_company" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>
+							<h3><i class="icon-material-outline-business"></i><?php echo __('contact_company_details','Company Details');?>  <a href="<?php echo VZ;?>" class="ico float-right edit_company" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>
 							
 						</div>
 
@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3><i class="icon-feather-map-pin"></i> Company Contact <a href="<?php echo VZ;?>" class="ico float-right edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>							
+							<h3><i class="icon-feather-map-pin"></i><?php echo __('contact_company_contact','Company Contact');?>  <a href="<?php echo VZ;?>" class="ico float-right edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>							
 						</div>
 
 						<div class="content with-padding" id="locationLoad">

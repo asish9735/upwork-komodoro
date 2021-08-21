@@ -27,6 +27,9 @@
  $lang['contact_company_location_city'] = 'City';
  $lang['contact_company_location_state'] = 'State';
  $lang['contact_company_location_zip'] = 'Zip';
-
+ 
+ $lang['contact_company_account'] = 'Account';
+ $lang['contact_company_details'] = 'Company Details';
+ $lang['contact_company_contact'] = 'Company Contact';
 
 ?>
