@@ -41,5 +41,22 @@ $lang['dashboard_employer_open_contract'] = 'Open Contract';
 $lang['dashboard_employer_close_contract'] = 'Close Contract';
 $lang['dashboard_employer_total_spent'] = 'Total Spent';
 $lang['dashboard_employer_spent_statics'] = 'Spent Statics';
+$lang['dashboard_email_verify_first'] = 'Your email is not verified. Please verify first to process document verification';
+$lang['dashboard_document_verification_seccess'] = 'Your document verification successfull';
+$lang['dashboard_document_verification_under_process'] = 'Your document verification under process';
+$lang['dashboard_document_last_applictaion_reject'] = 'Your last application got rejected. Please check reason and submit again';
+$lang['dashboard_document_reason'] = 'Reason';
+$lang['dashboard_document_application_verification'] = 'Application for document verification';
+$lang['dashboard_document_id_proff'] = 'ID Proff';
+$lang['dashboard_document_document_name'] = 'Document Name';
+$lang['dashboard_document_attachment'] = 'Attachment';
+$lang['dashboard_document_drag'] = 'Drag';
+$lang['dashboard_document_drop_file'] = 'drop file here or';
+$lang['dashboard_document_click'] = 'click';
+$lang['dashboard_document_to_select_file'] = 'to select file';
+$lang['dashboard_document_only_image_pdf'] = 'Note: Only image and pdf allowed';
+$lang['dashboard_document_address_proff'] = 'Address Proff';
+$lang['dashboard_document_submit'] = 'Submit';
+$lang['dashboard_document_cancel'] = 'Cancel';
 
 ?>

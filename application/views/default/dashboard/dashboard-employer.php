@@ -136,7 +136,7 @@
                     <!-- Job Listing Footer -->
                     <div class="job-listing-footer if-button">
                       <ul>
-                        <li><b>Budget:</b>
+                        <li><b><?php echo __('dashboard_freelancer_budget','Budget');?>:</b>
                           <?php D($currency.$v['contract_amount']);?>
                           <?php if($v['is_hourly']==1){echo'/hr';}?>
                         </li>

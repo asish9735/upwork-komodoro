@@ -41,9 +41,26 @@ $lang['dashboard_employer_close_contract'] = 'إغلاق العقد';
 $lang['dashboard_employer_total_spent'] = 'إجمال الصرف';
 $lang['dashboard_employer_spent_statics'] = 'احصائيات مستنفدة';
 
+$lang['dashboard_email_verify_first'] = 'لم يتم التحقق من بريدك الإلكتروني. يرجى التحقق أولاً لمعالجة التحقق من المستند';
 
+$lang['dashboard_document_verification_seccess'] = 'تم التحقق من المستند بنجاح';
 
+$lang['dashboard_document_verification_under_process'] = 'التحقق من المستند الخاص بك قيد المعالجة';
+$lang['dashboard_document_last_applictaion_reject'] = 'تم رفض طلبك الأخير. يرجى التحقق من السبب والإرسال مرة أخرى';
+$lang['dashboard_document_reason'] = 'سبب';
+$lang['dashboard_document_application_verification'] = 'طلب التحقق من الوثيقة';
+$lang['dashboard_document_id_proff'] = 'معرف Proff';
+$lang['dashboard_document_document_name'] = 'اسم الملف';
+$lang['dashboard_document_attachment'] = 'مرفق';
+$lang['dashboard_document_drag'] = 'يجر';
+$lang['dashboard_document_drop_file'] = 'قم بإسقاط الملف هنا أو';
+$lang['dashboard_document_click'] = 'انقر';
+$lang['dashboard_document_to_select_file'] = 'لتحديد الملف';
 
+$lang['dashboard_document_only_image_pdf'] = 'ملاحظة: يسمح فقط بالصورة و pdf';
+$lang['dashboard_document_address_proff'] = 'إثبات العنوان';
+$lang['dashboard_document_submit'] = 'يقدم';
+$lang['dashboard_document_cancel'] = 'يلغي';
 
 
 
