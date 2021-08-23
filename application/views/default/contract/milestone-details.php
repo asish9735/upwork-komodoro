@@ -240,7 +240,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('');?>Cancel</button>
+        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('contract_end_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('contract_milestone_reject_Work','Reject Work');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="ActionWork(this)"><?php echo __('contract_dispute_send','Send');?></button>
       </div>

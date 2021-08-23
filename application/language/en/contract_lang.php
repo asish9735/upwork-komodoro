@@ -150,4 +150,6 @@ $lang['contract_offer_attachment'] = 'Attachment';
 
 // ---------------------------offer-list---------------------
 $lang['contract_offer_all'] = 'All Offers';
+$lang['contract_offer_initiate'] = 'Initiate';
+
 ?>

@@ -147,6 +147,7 @@ $lang['contract_offer_attachment'] = 'مرفق';
 
 // ---------------------------offer-list---------------------
 $lang['contract_offer_all'] = 'كل العروض';
+$lang['contract_offer_initiate'] = 'الشروع في';
 
 
 

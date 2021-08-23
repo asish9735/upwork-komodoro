@@ -181,7 +181,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
               <div class="milestone-item"> <b><?php echo ucfirst($milestone->milestone_title);?></b><br>
                 <b><?php echo __('contract_details_budgets','Budget:');?></b> <?php echo $currency.$milestone->milestone_amount;?> <br>
                 <?php if($milestone->is_approved){?>
-                <b><?php echo __('contract_details_complete','Completed:');?></b><?php echo $milestone->approved_date;}else{?><b>Due Date:</b> <?php echo $milestone->milestone_due_date; }?> </div>
+                <b><?php echo __('contract_details_complete','Completed:');?></b><?php echo $milestone->approved_date;}else{?><b><?php echo __('contract_dispute_deu_date','Due Date');?>:</b> <?php echo $milestone->milestone_due_date; }?> </div>
               </a>
               <div class="ml-auto align-self-center">
               <?php 
@@ -189,7 +189,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
               if($is_owner && $milestone->is_approved!=1){
 	              	if(!$milestone->is_escrow){
 					?>
-						<button type="button" class="btn btn-warning btn-sm startWork" data-mid="<?php echo md5($milestone->contract_milestone_id);?>">Initiate</button>
+						<button type="button" class="btn btn-warning btn-sm startWork" data-mid="<?php echo md5($milestone->contract_milestone_id);?>"><?php echo __('contract_offer_initiate','Initiate');?></button>
 					<?php	
 					}
               	?>
