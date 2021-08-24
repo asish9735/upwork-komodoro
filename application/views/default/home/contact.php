@@ -86,7 +86,7 @@ $current_banner = !empty($banner[0]) ? $banner[0] : null;
 	</div>
     
 	<section id="contact" class="margin-bottom-60">
-				<h3 class="headline margin-top-15 margin-bottom-20">Any questions? Feel free to contact us!</h3>
+				<h3 class="headline margin-top-15 margin-bottom-20"><?php echo __('home_page_contact_any_question','Any questions? Feel free to contact us!');?></h3>
 				<div id="contact_status"></div>
 				<form method="post" name="contactform" id="contactform" autocomplete="off">
 					<input type="hidden" name="req_type" value="CONTACT_REQUEST"/>
@@ -122,7 +122,7 @@ $current_banner = !empty($banner[0]) ? $banner[0] : null;
 						<textarea class="form-control" name="message" cols="40" rows="5" id="comments" placeholder="Message" spellcheck="true" required="required"></textarea>
 					</div>
 
-					<button type="submit" class="btn btn-site" id="submit_btn">Send</button>
+					<button type="submit" class="btn btn-site" id="submit_btn"><?php echo __('home_page_contact_send','Send');?></button>
 					
 					
 

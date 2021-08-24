@@ -75,7 +75,7 @@
 
 				<!-- Salary -->
 				<div class="sidebar-widget">
-					<h3><?php echo __('');?>Salary</h3>
+					<h3><?php echo __('home_page_contact_salary','Salary');?></h3>
 					<div class="margin-top-55"></div>
 
 					<!-- Range Slider -->

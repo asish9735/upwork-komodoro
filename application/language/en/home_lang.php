@@ -138,6 +138,10 @@ $lang['home_page_findtalent_B_licening'] = 'Brand Licensing';
 $lang['home_page_findtalent_B_development'] = 'Business Development';
 $lang['home_page_findtalent_F_management'] = 'Financial Management';
 $lang['home_page_findtalent_london'] = 'London';
+$lang['home_page_contact_any_question'] = 'Any questions? Feel free to contact us!';
+$lang['home_page_contact_send'] = 'Send';
+$lang['home_page_contact_salary'] = 'Salary';
+$lang['home_page_view_all_skill'] = 'View All Skills';
 
 
 

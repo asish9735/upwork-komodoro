@@ -139,6 +139,10 @@ $lang['home_page_findtalent_B_licening'] = 'ترخيص العلامة التجا
 $lang['home_page_findtalent_B_development'] = 'تطوير الاعمال';
 $lang['home_page_findtalent_F_management'] = 'ادارة مالية';
 $lang['home_page_findtalent_london'] = 'لندن';
+$lang['home_page_contact_any_question'] = 'أي أسئلة؟ لا تتردد في الاتصال بنا!';
+$lang['home_page_contact_send'] = 'يرسل';
+$lang['home_page_contact_salary'] = 'مرتب';
+$lang['home_page_view_all_skill'] = 'عرض جميع المهارات';
 
 
 
