@@ -49,7 +49,7 @@ if($loggedUser){
 							<span class="hamburger-inner"></span>
 						</span>
 					</span>
-					<span class="trigger-title">Navigation</span>
+					<span class="trigger-title"><?php echo __('navigation','Navigation');?></span>
 				</a>
 				
 				<!-- Navigation -->

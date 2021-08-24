@@ -82,6 +82,8 @@ $lang['payroll_services'] ='خدمات الرواتب';
 $lang['trust_safety'] ='الثقة والأمان';
 $lang['all_rights_reserved'] ='كل الحقوق محفوظة';
 $lang['copyright'] ='حقوق النشر';
+$lang['navigation'] ='التنقل';
+$lang['view_all_notification'] ='عرض جميع الإخطارات';
 
 
 

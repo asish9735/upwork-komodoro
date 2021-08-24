@@ -82,8 +82,10 @@ $lang['payroll_services'] ='Payroll Services';
 $lang['trust_safety'] ='Trust &amp; Safety';
 $lang['all_rights_reserved'] ='All Rights Reserved';
 $lang['copyright'] ='Copyright';
-$lang[''] ='';
-$lang[''] ='';
+$lang['navigation'] ='Navigation';
+$lang['view_all_notification'] ='View All Notifications';
+$lang['view_all_message'] ='View All Messages';
+
 
 
 
