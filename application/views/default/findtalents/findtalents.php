@@ -13,7 +13,7 @@
 				<div class="sidebar-widget">
 					<h5><?php echo __('findtalents_page_location','Location');?></h5>
 					<select name="country" class="selectpicker default"  title="All locations"  data-live-search="true">
-						<option value="">All</option>
+						<option value=""><?php echo __('findtalents_page_all','All');?></option>
 						<?php if($all_location){
 							foreach($all_location as $l=>$location){
 								?>

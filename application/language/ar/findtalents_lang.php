@@ -18,6 +18,10 @@ $lang['findtalents_page_newest'] = 'الأحدث';
 $lang['findtalents_page_oldest'] = 'الأقدم';
 $lang['findtalents_page_talent_by_name'] = 'ابحث عن المواهب بالاسم';
 $lang['findtalents_page_load_more'] = 'تحميل المزيد';
+$lang['findtalents_page_all'] = 'الجميع';
+$lang['findtalents_hire_freelancer'] = 'وظِّف عاملًا حرًاss';
+$lang['findtalents_invite_job'] = 'ادعُ إلى الوظيفة';
+$lang['findtalents_job_success'] = 'النجاح الوظيفي';
 
 
 

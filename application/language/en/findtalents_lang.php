@@ -19,6 +19,10 @@ $lang['findtalents_page_oldest'] = 'Oldest';
 $lang['findtalents_page_load_more'] = 'Load More';
 
 $lang['findtalents_page_talent_by_name'] = 'Find talents by name';
+$lang['findtalents_page_all'] = 'All';
+$lang['findtalents_hire_freelancer'] = 'Hire Freelancer';
+$lang['findtalents_invite_job'] = 'Invite to Job';
+$lang['findtalents_job_success'] = 'Job Success';
 
 
 
