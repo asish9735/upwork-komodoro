@@ -27,5 +27,6 @@ $lang['job_joblist_est_time'] = 'Est. Time:';
 $lang['job_joblist_est_budget'] = 'Est. Budget:';
 $lang['job_joblist_send_proposal'] = 'Send Proposal';
 $lang['job_joblist_proposal'] = 'Proposals:';
+$lang['job_joblist_payment_verified'] = 'Payment Verified';
 
 ?>

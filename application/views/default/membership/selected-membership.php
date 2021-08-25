@@ -20,7 +20,7 @@ if($membership){
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner" >		
 			<div class="dashboard-headline">
-				<h3>Membership</h3>				
+				<h3><?php echo __('membership','Membership');?></h3>				
 			</div>
             <?php //get_print($membership,false);?>
             <?php if($membership){?>
@@ -31,7 +31,7 @@ if($membership){
 			<div class="content with-padding">	
 				<div class="row">
 					<div class="col-md-4">
-						<p><b>Amount : </b>
+						<p><b><?php echo __('membership_amount','Amount');?> : </b>
                             <?php if($duration=='month'){?>
 		                    <?php echo $currency;?><?php echo $membership->price_per_month;?><?php echo __('membership_month','/month');?>
                             <?php }else{?>

@@ -17,6 +17,9 @@ $lang['membership_month'] = '/month';
 $lang['membership_year'] = '/year';
 $lang['membership_processing_fee'] = 'Processing Fee:';
 $lang['membership_eror_process'] = 'Error in process';
+$lang['membership_your_current_membership'] = 'Your current membership plan';
+$lang['membership'] = 'Membership';
+$lang['membership_amount'] = 'Amount';
 
 
 ?>

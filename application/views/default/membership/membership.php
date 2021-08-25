@@ -7,7 +7,7 @@
   //get_print($selected_membership,false);
   if($selected_membership && $selected_membership->is_free==0 &&  $selected_membership->membership_expire_date >= date('Y-m-d')){
   ?>
-  <div class="alert alert-warning"> Your current membership plan : <?php echo $selected_membership->details->name;?> till <?php echo date('d M, Y',strtotime($selected_membership->membership_expire_date));?></div>
+  <div class="alert alert-warning"><?php echo __('membership_your_current_membership','Your current membership plan');?>  : <?php echo $selected_membership->details->name;?> till <?php echo date('d M, Y',strtotime($selected_membership->membership_expire_date));?></div>
   <?php
   }
   ?>

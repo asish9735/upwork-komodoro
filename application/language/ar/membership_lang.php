@@ -17,6 +17,9 @@ $lang['membership_month'] = '/شهر';
 $lang['membership_year'] = '/عام';
 $lang['membership_processing_fee'] = 'كلفة المعالجة:';
 $lang['membership_eror_process'] = 'خطأ في العملية';
+$lang['membership_your_current_membership'] = 'خطة عضويتك الحالية';
+$lang['membership'] = 'عضوية';
+$lang['membership_amount'] = 'كمية';
 
 
 ?>

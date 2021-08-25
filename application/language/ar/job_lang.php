@@ -27,5 +27,6 @@ $lang['job_joblist_est_time'] = 'هو. زمن:';
 $lang['job_joblist_est_budget'] = 'هو. الدخل:';
 $lang['job_joblist_send_proposal'] = 'أرسل الاقتراح';
 $lang['job_joblist_proposal'] = 'اقتراحات:';
+$lang['job_joblist_payment_verified'] = 'تم التحقق من الدفع';
 
 ?>

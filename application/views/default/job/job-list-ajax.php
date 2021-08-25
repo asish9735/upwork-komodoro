@@ -52,7 +52,7 @@ if($login_user_id){
 	<div class="task-listing-footer">
 		<ul>
         	
-        	<li><div class="verified-badge" title="Verified Employer" data-tippy-placement="top"></div><?php echo __('');?> Payment Verified </li>
+        	<li><div class="verified-badge" title="Verified Employer" data-tippy-placement="top"></div><?php echo __('job_joblist_payment_verified','Payment Verified');?>  </li>
             <li><i class="icon-feather-heart"></i><?php echo __('job_joblist_proposal','Proposals:');?>  <b><?php echo $v['total_proposal'];?></b></li>
 			<li><i class="icon-feather-map-pin"></i>
 				<?php D($v['clientInfo']['client_address']['country'])?>
