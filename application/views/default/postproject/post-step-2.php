@@ -49,8 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>        
     </div>
     <div class="dashboard-box-footer">
-        <button class="btn btn-secondary backbtnproject" data-step="2">Back</button>
-        <button class="btn btn-site nextbtnproject" data-step="2">Next</button>
+        <button class="btn btn-secondary backbtnproject" data-step="2"><?php echo __('postproject_back','Back');?></button>
+        <button class="btn btn-site nextbtnproject" data-step="2"><?php echo __('postproject_next','Next');?></button>
     </div>
 </div>
 </div>

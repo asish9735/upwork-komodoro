@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             
             <div class="text-center" v-else> <img src="<?php echo IMAGE;?>communication.png" alt="">
-              <p class="text-muted"><i class="icon-feather-message-circle"></i> <i>Select a chat to view conversation</i></p>
+              <p class="text-muted"><i class="icon-feather-message-circle"></i> <i><?php echo __('message_select_a_chart','Select a chat to view conversation');?></i></p>
             </div>            
           </div>
           <!-- Message Content --> 
