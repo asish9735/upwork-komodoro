@@ -30,7 +30,9 @@ html {
 .attachScrollbar {
 	height: 450px
 }
-
+.message-content-inner {
+	max-height: 400px;
+}
 }
 
 @media only screen and (min-width: 992px) {
@@ -68,8 +70,8 @@ html {
 	
 }
 
-@media only screen and (max-width: 991px) {
-	.sidebar-container, .tippy-popper {
+@media only screen and (max-width: 991.98px) {
+	.tippy-popper {
 		display:none;
 	}
 	.milestone_row_parent{
@@ -85,39 +87,60 @@ html {
 }
 
 @media only screen and (max-width: 767.99px) {
-ul.totalList > li {
-	flex: 0 0 50%;
-}
-ul.totalList > li:nth-child(2n) {
-	border-right:none
-}
-/*.sidebar-container {
-	margin-top: 20px;
-}*/
-.search-box {
-	margin-bottom:1rem
-}
-.task-listing > .task-listing-body{
-	flex-direction:column;
-}
-.dashboard-box .job-listing .job-listing-footer.if-button{
-	padding-right:40px;
-}
-.job-listing-footer .dashboard-status-button {
-    margin: 3px 0;
-}
-.nav-tabs {
-    overflow-x: auto;
-    white-space: nowrap;
-    flex-wrap: inherit;
-}
+	ul.totalList > li {
+		flex: 0 0 50%;
+	}
+	ul.totalList > li:nth-child(2n) {
+		border-right:none
+	}
+	/*.sidebar-container {
+		margin-top: 20px;
+	}*/
+	.search-box {
+		margin-bottom:1rem
+	}
+	.task-listing > .task-listing-body{
+		flex-direction:column;
+	}
+	.dashboard-box .job-listing .job-listing-footer.if-button{
+		padding-right:40px;
+	}
+	.job-listing-footer .dashboard-status-button {
+		margin: 3px 0;
+	}
+	.nav-tabs {
+		overflow-x: auto;
+		white-space: nowrap;
+		flex-wrap: inherit;
+	}
 	.attachmentFile {
 		border-top: 1px solid #dee2e6;
+	}
+	.avatar-wrapper {
+		width: 84px;
+		height: 84px;
+	}
+	.myradio .btn-group > .btn {
+		line-height: 1.25;
+		padding: 1rem;
 	}
 
 }
 
 @media only screen and (max-width: 575px) {
+	.myradio .btn-group {
+		flex-wrap: wrap;
+		margin-bottom:-1rem;
+		width: calc(100% + 1rem);
+	}
+	.myradio .btn-group > .btn {
+		flex: 0 0 calc(50% - 1rem);
+		max-width: calc(50% - 1rem);
+		margin-bottom: 1rem;
+	}
+	.myradio .btn-group > .btn:nth-child(3){
+		margin-left:0 !important;	
+	}
 	.avatar-wrapper {
 		margin: 0 auto 1rem;
 	}

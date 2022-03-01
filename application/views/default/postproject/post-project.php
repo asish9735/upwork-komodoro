@@ -17,41 +17,31 @@ echo '</pre>'; */
 			
 			<div class="row">
 				<div class="col-xl-3">
-					<div class="dashboard-nav">
-					<div class="dashboard-nav-inner">
-
-						<ul id="postJobStepItem" class="margin-top-50">
-							<li class="active"><a ><i class="icon-line-awesome-pencil"></i><?php echo __('postproject_title','Title');?><i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-line-awesome-pencil-square-o"></i><?php echo __('postproject_description','Description');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-line-awesome-file-text"></i><?php echo __('postproject_details','Details');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-line-awesome-lightbulb-o"></i><?php echo __('postproject_expertise','Expertise');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-material-outline-visibility"></i><?php echo __('postproject_visibility','Visibility');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-material-outline-monetization-on"></i><?php echo __('postproject_budget','Budget');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
-							<li><a><i class="icon-material-baseline-star-border"></i><?php echo __('postproject_review','Review');?> </a></li>
-						</ul>
-						
-					</div>
+                    <ul class="postJobStep" id="postJobStepItem">
+                        <li class="active"><a ><i class="icon-line-awesome-pencil"></i><?php echo __('postproject_title','Title');?><i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+                        <li><a><i class="icon-line-awesome-pencil-square-o"></i><?php echo __('postproject_description','Description');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+                        <li><a><i class="icon-line-awesome-file-text"></i><?php echo __('postproject_details','Details');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+                        <li><a><i class="icon-line-awesome-lightbulb-o"></i><?php echo __('postproject_expertise','Expertise');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+                        <li><a><i class="icon-material-outline-visibility"></i><?php echo __('postproject_visibility','Visibility');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+                        <li><a><i class="icon-material-outline-monetization-on"></i><?php echo __('postproject_budget','Budget');?>  <i class="icon-material-outline-check-circle pull-right float-right"></i></a></li>
+                        <li><a><i class="icon-material-baseline-star-border"></i><?php echo __('postproject_review','Review');?> <i></i></a></li>
+                    </ul>
 				</div>
-					
-					
-					
-				</div>
-				<div class="col-xl-9">
-				
-			<form action="" method="post" accept-charset="utf-8" id="postprojectform" class="form-horizontal" role="form" name="postprojectform" onsubmit="return false;">  
-            <input type="hidden" name="dataid" value="<?php echo $itemid;?>"/>
-			<?php
-			$this->layout->view('post-step-1', array('step'=>1,'all_category'=>$all_category,'projectData'=>$projectData),TRUE);
-			
-			$this->layout->view('post-step-2', array('step'=>2,'projectData'=>$projectData),TRUE);
-			$this->layout->view('post-step-3', array('step'=>3,'all_projectType'=>$all_projectType,'projectData'=>$projectData),TRUE);
-			$this->layout->view('post-step-4', array('step'=>4,'projectData'=>$projectData),TRUE);
-			$this->layout->view('post-step-5', array('step'=>5,'projectData'=>$projectData),TRUE);
-			$this->layout->view('post-step-6', array('step'=>6,'all_projectExperienceLevel'=>$all_projectExperienceLevel,'all_projectDuration'=>$all_projectDuration,'all_projectDurationTime'=>$all_projectDurationTime,'projectData'=>$projectData),TRUE);
-			$this->layout->view('post-step-7', array('step'=>7,'projectData'=>$projectData),TRUE);
-			
-			?>
-			</form>		
+				<div class="col-xl-9">				
+                <form action="" method="post" accept-charset="utf-8" id="postprojectform" class="form-horizontal" role="form" name="postprojectform" onsubmit="return false;">  
+                <input type="hidden" name="dataid" value="<?php echo $itemid;?>"/>
+                <?php
+                $this->layout->view('post-step-1', array('step'=>1,'all_category'=>$all_category,'projectData'=>$projectData),TRUE);
+                
+                $this->layout->view('post-step-2', array('step'=>2,'projectData'=>$projectData),TRUE);
+                $this->layout->view('post-step-3', array('step'=>3,'all_projectType'=>$all_projectType,'projectData'=>$projectData),TRUE);
+                $this->layout->view('post-step-4', array('step'=>4,'projectData'=>$projectData),TRUE);
+                $this->layout->view('post-step-5', array('step'=>5,'projectData'=>$projectData),TRUE);
+                $this->layout->view('post-step-6', array('step'=>6,'all_projectExperienceLevel'=>$all_projectExperienceLevel,'all_projectDuration'=>$all_projectDuration,'all_projectDurationTime'=>$all_projectDurationTime,'projectData'=>$projectData),TRUE);
+                $this->layout->view('post-step-7', array('step'=>7,'projectData'=>$projectData),TRUE);
+                
+                ?>
+                </form>		
 					
 				</div>
 			</div>

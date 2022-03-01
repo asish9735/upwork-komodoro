@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="clearfix"></div>
         <span id="projectPaymentTypeError" class="rerror"></span> </div>
-      <div class="submit-field myradio">
+      <div class="submit-field myradio mb-0">
         <label><?php echo __('postproject_experience_level','Experience level required?');?></label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <?php if($all_projectExperienceLevel){

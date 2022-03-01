@@ -101,3 +101,56 @@ var main = function(){
 };
 
 </script>
+<style>
+@media (max-width:767px) {
+	body{
+		height:100%;
+		overflow:hidden;
+		padding-bottom: 70px;
+	}
+	.dashboard-content-inner{
+		padding:0;
+	}
+	.message-content {
+		background-color: #fff;
+		max-height: calc(100% - 135px) !important;
+		position: fixed;
+		top: 64px;
+		width: 100%;
+		height: 100%;
+	}
+	.message-content > div {
+		height: 100%;
+	}
+	.messages-container-inner .message-content-inner{
+		overflow-x:auto;
+		padding-bottom: 100px;
+		height: 100%;
+	}
+	.message-reply {
+		background-color: #fff;
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+	}
+	.chat-foot, #footer{
+		display:none;
+	}
+}
+.message-by p .badge{
+	font-weight: 700;
+    height: 19px;
+    width: 19px;
+    /* line-height: 19px; */
+    text-align: center;
+    background-color: #ffc107;
+	color: #212529;
+    font-size: 11px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 0 0 4px;
+    /* top: -2px; */
+    position: absolute;
+    right: 10px;
+}
+</style>

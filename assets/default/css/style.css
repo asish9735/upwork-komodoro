@@ -583,7 +583,7 @@ padding: 2rem 1rem;
     border-color: var(--siteColor);
 }
 .myradio .btn-group > .btn i {
-	font-size:2rem
+	font-size: 1.5rem
 }
 .icon-material-OneTime:before{
 	content: "\e907";
@@ -1493,6 +1493,46 @@ ul.list-group-0 > li{
 }
 #job-experience{
 	overflow:hidden
+}
+ul.postJobStep{
+	background-color: #fff;
+	border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+    overflow: hidden;
+}
+ul.postJobStep > li{
+    transition: 0.3s;	
+}
+ul.postJobStep > li > a{
+	border-left: 2px solid transparent;    
+	color: #000;
+    display: block;
+	font-size: 1.063rem;
+    padding: 0.625rem 1rem;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+ul.postJobStep li.active, ul.postJobStep li:hover{
+	background-color: rgba(100,190,67,0.1);
+}
+ul.postJobStep li.active > a, ul.postJobStep li:hover > a{
+	border-left-color: var(--siteColor);
+	color: var(--siteColor);
+}
+ul.postJobStep li a i{
+    width: 20px;
+    font-size: 20px;
+    color: #909090;
+    transition: 0.3s;
+    position: relative;
+    top: 3px;
+}
+ul.postJobStep li:hover > a i, ul.postJobStep li.active > a i{
+	color: var(--siteColor);
+}
+ul.postJobStep li a i:last-child {
+    float:right;
 }
 
 

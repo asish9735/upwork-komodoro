@@ -582,9 +582,11 @@ ul.dashboard-box-list.if-double-button > li {
 .dashboard-status-button{
 	margin-right:5px;
 }
+ul.postJobStep li a i:first-child {
+    margin-left: 5px;
+}
 
 @media (min-width: 768px) {
-
 	.navbar-right .dropdown-menu {
 		left: auto !important;
 		right: 0 !important;

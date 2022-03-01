@@ -178,21 +178,21 @@ $currency=priceSymbol();
               <div class="col-sm-8">
                 <h4><?php echo __('projectview_proposal_total_price','Total price of project');?></h4>
                 <span><?php echo __('projectview_apply_includes_all','This includes all milestones, and is the amount your client will see');?></span></div>
-              <div class="col-sm-4 text-sm-right"><span class="f20"><?php echo $currency;?> <span class="total_amount">0.00</span></span></div>
+              <div class="col-sm-4 text-sm-right"><span class="f20"><?php echo $currency;?><span class="total_amount">0.00</span></span></div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-8">
                 <h4 class="mb-0"><?php echo $bid_site_fee;?><?php echo __('projectview_apply_service_fee','% Service Fee');?></h4>
               </div>
-              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height:1.2;"><?php echo $currency;?> <span class="total_fee">0.00</span></span></div>
+              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height:1.2;"><?php echo $currency;?><span class="total_fee">0.00</span></span></div>
             </div>
             <hr />
             <div class="row">
               <div class="col-sm-8">
                 <h4 class="mb-0"><?php echo __('projectview_apply_you_receive',"You'll Receive");?></h4>
                 <span><?php echo __('projectview_apply_your_estimated','Your estimated payment, after service fees');?></span></div>
-              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height:1.2;"><?php echo $currency;?> <span class="total_recive">0.00</span></span></div>
+              <div class="col-sm-4 text-sm-right"><span class="f20" style="line-height:1.2;"><?php echo $currency;?><span class="total_recive">0.00</span></span></div>
             </div>
             </div>
           </div>
@@ -287,9 +287,9 @@ $currency=priceSymbol();
           <textarea class="form-control" rows="4" id="bid_details" name="bid_details"><?php if($getBidDetails && $getBidDetails->bid_details){echo $getBidDetails->bid_details;}?></textarea>
         </div>
         <div class="form-group">
-          <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>
-          <input type="file" name="fileinput" id="fileinput" multiple="true">
+          <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>          
           <div class="upload-area" id="uploadfile">
+          <input type="file" name="fileinput" id="fileinput" multiple="true">
             <p><?php echo __('projectview_apply_drag','Drag');?> &amp; <?php echo __('projectview_apply_drop_file','drop file here');?> <br />
             <?php echo __('projectview_apply_or','or');?><br />
               <span class="text-site"><?php echo __('projectview_apply_click','Click');?></span> <?php echo __('projectview_apply_to_select','to select file');?> </p>

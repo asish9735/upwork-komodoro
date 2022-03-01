@@ -586,7 +586,9 @@ ul.dashboard-box-list.if-double-button > li {
 .dashboard-status-button{
 	margin-left:5px;
 }
-
+ul.postJobStep li a i:first-child{
+    margin-right: 5px;
+}
 
 @media (min-width: 768px) {
 	.signup:before {

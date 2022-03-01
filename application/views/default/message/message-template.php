@@ -80,6 +80,11 @@ Vue.component('chat-list', {
 		chat_user.unread_msg_count = 0;
 		/* this.active_chat = chat_user; */
 		this.$emit('set-chat', chat_user);
+		var width=$(window).width();
+		if(width<767){
+			$('.messages-inbox').toggle();
+			$('.message-content').toggle();
+		}
 	},
 	refreshChat: function(){
 		var _self = this;
@@ -95,9 +100,14 @@ Vue.component('chat-list', {
 
 <script type="text/x-template" id="active-chat-header-template">
 <div class="messages-headline">
+	<div class="d-flex align-items-center">  
+	<a href="javascript:void(0)" @click="showList" class="show_me visible-under-991 mr-3" style="font-size: 1.5rem;"><i class="icon-material-outline-arrow-back"></i></a>
+	<div style="flex:1;">
 	<h4><a :href="active_chat.profile_url" target="_blank">{{active_chat.name}}</a></h4>
 	<p class="mb-0" v-if="active_chat.project_name.length > 0"><a :href="active_chat.project_url" target="_blank">{{active_chat.project_name}}</a></p>
+	</div>
 	<a href="#" class="message-action" hidden><i class="icon-feather-trash-2"></i> Delete Conversation</a>
+	</div>
 </div>
 </script>
 
@@ -105,12 +115,31 @@ Vue.component('chat-list', {
 Vue.component('active-chat-header', {
   template: '#active-chat-header-template',
   props: ['active_chat'],
+  data: function(){
+      return {
+          starred: false,
+      }
+  },
+  methods: {
+    setFilter: function(e){
+        this.$emit('filter-msg', e.target.value);
+    },
+    setStarred: function(){
+        this.starred = !this.starred;
+        this.$emit('star-toggle', this.starred);
+    },
+	showList: function(){
+		$('.messages-inbox').toggle();
+		$('.message-content').toggle();
+		$('.messages-inbox li').removeClass('active-message');
+	}
+  }
 });
 </script>
 
 <script type="text/x-template" id="active-chat-message-body-template">
-<div class="justify-content-start">
-<div class="message-content-inner" ref="message-inner" style="height:400px;">
+<div class="justify-content-start h-100">
+<div class="message-content-inner" ref="message-inner">
 
 	<infinite-loading direction="top" @infinite="infiniteHandler" ref="infiniteLoading"></infinite-loading>	
 		<div v-for="message in message_list" :key="message.message_id">

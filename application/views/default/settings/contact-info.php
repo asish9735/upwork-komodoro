@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="content with-padding">
 	                	<div class="row">
 						<div class="col-sm-auto">
-							<div class="avatar-wrapper rounded-circle m-0" id="crop-avatar-dashboard">
+							<div class="avatar-wrapper rounded-circle" id="crop-avatar-dashboard">
 								<input type="hidden" name="logo" id="logo" class="replceLogoVal">
 								<img   src="<?php D(getMemberLogo($member_id));?>" alt="">
 								<a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle" data-popup="logo" data-tippy-placement="top" title="Change avatar" ><i class="icon-feather-edit-2"></i></a>
@@ -223,8 +223,8 @@ var  main = function(){
                     <div class="avatar-crop-wrapper"></div>
                   </div>
                   <div class="col-md-3">
-                    <div class="avatar-preview preview-lg"></div>
-                    <div class="avatar-preview preview-md d-none"></div>
+                    <div class="avatar-preview preview-lg d-none"></div>
+                    <div class="avatar-preview preview-md"></div>
                     <div class="avatar-preview preview-sm d-none"></div>
                   </div>
                 </div>                

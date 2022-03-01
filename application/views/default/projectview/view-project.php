@@ -160,7 +160,7 @@ if($login_user_id){
 
 		<!-- Sidebar -->
 		<div class="col-xl-4 col-lg-4">
-			<div class="sidebar-container">
+			<div class="sidebar-container mt-4 mt-sm-0">
             <div class="countdown green mb-3"><?php echo __('projectview_view_posted','Posted');?> <?php D(get_time_ago($projectData['project']->project_posted_date));?></div>
 			<?php if(!$is_owner){
 				if($is_already_bid && $is_already_bid->is_hired!=1){
@@ -201,11 +201,11 @@ if($login_user_id){
                             <li>
                                 <i class="icon-material-outline-star-border"></i>
                                 <div class="star-rating w-100" data-rating="<?php D($projectData['clientInfo']['client_review_rating']['rating'])?>"></div>
-                                <span><?php D($projectData['clientInfo']['client_review_rating']['rating'])?><?php echo __('projectview_view_of','of');?>  <?php D($projectData['clientInfo']['client_review_rating']['review'])?><?php echo __('projectview_view_reviews','reviews');?> </span>
+                                <span><?php D($projectData['clientInfo']['client_review_rating']['rating'])?> <?php echo __('projectview_view_of','of');?>  <?php D($projectData['clientInfo']['client_review_rating']['review'])?> <?php echo __('projectview_view_reviews','reviews');?> </span>
                             </li>
                             <li>
                                 <i class="icon-material-outline-business-center"></i>
-                                <p><?php D($projectData['clientInfo']['client_project_info']['total_project'])?><?php echo __('projectview_view_total_posted','total project posted');?> </p>
+                                <p><?php D($projectData['clientInfo']['client_project_info']['total_project'])?> <?php echo __('projectview_view_total_posted','total project posted');?> </p>
                                 <span><?php D($projectData['clientInfo']['client_project_info']['total_hired'])?> hires<!--, <?php D($projectData['clientInfo']['client_project_info']['total_active'])?> active--></span>
                             </li>
                             <li>

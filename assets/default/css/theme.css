@@ -11408,7 +11408,7 @@ a.apply-now-button {
 	background-color: #66676b;
 	color: #fff;
 	text-align: center;
-	font-size: 1.25rem;
+	font-size: 1.063rem;
 	border-radius: 0.25rem;
 	box-shadow: 0 2px 8px rgba(102, 103, 107, 0.15);
 	transition: 0.3s;
@@ -12856,10 +12856,10 @@ opacity: 1;
 /* Scrollbar Adjustments
 .messages-inbox ul {
 	max-height: 557px;
-} */
+}
 .message-content-inner {
 	max-height: 400px;
-}
+} */
 .message-content, .messages-container-inner .messages-inbox {
 	overflow: hidden;
 }
@@ -13222,10 +13222,13 @@ animation: 1s blink infinite 0.99999s;
 }
 
 /* Messages Media Queries */
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
  .messages-container-inner .messages-inbox {
 max-width: 300px;
 }
+.messages-container-inner .message-content, .message-bubble.me .message-avatar {
+		display: none;
+	}
 }
 @media (max-width: 767px) {
  .messages-container-inner {
@@ -13240,13 +13243,9 @@ display: block;
 max-height: 500px;
 }
  .messages-container-inner .message-by-headline span {
- position: relative;
- top: 0;
- right: 0;
  display: block;
  float: none;
  padding: 0;
- margin: -4px 0 0 0;
 }
  .message-action {
  display: block;
