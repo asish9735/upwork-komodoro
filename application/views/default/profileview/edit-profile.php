@@ -267,9 +267,9 @@ if($login_user_id){
             </div>
             <div class="panel-body">                             
               <!-- Copy URL -->
-              <div class="copy-url mb-3">
+              <div class="input-group copy-url mb-3">
                 <input type="text" id="copy-url-profile" value="" class="form-control">
-                <button class="copy-url-button" data-clipboard-target="#copy-url-profile" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button>
+                <div class="input-group-append"><button class="btn copy-url-button" data-clipboard-target="#copy-url-profile" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button></div>
               </div>
               
               <!-- Share Buttons -->

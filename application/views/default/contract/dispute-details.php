@@ -31,7 +31,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 <section class="section">
 <div class="container">
 		<a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i><?php echo __('contract_dispute_b_contract','Back to Contract');?> </a>
-        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
+        <h1 class="mb-3"><?php echo $contractDetails->contract_title;?></h1>
       
         <div class="row">
           <div class="col-lg-8">
@@ -113,7 +113,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
           }?>
           
   
-        <div class="messages-container margin-top-0">
+        <div class="messages-container message-contract">
             <div class="messages-container-inner" id="message-app">            
                 <!-- Message Content -->
                 <div class="message-content">
@@ -145,7 +145,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                 <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
                 <h5 class="card-title"><?php echo $name;?></h5>
                 <?php if($is_owner){?>
-            	<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
+            	<p class="text-muted mb-2"><?php D($contractDetails->contractor->member_heading);?></p>
             	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 
             	<?php }else{ ?>
              	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>

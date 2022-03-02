@@ -130,7 +130,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 			   <?php echo __('contract_details_feed_client','Your Feedback to Client');?>
 			  <?php }?>
 			  </h5></div>
-			  <div class="col-sm-6"><div class="star-rating" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
+			  <div class="col-sm-6"><div class="star-rating mb-2" data-rating="<?php echo $reviews['review_by_me']->average_review;?>"></div></div>
 			  <div class="col-sm-6">
               <h5>
 			  <?php if($is_owner){?>
@@ -167,7 +167,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 		<?php	
 		}
         ?>
-        <div class="panel mb-4">
+        <div class="panel">
           <div class="panel-header relative">
             <h4><?php echo __('contract_details_milestones','Milestone');?> (<?php echo count($contractDetails->milestone);?>) <a href="javascript:void(0)" onclick="showMilestone()" class="toggleUD milestoneToggle"><i class="icon-feather-chevron-down"></i></a></h4>
           </div>
@@ -210,7 +210,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
         </div>
       </div>
       <div class="col-lg-3 col-12">
-        <div class="card text-center mx-auto">
+        <div class="card text-center mt-4 mt-lg-0">
           <div class="card-body">
 			<a <?php echo $profile_url;?>>
             <span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>

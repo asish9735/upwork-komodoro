@@ -2395,7 +2395,7 @@ right: auto;
 	background-color: #eee;
     border-bottom: 1px solid #dfdfdf;
 	margin-bottom: 1.5rem;
-	padding: 2rem 0;
+	padding: 1.5rem 0;
 	position: relative;
 }
 .single-page-header .container {
@@ -2495,7 +2495,7 @@ max-width: 140px;
 	flex: 1;
 }
 .single-page-header .header-details h1 {
-	font-size: 1.6rem;
+	font-size: 1.5rem;
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -2590,15 +2590,7 @@ max-width: 140px;
  font-size: 26px;
  line-height: 32px;
 }
- .single-page-header .header-image {
- height: 120px;
- flex: 0 0 120px;
-}
- .single-page-header.freelancer-header .header-image {
- height: 120px;
- flex: 0 0 120px;
- width: 120px;
-}
+
 }
  @media (max-width: 991px) {
  .single-page-header .single-page-header-inner {
@@ -2609,7 +2601,7 @@ max-width: 140px;
 padding-right: 0;
 }
  .single-page-header {
- padding: 35px 0;
+ padding: 1rem 0;
 }
  .single-page-header .salary-amount {
  font-size: 22px;
@@ -2618,7 +2610,7 @@ padding-right: 0;
  .single-page-header .salary-box {
  padding: 0;
  margin-top: 15px;
- margin-bottom: 20px;
+ /*margin-bottom: 20px;*/
  background-color: transparent;
  box-shadow: none;
 }
@@ -2627,14 +2619,13 @@ padding-right: 0;
  color: #333;
 }
  .single-page-header .left-side,  .single-page-header .right-side,  .single-page-header-inner {
- display: block;
+ /*display: block;*/
  max-width: 100%;
 }
  .single-page-header .header-image {
  height: 70px;
  width: auto;
- padding: 15px 20px;
- margin: 15px 0;
+ margin-bottom: 15px;
  display: inline-block;
 }
  .single-page-header .header-image img {
@@ -2648,10 +2639,6 @@ padding-right: 0;
  height: 70px;
  flex: 0 0 70px;
  width: 70px;
- margin-bottom: -70px;
-}
- .single-page-header.freelancer-header .header-details h1 {
- margin-left: 90px;
 }
 }
  @media (max-width: 767px) {
@@ -2662,10 +2649,12 @@ background: #f7f7f7;
  height: 70px;
  flex: 0 0 70px;
  width: 70px;
- margin-bottom: -70px;
 }
- .single-page-header.freelancer-header .header-details h1 {
- margin-left: 90px;
+.single-page-header .right-side {
+    flex-direction: unset;
+}
+.single-page-header .right-side > div{
+	flex: 1;
 }
 }
 /* ---------------------------------- */
@@ -4561,9 +4550,9 @@ width: calc(100%);
 	font-size: 1.125rem;
 }*/
 img.flag {
-	border-radius: 3px;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-	height:16px;
+	border-radius: 2px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	height:15px;
 }
 .freelancer-name img.flag {
 	height: 15px;	
@@ -5929,7 +5918,7 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 	padding: 0;
 	margin-right: 0;
 	position: relative;
-	line-height: 25px;
+	line-height: 20px;
 }
 .star-rating .star.half:after, .star-rating .star:before {
 	font-family: "Material-Icons";
@@ -6499,7 +6488,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 .checkbox label {
 	position: relative;
 	cursor: pointer;
-	line-height: 25px;
+	line-height: 20px;
 	font-weight: 400;
 }
 .checkbox label span.checkbox-icon {
@@ -12171,6 +12160,7 @@ ul.dashboard-box-list > li:hover {
 }
  .dashboard-box-list .btn i[class*="icon-"] {
  	font-size: 1rem;
+	vertical-align: text-bottom;
 }
 /*.dashboard-box-list .buttons-to-right .btn {
 	margin: 0 0 -6px 2px;
@@ -12875,7 +12865,6 @@ width: 17px;
 /*  Scrollbar Hide - End */
 
 .messages-headline {
-	min-height: 70px;
 	margin: 0;
 	padding:0.75rem 1rem;
 	color: #333;
@@ -13226,11 +13215,14 @@ animation: 1s blink infinite 0.99999s;
  .messages-container-inner .messages-inbox {
 max-width: 300px;
 }
-.messages-container-inner .message-content, .message-bubble.me .message-avatar {
-		display: none;
-	}
+.message-bubble.me .message-avatar {
+	display: none;
 }
-@media (max-width: 767px) {
+}
+@media (max-width: 767.98px) {
+.messages-container-inner .message-content{
+	display: none;
+}
  .messages-container-inner {
 display: block;
 }

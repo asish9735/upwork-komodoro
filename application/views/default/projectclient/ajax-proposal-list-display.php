@@ -40,9 +40,12 @@ elseif($all_data){?>
 
                         <!-- Details -->
                         <span class="freelancer-detail-item d-block"> <?php D($bid->member_heading);?></span>
-                        <div class="star-rating mb-2" data-rating="<?php D(round($bid->avg_review,1));?>"></div>
-						<?php if($projects['project_settings']->is_fixed==1){?><span class="pipe">|</span><?php echo __('projectclient_proposal_delivery_time','Delivery Time:');?>  <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D(getAllBidDuration($bid->bid_duration)); }  }?>
-
+                        <div class="d-sm-flex align-items-center mb-2">
+                        <div class="star-rating" data-rating="<?php D(round($bid->avg_review,1));?>"></div>
+                        <div>
+						<?php if($projects['project_settings']->is_fixed==1){?><span class="pipe hide-under-sm">|</span><?php echo __('projectclient_proposal_delivery_time','Delivery Time:');?>  <?php if($projects['project_settings']->is_hourly==1){D(getAllBidDuration($bid->bid_duration));}else{?><?php D(getAllBidDuration($bid->bid_duration)); }  }?>
+                        </div>
+                        </div>
                         <!-- Rating -->
                         <div class="freelancer-rating d-none">
                             <div class="star-rating" data-rating="<?php D(round($bid->avg_review,1));?>"></div>
@@ -60,7 +63,7 @@ elseif($all_data){?>
                 <div class="freelancer-details p-0">
                 	<div class="freelancer-details-list">
                         <ul>
-                            <li><?php echo __('projectclient_proposal_location','Location');?> <strong><img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($bid->country_info->country_code_short));?>.svg" alt="" width="20" title="<?php D($bid->country_info->country_name);?>" data-tippy-placement="top"> <?php D($bid->country_info->country_name);?></strong> </li>
+                            <li><?php echo __('projectclient_proposal_location','Location');?> <strong><img class="flag mr-1" src="<?php echo IMAGE;?>flags/<?php D(strtolower($bid->country_info->country_code_short));?>.svg" alt="" width="20" title="<?php D($bid->country_info->country_name);?>" data-tippy-placement="top"> <?php D($bid->country_info->country_name);?></strong> </li>
                             <li>
                             <?php if($projects['project_settings']->is_hourly==1){?>
 								<?php echo __('projectclient_proposal_rate','Rate');?>  <strong><?php D(priceSymbol().priceFormat($bid->bid_amount));?> / hr</strong>
@@ -91,37 +94,37 @@ elseif($all_data){?>
 <?php if($bid->is_interview==1){?>
 <a href="<?php D(VZ);?>" class="btn btn-outline-site btn-sm mr-1 mb-2 disabled"><i class="icon-feather-phone"></i> <?php echo __('projectclient_proposa_interview','Interview');?></a>
 <?php }else{?>
-<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-phone"></i><?php echo __('projectclient_proposa_interview','Interview');?> </a>
+<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-phone"></i> <?php echo __('projectclient_proposa_interview','Interview');?> </a>
 <?php }?>
-<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i> <?php echo __('projectclient_proposa_archive','Archive');?></a>
+<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2"><i class="icon-feather-trash"></i> <?php echo __('projectclient_proposa_archive','Archive');?></a>
 <!--<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn  button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>
 -->
 <?php if($bid->is_hired==1){?>
-<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i><?php echo __('projectclient_proposa_S_offer','Send Offer');?> </a>
+<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> <?php echo __('projectclient_proposa_S_offer','Send Offer');?> </a>
 <?php }else{?>
-<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-success btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i><?php echo __('projectclient_proposa_hire','Hire');?> </a>
+<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-success btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> <?php echo __('projectclient_proposa_hire','Hire');?> </a>
 <?php }?>
 <?php }elseif($req_type=='archive'){?>
-<a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i><?php echo __('projectclient_proposa_unarchive','Unarchive');?> </a>
+<a href="<?php D(VZ);?>" data-btn="unarchive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2"><i class="icon-feather-trash"></i> <?php echo __('projectclient_proposa_unarchive','Unarchive');?> </a>
 <?php }elseif($req_type=='interview'){?>
-<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i><?php echo __('projectclient_proposa_archive','Archive');?> </a>
+<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2"><i class="icon-feather-trash"></i> <?php echo __('projectclient_proposa_archive','Archive');?> </a>
 <!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>-->
-<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i><?php echo __('projectclient_proposa_hire','Hire');?> </a>
+<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> <?php echo __('projectclient_proposa_hire','Hire');?> </a>
 <?php }elseif($req_type=='shortlisted'){?>
 <!--<a href="<?php D(VZ);?>" class="button green mr-1 mb-2 disabled"><i class="icon-feather-star"></i> Shortlisted</a>-->
 <?php if($bid->is_interview==1){?>
-<a href="<?php D(VZ);?>" class="button btn btn-outline-success mr-1 mb-2 disabled"><i class="icon-feather-phone"></i> <?php echo __('projectclient_proposa_interview','Interview<');?>/a>
+<a href="<?php D(VZ);?>" class="button btn btn-outline-success mr-1 mb-2 disabled"><i class="icon-feather-phone"></i> <?php echo __('projectclient_proposa_interview','Interview<');?></a>
 <?php }else{?>
-<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-phone"></i><?php echo __('projectclient_proposa_interview',' Interview');?></a>
+<a href="<?php D(VZ);?>" data-btn="interview-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-phone"></i> <?php echo __('projectclient_proposa_interview',' Interview');?></a>
 <?php }?>
-<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2" title="Remove Bid" data-tippy-placement="top"><i class="icon-feather-trash"></i><?php echo __('projectclient_proposa_archive','Archive');?> </a>
+<a href="<?php D(VZ);?>" data-btn="archive-btn" class="proposal-btn btn btn-outline-danger btn-sm mr-1 mb-2"><i class="icon-feather-trash"></i> <?php echo __('projectclient_proposa_archive','Archive');?> </a>
 <!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>-->
-<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim btn btn-outline-success btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i><?php echo __('projectclient_proposa_hire','Hire');?> </a>
+<a href="<?php D(VZ);?>" data-btn="hire-btn" class="proposal-btn popup-with-zoom-anim btn btn-outline-success btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> <?php echo __('projectclient_proposa_hire','Hire');?> </a>
 <?php }elseif($req_type=='hired'){?>
 <!--<a href="<?php D(VZ);?>" data-btn="message-btnn" class="proposal-btn popup-with-zoom-anim button dark mr-1 mb-2"><i class="icon-feather-mail"></i> Message</a>-->
-<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i><?php echo __('projectclient_proposa_S_offer','Send Offer');?> </a>
+<a href="<?php D(VZ);?>" data-btn="hire-btn"  class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-material-outline-check"></i> <?php echo __('projectclient_proposa_S_offer','Send Offer');?> </a>
 <?php }?>
-<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-mail"></i><?php echo __('projectclient_list_messages','Message');?> </a>
+<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn btn btn-outline-site btn-sm mr-1 mb-2"><i class="icon-feather-mail"></i> <?php echo __('projectclient_list_messages','Message');?> </a>
                         
                     </div>
                 	<p class="mb-0"><?php 

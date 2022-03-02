@@ -33,7 +33,7 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
         </ul>
         <div class="row">
           <div class="col-lg-9 col-12">
-			 <div class="card mb-4">
+			 <div class="card">
               <div class="card-header">
                 <h4><?php echo __('contract_term_contract_info','Contract info');?></h4>
               </div>
@@ -139,7 +139,7 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
           </div>
 			
           <div class="col-lg-3 col-12">          
-            <div class="card text-center mx-auto">
+            <div class="card text-center mt-4 mt-lg-0">
               <div class="card-body">
 			  	<a <?php echo $profile_url;?>>
               	<span class="avatar-logo mb-3"><img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"></span>

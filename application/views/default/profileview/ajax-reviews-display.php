@@ -37,29 +37,31 @@ $cntloop=0;
 ?>
 </ul>
           
+          
+          <?php
+            if($cntloop>1){
+                ?>
           <!-- Pagination -->
-          <div class="clearfix"></div>
-          <div class="pagination-container">
-<?php
-if($cntloop>1){
-	?>
-<nav class="pagination" id="paggination-review">
-	<ul>
-	<li class="pagination-arrow"><a href="<?php D(VZ);?>" class="disabled prevbtn"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
-	<?php
-	for($i=1;$i<=$cntloop;$i++){
-		?>
-		<li><a href="<?php D(VZ);?>" data-id="<?php D($i);?>" class="pagibtn <?php if($i==1){?>current-page<?php }?>"><?php D($i);?></a></li>
-		<?php
-	}
-	?>
-	<li class="pagination-arrow"><a href="<?php D(VZ);?>" class="nextbtn"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
-	</ul>
-</nav>
-	<?php
-}
-?>
+          <div class="pagination-container">			
+            <nav class="pagination" id="paggination-review">
+                <ul>
+                <li class="pagination-arrow"><a href="<?php D(VZ);?>" class="disabled prevbtn"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
+                <?php
+                for($i=1;$i<=$cntloop;$i++){
+                    ?>
+                    <li><a href="<?php D(VZ);?>" data-id="<?php D($i);?>" class="pagibtn <?php if($i==1){?>current-page<?php }?>"><?php D($i);?></a></li>
+                    <?php
+                }
+                ?>
+                <li class="pagination-arrow"><a href="<?php D(VZ);?>" class="nextbtn"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
+                </ul>
+            </nav>
+                
+            <div class="clearfix"></div>
           </div>
+          <?php
+            }
+            ?>
 <script type="text/javascript">
 	$('.prevbtn').on('click',function(){
 		var prev=$('#paggination-review').find('a.current-page').attr('data-id');

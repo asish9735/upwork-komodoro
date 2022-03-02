@@ -39,7 +39,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
         <div class="row">
           <div class="col-lg-9">
 
-						<div class="messages-container margin-top-0">
+						<div class="messages-container message-contract">
 							<div class="messages-container-inner" id="message-app">
 							
 								<!-- Message Content -->

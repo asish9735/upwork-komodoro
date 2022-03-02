@@ -31,7 +31,7 @@ html {
 	height: 450px
 }
 .message-content-inner {
-	max-height: 400px;
+	height: 400px;
 }
 }
 
@@ -112,6 +112,7 @@ html {
 		overflow-x: auto;
 		white-space: nowrap;
 		flex-wrap: inherit;
+		min-height: 37px;
 	}
 	.attachmentFile {
 		border-top: 1px solid #dee2e6;
@@ -128,6 +129,9 @@ html {
 }
 
 @media only screen and (max-width: 575px) {
+	.hide-under-sm{
+		display:none !important;
+	}
 	.myradio .btn-group {
 		flex-wrap: wrap;
 		margin-bottom:-1rem;

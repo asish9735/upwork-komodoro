@@ -678,7 +678,7 @@ padding: 2rem 1rem;
     margin-bottom: 0;
 }
 .panel-body {
-	padding:1.25rem
+	padding: 1rem 1.25rem
 }
 .panel-body p:last-child,
 .card-body p:last-child,
@@ -1486,10 +1486,10 @@ ul.list-group-0 > li{
 	box-shadow:none;
 }
 .pagination-container {
-    margin: 1.5rem 0 1rem;
+    padding: 1.5rem 0 1rem;
 }
 .boxed-list .pagination-container{
-	margin: 1rem
+	padding: 1rem
 }
 #job-experience{
 	overflow:hidden
@@ -1534,8 +1534,12 @@ ul.postJobStep li:hover > a i, ul.postJobStep li.active > a i{
 ul.postJobStep li a i:last-child {
     float:right;
 }
-
-
+.message-contract .message-content-inner {
+    max-height: 400px;
+}
+.message-contract .messages-container-inner .message-content{
+	display: flex;
+}
 
 
 

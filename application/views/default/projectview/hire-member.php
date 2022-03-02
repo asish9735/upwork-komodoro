@@ -85,8 +85,7 @@ $logo=getMemberLogo($bid);
                 
                 <h6 class="text-info"><?php D(ucwords($memberInfo->member_name))?><?php echo __('projectview_job_profile_picture',"'s profile rate is");?>  <?php echo $currency.$memberInfo->member_hourly_rate;?> /hr</h6>
                  
-                <div class="form-group">
-                  
+                <div class="form-group mb-0">
 				<div class="row">
                   <div class="col-sm-6 col-12">
                     <label><b><?php echo __('projectview_job_weely_limit','Weekly Limit');?></b></label>
@@ -156,11 +155,9 @@ $logo=getMemberLogo($bid);
                   <a href="javascript:" class="btn btn-site btn-sm addMilestone"><i class="icon-feather-plus"></i><?php echo __('projectview_apply_add_milestone','Add milestone');?> </a> </div>
                 <div class="payment_project_wrapper">
                   <h4><?php echo __('projectview_apply_full_ammount',"What is the full amount you'd like to bid for this job?");?></h4>
-                  <div class="padding-top-20" style="max-width:720px">
-                    <div class="form-group">
+                  <div class="form-group mb-0">
                       <label for="title"><b><?php echo __('projectview_apply_due_date','Due date');?></b></label>
                       <input type="text" name="milestone_due_date" id="milestone_due_date" class="form-control datepicker" value="">
-                    </div>
                   </div>
                 </div>
               </div>
@@ -176,9 +173,9 @@ $logo=getMemberLogo($bid);
                 <textarea rows="4" class="form-control" id="bid_details" name="bid_details"></textarea>
               </div>
               <div class="form-group">
-                <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>
-                <input type="file" name="fileinput" id="fileinput" multiple="true">
+                <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>                
                 <div class="upload-area" id="uploadfile">
+                <input type="file" name="fileinput" id="fileinput" multiple="true">
                   <p><?php echo __('projectview_job_drag_drop','Drag and Drop file here');?><br/>
                   <?php echo __('projectview_apply_or','Or');?> <br/>
                     <span class="text-site"><?php echo __('projectview_apply_click','Click');?></span> <?php echo __('projectview_apply_to_select','to select file');?></p>
@@ -188,7 +185,7 @@ $logo=getMemberLogo($bid);
               
                 <div class="checkbox">
                   <input type="checkbox" id="i_agree" name="i_agree" value="1">
-                  <label for="i_agree"><span class="checkbox-icon"></span> <?php echo __('projectview_job_yes_understand','Yes, I understand and agree to the');?> <a href="#"><?php echo __('projectview_job_term_service','Terms of Service');?></a>,<?php echo __('projectview_job_including_the','including the');?>  <a href="#"><?php echo __('projectview_job_user_agreement','User Agreement');?></a><?php echo __('projectview_job_and','and');?>  <a href="#"><?php echo __('projectview_job_privacy_policy','Privacy Policy');?></a></label>
+                  <label for="i_agree"><span class="checkbox-icon"></span> <?php echo __('projectview_job_yes_understand','Yes, I understand and agree to the');?> <a href="#"><?php echo __('projectview_job_term_service','Terms of Service');?></a>, <?php echo __('projectview_job_including_the','including the');?> <a href="#"><?php echo __('projectview_job_user_agreement','User Agreement');?></a> <?php echo __('projectview_job_and','and');?> <a href="#"><?php echo __('projectview_job_privacy_policy','Privacy Policy');?></a></label>
                 </div>
                 <div id="i_agreeError" class="rerror"></div>
               
@@ -300,7 +297,7 @@ $logo=getMemberLogo($bid);
 	var  main = function(){
 		$('.datepicker').datetimepicker({
 			format: 'YYYY-MM-DD',
-			minDate: "<?php echo date('Y-m-d');?>",
+			minDate: "<?php echo date('Y-m-d');?>"
 		});
 		$('.addMilestone').on('click',function(){
 			var html='';

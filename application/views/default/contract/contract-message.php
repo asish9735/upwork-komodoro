@@ -34,7 +34,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
         </ul>
         <div class="row">
         <div class="col-lg-9">
-            <div class="messages-container margin-top-0">
+            <div class="messages-container message-contract">
                 <div class="messages-container-inner" id="message-app">
                 
                     <!-- Message Content -->
@@ -47,7 +47,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
                             <h3><?php echo __('contract_message_chat','Select chat');?></h3>
                         </div>
                     </div>
-                    <!-- Message Content -->
+                    <!-- Message Content End -->
                     <div class="attachmentFile">
                         <div class="messages-headline"><h4><?php echo __('contract_message_attachment','Attachments');?></h4><p class="mb-0"><?php echo __('contract_message_all_files','All Files');?></p></div>
                         <div v-if="active_chat" class="attachScrollbar" data-simplebar>
@@ -62,7 +62,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
         
         </div>
           <div class="col-lg-3">
-            <div class="card text-center mx-auto">
+            <div class="card text-center mt-4 mt-lg-0">
                 <div class="card-body">
 				<a <?php echo $profile_url;?>>
                 <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
