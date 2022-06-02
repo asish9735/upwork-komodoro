@@ -8,8 +8,8 @@ define('THEME',							'default/');
 define('URL',							$http_path.$_SERVER['HTTP_HOST']."/".PROJECT.PROJECT_ADMIN);
 define('SITE_URL',						$http_path.$_SERVER['HTTP_HOST']."/".PROJECT);
 define('APS_PATH',						$_SERVER['DOCUMENT_ROOT']."/".PROJECT);
-define('VPATH',							$http_path.$_SERVER['HTTP_HOST']."/".PROJECT.PROJECT_ADMIN);
-define('APATH',							$_SERVER['DOCUMENT_ROOT']."/".PROJECT.PROJECT_ADMIN);
+define('VPATH',							$http_path.$_SERVER['HTTP_HOST']."/".PROJECT);
+define('APATH',							$_SERVER['DOCUMENT_ROOT']."/".PROJECT);
 
 
 define('BASE_URL' , 					$http_path.$_SERVER['HTTP_HOST']."/".PROJECT);

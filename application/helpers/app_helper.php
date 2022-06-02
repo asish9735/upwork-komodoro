@@ -407,6 +407,9 @@ function getAllCategory($search=array()){
 		if(array_key_exists('limit',$search)){
 			$arr['limit']=$search['limit'];
 		}
+		if(array_key_exists('is_featured',$search) && $search['is_featured']==1){
+			$arr['where']['c.is_featured']=1;
+		}
 	}
 	return getData($arr);
 }

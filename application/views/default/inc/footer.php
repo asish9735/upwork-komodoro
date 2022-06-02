@@ -1,5 +1,5 @@
 <?php
-$all_category=getAllCategory(array('limit'=>6));
+$all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
 ?>
 <!-- Footer -->
 <div id="footer">  
