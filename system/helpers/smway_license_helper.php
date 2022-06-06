@@ -2285,7 +2285,7 @@ if (!function_exists('getMembershipData')) {
 					updateTable('member_membership',$member_membership,array('member_id'=>$member_id));
 					$res['status']=1;
 				}
-				$maxdata=array('max_bid'=>$member_membershi['max_bid'],'max_portfolio'=>$member_membershi['max_portfolio'],'max_skills'=>$member_membershi['max_skills'],'commission_percent'=>$member_membershi['commission_percent']);
+				$maxdata=array('max_bid'=>$member_membership['max_bid'],'max_portfolio'=>$member_membership['max_portfolio'],'max_skills'=>$member_membership['max_skills'],'commission_percent'=>$member_membership['commission_percent']);
 			}
 		}
 		if($filter){
