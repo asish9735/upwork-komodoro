@@ -180,7 +180,7 @@ class Contract_model extends MX_Controller {
 			
 			$milestone_amount=$contractDetails->milestone_amount;
 			$sitecommission_fee_amount=0;
-			$sitecommission=getSiteCommissionFee($contract_id,$pid);
+			$sitecommission=getSiteCommissionFee($contractDetails->contractor_id,$pid);
 			if($sitecommission>0){
 				$sitecommission_fee_amount=displayamount(($milestone_amount*$sitecommission)/100);
 			}
@@ -288,7 +288,7 @@ class Contract_model extends MX_Controller {
 			
 			$milestone_amount=$contractDetails->milestone_amount;
 			$sitecommission_fee_amount=0;
-			$sitecommission=getSiteCommissionFee($contract_id,$pid);
+			$sitecommission=getSiteCommissionFee($contractDetails->contractor_id,$pid);
 			if($sitecommission>0){
 				$sitecommission_fee_amount=displayamount(($milestone_amount*$sitecommission)/100);
 			}
