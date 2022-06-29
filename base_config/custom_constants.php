@@ -43,6 +43,26 @@ define('PROJECT_HIRED',				"3");
 define('PROJECT_CLOSED',			"4");
 define('PROJECT_DELETED',			"6");
 
+
+/* Proposal type Constant */
+define('PROPOSAL_PENDING',						"1"); #proposal 
+define('PROPOSAL_ACTIVE',						"2"); #proposal 
+define('PROPOSAL_PAUSED',						"3"); #proposal 
+define('PROPOSAL_MODIFICATION',					"4"); #proposal 
+define('PROPOSAL_DECLINED',						"5"); #proposal 
+define('PROPOSAL_DELETED',						"6"); #proposal 
+
+/* Order type Constant */
+define('ORDER_PENDING',							"1"); #order 
+define('ORDER_PROCESSING',						"2"); #order 
+define('ORDER_REVISION',						"3"); #order 
+define('ORDER_CANCELLATION',					"4"); #order 
+define('ORDER_CANCELLED',						"5"); #order 
+define('ORDER_DELIVERED',						"6"); #order 
+define('ORDER_COMPLETED',						"7"); #order 
+
+
+
 /* API CONSTANTS */
 define('API_SUCCESS',				'1');
 define('API_FAIL',					'0');

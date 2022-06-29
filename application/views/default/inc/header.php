@@ -50,15 +50,18 @@ if($loggedUser){
 						if($this->access_member_type=='C'){
 						?>
 						<li><a href="<?php echo URL::get_link('search_freelancer'); ?>"><?php echo __('professionals','Professionals'); ?></a></li>
+						<li><a href="<?php echo URL::get_link('search_gigs'); ?>"><?php echo __('Catalog','Gigs'); ?></a></li>
 						<li><a href="<?php D(get_link('postprojectURL'))?>"><?php echo __('',''); ?>Post a Job</a></li>
 						<?php }
 						if($this->access_member_type=='F'){
 						?>
 						<li><a href="<?php echo URL::get_link('search_job'); ?>"><?php echo __('projects','Projects'); ?></a></li>
+						<li><a href="<?php D(get_link('postproposalURL'))?>"><?php echo __('Catalog_post','Post Gig'); ?></a></li>
 						<?php }?>
 						<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><?php echo __('dashboard','Dashboard'); ?></a></li>
 					<?php }else{?>
 					<li><a href="<?php echo URL::get_link('search_job'); ?>"><?php echo __('projects','Projects'); ?></a></li>
+					<li><a href="<?php echo URL::get_link('search_gigs'); ?>"><?php echo __('Catalog','Gigs'); ?></a></li>
 					<li><a href="<?php echo URL::get_link('search_freelancer'); ?>"><?php echo __('',''); ?><?php echo __('professionals','Professionals'); ?></a></li>
                     <li class="d-sm-none"><a href="<?php echo URL::get_link('loginURL'); ?>"><?php echo __('login','Log In'); ?></a></li>
 					<li class="d-sm-none"><a href="<?php echo URL::get_link('registerURL'); ?>"><?php echo __('register','Register'); ?></a></li>

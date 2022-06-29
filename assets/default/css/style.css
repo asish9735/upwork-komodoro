@@ -1548,7 +1548,117 @@ ul.postJobStep li a i:last-child {
 
 
 
+/* upload drag drop */
+.upload-area {
+    width: 100%;
+    max-height: 100px;
+	border: 2px dashed var(--siteColor);
+    border-image-source: url('../images/border-dashed.png?21384');
+    border-image-slice: 2;
+    border-image-repeat: round;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    text-align: center;
+    overflow: auto;
+	padding: 1rem;
+    position: relative;
+	margin-bottom:0.25rem
+}
+.upload-area:hover{
+    cursor: pointer;
+}
+.upload-area p {
+	color: #777;
+    font-weight: 400;
+    font-size: 0.938rem;
+    line-height: 20px;
+	margin-bottom:0
+}
+.drop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    color: #777;
+    font-size: 0.875rem;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px dashed #777;
+    border-image-source: url(../images/border-dashed.png);
+    border-image-slice: 2;
+    border-image-repeat: round;
+    background-repeat: no-repeat;
+	position: relative;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
 
+.thumbnail_sec_video_capture {
+    word-break: break-all;
+    width: 150px;
+    height: 100px;
+    display: inline-block;
+    padding: 10px;
+    border: 1px dashed #ccc;
+	border-radius:0.25rem;
+    position: relative;
+    background-size: cover;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.thumbnail_sec_video_capture .addthumb{
+	font-size: 1.25rem;
+}
+.thumbnail_sec_video_capture .removethumb {
+    right: -10px;
+}
+.thumbnail_sec_video_capture .removethumb {
+    position: absolute;
+    top: -10px;
+}
+#fileinput{
+    /* display: none; */
+    opacity: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    cursor: pointer;
+
+}
+#uploadfile_container{
+	margin:0 -1rem
+}
+.thumbnail_sec {
+	word-break: break-all;
+	display: inline-block;
+	padding: 0 1rem;
+}
+.thumbnail_sec > a {
+	color:#333
+}
+.thumbnail_sec > a:hover {
+	color: #40de00
+}
+.thumbnail_sec > a.ico > i{	
+	vertical-align: middle;
+}
 
 
 

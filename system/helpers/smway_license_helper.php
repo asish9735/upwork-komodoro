@@ -2414,7 +2414,7 @@ if ( ! function_exists('getWalletMember'))
 {
 function getWalletMember($member_id){
 	$data=getData(array(
-				'select'=>'w.wallet_id,w.balance,w.user_id,w.title,m.is_employer,if(o.organization_name IS NOT NULL,o.organization_name,m.member_name) as name,m.member_email',
+				'select'=>'w.wallet_id,w.balance,w.user_id,w.title,m.is_employer,if(o.organization_name IS NOT NULL,o.organization_name,m.member_name) as name,m.member_email,m.member_name',
 				'table'=>'wallet as w',
 				'join'=>array(
 					array('table'=>'member as m','on'=>'w.user_id=m.member_id','position'=>'left'),
@@ -2643,11 +2643,54 @@ if (!function_exists('generate_invoice_number')) {
 		return $num;
 	}
 }
+if (!function_exists('generate_order_number')) {
+	function generate_order_number() {
+		$currentno=get_setting('ORDER_NUMBER');
+		$INV=$currentno+1;
+		updateTable('settings',array('setting_value'=>$INV),array('setting_key'=>'ORDER_NUMBER'));
+		$num =make_order_number($INV);
+		return $num;
+	}
+}
 if (!function_exists('make_invoice_number')) {
 	function make_invoice_number($INV) {
 		$num =str_pad($INV,8,'0',STR_PAD_LEFT);
 		return $num;
 	}
+}
+if (!function_exists('make_order_number')) {
+	function make_order_number($INV) {
+		$num =str_pad($INV,6,'0',STR_PAD_LEFT);
+		return $num;
+	}
+}
+if ( ! function_exists('getProposalRating'))
+{
+function getProposalRating($proposal_id,$type=array()){
+	if($type && in_array('stat',$type)){
+		$arr=array(
+			'select'=>'AVG(b.buyer_rating) as avg_review,count(b.review_id) as total_review',
+			'table'=>'buyer_reviews b',
+			'where'=>array('b.proposal_id'=>$proposal_id),
+			'group'=>'b.proposal_id',
+			'single_row'=>TRUE,
+		);
+	$data=getData($arr);
+	if(!$data){
+		$data=(object)array('avg_review'=>0,'total_review'=>0);
+	}
+	}else{
+	$arr=array(
+			'select'=>'b.buyer_rating,b.buyer_review,b.order_id,b.review_date,m.member_name as buyer_name,s.seller_rating,s.seller_review,s.review_date,s.review_id as seller_review_id',
+			'table'=>'buyer_reviews b',
+			'join'=>array(array('table'=>'seller_reviews as s','on'=>'b.order_id=s.order_id','position'=>'left'),array('table'=>'member as m','on'=>'b.review_buyer_id=m.member_id','position'=>'left')),
+			'where'=>array('b.proposal_id'=>$proposal_id),
+			'order'=>array(array('b.review_date','asc')),
+	);
+	$data=getData($arr);
+	}
+	return $data;
+}
 }
 if ( ! function_exists('is_online'))
 {

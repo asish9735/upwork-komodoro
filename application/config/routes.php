@@ -84,3 +84,9 @@ $route['membership']='membership/index';
 $route['process-membership/(:any)/(:any)']='membership/select_membership/$1/$2';
 
 $route['contact-request-check']='cms/submit_contact';
+
+$route['s/(:any)']='proposals/details/$1';
+$route['order-details/(:any)']='orders/order_details/$1';
+$route['order-message/(:any)']='orders/order_message/$1';
+$route['order-resolution-center/(:any)']='orders/order_resolution_center/$1';
+$route['order-term/(:any)']='orders/order_term/$1';

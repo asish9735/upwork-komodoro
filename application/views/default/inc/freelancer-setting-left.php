@@ -107,6 +107,15 @@ if($loggedUser){
 							<li class="<?php echo ($page_key == 'favorite_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-feather-heart"></i> <?php echo __('favourite','Favourite'); ?></a></li>
 							<li class="<?php echo ($page_key == 'reviews_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-star-border"></i> <?php echo __('reviews','Reviews'); ?></a></li>
 						</ul>
+						<ul>
+							<li><a href="#"><i class="icon-material-outline-assignment"></i> <span><?php echo __('Catalog','Gigs'); ?></span></a>
+								<ul>
+									<li class="<?php echo ($page_key == 'proposals_manage') ? 'active' : '' ;?>"><a href="<?php D(get_link('myProposalsURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <span><?php echo __('my_Catalog','My Gigs');?></span></a></li>
+									<li class="<?php echo ($page_key == 'proposals_add') ? 'active' : '' ;?>"><a href="<?php D(get_link('postproposalURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <span><?php echo __('add_new_Catalog','Create a Gig');?></span></a></li>                           
+									<li class="<?php echo ($page_key == 'orders_manage') ? 'active' : '' ;?>"><a href="<?php D(get_link('OrderListURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <span><?php echo __('Orders','Orders');?></span></a></li>                            
+								</ul>	
+							</li>
+						</ul>
 						<ul data-submenu-title="Finance">
 							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('finance','Finance'); ?></a>
 								<ul>

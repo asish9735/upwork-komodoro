@@ -199,4 +199,32 @@ $config['favoriteURL'] = 'favorite';
 $config['MyReviewURL'] = 'reviews';
 $config['Reviewdetails'] = 'reviews/details';
 
+/* Gigs start */
+$config['postproposalURL'] = 'proposals/add';
+$config['postproposalFormCheckAJAXURL'] = 'proposals/post_proposal_form_check';
+$config['proposaluploadFileFormCheckAJAXURL'] = 'proposals/uploadattachment';
+$config['VideoThumbCaptureURL'] = 'proposals/capturevideo';
+$config['savecaptureAJAXURL'] = 'proposals/savecaptureimage';
+$config['postproposalSuccessURL'] = 'proposals/success';
+$config['editproposalURL'] = 'proposals/edit';
+$config['myProposalDetailsURL'] = 's';
+$config['myProposalsURL'] = 'proposals/manage';
+$config['actionproposalCheckAjax'] = 'proposals/actionproposal';
+$config['search_gigs'] = 'proposals/gigs';
+$config['saveCheckoutFormCheckAJAXURL'] = 'proposals/savecheckoutCheckAjax';
+$config['checkoutURL'] = 'proposals/checkout';
+$config['processCheckoutFormCheckAJAXURL'] = 'proposals/checkoutprocessCheckAjax';
+$config['actionproposalPayfeatureURLAJAX'] = 'proposals/pay_featured_listing'; 
+$config['processFeaturedFormCheckAJAXURL'] = 'proposals/makefeature';
 
+$config['OrderDetailsURL'] = 'order-details/'; #router
+$config['OrderMessageURL'] = 'order-message/'; #router
+$config['OrderResolutionCenterURL'] = 'order-resolution-center/'; #router
+$config['OrderTermURL'] = 'order-term/'; #router
+$config['OrderInvoiceURL'] = 'orders/invoice/'; 
+$config['OrderListURL'] = 'orders/manage'; 
+$config['OrdersendMessageURL'] = 'orders/sendmessage'; 
+$config['OrdersaveActionURLAJAX'] = 'orders/saveAction'; 
+$config['OrderuploadFileFormCheckAJAXURL'] = 'orders/uploadattachment';
+
+/* Gigs End */

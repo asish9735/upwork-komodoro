@@ -291,24 +291,38 @@ class Message extends MX_Controller {
 	
 	}
 	
-	public function createnewroom($pid='',$mid='')
+	public function createnewroom($pid='',$mid='',$is_proposal=0)
 	{
 		$is_valid=0;
 		if($this->loggedUser){
 			$member_id=$this->member_id;
 			$organization_id=$this->organization_id;
-			$project_id=getFieldData('project_id','project','md5(project_id)',$pid);
-			$bidder_id=getFieldData('member_id','project_bids','md5(member_id)',$mid);
-			$this->data['projects']=getProjectDetails($project_id,array('project_owner'));
-			if($this->data['projects']){
-				$owner_organization_id=$this->data['projects']['project_owner']->organization_id;
-				$owner_member_id=$this->data['projects']['project_owner']->member_id;
-				//if(($owner_member_id==$member_id) || ($bidder_id=$member_id)){
-				if(($owner_member_id==$member_id)){
-					$member_ids=array($owner_member_id,$bidder_id);
-					$selected_conversation_id=$this->message_model->getConversationID($project_id,$member_ids,0);
+			if($is_proposal){
+				$proposal_id=getFieldData('proposal_id','proposals','md5(proposal_id)',$pid);
+				//$client_id=getFieldData('member_id','member','md5(member_id)',$mid);
+				$client_id=$member_id;
+				$proposal_seller_id=getFieldData('proposal_seller_id','proposals','proposal_id',$proposal_id);
+				if($proposal_seller_id && $proposal_seller_id!=$member_id){
+					$member_ids=array($client_id,$proposal_seller_id);
+					$selected_conversation_id=$this->message_model->getConversationIDProposal($proposal_id,$member_ids,0);
 					if($selected_conversation_id){
 						$is_valid=1;
+					}
+				}
+			}else{
+				$project_id=getFieldData('project_id','project','md5(project_id)',$pid);
+				$bidder_id=getFieldData('member_id','project_bids','md5(member_id)',$mid);
+				$this->data['projects']=getProjectDetails($project_id,array('project_owner'));
+				if($this->data['projects']){
+					$owner_organization_id=$this->data['projects']['project_owner']->organization_id;
+					$owner_member_id=$this->data['projects']['project_owner']->member_id;
+					//if(($owner_member_id==$member_id) || ($bidder_id=$member_id)){
+					if(($owner_member_id==$member_id)){
+						$member_ids=array($owner_member_id,$bidder_id);
+						$selected_conversation_id=$this->message_model->getConversationID($project_id,$member_ids,0);
+						if($selected_conversation_id){
+							$is_valid=1;
+						}
 					}
 				}
 			}

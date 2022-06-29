@@ -10,7 +10,7 @@ class Message_model extends CI_Model {
 	
 	public function getChatList($member_id='', $limit=0, $offset=100, $for_list=TRUE){
 		$conversations_room = $this->db->dbprefix('conversations_room');
-		$this->db->select("c.conversations_id,c_m.sender_id,c_m.message_id,c_m.sending_date,c_m.message,c_m.attachment,c_m.is_read,c_r_self.user_id as chat_user_id,c_r.last_seen_msg,c.project_id")
+		$this->db->select("c.conversations_id,c_m.sender_id,c_m.message_id,c_m.sending_date,c_m.message,c_m.attachment,c_m.is_read,c_r_self.user_id as chat_user_id,c_r.last_seen_msg,c.project_id,c.proposal_id")
 				->from('conversations c')
 				->join('conversations_room c_r', 'c_r.conversations_id=c.conversations_id', 'LEFT')
 				->join('conversations_room c_r_self', "(c_r.conversations_id=c_r_self.conversations_id and c_r_self.user_id <> '".$member_id."')", 'LEFT')
@@ -36,8 +36,15 @@ class Message_model extends CI_Model {
 					$return_result[$k]->message_id = $v->message_id;
 					$return_result[$k]->last_seen_msg = $this->getLastSeenMsg($v->chat_user_id, $v->conversations_id);
 					$return_result[$k]->unread_msg_count = $this->getUnreadMsgCount($member_id, $v->conversations_id);
-					$return_result[$k]->project_name = getField('project_title', 'project', 'project_id', $v->project_id);
-					$return_result[$k]->project_url = get_link('myProjectDetailsURL')."/".getField('project_url', 'project', 'project_id', $v->project_id);
+					if($v->proposal_id){
+						$return_result[$k]->is_proposal =1;
+						$return_result[$k]->project_name = getField('proposal_title', 'proposals', 'proposal_id', $v->proposal_id);
+						$return_result[$k]->project_url = get_link('myProposalDetailsURL')."/".getField('proposal_url', 'proposals', 'proposal_id', $v->proposal_id);
+					}else{
+						$return_result[$k]->is_proposal =0;
+						$return_result[$k]->project_name = getField('project_title', 'project', 'project_id', $v->project_id);
+						$return_result[$k]->project_url = get_link('myProjectDetailsURL')."/".getField('project_url', 'project', 'project_id', $v->project_id);
+					}
 					$return_result[$k]->time_ago = get_time_ago($v->sending_date);
 				}
 			}
@@ -79,7 +86,7 @@ class Message_model extends CI_Model {
 	
 	public function getConversationUserById($conversation_id='', $member_id=''){
 		$conversations_room = $this->db->dbprefix('conversations_room');
-		$this->db->select("c_m.*,(select user_id from $conversations_room where conversations_id=$conversation_id AND user_id <> '$member_id') as chat_user_id,c_r.last_seen_msg,c.project_id")
+		$this->db->select("c_m.*,(select user_id from $conversations_room where conversations_id=$conversation_id AND user_id <> '$member_id') as chat_user_id,c_r.last_seen_msg,c.project_id,c.proposal_id")
 				->from('conversations c')
 				->join('conversations_room c_r', 'c_r.conversations_id=c.conversations_id', 'LEFT')
 				->join('conversations_message c_m', 'c_m.message_id=c.last_message_id', 'LEFT');
@@ -100,8 +107,14 @@ class Message_model extends CI_Model {
 			$return_result->message_id = $result->message_id;
 			$return_result->last_seen_msg = $this->getLastSeenMsg($result->chat_user_id, $result->conversations_id);
 			$return_result->unread_msg_count = $this->getUnreadMsgCount($member_id, $result->conversations_id);
-			$return_result->project_name = getField('project_title', 'project', 'project_id', $result->project_id);
-			$return_result->project_url = get_link('myProjectDetailsURL')."/".getField('project_url', 'project', 'project_id', $result->project_id);
+			if($result->proposal_id){
+				$return_result->is_proposal =1;
+				$return_result->project_name = getField('proposal_title', 'proposals', 'proposal_id', $result->proposal_id);
+				$return_result->project_url = get_link('myProposalDetailsURL')."/".getField('proposal_url', 'proposals', 'proposal_id', $result->proposal_id);
+			}else{
+				$return_result->project_name = getField('project_title', 'project', 'project_id', $result->project_id);
+				$return_result->project_url = get_link('myProjectDetailsURL')."/".getField('project_url', 'project', 'project_id', $result->project_id);
+			}
 			$return_result->time_ago = get_time_ago($result->sending_date);
 			return $return_result;
 		}
@@ -360,6 +373,58 @@ class Message_model extends CI_Model {
 							'last_seen_msg'=>$message_id,
 							);
 							insert_record('conversations_room',$project_conversation_member,TRUE);
+						}
+					}
+				}
+			}
+		}	
+		return $selected_conversation_id;
+	}
+	public function getConversationIDProposal($proposal_id='',$member_ids=array(),$is_auth=0){
+		$sender_id=$member_ids[0];
+		$conversationData=getData(array(
+			'select'=>'p_c.conversations_id, count(p_c_m.conversations_id) as total',
+			'table'=>'conversations as p_c',
+			'join'=>array(array('table'=>'conversations_room as p_c_m','on'=>'p_c.conversations_id=p_c_m.conversations_id','position'=>'left')),
+			'where'=>array('p_c.proposal_id'=>$proposal_id),
+			'where_in'=>array('p_c_m.user_id'=>$member_ids),
+			'single_row'=>true,
+			'group'=>'p_c_m.conversations_id',
+			'having'=>'count(total)>1',
+			
+		));
+		if($conversationData){
+			$selected_conversation_id=$conversationData->conversations_id;
+		}else{
+			$proposal_conversation=array(
+				'proposal_id'=>$proposal_id,
+				'status'=>1
+			);
+			$selected_conversation_id=insert_record('conversations',$proposal_conversation,TRUE);
+			if($selected_conversation_id){
+				$conversations_message=array(
+					'conversations_id'=>$selected_conversation_id,
+					'sender_id'=>$sender_id,
+					'sending_date'=>date('Y-m-d H:i:s'),
+					'message'=>'Chat initiated',
+				);
+				$message_id=insert_record('conversations_message',$conversations_message,TRUE);
+				if($message_id){
+					$this->db->where('conversations_id',$selected_conversation_id)->update('conversations',array('last_message_id'=>$message_id));
+					if($member_ids){
+						foreach($member_ids as $member_id){
+							if($sender_id==$member_id){
+								$is_auth_set=1;
+							}else{
+								$is_auth_set=1;
+							}
+							$proposal_conversation_member=array(
+							'conversations_id'=>$selected_conversation_id,
+							'user_id'=>$member_id,
+							'auth_status'=>$is_auth_set,
+							'last_seen_msg'=>$message_id,
+							);
+							insert_record('conversations_room',$proposal_conversation_member,TRUE);
 						}
 					}
 				}

@@ -760,6 +760,26 @@ if ( ! function_exists('generateProjectSlug'))
 		return $url;
 	}
 }
+if ( ! function_exists('generateProposalSlug'))
+{
+	function generateProposalSlug($string,$inc=0) {
+		$url=getSlug($string);
+		if($url){
+			$CI = get_instance();
+			$CI->load->database();
+			if($inc>0){
+				$url=$url.'-'.$inc;
+			}
+			$query= $CI->db->get_where('proposals',array('proposal_url'=>$url));		
+			if($query->num_rows()>0)
+			{
+				$inc++;
+				$url=generateProposalSlug($string,$inc);
+			}
+		}
+		return $url;
+	}
+}
 if ( ! function_exists('getBidsListDetails'))
 {
 function getBidsListDetails($project_id='',$param=array(),$count=FALSE){
@@ -1045,4 +1065,144 @@ if (!function_exists('updateMembershipUser')) {
 		}	
 	}
 }
-
+if ( ! function_exists('getGigDetails'))
+{
+function getGigDetails($proposal_id,$show=array(),$is_group=false){
+	$data=array();
+	if(empty($show) || in_array('proposal',$show)){
+	$arr=array(
+				'select'=>'p.proposal_id,p.proposal_url,p.proposal_title,p.proposal_date,p.proposal_status,p.proposal_seller_id,s.proposal_views',
+				'table'=>'proposals as p',
+				'join'=>array(
+					array('table'=>'proposal_stat as s','on'=>'p.proposal_id=s.proposal_id','position'=>'left'),
+				),
+				'where'=>array('p.proposal_id'=>$proposal_id),
+				'single_row'=>true,
+			);
+	$proposal=getData($arr);	
+	$data['proposal']=$proposal;
+	}
+	if(empty($show) || in_array('proposal_additional',$show)){
+	$arr=array(
+				'select'=>'p_a.proposal_description,p_a.buyer_instruction',
+				'table'=>'proposal_additional as p_a',
+				'where'=>array('p_a.proposal_id'=>$proposal_id),
+				'single_row'=>true,
+			);
+	$proposal_additional=getData($arr);
+	$data['proposal_additional']=$proposal_additional;
+	}
+	if(empty($show) || in_array('proposal_category',$show)){
+	$arr=array(
+		'select'=>'c.category_id,c.category_key,c_n.category_name,s_c.category_subchild_id,s_c.category_subchild_key,sc_n.category_subchild_name',
+		'table'=>'proposal_category as p_c',
+		'join'=>array(
+			array('table'=>'category as c','on'=>'p_c.category_id=c.category_id','position'=>'left'),
+			array('table'=>'category_names as c_n','on'=>"(c.category_id=c_n.category_id and c_n.category_lang='".get_active_lang()."')",'position'=>'left'),
+			array('table'=>'category_subchild as s_c','on'=>'p_c.category_subchild_id=s_c.category_subchild_id','position'=>'left'),
+			array('table'=>'category_subchild_names as sc_n','on'=>"(s_c.category_subchild_id=sc_n.category_subchild_id and sc_n.category_subchild_lang='".get_active_lang()."')",'position'=>'left')
+		),
+		'where'=>array('p_c.proposal_id'=>$proposal_id),
+		'single_row'=>true,
+	);
+	$proposal_category=getData($arr);
+	$data['proposal_category']=$proposal_category;
+	}
+	if(empty($show) || in_array('proposal_files',$show)){
+	$arr=array(
+		'select'=>'f.proposal_file_id,f.original_name,f.server_name,f.file_ext,f.is_video,f.image_thumb',
+		'table'=>'proposal_files as f',
+		'where'=>array('f.proposal_id'=>$proposal_id,'f.is_video'=>0),
+	);
+	$proposal_files=getData($arr);
+	$data['proposal_files']=$proposal_files;
+	}
+	if(empty($show) || in_array('proposal_video',$show)){
+		$arr=array(
+			'select'=>'f.proposal_file_id,f.original_name,f.server_name,f.file_ext,f.is_video,f.image_thumb',
+			'table'=>'proposal_files as f',
+			'where'=>array('f.proposal_id'=>$proposal_id,'f.is_video'=>1),
+			'single_row'=>true,
+		);
+		$proposal_video=getData($arr);
+		$data['proposal_video']=$proposal_video;
+		}
+	if(empty($show) || in_array('proposal_owner',$show)){
+	$arr=array(
+				'select'=>'m.member_id,m.member_name',
+				'table'=>'proposals as p',
+				'join'=>array(
+					array('table'=>'member as m','on'=>'p.proposal_seller_id=m.member_id','position'=>'left'),
+				),
+				'where'=>array('p.proposal_id'=>$proposal_id),
+				'single_row'=>true,
+			);
+	$proposal_owner=getData($arr);
+	$data['proposal_owner']=$proposal_owner;
+	}
+	if(empty($show) || in_array('proposal_question',$show)){
+	$arr=array(
+				'select'=>'p_q.proposal_answer,p_q.proposal_question',
+				'table'=>'proposal_question as p_q',
+				'where'=>array('p_q.proposal_id'=>$proposal_id),
+			);
+	$proposal_question=getData($arr);
+	$data['proposal_question']=$proposal_question;
+	}
+	if(empty($show) || in_array('proposal_settings',$show)){
+	$arr=array(
+				'select'=>'p_s.proposal_featured,p_s.featured_end_date,p_s.is_package',
+				'table'=>'proposal_settings as p_s',
+				'where'=>array('p_s.proposal_id'=>$proposal_id),
+				'single_row'=>true,
+			);
+	$proposal_settings=getData($arr);
+	$data['proposal_settings']=$proposal_settings;
+	}
+	if(empty($show) || in_array('proposal_skills',$show)){
+	$arr=array(
+				'select'=>'s.skill_id,s.skill_key,s_n.skill_name',
+				'table'=>'proposal_skills as p_s',
+				'join'=>array(
+					array('table'=>'skills as s','on'=>'p_s.skill_id=s.skill_id','position'=>'left'),
+					array('table'=>'skill_names as s_n','on'=>"(s.skill_id=s_n.skill_id and s_n.skill_lang='".get_active_lang()."')",'position'=>'left')
+				),
+				'where'=>array('p_s.proposal_id'=>$proposal_id,'p_s.proposal_skill_status'=>1),
+			);
+	$proposal_skills=getData($arr);	
+	$data['proposal_skills']=$proposal_skills;
+	}
+	if(empty($show) || in_array('proposal_packages',$show)){
+		$arr=array(
+					'select'=>'p.package_id,p.package_name,p.description,p.delivery_time,p.price,p.package_type',
+					'table'=>'proposal_packages as p',
+					'where'=>array('p.proposal_id'=>$proposal_id),
+					'order_by'=>array('p.package_id','asc')
+				);
+		$proposal_packages=getData($arr);	
+		$data['proposal_packages']=$proposal_packages;
+		}
+	if($is_group){
+		$proposal_data=new stdClass();
+		foreach($data as $key=>$val){
+			if($key=='proposal'){
+				$proposal_data=$val;
+			}else{
+				$proposal_data->$key=$val;
+			}
+		}
+		return $proposal_data;
+	}
+	/*$data=array(
+		'proposal'=>$proposal,
+		'proposal_additional'=>$proposal_additional,
+		'proposal_category'=>$proposal_category,
+		'proposal_files'=>$proposal_files,
+		'proposal_owner'=>$proposal_owner,
+		'proposal_question'=>$proposal_question,
+		'proposal_settings'=>$proposal_settings,
+		'proposal_skills'=>$proposal_skills,
+	);*/
+	return $data;
+}
+}
