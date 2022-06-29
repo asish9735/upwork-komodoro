@@ -1,40 +1,121 @@
 <!-- Intro Banner -->
+<div class="intro-banner dark-overlay big-padding">
+	<!-- Transparent Header Spacer -->
+	<div class="transparent-header-spacer"></div>
+	<div class="container">
+		<!-- Intro Headline -->
+		<div class="row">
+			<div class="col-md-6">
+				<div class="banner-headline-alt">
+                    <h1><?php echo __('home_page_banner_header', 'Hire Experts or Be Hired For Any Job, Any Time'); ?></h1>
+            		<p><?php echo __('home_page_banner_p_tag', 'Your only job platform to find the best talents, flexible job opportunities and handsome payment.'); ?></p>
+				</div>
+			</div>
+		</div>
+		<!-- Search Bar -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="intro-banner-search-form margin-top-5">
+                	<!-- Search Field -->
+					<div class="intro-search-field">
+						<div class="input-with-icon">
+							<select class="form-control">
+                            	<option>Select Country</option>
+                            </select>
+						</div>
+					</div>
+
+					<!-- Search Field -->
+					<div class="intro-search-field">
+						<div class="input-with-icon">
+							<select class="form-control">
+                            	<option>Select City</option>
+                            </select>
+						</div>
+					</div>
+                    <!-- Search Field -->
+					<div class="intro-search-field">
+						<div class="input-with-icon">
+							<select class="form-control">
+                            	<option>Professionals</option>
+                            </select>
+						</div>
+					</div>
+					<!-- Search Field -->
+					<div class="intro-search-field">
+						<input id="intro-keywords" type="text" placeholder="Job Title or Keywords">
+					</div>
+
+					<!-- Button -->
+					<div class="intro-search-button">
+						<button class="button ripple-effect"><i class="icon-feather-search"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Stats
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="intro-stats margin-top-45 hide-under-992px">
+					<li>
+						<strong class="counter">1,586</strong>
+						<span>Jobs Posted</span>
+					</li>
+					<li>
+						<strong class="counter">3,543</strong>
+						<span>Tasks Posted</span>
+					</li>
+					<li>
+						<strong class="counter">1,232</strong>
+						<span>Freelancers</span>
+					</li>
+				</ul>
+			</div>
+		</div> -->
+
+	</div>
+	
+	<!-- Video Container -->
+	<div class="video-container" data-background-image="<?php echo IMAGE; ?>home-video-background-poster.jpg">
+		<video loop autoplay muted>
+			<source src="<?php echo IMAGE; ?>home-video-background.mp4" type="video/mp4">
+		</video>
+	</div>
+
+</div>
+
 <section class="home-banner">
   <?php if ($slider) { ?>
-    <div class="row align-items-center h-100">
-      <div class="col-md-7 offset-md-5 col-12">
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <?php foreach ($slider as $k => $banner) { ?>
-              <li data-target="#carouselExampleFade" data-slide-to="<?php echo $k; ?>" class="<?php if ($k == 0) {
-                                                                                                echo 'active';
-                                                                                              } ?>"></li>
-            <?php } ?>
-          </ol>
-          <div class="carousel-inner">
-            <?php foreach ($slider as $k => $banner) { ?>
-              <div class="carousel-item <?php if ($k == 0) {
-                                          echo 'active';
-                                        } ?>"> <img src="<?php echo UPLOAD_HTTP_PATH . 'slider/' . $banner->slide_image; ?>" class="d-block w-100" alt="..."> </div>
-            <?php } ?>
-          </div>
-          <?php /*?><a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+  <div class="row align-items-center h-100">
+    <div class="col-12">
+      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <?php foreach ($slider as $k => $banner) { ?>
+          <li data-target="#carouselExampleFade" data-slide-to="<?php echo $k; ?>" class="<?php if ($k == 0) {echo 'active';} ?>"></li>
+          <?php } ?>
+        </ol>
+        <div class="carousel-inner">
+          <?php foreach ($slider as $k => $banner) { ?>
+          <div class="carousel-item <?php if ($k == 0) {echo 'active';} ?>"> <img src="<?php echo UPLOAD_HTTP_PATH . 'slider/' . $banner->slide_image; ?>" class="d-block w-100" alt="Banner-01"> </div>
+          <?php } ?>
+        </div>
+        <?php /*?><!--<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
       <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
-      </a><?php */ ?>
-        </div>
+      </a>--><?php */ ?>
       </div>
     </div>
+  </div>
   <?php } ?>
-
   <div class="banner-search">
     <div class="container h-100">
       <div class="row align-items-center h-100">
-        <div class="col-md-7 col-12">
+        <div class="col-12">
           <div class="banner-headline">
             <h2><?php echo __('home_page_banner_header', 'Welcome to the new gen of hiring where bright ideas turn into reality.'); ?></h2>
             <p><?php echo __('home_page_banner_p_tag', 'Your only job platform to find the best talents, flexible job opportunities and handsome payment.'); ?></p>
@@ -44,8 +125,7 @@
                 <button class="btn btn-white"><i class="icon-feather-search"></i></button>
               </div>
             </div>
-            <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white mr-2"><?php echo __('get_started', 'Get Started'); ?></a> <a href="#" hidden class="btn btn-outline-black">Watch Tutorial</a>
-          </div>
+            <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white mr-2"><?php echo __('get_started', 'Get Started'); ?></a> <a href="#" hidden class="btn btn-outline-black">Watch Tutorial</a> </div>
         </div>
       </div>
     </div>
@@ -67,18 +147,17 @@
             $icon = UPLOAD_HTTP_PATH . 'category_icons/' . $category['category_icon'];
           }
       ?>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="<?php echo URL::get_link('search_job'); ?>?category=<?php echo $category['category_id']; ?>" class="photo-box small" data-background-image="images/cat_1.jpg">
-              <div class="photo-box-content">
-                <div class="photo-box-icon"> <img src="<?php echo $icon; ?>" alt="<?php echo $category['category_name']; ?>" /> </div>
-                <h3><?php echo $category['category_name']; ?></h3>
-                <p><?php echo $category['description']; ?></p>
-              </div>
-            </a> </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="<?php echo URL::get_link('search_job'); ?>?category=<?php echo $category['category_id']; ?>" class="photo-box small" data-background-image="images/cat_1.jpg">
+        <div class="photo-box-content">
+          <div class="photo-box-icon"> <img src="<?php echo $icon; ?>" alt="<?php echo $category['category_name']; ?>" /> </div>
+          <h3><?php echo $category['category_name']; ?></h3>
+          <p><?php echo $category['description']; ?></p>
+        </div>
+        </a> </div>
       <?php
         }
       }
       ?>
-
     </div>
     <div class="text-center" hidden><a href="#" class="btn btn-site"><?php echo __('home_page_view_category', 'View All Category'); ?></a></div>
   </div>
@@ -177,38 +256,38 @@ if ($cms_temp) {
           }, $freelancer['user_skill']);
           $skills_name = implode(', ', $skills);
       ?>
-          <div class="freelancer">
-            <!-- Overview -->
-            <div class="freelancer-overview">
-              <div class="freelancer-overview-inner">
-                <!-- Avatar -->
-                <div class="freelancer-avatar">
-                  <div class="verified-badge"></div>
-                  <a href="<?php echo $freelancer['profile_link']; ?>"><img src="<?php echo $freelancer['user_logo']; ?>" alt="professional01"></a>
-                </div>
-                <!-- Name -->
-                <div class="freelancer-name">
-                  <h4><a href="<?php echo $freelancer['profile_link']; ?>"><?php echo $freelancer['member_name']; ?></a> <?php if ($freelancer['country_code_short']) { ?><img class="flag" src="<?php echo IMAGE; ?>flags/<?php echo strtolower($freelancer['country_code_short']); ?>.svg" alt="" title="<?php echo $freelancer['country_name']; ?>" data-tippy-placement="top"><?php } ?></h4>
-                  <span><?php echo $freelancer['member_heading']; ?></span>
-                </div>
-                <!-- Rating -->
-                <div class="freelancer-rating">
-                  <div class="star-rating" data-rating="<?php echo round($freelancer['avg_rating'], 2); ?>"></div>
-                </div>
-                <p><?php echo $skills_name; ?></p>
-                <a href="<?php echo $freelancer['profile_link']; ?>" class="btn btn-outline-site btn-block"><?php echo __('home_page_categories_view_profile', 'View Profile'); ?></a>
-              </div>
+      <div class="freelancer"> 
+        <!-- Overview -->
+        <div class="freelancer-overview">
+          <div class="freelancer-overview-inner"> 
+            <!-- Avatar -->
+            <div class="freelancer-avatar">
+              <div class="verified-badge"></div>
+              <a href="<?php echo $freelancer['profile_link']; ?>"><img src="<?php echo $freelancer['user_logo']; ?>" alt="professional01"></a> </div>
+            <!-- Name -->
+            <div class="freelancer-name">
+              <h4><a href="<?php echo $freelancer['profile_link']; ?>"><?php echo $freelancer['member_name']; ?></a>
+                <?php if ($freelancer['country_code_short']) { ?>
+                <img class="flag" src="<?php echo IMAGE; ?>flags/<?php echo strtolower($freelancer['country_code_short']); ?>.svg" alt="" title="<?php echo $freelancer['country_name']; ?>" data-tippy-placement="top">
+                <?php } ?>
+              </h4>
+              <span><?php echo $freelancer['member_heading']; ?></span> </div>
+            <!-- Rating -->
+            <div class="freelancer-rating">
+              <div class="star-rating" data-rating="<?php echo round($freelancer['avg_rating'], 2); ?>"></div>
             </div>
-          </div>
+            <p><?php echo $skills_name; ?></p>
+            <a href="<?php echo $freelancer['profile_link']; ?>" class="btn btn-outline-site btn-block"><?php echo __('home_page_categories_view_profile', 'View Profile'); ?></a> </div>
+        </div>
+      </div>
       <?php
         }
       }
       ?>
-
     </div>
   </div>
 </section>
-<!-- Highest Rated Freelancers / End -->
+<!-- Highest Rated Freelancers / End --> 
 
 <!-- Membership Plans -->
 <?php /*?>
@@ -303,51 +382,51 @@ if ($cms_temp) {
 <?php */ ?>
 <!-- Membership Plans / End-->
 <?php if ($testimonial) { ?>
-  <!-- Feedback -->
-  <section class="section bg-white">
-    <div class="container">
-      <!-- Section Headline -->
-      <div class="section-headline centered">
-        <h2><?php echo __('home_page_feedback_header', 'Client Testimonials'); ?></h2>
-        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>-->
-      </div>
-      <div class="testimonial-style-5 testimonial-slider-2 poss--relative">
-        <!-- Start Testimonial Nav -->
-        <div class="testimonal-nav">
-          <?php foreach ($testimonial as $k => $row) {
+<!-- Feedback -->
+<section class="section bg-white">
+  <div class="container"> 
+    <!-- Section Headline -->
+    <div class="section-headline centered">
+      <h2><?php echo __('home_page_feedback_header', 'Client Testimonials'); ?></h2>
+      <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.</p>--> 
+    </div>
+    <div class="testimonial-style-5 testimonial-slider-2 poss--relative"> 
+      <!-- Start Testimonial Nav -->
+      <div class="testimonal-nav">
+        <?php foreach ($testimonial as $k => $row) {
             $logo = IMAGE . 'default/thumb/default-member-logo.svg';
             if ($row->logo) {
               $logo = UPLOAD_HTTP_PATH . 'testimonial-icon/' . $row->logo;
             }
           ?>
-            <div class="testimonal-img"> <img src="<?php echo   $logo; ?>" alt="<?php echo $row->name; ?>"> </div>
-          <?php } ?>
-        </div>
-        <!-- End Testimonial Nav -->
-
-        <!-- Start Testimonial For -->
-        <div class="testimonial-for">
-          <?php
+        <div class="testimonal-img"> <img src="<?php echo   $logo; ?>" alt="<?php echo $row->name; ?>"> </div>
+        <?php } ?>
+      </div>
+      <!-- End Testimonial Nav --> 
+      
+      <!-- Start Testimonial For -->
+      <div class="testimonial-for">
+        <?php
           foreach ($testimonial as $k => $row) {
           ?>
-            <div class="testimonial-desc">
-              <div class="triangle"></div>
-              <div class="client">
-                <h3><?php echo $row->name; ?></h3>
-                <p><i><?php echo $row->company_name; ?></i></p>
-                <!-- <div class="star-rating" data-rating="3.5"></div> -->
-              </div>
-              <p><?php echo nl2br($row->description); ?></p>
-            </div>
-          <?php
+        <div class="testimonial-desc">
+          <div class="triangle"></div>
+          <div class="client">
+            <h3><?php echo $row->name; ?></h3>
+            <p><i><?php echo $row->company_name; ?></i></p>
+            <!-- <div class="star-rating" data-rating="3.5"></div> --> 
+          </div>
+          <p><?php echo nl2br($row->description); ?></p>
+        </div>
+        <?php
           }
           ?>
-        </div>
-        <!-- End Testimonial For -->
       </div>
+      <!-- End Testimonial For --> 
     </div>
-  </section>
-  <!-- Feedback End -->
+  </div>
+</section>
+<!-- Feedback End -->
 <?php } ?>
 <!-- Choose Account -->
 <section class="section choose-acc">
@@ -355,24 +434,20 @@ if ($cms_temp) {
     <div class="row">
       <aside class="col-sm-6 col-12">
         <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo IMAGE; ?>icon_hire.png" alt="icon hire" class="mb-3">
+          <div class="card-body"> <img src="<?php echo IMAGE; ?>icon_hire.png" alt="icon hire" class="mb-3">
             <h3><?php echo __('home_page_choose_acc_hire_h3_tag', 'Finding professionals to hire?'); ?></h3>
             <h2><?php echo __('home_page_choose_acc_hire_h2_tag', 'Professionals'); ?></h2>
             <p><?php echo __('home_page_choose_acc_hire_p_tag', 'Your perfect talent waits! Hire the most qualified applicants from thousands of freelancers and get the job done. Find out why Upwork Clone Script is trusted by hundreds of employers.'); ?></p>
-            <a href="<?php D(get_link('postprojectURL')) ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_hire_a_tag', 'Post A Job'); ?></a>
-          </div>
+            <a href="<?php D(get_link('postprojectURL')) ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_hire_a_tag', 'Post A Job'); ?></a> </div>
         </div>
       </aside>
       <aside class="col-sm-6 col-12">
         <div class="card text-center">
-          <div class="card-body">
-            <img src="<?php echo IMAGE; ?>icon_job.png" alt="icon job" class="mb-3">
+          <div class="card-body"> <img src="<?php echo IMAGE; ?>icon_job.png" alt="icon job" class="mb-3">
             <h3><?php echo __('home_page_choose_acc_job_h3_tag', 'Are you looking for projects?'); ?></h3>
             <h2><?php echo __('home_page_choose_acc_job_h2_tag', 'Projects'); ?></h2>
             <p><?php echo __('home_page_choose_acc_job_p_tag', 'Browse through millions of job posts, view local and international projects, discover new companies, gain trust and build a promising freelancing career. Know about the job nature, use your skill and get hired.'); ?></p>
-            <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_job_a_tag', 'Get Started'); ?></a>
-          </div>
+            <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_job_a_tag', 'Get Started'); ?></a> </div>
         </div>
       </aside>
     </div>
@@ -380,39 +455,36 @@ if ($cms_temp) {
 </section>
 <!-- Choose Account End -->
 <?php if ($partner) { ?>
-  <!-- Partner -->
-  <section class="section pt-0 partner">
-    <div class="container">
-      <!-- Section Headline -->
-      <div class="section-headline centered">
-        <h2><?php echo __('home_page_partner_section_h2_tag', 'Trusted Partners'); ?></h2>
-        <p><?php echo __('home_page_partner_section_p_tag', 'Trusted by 10M+ businesses') ?></p>
-      </div>
-      <div class="logo-carousel">
-        <?php
+<!-- Partner -->
+<section class="section pt-0 partner">
+  <div class="container"> 
+    <!-- Section Headline -->
+    <div class="section-headline centered">
+      <h2><?php echo __('home_page_partner_section_h2_tag', 'Trusted Partners'); ?></h2>
+      <p><?php echo __('home_page_partner_section_p_tag', 'Trusted by 10M+ businesses') ?></p>
+    </div>
+    <div class="logo-carousel">
+      <?php
         foreach ($partner as $k => $row) {
           $logo = IMAGE . 'default/thumb/default-member-logo.svg';
           if ($row->box_image) {
             $logo = UPLOAD_HTTP_PATH . 'box/' . $row->box_image;
           }
         ?>
-          <div class="card text-center">
-            <div class="card-body">
-              <img src="<?php echo $logo; ?>" alt="<?php echo $row->name; ?>">
-            </div>
-          </div>
-        <?php
+      <div class="card text-center">
+        <div class="card-body"> <img src="<?php echo $logo; ?>" alt="<?php echo $row->name; ?>"> </div>
+      </div>
+      <?php
         }
         ?>
-
-      </div>
     </div>
-  </section>
-  <!-- Partner End -->
+  </div>
+</section>
+<!-- Partner End -->
 <?php } ?>
 <!-- Top Skills -->
 <section class="section pt-0">
-  <div class="container">
+  <div class="container"> 
     <!-- Section Headline -->
     <div class="section-headline centered mb-4">
       <h2><?php echo __('home_page_top_skill_h2_tag', 'Top Skills') ?></h2>
@@ -422,11 +494,10 @@ if ($cms_temp) {
         foreach ($popular_skills as $k => $sk) {
 
       ?>
-          <li><a href="<?php echo get_link('search_freelancer') . '?byskillsname[]=' . $sk->skill_key; ?>"><?php echo $sk->skill_name; ?></a></li>
+      <li><a href="<?php echo get_link('search_freelancer') . '?byskillsname[]=' . $sk->skill_key; ?>"><?php echo $sk->skill_name; ?></a></li>
       <?php
         }
       } ?>
-
     </ul>
     <div class="text-center" hidden><a href="#" class="btn btn-outline-site"><?php echo __('home_page_view_all_skill','View All Skills');?></a></div>
   </div>

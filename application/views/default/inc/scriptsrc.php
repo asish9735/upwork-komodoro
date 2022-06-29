@@ -88,7 +88,7 @@ if(!empty($load_css)){
 }
 $this->minify->add_css('style.css');
 $this->minify->add_css('responsive.css');
-$this->minify->add_css('colors/green.css');
+$this->minify->add_css('colors.css');
 
 $this->minify->add_css('lang_'.($currentLang=='ar' ? 'ar':'en').'.css');
 echo $this->minify->deploy_css(FALSE, 'header.min.css');

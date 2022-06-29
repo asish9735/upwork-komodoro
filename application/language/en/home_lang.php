@@ -1,8 +1,8 @@
 <?php
 // -------------------------index------------------
 
-$lang['home_page_banner_header'] = 'Welcome to the new gen of hiring where bright ideas turn into reality.';
-$lang['home_page_banner_p_tag'] = 'Your only job platform to find the best talents, flexible job opportunities and handsome payment.';
+$lang['home_page_banner_header'] = 'Hire Experts or Be Hired For Any Job, Any Time';
+$lang['home_page_banner_p_tag'] = 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.';
 $lang['home_page_view_category'] = 'View All Category';
 $lang['home_page_job_categories_h2_tag'] = 'Popular Services';
 $lang['home_page_job_categories_p_tag'] = 'Find the most talented professionals from wherever you are. Hire easily and get your projects delivered in no time. Choose between the most trending categories and get them onboard.';

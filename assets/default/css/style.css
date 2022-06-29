@@ -3,19 +3,24 @@
 
 /* global start */
 @font-face {
- font-family: 'FSJoey';
- src:url('../fonts/FSJoey-Regular.otf');
- font-weight:normal;
+ font-family: 'Rubik';
+ src:url('../fonts/Rubik-Regular.ttf');
+ font-weight:400;
 }
 @font-face {
-font-family:'FSJoey';
-src:url('../fonts/FSJoey-Medium.otf');
+font-family:'Rubik';
+src:url('../fonts/Rubik-Medium.ttf');
+font-weight:500;
+}
+@font-face {
+font-family:'Rubik';
+src:url('../fonts/Rubik-SemiBold.ttf');
 font-weight:600;
 }
 @font-face {
- font-family: 'FSJoey';
- src:url('../fonts/FSJoey-Bold.otf');
- font-weight:bold;
+ font-family: 'Rubik';
+ src:url('../fonts/Rubik-Bold.ttf');
+ font-weight:700;
 }
 ol, ul, dl {
     list-style:none;
@@ -32,7 +37,7 @@ body {
 	/*font-family:'Open sans', Helvetica, sans-serif;*/
 }
 .btn{
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	font-weight:500;
 }
 .btn-link:hover {
@@ -911,7 +916,7 @@ ul.skill-tags > li {
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
     color: #fff;
     text-shadow: 0 1px 1px rgba(0,0,0,.2);
-    font-family: 'FSJoey', Helvetica, sans-serif;
+    font-family: 'Rubik', Helvetica, sans-serif;
     text-transform: uppercase;
     font-weight: 600;
     text-align: center;
@@ -1084,7 +1089,7 @@ ul.skill-tags > li {
 }
 .how-box h3{
 	color:#000;
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 }
 .how-box p{
 	font-size:0.933rem;
@@ -1094,7 +1099,7 @@ ul.skill-tags > li {
 	background-color:var(--siteColor);
 	border-radius:50%;
 	color:#fff;
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	padding: 0.75rem;
     position: absolute;
     top: -2rem;
@@ -1167,7 +1172,7 @@ ul.display-inline li {
 }
 .header-widget ul.display-inline > li > a{
 	color:#000;
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	font-size: 1.063rem;
 }
 .header-widget ul.display-inline > li > a:hover{

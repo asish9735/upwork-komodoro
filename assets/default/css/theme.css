@@ -70,7 +70,7 @@ img {
 	vertical-align: top;
 }
 #logo img {
-	height: 60px;
+	height: 80px;
 	width: auto;
 	top: 50%;
 	position: relative;
@@ -529,7 +529,7 @@ ul.user-menu-small-nav li {
 ul.user-menu-small-nav li a {
 	display: block;
 	padding: 2px 0;
-	font-family: 'FSJoey', Helvetica, sans-serif;
+	font-family: 'Rubik', Helvetica, sans-serif;
 	font-size: 0.938rem;
 	color: #000;
 	transition: 0.3s;
@@ -770,7 +770,7 @@ ul.user-menu-small-nav li a:hover, ul.user-menu-small-nav li a:hover i {
 	cursor: pointer;
 }
 #navigation ul a {
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	font-size: 1.063rem;
 	line-height: 24px;
 	padding: 6px 10px;
@@ -2061,7 +2061,7 @@ display: block
 	display: inline-block;
 	color: #333;
 	background-color: transparent;
-	font-family: 'FSJoey', Helvetica, sans-serif;
+	font-family: 'Rubik', Helvetica, sans-serif;
 	font-weight: 600;
 	margin:0;
 	-webkit-transition: all 200ms ease-in-out;
@@ -5011,11 +5011,6 @@ span.button, button.button, input[type="button"], input[type="submit"], a.button
  margin-left: 3px;
 }
  .button i[class^="icon-feather"], button.button i[class^="icon-feather"], input[type="button"] i[class^="icon-feather"], input[type="submit"] i[class^="icon-feather"], a.button i[class^="icon-feather"] {
- font-size: 16px;
- height: 0;
- width: 16px;
- line-height: 0;
- top: 2px;
  position: relative;
  display: inline-block;
  margin-left: 3px;
@@ -5956,7 +5951,7 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 	/*float: right;
 	background-color: #febe42;
 	line-height: 15px;*/
-	font-family: 'FSJoey', Helvetica, sans-serif;
+	font-family: 'Rubik', Helvetica, sans-serif;
 	padding: 2px 6px;
     border: 1px solid #febe42;
     border-radius: 0.2rem;
@@ -6561,7 +6556,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
     cursor: pointer;
     border-radius: 0.25rem;
 	color: #66676b;
-	font-family: 'FSJoey', Helvetica, sans-serif;
+	font-family: 'Rubik', Helvetica, sans-serif;
     font-size: 1.063rem;
     font-weight: 500;
 	background-color: transparent;
@@ -6652,7 +6647,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	max-width: 85%;
 }
 .banner-headline h1, .banner-headline h2, .banner-headline h3, .banner-headline h4 {
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	font-weight: bold;	
 }
 .banner-headline strong {
@@ -6667,10 +6662,9 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	margin: -10px 0 0 0;
 	display: block;
 }
-.banner-headline-alt h3 {
+.banner-headline-alt h1 {
 	font-size: 40px;
 	font-weight: 600;
-	color: #333;
 	line-height: 50px;
 }
 .banner-headline-alt span {
@@ -6681,7 +6675,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	margin-top: 5px;
 	display: inline-block;
 }
-.dark-overlay .banner-headline-alt h3 {
+.dark-overlay .banner-headline-alt{
 	color: #fff;
 }
 .dark-overlay .banner-headline-alt span {
@@ -6692,7 +6686,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	display: flex;
 	width: 100%;
 	background-color: #fff;
-	border-radius: 0.25rem;
+	border-radius: 3rem;
 	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.09);
 }
 /* Video */
@@ -6723,7 +6717,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 }
 /* Field Row Styles */
 .intro-search-field {
-	padding: 10px 12px;
+	padding: 0 10px;
 	border-right: 1px solid #e4e4e4;
 	flex: 1;
 	align-items: center;
@@ -6755,10 +6749,15 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	align-items: center;
 }
 .intro-search-button .button {
-	height: 52px;
-	line-height: 52px;
-	padding: 0 30px;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	padding: 0;
 	font-size: 18px;
+}
+.intro-search-button .button i{
+	margin: 0;
 }
 /* Field Styles */
 .intro-banner-search-form input:focus {
@@ -6875,8 +6874,8 @@ top: 55px;
 }
 /* Dark Style */
 .intro-banner.dark-overlay:before {
-	background: #333;
-	opacity: 0.75;
+	background: var(--siteColor);
+	opacity: 0.5;
 }
 .intro-banner.dark-overlay .background-image-container {
 	left: 0;
@@ -7171,7 +7170,7 @@ width: 50px !important;
 }
 .photo-box-content h3 {
 	color: #000;
-	font-family:'FSJoey', Helvetica, sans-serif;	
+	font-family:'Rubik', Helvetica, sans-serif;	
 }
 .photo-box-content span {
 	color: #333;
@@ -7308,7 +7307,7 @@ width: 50px !important;
 	margin: 1rem 0;
 }
 .pricing-plan-label strong {
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	font-size: 2rem;
 	font-weight: bold;
 	color: #333;
@@ -9651,7 +9650,7 @@ img.mfp-img {
 	border: 1px solid #333;
 	border-radius: 0.25rem;
 	color: #333;
-	font-family: 'FSJoey', Helvetica, sans-serif;
+	font-family: 'Rubik', Helvetica, sans-serif;
 	margin-top: 10px;
 	margin-right: 20px;		
     margin-top: 10px;
@@ -11717,7 +11716,7 @@ a.dashboard-responsive-nav-trigger {
 .dashboard-nav ul li a {
 	color: #000;
 	display: block;
-	font-family:'FSJoey', Helvetica, sans-serif;	
+	font-family:'Rubik', Helvetica, sans-serif;	
 	padding: 0.625rem 1rem;
 	transition: 0.3s;
 	cursor: pointer;
@@ -12254,7 +12253,7 @@ ul.dashboard-box-list > li:hover {
 .dashboard-status-button {
 	color: #fff;
 	border-radius: 0.25rem;
-	font-family: 'FSJoey', Helvetica, sans-serif;
+	font-family: 'Rubik', Helvetica, sans-serif;
 	font-size: 0.875rem;
 	font-weight: 500;
 	line-height: 20px;
@@ -12325,7 +12324,7 @@ ul.dashboard-box-list > li:hover {
 	background-color: #333;
 	color: #fff;
 	border-radius: 0.25rem;
-	font-family: 'FSJoey', Helvetica, sans-serif;
+	font-family: 'Rubik', Helvetica, sans-serif;
 	line-height: 20px;
 	padding: 4px 8px;
 	font-size: 13px;
@@ -13264,7 +13263,7 @@ body.gray {
 }
 /* Headlines */
 h1, h2, h3, h4, h5, h6 {
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	font-weight: 600;
 }
 
@@ -13312,7 +13311,7 @@ h3.page-title {
 	display: block;
 }
 .section-headline h1,  .section-headline h2,  .section-headline h3,  .section-headline h4 {
-	font-family:'FSJoey', Helvetica, sans-serif;
+	font-family:'Rubik', Helvetica, sans-serif;
 	font-weight: bold;
 	color: #000;
 }
