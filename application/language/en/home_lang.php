@@ -4,7 +4,7 @@
 $lang['home_page_banner_header'] = 'Hire Experts or Be Hired For Any Job, Any Time';
 $lang['home_page_banner_p_tag'] = 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.';
 $lang['home_page_view_category'] = 'View All Category';
-$lang['home_page_job_categories_h2_tag'] = 'Popular Services';
+$lang['home_page_job_categories_h2_tag'] = 'Popular Categories';
 $lang['home_page_job_categories_p_tag'] = 'Find the most talented professionals from wherever you are. Hire easily and get your projects delivered in no time. Choose between the most trending categories and get them onboard.';
 $lang['home_page_freelancers_categories_h2_tag'] = 'Hire the Best Talents';
 $lang['home_page_freelancers_categories_p_tag'] = 'Collaborate with the top tier freelancers for your brands and turn your vision into reality. Have a look at the most experienced, talented and thoroughly-bred professionals.';

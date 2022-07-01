@@ -1013,7 +1013,8 @@ $(document).ready(function(){
 		var photoBoxBG = $(this).attr('data-background-image');
 
         if(photoBox !== undefined) {
-            $(this).css('background-image', 'url('+VPATH+'assets/default/'+photoBoxBG+')');
+            // $(this).css('background-image', 'url('+VPATH+'assets/default/'+photoBoxBG+')');
+			$(this).css('background-image', 'url('+photoBoxBG+')');
         }
 	});
 

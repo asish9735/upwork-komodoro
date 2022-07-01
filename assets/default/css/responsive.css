@@ -67,6 +67,10 @@ html {
 	#talent_list .job-listing h4.job-listing-title {
 		max-width: 330px;
 	}
+	.banner-headline-alt {
+		display: block;
+		max-width: 50%;
+	}
 	
 }
 

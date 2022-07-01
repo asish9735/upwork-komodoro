@@ -103,20 +103,20 @@ define('REQUEST_ACTIVE',			  			"2"); #request
 define('REQUEST_PAUSED',						"3"); #request 
 define('REQUEST_UNAPPROVED',					"5"); #request 
 define('REQUEST_DELETED',						"6"); #request 
-
+/*
 define('PROPOSAL_PENDING',						"1"); #proposal 
 define('PROPOSAL_ACTIVE',						"2"); #proposal 
 define('PROPOSAL_PAUSED',						"3"); #proposal 
 define('PROPOSAL_MODIFICATION',					"4"); #proposal 
 define('PROPOSAL_DECLINED',						"5"); #proposal 
-define('PROPOSAL_DELETED',						"6"); #proposal 
+define('PROPOSAL_DELETED',						"6"); #proposal */
 
-define('ORDER_PENDING',							"1"); #order 
+/*define('ORDER_PENDING',							"1"); #order 
 define('ORDER_PROCESSING',						"2"); #order 
 define('ORDER_REVISION',						"3"); #order 
 define('ORDER_CANCELLATION',					"4"); #order 
 define('ORDER_CANCELLED',						"5"); #order 
 define('ORDER_DELIVERED',						"6"); #order 
 define('ORDER_COMPLETED',						"7"); #order  
-
+*/
 require_once('../base_config/constants.php');

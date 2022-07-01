@@ -5,6 +5,7 @@
 	--webColor: #333;
 	--siteHoverColor:#6600c0;
 	--webHoverColor:#222;
+	--rgbColor: 142, 30, 241;
 }
 .numbered.color ol > li::before {
      border:1px solid var(--siteColor);

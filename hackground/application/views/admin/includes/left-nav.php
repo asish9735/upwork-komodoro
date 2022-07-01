@@ -10,7 +10,7 @@ $admin_notification_count = $this->admin_notification_model->getUnreadCount();
   <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar sidebar-light-primary">
     <a class="brand-link">
-      <img src="<?php echo ADMIN_IMAGES;?>logo.png" alt="<?php echo get_setting('site_title');?>" class="brand-image" style="opacity: .8" height="48" />
+      <img src="<?php echo ADMIN_IMAGES;?>logo.png" alt="<?php echo get_setting('site_title');?>" class="brand-image" height="64" />
     </a>
     <!-- sidebar: style can be found in sidebar.less -->
     <div class="sidebar">

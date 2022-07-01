@@ -12,29 +12,6 @@
 .carousel-item > img{
 	object-fit:cover;
 }
-.banner-search{
-	position:absolute;
-	left:0;
-	top:0;
-	height:100%;
-	width:100%;
-	z-index:9;
-}
-.banner-search:before{
-	content:'';
-	position:absolute;
-	left:0;
-	top:0;
-	height: 100%;
-	width: 100%;
-}
-.banner-search .form-control{
-	border-color:#fff;
-	height:40px;
-}
-.banner-search .btn-white{
-	height:40px;
-}
 .home-banner .carousel-indicators{
     margin: 0;
     width: auto;
@@ -53,37 +30,24 @@
 
 /* Media Screen */
 @media only screen and (min-width: 768px) {
-.banner-search:before{
-	height: 150%;
-    width: 70%;
-    background-color: var(--siteColor);
-    /*transform: rotate(-65deg) translate(20%, -30%);*/
-}
+
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
-	.banner-search:before {
-		width: 75%;
-	}	
+	
 }
 
 @media only screen and (min-width: 992px) {
 	.home-banner, .carousel-item > img{
 		height:475px;
 	}
-	.banner-search .form-control{
-		height: 50px;
-	}
-	.banner-search .btn-white{
-		font-size: 1.25rem;
-		height: 50px;
-	}
+
 }
 
 @media only screen and (min-width: 1200px) {
 
 	.home-banner, .carousel-item > img{
-		height:575px;
+		height:580px;
 	}
 }
 
@@ -91,10 +55,6 @@
 	.home-banner, .carousel-item > img{
 		color:#fff;
 		height:350px;
-	}
-	.banner-search:before{		
-		background-color: #000;
-		opacity:0.5;
 	}
 	.home-banner .banner-headline .btn-outline-white {
 		background-color: var(--siteColor);

@@ -1,21 +1,17 @@
 <!-- Intro Banner -->
-<div class="intro-banner dark-overlay big-padding">
+<div class="intro-banner home-banner dark-overlay">
 	<!-- Transparent Header Spacer -->
-	<div class="transparent-header-spacer"></div>
-	<div class="container">
+	<div class="container h-100">
 		<!-- Intro Headline -->
-		<div class="row">
-			<div class="col-md-6">
-				<div class="banner-headline-alt">
+		
+		<!-- Search Bar -->
+		<div class="row align-items-center h-100">
+			<div class="col-12">
+            	<div class="banner-headline-alt">
                     <h1><?php echo __('home_page_banner_header', 'Hire Experts or Be Hired For Any Job, Any Time'); ?></h1>
             		<p><?php echo __('home_page_banner_p_tag', 'Your only job platform to find the best talents, flexible job opportunities and handsome payment.'); ?></p>
 				</div>
-			</div>
-		</div>
-		<!-- Search Bar -->
-		<div class="row">
-			<div class="col-md-12">
-				<div class="intro-banner-search-form margin-top-5">
+				<div class="intro-banner-search-form mb-3">
                 	<!-- Search Field -->
 					<div class="intro-search-field">
 						<div class="input-with-icon">
@@ -43,7 +39,7 @@
 					</div>
 					<!-- Search Field -->
 					<div class="intro-search-field">
-						<input id="intro-keywords" type="text" placeholder="Job Title or Keywords">
+						<input type="text" class="form-control" id="intro-keywords" placeholder="Job Title or Keywords">
 					</div>
 
 					<!-- Button -->
@@ -51,6 +47,15 @@
 						<button class="button ripple-effect"><i class="icon-feather-search"></i></button>
 					</div>
 				</div>
+                <ul class="p-search">
+                  <li>Popular Searches:</li>
+                  <li><a href="#">Mobiles</a></li>
+                  <li><a href="#">Digital Marketing</a></li>
+                  <li><a href="#">Writing & Translation</a></li>
+                  <li><a href="#">Music & Audio</a></li>
+                  <li><a href="#">Education & Training</a></li>
+                </ul>  
+                <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white mr-2"><?php echo __('', 'Find Professionals'); ?></a> <a href="#" class="btn btn-outline-white"><?php echo __('', 'Find Projects'); ?></a>                         
 			</div>
 		</div>
 
@@ -72,19 +77,19 @@
 					</li>
 				</ul>
 			</div>
-		</div> -->
-
+		</div> 
+        -->
 	</div>
 	
 	<!-- Video Container -->
-	<div class="video-container" data-background-image="<?php echo IMAGE; ?>home-video-background-poster.jpg">
+	<div class="video-container" data-background-image="<?php echo IMAGE; ?>home-video-background-poster.jpg?54156">
 		<video loop autoplay muted>
-			<source src="<?php echo IMAGE; ?>home-video-background.mp4" type="video/mp4">
+			<source src="<?php echo IMAGE; ?>home-video-background.mp4?56464" type="video/mp4">
 		</video>
 	</div>
 
 </div>
-
+<?php /*?>
 <section class="home-banner">
   <?php if ($slider) { ?>
   <div class="row align-items-center h-100">
@@ -100,42 +105,24 @@
           <div class="carousel-item <?php if ($k == 0) {echo 'active';} ?>"> <img src="<?php echo UPLOAD_HTTP_PATH . 'slider/' . $banner->slide_image; ?>" class="d-block w-100" alt="Banner-01"> </div>
           <?php } ?>
         </div>
-        <?php /*?><!--<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <!--<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
       <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
-      </a>--><?php */ ?>
+      </a>-->
       </div>
     </div>
   </div>
   <?php } ?>
-  <div class="banner-search">
-    <div class="container h-100">
-      <div class="row align-items-center h-100">
-        <div class="col-12">
-          <div class="banner-headline">
-            <h2><?php echo __('home_page_banner_header', 'Welcome to the new gen of hiring where bright ideas turn into reality.'); ?></h2>
-            <p><?php echo __('home_page_banner_p_tag', 'Your only job platform to find the best talents, flexible job opportunities and handsome payment.'); ?></p>
-            <div class="input-group mb-3" hidden>
-              <input type="text" class="form-control" placeholder="Search projects or professionals" />
-              <div class="input-group-append">
-                <button class="btn btn-white"><i class="icon-feather-search"></i></button>
-              </div>
-            </div>
-            <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white mr-2"><?php echo __('get_started', 'Get Started'); ?></a> <a href="#" hidden class="btn btn-outline-black">Watch Tutorial</a> </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</section><?php */ ?>
 <!-- Popular Job Categories -->
 <section class="section">
   <div class="container">
     <div class="section-headline centered mb-4">
-      <h2><?php echo __('home_page_job_categories_h2_tag', 'Popular Services') ?></h2>
+      <h2><?php echo __('home_page_job_categories_h2_tag', 'Popular Category') ?></h2>
       <p><?php echo __('home_page_job_categories_p_tag', 'Find the most talented professionals from wherever you are. Hire easily and get your projects delivered in no time. Choose between the most trending categories and get them onboard.') ?></p>
     </div>
     <div class="row row-10">
@@ -143,14 +130,16 @@
       if ($popular_category) {
         foreach ($popular_category as $k => $category) {
           $icon = NO_IMAGE;
+		  $thumb = NO_IMAGE;
           if ($category['category_icon'] && file_exists(UPLOAD_PATH . 'category_icons/' . $category['category_icon'])) {
             $icon = UPLOAD_HTTP_PATH . 'category_icons/' . $category['category_icon'];
+			$thumb = UPLOAD_HTTP_PATH . 'category_icons/thumb/' . $category['category_thumb'];
           }
       ?>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="<?php echo URL::get_link('search_job'); ?>?category=<?php echo $category['category_id']; ?>" class="photo-box small" data-background-image="images/cat_1.jpg">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12"> <a href="<?php echo URL::get_link('search_job'); ?>?category=<?php echo $category['category_id']; ?>" class="photo-box small" data-background-image="<?php echo $thumb; ?>"><!--images/cat_1.jpg-->
         <div class="photo-box-content">
-          <div class="photo-box-icon"> <img src="<?php echo $icon; ?>" alt="<?php echo $category['category_name']; ?>" /> </div>
-          <h3><?php echo $category['category_name']; ?></h3>
+          <div class="photo-box-icon"> <img src="<?php echo $icon; ?>" alt="<?php echo $category['category_name']; ?>" height="64" width="64" /> </div>
+          <h4><?php echo $category['category_name']; ?></h4>
           <p><?php echo $category['description']; ?></p>
         </div>
         </a> </div>

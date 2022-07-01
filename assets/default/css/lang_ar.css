@@ -186,9 +186,7 @@ ul.skills li {
 	left: 25px;
 }
 @media only screen and (min-width: 768px) {
-.banner-search:before{
-    transform: rotate(-115deg) translate(20%, 70%);
-}
+
 }
  @media all and (max-width:175px) {
  html.mm-opening .mm-menu.mm-opened~.mm-slideout {
