@@ -76,6 +76,9 @@ ul.display-inline li:last-child {
 .list-3 li, .list-2 li, .list-1 li {
 	padding-left: 24px;
 }
+.btn-circle.ico {
+	right: 1rem;
+}
 /*
 RTL SPACE 
 */
@@ -180,7 +183,7 @@ ul.skills li {
     left: auto;
 }
 .how-steps{
-	right: -2rem;
+	right: 0;
 }
 #backtotop {
 	right: 25px;

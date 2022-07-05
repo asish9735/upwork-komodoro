@@ -36,7 +36,7 @@ a{
 
 body {	
 	background-color: #f5f5f5;
-	color: #333;
+	color: #000;
 	/*font-family:'Open sans', Helvetica, sans-serif;*/
 }
 .btn{
@@ -255,7 +255,6 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 }
 .btn-circle.ico {
 	position:absolute;
-	right:2rem;
 }
 .action_favorite{
 	color: #212529;
@@ -678,6 +677,7 @@ padding: 2rem 1rem;
 .boxed-list-headline.d-flex {
     justify-content: space-between;
     align-items: center;
+	position: relative;
 }
 .card-header > h3,
 .card-header > h4,
@@ -1077,6 +1077,10 @@ ul.skill-tags > li {
 }
 .how-box{
 	background-color:#fff;
+	background-image: url('../images/how-bg.png');
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-size: 100%;
 	border-radius: 0.25rem;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);	
 	margin-bottom:1.5rem;
@@ -1090,7 +1094,7 @@ ul.skill-tags > li {
     align-items: center;
     justify-content: center;
 }
-.how-box h3{
+.how-box h4{
 	color:#000;
 	font-family:'Rubik', Helvetica, sans-serif;
 }
@@ -1098,21 +1102,17 @@ ul.skill-tags > li {
 	font-size:0.933rem;
 	margin-bottom:0;
 }
-.how-steps{
-	background-color:var(--siteColor);
-	border-radius:50%;
-	color:#fff;
+.how-steps{	
 	font-family:'Rubik', Helvetica, sans-serif;
 	padding: 0.75rem;
     position: absolute;
-    top: -2rem;
-    height: 5.25rem;
-    width: 5.25rem;    
+    top: 0;   
     display: flex;
     align-items: flex-end;
 }
 .how-steps > h2{
-	font-size:1.875rem;
+	color: rgba(var(--rgbColor), 25%);
+	font-size: 2.5rem;
 	margin-bottom:0;
 }
 .recommended .pricing-plan-features ul.list-2 li:before{
@@ -1121,27 +1121,25 @@ ul.skill-tags > li {
 .choose-acc{
 	margin-bottom:-1.5rem;
 }
-.choose-acc .card{
-	background-image:url('../images/wave.png');
-	background-position:center bottom;
+.choose-acc .card{	
+	background-position:center;
+	background-size: cover;
 	background-repeat:no-repeat;
 	border:none;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	margin-bottom:1.5rem;
 	min-height:350px;
 	display:flex;
 	flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;	
+    align-items: center;
+	text-align: center;	
 }
 .choose-acc .card h3{
-	color:#000;
 	font-weight:normal;
-	margin-bottom:0;
+	text-transform: uppercase;
 }
-.choose-acc .card h2{
-	color:#000;
-	font-weight:bold;
+.choose-acc .card h3:nth-child(3){
+	font-weight: 500;
 }
 .choose-acc .card p{
 	font-size:0.933rem;
@@ -1701,15 +1699,103 @@ ul.p-search > li > a:hover{
     height: 24px;
     width: 24px;
 }
-
-
-
-
-
-
-
-
-
+.hourly-rate small{
+	font-size: 0.65em;
+}
+.card-gigs, .card-project{
+	background-repeat: no-repeat;
+	background-position: bottom;
+	border-color: transparent;
+	margin:0 10px 15px;
+	overflow: hidden;
+}
+.card-gigs{
+	background-image: url('../images/gigs-bg.png');
+}
+.card-project{
+	background-image: url('../images/project-bg.png');
+}
+.card-gigs .card-image{
+	position: relative;
+	background-color: #000;
+	transition: 0.5s;
+}
+.card-gigs .card-image > a > img{
+	height: 200px;
+	object-fit: cover;
+	opacity: 0.75;
+}
+.card-gigs:hover .card-image > a > img{
+	opacity: 1;
+}
+.card-gigs h5{
+	display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card-gigs h5 > a{
+	color: #000;
+}
+.card-project h4, .card-project p{
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
+.card-project h4{
+	max-width: 85%;
+}
+.card-project h4 > a{
+	color: #000;
+}
+.card-gigs h5 > a:hover, .card-project h4 > a:hover{
+	color: var(--siteColor);
+}
+.card-sell{
+	margin-bottom: 0.5rem;
+}
+.card-gigs .card-justify, .card-project .card-justify,
+.card-price{
+	display: flex;
+    justify-content: space-between;
+}
+.card-price h3{
+	margin-bottom: 0;
+}
+ul.skills{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    list-style: none;
+    margin-left: -0.75rem;
+	margin-bottom: 0;
+    padding: 0;
+}
+ul.skills > li{
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+ul.skills > li > span{
+    background-color: rgba(var(--rgbColor), 50%);
+    border-radius: 1rem;
+    color: #000;
+    display: block;
+    padding: 0.1rem 0.75rem 0.25rem;
+}
+.looking-for{
+	background-image: linear-gradient(to left, var(--siteColor), var(--siteHoverColor));
+	color: #fff;
+}
+.looking-for .section-headline{
+	max-width: 720px;
+    margin: auto;
+    padding: 2rem 1rem;
+    border: 2px solid;
+    border-radius: 0.25rem;
+}
 
 
 

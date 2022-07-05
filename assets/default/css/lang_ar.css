@@ -79,6 +79,9 @@ ul.display-inline li:last-child {
 .list-3 li:before {
 	content: "\e910";
 }
+.btn-circle.ico {
+	left: 1rem;
+}
 .header-widget:last-of-type {
 	padding-left: 0;
 	float: left;
@@ -180,7 +183,7 @@ ul.skills li {
     right: auto;
 }
 .how-steps{
-	left: -2rem;
+	left: 0;
 }
 #backtotop {
 	left: 25px;

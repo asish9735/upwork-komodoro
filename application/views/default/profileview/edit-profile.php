@@ -179,7 +179,7 @@ if($login_user_id){
                   <ec id="profile-hourly-data">
                     <?php if($memberInfo->member_hourly_rate && $memberInfo->member_hourly_rate>0){D(priceSymbol().priceFormat($memberInfo->member_hourly_rate));}elseif(!$is_editable){D('Not set');}else{D('Set');}?>
                   </ec>
-                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-right ml-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
+                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ml-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
                 </li>
                 <li>
                 	<span><?php echo __('profileview_profile_work_hour','Total Working Hour');?></span>
@@ -213,7 +213,7 @@ if($login_user_id){
                     	}?>
                   </ec>
                   
-                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-right ml-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
+                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ml-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
                 </li>
               </ul>
               
@@ -366,7 +366,7 @@ $('#edit-profile-page').on('click','.delete_account_btn',function(){
 		    buttons: {
 		        confirm: {
 		            label: "Yes",
-		            className: 'btn btn-success float-right'
+		            className: 'btn btn-success float-end'
 		        },
 		        cancel: {
 		            label: "No",
@@ -620,10 +620,10 @@ function SaveHeading(ev){
       <form class="avatar-form" action="<?php D(get_link('editprofileFormCheckAJAXURL'))?>" enctype="multipart/form-data" method="post">
         <input  type="hidden" value="logo" id="formtype" name="formtype"/>
         <div class="modal-header"> 
-          <!-- <button type="submit" class="btn btn-success float-right avatar-save">Done</button>-->
+          <!-- <button type="submit" class="btn btn-success float-end avatar-save">Done</button>-->
           <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
           <h4 class="modal-title"><?php echo __('profileview_profile_avatar','Change Avatar');?></h4>
-          <button  class="btn btn-success float-right avatar-save" type="submit"><?php echo __('profileview_save','Save');?></button>
+          <button  class="btn btn-success float-end avatar-save" type="submit"><?php echo __('profileview_save','Save');?></button>
         </div>
         <div class="modal-body">
           <div class="avatar-body"> 

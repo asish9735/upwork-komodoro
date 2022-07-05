@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div id="thumbnail_1" data-name="<?php echo $files->file;?>" class="thumbnail_sec">
                                 <input type="hidden" name="projectfileprevious" value='<?php D($memberInfo->portfolio_image)?>'/>
                                 <a href="<?php echo UPLOAD_HTTP_PATH.'member-portfolio/'.$files->file;?>" target="_blank"><?php echo $files->name;?></a>
-                                <a href="javascript:void(0)" class="text-danger ripple-effect ico float-right" onclick="$(this).parent().remove()">
+                                <a href="javascript:void(0)" class="text-danger ripple-effect ico float-end" onclick="$(this).parent().remove()">
                                 <i class="icon-feather-trash"></i>
                                 </a>
                             </div>   
@@ -132,7 +132,7 @@ function uploadData(formdata){
         success: function(response){
            if(response.status=='OK'){
     			var name = response.upload_response.original_name;
-    			$("#thumbnail_"+num).html('<input type="hidden" name="projectfile[]" value=\''+JSON.stringify(response.upload_response)+'\'/> <a href="<?php D(get_link('downloadTempURL'))?>/'+response.upload_response.file_name+'" target="_blank">'+name+'</a><a href="<?php D(VZ);?>" class=" text-danger ripple-effect ico float-right" onclick="$(this).parent().remove()"><i class="icon-feather-trash"></i></a>');
+    			$("#thumbnail_"+num).html('<input type="hidden" name="projectfile[]" value=\''+JSON.stringify(response.upload_response)+'\'/> <a href="<?php D(get_link('downloadTempURL'))?>/'+response.upload_response.file_name+'" target="_blank">'+name+'</a><a href="<?php D(VZ);?>" class=" text-danger ripple-effect ico float-end" onclick="$(this).parent().remove()"><i class="icon-feather-trash"></i></a>');
 		   }else{
 		   		$("#thumbnail_"+num).html('<p class="text-danger">Error in upload file</p>');
 		   }

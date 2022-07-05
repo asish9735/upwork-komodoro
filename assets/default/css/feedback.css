@@ -162,7 +162,8 @@
     max-width: 130px;
 }
 .testimonial-style-5.testimonial-slider-2 .testimonial-for {
-	padding: 0 5%;
+	padding-left: 5%;
+	padding-right: 5%;
 }
  
  @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -228,29 +229,60 @@
 /*----------------------------------
     Testimonial Style 5
 -------------------------------------*/
-.testimonial-for .testimonial-desc:after,
-.testimonial-for .testimonial-desc:before{
+.testimonial-style-5{	
+	position: relative
+}
+.testimonial-style-5:after,
+.testimonial-style-5:before{
 	content:'';
-	position:absolute;		
+	position:absolute;	
+	background-image:url('../images/feedback-bg.png');	
 	background-repeat:no-repeat;
-	height:64px;
-	width:64px;
+    z-index: 9;
 }
-.testimonial-for .testimonial-desc:before{
-	background-image:url('../images/quote_left.png');
-	left:0;
-	top:60px;
+.testimonial-style-5:before{
+	left: 0;
+	bottom: 0;
+	height: 90px;
+	width: 140px;
+	background-position: bottom;
 }
-.testimonial-for .testimonial-desc:after{	
-	background-image:url('../images/quote_right.png');
+.testimonial-style-5:after{	
 	right:0;
-	bottom:0;
+	top:63px;
+	height: 120px;
+    width: 180px;
+	background-position: top;
+}
+.testimonial-for{
+	padding-bottom: 2rem;
+	position: relative;
+}
+.testimonial-for:before, .testimonial-for:after{
+	content:'';
+	position:absolute;
+}
+.testimonial-for:before{
+	background-color: #fff;
+	left:0;
+	top: -100px;
+	height: 100px;
+	width: 100%;
+}
+.testimonial-for:after{
+	background-image:url('../images/quote.png');	
+	background-repeat:no-repeat;
+	height: 40px;
+	width: 56px;
+	top: -125px;
+    left: 1.5rem;
 }
 .testimonial-for .testimonial-desc p {
 	text-align: center;
 	padding: 0 5%;
 	font-size: 1rem;
     line-height: 1.75rem;
+	font-family: 'Segoe Print', Helvetica, sans-serif;
     font-style: italic;
 }
 .testimonial-for .testimonial-desc p:last-child{
@@ -258,6 +290,7 @@
 }
 .testimonial-for .testimonial-desc .client p {
 	color:#777;
+	font-family: 'Segoe UI', Helvetica, sans-serif;
 	margin-bottom:0;
 }
 .testimonal-img {
@@ -281,6 +314,7 @@
 	max-width: 32%;
 	width: 100%;
 	margin: 0 auto;
+    z-index: 9;
 }
 .slick-dotted.slick-slider {
 	margin-bottom:30px

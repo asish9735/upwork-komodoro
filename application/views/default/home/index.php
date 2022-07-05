@@ -1,6 +1,5 @@
 <!-- Intro Banner -->
 <div class="intro-banner home-banner dark-overlay">
-	<!-- Transparent Header Spacer -->
 	<div class="container h-100">
 		<!-- Intro Headline -->
 		
@@ -80,7 +79,7 @@
 		</div> 
         -->
 	</div>
-	
+	<!--<div class="transparent-header-spacer"></div>-->
 	<!-- Video Container -->
 	<div class="video-container" data-background-image="<?php echo IMAGE; ?>home-video-background-poster.jpg?54156">
 		<video loop autoplay muted>
@@ -118,6 +117,49 @@
   </div>
   <?php } ?>
 </section><?php */ ?>
+<section class="intro-stats">
+	<div class="container">
+    	<div class="row row-10">
+        	<article class="col-md-3">
+            	<div class="card">
+                	<div class="card-body">
+                    	<img src="<?php echo IMAGE; ?>c1.png" alt="" height="84" width="84" />
+                        <h2>7,413</h2>
+                        <h5>Members</h5>
+                    </div>
+                </div>
+            </article>
+            <article class="col-md-3">
+            	<div class="card">
+                	<div class="card-body">
+                    	<img src="<?php echo IMAGE; ?>c2.png" alt="" height="84" width="84" />
+                        <h2>509</h2>
+                        <h5>Projects</h5>
+                    </div>
+                </div>
+            </article>
+            <article class="col-md-3">
+            	<div class="card">
+                	<div class="card-body">
+                    	<img src="<?php echo IMAGE; ?>c3.png" alt="" height="84" width="84" />
+                        <h2>260</h2>
+                        <h5>Gigs</h5>
+                    </div>
+                </div>
+            </article>
+            <article class="col-md-3">
+            	<div class="card">
+                	<div class="card-body">
+                    	<img src="<?php echo IMAGE; ?>c4.png" alt="" height="84" width="84" />
+                        <h2>100+</h2>
+                        <h5>Professionals</h5>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
 <!-- Popular Job Categories -->
 <section class="section">
   <div class="container">
@@ -148,7 +190,11 @@
       }
       ?>
     </div>
-    <div class="text-center" hidden><a href="#" class="btn btn-site"><?php echo __('home_page_view_category', 'View All Category'); ?></a></div>
+    <div class="text-center">
+    	<a href="#" class="btn btn-site"><?php echo __('home_page_', 'Post Your Job'); ?></a>
+    	<a href="#" class="btn btn-site"><?php echo __('home_page_view_category', 'View All Category'); ?></a>
+        <a href="#" class="btn btn-site"><?php echo __('home_page_', 'Find Projects'); ?></a>
+    </div>
   </div>
 </section>
 <!-- Popular Job Categories / End -->
@@ -265,8 +311,12 @@ if ($cms_temp) {
             <div class="freelancer-rating">
               <div class="star-rating" data-rating="<?php echo round($freelancer['avg_rating'], 2); ?>"></div>
             </div>
+            <h3 class="hourly-rate"><small>$</small>10<small>/hr</small></h3>
             <p><?php echo $skills_name; ?></p>
-            <a href="<?php echo $freelancer['profile_link']; ?>" class="btn btn-outline-site btn-block"><?php echo __('home_page_categories_view_profile', 'View Profile'); ?></a> </div>
+            <div class="d-grid">
+            <a href="<?php echo $freelancer['profile_link']; ?>" class="btn btn-outline-site"><?php echo __('home_page_categories_view_profile', 'View Profile'); ?></a> 
+            </div>
+            </div>
         </div>
       </div>
       <?php
@@ -274,10 +324,183 @@ if ($cms_temp) {
       }
       ?>
     </div>
+    <div class="text-center">
+    	<a href="#" class="btn btn-site">Find Professionals</a>
+        <a href="#" class="btn btn-site">Post Your Service</a>
+    </div>
   </div>
 </section>
 <!-- Highest Rated Freelancers / End --> 
+<section class="pb-5">
+<div class="container">
+	<div class="section-headline centered mb-3">
+      <h2><?php echo __('home_page_', 'Featured Gigs'); ?></h2>
+      <p><?php echo __('home_page_', 'The most comprehensive search engine for gigs.'); ?></p>
+    </div>
+    <div class="default-slick-carousel freelancers-container freelancers-grid-layout">
+    	<div class="card card-gigs">
+        	<div class="card-image">
+            	<span class="bookmark-icon"></span>
+            	<a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a>
+            </div>
+        	<div class="card-body">
+            	<h5><a href="#">3D Models & Product Design</a></h5>
+                <div class="star-rating" data-rating="3.5"></div>
+                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
+                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
+            </div>
+        </div>
+        <div class="card card-gigs">
+        	<div class="card-image"><a href="#"><img src="<?php echo IMAGE; ?>g2.jpg" alt="" class="card-img-top" /></a></div>
+        	<div class="card-body">
+            	<h5><a href="#">WordPress Articles</a></h5>
+                <div class="star-rating" data-rating="3.5"></div>
+                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
+                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
+            </div>
+        </div>
+        <div class="card card-gigs">
+        	<div class="card-image">
+            <span class="bookmark-icon"></span>
+            <a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a></div>
+        	<div class="card-body">
+            	<h5><a href="#">3D Models & Product Desig...</a></h5>
+                <div class="star-rating" data-rating="3.5"></div>
+                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
+                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
+            </div>
+        </div>
+        <div class="card card-gigs">
+        	<div class="card-image"><a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a></div>
+        	<div class="card-body">
+            	<h5><a href="#">3D Models & Product Desig...</a></h5>
+                <div class="star-rating" data-rating="3.5"></div>
+                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
+                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
+            </div>
+        </div>
+        <div class="card card-gigs">
+        	<div class="card-image"><a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a></div>
+        	<div class="card-body">
+            	<h5><a href="#">3D Models & Product Desig...</a></h5>
+                <div class="star-rating" data-rating="3.5"></div>
+                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
+                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+    	<a href="#" class="btn btn-site"><?php echo __('home_page_', 'Hire Now'); ?></a>
+    	<a href="#" class="btn btn-site"><?php echo __('home_page_view_gigs', 'View All Gigs'); ?></a>
+        <a href="#" class="btn btn-site"><?php echo __('home_page_', 'Post Gigs'); ?></a>
+    </div>
+</div>
+</section>
+<section class="pb-5">
+<div class="container">
+	<div class="section-headline centered mb-3">
+      <h2><?php echo __('home_page_', 'Featured Projects'); ?></h2>
+      <p><?php echo __('home_page_', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.'); ?></p>
+    </div>
+    <div class="blog-carousel freelancers-container freelancers-grid-layout">
+    	<div class="card card-project">
+        	<div class="card-body">
+            	<span class="bookmark-icon"></span>
+            	<h4><a href="#">Design a New Logo for my Company</a></h4>
+                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <ul class="skills">
+                	<li><span>UI/UX</span></li>
+                    <li><span>Graphic Design</span></li>
+                    <li><span>Illustration</span></li>
+                </ul>
+                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
+                <div class="user-details">
+                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
+                	<div class="user-name">
+                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
+                        <div class="star-rating" data-rating="3.5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-project">
+        	<div class="card-body">
+            	<span class="bookmark-icon"></span>
+            	<h4><a href="#">Design a New Logo for my Company</a></h4>
+                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <ul class="skills">
+                	<li><span>UI/UX</span></li>
+                    <li><span>Graphic Design</span></li>
+                    <li><span>Illustration</span></li>
+                </ul>
+                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
+                <div class="user-details">
+                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
+                	<div class="user-name">
+                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
+                        <div class="star-rating" data-rating="3.5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-project">
+        	<div class="card-body">
+            	<span class="bookmark-icon"></span>
+            	<h4><a href="#">Design a New Logo for my Company</a></h4>
+                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <ul class="skills">
+                	<li><span>UI/UX</span></li>
+                    <li><span>Graphic Design</span></li>
+                    <li><span>Illustration</span></li>
+                </ul>
+                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
+                <div class="user-details">
+                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
+                	<div class="user-name">
+                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
+                        <div class="star-rating" data-rating="3.5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-project">
+        	<div class="card-body">
+            	<span class="bookmark-icon"></span>
+            	<h4><a href="#">Design a New Logo for my Company</a></h4>
+                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                <ul class="skills">
+                	<li><span>UI/UX</span></li>
+                    <li><span>Graphic Design</span></li>
+                    <li><span>Illustration</span></li>
+                </ul>
+                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
+                <div class="user-details">
+                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
+                	<div class="user-name">
+                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
+                        <div class="star-rating" data-rating="3.5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <div class="text-center">
+    	<a href="#" class="btn btn-site"><?php echo __('home_page_', 'Post New Jobs'); ?></a>
+    	<a href="#" class="btn btn-site"><?php echo __('home_page_view_gigs', 'View All Jobs'); ?></a>
+        <a href="#" class="btn btn-site"><?php echo __('home_page_', 'Find Jobs'); ?></a>
+    </div> 
+</div>
+</section>
 
+<section class="section looking-for">
+    <div class="container">
+		<div class="section-headline centered">
+			<h2><?php echo __('home_page_', 'Are You Looking For a Permanent Hire?'); ?></h2>
+			<p><?php echo __('home_page_', 'Advertise your full-time and part-time positions on Kommodoro Job Portal'); ?></p>
+            <a href="#" class="btn btn-outline-white">Learn More</a>
+		</div>
+    </div>
+</section>
 <!-- Membership Plans -->
 <?php /*?>
 <section class="section pt-0">
@@ -372,7 +595,7 @@ if ($cms_temp) {
 <!-- Membership Plans / End-->
 <?php if ($testimonial) { ?>
 <!-- Feedback -->
-<section class="section bg-white">
+<section class="section">
   <div class="container"> 
     <!-- Section Headline -->
     <div class="section-headline centered">
@@ -394,7 +617,7 @@ if ($cms_temp) {
       <!-- End Testimonial Nav --> 
       
       <!-- Start Testimonial For -->
-      <div class="testimonial-for">
+      <div class="testimonial-for bg-white">
         <?php
           foreach ($testimonial as $k => $row) {
           ?>
@@ -403,7 +626,7 @@ if ($cms_temp) {
           <div class="client">
             <h3><?php echo $row->name; ?></h3>
             <p><i><?php echo $row->company_name; ?></i></p>
-            <!-- <div class="star-rating" data-rating="3.5"></div> --> 
+            <div class="star-rating" data-rating="3.5"></div>  
           </div>
           <p><?php echo nl2br($row->description); ?></p>
         </div>
@@ -422,21 +645,23 @@ if ($cms_temp) {
   <div class="container">
     <div class="row">
       <aside class="col-sm-6 col-12">
-        <div class="card text-center">
-          <div class="card-body"> <img src="<?php echo IMAGE; ?>icon_hire.png" alt="icon hire" class="mb-3">
-            <h3><?php echo __('home_page_choose_acc_hire_h3_tag', 'Finding professionals to hire?'); ?></h3>
-            <h2><?php echo __('home_page_choose_acc_hire_h2_tag', 'Professionals'); ?></h2>
+        <div class="card" style="background-image:url('<?php echo IMAGE; ?>account-bg.jpg');">
+          <div class="card-body">
+          	<div class="card-icon"><img src="<?php echo IMAGE; ?>j1.png" alt="icon hire" class="mb-3" /></div>
+            <h3 class="mb-0"><?php echo __('home_page_choose_acc_hire_h3_tag', 'I want to hire a'); ?></h3>
+            <h3><?php echo __('home_page_choose_acc_hire_h2_tag', 'Professionals'); ?></h3>
             <p><?php echo __('home_page_choose_acc_hire_p_tag', 'Your perfect talent waits! Hire the most qualified applicants from thousands of freelancers and get the job done. Find out why Upwork Clone Script is trusted by hundreds of employers.'); ?></p>
-            <a href="<?php D(get_link('postprojectURL')) ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_hire_a_tag', 'Post A Job'); ?></a> </div>
+            <a href="<?php D(get_link('postprojectURL')) ?>" class="btn btn-site"><?php echo __('home_page_choose_acc_hire_a_tag', 'Post A Job'); ?></a> </div>
         </div>
       </aside>
       <aside class="col-sm-6 col-12">
-        <div class="card text-center">
-          <div class="card-body"> <img src="<?php echo IMAGE; ?>icon_job.png" alt="icon job" class="mb-3">
-            <h3><?php echo __('home_page_choose_acc_job_h3_tag', 'Are you looking for projects?'); ?></h3>
-            <h2><?php echo __('home_page_choose_acc_job_h2_tag', 'Projects'); ?></h2>
+        <div class="card" style="background-image:url('<?php echo IMAGE; ?>account-bg.jpg');">
+          <div class="card-body">
+          	<div class="card-icon"><img src="<?php echo IMAGE; ?>h1.png" alt="icon job" class="mb-3" /></div>
+            <h3 class="mb-0"><?php echo __('home_page_choose_acc_job_h3_tag', 'I’m Looking for'); ?></h3>
+            <h3><?php echo __('home_page_choose_acc_job_h2_tag', 'Projects'); ?></h3>
             <p><?php echo __('home_page_choose_acc_job_p_tag', 'Browse through millions of job posts, view local and international projects, discover new companies, gain trust and build a promising freelancing career. Know about the job nature, use your skill and get hired.'); ?></p>
-            <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-site"><?php echo __('home_page_choose_acc_job_a_tag', 'Get Started'); ?></a> </div>
+            <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-site"><?php echo __('home_page_choose_acc_job_a_tag', 'Get Started'); ?></a> </div>
         </div>
       </aside>
     </div>
@@ -488,7 +713,7 @@ if ($cms_temp) {
         }
       } ?>
     </ul>
-    <div class="text-center" hidden><a href="#" class="btn btn-outline-site"><?php echo __('home_page_view_all_skill','View All Skills');?></a></div>
+    <div class="text-center"><a href="#" class="btn btn-outline-site"><?php echo __('home_page_view_all_skill','View All Skills');?></a></div>
   </div>
 </section>
 <!-- Top Skills End -->

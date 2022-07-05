@@ -2,14 +2,14 @@
 $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
 ?>
 <!-- Footer -->
-<div id="footer">  
+<div id="footer" style="background-image:url('<?php echo IMAGE; ?>footer-bg.jpg');"> 
   <!-- Footer Middle Section -->
   <div class="footer-middle-section">
     <div class="container">
       <div class="row"> 
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3><?php echo __('category','Category');?></h3>
+            <h4><?php echo __('category','Category');?></h4>
             <ul>
               <?php if($all_category){
                 foreach($all_category as $c=>$category){
@@ -25,7 +25,7 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
         <!-- Links -->
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3><?php echo __('browse','Browse');?></h3>
+            <h4><?php echo __('browse','Browse');?></h4>
             <ul>
               <li><a href="<?php D(get_link('search_job'))?>"><span><?php echo __('find_projects','Find Projects');?></span></a></li>
               <li><a href="<?php D(get_link('search_freelancer'))?>"><span><?php echo __('find_professionals','Find Professionals');?></span></a></li>
@@ -39,7 +39,7 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
         <!-- Links -->
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3><?php echo __('company','Company');?></h3>
+            <h4><?php echo __('company','Company');?></h4>
             <ul>
               <li><a href="<?php D(get_link('CMSaboutus'))?>"><span><?php echo __('about_us','About Us');?></span></a></li>                                                        
               <li><a href="<?php D(get_link('conatctURL'))?>"><span><?php echo __('contact_us','Contact Us');?></span></a></li>
@@ -53,7 +53,7 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
         <!-- Links -->
         <div class="col-lg-3 col-sm-6 col-12">
           <div class="footer-links">
-            <h3><?php echo __('resources','Resources');?></h3>
+            <h4><?php echo __('resources','Resources');?></h4>
             <ul>
               <li><a href="<?php D(get_link('CMShelp'))?>"><span><?php echo __('faqs','FAQs');?></span></a></li>              
               <li><a href="<?php D(get_link('CMShowitworks'))?>"><span><?php echo __('how_it_works','How it works');?></span></a></li>
@@ -69,6 +69,7 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
   <!-- Footer Copyrights -->
   <div class="footer-bottom-section">
     <div class="container">
+    <div class="text-center">Accepted Payments: <img src="<?php echo IMAGE; ?>payment.png" alt="" /></div>
     <div class="row footer-rows-container">       
       <!-- Left Side -->
       <div class="col-auto">
