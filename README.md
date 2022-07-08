@@ -1,5 +1,5 @@
-# newflance
-New version Flance
+# komodoro
+New version upwork
 
 Make a new Copy of database_sample.php and constant_sample.php file from base_config/ 
 then rename new copy file with database.php and constant.php file and setup your local path and db connection
