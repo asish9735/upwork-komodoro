@@ -83,7 +83,7 @@ if($show_slider==1){
     </div>
     <div class="card-body">
         <div class="user-details mb-2">
-            <div class="user-avatar <?php if($is_online){echo 'status-online';}?>"><img src="<?php echo $logo;?>" alt=""  class="rounded-circle"></div>
+            <div class="user-avatar <?php if($is_online){echo 'status-online';}?>"><img src="<?php echo $logo;?>" alt="" height="40" width="40" class="rounded-circle"></div>
             <div class="user-name">
                 <h5 class="mb-0"><?php echo $proposal['member_name'];?></h5>
                 <p><small><?php echo $proposal['member_heading'];?></small></p>

@@ -76,14 +76,14 @@
             <div class="row justify-content-center_ mb-3">
                 <div class="col-lg-3 col-12">
                     <div class="form-field">
-					    <input type="text"  class="form-control form-control-lg tagsinput_skill" placeholder="<?php echo __('findtalents_page_skills_placeholder','Search skills');?>"/>
+					    <input type="text"  class="form-control tagsinput_skill" placeholder="<?php echo __('findtalents_page_skills_placeholder','Search skills');?>"/>
 					</div>
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="input-group mb-3">
-                        <input type="text" name="term" class="form-control form-control-lg" placeholder="Search..." value="<?php echo !empty($srch_param['term']) ? $srch_param['term'] : ''; ?>">
+                        <input type="text" name="term" class="form-control" placeholder="Search..." value="<?php echo !empty($srch_param['term']) ? $srch_param['term'] : ''; ?>">
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-site btn-lg"><i class="icon-feather-search"></i></button>
+                            <button type="submit" class="btn btn-site"><i class="icon-feather-search"></i></button>
                         </div>
                     </div>
                 </div>

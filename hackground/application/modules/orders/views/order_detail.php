@@ -61,12 +61,16 @@ padding:25px 20px;
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	<section class="content-header">
+		<div class="row">
+			<div class="col-sm-6 col-12">
+				<h1>
+					<?php echo $main_title ? $main_title : '';?>
+					<small><?php echo $second_title ? $second_title : '';?></small>
+				</h1>
+				</div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
     <!-- Main content -->
@@ -97,31 +101,35 @@ $orderStatus=array(
 
        	<div class="card">
             <div class="card-body">
-                <div class="">
+                <div class="row row-10">
                     <div class="col-md-2">
-            			<img src="<?php echo USER_UPLOAD;?>proposal-files/<?php echo $orderDetails->proposal_image; ?>" class="img-responsive">
+            			<img style="width:100%" src="<?php echo UPLOAD_HTTP_PATH;?>proposals-files/proposals-thumb/<?php echo $orderDetails->proposal_image; ?>" class="img-responsive">
                     </div>
                     <div class="col-md-10">
                         <h1 class="text-success pull-right d-lg-block d-md-block d-none"><?php echo $currency ; ?><?php echo $orderDetails->order_price; ?></h1>
 			            <h4>
 			                Order #<?php echo $orderDetails->order_number; ?><small>
-			                  <a href="<?php echo URL?>proposals/view/<?php echo $orderDetails->seller_user_name; ?>/<?php echo $orderDetails->proposal_url; ?>" target="_blank" class="text-success">
+			                  <a href="<?php echo SITE_URL?>s/<?php echo $orderDetails->proposal_url; ?>" target="_blank" class="text-success">
 			                    	View Proposal/Service
 			                  </a>
 			                </small>
 			            </h4>
 			            <p class="text-muted">
 			                <span class="font-weight-bold">Buyer: </span>
-			                <a href="<?php echo URL?>p-<?php echo $orderDetails->buyer_user_name; ?>" target="_blank" class="seller-buyer-name mr-1 text-success">
+			                <a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $orderDetails->buyer_id; ?>" target="_blank" class="seller-buyer-name mr-1 text-success">
 			                <?php echo ucfirst($orderDetails->buyer->member_name); ?>	
 			                </a> 
-			                | <span class="font-weight-bold">Seller: </span>
-			                <a href="<?php echo URL?>p-<?php echo $orderDetails->seller_user_name; ?>" target="_blank" class="seller-buyer-name mr-1 text-success">
+			                | <span class="font-weight-bold">Freelancer: </span>
+			                <a href="<?php echo base_url('member/list_record')?>?member_id=<?php echo $orderDetails->seller_id; ?>" target="_blank" class="seller-buyer-name mr-1 text-success">
 			                <?php echo ucfirst($orderDetails->seller->member_name); ?>	
 			                </a> 
 			                | <span class="font-weight-bold ml-1"> Status: </span>  <?php echo $orderStatus[$orderDetails->order_status];?>
 			                | <span class="font-weight-bold ml-1"> Date: </span> <?php echo date('F d,Y',strtotime($orderDetails->order_date)); ?>            
-			            </p>
+							<!-- | <span class="font-weight-bold ml-1"><a href="<?php echo SITE_URL?>orders/invoice/<?php echo md5($orderDetails->order_id); ?>/<?php echo md5('FVRR'.'-'.date("Y-m-d").'-'.$orderDetails->order_id);?>"  target="_blank" class="text-success">
+			                    	View invoice
+			                  </a>
+							  </span> -->
+						</p>
                     </div>
       			</div>
 		      <div class="row d-lg-flex d-md-flex d-none">
@@ -138,22 +146,10 @@ $orderStatus=array(
 				        <tbody>
 		            <tr>
 		              	<td class="font-weight-bold" width="600"><?php echo $orderDetails->proposal_title; ?>
-		              	<?php 
-			              if($orderDetails->extra){
-			              ?>
-			              <ul class="ml-5" style="list-style-type: circle;">
-			              <?php
-			              foreach($orderDetails->extra as $extra){
-			              ?>
-			              <li class="font-weight-normal text-muted">
-			                <?php echo $extra->name; ?> (+<span class="price"><?php echo $currency.$extra->price; ?></span>)
-			              </li>
-			              <?php } ?>
-			              </ul>
-			              <?php } ?>
+
 		              	</td>
 		             	<td><?php echo $orderDetails->order_qty; ?></td>
-		             	<td><?php echo $orderDetails->order_duration; ?>days</td>
+		             	<td><?php echo $orderDetails->delivery_time; ?>days</td>
 		              <td> <?php echo $currency; ?><?php echo $orderDetails->order_price; ?></td>
 		            </tr>
 		            <?php if(!empty($orderDetails->order_fee)){ ?>
@@ -190,7 +186,7 @@ $orderStatus=array(
             <div class="card-header">
                 <!--- card-header Starts --->
                 <h4 class="h4">
-                    <i class="fa fa-money-bill-alt"></i> Order Conversation Between Buyer & Seller
+                    <i class="fa fa-money-bill-alt"></i> Order Conversation Between Buyer & Freelancer
                 </h4>
             </div>
             <!--- card-header Ends --->
@@ -217,7 +213,7 @@ $orderStatus=array(
                         <p class="message-desc">
                             <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -236,7 +232,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -255,7 +251,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -275,7 +271,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -290,9 +286,9 @@ $orderStatus=array(
                         <i class="fa fa-times fa-3x text-danger"></i>
                         <h5 class="text-danger">
                             <?php if($conversation->sender_id==$orderDetails->buyer_id){ ?> 
-                            Seller has not yet accepted cancellation request from buyer.
+                            Freelancer has not yet accepted cancellation request from buyer.
                             <?php }elseif($conversation->sender_id==$orderDetails->seller_id){ ?> 
-                            Buyer has not yet accepted cancellation request from seller.
+                            Buyer has not yet accepted cancellation request from freelancer.
                             <?php } ?>
                         </h5>
                     </div>
@@ -305,7 +301,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -331,7 +327,7 @@ $orderStatus=array(
                         <p class="message-desc">
                          <?php echo $conversation->message; ?>
                            <?php if(!empty($conversation->file)){ ?>
-                            <a href="<?php echo UPLOAD_HTTP_PATH.'conversation-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
+                            <a href="<?php echo UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file;?>" download class="d-block mt-2 ml-1">
                                 <i class="fa fa-download"></i> <?php echo $conversation->file; ?>
                             </a>
                             <?php }?>
@@ -344,7 +340,7 @@ $orderStatus=array(
                     <div class="order-status-message" align="center">
                         <i class="fa fa-times fa-3x text-danger" style="position:relative;"></i>
                         <h5 class="text-danger">Order Cancelled By Mutual Agreement. </h5>
-                        <p> Order Was Cancelled By Mutual Agreement Between Seller and Buyer. </p>
+                        <p> Order Was Cancelled By Mutual Agreement Between Freelancer and Buyer. </p>
                     </div>
                     <!--- order-status-message Ends --->
 				<?php }
@@ -470,7 +466,7 @@ function changeStatus(sts, id, ele){
 						location.reload();
 					}else if(res.cmd == 'replace'){
 						if(typeof ele !== 'undefined'){
-							$('[data-toggle="tooltip"]').tooltip("dispose");
+							$('[data-toggle="tooltip"]').tooltip("destroy");
 							$(ele).replaceWith(res.data.html);
 							init_plugin();
 						}
@@ -501,7 +497,7 @@ function changeStatusAll(sts){
 						location.reload();
 					}else if(res.cmd == 'replace'){
 						if(typeof ele !== 'undefined'){
-							$('[data-toggle="tooltip"]').tooltip("dispose");
+							$('[data-toggle="tooltip"]').tooltip("destroy");
 							$(ele).replaceWith(res.data.html);
 							init_plugin();
 						}

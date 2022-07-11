@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $currency=priceSymbol();
-get_print($orderDetails,FALSE);
+//get_print($orderDetails,FALSE);
 $profile_url='';
 if($is_buyer){
 	$logo=getMemberLogo($contractDetails->seller->member_id);
@@ -42,11 +42,98 @@ $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
 					<div class="card-body">
 						<?php
 						if($contractDetails->order_status == ORDER_COMPLETED){
-						?>
+              if($is_buyer){
+                ?>
+              <div class="row mb-3">
+                <div class="col-md-3"><h5><?php echo __('contract_details_feed_contarctor','Your Feedback to Contractor');?></h5></div>
+                  <div class="col-md-9">
+                  <?php if($orderDetails->buyer_review){ ?>
+                    <div class="star-rating" data-rating="<?php echo $orderDetails->buyer_review->buyer_rating;?>"></div>
+	               		<p><?php echo nl2br($orderDetails->buyer_review->buyer_review);?></p>
+                  <?php }else{?>
+                    <form method="post"  id="ratingForm" onsubmit="return performAction(this);return false;">
+                      <input type="hidden" name="action" value="review_submit"/>
+                      <div class="form-group">
+                        <select name="rating" class="rating-select">
+                          <option value="1" <?php if($orderDetails->buyer_review && $orderDetails->buyer_review->buyer_rating==1){echo ('selected');}?>>1</option>
+                          <option value="2" <?php if($orderDetails->buyer_review && $orderDetails->buyer_review->buyer_rating==2){echo ('selected');}?>>2</option>
+                          <option value="3" <?php if($orderDetails->buyer_review && $orderDetails->buyer_review->buyer_rating==3){echo ('selected');}?>>3</option>
+                          <option value="4" <?php if($orderDetails->buyer_review && $orderDetails->buyer_review->buyer_rating==4){echo ('selected');}?>>4</option>
+                          <option value="5" <?php if($orderDetails->buyer_review && $orderDetails->buyer_review->buyer_rating==5){echo ('selected');}?>>5</option>
+                        </select>
+                      </div>
+                      <textarea name="review" class="form-control mb-3" rows="5" placeholder="<?php echo (__('order_details_page_Review_Rating_input',"What was your Experience?"));?>"><?php if($orderDetails->buyer_review){echo ($orderDetails->buyer_review->buyer_review);}?></textarea>
+                      <button type="submit" name="buyer_review_submit" class="btn btn-site btn-sm mb-5 saveBTN">
+                      <?php if($orderDetails->buyer_review){echo (__('order_details_page_Update_Review',"Update Review"));}else{echo (__('order_details_page_Submit_Review',"Submit Review"));}?>
+                      </button>
+                    </form> 
+                    
+                  <?php }?>
+                  </div>
+              </div>
 
-
-
-						<?php
+              <div class="row mb-3">
+                <div class="col-md-3"><h5><?php echo __('contract_details_feed_you',"Contractor's Feedback to You");?></h5></div>
+                  <div class="col-md-9">
+                  <?php if($orderDetails->seller_review){ ?>
+                    <div class="star-rating" data-rating="<?php echo $orderDetails->seller_review->seller_rating;?>"></div>
+	               		<p><?php echo nl2br($orderDetails->seller_review->seller_review);?></p>
+                  <?php }else{?>
+                    <p><?php echo __('contract_term_no_review','No review yet.');?></p>
+                  <?php }?>
+                  </div>
+              </div>
+                <?php
+              }else{
+                ?>
+                <div class="row mb-3">    
+                  <div class="col-md-3"><h5><?php echo __('contract_details_feed_client','Your Feedback to Client');?></h5></div>
+	                <div class="col-md-9">
+	               		<?php 
+                    if($orderDetails->seller_review){
+                    ?>
+						        <div class="star-rating" data-rating="<?php echo $orderDetails->seller_review->seller_rating;?>"></div>
+	               		<p><?php echo nl2br($orderDetails->seller_review->seller_review);?></p>
+                    <?php		
+                    }else{
+                    ?>
+                    <form method="post" id="ratingForm" onsubmit="return performAction(this);return false;">
+                      <input type="hidden" name="action" value="review_submit"/>
+                      <div class="form-group">
+                        <select name="rating" class="rating-select">
+                          <option value="1" <?php if($orderDetails->seller_review && $orderDetails->seller_review->seller_rating==1){echo ('selected');}?>>1</option>
+                          <option value="2" <?php if($orderDetails->seller_review && $orderDetails->seller_review->seller_rating==2){echo ('selected');}?>>2</option>
+                          <option value="3" <?php if($orderDetails->seller_review && $orderDetails->seller_review->seller_rating==3){echo ('selected');}?>>3</option>
+                          <option value="4" <?php if($orderDetails->seller_review && $orderDetails->seller_review->seller_rating==4){echo ('selected');}?>>4</option>
+                          <option value="5" <?php if($orderDetails->seller_review && $orderDetails->seller_review->seller_rating==5){echo ('selected');}?>>5</option>
+                        </select>
+                      </div>
+                      <textarea name="review" class="form-control mb-3" rows="5" placeholder="<?php echo (__('order_details_page_Review_Rating_input',"What was your Experience?"));?>"><?php if($orderDetails->seller_review){echo ($orderDetails->seller_review->seller_review);}?></textarea>
+                      <button type="submit" name="seller_review_submit" class="btn btn-site btn-sm mb-5 saveBTN">
+                      <?php if($orderDetails->seller_review){echo (__('order_details_page_Update_Review',"Update Review"));}else{echo (__('order_details_page_Submit_Review',"Submit Review"));}?>
+                      </button>
+                    </form>
+                    <?php		
+                      }
+                    ?>
+	                </div>
+               </div>
+               <div class="row mb-3">    
+	                <div class="col-md-3"><h5><?php echo __('contract_details_client_you',"Client's Feedback to You");?></h5></div>
+	                <div class="col-md-9">
+                    <?php  
+                    if($orderDetails->buyer_review){
+                    ?>
+                      <div class="star-rating" data-rating="<?php echo $orderDetails->buyer_review->buyer_rating;?>"></div>
+                      <p><?php echo nl2br($orderDetails->buyer_review->buyer_review);?></p>
+                    <?php 
+                    }else{?>
+                      <p><?php echo __('contract_term_no_review','No review yet.');?></p>
+                    <?php }?>
+	               </div>
+	            </div>
+                <?php
+              }
 						}
 						?>
 						<div class="row mb-3">
@@ -87,33 +174,25 @@ $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
       </div>
 </section>      
 
-<?php $this->layout->view('message/message-template', '', TRUE); ?>
-
 
 
 <script>
 var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
-var c_id="<?php echo md5($contractDetails->order_id)?>";
 
 </script>
 
 
 <script>
-var main = function(){
-
-	
-	
-};
+var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
+var main=function(){
+  $('.rating-select').barrating({
+		theme: 'fontawesome-stars'
+	});
+}
 function performAction(ev){
 	var formID=$(ev).attr('id');
-	if(formID=='accept_request' || formID=='decline_request'){
-		var forminput='action='+formID;
-		var buttonsection=$('#'+formID);
-	}else{
-		var modal=$(ev).closest('.modal');
-		var buttonsection=$('#'+formID).find('.saveBTN');
-		var forminput=$('#'+formID).serialize();
-	}
+	var buttonsection=$('#'+formID).find('.saveBTN');
+	var forminput=$('#'+formID).serialize();
 	var buttonval = buttonsection.html();
 	buttonsection.html(SPINNER).attr('disabled','disabled');
 	$.ajax({
@@ -126,13 +205,12 @@ function performAction(ev){
           buttonsection.html(buttonval).removeAttr('disabled');
           clearErrors();
           if (msg['status'] == 'OK') {
-            $(modal).modal('hide');
             var message='<?php echo (__('popup_order_details_action_success',"Your request has been submitted successfully!"));?>';
             if(msg['message']){
               message=msg['message'];
             }
             bootbox.alert({
-              title: 'Operation Response',
+              title: 'Submit Review',
               message: message,
               size: 'small',
               buttons: {

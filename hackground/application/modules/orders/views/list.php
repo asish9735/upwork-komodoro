@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-         <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
-      </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+		<div class="row">
+			<div class="col-sm-6 col-12">
+				<h1>
+					<?php echo $main_title ? $main_title : '';?>
+					<small><?php echo $second_title ? $second_title : '';?></small>
+				</h1>
+				</div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	<!-- Content Filter -->
@@ -22,22 +26,26 @@
 
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="box-body table-responsive no-padding table_visible" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
-				 <th style="width:10%">ID</th>
+				 <th style="width:5%">ID</th>
                   <th style="width:10%">Order Number</th>
-                  <th style="width:15%" class="text-center">Order Total</th>
+                  <th style="width:10%">Buyer</th>
+                  <th style="width:10%">Seller</th>
+                  <th style="width:10%" class="text-center">Order Total</th>
                   <th style="width:10%" class="text-center">Order Qty</th>
                   <th style="width:20%" class="text-center">Date</th>
-                  <th style="width:15%">Status</th>
-                  <th class="text-right" style="padding-right:20px;">Action</th>
+                  <th style="width:10%">Status</th>
+                  <th align="right">Action</th>
                 </tr>
 				<?php $currency = get_setting('site_currency'); if(count($list) > 0){foreach($list as $k => $v){ 
+					//get_print($v);
 				$status = '-';
+				$main_transaction=TRUE;
 				if($v['order_status'] == ORDER_PENDING){
-					$status = '<span class="badge badge-warning">Pending</span>';
+					$status = '<span class="badge badge-default">Pending</span>';
 					$status_txt = 'Pending';
 				}else if($v['order_status'] == ORDER_PROCESSING){
 					$status = '<span class="badge badge-default">Processing</span>';
@@ -60,35 +68,59 @@
 				}else{
 					$status = '<span class="badge badge-danger">Not Paid</span>';
 					$status_txt = 'Not Paid';
+					$main_transaction=FALSE;
 				}
-
+				if($main_transaction){
+					$transaction_type=array('order_payment_wallet','order_payment_paypal','order_payment_stripe','order_payment_payza','order_payment_bitcoin','order_payment_mobile_money','order_payment_refund','order_site_commission','referral_commission','order_revenue_to_seller');
+					$transaction=$this->db->select('o_t.transaction_id, wt.title_tkey as name')->from('orders_transaction as o_t')->join('wallet_transaction as w_t','o_t.transaction_id=w_t.wallet_transaction_id','left')->join('wallet_transaction_type wt', 'wt.wallet_transaction_type_id = w_t.wallet_transaction_type_id', 'INNER')->where('o_t.order_id',$v['order_id'])->where_in('wt.title_tkey', $transaction_type)->order_by('o_t.transaction_id','asc')->get()->result();
+				}
+				$buyer_details=$this->db->select('m.member_name')->from('member as m')->where('m.member_id',$v['buyer_id'])->get()->row();
+				$seller_details=$this->db->select('m.member_name')->from('member as m')->where('m.member_id',$v['seller_id'])->get()->row();
 				 
 				?>
 				<tr>
 					
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td># <?php echo $v['order_number']; ?></td>
+                  <td><a href="<?php echo base_url('member/list_record');?>?member_id=<?php echo $v['buyer_id']?>" targer="_blank"><?php if($buyer_details){echo $buyer_details->member_name;}?></a></td>
+                  <td><a href="<?php echo base_url('member/list_record');?>?member_id=<?php echo $v['seller_id']?>" targer="_blank"><?php if($seller_details){echo $seller_details->member_name;}?></a></td>
                   <td class="text-center"><?php echo $currency.' '.$v['order_price']; ?></td>
                   <td class="text-center"><?php echo $v['order_qty']; ?></td>
                   <td class="text-center"><?php echo format_date_time($v['order_date']); ?></td>
                   <td><?php echo $status; ?></td>
-                  <td class="text-right" style="padding-right:20px;">
-					<div class="btn-group">
-					  <button type="button" class="btn btn-default"><?php echo $status_txt; ?></button>
-					 
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						<span class="caret"></span>
-						<span class="sr-only">Toggle Dropdown</span>
-					  </button>
-					  <ul class="dropdown-menu" role="menu">
-					  	<li><a href="<?php echo base_url('orders/order_detail/'.$v['order_id']); ?>"><i class="fa fa-info-circle"></i> Order details</a></li>
-						<?php if($v['order_status'] == ORDER_PENDING || $v['order_status'] == ORDER_PROCESSING || $v['order_status'] == ORDER_REVISION || $v['order_status'] == ORDER_CANCELLATION || $v['order_status'] == ORDER_DELIVERED){ ?>
+                  <td align="right">
+					<div class="dropdown">					  					 
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $status_txt; ?></button>
+					  <div class="dropdown-menu" role="menu">
+					  	<!-- <a class="dropdown-item" href="<?php echo SITE_URL?>orders/invoice/<?php echo md5($v['order_id']); ?>/<?php echo md5('FVRR'.'-'.date("Y-m-d").'-'.$v['order_id']);?>"  target="_blank">View Invoice</a> -->
+					  	<a class="dropdown-item" href="<?php echo base_url('orders/order_detail/'.$v['order_id']); ?>">Order details</a>
+					  	
+						<?php /* if($v['order_status'] == ORDER_PENDING || $v['order_status'] == ORDER_PROCESSING || $v['order_status'] == ORDER_REVISION || $v['order_status'] == ORDER_CANCELLATION || $v['order_status'] == ORDER_DELIVERED){ ?>
 						<li><a href="<?php echo JS_VOID;?>" onclick="changeStatus('<?php echo ORDER_CANCELLED; ?>', '<?php echo $v[$primary_key]; ?>')"> <i class="fa fa-ban"></i> Cancel Order</a></li>
+						<?php } */?>
+						<?php if($main_transaction){
+							if($transaction){
+								foreach($transaction as $t=>$tran){
+									if($tran->name=='order_revenue_to_seller'){
+										$transaction_name="Release Payment Transaction";
+									}elseif($tran->name=='order_site_commission'){	
+										$transaction_name="Commission Transaction";
+									}elseif($tran->name=='referral_commission'){	
+										$transaction_name="Referral Trnsaction";
+									}elseif($tran->name=='order_payment_refund'){	
+										$transaction_name="Refund Trnsaction";
+									}else{
+										$transaction_name="Order Transaction";
+									}
+							?>
+							<a class="dropdown-item" href="<?php echo JS_VOID;?>" onclick="view_txn_detail('<?php echo $tran->transaction_id; ?>')"><?php echo $transaction_name;?></a>
+							<?php
+								}
+							}
+							?>
+						
 						<?php }?>
-						
-						
-						
-					  </ul>
+					  </div>
 					</div>
 				  </td>
                 </tr>
@@ -102,16 +134,14 @@
 			  </table>
         </div>
 		 <!-- /.box-body -->
-
+		<div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+               <?php echo $links;?>
+              </ul>
+            </div>
       </div>
       <!-- /.box -->
-	  <?php if($links){?>
-		<nav>
-			<ul class="pagination justify-content-center">
-			<?php echo $links;?>
-			</ul>
-		</nav>
-		 <?php }?>
+
     </section>
     <!-- /.content -->
   </div>
@@ -127,6 +157,13 @@
 </div>
 
 <script>
+
+function view_txn_detail(txn_id){
+	Modal.openURL({
+		title : 'Transaction Detail of '+txn_id,
+		url: '<?php echo base_url('wallet/load_ajax_page?page=single_txn_detail');?>&id='+txn_id
+	});
+}
 
 function add(){
 	var url = '<?php echo base_url($curr_controller.'load_ajax_page?page='.$add_command);?>';
@@ -170,7 +207,7 @@ function changeStatus(sts, id, ele){
 					location.reload();
 				}else if(res.cmd == 'replace'){
 					if(typeof ele !== 'undefined'){
-						$('[data-toggle="tooltip"]').tooltip("dispose");
+						$('[data-toggle="tooltip"]').tooltip("destroy");
 						$(ele).replaceWith(res.data.html);
 						init_plugin();
 					}
@@ -200,7 +237,7 @@ function changeStatusAll(sts){
 						location.reload();
 					}else if(res.cmd == 'replace'){
 						if(typeof ele !== 'undefined'){
-							$('[data-toggle="tooltip"]').tooltip("dispose");
+							$('[data-toggle="tooltip"]').tooltip("destroy");
 							$(ele).replaceWith(res.data.html);
 							init_plugin();
 						}

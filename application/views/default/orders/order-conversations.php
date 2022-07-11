@@ -20,9 +20,9 @@ if($orderconversations){
 			<a href="javascript:void(0)" class="seller-buyer-name"> <?php /*echo ($conversation->member_name);*/ echo ($sender_user_name);?> </a>
             <span class="chat-date"> 
 			<i class="icon-feather-calendar"></i> <?php echo (date('H:i ',strtotime($conversation->date)).dateFormat($conversation->date,'F d, Y')); ?> 
-            <?php if($loggedUserID!= $conversation->sender_id){ ?>
+            <?php /* if($loggedUserID!= $conversation->sender_id){ ?>
             | <a href="javascript:void(0)" data-toggle="modal" data-target="#report-modal" class="text-muted"><i class="fa fa-flag"></i> <?php echo (__('order_conversation_page_Report',"Report"));?></a> 
-            <?php } ?>
+            <?php } */ ?>
             </span>
 		</h5>
 		<p class="message-desc">

@@ -60,7 +60,7 @@ class Orders extends MX_Controller {
 		$srch = get();
 		$srch['order_id'] = $order_id;
 		$this->data['orderDetails']=$this->order->getOrderDetail($order_id);
-		$this->data['orderDetails']->extra=$this->db->select('o.name,o.price')->where('o.order_id',$order_id)->from('orders_extras as o')->get()->result();
+
 		$this->data['orderDetails']->buyer=$this->db->select('member_name')->where('member_id',$this->data['orderDetails']->buyer_id)->from('member')->get()->row();
 		$this->data['orderDetails']->seller=$this->db->select('member_name')->where('member_id',$this->data['orderDetails']->seller_id)->from('member')->get()->row();
 		$this->data['orderDetails']->seller_user_name=$this->order->getUserName($this->data['orderDetails']->seller_id);
@@ -68,7 +68,7 @@ class Orders extends MX_Controller {
 		
 		
 		
-		$this->data['orderDetails']->conversation=$this->db->select('o.sender_id,o.message,o.file,o.date,o.reason,o.status')->from('orders_conversations as o')->where('o.order_id',$order_id)->get()->result();
+		$this->data['orderDetails']->conversation=$this->db->select('o.sender_id,o.message,o.file,o.date,o.reason,o.type as status')->from('orders_conversations as o')->where('o.order_id',$order_id)->get()->result();
 		
 		
 		$this->data['main_title'] = 'Order details of ';
@@ -172,7 +172,7 @@ class Orders extends MX_Controller {
 			if(is_array($ID)){
 				$this->db->where_in($this->data['primary_key'], $ID)->update($this->data['table'], array('status' => $sts));
 			}else{
-				$orderdetails=$this->db->select('o.order_id,o.seller_id,o.buyer_id,o.order_status,o.order_price,o.proposal_id')->where('o.order_id',$ID)->where('o.order_status <>',$sts)->from('orders as o')->get()->row();
+				$orderdetails=$this->db->select('o.order_id,o.seller_id,o.buyer_id,o.order_status,o.proposal_id,o.is_bank_transfer,o.order_price,o.delivery_time,o.order_qty,o.order_fee')->where('o.order_id',$ID)->where('o.order_status <>',$sts)->from('orders as o')->get()->row();
 				
 				$upd['data'] = array('order_status' => $sts);
 				$upd['where'] = array($this->data['primary_key'] => $ID);
@@ -181,6 +181,193 @@ class Orders extends MX_Controller {
 				
 				
 				if($orderdetails){
+					if($orderdetails->is_bank_transfer==1 && $orderdetails->order_status==ORDER_PENDING){
+						if($sts==ORDER_PROCESSING){
+						$proposal_details=$this->db->select('p.proposal_id,p.proposal_title,p.proposal_url,p.delivery_time,p.proposal_price,p.display_price,p.proposal_date,p.proposal_status,p.proposal_image,p.proposal_seller_id')->from('proposals as p')->where('p.proposal_id',$orderdetails->proposal_id)->get()->row();
+						
+						$seller_details=$this->db->select('m.member_id,m.member_name,m.member_email,w.wallet_id,w.balance')->from('member as m')->join('wallet as w','m.member_id=w.user_id','left')->where('m.member_id',$orderdetails->seller_id)->get()->row();
+						$buyer_details=$this->db->select('m.member_id,m.member_name,m.member_email,w.wallet_id,w.balance')->from('member as m')->join('wallet as w','m.member_id=w.user_id','left')->where('m.member_id',$orderdetails->buyer_id)->get()->row();
+						$order_id=$ID;
+						$total=$orderdetails->order_price;
+						$wallet_balance_adjust=0;
+						$order_status=ORDER_PROCESSING;
+						
+						$buyer_wallet_id=$buyer_details->wallet_id;
+						$buyer_wallet_balance=$buyer_details->balance;
+
+						$site_wallet=get_setting('SITE_MAIN_WALLET');
+						$site_details=$this->db->select('w.wallet_id,w.balance,w.title')->from('wallet as w')->where('w.wallet_id',$site_wallet)->get()->row();
+						$reciver_wallet_id=$site_details->wallet_id;
+						$reciver_wallet_balance=$site_details->balance;
+						$recipient_relational_data=$buyer_details->member_name;
+						
+						$bank_wallet=get_setting('BANK_WALLET');
+						$bank_details=$this->db->select('w.wallet_id,w.balance,w.title')->from('wallet as w')->where('w.wallet_id',$bank_wallet)->get()->row();
+						$bank_wallet_id=$bank_details->wallet_id;
+						$bank_wallet_balance=$bank_details->balance;
+						
+						$fee_wallet=get_setting('PROCESSING_FEE_WALLET');
+						$fee_wallet_details=$this->db->select('w.wallet_id,w.balance,w.title')->from('wallet as w')->where('w.wallet_id',$fee_wallet)->get()->row();
+						$fee_wallet_id=$fee_wallet_details->wallet_id;
+						$fee_wallet_balance=$fee_wallet_details->balance;
+						$order_fee=$orderdetails->order_fee;
+						
+						$wallet_transaction_type_id=get_setting('ORDER_PAYMENT_BANK');
+						$current_datetime=date('Y-m-d H:i:s');
+						$wallet_transaction_id=insert(array('table'=>'wallet_transaction','data'=>array('wallet_transaction_type_id'=>$wallet_transaction_type_id,'status'=>1,'created_date'=>$current_datetime,'transaction_date'=>$current_datetime)),TRUE);
+						
+						
+						
+						if($wallet_transaction_id){
+							insert(array('table'=>'orders_transaction','data'=>array('order_id'=>$order_id,'transaction_id'=>$wallet_transaction_id)));
+							
+							$remain_amount=$total;
+							$bank_payment=$remain_amount+$order_fee;
+							
+							
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$bank_wallet_id,'debit'=>$bank_payment,'description_tkey'=>'Online_payment_from','relational_data'=>'Bank');
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+							'FW'=>$bank_details->title,
+							'TW'=>$buyer_details->member_name.' wallet',	
+							'TP'=>'Bank_Transfer',
+							));
+							insert(array('table'=>'wallet_transaction_row','data'=>$insert_wallet_transaction_row));
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$buyer_wallet_id,'credit'=>$remain_amount,'description_tkey'=>'Online_payment_from','relational_data'=>'Bank');
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$bank_details->title,
+								'TW'=>$buyer_details->member_name.' wallet',	
+								'TP'=>'Wallet_Topup',
+								));
+							insert(array('table'=>'wallet_transaction_row','data'=>$insert_wallet_transaction_row));
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$fee_wallet_id,'credit'=>$order_fee,'description_tkey'=>'Bank_fee','relational_data'=>$order_fee);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$bank_details->title,
+								'TW'=>$fee_wallet_details->title,	
+								'TP'=>'Processing_Fee',
+								));
+							insert(array('table'=>'wallet_transaction_row','data'=>$insert_wallet_transaction_row));
+							
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$buyer_wallet_id,'debit'=>$remain_amount,'description_tkey'=>'OrderID','relational_data'=>$order_id);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$buyer_details->member_name.' wallet',
+								'TW'=>$site_details->title,	
+								'TP'=>'Order_Payment',
+								));
+							insert(array('table'=>'wallet_transaction_row','data'=>$insert_wallet_transaction_row));
+								
+							$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'Transfer_from','relational_data'=>$recipient_relational_data);
+							$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$buyer_details->member_name.' wallet',
+								'TW'=>$site_details->title,	
+								'TP'=>'Order_Payment',
+								));
+							insert(array('table'=>'wallet_transaction_row','data'=>$insert_wallet_transaction_row));
+							
+							$this->load->model('wallet/wallet_model', 'wallet');
+							$total_debit = $this->wallet->wallet_debit_balance($bank_wallet_id);
+							$total_credit = $this->wallet->wallet_credit_balance($bank_wallet_id);
+							$org_balance = $total_credit - $total_debit;
+							update_wallet_balance($bank_wallet_id, $org_balance);
+							
+							$this->load->model('wallet/wallet_model', 'wallet');
+							$total_debit = $this->wallet->wallet_debit_balance($fee_wallet_id);
+							$total_credit = $this->wallet->wallet_credit_balance($fee_wallet_id);
+							$org_balance = $total_credit - $total_debit;
+							update_wallet_balance($fee_wallet_id, $org_balance);
+							
+							$total_debit = $this->wallet->wallet_debit_balance($reciver_wallet_id);
+							$total_credit = $this->wallet->wallet_credit_balance($reciver_wallet_id);
+							$org_balance = $total_credit - $total_debit;
+							update_wallet_balance($reciver_wallet_id, $org_balance);
+
+							$upd=array();
+							$order_time = date("M d, Y H:i:s", strtotime(" + ".$orderdetails->delivery_time." days"));
+							$upd['data'] = array('order_status'=>$order_status,'order_active'=>1,'transaction_id'=>$wallet_transaction_id,'order_time'=>$order_time);
+							$upd['where'] = array('order_id'=>$order_id);
+							$upd['table'] = 'orders';
+							update($upd);
+							
+						
+							
+							$this->load->model('notifications/notification_model');
+							$RECEIVER_EMAIL=$seller_details->member_email;
+							$url=URL.'order-details/'.$order_id;
+							$template='new-order';
+							$data_parse=array(
+							'BUYER_NAME'=>getDisplayName($buyer_details->member_id,true),
+							'SELLER_NAME'=>getDisplayName($seller_details->member_id,true),
+							'PROPOSAL_TITLE'=>$proposal_details->proposal_title,
+							'QTY'=>$orderdetails->order_qty,
+							'DELIVERY_TIME'=>$orderdetails->delivery_time,
+							'ORDER_PRICE'=>$orderdetails->order_price,
+							'ORDER_DETAILS_URL'=>$url,
+							);
+							SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
+							SendMail('',get_setting('admin_email'),$template,$data_parse);
+							
+							$notificationData=array(
+							'sender_id'=>$buyer_details->member_id,
+							'receiver_id'=>$seller_details->member_id,
+							'template'=>'order',
+							'url'=>'order-details/'.$order_id,
+							'content'=>json_encode(array('OID'=>$order_id)),
+							);
+							$this->notification_model->savenotification($notificationData);
+						}	
+						
+						}elseif($sts==ORDER_CANCELLED){
+							$conversations=array(
+							'order_id'=>$ID,
+							'sender_id'=>0,
+							'message'=>'',
+							'date'=>date('Y-m-d H:i:s'),
+							'reason'=>'',
+							'status'=>'cancelled_by_customer_support',
+							);
+							$this->db->insert('orders_conversations',$conversations);
+							
+							$upd['data'] = array('status' => '2');
+							$upd['where'] = array($this->data['primary_key'] => $ID);
+							$upd['table'] = 'proposals_referrals';
+							update($upd);
+							
+							$order_id=$ID;
+							$seller_details=$this->db->select('m.member_name,m.member_email,w.wallet_id,w.balance')->from('member as m')->join('wallet as w','m.member_id=w.user_id','left')->where('m.member_id',$orderdetails->seller_id)->get()->row();
+							$buyer_details=$this->db->select('m.member_name,m.member_email,w.wallet_id,w.balance')->from('member as m')->join('wallet as w','m.member_id=w.user_id','left')->where('m.member_id',$orderdetails->buyer_id)->get()->row();
+					
+							$this->load->model('notifications/notification_model');
+							$notificationData=array(
+							'sender_id'=>0,
+							'receiver_id'=>$orderdetails->seller_id,
+							'template'=>'cancelled_by_customer_support',
+							'url'=>'order-details/'.$ID,
+							'content'=>json_encode(array('OID'=>$ID)),
+							);
+							$this->notification_model->savenotification($notificationData);
+							$notificationData['receiver_id']=$orderdetails->buyer_id;
+							$this->notification_model->savenotification($notificationData);
+						
+							$url=URL.'order-details/'.$order_id;
+							$RECEIVER_EMAIL=$seller_details->member_email;
+							$template='order-cancelled-to-seller';
+							$data_parse=array(
+							'SELLER_NAME'=>getDisplayName($orderdetails->seller_id,true),
+							'ORDER_DETAILS_URL'=>$url,
+							);
+							SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
+							
+							$RECEIVER_EMAIL=$buyer_details->member_email;
+							$template='order-cancelled-to-buyer';
+							$data_parse=array(
+							'BUYER_NAME'=>getDisplayName($orderdetails->buyer_id,true),
+							'ORDER_DETAILS_URL'=>$url,
+							);
+							SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
+							
+						}
+						
+					}else{
+					
 					$conversations=array(
 					'order_id'=>$ID,
 					'sender_id'=>0,
@@ -204,7 +391,7 @@ class Orders extends MX_Controller {
 					$reciver_wallet_balance=$buyer_wallet_balance=$buyer_details->balance;
 					$recipient_relational_data=get_setting('website_name');
 					$site_wallet=get_setting('SITE_MAIN_WALLET');
-					$site_details=$this->db->select('w.wallet_id,w.balance')->from('wallet as w')->where('w.wallet_id',$site_wallet)->get()->row();
+					$site_details=$this->db->select('w.wallet_id,w.balance,w.title')->from('wallet as w')->where('w.wallet_id',$site_wallet)->get()->row();
 					$sender_wallet_id=$site_details->wallet_id;
 					$sender_wallet_balance=$site_details->balance;
 					
@@ -218,9 +405,19 @@ class Orders extends MX_Controller {
 					if($wallet_transaction_id){
 						insert(array('data'=>array('order_id'=>$order_id,'transaction_id'=>$wallet_transaction_id),'table'=>'orders_transaction'));
 						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$sender_wallet_id,'debit'=>$total,'description_tkey'=>'OrderID','relational_data'=>$order_id);
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$site_details->title,
+								'TW'=>$buyer_details->member_name.' wallet',
+								'TP'=>'Order_Payment_Refund',
+								));
 						insert(array('data'=>$insert_wallet_transaction_row,'table'=>'wallet_transaction_row'));
 						
 						$insert_wallet_transaction_row=array('wallet_transaction_id'=>$wallet_transaction_id,'wallet_id'=>$reciver_wallet_id,'credit'=>$total,'description_tkey'=>'Transfer_from','relational_data'=>$recipient_relational_data);
+						$insert_wallet_transaction_row['ref_data_cell']=json_encode(array(
+								'FW'=>$site_details->title,
+								'TW'=>$buyer_details->member_name.' wallet',
+								'TP'=>'Order_Payment_Refund',
+								));
 						insert(array('data'=>$insert_wallet_transaction_row,'table'=>'wallet_transaction_row'));
 	
 						$this->db->set('used_purchases','used_purchases-'.$total,FALSE)->where('wallet_id',$reciver_wallet_id)->update('wallet');
@@ -256,7 +453,7 @@ class Orders extends MX_Controller {
 						'SELLER_NAME'=>$seller_details->member_name,
 						'ORDER_DETAILS_URL'=>$url,
 						);
-						SendMail($RECEIVER_EMAIL,$template,$data_parse);
+						SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
 						
 						$RECEIVER_EMAIL=$buyer_details->member_email;
 						$template='order-cancelled-to-buyer';
@@ -264,9 +461,11 @@ class Orders extends MX_Controller {
 						'BUYER_NAME'=>$buyer_details->member_name,
 						'ORDER_DETAILS_URL'=>$url,
 						);
-						SendMail($RECEIVER_EMAIL,$template,$data_parse);
+						SendMail('',$RECEIVER_EMAIL,$template,$data_parse);
 					}	
-				}	
+					
+					}
+					}	
 			}
 			
 			if($action_type == 'multiple'){

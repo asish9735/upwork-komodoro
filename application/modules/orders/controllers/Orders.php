@@ -965,7 +965,7 @@ class Orders extends MX_Controller {
 						}
 					}
 					elseif($action=='review_submit'){
-						$this->form_validation->set_rules('review', __('orders_form_review','review'), 'trim|xss_clean');
+						$this->form_validation->set_rules('review', __('orders_form_review','review'), 'required|trim|xss_clean');
 						$this->form_validation->set_rules('rating', __('orders_form_rating','rating'), 'required|trim|xss_clean|numeric|less_than_equal_to[5]');
 						if ($this->form_validation->run() == FALSE){
 							$error=validation_errors_array();

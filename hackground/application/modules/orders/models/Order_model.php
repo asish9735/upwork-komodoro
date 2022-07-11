@@ -39,20 +39,19 @@ class Order_model extends CI_Model{
 		return $result;
 	}
 	public function getOrderDetail($order_id){
-		$this->db->select('o.order_id,o.order_number,o.order_duration,o.order_date,o.order_time,o.order_description,o.seller_id,o.buyer_id,o.proposal_id,o.order_price,o.order_qty,o.order_fee,o.order_active,o.complete_time,o.order_status,o.payment_method,o.transaction_id,p.proposal_image,p.proposal_title,p.proposal_url');
+		$this->db->select('o.order_id,o.order_number,o.delivery_time,o.order_date,o.delivery_date,o.seller_id,o.buyer_id,o.proposal_id,o.order_price,o.order_qty,o.order_fee,o.order_active,o.complete_time,o.order_status,o.payment_method,o.transaction_id,p.proposal_image,p.proposal_title,p.proposal_url');
 		$this->db->from('orders as o');
-		$this->db->join('proposals as p','o.proposal_id=o.proposal_id','left');
+		$this->db->join('proposals as p','o.proposal_id=p.proposal_id','left');
 		$this->db->where('o.order_id',$order_id);
 		return $this->db->get()->row();
 	}
 	public function getUserName($member_id){
-		$this->db->select('a.access_username');
-		$this->db->from('profile_connection as p_c');
-		$this->db->join('access_panel as a','p_c.access_user_id=a.access_user_id','left');
-		$this->db->where(array('p_c.member_id'=>$member_id,'p_c.organization_id'=>NULL));
+		$this->db->select('a.member_name');
+		$this->db->from('member as a');
+		$this->db->where(array('a.member_id'=>$member_id));
 		$data=$this->db->get()->row();
 		if($data){
-			return $data->access_username;
+			return $data->member_name;
 		}else{
 			return $member_id;
 		}
