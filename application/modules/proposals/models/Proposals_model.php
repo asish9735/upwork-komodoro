@@ -56,13 +56,14 @@ class Proposals_model extends MX_Controller {
 			}
 		}
 		
-		$this->db->select('AVG(b.buyer_rating) as avg_review,m.member_name,mb.member_heading,ps.proposal_title,ps.proposal_seller_id,ps.display_price,ps.proposal_id,ps.proposal_image,p_set.proposal_featured,p_set.featured_end_date,ps.proposal_url')
+		$this->db->select('AVG(b.buyer_rating) as avg_review,m.member_name,mb.member_heading,ps.proposal_title,ps.proposal_seller_id,ps.display_price,ps.proposal_id,ps.proposal_image,p_set.proposal_featured,p_set.featured_end_date,ps.proposal_url,stat.proposal_views')
 		->from('proposals as ps')
 		->join('buyer_reviews as b','ps.proposal_id=b.proposal_id','left')
 		->join('proposal_settings as p_set','ps.proposal_id=p_set.proposal_id','left')
 		->join('member as m','ps.proposal_seller_id=m.member_id','left')
 		->join('member_basic as mb','m.member_id=mb.member_id','left')
 		->join('proposal_category as pc','ps.proposal_id=pc.proposal_id','left')
+		->join('proposal_stat as stat','ps.proposal_id=stat.proposal_id','left')
 		->join('proposal_skills as psk','(ps.proposal_id=psk.proposal_id and psk.proposal_skill_status=1)','left');
 		$this->db->where('ps.proposal_status' , PROPOSAL_ACTIVE);
 		if($srch_param){

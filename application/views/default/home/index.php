@@ -1,3 +1,4 @@
+<?php $currency=get_setting('site_currency');?>
 <!-- Intro Banner -->
 <div class="intro-banner home-banner dark-overlay">
 	<div class="container h-100">
@@ -325,12 +326,13 @@ if ($cms_temp) {
       ?>
     </div>
     <div class="text-center">
-    	<a href="#" class="btn btn-site">Find Professionals</a>
-        <a href="#" class="btn btn-site">Post Your Service</a>
+    	<a href="<?php echo URL::get_link('search_freelancer'); ?>" class="btn btn-site">Find Professionals</a>
+        <a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-site">Post Your Service</a>
     </div>
   </div>
 </section>
 <!-- Highest Rated Freelancers / End --> 
+<?php if($featured_proposals){?>
 <section class="pb-5">
 <div class="container">
 	<div class="section-headline centered mb-3">
@@ -338,91 +340,117 @@ if ($cms_temp) {
       <p><?php echo __('home_page_', 'The most comprehensive search engine for gigs.'); ?></p>
     </div>
     <div class="default-slick-carousel freelancers-container freelancers-grid-layout">
-    	<div class="card card-gigs">
+      <?php 
+      foreach($featured_proposals as $key=>$proposal){
+        $url=get_link('myProposalDetailsURL').'/'.$proposal['proposal_url'];
+        $proposal_rating_details=getProposalRating($proposal['proposal_id'],array('stat'));
+        $proposal_rating=0;
+        $count_reviews=$proposal_rating_details->total_review;
+        $average_rating=$proposal_rating_details->avg_review;
+        $logo=getMemberLogo($proposal['proposal_seller_id']);
+        $proposal_image=UPLOAD_HTTP_PATH.'proposals-files/proposals-thumb/'.$proposal['proposal_image'];
+        $is_featured=0;
+        if($proposal['proposal_featured']==1 && $proposal['featured_end_date']>date('Y-m-d H:i:s')){
+          $is_featured=1;
+        }
+        $proposal_order_queue=$this->db->where('proposal_id',$proposal['proposal_id'])->where_in('order_status',array(ORDER_PROCESSING,ORDER_REVISION,ORDER_CANCELLATION))->from('orders')->count_all_results();
+        $proposal_order_completed=$this->db->where('proposal_id',$proposal['proposal_id'])->where_in('order_status',array(ORDER_COMPLETED,ORDER_DELIVERED))->from('orders')->count_all_results();
+        //print_r($proposal);
+        //$is_online=is_online($proposal['proposal_seller_id']);
+        ?>
+    	  <div class="card card-gigs">
         	<div class="card-image">
-            	<span class="bookmark-icon"></span>
-            	<a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a>
+            	<!-- <span class="bookmark-icon"></span> -->
+            	<a href="<?php echo $url;?>"><img src="<?php echo $proposal_image;?>" alt="<?php echo $proposal['proposal_title'];?>" class="card-img-top" /></a>
             </div>
-        	<div class="card-body">
-            	<h5><a href="#">3D Models & Product Design</a></h5>
-                <div class="star-rating" data-rating="3.5"></div>
-                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
-                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
-            </div>
-        </div>
-        <div class="card card-gigs">
-        	<div class="card-image"><a href="#"><img src="<?php echo IMAGE; ?>g2.jpg" alt="" class="card-img-top" /></a></div>
-        	<div class="card-body">
-            	<h5><a href="#">WordPress Articles</a></h5>
-                <div class="star-rating" data-rating="3.5"></div>
-                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
-                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
+        	  <div class="card-body">
+            	<h5><a href="<?php echo $url;?>"><?php echo $proposal['proposal_title'];?></a></h5>
+                <div class="star-rating" data-rating="<?php echo round($average_rating,1);?>"></div>
+                <p class="card-justify"><span>Order in Queue: <b><?php echo $proposal_order_queue;?></b></span> <span>Sell: <b><?php echo $proposal_order_completed;?></b></span></p>
+                <div class="card-price"><h3><?php echo CURRENCY;?><?php echo $proposal['display_price'];?></h3> <span><i class="icon-feather-eye"></i> <?php echo $proposal['proposal_views'];?></span></div>
             </div>
         </div>
-        <div class="card card-gigs">
-        	<div class="card-image">
-            <span class="bookmark-icon"></span>
-            <a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a></div>
-        	<div class="card-body">
-            	<h5><a href="#">3D Models & Product Desig...</a></h5>
-                <div class="star-rating" data-rating="3.5"></div>
-                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
-                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
-            </div>
-        </div>
-        <div class="card card-gigs">
-        	<div class="card-image"><a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a></div>
-        	<div class="card-body">
-            	<h5><a href="#">3D Models & Product Desig...</a></h5>
-                <div class="star-rating" data-rating="3.5"></div>
-                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
-                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
-            </div>
-        </div>
-        <div class="card card-gigs">
-        	<div class="card-image"><a href="#"><img src="<?php echo IMAGE; ?>g1.jpg" alt="" class="card-img-top" /></a></div>
-        	<div class="card-body">
-            	<h5><a href="#">3D Models & Product Desig...</a></h5>
-                <div class="star-rating" data-rating="3.5"></div>
-                <p class="card-justify"><span>Order in Queue: <b>12</b></span> <span>Sell: <b>36</b></span></p>
-                <div class="card-price"><h3>$249</h3> <span><i class="icon-feather-eye"></i> 105</span></div>
-            </div>
-        </div>
+      <?php }?>
+
+
     </div>
     <div class="text-center">
-    	<a href="#" class="btn btn-site"><?php echo __('home_page_', 'Hire Now'); ?></a>
-    	<a href="#" class="btn btn-site"><?php echo __('home_page_view_gigs', 'View All Gigs'); ?></a>
-        <a href="#" class="btn btn-site"><?php echo __('home_page_', 'Post Gigs'); ?></a>
+    	<a href="<?php echo URL::get_link('search_freelancer'); ?>" class="btn btn-site"><?php echo __('home_page_', 'Hire Now'); ?></a>
+    	<a href="<?php echo URL::get_link('search_gigs'); ?>" class="btn btn-site"><?php echo __('home_page_view_gigs', 'View All Gigs'); ?></a>
+        <a href="<?php D(get_link('postproposalURL'))?>" class="btn btn-site"><?php echo __('home_page_', 'Post Gigs'); ?></a>
     </div>
 </div>
 </section>
+<?php }?>
 <section class="pb-5">
-<div class="container">
+<div class="container" id="job_list">
 	<div class="section-headline centered mb-3">
       <h2><?php echo __('home_page_', 'Featured Projects'); ?></h2>
       <p><?php echo __('home_page_', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamco.'); ?></p>
     </div>
     <div class="blog-carousel freelancers-container freelancers-grid-layout">
-    	<div class="card card-project">
+    <?php 
+     //get_print($job_list,false);
+    if($job_list){
+      foreach($job_list as $k => $v){
+        $budget = !empty($v['budget']) ? $v['budget'] : 0;
+        $is_fav_class="";
+        if($login_user_id){
+          $is_fav = isFavouriteJob($login_user_id, $v['project_id']);
+          if($is_fav){
+            $is_fav_class="active";
+          }	
+        }
+        $is_online=is_online($v['owner_id']);
+      ?>
+        <div class="card card-project">
         	<div class="card-body">
-            	<span class="bookmark-icon"></span>
-            	<h4><a href="#">Design a New Logo for my Company</a></h4>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            	<a href="<?php echo VZ;?>" class=" action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-line-awesome-heart"></i></a>
+            	<h4><a href="<?php echo $v['project_detail_url']; ?>"><?php echo $v['project_title']; ?></a></h4>
+                <p><?php echo $v['project_short_info']; ?></p>
                 <ul class="skills">
-                	<li><span>UI/UX</span></li>
-                    <li><span>Graphic Design</span></li>
-                    <li><span>Illustration</span></li>
+                <?php 
+                if($v['skills']){foreach($v['skills'] as $sk=>$skill){ ?>
+                <li><span><?php echo $skill['skill_name'];?></span></li>
+                <?php 
+                if($sk==2 && count($v['skills'])>3){
+                  echo '+'.(count($v['skills'])-3);
+                  break;
+                }
+              } } ?>
                 </ul>
-                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
+                <p class="card-justify">
+                  <span><i class="icon-feather-calendar"></i> <?php echo dateFormat($v['project_posted_date'],'M d, Y');?></span> 
+                  <?php if($v['is_fixed'] == '1'){?>
+                  <span><i class="icon-feather-lock"></i> Fixed</span>
+                  <?php }else{?>
+                  <span><i class="icon-feather-clock"></i> Hourly</span>
+                  <?php }?>
+                 <!-- <span><i class="icon-feather-map-pin"></i> London</span> -->
+                </p>
                 <div class="user-details">
-                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
+                	<div class="user-avatar <?php if($is_online){echo 'status-online';}?>"><img src="<?php echo $v['clientdata']->client_logo;?>" alt="" height="32" width="32" /></div>
                 	<div class="user-name">
-                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
-                        <div class="star-rating" data-rating="3.5"></div>
+                    	<p><?php echo $v['clientdata']->client_name;?>
+                        <?php if($v['clientdata']->country_code_short){?>
+                        <img src="<?php echo IMAGE;?>flags/<?php D(strtolower($v['clientdata']->country_code_short));?>.svg" alt="" height="18" width="18" class="flag" title="<?php echo $v['clientdata']->client_location;?>" data-tippy-placement="top" />
+                      <?php }?>
+                      </p>
+                        <div class="star-rating" data-rating="<?php echo $v['clientdata']->avg_rating;?>"></div>
                     </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <h4 class="hourly-rate"><?php echo $budget > 0 ? $currency. $budget : 'Not Set';?></h4>
+                  <!-- <span class="bookmark-icon ml-auto"></span> -->
+                  <a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-outline-site btn-sm">Apply Now</a> 
                 </div>
             </div>
         </div>
+        <?php }
+        }
+      ?>
+  
+
         <div class="card card-project">
         	<div class="card-body">
             	<span class="bookmark-icon"></span>
@@ -717,3 +745,74 @@ if ($cms_temp) {
   </div>
 </section>
 <!-- Top Skills End -->
+<script>
+  var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
+var main = function(){	
+  $('#job_list').on('click', '.action_favorite',function(e){
+		e.preventDefault();
+		var _self=$(this);
+		var data = {
+			pid: _self.data('pid'),
+		};
+		$.post('<?php echo get_link('actionfavorite_job'); ?>', data, function(res){
+			if(res['status'] == 'OK'){
+				if(res['cmd']== 'add'){
+					_self.addClass('active');
+					bootbox.alert({
+						title:'Make Favorite',
+						message: 'Successfully Saved',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+				}else{
+					_self.removeClass('active');
+					bootbox.alert({
+						title:'Remove Favorite',
+						message: 'Successfully Removed',
+						buttons: {
+						'ok': {
+							label: 'Ok',
+							className: 'btn-site pull-right'
+							}
+						},
+						callback: function () {
+							
+					    }
+					});
+					
+				}
+			}else if(res['popup'] == 'login'){
+				bootbox.confirm({
+					title:'Login Error!',
+					message: 'You are not Logged In. Please login first.',
+					buttons: {
+					'confirm': {
+						label: 'Login',
+						className: 'btn-site pull-right'
+						},
+					'cancel': {
+						label: 'Cancel',
+						className: 'btn-dark pull-left'
+						}
+					},
+					callback: function (result) {
+						if(result){
+							var base_url = '<?php echo base_url();?>';
+							var refer = window.location.href.replace(base_url, '');
+							location.href = '<?php echo base_url('login?refer='); ?>'+refer;
+						}
+					}
+				});
+			}
+		},'JSON');
+		
+	});
+};
+  </script>
