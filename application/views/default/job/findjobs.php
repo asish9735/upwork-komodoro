@@ -1,28 +1,22 @@
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo __('job_findjobs_projects','Projects');?></h1>
+</div>
+</section>
 <section class="section">
 <div class="container">
-<!--<div class="row">
-    <div class="col-xl-3 col-lg-4 col-12">
+<div class="row">
+    <div class="col-lg-4 col-12">
         <div class="sidebar-container">
-        </div>
-    </div>
-    <div class="col-xl-9 col-lg-8 col-12">
-    </div>
-</div>-->
-    <div class="dashboard-headline">
-    	<h1><?php echo __('job_findjobs_projects','Projects');?></h1>
-    </div>
-	<h3 class="page-title"><ec class="total_count">0</ec> <?php echo __('job_findjobs_jobs_found','jobs found');?> </h3>
-    <form id="filterForm">
-    <div class="row row-10">
-    	<div class="col-md-6">
+        <form id="filterForm">
             <div class="search-box input-group">
                 <input type="text" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" class="form-control" placeholder="Find jobs by title" form="filterForm" name="term"/>
-                <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i><?php echo __('job_findjobs_search','Search');?> </button></div>
+                <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i><!--<?php // echo __('job_findjobs_search','Search');?>--> </button>
             </div>
-        </div>
-        <div class="col-md-6">
+        
+        <?php /*?>
         	<div class="d-flex">
-                <a href="javascript:void(0)" class="btn btn-outline-site mr-3" onclick="$('#filterAdvance').toggle();"><i class="icon-feather-filter"></i><?php echo __('job_findjobs_filter','Filter');?> </a>                
+            	<a href="javascript:void(0)" class="btn btn-outline-site mr-3" onclick="$('#filterAdvance').toggle();"><i class="icon-feather-filter"></i><?php echo __('job_findjobs_filter','Filter');?> </a>   
                 <a href="javascript:void(0)" class="btn btn-outline-site mr-3" hidden><i class="icon-feather-heart"></i><?php echo __('job_findjobs_save_search','Save Search');?> </a>                                 
                 <div class="sort-by ml-auto">
                 <div class="sort-by">
@@ -42,26 +36,21 @@
                 </div>-->
 			</div>       
             </div>    
-        </div>
-    </div>    
+        <?php */?>           
     
 
-    <div id="filterAdvance" style="display:none" class="mt-3">
+    <div id="filterAdvance" style="display:none1" class="mt-3">
     
-    	<div class="row">
-        <!-- Category -->
-        <div class="col-md-4">
+        <!-- Category -->        
         <div class="sidebar-widget">
-            <h5><?php echo __('job_findjobs_category','Category');?></h5>
+            <h5><img src="<?php echo IMAGE;?>category-icon.png" alt="" height="20" width="20" class="me-1" /> <?php echo __('job_findjobs_category','Category');?></h5>
             <select name="category" class="selectpicker default"  title="All Categories"  data-live-search="true">
                 <option value=""><?php echo __('job_findjobs_all','All');?></option>
                 <?php print_select_option($category, 'category_id', 'category_name',(($searchdata && array_key_exists('category',$searchdata)) ? $searchdata['category']:'' )); ?>
             </select>
         </div>
-        </div>
-
-        <!-- Category -->
-        <div class="col-md-4">
+        
+        <!-- Category -->        
         <div class="sidebar-widget" id="sub_category_wrapper">
             <h5><?php echo __('job_findjobs_speciality','Speciality');?></h5>
             <select name="sub_category" id="sub_category" class="selectpicker default" title="Speciality"  data-live-search="true" onchange="filterForm()">
@@ -73,23 +62,16 @@
         		<?php }?>
 			</select>
         </div>
-        </div>
-        <div class="col-md-4">
+        
         <div class="sidebar-widget">
-            <h5><?php echo __('job_findjobs_payment_type','Payment Type');?></h5>
-            <select name="is_hourly" class="selectpicker default"  title="Payment Type" onchange="filterForm()">
+            <h5><img src="<?php echo IMAGE;?>project-icon.png" alt="" height="20" width="20" class="me-1" /> <?php echo __('job_findjobs_project_type','Project Type');?></h5>
+            <select name="is_hourly" class="selectpicker default"  title="<?php echo __('job_findjobs_project_type','Project Type');?>" onchange="filterForm()">
                 <option value=""><?php echo __('job_findjobs_all','All');?></option>
                 <option value="0" <?php if($searchdata && array_key_exists('is_hourly',$searchdata) && $searchdata['is_hourly']=='0'){echo 'selected';}?>><?php echo __('job_findjobs_fixed','Fixed');?></option>
                 <option value="1" <?php if($searchdata && array_key_exists('is_hourly',$searchdata) && $searchdata['is_hourly']=='1'){echo 'selected';}?>><?php echo __('job_findjobs_hourly','Hourly');?></option>
             </select>
         </div>
-        </div>
-
         
-        </div>
-        
-        <div class="row">
-		<div class="col-md-4">
         <div class="sidebar-widget">
             <h5><?php echo __('job_findjobs_experience_level','Experience Level');?></h5>
             <select name="experience_level" class="selectpicker default" title="Experience Level"  data-live-search="true" onchange="filterForm()">
@@ -97,8 +79,7 @@
                 <?php print_select_option($experience_level, 'experience_level_id', 'experience_level_name',(($searchdata && array_key_exists('experience_level',$searchdata)) ? $searchdata['experience_level']:'' )); ?>
             </select>
         </div>
-        </div>
-        <div class="col-md-4">
+        
         <div class="sidebar-widget">
             <h5><?php echo __('job_findjobs_job_type','Job Type');?></h5>
             <select name="job_type" class="selectpicker default"  title="Job Type" onchange="filterForm()">
@@ -108,19 +89,19 @@
                 <option value="NotSure" <?php if($searchdata && array_key_exists('job_type',$searchdata) && $searchdata['job_type']=='NotSure'){echo 'selected';}?>><?php echo __('job_findjobs_not_sure','Not Sure');?></option>
             </select>
         </div>
-        </div>
-        <!-- Salary -->
-        <div class="col-md-4">
-        <div class="sidebar-widget">
-            <h5><?php echo __('job_findjobs_budget','Budget');?></h5>
-            <div class="">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Min" name="min" value="<?php if($searchdata && array_key_exists('min',$searchdata)){echo $searchdata['min'];}?>">
-					<input type="text" class="form-control" placeholder="Max" name="max" value="<?php if($searchdata && array_key_exists('max',$searchdata)){echo $searchdata['max'];}?>">
-					<div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i><?php echo __('job_findjobs_search','Search');?> </button></div>   
-				</div>
-            </div>
-        </div>
+        
+        <!-- Salary -->        
+        <div class="sidebar-widget mb-0">        
+            <h5><img src="<?php echo IMAGE;?>budget-icon.png" alt="" height="20" width="20" class="me-1" /> <?php echo __('job_findjobs_budget','Budget');?></h5>
+            <div class="margin-top-30"></div>
+            <!-- Range Slider -->
+            <input class="range-slider" type="text" value="" data-slider-tooltip_split="true" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]"/>
+        	<div class="margin-top-20"></div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Min" name="min" value="<?php if($searchdata && array_key_exists('min',$searchdata)){echo $searchdata['min'];}?>">
+                <input type="text" class="form-control" placeholder="Max" name="max" value="<?php if($searchdata && array_key_exists('max',$searchdata)){echo $searchdata['max'];}?>">
+                <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i></button> 
+            </div>            
         </div>
         <!--<div class="col-md-4">
         <div class="sidebar-widget">
@@ -132,13 +113,15 @@
         </select>
 		</div>
         </div>-->
-        </div>
+       
 	</div>
 	</form>
-    
-
+        </div>
+    </div>
+    <div class="col-lg-8 col-12">
+    	<h3 class="page-title"><ec class="total_count">0</ec> <?php echo __('job_findjobs_jobs_found','jobs found');?> </h3>
 	<!-- Tasks Container -->
-    <div class="tasks-list-container mt-4" id="job_list">
+    <div class="listings-container mt-4" id="job_list">
     	<div class="text-center" style="margin: 100px"><?php load_view('inc/spinner',array('size'=>30));?></div>
         <!-- Pagination -->
         <div class="pagination-container margin-top-30 margin-bottom-60" hidden>
@@ -159,8 +142,8 @@
 	<!-- Tasks Container / End -->
 			
 	<div class="text-center"><button class="btn btn-site" id="load_more_btn"><?php echo __('job_findjobs_load_more','Load More');?></button></div>
-
-		
+    </div>
+</div>		
 </div>
 </section>
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
@@ -174,6 +157,66 @@
 </div>
 <script>
 var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
+function starRating(ratingElem) {
+
+	$(ratingElem).each(function() {
+		$(this).empty();
+		var dataRating = $(this).attr('data-rating');
+
+		// Rating Stars Output
+		function starsOutput(firstStar, secondStar, thirdStar, fourthStar, fifthStar) {
+			return(''+
+				'<span class="'+firstStar+'"></span>'+
+				'<span class="'+secondStar+'"></span>'+
+				'<span class="'+thirdStar+'"></span>'+
+				'<span class="'+fourthStar+'"></span>'+
+				'<span class="'+fifthStar+'"></span>');
+		}
+
+		var fiveStars = starsOutput('star','star','star','star','star');
+
+		var fourHalfStars = starsOutput('star','star','star','star','star half');
+		var fourStars = starsOutput('star','star','star','star','star empty');
+
+		var threeHalfStars = starsOutput('star','star','star','star half','star empty');
+		var threeStars = starsOutput('star','star','star','star empty','star empty');
+
+		var twoHalfStars = starsOutput('star','star','star half','star empty','star empty');
+		var twoStars = starsOutput('star','star','star empty','star empty','star empty');
+
+		var oneHalfStar = starsOutput('star','star half','star empty','star empty','star empty');
+		var oneStar = starsOutput('star','star empty','star empty','star empty','star empty');
+		var HalfStar = starsOutput('star half','star empty','star empty','star empty','star empty');
+		var zeroStar = starsOutput('star empty','star empty','star empty','star empty','star empty');
+
+		// Rules
+		if (dataRating >= 4.75) {
+			$(this).append(fiveStars);
+		} else if (dataRating >= 4.25) {
+			$(this).append(fourHalfStars);
+		} else if (dataRating >= 3.75) {
+			$(this).append(fourStars);
+		} else if (dataRating >= 3.25) {
+			$(this).append(threeHalfStars);
+		} else if (dataRating >= 2.75) {
+			$(this).append(threeStars);
+		} else if (dataRating >= 2.25) {
+			$(this).append(twoHalfStars);
+		} else if (dataRating >= 1.75) {
+			$(this).append(twoStars);
+		} else if (dataRating >= 1.25) {
+			$(this).append(oneHalfStar);
+		} else if (dataRating > .75) {
+			$(this).append(oneStar);
+		} else if (dataRating > .25) {
+			$(this).append(HalfStar);
+		}else{
+			$(this).append(zeroStar);
+		}
+
+	});
+
+} 
 var main = function(){	
 	var findJobLoadMore = LoadMore.getInstance();	
 	/* findJobLoadMore.config({
@@ -204,6 +247,7 @@ var main = function(){
 				target: 'window'
 			},
 			onResult: function(res){
+				starRating('.star-rating');
 				history.pushState({}, null,  '<?php echo URL::get_link('search_job'); ?>?'+form);
 			$('.total_count').html(res.job_list_count);
 			}

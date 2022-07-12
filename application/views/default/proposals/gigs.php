@@ -1,11 +1,9 @@
 <?php $lang = get_active_lang();?>
-<div class="short-banner" style="background-image:url('<?php echo IMAGE;?>top-project-catalog-banner.jpg')">
+<section class="short-banner">
   <div class="container">
-    <div class="dashboard-headline mb-0">
-      <h1>Browse Project Catalog</h1>
-    </div>
+      <h1>Browse Gigs</h1>
   </div>
-</div>
+</section>
 <section class="section">
 	<div class="container">				
         <div class="categorySec">
@@ -82,14 +80,12 @@
                 <div class="col-lg-6 col-12">
                     <div class="input-group mb-3">
                         <input type="text" name="term" class="form-control" placeholder="Search..." value="<?php echo !empty($srch_param['term']) ? $srch_param['term'] : ''; ?>">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-site"><i class="icon-feather-search"></i></button>
-                        </div>
+                        <button type="submit" class="btn btn-site"><i class="icon-feather-search"></i></button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
                 	<div class="input-group mb-3">
-                    <div class="input-group-prepend mr-3 mt-2">
+                    <div class="input-group-prepend me-3 mt-2">
                     	<span class="border-0">Sort by:</span>
                     </div>
                     <select class="selectpicker" data-size="3" onchange="post_form()" name="sort_by">

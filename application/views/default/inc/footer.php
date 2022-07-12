@@ -69,7 +69,7 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
   <!-- Footer Copyrights -->
   <div class="footer-bottom-section">
     <div class="container">
-    <div class="text-center">Accepted Payments: <img src="<?php echo IMAGE; ?>payment.png" alt="" /></div>
+    <div class="text-center mb-3">Accepted Payments: <img src="<?php echo IMAGE; ?>payment.png" alt="" /></div>
     <div class="row footer-rows-container">       
       <!-- Left Side -->
       <div class="col-auto">
@@ -102,7 +102,7 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
           </ul>
 	  </div>              
       <div class="col text-center">
-        	<p>&copy; <?php echo __('copyright','Copyright');?> <?php echo date('Y');?> OriginateSoft.com. <?php echo __('all_rights_reserved','All Rights Reserved');?></p>
+        	<p>&copy; <?php echo __('copyright','Copyright');?> <?php echo date('Y');?> Kommodoro.com. <?php echo __('all_rights_reserved','All Rights Reserved');?></p>
         </div>
       
       <!-- Right Side -->

@@ -1053,7 +1053,7 @@ if (!function_exists('check_user_log')) {
         if ($flag) {
 			if($ci->input->is_ajax_request()){
 				$location = base_url('login/?ref='.urlencode($curr_url));
-				//echo '<script type="text/javascript">window.location.href ="'.$location.'";</script>';
+				/*echo '<script type="text/javascript">window.location.href ="'.$location.'";</script>';*/
 			}else{
 				redirect(base_url('login/?ref='.urlencode($curr_url)));
 			}
@@ -2699,4 +2699,29 @@ function is_online($memberId){
     $ci->load->database();
 	return $ci->db->where('user_id',$memberId)->from('online_user')->count_all_results();
 }
+}
+if ( ! function_exists('getConvertedName'))
+{
+	function getConvertedName($name){
+	$string=explode(' ',$name,2);
+	$firstname=$string[0];
+	$lastname='';
+	if(count($string)>1){
+		$lastname= mb_substr(trim($string[1]), 0, 1, "UTF-8").'.';
+	}
+	if($lastname){
+	$data=$firstname.' '.$lastname;
+	}else{
+	$data=$firstname;
+	}
+	return ucwords($data);
+	}
+}
+if ( ! function_exists('getConvertedNameClient'))
+{
+	function getConvertedNameClient($name){
+		$len=strlen($name);
+		$data= str_pad(mb_substr(trim($name), 0, 4, "UTF-8"),$len,'x');
+		return ucwords($data);
+	}
 }

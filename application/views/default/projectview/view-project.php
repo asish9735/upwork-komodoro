@@ -227,7 +227,7 @@ if($login_user_id){
 					<!-- Copy URL -->
 					<div class="input-group copy-url mb-3">
 						<input type="text" class="form-control" id="copy-url" value="">
-						<div class="input-group-append"><button class="copy-url-button btn" data-clipboard-target="#copy-url" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button></div>
+						<button class="copy-url-button btn" data-clipboard-target="#copy-url" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button>
 					</div>
 
 					<!-- Share Buttons -->
@@ -240,11 +240,11 @@ if($login_user_id){
                       <!-- Bookmark icon -->
 					  <?php if(!$is_owner){?>
 					  <li class="ml-auto">
-					  <span class="mr-2">
-						<a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_report" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-material-outline-bug-report"></i></a>
+					  <span class="me-2">
+						<a href="<?php echo VZ;?>" class="btn btn-circle action_report" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-material-outline-bug-report"></i></a>
 					  </span>
                       <span>
-						<a href="<?php echo VZ;?>" class="btn btn-circle btn-light action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-feather-heart"></i></a>
+						<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-line-awesome-heart"></i></a>
 					  </span>
                       </li>
 					  <?php }?>

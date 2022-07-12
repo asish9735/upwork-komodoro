@@ -27,10 +27,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="form-group">        	
             <label for="" class="control-label" style="display:none;">
             <input type="checkbox"> <?php echo __('user_page_login_password_remember','Remember Me');?> </label>
-            <a href="<?php echo BASE_URL;?>user/forgot"><?php echo __('user_page_login_password_forget','Forgot Password');?>?</a>                
+            <p><a href="<?php echo BASE_URL;?>user/forgot"><?php echo __('user_page_login_password_forget','Forgot Password');?>?</a></p>                
         </div>
-        <button class="btn btn-site btn-block" id="signInBTN"><?php echo __('user_page_login_button','Log In');?></button>
-        
+        <div class="d-grid">
+        	<button class="btn btn-site" id="signInBTN"><?php echo __('user_page_login_button','Log In');?></button>
+        </div>
         <div class="social-login-separator"><span><?php echo __('user_page_login_separetor','OR');?></span></div>
         <div class="social-login-buttons mb-3">
             <button class="facebook-login ripple-effect fb_login_btn"><i class="icon-brand-facebook-f"></i> <?php echo __('user_page_login_facebook','Log In via Facebook');?></button>

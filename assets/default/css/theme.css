@@ -502,7 +502,7 @@ a.header-notifications-button i {
 }
 /* Avatar */
 .user-avatar {
-	background-color: #dfdfdf;
+	background-color: #fff;
 	display: inline-block;
 	border-radius: 50%;
 	position: relative;
@@ -1870,12 +1870,9 @@ ul.footer-social-links li > a:hover {
 }
 /* Middle Section */
 .footer-middle-section {
-	padding: 3rem 0;
+	padding: 3rem 0 1rem;
 	position: relative;
 	z-index: 10;
-}
-.footer-links h4 {
-	margin: 0 0 1rem 0;
 }
 .footer-links ul {
 	font-size: 0.938rem;
@@ -2143,6 +2140,9 @@ body #backtotop a {
 /* Sidebar Styles
 ------------------------------------- */
 .sidebar-container {
+	background-color: #fff;
+    padding: 1.25rem;
+    border-radius: 0.25rem;
 	margin-bottom: 20px;
 }
 .full-page-container .sidebar-container {
@@ -2384,8 +2384,8 @@ right: auto;
 /* Single Page Header
 ------------------------------------- */
 .single-page-header {
-	background-color: #eee;
-    border-bottom: 1px solid #dfdfdf;
+	background-image: linear-gradient(to left, var(--siteColor), var(--siteHoverColor));
+    color: #fff;
 	margin-bottom: 1.5rem;
 	padding: 1.5rem 0;
 	position: relative;
@@ -2567,11 +2567,9 @@ max-width: 140px;
 	display: inline-block;	
 }
 .salary-box .salary-type {
-	color: #777;
 	line-height: 20px;
 }
 .salary-box .salary-amount {
-	color: #333;
 	font-size: 2rem;
 	font-weight: bold;
 }
@@ -3791,15 +3789,14 @@ text-align: center;
 ------------------------------------- */
 .job-listing {
 	display: block;
-	border-radius: 0.25rem;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	border-radius: 0.25rem;	
 	margin-bottom: 1.25rem;
 	background-color: #fff;
 	transition: 0.3s;
 	position: relative;
 }
 .job-listing:hover {
-	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	transform: translateY(-5px);
 }
 .job-listing-details {
@@ -3840,7 +3837,7 @@ text-align: center;
 }
 .job-listing h4 > a,
 .job-listing h3 > a {
-	color: #333;
+	color: #000;
 }
 .job-listing .job-listing-footer {
 	/*background-color: #f9f9f9;*/
@@ -3860,7 +3857,7 @@ text-align: center;
 }
 .job-listing .job-listing-footer ul li {
 	display: inline-block;
-	color: #777;
+	color: #333;
 }
 .job-listing .job-listing-footer ul li:last-child {
 	margin-right: 0;
@@ -3931,10 +3928,14 @@ display: none;
 .compact-list-layout .job-listing:hover {
 	transform: none;
 }
-.compact-list-layout .job-listing .job-listing-footer {
+.compact-list-layout .job-listing .job-listing-footer, .job-listing .job-listing-description .job-listing-footer{
 	background-color: transparent;
+	border-top: none;
 	padding: 0;
 	margin-top: 3px;
+}
+.job-listing .job-listing-description .job-listing-footer{
+	padding: 1rem 0;
 }
 .compact-list-layout .job-listing-details {
 	display: flex;
@@ -4211,14 +4212,14 @@ width: 100%;
 }
 .task-tags > span, .task-tags > a {
 	transition: 0.3s;
-	font-size: 0.85rem;
-	border-radius: 0.25rem;
+	font-size: 0.875rem;
+	border-radius: 2rem;
 	background-color: rgba(102, 103, 107, .07);
-	color: #66676b;
+	color: #000;
 	display: inline-block;
-	padding: 0.25rem 0.75rem;
-	margin: 2px 0;
-	line-height: 24px;
+	padding: 0.2rem 0.75rem 0.3rem;
+    margin: 2px;
+    line-height: 1.25;
 }
 /* Compact List */
 .compact-list .task-listing {
@@ -9646,7 +9647,7 @@ img.mfp-img {
 	flex: 1;
 	text-align: center;
 	border: 1px solid #333;
-	border-radius: 0.25rem;
+	border-radius: 2rem;
 	color: #333;
 	font-family: 'Rubik', Helvetica, sans-serif;
 	margin-top: 10px;
@@ -10513,7 +10514,7 @@ width: 5px;
 	font-weight: 500;
 	opacity: 1;
 	border-color: #ced4da;
-	border-radius: 0.25rem;
+	border-radius: 2rem;
 }
 .sort-by .bootstrap-select.btn-group button {
 	font-size: 0.938rem;
@@ -11395,14 +11396,14 @@ a.apply-now-button {
 	color: #fff;
 	text-align: center;
 	font-size: 1.063rem;
-	border-radius: 0.25rem;
-	box-shadow: 0 2px 8px rgba(102, 103, 107, 0.15);
+	border-radius: 2rem;
+	box-shadow: 0 2px 8px rgba(var(--rgbColor), 15%);
 	transition: 0.3s;
 	display: block;
 }
 a.apply-now-button:hover {
 	transform: translateY(-3px);
-	box-shadow: 0 2px 8px rgba(102, 103, 107, 0.35);
+	box-shadow: 0 2px 8px rgba(var(--rgbColor), 35%);
 }
 a.apply-now-button i {
 	font-size: 22px;

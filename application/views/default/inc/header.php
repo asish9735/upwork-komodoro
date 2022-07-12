@@ -73,14 +73,7 @@ if($loggedUser){
 				<!--<div class="clearfix"></div>-->
 				<!-- Main Navigation / End -->
                 
-                <div class="header-widget">
-                	<?php if($this->config->item('language')=='ar'){?>
-					<a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang log-in-button" data-language="en" title="EN"><img src="<?php echo IMAGE;?>flags/en.svg" alt="" height="18" width="24"> English</a>
-					<?php }?>
-					<?php if($this->config->item('language')=='en'){?>
-					<a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang log-in-button" data-language="ar" title="AR"><img src="<?php echo IMAGE;?>flags/ae.svg" alt="" height="18" width="24"> Arabic</a>
-					<?php } ?>
-                </div>
+                
 
 				<?php if(!is_login_user()){ ?>
 				<div class="header-widget hide-on-mobile_ d-none d-sm-block">
@@ -197,7 +190,14 @@ if($loggedUser){
 				<!-- User Menu / End -->
                 
 				<?php } ?>
-                
+                <div class="header-widget">
+                	<?php if($this->config->item('language')=='ar'){?>
+					<a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang log-in-button" data-language="en" title="EN"><img src="<?php echo IMAGE;?>flags/en.svg" alt="" height="18" width="24"> English</a>
+					<?php }?>
+					<?php if($this->config->item('language')=='en'){?>
+					<a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang log-in-button" data-language="ar" title="AR"><img src="<?php echo IMAGE;?>flags/ae.svg" alt="" height="18" width="24"> Arabic</a>
+					<?php } ?>
+                </div>
 				<!-- Mobile Navigation Button -->
 				<span class="mmenu-trigger">
 					<button class="hamburger hamburger--collapse" type="button">

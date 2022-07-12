@@ -192,9 +192,9 @@
       ?>
     </div>
     <div class="text-center">
-    	<a href="#" class="btn btn-site"><?php echo __('home_page_', 'Post Your Job'); ?></a>
-    	<a href="#" class="btn btn-site"><?php echo __('home_page_view_category', 'View All Category'); ?></a>
-        <a href="#" class="btn btn-site"><?php echo __('home_page_', 'Find Projects'); ?></a>
+    	<a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-site"><?php echo __('home_page_', 'Post Your Job'); ?></a>
+    	<a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-site ms-2 me-2"><?php echo __('home_page_view_category', 'View All Category'); ?></a>
+        <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-site"><?php echo __('home_page_', 'Find Projects'); ?></a>
     </div>
   </div>
 </section>
@@ -326,7 +326,7 @@ if ($cms_temp) {
       ?>
     </div>
     <div class="text-center">
-    	<a href="<?php echo URL::get_link('search_freelancer'); ?>" class="btn btn-site">Find Professionals</a>
+    	<a href="<?php echo URL::get_link('search_freelancer'); ?>" class="btn btn-site ms-2 me-2">Find Professionals</a>
         <a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-site">Post Your Service</a>
     </div>
   </div>
@@ -374,9 +374,9 @@ if ($cms_temp) {
 
 
     </div>
-    <div class="text-center">
+    <div class="text-center mt-3">
     	<a href="<?php echo URL::get_link('search_freelancer'); ?>" class="btn btn-site"><?php echo __('home_page_', 'Hire Now'); ?></a>
-    	<a href="<?php echo URL::get_link('search_gigs'); ?>" class="btn btn-site"><?php echo __('home_page_view_gigs', 'View All Gigs'); ?></a>
+    	<a href="<?php echo URL::get_link('search_gigs'); ?>" class="btn btn-site ms-2 me-2"><?php echo __('home_page_view_gigs', 'View All Gigs'); ?></a>
         <a href="<?php D(get_link('postproposalURL'))?>" class="btn btn-site"><?php echo __('home_page_', 'Post Gigs'); ?></a>
     </div>
 </div>
@@ -405,9 +405,9 @@ if ($cms_temp) {
       ?>
         <div class="card card-project">
         	<div class="card-body">
-            	<a href="<?php echo VZ;?>" class=" action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-line-awesome-heart"></i></a>
+            	<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-line-awesome-heart"></i></a>
             	<h4><a href="<?php echo $v['project_detail_url']; ?>"><?php echo $v['project_title']; ?></a></h4>
-                <p><?php echo $v['project_short_info']; ?></p>
+                <p class="short-info"><?php echo $v['project_short_info']; ?></p>
                 <ul class="skills">
                 <?php 
                 if($v['skills']){foreach($v['skills'] as $sk=>$skill){ ?>
@@ -431,7 +431,7 @@ if ($cms_temp) {
                 <div class="user-details">
                 	<div class="user-avatar <?php if($is_online){echo 'status-online';}?>"><img src="<?php echo $v['clientdata']->client_logo;?>" alt="" height="32" width="32" /></div>
                 	<div class="user-name">
-                    	<p><?php echo $v['clientdata']->client_name;?>
+                    	<p><?php echo getConvertedNameClient($v['clientdata']->client_name);?>
                         <?php if($v['clientdata']->country_code_short){?>
                         <img src="<?php echo IMAGE;?>flags/<?php D(strtolower($v['clientdata']->country_code_short));?>.svg" alt="" height="18" width="18" class="flag" title="<?php echo $v['clientdata']->client_location;?>" data-tippy-placement="top" />
                       <?php }?>
@@ -439,8 +439,8 @@ if ($cms_temp) {
                         <div class="star-rating" data-rating="<?php echo $v['clientdata']->avg_rating;?>"></div>
                     </div>
                 </div>
-                <div class="d-flex align-items-center justify-content-between">
-                  <h4 class="hourly-rate"><?php echo $budget > 0 ? $currency. $budget : 'Not Set';?></h4>
+                <div class="d-flex align-items-end justify-content-between">
+                  <h3 class="budget mb-0"><?php echo $budget > 0 ? $currency. $budget : '';?></h3>
                   <!-- <span class="bookmark-icon ml-auto"></span> -->
                   <a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-outline-site btn-sm">Apply Now</a> 
                 </div>
@@ -449,73 +449,11 @@ if ($cms_temp) {
         <?php }
         }
       ?>
-  
-
-        <div class="card card-project">
-        	<div class="card-body">
-            	<span class="bookmark-icon"></span>
-            	<h4><a href="#">Design a New Logo for my Company</a></h4>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                <ul class="skills">
-                	<li><span>UI/UX</span></li>
-                    <li><span>Graphic Design</span></li>
-                    <li><span>Illustration</span></li>
-                </ul>
-                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
-                <div class="user-details">
-                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
-                	<div class="user-name">
-                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
-                        <div class="star-rating" data-rating="3.5"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card card-project">
-        	<div class="card-body">
-            	<span class="bookmark-icon"></span>
-            	<h4><a href="#">Design a New Logo for my Company</a></h4>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                <ul class="skills">
-                	<li><span>UI/UX</span></li>
-                    <li><span>Graphic Design</span></li>
-                    <li><span>Illustration</span></li>
-                </ul>
-                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
-                <div class="user-details">
-                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
-                	<div class="user-name">
-                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
-                        <div class="star-rating" data-rating="3.5"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card card-project">
-        	<div class="card-body">
-            	<span class="bookmark-icon"></span>
-            	<h4><a href="#">Design a New Logo for my Company</a></h4>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                <ul class="skills">
-                	<li><span>UI/UX</span></li>
-                    <li><span>Graphic Design</span></li>
-                    <li><span>Illustration</span></li>
-                </ul>
-                <p class="card-justify"><span><i class="icon-feather-calendar"></i> 01/03/2022</span> <span><i class="icon-feather-clock"></i> Hourly</span> <span><i class="icon-feather-map-pin"></i> London</span></p>
-                <div class="user-details">
-                	<div class="user-avatar"><img src="<?php echo IMAGE; ?>company1.jpg" alt="" height="32" width="32" /></div>
-                	<div class="user-name">
-                    	<p>Google Pvt Ltd <img src="<?php echo IMAGE; ?>flags/en.svg" alt="" height="18" width="18" class="flag" title="London" data-tippy-placement="top" /></p>
-                        <div class="star-rating" data-rating="3.5"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>   
     <div class="text-center">
-    	<a href="#" class="btn btn-site"><?php echo __('home_page_', 'Post New Jobs'); ?></a>
-    	<a href="#" class="btn btn-site"><?php echo __('home_page_view_gigs', 'View All Jobs'); ?></a>
-        <a href="#" class="btn btn-site"><?php echo __('home_page_', 'Find Jobs'); ?></a>
+    	<a href="<?php D(get_link('postprojectURL'))?>" class="btn btn-site"><?php echo __('home_page_', 'Post New Jobs'); ?></a>
+    	<a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-site ms-2 me-2"><?php echo __('home_page_view_gigs', 'View All Jobs'); ?></a>
+        <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-site"><?php echo __('home_page_', 'Find Jobs'); ?></a>
     </div> 
 </div>
 </section>

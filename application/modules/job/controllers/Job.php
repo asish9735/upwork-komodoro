@@ -93,6 +93,56 @@ class Job extends MX_Controller {
 		}
 		$data['login_user_id']=$login_user_id;
 		$data['job_list'] =$this->job_model->getJobList($get,$limit, $offset);
+		if($data['job_list']){
+			foreach($data['job_list'] as $k=>$row){
+				$clientdata=new stdClass();
+				if($row['organization_id']){
+					$memberData=getData(array(
+						'select'=>'o.organization_name,c_n.country_name,c.country_code_short',
+						'table'=>'organization as o',
+						'join'=>array(
+							array('table'=>'organization_address as o_a','on'=>'o.organization_id=o_a.organization_id','position'=>'left'),
+							array('table'=>'country as c','on'=>'o_a.organization_country=c.country_code','position'=>'left'),
+							array('table'=>'country_names as c_n','on'=>"(o_a.organization_country=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left')
+						),
+						'where'=>array('o.organization_id'=>$row['organization_id']),
+						'single_row'=>true,
+					));
+					$clientdata->client_name=$memberData->organization_name;
+					$clientdata->client_location=$memberData->country_name;
+					$clientdata->client_logo=getCompanyLogo($row['organization_id']);
+					$clientdata->country_code_short=$memberData->country_code_short;
+				}else{
+					$memberData=getData(array(
+						'select'=>'m.member_name,c_n.country_name,c.country_code_short',
+						'table'=>'member as m',
+						'join'=>array(
+							array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),
+							array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),
+							array('table'=>'country_names as c_n','on'=>"(m_a.member_country=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left')
+						),
+						'where'=>array('m.member_id'=>$row['owner_id']),
+						'single_row'=>true,
+					));
+					$clientdata->client_name=$memberData->member_name;
+					$clientdata->client_location=$memberData->country_name;
+					$clientdata->client_logo=getMemberLogo($row['owner_id']);
+					$clientdata->country_code_short=$memberData->country_code_short;
+				}
+				$memberDatacount=getData(array(
+					'select'=>'m_s.avg_rating,m_s.no_of_reviews,m_s.total_spent',
+					'table'=>'member_statistics as m_s',
+					'where'=>array('m_s.member_id'=>$row['owner_id']),
+					'single_row'=>TRUE
+				));
+				$clientdata->avg_rating=0;
+				if($memberDatacount){
+					$clientdata->avg_rating=$memberDatacount->avg_rating;
+				}
+				$row['clientdata']=$clientdata;
+				$data['job_list'][$k]=$row;
+			}
+		}
 		$data['job_list_count'] =$this->job_model->getJobList($get,'','', FALSE);
 		
 		$json['job_list'] = $data['job_list'];
