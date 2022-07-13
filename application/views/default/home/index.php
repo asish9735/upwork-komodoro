@@ -364,6 +364,10 @@ if ($cms_temp) {
         	<div class="card-image">
             	<!-- <span class="bookmark-icon"></span> -->
             	<a href="<?php echo $url;?>"><img src="<?php echo $proposal_image;?>" alt="<?php echo $proposal['proposal_title'];?>" class="card-img-top" /></a>
+                <a href="#" class="card-avatar">
+                	<img src="<?php echo $logo;?>" alt="User" height="40" width="40" class="rounded-circle" />
+                    <span class="verified-badge"></span></a>
+                </a>                
             </div>
         	  <div class="card-body">
             	<h5><a href="<?php echo $url;?>"><?php echo $proposal['proposal_title'];?></a></h5>
