@@ -915,8 +915,10 @@ $(document).ready(function(){
 	var currencyAttr = $(".range-slider").attr('data-slider-currency');
 	
 	$(".range-slider").slider({
+		tooltip_split:true,
 		formatter: function(value) {
-			return currencyAttr + ThousandSeparator(parseInt(value[0])) + " - " + currencyAttr + ThousandSeparator(parseInt(value[1]));
+			return currencyAttr + ThousandSeparator(parseInt(value));
+			//return currencyAttr + ThousandSeparator(parseInt(value[0])) + " - " + currencyAttr + ThousandSeparator(parseInt(value[1]));
 		}
 	});
 	

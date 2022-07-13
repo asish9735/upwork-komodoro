@@ -2,7 +2,7 @@
 $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
 ?>
 <!-- Footer -->
-<div id="footer" style="background-image:url('<?php echo IMAGE; ?>footer-bg.jpg');"> 
+<div id="footer"> 
   <!-- Footer Middle Section -->
   <div class="footer-middle-section">
     <div class="container">

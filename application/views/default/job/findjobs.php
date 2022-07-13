@@ -7,9 +7,10 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-4 col-12">
-        <div class="sidebar-container">
+    	<h4>Filter</h4>
+        <div class="sidebar-filter">
         <form id="filterForm">
-            <div class="search-box input-group">
+            <div class="search-box input-group mb-3">
                 <input type="text" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" class="form-control" placeholder="Find jobs by title" form="filterForm" name="term"/>
                 <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i><!--<?php // echo __('job_findjobs_search','Search');?>--> </button>
             </div>
@@ -39,8 +40,7 @@
         <?php */?>           
     
 
-    <div id="filterAdvance" style="display:none1" class="mt-3">
-    
+    <div id="filterAdvance">
         <!-- Category -->        
         <div class="sidebar-widget">
             <h5><img src="<?php echo IMAGE;?>category-icon.png" alt="" height="20" width="20" class="me-1" /> <?php echo __('job_findjobs_category','Category');?></h5>
@@ -93,9 +93,9 @@
         <!-- Salary -->        
         <div class="sidebar-widget mb-0">        
             <h5><img src="<?php echo IMAGE;?>budget-icon.png" alt="" height="20" width="20" class="me-1" /> <?php echo __('job_findjobs_budget','Budget');?></h5>
-            <div class="margin-top-30"></div>
+            <div class="margin-top-60"></div>
             <!-- Range Slider -->
-            <input class="range-slider" type="text" value="" data-slider-tooltip_split="true" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]"/>
+            <input class="range-slider" type="text" value="" data-slider-tooltip-split="true" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" />
         	<div class="margin-top-20"></div>
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Min" name="min" value="<?php if($searchdata && array_key_exists('min',$searchdata)){echo $searchdata['min'];}?>">
@@ -121,7 +121,7 @@
     <div class="col-lg-8 col-12">
     	<h3 class="page-title"><ec class="total_count">0</ec> <?php echo __('job_findjobs_jobs_found','jobs found');?> </h3>
 	<!-- Tasks Container -->
-    <div class="listings-container mt-4" id="job_list">
+    <div class="listings-container" id="job_list">
     	<div class="text-center" style="margin: 100px"><?php load_view('inc/spinner',array('size'=>30));?></div>
         <!-- Pagination -->
         <div class="pagination-container margin-top-30 margin-bottom-60" hidden>

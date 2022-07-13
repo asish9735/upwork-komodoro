@@ -161,7 +161,7 @@ if($login_user_id){
 		<!-- Sidebar -->
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container mt-4 mt-sm-0">
-            <div class="countdown green mb-3"><?php echo __('projectview_view_posted','Posted');?> <?php D(get_time_ago($projectData['project']->project_posted_date));?></div>
+            <h5><?php echo __('projectview_view_posted','Posted');?> <?php D(get_time_ago($projectData['project']->project_posted_date));?></h5>
 			<?php if(!$is_owner){
 				if($is_already_bid && $is_already_bid->is_hired!=1){
 				?>

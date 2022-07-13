@@ -159,7 +159,8 @@ header.fullwidth .container {
 }
 /* Sign In Button */
 .header-widget .log-in-button,
-.header-widget ul.display-inline {	
+.header-widget ul.display-inline {
+	font-size: 0.8rem;	
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
@@ -1704,10 +1705,30 @@ display: none;
 /* Footer
 ------------------------------------- */
 #footer {
-	background-color: #e3d8ff;
+	background-image: linear-gradient(to top, #e3d8ff, #fcceff);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	color: #000;
+	position: relative;
+}
+#footer:before, #footer:after{
+	content: '';
+    position: absolute;
+    height: 100%;
+    background-image: url('../images/footer-bg.png');
+    background-repeat: no-repeat;
+    width: 540px;
+    background-size: 720px;	
+}
+#footer:before{
+	background-position: left top;
+	left: 0;
+	top: 0;
+}
+#footer:after{
+	background-position: right bottom;
+	right: 0;
+	bottom: 0;
 }
 #footer p {
 	font-size:0.933rem;
@@ -2139,10 +2160,8 @@ body #backtotop a {
 /* ---------------------------------- */
 /* Sidebar Styles
 ------------------------------------- */
+
 .sidebar-container {
-	background-color: #fff;
-    padding: 1.25rem;
-    border-radius: 0.25rem;
 	margin-bottom: 20px;
 }
 .full-page-container .sidebar-container {
@@ -8253,8 +8272,8 @@ margin-bottom: -30px;
 	padding: 0.5rem 1rem;
 }
 .countdown.green {
-	background-color: #e3ffea;
-	color: #289c41;
+	background-color: rgba(var(--rgbColor), 20%);
+	color: var(--siteColor);
 }
 .countdown.yellow {
 	background-color: #fbf6dd;
@@ -9859,9 +9878,9 @@ input.range-slider, input.default-slider {
 	height: 20px;
 }
 .slider.slider-horizontal .slider-track {
-	height: 3px;
+	height: 5px;
 	width: calc(100% + 18px);
-	margin-top: -2px;
+	margin-top: -3px;
 	top: 50%;
 	left: -9px;
 }
@@ -9889,30 +9908,33 @@ input.range-slider, input.default-slider {
     opacity: 1;
 }
 .slider .tooltip.top {
-	margin-top: -40px;
+	margin-top: -60px;
 }
 .slider .tooltip-inner {
 	white-space: nowrap;
-	max-width: none;
-	background-color: #333;
-	padding: 4px 12px;
-	line-height: 21px;
-	color: #fff;
-	font-size: 14px;
-	border-radius: 0.25rem;
+    max-width: none;
+    background-color: var(--siteColor);
+    padding: 6px 12px;
+    color: #fff;
+    font-family: 'Rubik';
+    font-size: 1.125rem;
+    border-radius: 0.25rem;
 }
 .slider .tooltip-arrow {
 	position: absolute;
 	width: 0;
 	height: 0;
-	bottom: -6px;
+	bottom: 1px;
 	left: 50%;
 	transform: translateX(-50%);
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-top: 6px solid #333;
+	border-top: 6px solid var(--siteColor);
 }
-.tooltip.tooltip-min, .tooltip.tooltip-max {
+/*.tooltip.tooltip-min, .tooltip.tooltip-max {
+	display: none;
+}*/
+.tooltip-main.top{
 	display: none;
 }
 .slider .hide {
@@ -9922,7 +9944,7 @@ input.range-slider, input.default-slider {
 	position: absolute;
 	cursor: pointer;
 	border-radius: 0.25rem;
-	background-color: #e0e0e0;
+	background-color: #333;
 }
 .slider-selection {
 	position: absolute;
