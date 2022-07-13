@@ -56,7 +56,7 @@
                   <li><a href="#">Music & Audio</a></li>
                   <li><a href="#">Education & Training</a></li>
                 </ul>  
-                <a href="<?php echo URL::get_link('search_freelancer'); ?>" class="btn btn-outline-white mr-2"><?php echo __('', 'Find Professionals'); ?></a>
+                <a href="<?php echo URL::get_link('search_freelancer'); ?>" class="btn btn-outline-white me-2"><?php echo __('', 'Find Professionals'); ?></a>
                 <a href="<?php echo URL::get_link('search_job'); ?>" class="btn btn-outline-white"><?php echo __('', 'Find Projects'); ?></a>                         
 			</div>
 		</div>
