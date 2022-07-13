@@ -56,7 +56,7 @@ class Home extends MX_Controller {
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
-
+		$this->data['all_location']=getAllCountry();
 		$login_user_id=0;
 		if($this->loggedUser){
 			$login_user_id=$this->member_id;

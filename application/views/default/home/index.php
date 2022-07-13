@@ -11,24 +11,24 @@
                     <h1><?php echo __('home_page_banner_header', 'Hire Experts or Be Hired For Any Job, Any Time'); ?></h1>
             		<p><?php echo __('home_page_banner_p_tag', 'Your only job platform to find the best talents, flexible job opportunities and handsome payment.'); ?></p>
 				</div>
+                <form method="get" action="<?php echo URL::get_link('search_freelancer'); ?>" name="searchform">
 				<div class="intro-banner-search-form mb-3">
                 	<!-- Search Field -->
 					<div class="intro-search-field">
 						<div class="input-with-icon">
-							<select class="form-control">
-                            	<option>Select Country</option>
+							<select class="form-control" name="country">
+                            	<option value=""><?php echo __('findtalents_page_','Select Country');?></option>
+						<?php if($all_location){
+							foreach($all_location as $l=>$location){
+								?>
+							<option value="<?php echo ($location->country_code);?>" ><?php echo $location->country_name;?></option>
+								<?php
+							}
+						}?>
                             </select>
 						</div>
 					</div>
-
-					<!-- Search Field -->
-					<div class="intro-search-field">
-						<div class="input-with-icon">
-							<select class="form-control">
-                            	<option>Select City</option>
-                            </select>
-						</div>
-					</div>
+					
                     <!-- Search Field -->
 					<div class="intro-search-field">
 						<div class="input-with-icon">
@@ -39,7 +39,7 @@
 					</div>
 					<!-- Search Field -->
 					<div class="intro-search-field">
-						<input type="text" class="form-control" id="intro-keywords" placeholder="Job Title or Keywords">
+						<input type="text" name="term" class="form-control" id="intro-keywords" placeholder="Job Title or Keywords">
 					</div>
 
 					<!-- Button -->
@@ -47,6 +47,7 @@
 						<button class="button ripple-effect"><i class="icon-feather-search"></i></button>
 					</div>
 				</div>
+                </form>
                 <ul class="p-search">
                   <li>Popular Searches:</li>
                   <li><a href="#">Mobiles</a></li>
