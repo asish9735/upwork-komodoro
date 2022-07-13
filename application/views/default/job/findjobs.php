@@ -91,7 +91,7 @@
         </div>
         
         <!-- Salary -->        
-        <div class="sidebar-widget mb-0">        
+        <div class="sidebar-widget">        
             <h5><img src="<?php echo IMAGE;?>budget-icon.png" alt="" height="20" width="20" class="me-1" /> <?php echo __('job_findjobs_budget','Budget');?></h5>
             <div class="margin-top-60"></div>
             <!-- Range Slider -->
@@ -103,17 +103,20 @@
                 <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i></button> 
             </div>            
         </div>
-        <!--<div class="col-md-4">
-        <div class="sidebar-widget">
-        <h5>Sort by</h5>
-        <select class="selectpicker hide-tick" name="order_by" form="filterForm" onchange="filterForm()">
-            <option value="default">Relevance</option>
-            <option value="latest">Newest</option>
-            <option value="old">Oldest</option>
+        
+        <div class="sidebar-widget mb-0">
+        <h5>Locations</h5>
+        <select class="selectpicker default" name="country">
+        	<option value=""><?php echo __('findtalents_page_','Select Country');?></option>
+			<?php if($all_location){
+                foreach($all_location as $l=>$location){
+                    ?>
+                <option value="<?php echo ($location->country_code);?>" ><?php echo $location->country_name;?></option>
+                    <?php
+                }
+            }?>
         </select>
 		</div>
-        </div>-->
-       
 	</div>
 	</form>
         </div>

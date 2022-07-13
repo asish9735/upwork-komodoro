@@ -10462,6 +10462,7 @@ width: 5px;
 	cursor: default;
 }
 .bootstrap-select.open .dropdown-menu {
+	max-height: 300px !important;
 	opacity: 1;
 	pointer-events: all;
 	visibility: visible;

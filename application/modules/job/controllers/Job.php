@@ -62,7 +62,7 @@ class Job extends MX_Controller {
 		if($category_id > 0){
 			$this->data['sub_category'] = $this->job_model->get_sub_category($category_id);
 		}
-
+		$this->data['all_location']=getAllCountry();
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');
