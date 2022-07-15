@@ -26,7 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="text" class="form-control" value="" name="email" id="email" placeholder="<?php echo __('user_page_signup_email_placeholder','Email Address');?>">
         <span id="emailError" class="rerror"></span>
     </div>    
-    <button class="btn btn-site btn-block mb-3 signUpBTN"><?php echo __('user_page_signup_button','Sign Up');?></button>    
+    <div class="d-grid">
+    <button class="btn btn-site mb-3 signUpBTN"><?php echo __('user_page_signup_button','Sign Up');?></button>
+    </div>    
     <div class="social-login-separator"><span><?php echo __('user_page_login_separetor','OR');?></span></div>
         <div class="social-login-buttons mb-3">
             <button class="facebook-login ripple-effect fb_login_btn"><i class="icon-brand-facebook-f"></i> <?php echo __('user_page_login_facebook','Log In via Facebook');?></button>

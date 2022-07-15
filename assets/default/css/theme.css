@@ -4495,14 +4495,14 @@ width: calc(100%);
 	margin: 0 30px 30px 0;
 	width: calc(100% * (1/2) - 30px);
 	border-radius: 0.25rem;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	/*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);*/
 	background-color: #fff;
 	transition: 0.3s;
 	position: relative;
 	cursor: default;
 }
 .freelancer:hover {
-	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+	/*box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);*/
 	transform: translateY(-5px);
 }
 .freelancer .bookmark-icon {
@@ -8717,8 +8717,12 @@ width: 100%;
 	background-image: url('../images/profile-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
+	border: 1px solid #f5f5f5;
 	margin: 10px;
 	width: 30%;
+}
+.default-slick-carousel .freelancer:hover{
+	border-color: var(--siteColor);	
 }
 .default-slick-carousel.slick-initialized .freelancer {
 	width: auto;
@@ -11365,7 +11369,7 @@ width: 100%;
 .job-overview {	
 	background-color: #fff;
 	border-radius: 0.25rem;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	/*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);*/
 }
 .job-overview .job-overview-headline {
 	color: #333;
