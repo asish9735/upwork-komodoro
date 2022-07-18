@@ -5,9 +5,23 @@
     </div>
 	<?php //print_r($all_location);?>
 	<div class="row">
-		<div class="col-xl-3 col-lg-4 col-12">
-        	<a href="javascript:void(0)" class="d-lg-none" id="filter" title="Filter"><i class="icon-feather-filter f20"></i></a>
-			<div class="sidebar-container">	
+		<div class="col-xl-4 col-lg-4 col-12">
+        	<div class="d-none d-lg-block">
+            <h4>Filters</h4>
+        </div>
+    	<div class="filterHeader d-lg-none">
+            <h4>Filters</h4>
+            <a href="javascript:void(0)" class="float-end" id="filter" title="Filter"><i class="icon-feather-filter f20"></i></a>
+        </div>
+        <div class="sidebar-filter">
+        <div class="filterHeader d-lg-none">
+            <div class="row d-flex">
+            <div class="col"><a href="javascript:void(0)">Clear</a></div>
+            <div class="col text-center"><h4>Filters</h4></div>
+            <div class="col"><a href="javascript:void(0)" class="close_filter" title="Filter"><i class="icon-feather-x f20"></i></a></div>
+            </div>
+        </div>
+        <div class="filter-body">
 			<form id="filterForm">			
 				<!-- Location -->
 				<div class="sidebar-widget">
@@ -69,27 +83,35 @@
 					</div>
 				</div>
 				<!-- Hourly Rate -->
-				<div class="sidebar-widget">
+				<div class="sidebar-widget mb-0">
 					<h5><?php echo __('findtalents_page_hourly','Hourly Rate');?></h5>
-					<div class="margin-top-25"></div>
-
+					<div class="margin-top-60"></div>
+                    <div class="ps-4 pe-4">
 					<!-- Range Slider -->
 					<input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="0" data-slider-max="250" data-slider-step="5" data-slider-value="[0,250]"/>
 					<input type="hidden" name="min" id="min">
 					<input type="hidden" name="max" id="max">
+                    </div>
+                    <div class="margin-top-20"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Min" name="min" value="<?php if($searchdata && array_key_exists('min',$searchdata)){echo $searchdata['min'];}?>">
+                        <input type="text" class="form-control" placeholder="Max" name="max" value="<?php if($searchdata && array_key_exists('max',$searchdata)){echo $searchdata['max'];}?>">
+                        <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i></button> 
+                    </div> 
 				</div>
-				<div class="clearfix"></div>
+				
 			</form>
 			</div>
 		</div>
-		<div class="col-xl-9 col-lg-8 col-12">
+        </div>
+		<div class="col-xl-8 col-lg-8 col-12">
 
 		<h3 class="page-title"><?php echo __('findtalents_page_search_result','Search Results');?></h3>
         <div class="row">
     		<div class="col-md-8 col-12">
             <div class="search-box input-group">
 				<input type="text" class="form-control" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" name="term" placeholder="<?php echo __('findtalents_page_talent_by_name','Find talents by name');?>" form="filterForm"/>
-                <div class="input-group-append"><button type="button" class="btn btn-site" onclick="filterForm()"><?php echo __('findtalents_page_search','Search');?></button></div>
+                <button type="button" class="btn btn-site" onclick="filterForm()"><?php echo __('findtalents_page_search','Search');?></button>
 			</div>
 		</div>
     	<div class="col-md-4 col-12">
@@ -241,6 +263,14 @@ function check_login(succ, fail){
 	});
 }
 var main = function(){
+	$('#filter').click(function(){
+    $('.sidebar-filter').slideToggle('slow');
+	$('body').addClass('overflow-none');
+  });
+  $('.close_filter').click(function(){
+    $('.sidebar-filter').slideToggle('slow');
+	$('body').removeClass('overflow-none');
+  });
 	$( ".range-slider" ).on( "slideStop", function( event ) {
 		var data=event.value;
 		$('#min').val(data[0]);

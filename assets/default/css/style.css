@@ -56,6 +56,7 @@ body {
 }
 .btn-outline-white:hover, .btn-outline-white:focus{
 	background-color:#fff;
+	border-color:#fff;
 	color: var(--siteColor);
 }
 .btn-outline-black{
@@ -267,6 +268,15 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 	border-color:#ffc107;
 	color: #ffc107;
     font-size: 1.25rem;
+}
+.single-page-header .action_favorite{
+	color: #fff;
+    border-color: #fff;
+}
+.single-page-header .action_favorite.active{
+	color: #ffc107;
+    border-color: #fff;
+	background-color: #fff;
 }
 .action_report {
     border-color: #7f7f7f;
@@ -866,6 +876,7 @@ ul.totalList > li > i {
 	border-color: #ffc107 !important;
     color: #ffc107 !important;
 }
+.job-listing .freelancer-intro > h5,
 .job-listing h4.job-listing-title {	
 	display: -webkit-box;
     /*height: 24px;
@@ -873,7 +884,6 @@ ul.totalList > li > i {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-	padding-top: 2px;
     text-overflow: ellipsis;
 }
 .dashboard-box .job-listing h4.job-listing-title {
@@ -1207,7 +1217,7 @@ ul.display-inline li {
 }
 #filter {
     position: absolute;
-    right: 20px;
+    right: 0;
     top: 0;
     z-index: 9;
 }
@@ -1851,14 +1861,49 @@ ul.skills > li > span{
     background-position: left bottom;
     background-size: contain;
 	border-radius: 0.25rem;
-	padding: 1.25rem;
 }
 .card-gigs .card-image {
     position: relative;
     background-color: #000;
     transition: 0.5s;
 }
-
+.sidebar-filter{
+	position: relative;	
+}
+.sidebar-filter .filterHeader {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    margin-bottom: 0;
+    padding: 1rem 1.25rem;
+}
+.filterHeader {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.filterHeader h4 {
+    margin-bottom: 0;
+}
+.close_filter {
+    color: #333;
+    position: absolute;
+    right: 15px;
+	top: 17px;
+}
+.overflow-none {
+    overflow: hidden;
+    position: relative;
+}
+.overflow-none:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1001;
+}
 
 
 

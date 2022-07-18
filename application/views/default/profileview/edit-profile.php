@@ -47,7 +47,7 @@ if($login_user_id){
               <ec id="profile-heading-data">
                 <?php D(ucfirst($memberInfo->member_heading))?>
               </ec>
-              <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site ml-2 btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></span>              
+              <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-white ms-2 btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></span>              
               </h1>
             <ul>
               <li>
@@ -78,9 +78,9 @@ if($login_user_id){
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $memberInfo->success_rate;?>%" aria-valuenow="<?php echo $memberInfo->success_rate;?>" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
 			<?php if(!$is_editable){?>
-			<a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-site hire-member btn-sm mr-2"><?php echo __('profileview_profile_hire_freelancer','Hire Freelancer');?></a>
-            <a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-outline-site invite-member btn-sm mr-2"><?php echo __('profileview_profile_invite','Invite to Job');?></a>			
-			<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($member_id);?>"><i class="icon-feather-heart"></i></a>		
+			<a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-white hire-member me-2"><?php echo __('profileview_profile_hire_freelancer','Hire Freelancer');?></a>
+            <a href="<?php echo VZ;?>" data-mid="<?php echo md5($member_id);?>" class="btn btn-outline-white invite-member me-2"><?php echo __('profileview_profile_invite','Invite to Job');?></a>			
+			<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-mid="<?php echo md5($member_id);?>"><i class="icon-line-awesome-heart"></i></a>		
 			<?php }?>
           </div>
         </div>

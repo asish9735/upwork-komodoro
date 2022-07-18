@@ -1010,7 +1010,7 @@ body #navigation ul ul ul {
 	position: absolute;
 	top: 0;
 	width: 100%;
-	z-index: 10000;
+	z-index: 1000;
 }
 #wrapper.wrapper-with-transparent-header #header .right-side {
 	background-color: transparent;
@@ -1704,13 +1704,7 @@ display: none;
 /* ---------------------------------- */
 /* Footer
 ------------------------------------- */
-#footer {
-	background-image: linear-gradient(to top, #e3d8ff, #fcceff);
-	background-size: 100%;
-	background-repeat: no-repeat;
-	color: #000;
-	position: relative;
-}
+@media (min-width: 992px){
 #footer:before, #footer:after{
 	content: '';
     position: absolute;
@@ -1724,11 +1718,20 @@ display: none;
 	background-position: left top;
 	left: 0;
 	top: 0;
+	height: 60%;
 }
 #footer:after{
 	background-position: right bottom;
 	right: 0;
 	bottom: 0;
+}
+}
+#footer {
+	background-image: linear-gradient(to top, #e3d8ff, #fcceff);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	color: #000;
+	position: relative;
 }
 #footer p {
 	font-size:0.933rem;
@@ -1898,7 +1901,7 @@ ul.footer-social-links li > a:hover {
 .footer-links ul {
 	font-size: 0.938rem;
 	list-style: none;
-	margin: 0;
+	margin-bottom: 1.5rem;
 	padding: 0;
 }
 .footer-links ul li {
@@ -1993,14 +1996,13 @@ ul.footer-social-links li > a:hover {
 
 
 /* Footer Media Queries*/
-@media (max-width: 991px) {
- #footer h3 {
-margin-top: 30px;
+@media (max-width: 991.98px) {
+
+#footer h3 {
+	margin-top: 30px;
 }
- .footer-middle-section {
-padding-top: 0;
-padding-bottom: 45px
-}
+/*.footer-middle-section {
+}*/
 .footer-rows-container {
  /*height: auto;
  padding: 20px 0 40px 0;*/
@@ -2514,7 +2516,6 @@ max-width: 140px;
 	display: inline-block;
 }
 .single-page-header .header-details h1 span {
-	color: #777;
 	display: block;
 	font-size: 1rem;
 	font-weight: 400;
@@ -3844,13 +3845,10 @@ text-align: center;
 	color: #666;
 }
 .job-listing h4.job-listing-company {
-	font-size: 16px;
 	color: #777;
 }
 .job-listing h3.job-listing-title,
 .job-listing h4.job-listing-title {
-	font-size: 1.25rem;
-	color: #333;
 	margin-top: -5px;
 	margin-bottom:0
 }
@@ -3873,10 +3871,12 @@ text-align: center;
     flex-wrap: wrap;
     align-items: center;
 	font-size: 0.938rem;
+	margin-bottom: -0.5rem;
 }
 .job-listing .job-listing-footer ul li {
 	display: inline-block;
 	color: #333;
+	margin-bottom: 0.5rem;
 }
 .job-listing .job-listing-footer ul li:last-child {
 	margin-right: 0;
@@ -5860,10 +5860,10 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 .verified-badge {
 	background-image: url('../images/verified.png');
 	background-repeat: no-repeat;
-	background-size: 20px;
+	background-size: 18px;
 	position: relative;
-	height: 20px;
-	width: 20px;
+	height: 18px;
+	width: 18px;
 	display: inline-block;
 	border-radius: 50%;
 	text-align: center;
@@ -5872,8 +5872,8 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 }
 .job-listing .job-listing-company-logo .verified-badge {
 	position: absolute;
-	bottom: 3px;
-    right: 3px;
+	bottom: 2px;
+    right: 2px;
 	/*transform: translate(7px, 7px);*/
 }
 /* Long Verified Badge */
@@ -10532,7 +10532,7 @@ width: 5px;
 	box-sizing: border-box;
 	display: block;
 	background-color: #fff;
-	font-weight: 500;
+	font-weight: 400;
 	opacity: 1;
 	border-color: #ced4da;
 	border-radius: 2rem;

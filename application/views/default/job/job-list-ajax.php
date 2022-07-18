@@ -18,11 +18,11 @@ $is_online=is_online($v['owner_id']);
 		<!-- Details -->
 		<div class="job-listing-description">
         	<div class="d-sm-flex">
-			<h3 class="task-listing-title"><a href="<?php echo $v['project_detail_url']; ?>"><?php echo $v['project_title']; ?></a></h3>
+			<h3 class="job-listing-title"><a href="<?php echo $v['project_detail_url']; ?>"><?php echo $v['project_title']; ?></a></h3>
             <h3 class="budget ms-auto"><?php echo $budget > 0 ? priceSymbol(). $budget : '';?></h3>
 			</div>
-           <!-- <p><b><?php echo $budget > 0 ? ($v['is_fixed'] == '1' ? 'Fixed' : 'Hourly') . '' : 'Hourly'; ?></b> <b><?php echo $budget > 0 ? priceSymbol(). $budget : '';?></b> - <span>Intermediate ($$)</span> - <b>Est. Time:</b>  <span>Less than 1 month, 10-30 hrs/week</span></p>		-->		
-			<p class="short-info"><?php echo $v['project_short_info']; ?></p>
+           <!-- <p><b><?php echo $budget > 0 ? ($v['is_fixed'] == '1' ? 'Fixed' : 'Hourly') . '' : 'Hourly'; ?></b> <b><?php echo $budget > 0 ? priceSymbol(). $budget : '';?></b> - <span>Intermediate ($$)</span> - <b>Est. Time:</b>  <span>Less than 1 month, 10-30 hrs/week</span></p>		
+			<p class="short-info"><?php // echo $v['project_short_info']; ?></p>-->		
 			<div class="task-tags">
 				<?php if($v['skills']){foreach($v['skills'] as $skill){ ?>
 				<span><?php echo $skill['skill_name'];?></span>
@@ -30,8 +30,6 @@ $is_online=is_online($v['owner_id']);
 			</div>
             <div class="job-listing-footer">
                 <ul>
-                    
-                    
                     <li><i class="icon-feather-heart"></i> <?php echo __('job_joblist_proposal','Proposals:');?>  <b><?php echo $v['total_proposal'];?></b></li>                    
                     <li>
                     <?php 
@@ -43,7 +41,6 @@ $is_online=is_online($v['owner_id']);
                     }
                     
                     ?>
-                    
                     </li>
                     <li><b><?php echo $budget > 0 ? ($v['is_fixed'] == '1' ? '<i class="icon-feather-lock"></i> Fixed' : 'Hourly') . '' : '<i class="icon-feather-clock"></i> Hourly'; ?></b> - <span><?php D($v['experience_level_name']);?> (<i class="icon-feather-<?php D($v['experience_level_key']);?>"></i>)</span> 
 			<?php if($v['is_hourly']){

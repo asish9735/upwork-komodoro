@@ -7,8 +7,22 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-4 col-12">
-    	<h4>Filter</h4>
+    	<div class="d-none d-lg-block">
+            <h4>Filters</h4>
+        </div>
+    	<div class="filterHeader d-lg-none">
+            <h4>Filters</h4>
+            <a href="javascript:void(0)" class="float-end" id="filter" title="Filter"><i class="icon-feather-filter f20"></i></a>
+        </div>
         <div class="sidebar-filter">
+        <div class="filterHeader d-lg-none">
+            <div class="row d-flex">
+            <div class="col"><a href="javascript:void(0)">Clear</a></div>
+            <div class="col text-center"><h4>Filters</h4></div>
+            <div class="col"><a href="javascript:void(0)" class="close_filter" title="Filter"><i class="icon-feather-x f20"></i></a></div>
+            </div>
+        </div>
+        <div class="filter-body">
         <form id="filterForm">
             <div class="search-box input-group mb-3">
                 <input type="text" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" class="form-control" placeholder="Find jobs by title" form="filterForm" name="term"/>
@@ -95,13 +109,16 @@
             <h5><img src="<?php echo IMAGE;?>budget-icon.png" alt="" height="20" width="20" class="me-1" /> <?php echo __('job_findjobs_budget','Budget');?></h5>
             <div class="margin-top-60"></div>
             <!-- Range Slider -->
+            <div class="ps-4 pe-4">
             <input class="range-slider" type="text" value="" data-slider-tooltip-split="true" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" />
+            </div>
         	<div class="margin-top-20"></div>
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Min" name="min" value="<?php if($searchdata && array_key_exists('min',$searchdata)){echo $searchdata['min'];}?>">
                 <input type="text" class="form-control" placeholder="Max" name="max" value="<?php if($searchdata && array_key_exists('max',$searchdata)){echo $searchdata['max'];}?>">
                 <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i></button> 
-            </div>            
+            </div> 
+                       
         </div>
         
         <div class="sidebar-widget mb-0">
@@ -119,6 +136,7 @@
 		</div>
 	</div>
 	</form>
+    	</div>
         </div>
     </div>
     <div class="col-lg-8 col-12">
@@ -221,6 +239,14 @@ function starRating(ratingElem) {
 
 } 
 var main = function(){	
+	$('#filter').click(function(){
+    $('.sidebar-filter').slideToggle('slow');
+	$('body').addClass('overflow-none');
+  });
+  $('.close_filter').click(function(){
+    $('.sidebar-filter').slideToggle('slow');
+	$('body').removeClass('overflow-none');
+  });
 	var findJobLoadMore = LoadMore.getInstance();	
 	/* findJobLoadMore.config({
 		url : '<?php echo base_url('job/job_list_ajax');?>',
@@ -354,7 +380,7 @@ var main = function(){
 		},'JSON');
 		
 	});
-$('#job_list').on('click','.action_report',  function(e){
+	$('#job_list').on('click','.action_report',  function(e){
 	e.preventDefault();
 	var _self = $(this);
 	var report_project = function(){

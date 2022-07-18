@@ -30,8 +30,8 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 		<div class="job-listing-description">	
 			<div class="freelancer-about">
 			<div class="freelancer-intro">		
-            	<h5 class="mb-2"><a href="<?php echo $freelancer['profile_link'];?>"><?php echo $freelancer['member_name'];?></a></h5>				
-				<h4 class="job-listing-title"><?php echo $freelancer['member_heading'];?></h4>				
+            	<h5 class="mb-2"><?php echo $freelancer['member_heading'];?></h5>				
+				<h4 class="job-listing-title"><a href="<?php echo $freelancer['profile_link'];?>"><?php echo $freelancer['member_name'];?></a></h4>				
 				<div class="freelancer-rating">
 					<div class="star-rating" data-rating="<?php echo round($freelancer['avg_rating'],1);?>"></div>
 				</div>
@@ -39,20 +39,18 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 			
 			<div class="freelancer-details-list">
 				<ul>	                	
-                    <li><a href="<?php echo VZ;?>" data-mid="<?php echo md5($freelancer['member_id']);?>" class="btn btn-site hire-member"><?php echo __('findtalents_hire_freelancer','Hire Freelancer');?></a></li>
-                    <li><a href="<?php echo VZ;?>" data-mid="<?php echo md5($freelancer['member_id']);?>" class="btn btn-outline-site invite-member"><?php echo __('findtalents_invite_job','Invite to Job');?></a></li>				
-					<li>
-                        <p class="mb-1"><?php echo __('findtalents_job_success','Job Success');?> <b><?php echo $freelancer['success_rate'];?>%</b></p>
-                        <div class="progress" style="height:6px; min-width: 100px;">
-                          <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $freelancer['success_rate'];?>%" aria-valuenow="<?php echo $freelancer['success_rate'];?>" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>                
-                    </li>
+                    
+                    <li><a href="<?php echo VZ;?>" data-mid="<?php echo md5($freelancer['member_id']);?>" class="btn btn-outline-site invite-member"><?php echo __('findtalents_invite_job','Invite to Job');?></a></li>
+                    <li><a href="<?php echo VZ;?>" data-mid="<?php echo md5($freelancer['member_id']);?>" class="btn btn-site hire-member"><?php echo __('findtalents_hire_now','Hire Now');?></a></li>			
 				</ul>
+				<?php /*?><div class="progress" style="height:6px; min-width: 100px;">
+                  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $freelancer['success_rate'];?>%" aria-valuenow="<?php echo $freelancer['success_rate'];?>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div><?php */?> 
 			</div>
 				
 			</div>
 			
-			<p class="job-listing-text"><?php echo $freelancer['member_overview'];?></p>
+			<?php /*?><p class="job-listing-text"><?php echo $freelancer['member_overview'];?></p><?php */?>
 			<div class="task-tags">	
 				<?php array_map("print_skill", $freelancer['user_skill']); ?>
 			</div>
@@ -60,10 +58,11 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 	</div>		
     <div class="job-listing-footer">
         <ul>
-            <li><i class="icon-feather-map-pin"></i> <?php echo $freelancer['country_name'];?></li>
+        	<li><i class="icon-feather-map-pin"></i> <?php echo $freelancer['country_name'];?></li>
+        	<li><?php echo __('findtalents_job_success','Job Success');?> <b><?php echo $freelancer['success_rate'];?>%</b></li>
             <li><?php echo __('');?>Rate <strong><?php echo $freelancer['member_hourly_rate'] > 0 ? priceSymbol().  priceFormat($freelancer['member_hourly_rate']) . ' / hr' : ' - ';?></strong></li>
-			<li><i class="icon-material-outline-account-balance-wallet"></i><?php echo __('');?>Earned <strong><?php D(priceSymbol().displayamount($freelancer['total_earning'],2));?></strong></li>
-            <li class="ml-md-auto">
+			<li><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('');?>Earned <strong><?php D(priceSymbol().displayamount($freelancer['total_earning'],2));?></strong></li>
+            <li class="ms-md-auto">
             <?php if($freelancer['badges']){
               	foreach($freelancer['badges'] as $b=>$badge){
               		$badge_icon=UPLOAD_HTTP_PATH.'badge-icons/'.$badge->icon_image;

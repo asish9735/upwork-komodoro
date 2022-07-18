@@ -36,6 +36,9 @@ html {
 }
 
 @media only screen and (min-width: 992px) {
+	.sidebar-filter{
+		padding: 1.25rem;
+	}
 	.language-switcher.bootstrap-select.btn-group button {
 		border-color: transparent;
 	}
@@ -70,6 +73,7 @@ html {
 	ul.top-list{
 		columns: 4;
 	}
+	.job-listing .freelancer-intro > h5,
 	#talent_list .job-listing h4.job-listing-title {
 		max-width: 330px;
 	}
@@ -81,6 +85,23 @@ html {
 }
 
 @media only screen and (max-width: 991.98px) {
+	.sidebar-filter{
+		background-color: #fff;
+		border-radius: 0.5rem 0.5rem 0 0;
+		position: fixed;
+		z-index: 1002;
+		height: 80%;
+		bottom: 0;
+		left: 0;
+		transition: 0.3s;
+		width: 100%;
+		display: none;
+	}
+	.sidebar-filter .filter-body {
+		overflow-x: scroll;
+		height: calc(100% - 50px) !important;
+		padding: 1rem;
+	}
 	.tippy-popper {
 		display:none;
 	}
