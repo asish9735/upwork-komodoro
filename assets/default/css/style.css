@@ -357,9 +357,9 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 /* ---------------------------------- */
 /* Photo Box
 ------------------------------------- */
-#profile-portfolio-data{
+/*#profile-portfolio-data{
 	margin-bottom: -1.5rem;
-}
+}*/
 .photo-box-portfolio {
 	border-radius: 4px;
 	height: 215px;
