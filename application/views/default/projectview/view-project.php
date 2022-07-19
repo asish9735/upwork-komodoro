@@ -28,7 +28,11 @@ if($login_user_id){
 						</div>
 					</div>
 					
-					<div class="right-side">                    	
+					<div class="right-side">  
+                    <!-- Bookmark icon -->
+					  <?php if(!$is_owner){?>						
+						<a href="<?php echo VZ;?>" class="ms-auto btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-line-awesome-heart"></i></a>					              
+					  <?php }?>                  	
 					<?php if($projectData['project_settings'] && $projectData['project_settings']->is_fixed==1){?>                    	
 						<div class="salary-box">
 							<div class="salary-type"><?php echo __('projectview_apply_fixed_budget','Fixed Budget');?></div>
@@ -140,7 +144,7 @@ if($login_user_id){
 			</div>
 <?php }?>
 
-<ul class="totalList">
+<ul class="totalList mb-4">
             <li><b><?php echo __('projectview_bid_proposal','Proposal');?></b>
                 <span><?php D($projectData['proposal']['total_proposal'])?></span>
             </li>
@@ -154,7 +158,10 @@ if($login_user_id){
             	<span><?php D($projectData['proposal']['total_hires'])?></span>
             </li>
         </ul>
-
+		<!-- Report -->
+		  <?php if(!$is_owner){?>
+            <a href="<?php echo VZ;?>" class="btn btn-outline-site action_report" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-material-outline-bug-report"></i> Report this project</a>											              
+          <?php }?>
 </div>
 		
 
@@ -235,24 +242,11 @@ if($login_user_id){
 						<ul class="social-links d-flex">
 							<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $ProjectDetailsURL;?>" target="_blank" title="Share on Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
 							<li><a href="https://twitter.com/home?status=<?php echo $ProjectDetailsURL;?>" target="_blank" title="Share on Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-							<li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $ProjectDetailsURL;?>&title=&summary=&source=" target="_blank" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
-						
-                      <!-- Bookmark icon -->
-					  <?php if(!$is_owner){?>
-					  <li class="ml-auto">
-					  <span class="me-2">
-						<a href="<?php echo VZ;?>" class="btn btn-circle action_report" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-material-outline-bug-report"></i></a>
-					  </span>
-                      <span>
-						<a href="<?php echo VZ;?>" class="btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-line-awesome-heart"></i></a>
-					  </span>
-                      </li>
-					  <?php }?>
+							<li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $ProjectDetailsURL;?>&title=&summary=&source=" target="_blank" title="Share on LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>						                      
                       </ul>
 				    </div>
 				</div>
-                </div>
-
+                </div>                	  
 			</div>
 		</div>
 

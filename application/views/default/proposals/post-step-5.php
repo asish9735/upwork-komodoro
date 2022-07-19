@@ -4,14 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div id="dataStep-5"  style="display: none">
-  <div class="dashboard-box margin-top-0"> 
+  <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-      <h3><?php echo __('postproposal_gallery','Gallery');?></h3>
+      <h4><?php echo __('postproposal_gallery','Gallery');?></h4>
     </div>
     <div class="content with-padding">
       <div class="submit-field">
-        <label for="" class="control-label"><?php echo __('postproposal_proposal_Images','Proposal Images');?></label>
+        <label for="" class="form-label"><?php echo __('postproposal_proposal_Images','Proposal Images');?></label>
         <div class="drop btn-file mb-2">
           <p class="m-0"><?php echo __('postproposal_drag','Drag');?> &amp; <?php echo __('postproposal_drop_file','drop file here');?> <br />
             <?php echo __('postproposal_or','or');?> <br />
@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
       </div>
       <div class="submit-field">
-        <label for="" class="control-label"><?php echo __('postgigs_video','Proposal Video'); ?></label>
+        <label for="" class="form-label"><?php echo __('postgigs_video','Proposal Video'); ?></label>
         <div class="drop btn-file mb-2">
           <p class="m-0"><?php echo __('postproposal_drag','Drag');?> &amp; <?php echo __('postproposal_drop_file','drop file here');?> <br />
             <?php echo __('postproposal_or','or');?> <br />
@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
       <div class="submit-field setvideothumb" <?php  if($proposalData && $proposalData['proposal_video']){}else{?>style="display:none" <?php }?>>
-        <label for="" class="control-label"><?php echo __('postgigs_video_thumb','Proposal Video Thumb'); ?></label>
+        <label for="" class="form-label"><?php echo __('postgigs_video_thumb','Proposal Video Thumb'); ?></label>
         <?php  
               $videothumb='';
               if($proposalData && $proposalData['proposal_video']){
@@ -94,14 +94,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               ?>
         <div class="thumbnail_sec_video_capture" <?php if($videothumb){?>style="background-image: url('<?php echo UPLOAD_HTTP_PATH.'proposals-files/proposals-thumb/thumb_'.$proposalData['proposal_video']->image_thumb;?>')" <?php }?>>
           <input type="hidden" name="videothumb" id="videothumb" value='<?php echo $videothumb;?>'/>
-          <a href="<?php echo VZ;?>" class="btn btn-site btn-circle addthumb" onclick="openmodalVideo()" <?php if($videothumb){?>style="display: none;"<?php }?>><i class="icon-feather-plus"></i></a>
-          <a href="javascript:void(0)" <?php if($videothumb){}else{?>style="display: none;"<?php }?> class="removethumb ico btn btn-sm btn-circle btn-danger" onclick="removeVideoThumb(this)"> <i class="icon-feather-trash"></i> </a> </div>
+          <a href="<?php echo VZ;?>" class="btn btn-site btn-circle addthumb" onclick="openmodalVideo()" <?php if($videothumb){?>style="display: none;"<?php }?>><i class="icon-feather-plus"></i></a> <a href="javascript:void(0)" <?php if($videothumb){}else{?>style="display: none;"<?php }?> class="removethumb ico btn btn-sm btn-circle btn-danger" onclick="removeVideoThumb(this)"> <i class="icon-feather-trash"></i> </a> </div>
         <div class="clearfix"></div>
         <span id="videothumbError" class="rerror"></span> </div>
     </div>
-    <div class="dashboard-box-footer">
-      <button class="btn btn-secondary backbtnproposal" data-step="5"><?php echo __('postproposal_back','Back');?></button>
-      <button class="btn btn-site nextbtnproposal" data-step="5"><?php echo __('postproposal_next','Next');?></button>
-    </div>
   </div>
+  <button class="btn btn-outline-secondary backbtnproposal" data-step="5"><?php echo __('postproposal_back','Back');?></button>
+  <button class="btn btn-site nextbtnproposal" data-step="5"><?php echo __('postproposal_next','Next');?></button>
 </div>

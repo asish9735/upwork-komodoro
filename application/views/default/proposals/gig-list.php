@@ -29,9 +29,11 @@ if($show_slider==1){
     }
 
 }
+$proposal_order_queue=$this->db->where('proposal_id',$proposal['proposal_id'])->where_in('order_status',array(ORDER_PROCESSING,ORDER_REVISION,ORDER_CANCELLATION))->from('orders')->count_all_results();
+        $proposal_order_completed=$this->db->where('proposal_id',$proposal['proposal_id'])->where_in('order_status',array(ORDER_COMPLETED,ORDER_DELIVERED))->from('orders')->count_all_results();
 ?>
 
-<div class="card card-catalog">
+<div class="card card-catalog card-gigs">
     <div class="card-image">
         <?php if($show_slider){?>
             <div id="carouselExampleIndicators" class="carousel slide gigs-carousel" data-ride="carousel">      
@@ -80,24 +82,25 @@ if($show_slider==1){
             echo '<span class="featured-tag"></span>';
         }
         ?>
+        <div class="card-avatar <?php if($is_online){echo 'status-online';}?>"><img src="<?php echo $logo;?>" alt="" height="40" width="40" class="rounded-circle"><span class="verified-badge"></span></div>
     </div>
     <div class="card-body">
-        <div class="user-details mb-2">
+        <?php /*?><div class="user-details mb-2">
             <div class="user-avatar <?php if($is_online){echo 'status-online';}?>"><img src="<?php echo $logo;?>" alt="" height="40" width="40" class="rounded-circle"></div>
             <div class="user-name">
                 <h5 class="mb-0"><?php echo $proposal['member_name'];?></h5>
                 <p><small><?php echo $proposal['member_heading'];?></small></p>
             </div>
-        </div>
-        <h4 class="card-title"><a href="<?php echo $url;?>"><?php echo $proposal['proposal_title'];?></a></h4>
+        </div><?php */?>
+        <h5 class="card-title"><a href="<?php echo $url;?>"><?php echo $proposal['proposal_title'];?></a></h5>
         <div class="freelancer-rating">
             <div class="star-rating" data-rating="<?php echo round($average_rating,1);?>"></div>
         </div>
-        <!-- <div class="star-rate"><i class="icon-material-outline-star"></i> <?php echo round($average_rating,2);?></div> -->
-        <div class="card-bottom">
-        <p><small class="text-muted">Starting From</small> <b class="price"><?php echo CURRENCY;?><?php echo $proposal['display_price'];?></b></p>
-        <a href="<?php echo $url;?>" class="btn btn-outline-site btn-sm ml-auto">Buy Now</a>
-
-        </div>
+        <p class="card-justify"><span>Order in Queue: <b><?php echo $proposal_order_queue;?></b></span> <span>Sell: <b><?php echo $proposal_order_completed;?></b></span></p>
+        <div class="card-price"><h3><?php echo CURRENCY;?><?php echo $proposal['display_price'];?></h3> <span><i class="icon-feather-eye"></i> <?php echo $proposal['proposal_views'];?></span></div>
+        <!-- <div class="star-rate"><i class="icon-material-outline-star"></i> <?php // echo round($average_rating,2);?></div>
+        <div class="card-bottom">        
+        	<a href="<?php // echo $url;?>" class="btn btn-outline-site btn-sm ml-auto">Buy Now</a>
+        </div> -->
     </div>
 </div>

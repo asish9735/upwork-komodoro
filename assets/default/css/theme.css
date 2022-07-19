@@ -160,7 +160,6 @@ header.fullwidth .container {
 /* Sign In Button */
 .header-widget .log-in-button,
 .header-widget ul.display-inline {
-	font-size: 0.8rem;	
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
@@ -1710,9 +1709,9 @@ display: none;
     position: absolute;
     height: 100%;
     background-image: url('../images/footer-bg.png');
-    background-repeat: no-repeat;
-    width: 540px;
-    background-size: 720px;	
+    background-repeat: no-repeat;        
+    background-size: 450px;
+	width: 350px;
 }
 #footer:before{
 	background-position: left top;
@@ -2451,7 +2450,7 @@ right: auto;
 	align-items: center;
 }
 .single-page-header .right-side {
-    flex-direction: column;
+    /*flex-direction: column;*/
 	max-width: 35%;
 }
  @media (min-width: 1365px) {
@@ -2508,7 +2507,7 @@ max-width: 140px;
 	flex: 1;
 }
 .single-page-header .header-details h1 {
-	font-size: 1.5rem;
+	font-size: 1.75rem;
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -2568,8 +2567,6 @@ max-width: 140px;
 	top: 6px;
 }
 .single-page-header .header-details h1 img.flag {
-	height: 16px;
-	border-radius: 3px;
 	position: relative;
 	top: -1px;
 	display: inline-block;
@@ -3827,7 +3824,7 @@ text-align: center;
 }
 .job-listing .job-listing-company-logo {
 	flex: 1;
-	max-width: 64px;
+	max-width: 84px;
 	position: relative;
 }
 .job-listing .job-listing-company-logo img {
@@ -4615,6 +4612,7 @@ img.flag {
 }
 .freelancer-details-list ul li {
 	display: inline-block;
+	flex: 1;
 	margin-right: 10px;
 	color: #777;
 	margin-bottom: 10px;
@@ -5872,8 +5870,8 @@ box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 }
 .job-listing .job-listing-company-logo .verified-badge {
 	position: absolute;
-	bottom: 2px;
-    right: 2px;
+	bottom: 3px;
+    right: 3px;
 	/*transform: translate(7px, 7px);*/
 }
 /* Long Verified Badge */
@@ -11151,7 +11149,6 @@ to {
 ------------------------------------- */
 .boxed-list {
 	border-radius: 0.25rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	margin-top: 10px;
 	display: block;
 }
@@ -11948,8 +11945,8 @@ flex: 1;
 	display: block;
 	border-radius: 0.25rem;
 	background-color: #fff;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-	margin-top: 25px;
+	/*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);*/
+	margin-bottom: 1.25rem;
 	position: relative;
 }
 .dashboard-box .headline {
@@ -11965,8 +11962,6 @@ flex: 1;
 
 .dashboard-box .headline h3,
 .dashboard-box .headline h4 {
-	font-size: 1.25rem;
-	font-weight: 600;
 	color: #333;
 	margin-bottom:0
 }

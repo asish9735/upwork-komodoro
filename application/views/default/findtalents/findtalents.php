@@ -1,8 +1,10 @@
-<section class="section findtalentpage">
+<section class="short-banner">
 <div class="container">
-	<div class="dashboard-headline">
-    	<h1><?php echo __('findtalents_page_header','Professionals');?></h1>
-    </div>
+    <h1><?php echo __('findtalents_page_header','Professionals');?></h1>
+</div>
+</section>
+<section class="section findtalentpage">
+<div class="container">	
 	<?php //print_r($all_location);?>
 	<div class="row">
 		<div class="col-xl-4 col-lg-4 col-12">
@@ -22,7 +24,11 @@
             </div>
         </div>
         <div class="filter-body">
-			<form id="filterForm">			
+			<form id="filterForm">	
+            	<div class="search-box input-group mb-3">
+				<input type="text" class="form-control" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" name="term" placeholder="<?php echo __('findtalents_page_talent_by_name','Find talents by name');?>" form="filterForm"/>
+                <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i></button>
+			</div>		
 				<!-- Location -->
 				<div class="sidebar-widget">
 					<h5><?php echo __('findtalents_page_location','Location');?></h5>
@@ -105,17 +111,10 @@
 		</div>
         </div>
 		<div class="col-xl-8 col-lg-8 col-12">
-
-		<h3 class="page-title"><?php echo __('findtalents_page_search_result','Search Results');?></h3>
-        <div class="row">
-    		<div class="col-md-8 col-12">
-            <div class="search-box input-group">
-				<input type="text" class="form-control" value="<?php if($searchdata && array_key_exists('term',$searchdata)){echo $searchdata['term'];}?>" name="term" placeholder="<?php echo __('findtalents_page_talent_by_name','Find talents by name');?>" form="filterForm"/>
-                <button type="button" class="btn btn-site" onclick="filterForm()"><?php echo __('findtalents_page_search','Search');?></button>
-			</div>
-		</div>
-    	<div class="col-md-4 col-12">
-            <div class="sort-by">
+		
+        <div class="d-flex align-items-center mb-3">    		
+            <h5 class="mb-0"><?php echo __('findtalents_page_search_result','Search Results');?></h5>    	
+            <div class="sort-by ms-auto">
             	<div class="sort-by">
                 <span><?php echo __('findtalents_page_sort_by','Sort by:');?></span>
 				<select class="selectpicker hide-tick" name="order_by" form="filterForm" onchange="filterForm()">
@@ -126,15 +125,11 @@
                         <!--<option value="random">Random</option>-->
                     </select>
                 </div>
-            </div>
-		</div>
+            </div>		
         </div>
 			
-            
-
-			
 			<!-- Freelancers List Container -->		
-            <div class="listings-container mt-4" id="talent_list">
+            <div class="listings-container" id="talent_list">
 				
 				
 			</div>

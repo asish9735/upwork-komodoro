@@ -4,14 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div id="dataStep-6" style="display: none">
-  <div class="dashboard-box margin-top-0"> 
+  <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-      <h3><?php echo __('postproposal_review_post','Publich your service');?> </h3>
+      <h4><?php echo __('postproposal_review_post','Publich your service');?> </h4>
     </div>
     <div class="content with-padding">
-        <div class="submit-field mb-0">
-          <h5><b><?php echo __('postproposal_title','Title');?></b> <a href="javascript:void(0)" class="edit-proposal float-right btn btn-outline-secondary btn-circle" data-popup="1" data-tippy-placement="top" title="Edit title"><i class="icon-feather-edit-2"></i></a></h5>
+        <div class="submit-field">
+          <h5><b><?php echo __('postproposal_title','Title');?></b> <a href="javascript:void(0)" class="edit-proposal float-end btn btn-outline-secondary btn-circle" data-popup="1" data-tippy-placement="top" title="Edit title"><i class="icon-feather-edit-2"></i></a></h5>
           <label><?php echo __('postproposal_proposal_name','Name of your proposal');?></label>
           <p id="preview_title"></p>
           <label><?php echo __('postproposal_proposal_category','Project category');?></label>
@@ -19,17 +19,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label><?php echo __('postproposal_proposal_skills','Tags');?></label>
           <div class="task-tags" id="preview_skills"></div>
         </div>
-
-    </div>
-    <div class="dashboard-box-footer">
-      <button class="btn btn-secondary backbtnproposal" data-step="6"><?php echo __('postproposal_back','Back');?></button>
-      <button class="btn btn-site nextbtnproposal" data-step="6"><?php echo __('postproposal_post','Submit');?></button>
-    </div>
+		
+    </div>    
   </div>
+  <button class="btn btn-outline-secondary backbtnproposal" data-step="6"><?php echo __('postproposal_back','Back');?></button>
+  <button class="btn btn-site nextbtnproposal" data-step="6"><?php echo __('postproposal_post','Submit');?></button>
   <div class="dashboard-box" hidden> 
     <!-- Headline -->
     <div class="headline">
-      <h4><b><?php echo __('postproposal_description','Description');?></b> <a href="javascript:void(0)" class="edit-proposal float-right btn btn-outline-secondary btn-circle" data-popup="2" data-tippy-placement="top" title="Edit Description"><i class="icon-feather-edit-2"></i></a></h4>
+      <h4><b><?php echo __('postproposal_description','Description');?></b> <a href="javascript:void(0)" class="edit-proposal float-end btn btn-outline-secondary btn-circle" data-popup="2" data-tippy-placement="top" title="Edit Description"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding">
       <div class="submit-field mb-0">        
@@ -45,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box" hidden> 
     <!-- Headline -->
     <div class="headline">
-    <h4><b><?php echo __('postproposal_details','Details');?></b> <a href="javascript:void(0)" class="edit-proposal float-right btn btn-outline-secondary btn-circle" data-popup="3" data-tippy-placement="top" title="Edit Details"><i class="icon-feather-edit-2"></i></a></h4>
+    <h4><b><?php echo __('postproposal_details','Details');?></b> <a href="javascript:void(0)" class="edit-proposal float-end btn btn-outline-secondary btn-circle" data-popup="3" data-tippy-placement="top" title="Edit Details"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding">
       <div class="submit-field">        
@@ -69,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box" hidden> 
     <!-- Headline -->
     <div class="headline">
-    	<h4><b><?php echo __('postproposal_expertise','Expertise');?> </b> <a href="javascript:void(0)" class="edit-proposal float-right btn btn-outline-secondary btn-circle" data-popup="4" data-tippy-placement="top" title="Edit Expertise"><i class="icon-feather-edit-2"></i></a></h4>
+    	<h4><b><?php echo __('postproposal_expertise','Expertise');?> </b> <a href="javascript:void(0)" class="edit-proposal float-end btn btn-outline-secondary btn-circle" data-popup="4" data-tippy-placement="top" title="Edit Expertise"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding">
 		<div class="task-tags" id="preview_skills"></div>
@@ -78,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box" hidden> 
     <!-- Headline -->
     <div class="headline">
-    	<h4><b><?php echo __('postproposal_visibility','Visibility');?> </b> <a href="javascript:void(0)" class="edit-proposal float-right btn btn-outline-secondary btn-circle" data-popup="5" data-tippy-placement="top" title="Edit Visibility"><i class="icon-feather-edit-2"></i></a></h4>
+    	<h4><b><?php echo __('postproposal_visibility','Visibility');?> </b> <a href="javascript:void(0)" class="edit-proposal float-end btn btn-outline-secondary btn-circle" data-popup="5" data-tippy-placement="top" title="Edit Visibility"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding padding-bottom-0">      
       <div class="row">
@@ -100,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box" hidden> 
     <!-- Headline -->
     <div class="headline">
-    <h4><b><?php echo __('postproposal_budget','Budget');?> </b> <a href="javascript:void(0)" class="edit-proposal float-right btn btn-outline-secondary btn-circle" data-popup="6" data-tippy-placement="top" title="Edit Budget"><i class="icon-feather-edit-2"></i></a></h4>
+    <h4><b><?php echo __('postproposal_budget','Budget');?> </b> <a href="javascript:void(0)" class="edit-proposal float-end btn btn-outline-secondary btn-circle" data-popup="6" data-tippy-placement="top" title="Edit Budget"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding padding-bottom-0">      
       <div class="row">

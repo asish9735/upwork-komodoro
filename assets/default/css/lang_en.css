@@ -512,7 +512,7 @@ ul.totalList > li:last-child {
 	left: 0;
 }
 .single-page-header .salary-box {
-	margin-left: auto;
+	margin-left: 1.5rem;
 }
 .toggleUD {
     right: 1.25rem;

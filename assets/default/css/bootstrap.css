@@ -2364,6 +2364,7 @@ progress {
 }
 
 textarea.form-control {
+  border-radius: 1rem;
   min-height: calc(1.5em + 0.75rem + 2px);
 }
 textarea.form-control-sm {

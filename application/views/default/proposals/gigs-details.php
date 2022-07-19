@@ -342,7 +342,7 @@ if($proposal->proposal_video){
                       </div>
                       <div class="col-xl-auto col-12">
                       	<div class="d-flex align-items-center">
-                        <label class="mr-2"><?php echo (__('proposal_details_page_Quantity',"Quantity"));?></label>
+                        <label class="me-2"><?php echo (__('proposal_details_page_Quantity',"Quantity"));?></label>
                         <select class="form-control" name="proposal_qty" id="proposal_qty" style="max-width:70px">
                           <?php
                           for($i=1;$i<=12;$i++){
@@ -381,7 +381,7 @@ if($proposal->proposal_video){
                       </div>
                       <div class="col-xl-auto col-12">
                       	<div class="d-flex align-items-center">
-                        <label class="mr-2"><?php echo (__('proposal_details_page_Quantity',"Quantity"));?></label>
+                        <label class="me-2"><?php echo (__('proposal_details_page_Quantity',"Quantity"));?></label>
                         <select class="form-control" name="proposal_qty" id="proposal_qty" style="max-width:70px">
                           <?php
                           for($i=1;$i<=12;$i++){
@@ -394,8 +394,10 @@ if($proposal->proposal_video){
                         </div>
                       </div>
                   </div>
-                  
-                  <a href="javascript:void(0)" onclick="checkoutForm(this,'<?php echo ($package->package_id); ?>')" class="btn btn-site btn-block">Order Now</a> </div>
+                  <div class="text-center">
+                  <a href="javascript:void(0)" onclick="checkoutForm(this,'<?php echo ($package->package_id); ?>')" class="btn btn-site btn-block">Order Now</a>
+                  </div>
+                  </div>
               </div>
               <?php
                   }
@@ -405,16 +407,20 @@ if($proposal->proposal_video){
             <?php }?>
             
           </div>
-          <div class="card mb-4">
+          <div class="card mb-4 gigger-profile">
             <?php 
             $member=$proposal->member;
             $profile_link=get_link('viewprofileURL')."/".$proposal->proposal_seller_id;
             ?>
-            <div class="card-body text-center">
-              <div class="mb-3"><img src="<?php echo getMemberLogo($proposal->proposal_seller_id);?>" alt="" height="96" width="96" class="rounded-circle border"></div>
-              <h4 class="mb-0"><a href="<?php echo $profile_link;?>"><?php echo $member->member_name;?></a></h4>
-              <p class="text-muted text-ellipsis-1 mb-2"><?php echo $member->member_heading;?></p>
-              <div class="star-rating mb-3" data-rating="<?php echo $member->avg_review; ?>"></div>
+            <div class="card-body">
+              <div class="d-flex mb-3">
+              <img src="<?php echo getMemberLogo($proposal->proposal_seller_id);?>" alt="" height="84" width="84" class="rounded-circle border">
+              <div class="ms-3">
+              	<h4 class="mb-0"><a href="<?php echo $profile_link;?>"><?php echo $member->member_name;?></a></h4>
+              	<p class="text-muted text-ellipsis-1 mb-2"><?php echo $member->member_heading;?></p>
+              	<div class="star-rating mb-3" data-rating="<?php echo $member->avg_review; ?>"></div>
+              </div>
+              </div>
               <div class="freelancer-details-list">
                 <ul class="d-flex mb-0">
                   <li><span><?php echo __('location','Location')?></span> <strong><img src="<?php echo IMAGE;?>flags/<?php D(strtolower($member->country_code_short));?>.svg" alt="" title="<?php D($member->country_name);?>" class="flag" data-tippy-placement="top" /> <?php echo $member->country_name; ?></strong></li>

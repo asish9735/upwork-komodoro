@@ -5,100 +5,117 @@
   </div>
 </section>
 <section class="section">
-	<div class="container">				
-        <div class="categorySec">
-        	<a href="javascript:void(0)" class="float-right d-lg-none" id="filter" title="Filter"><i class="icon-feather-filter f20"></i></a>	
-        	<div class="filterSearch">
-            <form action="" id="filter_form" name="filter_form" onsubmit="return post_form();">
-            <div class="tags-container text-center mb-3">
-           
-					<div class="tag">
-							<input class="" type="radio"  onchange="post_form_check()" name="category_id" id="category_0" value="0" <?php echo (empty($srch_param['category_id'])) ? 'checked' : ''; ?>>
-							<label for="category_0"> All </label>
-					</div>
-				
-                <?php 
-                if($parent_category){
-                    foreach($parent_category as $key =>$val){
-                        $categoryName = $val->category_name;
-                ?>
-                   
-						<div class="tag">
-							<input class="" type="radio"  onchange="post_form_check()" name="category_id" id="category_<?php echo $val->category_id;?>" value="<?php echo $val->category_id; ?>" <?php echo (!empty($srch_param['category_id']) && $val->category_id==$srch_param['category_id']) ? 'checked' : ''; ?>>
-							<label for="category_<?php echo $val->category_id;?>"> <?php echo $categoryName;?> </label>
-					    </div>
-					
-                <?php
-                    }  
-                }?>
+	<div class="container">
+    	<div class="row">
+        <aside class="col-xl-3 col-lg-3 col-12">	
+            	<div class="filterHeader d-lg-none">
+                	<h4>Filters</h4>
+                    <a href="javascript:void(0)" class="float-end" id="filter" title="Filter"><i class="icon-feather-filter f20"></i></a>
                 </div>
-               
-            	<?php if($child_category){?>
-                    <h3 class="text-center mb-3"><?php echo $category_name;?></h3> 
-                    <div class="tags-container text-center mb-3 subcategory">
-                <?php
-                    foreach($child_category as $key =>$val){
-                        $categoryName = $val->category_subchild_name;
-                ?>
-                  
-						<div class="tag">
-							<input class="" type="checkbox"  onchange="post_form()" name="sub_catgory_id[]" id="sub_catgory_<?php echo $val->category_subchild_id;?>" value="<?php echo $val->category_subchild_id; ?>" <?php echo (!empty($srch_param['sub_catgory_id']) && in_array($val->category_subchild_id, $srch_param['sub_catgory_id'])) ? 'checked' : ''; ?>>
-							<label for="sub_catgory_<?php echo $val->category_subchild_id;?>"> <?php echo $categoryName;?> </label>
-					  </div>
-					
-                <?php
-                    } 
-                    ?>
+                <div class="sidebar-filter p-0" style="background:none;">
+                	<div class="filter-header filterHeader d-lg-none">
+                        <div class="row d-flex">
+                        <div class="col"><a href="javascript:void(0)">Clear</a></div>
+                        <div class="col text-center"><h4>Filters</h4></div>
+                        <div class="col"><a href="javascript:void(0)" class="close_filter" title="Filter"><i class="icon-feather-x f20"></i></a></div>
+                        </div>
                     </div>
-                <?php 
-                }?>
-                <?php if($pre_skills){?>
-                    <h3 class="text-center mb-3">Skills</h3> 
-                <div class="tags-container skillContaintag">
-                    <?php
-                        foreach($pre_skills as $k=>$preskills){
-                    ?>
-                    <div class="tag skill_set_<?php echo $preskills->skill_id;?>" onclick="post_form()">
-                        <input type="checkbox" id="tag_<?php echo $preskills->skill_id;?>" name="byskillsid[]" value="<?php echo $preskills->skill_id;?>" checked>
-                        <label for="tag_<?php echo $preskills->skill_id;?>"><?php echo $preskills->skill_name;?></label>
+                    <div class="filter-body">			
+                        <form action="" id="filter_form" name="filter_form" onsubmit="return post_form();">
+                    	<div class="input-group mb-3">
+                                <input type="text" name="term" class="form-control" placeholder="Search..." value="<?php echo !empty($srch_param['term']) ? $srch_param['term'] : ''; ?>">
+                             <button type="submit" class="btn btn-site"><i class="icon-feather-search"></i></button>
+                        </div>                      
+					 
+                    <?php /*?><div class="form-field">
+                                <input type="text"  class="form-control form-control-lg tagsinput_skill" placeholder="<?php echo __('findtalents_page_skills_placeholder','Search skills');?>"/>
+                            </div><?php */?> 
+                             
+                    <h5>Category</h5>
+                    <div class="panel scroll-bar mb-3" data-simplebar> 
+                    <div class="panel-body pe-0">                                                                   
+                    <ul class="gig-list">
+                            <li class="<?php echo (empty($srch_param['category_id'])) ? 'active' : ''; ?>">
+                                    <input class="" type="radio"  onchange="post_form_check()" name="category_id" id="category_0" value="0" <?php echo (empty($srch_param['category_id'])) ? 'checked' : ''; ?>>
+                                    <label for="category_0"> All </label>
+                            </li>                        
+                        <?php 
+                        if($parent_category){
+                            foreach($parent_category as $key =>$val){
+                                $categoryName = $val->category_name;
+                        ?>
+                           
+                                <li class="<?php echo (!empty($srch_param['category_id']) && $val->category_id==$srch_param['category_id']) ? 'active' : ''; ?>">
+                                    <input class="" type="radio"  onchange="post_form_check()" name="category_id" id="category_<?php echo $val->category_id;?>" value="<?php echo $val->category_id; ?>" <?php echo (!empty($srch_param['category_id']) && $val->category_id==$srch_param['category_id']) ? 'checked' : ''; ?>>
+                                    <label for="category_<?php echo $val->category_id;?>"> <?php echo $categoryName;?> </label>
+                                </li>
+                            
+                        <?php
+                            }  
+                        }?>
+                        </ul>
                     </div>
-                    <?php
+                    </div>  
+                        <?php if($child_category){?>
+                        	<h5><?php echo $category_name;?></h5> 
+                        	<div class="panel scroll-bar mb-3" data-simplebar> 
+                            <div class="panel-body">   
+                            <ul class="gig-list subcategory">
+                        <?php
+                            foreach($child_category as $key =>$val){
+                                $categoryName = $val->category_subchild_name;
+                        ?>
+                          
+                              <li class="<?php echo (!empty($srch_param['sub_catgory_id']) && in_array($val->category_subchild_id, $srch_param['sub_catgory_id'])) ? 'active' : ''; ?>">
+                                    <input class="" type="checkbox"  onchange="post_form()" name="sub_catgory_id[]" id="sub_catgory_<?php echo $val->category_subchild_id;?>" value="<?php echo $val->category_subchild_id; ?>" <?php echo (!empty($srch_param['sub_catgory_id']) && in_array($val->category_subchild_id, $srch_param['sub_catgory_id'])) ? 'checked' : ''; ?>>
+                                    <label for="sub_catgory_<?php echo $val->category_subchild_id;?>"> <?php echo $categoryName;?> </label>
+                              </li>
+                            
+                        	<?php
+                            } 
+                            ?>
+                            </ul>
+                            </div>
+                            </div>
+                        <?php 
+                        }?>
+                        <?php if($pre_skills){?>
+                        <h3 class="text-center mb-3">Skills</h3> 
+                        <div class="tags-container skillContaintag">
+                            <?php
+                                foreach($pre_skills as $k=>$preskills){
+                            ?>
+                            <div class="tag skill_set_<?php echo $preskills->skill_id;?>" onclick="post_form()">
+                                <input type="checkbox" id="tag_<?php echo $preskills->skill_id;?>" name="byskillsid[]" value="<?php echo $preskills->skill_id;?>" checked>
+                                <label for="tag_<?php echo $preskills->skill_id;?>"><?php echo $preskills->skill_name;?></label>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                        <div class="clearfix"></div>
+                        <?php
                         }
-                    ?>
-                </div>
-                <div class="clearfix"></div>
-                <?php
-                }
-                ?>
-           
-            <div class="row justify-content-center_ mb-3">
-                <div class="col-lg-3 col-12">
-                    <div class="form-field">
-					    <input type="text"  class="form-control tagsinput_skill" placeholder="<?php echo __('findtalents_page_skills_placeholder','Search skills');?>"/>
-					</div>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="input-group mb-3">
-                        <input type="text" name="term" class="form-control" placeholder="Search..." value="<?php echo !empty($srch_param['term']) ? $srch_param['term'] : ''; ?>">
-                        <button type="submit" class="btn btn-site"><i class="icon-feather-search"></i></button>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-12">
-                	<div class="input-group mb-3">
-                    <div class="input-group-prepend me-3 mt-2">
-                    	<span class="border-0">Sort by:</span>
-                    </div>
+                        ?>
+                    </form>
+            		</div>
+            	</div>
+            </aside>
+            <aside class="col-xl-9 col-lg-9 col-12">
+            <div class="d-flex mb-3 align-items-center">
+                <h5 class="mb-0">10 Gigs Found</h5>
+                <div class="sort-by ms-auto">
+                    <div class="sort-by">
+                    <span>Sort by:</span>
                     <select class="selectpicker" data-size="3" onchange="post_form()" name="sort_by">
-                    	<option value="latest" <?php echo (!empty($srch_param['sort_by']) && $srch_param['sort_by']=='latest') ? 'selected' : ''; ?>>Latest</option>
+                        <option value="latest" <?php echo (!empty($srch_param['sort_by']) && $srch_param['sort_by']=='latest') ? 'selected' : ''; ?>>Latest</option>
                         <option value="popular" <?php echo (!empty($srch_param['sort_by']) && $srch_param['sort_by']=='popular') ? 'selected' : ''; ?>>Popular</option>
                         <option value="price_low_to_high" <?php echo (!empty($srch_param['sort_by']) && $srch_param['sort_by']=='price_low_to_high') ? 'selected' : ''; ?>>Price - Low to High</option>
                         <option value="price_high_to_low" <?php echo (!empty($srch_param['sort_by']) && $srch_param['sort_by']=='price_high_to_low') ? 'selected' : ''; ?>>Price - High to Low</option>
                     </select>
                     </div>
-                </div>
-            </div>
-            </form>
-            </div>
+                 </div>   
+            </div>                 
             <div class="row row-10">
 <?php
 //get_print($proposals,false);
@@ -106,7 +123,7 @@ if($proposals){
 foreach($proposals as $key=>$proposal){
     
 ?>
-	<div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+	<div class="col-xl-4 col-lg-4 col-sm-6 col-12">
     	<?php echo $this->layout->view('gig-list',array('proposal'=>$proposal),true);?>	
     </div>                	
  <?php } 
@@ -120,15 +137,16 @@ foreach($proposals as $key=>$proposal){
 <?php } ?>
 
                 
-            </div>               
-        </div>	
-        <nav aria-label="Page navigation" id="nav_bar">  
+            </div>     
+            <nav aria-label="Page navigation" id="nav_bar">  
         <?php  
         if(isset($links)){                     
         echo $links;   
         }
         ?> 
         </nav>
+        	</aside>          
+        </div>	
 	</div>
 </section>
 
@@ -136,7 +154,12 @@ foreach($proposals as $key=>$proposal){
 var all_skills=<?php D(json_encode($all_skills));?>;
 var  main = function(){
   $('#filter').click(function(){
-    $('.filterSearch').slideToggle();
+    $('.sidebar-filter').slideToggle('slow');
+	$('body').addClass('overflow-none');
+  });
+  $('.close_filter').click(function(){
+    $('.sidebar-filter').slideToggle('slow');
+	$('body').removeClass('overflow-none');
   });
   var bhtn = new Bloodhound({
 		local:all_skills,

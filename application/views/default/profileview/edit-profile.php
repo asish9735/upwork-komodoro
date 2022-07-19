@@ -269,7 +269,7 @@ if($login_user_id){
               <!-- Copy URL -->
               <div class="input-group copy-url mb-3">
                 <input type="text" id="copy-url-profile" value="" class="form-control">
-                <div class="input-group-append"><button class="btn copy-url-button" data-clipboard-target="#copy-url-profile" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button></div>
+                <button class="btn copy-url-button" data-clipboard-target="#copy-url-profile" title="Copy to Clipboard" data-tippy-placement="top"><i class="icon-material-outline-file-copy"></i></button> 
               </div>
               
               <!-- Share Buttons -->
