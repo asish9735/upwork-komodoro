@@ -14,7 +14,7 @@ if($orderconversations){
 		if($conversation->status == "message"){ 
 ?>
 	<div class="media <?php echo (($conversation->sender_id==$loggedUserID? 'message-div-hover':' message-div'))?>">
-		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image mr-3">	
+		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image me-3">	
 		<div class="media-body">
         <h5>
 			<a href="javascript:void(0)" class="seller-buyer-name"> <?php /*echo ($conversation->member_name);*/ echo ($sender_user_name);?> </a>
@@ -28,7 +28,7 @@ if($orderconversations){
 		<p class="message-desc">
 			<?php echo ($conversation->message); ?>
 			<?php if(!empty($conversation->file)){ ?>
-				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ml-1" download>
+				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ms-1" download>
 					<i class="icon-feather-download"></i> <?php echo $conversation->file; ?>
 				</a>
 				
@@ -52,7 +52,7 @@ if($orderconversations){
 		   <p class="text-center font-weight-bold pb-0"><?php echo (__('order_conversation_page_You_have',"You have"));?> <?php echo $remain->d; ?> <?php echo (__('order_conversation_page_days_to_complete',"day(s) to complete/respond to this order, otherwise it will be automatically marked as completed."));?></p>
 		  <?php } */ ?>
           <div class="media <?php echo (($conversation->sender_id==$loggedUserID? 'message-div-hover':' message-div'))?>"><!--- message-div Starts --->
-		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="48" height="48" class="message-image mr-3">
+		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="48" height="48" class="message-image me-3">
         <div class="media-body">
 	    <h5>
 			<a href="javascript:void(0)" class="seller-buyer-name"><?php /*echo ($conversation->member_name);*/ echo ($sender_user_name);?> </a>
@@ -61,7 +61,7 @@ if($orderconversations){
 		<p class="message-desc">
 			<?php echo ($conversation->message); ?>
 			<?php if(!empty($conversation->file)){ ?>
-				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ml-1" download>
+				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ms-1" download>
 					<i class="icon-feather-download"></i> <?php echo $conversation->file; ?>
 				</a>
 			<?php }?>
@@ -105,7 +105,7 @@ if($orderconversations){
 	   		<i class="fa fa-pencil-square-o"></i> <?php echo (__('order_conversation_page_Revison_Requested_By',"Revison Requested By"));?> <?php /*echo ($conversation->member_name);*/ echo ($sender_user_name); ?> 
 	   	</h5>
         <div class="media <?php echo (($conversation->sender_id==$loggedUserID? 'message-div-hover':' message-div'))?>"><!--- message-div Starts --->
-		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="48" height="48" class="message-image mr-3">
+		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="48" height="48" class="message-image me-3">
 	    <div class="media-body">
         <h5>
 			<a href="javascript:void(0)" class="seller-buyer-name"> <?php /*echo ($conversation->member_name);*/ echo ($sender_user_name);?> </a>
@@ -114,7 +114,7 @@ if($orderconversations){
 		<p class="message-desc">
 			<?php echo ($conversation->message); ?>
 			<?php if(!empty($conversation->file)){ ?>
-				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ml-1" download>
+				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ms-1" download>
 					<i class="icon-feather-download"></i> <?php echo $conversation->file; ?>
 				</a>				
 			<?php }?>
@@ -135,7 +135,7 @@ if($orderconversations){
 	   	</h5></div>
 		<div class="card-body">
            <div class="media <?php echo (($conversation->sender_id==$loggedUserID? 'message-div-hover':' message-div'))?>"><!--- message-div Starts --->
-            <img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image mr-3">
+            <img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image me-3">
             <div class="media-body">
             <h5>
                 <a href="javascript:void(0)" class="seller-buyer-name"> <?php /*echo ($conversation->member_name);*/ echo ($sender_user_name); ?> </a>
@@ -145,7 +145,7 @@ if($orderconversations){
             <p class="message-desc">
                 <?php echo ($conversation->message); ?>
                 <?php if(!empty($conversation->file)){ ?>
-                    <a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ml-1" download>
+                    <a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ms-1" download>
                         <i class="icon-feather-download"></i> <?php echo $conversation->file; ?>
                     </a>
                     
@@ -177,7 +177,7 @@ if($orderconversations){
         </div>
         <div class="card-body">
         <div class="media <?php echo (($conversation->sender_id==$loggedUserID? 'message-div-hover':' message-div'))?>"><!--- message-div Starts --->
-		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image mr-3">
+		<img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image me-3">
         <div class="media-body">
 	    <h5>
 			<a href="javascript:void(0)" class="seller-buyer-name"> <?php /*echo ($conversation->member_name);*/ echo ($sender_user_name); ?> </a>
@@ -186,7 +186,7 @@ if($orderconversations){
 		<p class="message-desc">
 			<?php echo ($conversation->message); ?>
 			<?php if(!empty($conversation->file)){ ?>
-				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ml-1" download>
+				<a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ms-1" download>
 					<i class="icon-feather-download"></i> <?php echo $conversation->file; ?>
 				</a>
 				
@@ -215,7 +215,7 @@ if($orderconversations){
         </div>
         <div class="card-body">
             <div class="media <?php echo (($conversation->sender_id==$loggedUserID? 'message-div-hover':' message-div'))?>"><!--- message-div Starts --->
-            <img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image mr-3">
+            <img src="<?php echo (getMemberLogo($conversation->sender_id)); ?>" width="50" height="50" class="message-image me-3">
             <div class="media-body">
             <h5>
                 <a href="javascript:void(0)" class="seller-buyer-name"> <?php /*echo ($conversation->member_name);*/ echo ($sender_user_name);  ?> </a>
@@ -224,7 +224,7 @@ if($orderconversations){
             <p class="message-desc">
                 <?php echo ($conversation->message); ?>
                 <?php if(!empty($conversation->file)){ ?>
-                    <a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ml-1" download>
+                    <a target="_blank" href="<?php echo (UPLOAD_HTTP_PATH.'orders-files/'.$conversation->file)?>" class="d-block mt-2 ms-1" download>
                         <i class="icon-feather-download"></i> <?php echo $conversation->file; ?>
                     </a>
                     

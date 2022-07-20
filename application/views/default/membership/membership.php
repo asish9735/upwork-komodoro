@@ -85,7 +85,7 @@
     <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
-        <h4 class="mb-2"><a class="d-flex collapsed" href="javascript:void(0)" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Why should I upgrade? <i class="ml-auto icon-feather-plus"></i></a></h4>        
+        <h4 class="mb-2"><a class="d-flex collapsed" href="javascript:void(0)" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Why should I upgrade? <i class="ms-auto icon-feather-plus"></i></a></h4>        
         <p class="mb-0">You get more earning opportunities and better savings as a Basic, Plus, Professional or Premier member. Bid on more projects, add more skills, save on project listing upgrades and unlock special rewards!</p>
     </div>
 
@@ -98,7 +98,7 @@
   </div>
   <div class="card">
     <div class="card-header" id="headingTwo">
-      <h4 class="mb-2"><a class="d-flex collapsed" href="javascript:void(0)" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Can I change plans? <i class="ml-auto icon-feather-plus"></i></a></h4>        
+      <h4 class="mb-2"><a class="d-flex collapsed" href="javascript:void(0)" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Can I change plans? <i class="ms-auto icon-feather-plus"></i></a></h4>        
       <p class="mb-0">Of course! Upgrade your membership plan at anytime to get additional benefits immediately. Alternatively, you can downgrade your membership and continue to receive the benefits of your current membership until it expires, before switching to the lower membership tier.</p>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
@@ -109,7 +109,7 @@
   </div>
   <div class="card">
     <div class="card-header" id="headingThree">
-      <h4 class="mb-2"><a class="d-flex collapsed" href="javascript:void(0)" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How much will my project cost total? <i class="ml-auto icon-feather-plus"></i></a></h4>
+      <h4 class="mb-2"><a class="d-flex collapsed" href="javascript:void(0)" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How much will my project cost total? <i class="ms-auto icon-feather-plus"></i></a></h4>
       <p class="mb-0">Clients can post either hourly or fixed-price jobs. Describe your project in as much detail as possible and freelancers will submit a bid with their proposed cost. Most payments are subject to a standard 5% processing fee.</p>      
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">

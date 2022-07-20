@@ -322,7 +322,7 @@ $logo=getMemberLogo($bid);
 			html+='<label for="title"><b>Amount</b></label>';
 			html+='<div class="input-group">';
 			html+='<input type="text" name="milestone_amount_'+new_row+'" id="milestone_amount_'+new_row+'" class="milestone_amount form-control">';
-			html+='<div class="input-group-append ml-3">';
+			html+='<div class="input-group-append ms-3">';
 			html+='<button class="text-danger" onclick="removeRow(this)"><i class="icon-feather-x" style="font-size:20px"></i></button>';
 			html+='</div>';
 			html+='</div>';

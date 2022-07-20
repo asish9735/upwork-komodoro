@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<span id="mobile_codeError" class="rerror"></span>			
 		</div>
         
-			<button class="btn btn-site mr-2 locationUpdateBTN"><?php echo __('setting_contact_info_update','Update');?></button>
+			<button class="btn btn-site me-2 locationUpdateBTN"><?php echo __('setting_contact_info_update','Update');?></button>
 			<a href="javascript:void(0)" class="btn btn-secondary" id="cancel_location"><?php echo __('setting_contact_info_cancel','Cancel');?> </a>
 			
 </form>

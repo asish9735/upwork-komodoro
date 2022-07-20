@@ -376,7 +376,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'upwork_session';
+$config['sess_cookie_name'] = 'komodoro_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = APPPATH . 'temp/';
 $config['sess_match_ip'] = FALSE;

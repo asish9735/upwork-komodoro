@@ -138,7 +138,7 @@ $currency=priceSymbol();
                     <?php }?>
                     <input type="text" name="milestone_amount_<?php echo $pmid;?>" id="milestone_amount_<?php echo $pmid;?>" class="milestone_amount form-control" value="<?php echo $milestone->bid_milestone_amount;?>" onKeyUp="updateTotal()" style="border-radius:0.25rem">
                     <?php if($k>0){?>
-                    <div class="input-group-append ml-3">
+                    <div class="input-group-append ms-3">
                       <button class="btn btn-danger btn-circle mt-1" onclick="removeRow(this)" style="border-radius:50%; font-size:1.125rem;"><i class="icon-feather-x"></i></button>
                     </div>
                   </div>
@@ -474,7 +474,7 @@ $currency=priceSymbol();
 			html+='<label for="title"><b>Amount</b></label>';
 			html+='<div class="input-group">';
 			html+='<input type="text" name="milestone_amount_'+new_row+'" id="milestone_amount_'+new_row+'" class="milestone_amount form-control" onKeyUp="updateTotal()">';
-			html+='<div class="input-group-append ml-3">';
+			html+='<div class="input-group-append ms-3">';
 			html+='<button class="btn btn-danger btn-circle mt-1" onclick="removeRow(this)" style="border-radius:50%; font-size:1.125rem;"><i class="icon-feather-x"></i></button>';
 			html+='</div>';
 			html+='</div>';

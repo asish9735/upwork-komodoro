@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>			
 		</div>
-        <button class="btn btn-site mr-2 accountUpdateBTN"><?php echo __('setting_contact_info_update','Update');?></button>
+        <button class="btn btn-site me-2 accountUpdateBTN"><?php echo __('setting_contact_info_update','Update');?></button>
 		<a href="javascript:void(0)" class="btn btn-secondary" id="cancel_account_info"><?php echo __('setting_contact_info_cancel','Cancel');?> </a>
 		</form>
 	</div>

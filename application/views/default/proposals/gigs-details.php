@@ -167,9 +167,9 @@ if($proposal->proposal_video){
               	<li>
                 <div class="freelancer-rating">
                     <div class="star-rating" data-rating="<?php echo round($average_rating,1);?>"></div>
-                    <span class="badge badge-primary ml-1" style="    vertical-align: text-bottom;"><?php echo $count_reviews;?></span>
+                    <span class="badge badge-primary ms-1" style="    vertical-align: text-bottom;"><?php echo $count_reviews;?></span>
                 </div>
-                  <!-- <span class="text-warning"><i class="icon-line-awesome-star"></i> <?php echo $average_rating;?></span> <span class="text-muted ml-1">(<?php echo $count_reviews;?>)</span> -->
+                  <!-- <span class="text-warning"><i class="icon-line-awesome-star"></i> <?php echo $average_rating;?></span> <span class="text-muted ms-1">(<?php echo $count_reviews;?>)</span> -->
                 </li>
               	<li><i class="icon-feather-calendar"></i> <?php echo date('d M, Y',strtotime($proposal->proposal_date));?></li>
               	<li><i class="icon-feather-eye"></i> <?php echo $proposal->proposal_views;?></li>

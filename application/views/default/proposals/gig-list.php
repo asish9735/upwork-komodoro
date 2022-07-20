@@ -100,7 +100,7 @@ $proposal_order_queue=$this->db->where('proposal_id',$proposal['proposal_id'])->
         <div class="card-price"><h3><?php echo CURRENCY;?><?php echo $proposal['display_price'];?></h3> <span><i class="icon-feather-eye"></i> <?php echo $proposal['proposal_views'];?></span></div>
         <!-- <div class="star-rate"><i class="icon-material-outline-star"></i> <?php // echo round($average_rating,2);?></div>
         <div class="card-bottom">        
-        	<a href="<?php // echo $url;?>" class="btn btn-outline-site btn-sm ml-auto">Buy Now</a>
+        	<a href="<?php // echo $url;?>" class="btn btn-outline-site btn-sm ms-auto">Buy Now</a>
         </div> -->
     </div>
 </div>

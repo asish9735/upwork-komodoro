@@ -2177,7 +2177,7 @@ if(!function_exists('getMemberLogo')){
 		if($organization_id){
 			return getCompanyLogo($organization_id);
 		}
-		$userimage=IMAGE.'default/thumb/default-member-logo.svg';
+		$userimage=IMAGE.'default/thumb/default-member-logo.png';
 		$logo=getFieldData('logo','member_logo','','',array('status'=>1,'member_id'=>$member_id));
 		if($logo && file_exists(UPLOAD_PATH.'member-logo/'.$logo)){
 			$userimage=UPLOAD_HTTP_PATH.'member-logo/'.$logo;
@@ -2187,7 +2187,7 @@ if(!function_exists('getMemberLogo')){
 }
 if(!function_exists('getCompanyLogo')){
 	function getCompanyLogo($company_id=''){
-		$userimage=IMAGE.'default/thumb/default-organization-logo.svg';
+		$userimage=IMAGE.'default/thumb/default-organization-logo.png';
 		$logo=getFieldData('logo','organization_logo','','',array('organization_id'=>$company_id));
 		if($logo && file_exists(UPLOAD_PATH.'company-logo/'.$logo)){
 			$userimage=UPLOAD_HTTP_PATH.'company-logo/'.$logo;

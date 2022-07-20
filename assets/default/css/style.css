@@ -586,7 +586,7 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 	color:#333
 }
 .thumbnail_sec > a:hover {
-	color: #40de00
+	color: var(--siteColor)
 }
 .thumbnail_sec > a.ico {	
 	vertical-align: middle;
@@ -890,7 +890,7 @@ ul.totalList > li > i {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.dashboard-box .job-listing h4.job-listing-title {
+.dashboard-box .job-listing h5.job-listing-title {
     max-width: 80%;
 }
 .job-listing .job-listing-description p {
@@ -902,7 +902,6 @@ ul.totalList > li > i {
     -webkit-box-orient: vertical;
 }
 .freelancer-intro > h5 {
-	font-size: 1.063rem;
 	margin-bottom: 0;
 	text-transform:capitalize
 }
@@ -1074,7 +1073,7 @@ ul.skill-tags > li {
 	padding:0.5rem 1rem;
 }
 .attachmentFile ul> li>a:hover{
-	color:#37bf00
+	color: var(--siteColor)
 }
 .attachmentFile ul> li>a h5{
     margin-bottom: 0;
@@ -1692,7 +1691,7 @@ ul.postJobStep li a i:last-child {
 	color:#333
 }
 .thumbnail_sec > a:hover {
-	color: #40de00
+	color: var(--siteColor)
 }
 .thumbnail_sec > a.ico > i{	
 	vertical-align: middle;
@@ -1733,6 +1732,10 @@ ul.p-search > li > a:hover{
 }
 .hourly-rate small{
 	font-size: 0.65em;
+}
+.freelancers-grid-layout .card-gigs, .freelancers-grid-layout .card-project{
+	margin-left: 10px;
+	margin-right: 10px;
 }
 .card-gigs, .card-project{
 	background-repeat: no-repeat;
@@ -2018,6 +2021,41 @@ ul.d-list > li{
 }
 .backbtnproposal{
 	margin-right: 0.5rem;	
+}
+ul.package {
+	margin-bottom: 0;
+    overflow-x: auto;
+}
+/*ul.package > li {
+	margin-bottom:1rem;
+}*/
+ul.package > li:last-child {
+	margin-bottom: 0;
+}
+ul.package > li h4 {
+	margin-top: 1rem;
+}
+ul.package > li > ul {
+	display: flex;
+}
+ul.package > li > ul > li {
+	flex: 1;
+	padding: 0.5rem 1rem;
+	border-left: 1px solid #dfdfdf;
+	min-width: 200px;
+}
+ul.package > li:nth-child(2) > ul {
+	align-items: center;
+}
+ul.package > li > ul > li:first-child {
+	border-left: 0;
+    min-width: 150px;
+}
+ul.package > li .btn {
+	margin-bottom: 1rem;
+}
+.section-package textarea.form-control {
+    font-size: 0.938rem;
 }
 
 

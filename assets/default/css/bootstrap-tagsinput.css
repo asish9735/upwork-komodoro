@@ -112,7 +112,7 @@
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #40de00;
+  background-color: var(--siteColor);
 }
 #editprofile_skill .bootstrap-tagsinput span.tag {
 	float:none;

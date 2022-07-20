@@ -10,42 +10,43 @@
   <div class="dashboard-content-container" >
     <div class="dashboard-content-inner">
       <?php if(!$is_email_verified){?>
-      <div class="mx-auto alert alert-site">
-        <span> <i class="icon-material-outline-highlight-off text-danger"></i><?php echo __('dashboard_freelancer_email_not_verify','Your email is not verified.');?> <a href="<?php D(VZ);?>" class="resendEmail"><?php echo __('dashboard_freelancer_resend_email','Resend Email');?></a> </span>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="icon-feather-x"></i></button>
-      </div>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong><?php echo __('dashboard_freelancer_email_not_verify','Your email is not verified.');?></strong> <a href="<?php D(VZ);?>" class="resendEmail"><?php echo __('dashboard_freelancer_resend_email','Resend Email');?></a>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+      
       <?php }elseif(!$is_doc_verified){?>
       <div class="mx-auto alert alert-warning text-center">
-        <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i><?php echo __('dashboard_freelancer_verify_profile','Please verify your profile.');?><a href="<?php echo URL::get_link('verifyDocumentURL');?>" class="btn btn-site btn-sm ml-2"><?php echo __('dashboard_freelancer_verify_now','Verify Now');?></a></p>
+        <p class="mb-0"> <i class="icon-material-outline-highlight-off text-danger"></i><?php echo __('dashboard_freelancer_verify_profile','Please verify your profile.');?><a href="<?php echo URL::get_link('verifyDocumentURL');?>" class="btn btn-site btn-sm ms-2"><?php echo __('dashboard_freelancer_verify_now','Verify Now');?></a></p>
       </div>
       <?php }?>
       <div class="fun-facts-container">               
-      <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('ContractList');?>?show=pending'">
-          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" /></div>
+      <div class="fun-fact" data-fun-fact-color="#8e1ef1" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('ContractList');?>?show=pending'">
+          <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>handshake.png" alt="" height="64" width="64" /></div>
           <div class="fun-fact-text"> <span><?php echo __('dashboard_employer_open_contract','Open Contract');?></span>
-            <h4><strong><?php D($memberInfo->open_contract);?></strong></h4>
+            <h3><strong><?php D($memberInfo->open_contract);?></strong></h3>
           </div>
         </div>
-        <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('ContractList');?>?show=completed'">
+        <div class="fun-fact" data-fun-fact-color="#8e1ef1" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('ContractList');?>?show=completed'">
         
-        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>completed.png" alt="" /></div>
+        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>completed.png" alt="" height="64" width="64" /></div>
           <div class="fun-fact-text">
             <span><?php echo __('dashboard_employer_close_contract','Close Contract');?></span>
-            <h4><strong><?php D($memberInfo->complete_contract);?></strong></h4>
+            <h3><strong><?php D($memberInfo->complete_contract);?></strong></h3>
           </div>
         </div>
       
-        <div class="fun-fact" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('TransactionHistoryURL');?>'">
-        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>money.png" alt="" /></div>
+        <div class="fun-fact" data-fun-fact-color="#8e1ef1" style="cursor:pointer;" onclick="window.location.href='<?php echo get_link('TransactionHistoryURL');?>'">
+        <div class="fun-fact-icon"><img src="<?php echo IMAGE;?>money.png" alt="" height="64" width="64" /></div>
           <div class="fun-fact-text"> <span><?php echo __('dashboard_employer_total_spent','Total Spent');?></span>
-          <h4><?php D($currency);?><strong><?php D(priceFormat($memberInfo->total_spent));?></strong></h4>
+          <h3><?php D($currency);?><strong><?php D(priceFormat($memberInfo->total_spent));?></strong></h3>
           </div>
         </div>
       </div>
       <div class="dashboard-box activity-feed"> 
         <!-- Headline -->
         <div class="headline">
-          <h3><?php echo __('dashboard_freelancer_activity_feed','Activity Feed');?></h3>
+          <h4><?php echo __('dashboard_freelancer_activity_feed','Activity Feed');?></h4>
         </div>
         <div class="content">
           <ul class="dashboard-box-list">
@@ -74,8 +75,8 @@
                   <a href="<?php echo $url;?>" class="job-listing-company-logo"> <img src="<?php echo $logo;?>" alt=""> </a>                   
                   <!-- Details -->
                   <div class="job-listing-description">
-                  	<span class="float-right text-muted d-none d-md-block"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
-                    <h4 class="job-listing-title mb-1 mw-100"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h4>                    
+                  	<span class="float-end text-muted d-none d-md-block"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
+                    <h5 class="job-listing-title mb-1 mw-100"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h5>                    
                     <div class="job-listing-footer">
                     <ul>
                       <li><i class="icon-material-outline-account-circle"></i> <?php echo $sender_name;?></li>
@@ -103,7 +104,7 @@
     <div class="dashboard-box "> 
         <!-- Headline -->
         <div class="headline">
-          <h3><?php echo __('dashboard_freelancer_recent_contract','Recent contract');?></h3>
+          <h4><?php echo __('dashboard_freelancer_recent_contract','Recent contract');?></h4>
         </div>
         <div class="content">
           <ul class="dashboard-box-list">
@@ -123,7 +124,7 @@
                 <div class="job-listing-details"> 
                   <!-- Details -->
                   <div class="job-listing-description">
-                    <h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
+                    <h5 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a>
                       <?php /* if($v['contract_status']==1){?>
                       <span class="dashboard-status-button green">Approved</span>
                       <?php }elseif($v['contract_status']==2){?>
@@ -131,7 +132,7 @@
                       <?php }elseif($v['contract_status']==0){?>
                       <span class="dashboard-status-button yellow">Pending</span>
                       <?php }*/?>
-                    </h4>
+                    </h5>
                     
                     <!-- Job Listing Footer -->
                     <div class="job-listing-footer if-button">
@@ -173,7 +174,7 @@
           <!-- Dashboard Box -->
           <div class="dashboard-box main-box-in-row">
             <div class="headline">
-                <h3><i class="icon-feather-bar-chart-2 text-site"></i><?php echo __('dashboard_employer_spent_statics','Spent Statics');?></h3>
+                <h4><?php echo __('dashboard_employer_spent_statics','Spent Statics');?></h4>
                 <div class="sort-by" hidden>
                     <select class="selectpicker hide-tick">
                         <option><?php echo __('dashboard_freelancer_last_month','Last 6 Months');?></option>
@@ -195,7 +196,7 @@
           <!-- Dashboard Box -->
           <div class="dashboard-box main-box-in-row">
             <div class="headline">
-              <h3><i class="icon-feather-pie-chart text-site"></i><?php echo __('dashboard_freelancer_project_statics','Project Statics');?></h3>
+              <h4><?php echo __('dashboard_freelancer_project_statics','Project Statics');?></h4>
             </div>
             <div class="content"> 
               <!-- Chart -->

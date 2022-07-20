@@ -31,9 +31,9 @@
         
         <?php /*?>
         	<div class="d-flex">
-            	<a href="javascript:void(0)" class="btn btn-outline-site mr-3" onclick="$('#filterAdvance').toggle();"><i class="icon-feather-filter"></i><?php echo __('job_findjobs_filter','Filter');?> </a>   
-                <a href="javascript:void(0)" class="btn btn-outline-site mr-3" hidden><i class="icon-feather-heart"></i><?php echo __('job_findjobs_save_search','Save Search');?> </a>                                 
-                <div class="sort-by ml-auto">
+            	<a href="javascript:void(0)" class="btn btn-outline-site me-3" onclick="$('#filterAdvance').toggle();"><i class="icon-feather-filter"></i><?php echo __('job_findjobs_filter','Filter');?> </a>   
+                <a href="javascript:void(0)" class="btn btn-outline-site me-3" hidden><i class="icon-feather-heart"></i><?php echo __('job_findjobs_save_search','Save Search');?> </a>                                 
+                <div class="sort-by ms-auto">
                 <div class="sort-by">
                     <span><?php echo __('job_findjobs_sort_by','Sort by:');?></span>
                     <select class="selectpicker hide-tick" name="order_by"  onchange="filterForm()">

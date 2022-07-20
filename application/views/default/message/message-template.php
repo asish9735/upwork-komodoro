@@ -101,7 +101,7 @@ Vue.component('chat-list', {
 <script type="text/x-template" id="active-chat-header-template">
 <div class="messages-headline">
 	<div class="d-flex align-items-center">  
-	<a href="javascript:void(0)" @click="showList" class="show_me visible-under-991 mr-3" style="font-size: 1.5rem;"><i class="icon-material-outline-arrow-back"></i></a>
+	<a href="javascript:void(0)" @click="showList" class="show_me visible-under-991 me-3" style="font-size: 1.5rem;"><i class="icon-material-outline-arrow-back"></i></a>
 	<div style="flex:1;">
 	<h4><a :href="active_chat.profile_url" target="_blank">{{active_chat.name}}</a></h4>
 	<p class="mb-0" v-if="active_chat.project_name.length > 0"><strong  v-if="active_chat.is_proposal">Catalog: </strong><a :href="active_chat.project_url" target="_blank">{{active_chat.project_name}}</a></p>

@@ -447,7 +447,7 @@ if ($cms_temp) {
                 </div>
                 <div class="d-flex align-items-end justify-content-between">
                   <h3 class="budget mb-0"><?php echo $budget > 0 ? $currency. $budget : '';?></h3>
-                  <!-- <span class="bookmark-icon ml-auto"></span> -->
+                  <!-- <span class="bookmark-icon ms-auto"></span> -->
                   <a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-outline-site btn-sm">Apply Now</a> 
                 </div>
             </div>

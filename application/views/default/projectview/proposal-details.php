@@ -63,7 +63,7 @@ $logo=getMemberLogo($member_id);
           </div>
         </div>
         <div class="right-side">
-          <div class="ml-auto" style="min-width: 150px;">
+          <div class="ms-auto" style="min-width: 150px;">
           	<p class="mb-0"><?php echo __('projectview_proposal_job_success','Job Success');?> <strong><?php echo $memberInfo->success_rate;?>%</strong></p>
             <div class="progress" style="max-width:200px; height:6px">
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $memberInfo->success_rate;?>%" aria-valuenow="<?php echo $memberInfo->success_rate;?>" aria-valuemin="0" aria-valuemax="100"></div>
@@ -131,7 +131,7 @@ $logo=getMemberLogo($member_id);
               <li class="milestone-contain">
               	<div class="boxed-list-item"> 
                 <h4 class="mb-0"><?php echo __('projectview_proposal_total_bids','Total Bids:');?></h4>
-                <h4 class="mb-0 ml-auto">
+                <h4 class="mb-0 ms-auto">
                   <ec id="profile-hourly-data">
                     <?php D(priceSymbol().priceFormat($proposaldetails['proposal']->bid_amount));?>
                   </ec>

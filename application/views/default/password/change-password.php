@@ -15,6 +15,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <label><?php echo __('password_change_C_password','Confirm Password');?></label>
     <input type="text" class="form-control input-text with-border" value="" name="confirm_password" id="confirm_password" placeholder="Enter Confirm Password">
     <span id="confirm_passwordError" class="rerror"></span> </div>
-  <button class="btn btn-site mr-2 passwordUpdateBTN"><?php echo __('password_change_update','Update');?></button>
+  <button class="btn btn-site me-2 passwordUpdateBTN"><?php echo __('password_change_update','Update');?></button>
   <a href="javascript:void(0)" class="btn btn-secondary" id="cancel_password"><?php echo __('password_change_cancel','Cancel');?> </a>
 </form>

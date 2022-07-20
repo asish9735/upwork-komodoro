@@ -88,7 +88,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
                 <?php }?> 
                 </div>
              
-              <div class="ml-auto align-self-center">
+              <div class="ms-auto align-self-center">
               <a href="<?php echo get_link('DisputeDetails').'/'.md5($milestone->contract_milestone_id);?>" class="btn btn-site btn-sm"><?php echo __('contract_details_view','View');?></a>
               </div>
               
@@ -183,7 +183,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
                 <?php if($milestone->is_approved){?>
                 <b><?php echo __('contract_details_complete','Completed:');?></b><?php echo $milestone->approved_date;}else{?><b><?php echo __('contract_dispute_deu_date','Due Date');?>:</b> <?php echo $milestone->milestone_due_date; }?> </div>
               </a>
-              <div class="ml-auto align-self-center">
+              <div class="ms-auto align-self-center">
               <?php 
               if(!$contractDetails->is_contract_ended){
               if($is_owner && $milestone->is_approved!=1){

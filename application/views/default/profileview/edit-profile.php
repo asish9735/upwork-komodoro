@@ -72,7 +72,7 @@ if($login_user_id){
           </div>
         </div>
         <div class="right-side">        	
-          <div class="ml-auto" style="min-width: 150px;">          	
+          <div class="ms-auto" style="min-width: 150px;">          	
             <p class="mb-0"><?php echo __('profileview_profile_job_success','Job Success');?> <strong><?php echo $memberInfo->success_rate;?>%</strong></p>
             <div class="progress" style="max-width:200px; height:6px;margin-bottom:10px">
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $memberInfo->success_rate;?>%" aria-valuenow="<?php echo $memberInfo->success_rate;?>" aria-valuemin="0" aria-valuemax="100"></div>
@@ -179,7 +179,7 @@ if($login_user_id){
                   <ec id="profile-hourly-data">
                     <?php if($memberInfo->member_hourly_rate && $memberInfo->member_hourly_rate>0){D(priceSymbol().priceFormat($memberInfo->member_hourly_rate));}elseif(!$is_editable){D('Not set');}else{D('Set');}?>
                   </ec>
-                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ml-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
+                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ms-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
                 </li>
                 <li>
                 	<span><?php echo __('profileview_profile_work_hour','Total Working Hour');?></span>
@@ -213,7 +213,7 @@ if($login_user_id){
                     	}?>
                   </ec>
                   
-                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ml-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
+                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ms-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
                 </li>
               </ul>
               

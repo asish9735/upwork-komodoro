@@ -25,8 +25,8 @@ if($is_owner){
         if($contractDetails->contract_status==0){
             if($current_member!=$contractDetails->offer_by){
             ?>
-            <button class="btn btn-success btn-sm acceptbtn mr-2"><?php echo __('contract_offer_accept','Offer Accept');?></button>
-            <button class="btn btn-danger btn-sm denybtn mr-2"><?php echo __('contract_offer_reject','Offer Reject');?></button>
+            <button class="btn btn-success btn-sm acceptbtn me-2"><?php echo __('contract_offer_accept','Offer Accept');?></button>
+            <button class="btn btn-danger btn-sm denybtn me-2"><?php echo __('contract_offer_reject','Offer Reject');?></button>
             <?php	
             }
         }elseif($contractDetails->contract_status==1){

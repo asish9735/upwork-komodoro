@@ -53,7 +53,7 @@ $is_online=is_online($v['owner_id']);
 			<?php }?>
 			</li>
                     <li><i class="icon-material-outline-access-time"></i> <?php D(get_time_ago($v['project_posted_date']));?></li>      
-                    <!--<li class="ml-md-auto">
+                    <!--<li class="ms-md-auto">
                     <a href="#" class="btn btn-circle btn-light active"><i class="icon-feather-heart"></i></a>
                         <a href="<?php // echo VZ;?>" class="btn btn-circle btn-light action_report" data-pid="<?php echo md5($v['project_id']);?>"><i class="icon-material-outline-bug-report"></i></a>     
                     </li>--> 

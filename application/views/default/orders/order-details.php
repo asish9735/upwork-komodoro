@@ -99,12 +99,12 @@ $contract_term_url=get_link('OrderTermURL').md5($orderDetails->order_id);
             <div class="card">
               <div class="card-body">
                 <div class="media">
-                  <img src="<?php echo $proposal_image; ?>" alt="" class="img-fluid rounded border mr-3 d-md-block d-none" width="128" />
+                  <img src="<?php echo $proposal_image; ?>" alt="" class="img-fluid rounded border me-3 d-md-block d-none" width="128" />
                   <div class="media-body">
                     <?php if($orderDetails->seller_id == $loggedInUserId){ ?>
                     <div class="d-flex align-items-end">
                     <h4><?php echo (__('order_details_page_orderID_number',"Order #"));?><?php echo make_order_number($orderDetails->order_number); ?></h4>
-                    <a href="<?php echo get_link('myProposalDetailsURL')."/".$orderDetails->proposal_url; ?>" class="btn btn-site ml-auto" target="_blank"> <?php echo (__('order_details_page_View_Proposal',"View Proposal/Service"));?></a></div>
+                    <a href="<?php echo get_link('myProposalDetailsURL')."/".$orderDetails->proposal_url; ?>" class="btn btn-site ms-auto" target="_blank"> <?php echo (__('order_details_page_View_Proposal',"View Proposal/Service"));?></a></div>
                     <ul class="item-list">
                         <li>Buyer: 
                       <?php /*ucfirst(echo ($orderDetails->buyer['member']->member_name));*/ echo ($orderDetails->buyer->member_name); ?>
@@ -285,7 +285,7 @@ if($orderDetails->order_status == ORDER_PENDING or $orderDetails->order_status =
                     <div class="uploadButton">
                         <input class="uploadButton-input" type="file" accept="image/*, application/pdf" name="delivered_file" id="delivered_file" >
                         <label class="uploadButton-button" for="delivered_file"><?php echo (__('global_Choose_File',"Choose File"));?></label> 
-                        <span class="uploadButton-file-name"><i class="icon-feather-info"></i>&nbsp;<?php echo (__('modal_deliver_order_attachment_note',"NB: Maximum size 25MB"));?></span>                 <button type="submit" name="submit_delivered" class="btn btn-site ml-auto saveBTN"><?php echo (__('modal_deliver_Deliver_Order',"Deliver Order"));?></button>
+                        <span class="uploadButton-file-name"><i class="icon-feather-info"></i>&nbsp;<?php echo (__('modal_deliver_order_attachment_note',"NB: Maximum size 25MB"));?></span>                 <button type="submit" name="submit_delivered" class="btn btn-site ms-auto saveBTN"><?php echo (__('modal_deliver_Deliver_Order',"Deliver Order"));?></button>
                     </div>
                     
                     <div class="upload_file_div mt-3"></div>
@@ -408,7 +408,7 @@ function uploadData(id,formID){
 		$("#"+formID+" .upload_file_div").empty();
            if(data.status=='OK'){
     			var name = data.upload_response.original_name;
-    			$("#"+formID+" .upload_file_div").html('<input type="hidden" name="attachment" value=\''+JSON.stringify(data.upload_response)+'\'/> <p>'+name+'<a href="javascript:void(0)" class="ml-3 text-danger" onclick="$(this).parent().empty()"><i class="icon-feather-trash"></i></a></p>');
+    			$("#"+formID+" .upload_file_div").html('<input type="hidden" name="attachment" value=\''+JSON.stringify(data.upload_response)+'\'/> <p>'+name+'<a href="javascript:void(0)" class="ms-3 text-danger" onclick="$(this).parent().empty()"><i class="icon-feather-trash"></i></a></p>');
 		}
 	});
 }

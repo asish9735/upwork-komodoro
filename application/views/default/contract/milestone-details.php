@@ -52,7 +52,7 @@ $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDeta
                  <?php if(!$is_owner && $contractMilestoneDetails->is_approved!=1){
                  	if($contractMilestoneDetails->is_escrow){
                  	?>
-                <a href="javascript:void(0)" class="btn btn-site  float-right submit_work ml-auto">
+                <a href="javascript:void(0)" class="btn btn-site  float-right submit_work ms-auto">
                 <icon class="icon-material-outline-add"></icon>
                 <?php echo __('contract_milestone_sub_Work','Submit Work');?></a> 
                 <?php }}?>
