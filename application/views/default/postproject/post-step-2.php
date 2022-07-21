@@ -2,22 +2,22 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($memberInfo,TRUE);
 ?>
-<div id="dataStep-2" style="display: none">	
-<div class="dashboard-box margin-top-0">
+<div id="dataStep-2" style="display: none1">	
+	<div class="dashboard-box margin-top-0">
     <!-- Headline -->
     <div class="headline">
-        <h3><?php echo __('postproject_description','Description');?>  </h3>
+        <h4><?php echo __('postproject_description','Description');?>  </h4>
     </div>
     <div class="content with-padding">    
             <div class="submit-field">
-                <label><?php echo __('postproject_description_about','Description about project');?></label>
+                <label class="form-label"><?php echo __('postproject_description_about','Description about project');?></label>
                 <textarea rows="4" class="form-control" name="description" id="description"><?php if($projectData){echo $projectData['project_additional']->project_description;}?></textarea>
                 <span id="descriptionError" class="rerror"></span>
 
             </div>
         
             <div class="submit-field">
-                <label><?php echo __('postproject_project_attachment','Project attachment');?></label>                
+                <label class="form-label"><?php echo __('postproject_project_attachment','Project attachment');?></label>                
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                 <div class="upload-area" id="uploadfile">
                     <p><?php echo __('postproject_drag','Drag');?> &amp; <?php echo __('postproject_drop_file','drop file here');?> <br /><?php echo __('postproject_or','or');?> <br /> <span class="text-site"><?php echo __('click','click');?></span> <?php echo __('postproject_select_file','to select file');?> </p>
@@ -47,10 +47,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					?>
                 </div>
             </div>        
-    </div>
-    <div class="dashboard-box-footer">
-        <button class="btn btn-secondary backbtnproject" data-step="2"><?php echo __('postproject_back','Back');?></button>
-        <button class="btn btn-site nextbtnproject" data-step="2"><?php echo __('postproject_next','Next');?></button>
-    </div>
-</div>
+    </div>    
+	</div>
+	<button class="btn btn-secondary backbtnproject" data-step="2"><?php echo __('postproject_back','Back');?></button>
+	<button class="btn btn-site nextbtnproject" data-step="2"><?php echo __('postproject_next','Next');?></button>
 </div>

@@ -9,11 +9,11 @@
   <!-- Dashboard Content -->
   <div class="dashboard-content-container" >
     <div class="dashboard-content-inner">
-      <?php if(!$is_email_verified){?>
+      <?php if(!$is_email_verified){?>        
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong><?php echo __('dashboard_freelancer_email_not_verify','Your email is not verified.');?></strong> <a href="<?php D(VZ);?>" class="resendEmail"><?php echo __('dashboard_freelancer_resend_email','Resend Email');?></a>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+      <strong><?php echo __('dashboard_freelancer_email_not_verify','Your email is not verified.');?></strong> <a href="<?php D(VZ);?>" class="resendEmail"><?php echo __('dashboard_freelancer_resend_email','Resend Email');?></a>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
       
       <?php }elseif(!$is_doc_verified){?>
       <div class="mx-auto alert alert-warning text-center">

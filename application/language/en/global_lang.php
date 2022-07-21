@@ -8,7 +8,7 @@
  * @link	https://codeigniter.com
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+$lang['optional'] ='(optional)';
 $lang['how_it_works'] ='How it works';
 $lang['contact_us'] ='Contact Us';
 $lang['load_more'] ='Load More';

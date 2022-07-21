@@ -9,8 +9,7 @@ $currency=priceSymbol();
 	<!-- Dashboard Sidebar / End -->
 
 
-	<!-- Dashboard Content
-	================================================== -->
+	<!-- Dashboard Content -->
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner" >		
 		<?php
@@ -27,10 +26,10 @@ $currency=priceSymbol();
         <?php 
         }
         ?>
-        <div class="dashboard-box margin-top-0">
+        <div class="dashboard-box">
             <!-- Headline -->
             <div class="headline">
-                <h3><?php echo __('proposals_Manage_Catalog','Manage Catalog');?></h3>
+                <h4><?php echo __('proposals_Manage_Catalog','Manage Catalog');?></h4>
             </div>
             <div class="content">
                 <ul class="dashboard-box-list">

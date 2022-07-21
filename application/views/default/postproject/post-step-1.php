@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <h4> <?php echo __('postproject_title','Title');?> </h4>
     </div>
     <div class="content with-padding">
-      <label><?php echo __('postproject_project_name','Name of your project');?></label>
+      <label class="form-label"><?php echo __('postproject_project_name','Name of your project');?></label>
       <input type="text"  class="form-control" name="title" id="title" value="<?php if($projectData){echo $projectData['project']->project_title;}?>">
       <span id="titleError" class="rerror"></span> </div>
   </div>
@@ -64,6 +64,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span id="sub_categoryError" class="rerror"></span> </div>
     </div>
   </div>
-  <button class="btn btn-secondary backbtnproject" data-step="1"><?php echo __('postproject_back','Back');?></button>
-      <button class="btn btn-site nextbtnproject" data-step="1"><?php echo __('postproject_next','Next');?></button>
+	<?php /*?><button class="btn btn-secondary backbtnproject" data-step="1"><?php echo __('postproject_back','Back');?></button><?php */?>
+	<button class="btn btn-site nextbtnproject" data-step="1"><?php echo __('postproject_next','Next');?></button>
 </div>

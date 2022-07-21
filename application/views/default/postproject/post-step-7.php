@@ -3,15 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($memberInfo,TRUE);
 ?>
 
-<div id="dataStep-7" style="display: none">
-  <div class="dashboard-box margin-top-0"> 
+<div id="dataStep-7" style="display: none1">
+  <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-      <h3><?php echo __('postproject_review_post','Review and Post');?> </h3>
+      <h4><?php echo __('postproject_review_post','Review and Post');?> </h4>
     </div>
     <div class="content with-padding">
         <div class="submit-field mb-0">
-          <h5><b><?php echo __('postproject_title','Title');?></b> <a href="javascript:void(0)" class="edit-project float-right btn btn-outline-secondary btn-circle" data-popup="1" data-tippy-placement="top" title="Edit title"><i class="icon-feather-edit-2"></i></a></h5>
+          <h5><b><?php echo __('postproject_title','Title');?></b> <a href="javascript:void(0)" class="edit-project float-end btn btn-outline-secondary btn-circle" data-popup="1" data-tippy-placement="top" title="Edit title"><i class="icon-feather-edit-2"></i></a></h5>
           <label><?php echo __('postproject_project_name','Name of your project');?></label>
           <p id="preview_title"></p>
           <label><?php echo __('postproject_project_category','Project category');?></label>
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-      <h4><b><?php echo __('postproject_description','Description');?></b> <a href="javascript:void(0)" class="edit-project float-right btn btn-outline-secondary btn-circle" data-popup="2" data-tippy-placement="top" title="Edit Description"><i class="icon-feather-edit-2"></i></a></h4>
+      <h4><?php echo __('postproject_description','Description');?> <a href="javascript:void(0)" class="edit-project float-end btn btn-outline-secondary btn-circle" data-popup="2" data-tippy-placement="top" title="Edit Description"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding">
       <div class="submit-field mb-0">        
@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-    <h4><b><?php echo __('postproject_details','Details');?></b> <a href="javascript:void(0)" class="edit-project float-right btn btn-outline-secondary btn-circle" data-popup="3" data-tippy-placement="top" title="Edit Details"><i class="icon-feather-edit-2"></i></a></h4>
+    <h4><?php echo __('postproject_details','Details');?> <a href="javascript:void(0)" class="edit-project float-end btn btn-outline-secondary btn-circle" data-popup="3" data-tippy-placement="top" title="Edit Details"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding">
       <div class="submit-field">        
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-    	<h4><b><?php echo __('postproject_expertise','Expertise');?> </b> <a href="javascript:void(0)" class="edit-project float-right btn btn-outline-secondary btn-circle" data-popup="4" data-tippy-placement="top" title="Edit Expertise"><i class="icon-feather-edit-2"></i></a></h4>
+    	<h4><?php echo __('postproject_expertise','Expertise');?> <a href="javascript:void(0)" class="edit-project float-end btn btn-outline-secondary btn-circle" data-popup="4" data-tippy-placement="top" title="Edit Expertise"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
     <div class="content with-padding">
 		<div class="task-tags" id="preview_skills"></div>
@@ -72,9 +72,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-    	<h4><b><?php echo __('postproject_visibility','Visibility');?> </b> <a href="javascript:void(0)" class="edit-project float-right btn btn-outline-secondary btn-circle" data-popup="5" data-tippy-placement="top" title="Edit Visibility"><i class="icon-feather-edit-2"></i></a></h4>
+    	<h4><?php echo __('postproject_visibility','Visibility');?> <a href="javascript:void(0)" class="edit-project float-end btn btn-outline-secondary btn-circle" data-popup="5" data-tippy-placement="top" title="Edit Visibility"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
-    <div class="content with-padding padding-bottom-0">      
+    <div class="content with-padding pb-0">      
       <div class="row">
         <div class="col-xl-6">
             <div class="submit-field">        
@@ -94,9 +94,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
-    <h4><b><?php echo __('postproject_budget','Budget');?> </b> <a href="javascript:void(0)" class="edit-project float-right btn btn-outline-secondary btn-circle" data-popup="6" data-tippy-placement="top" title="Edit Budget"><i class="icon-feather-edit-2"></i></a></h4>
+    <h4><?php echo __('postproject_budget','Budget');?> <a href="javascript:void(0)" class="edit-project float-end btn btn-outline-secondary btn-circle" data-popup="6" data-tippy-placement="top" title="Edit Budget"><i class="icon-feather-edit-2"></i></a></h4>
     </div>
-    <div class="content with-padding padding-bottom-0">      
+    <div class="content with-padding pb-0">      
       <div class="row">
         <div class="col-xl-6">
           <div class="submit-field">
@@ -125,10 +125,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
       </div>
-    </div>
-    <div class="dashboard-box-footer">
-      <button class="btn btn-secondary backbtnproject" data-step="7"><?php echo __('postproject_back','Back');?></button>
-      <button class="btn btn-site nextbtnproject" data-step="7"><?php echo __('postproject_post','Post');?></button>
-    </div>
+    </div>    
   </div>
+  <button class="btn btn-secondary backbtnproject" data-step="7"><?php echo __('postproject_back','Back');?></button>
+  <button class="btn btn-site nextbtnproject" data-step="7"><?php echo __('postproject_post','Post');?></button>
 </div>

@@ -6,6 +6,7 @@
 	--siteHoverColor:#6600c0;
 	--webHoverColor:#222;
 	--rgbColor: 142, 30, 241;
+    --rgbSite: 142, 30, 241;
 }
 .numbered.color ol > li::before {
      border:1px solid var(--siteColor);
@@ -297,7 +298,7 @@
          box-shadow: 0 0 0 15px rgba(var(--rgbColor), 7%);
     }
      50% {
-         box-shadow: 0 0 0 28px rgba(var(--rgbColor), 10%));
+         box-shadow: 0 0 0 28px rgba(var(--rgbColor), 10%);
     }
 }
  .icon-box-check {
@@ -368,6 +369,7 @@
  
 /* custom color */
 .btn-site {
+    --bs-btn-focus-shadow-rgb: 142, 30, 241;
 	background-color:var(--siteColor);
 	color:#fff
 }

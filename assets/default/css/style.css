@@ -67,9 +67,7 @@ body {
 	background-color:#000;
 	color: #fff;
 }
-.form-group{
-	margin-bottom: 1rem;	
-}
+
 .row-5 [class^="col"], .row-5 [class*=" col"] {
  padding-left:5px;
  padding-right:5px;
@@ -89,6 +87,18 @@ body {
 .row-0 [class^="col"], .row-0 [class*=" col"] {
  padding-left:0;
  padding-right:0;
+}
+.-mb-3{
+	margin-bottom: -1rem;
+}
+.-mb-125{
+	margin-bottom: -1.25rem;
+}
+.-mb-4{
+	margin-bottom: -1.5rem;
+}
+.form-group{
+	margin-bottom: 1rem;
 }
 /* bootstrap start */
 .nav-tabs .nav-link {
@@ -246,14 +256,15 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
     background: #37A000;
 }
 .btn-circle {
-  position: relative;
+  position: absolute;
+  display: inline-block;
   width: 1.875rem;
   height: 1.875rem;
   text-align: center;
   padding: 0.313rem 0;
   font-size: 1rem;
   line-height: 1;
-  border-radius: 16px;
+  border-radius: 2rem;
 }
 .btn-circle.ico {
 	position:absolute;
@@ -1534,7 +1545,7 @@ ul.list-group-0 > li{
 ul.postJobStep{
 	background-color: #fff;
 	border-radius: 0.25rem;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+    /* box-shadow: 0 1px 3px rgb(0 0 0 / 10%); */
     overflow: hidden;
 }
 ul.postJobStep > li{
@@ -1551,7 +1562,7 @@ ul.postJobStep > li > a{
     position: relative;
 }
 ul.postJobStep li.active, ul.postJobStep li:hover{
-	background-color: rgba(100,190,67,0.1);
+	background-color:  rgba(var(--rgbColor), 10%);
 }
 ul.postJobStep li.active > a, ul.postJobStep li:hover > a{
 	border-left-color: var(--siteColor);

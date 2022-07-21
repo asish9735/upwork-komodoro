@@ -10,11 +10,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="dashboard-content-inner" >
 			
 			<!-- Dashboard Headline -->
-			<div class="dashboard-headline">
+			<?php /*?><div class="dashboard-headline">
 				<h3><?php echo __('contact_company_my_info','My Info');?></h3>				
-			</div>
+			</div><?php */?>
 	
-
 				<!-- Dashboard Box -->
 					<div class="dashboard-box margin-top-0">
 
@@ -286,7 +285,7 @@ var  main = function(){
                 <div class="avatar-upload">
                   	<input type="hidden" class="avatar-src" name="avatar_src">
                   	<input type="hidden" class="avatar-data" name="avatar_data">
-                  	<label for="avatarInput"> Profile Picture</label>
+                  	<label for="avatarInput" class="form-label">Profile Picture</label>
 
                   			<div class="uploadButton margin-top-0">
 								<input class="uploadButton-input avatar-input" type="file" id="avatarInput" name="avatar_file">

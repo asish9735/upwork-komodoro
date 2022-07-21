@@ -185,6 +185,9 @@ ul.skills li {
 #backtotop {
 	right: 25px;
 }
+.btn-circle {
+	right: 1rem;
+}
 @media only screen and (min-width: 768px) {
 
 }
@@ -563,7 +566,7 @@ ul.dashboard-box-list.if-double-button > li {
 	float: left;
 	left: 0px;
 }
-.dashboard-box-footer .backbtnproject {
+.backbtnproject {
 	margin-right:0.5rem
 }
 .dropdown-menu > li > a {

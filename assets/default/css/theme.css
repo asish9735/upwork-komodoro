@@ -12268,10 +12268,8 @@ ul.dashboard-box-list > li:hover {
 /* Listing Status*/
 .dashboard-status-button {
 	color: #fff;
-	border-radius: 0.25rem;
-	font-family: 'Rubik', Helvetica, sans-serif;
+	border-radius: 1rem;
 	font-size: 0.875rem;
-	font-weight: 500;
 	line-height: 20px;
 	padding: 2px 8px;
 	display: inline-block;
@@ -12596,6 +12594,7 @@ max-width: 100%
 }
 /* Avatar Switcher */
 .avatar-wrapper {
+	background-color: #eee;
 	position: relative;
 	width: 120px;
 	height: 120px;
