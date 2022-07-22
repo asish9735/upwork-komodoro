@@ -79,6 +79,9 @@ ul.display-inline li:last-child {
 .btn-circle.ico {
 	right: 1rem;
 }
+.edit_logo_btn.ico{
+	right: 0;
+}
 /*
 RTL SPACE 
 */
@@ -185,9 +188,7 @@ ul.skills li {
 #backtotop {
 	right: 25px;
 }
-.btn-circle {
-	right: 1rem;
-}
+
 @media only screen and (min-width: 768px) {
 
 }

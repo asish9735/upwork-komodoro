@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($memberInfo,TRUE);
 ?>
 
-<div id="dataStep-6" style="display: none1">
-  <div class="dashboard-box margin-top-0"> 
+<div id="dataStep-6" style="display: none">
+  <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">
       <h4><?php echo __('postproject_budget','Budget');?>  </h4>

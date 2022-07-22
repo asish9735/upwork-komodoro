@@ -18,6 +18,11 @@ $orderStatus=array(
 //$commission=($comission_percentage / 100 ) * $orderDetails->order_price;
 $proposal_image=UPLOAD_HTTP_PATH.'proposals-files/proposals-thumb/'.$orderDetails->proposal_image;
 ?>
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $orderDetails->proposal_title;?></h1>
+</div>
+</section>
 <section class="section">
 <div class="container">	 	
 <?php //require_once("orderIncludes/orderDetails.php"); ?>
@@ -37,7 +42,7 @@ $contract_term_url=get_link('OrderTermURL').md5($orderDetails->order_id);
 ?>
 
 <div class="order-page">
-        <h1><?php echo $orderDetails->proposal_title;?></h1>
+        
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>"><?php echo (__('order_details_page_Order_Activity',"Order Activity"));?></a> </li>
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
@@ -98,9 +103,9 @@ $contract_term_url=get_link('OrderTermURL').md5($orderDetails->order_id);
 
             <div class="card">
               <div class="card-body">
-                <div class="media">
-                  <img src="<?php echo $proposal_image; ?>" alt="" class="img-fluid rounded border me-3 d-md-block d-none" width="128" />
-                  <div class="media-body">
+                <div class="d-flex">
+                  <div class="flex-shrink-0"><img src="<?php echo $proposal_image; ?>" alt="" class="img-fluid rounded border d-md-block d-none" width="128" /></div>
+                  <div class="flex-grow-1 ms-3">
                     <?php if($orderDetails->seller_id == $loggedInUserId){ ?>
                     <div class="d-flex align-items-end">
                     <h4><?php echo (__('order_details_page_orderID_number',"Order #"));?><?php echo make_order_number($orderDetails->order_number); ?></h4>
@@ -113,7 +118,7 @@ $contract_term_url=get_link('OrderTermURL').md5($orderDetails->order_id);
                       <li><?php // echo (__('order_details_page_Status',"Status:"));?>  <span class="dashboard-status-button green"><?php echo ($orderStatus[$orderDetails->order_status]);?></span></li>                                               
                     </ul> 
                                          
-                    <h3><?php echo (CURRENCY) ; ?><?php echo ($orderDetails->order_price); ?></h3>  
+                    <h3><?php echo (CURRENCY) ; ?><b><?php echo ($orderDetails->order_price); ?></b></h3>  
                     <?php }elseif($orderDetails->buyer_id == $loggedInUserId){ ?>
                     
                     <h4><?php  echo $orderDetails->proposal_title; ?></h4>
@@ -273,7 +278,7 @@ if($orderDetails->order_status == ORDER_PENDING or $orderDetails->order_status =
 		<div class="modal-content mycustom-modal">
 			<div class="modal-header">
 				<h4 class="modal-title"> <?php echo (__('modal_deliver_order_heading',"Deliver Your Order Now"));?> </h4>
-				<button class="close" data-dismiss="modal"> <span>&times;</span> </button>
+				<button class="close" data-bs-dismiss="modal"> <span>&times;</span> </button>
 			</div>
 			<div class="modal-body">
 				<form method="post" id="deliverorderForm" onsubmit="return performAction(this);return false;">
@@ -301,7 +306,7 @@ if($orderDetails->order_status == ORDER_PENDING or $orderDetails->order_status =
       <div class="modal-content mycustom-modal">
         <div class="modal-header">
           <h5 class="modal-title"> <?php echo (__('modal_revision_request_heading',"Submit Your Revision Request Here"));?> </h5>
-          <button class="close" data-dismiss="modal"> <span>&times;</span> </button>
+          <button class="close" data-bs-dismiss="modal"> <span>&times;</span> </button>
         </div>
         <div class="modal-body">
           <form method="post" id="revisionrequestForm" onsubmit="return performAction(this);return false;">
@@ -332,7 +337,7 @@ if($orderDetails->order_status == ORDER_PENDING or $orderDetails->order_status =
         <div class="modal-content mycustom-modal"><!-- modal-content mycustom-modal Starts -->
             <div class="modal-header p-2 pl-3 pr-3"><!-- modal-header Starts -->
                 <?php echo (__('modal_report_heading',"Report This Message"));?>
-                <button class="close" data-dismiss="modal">
+                <button class="close" data-bs-dismiss="modal">
                     <span> &times; </span>
                 </button>
             </div><!-- modal-header Ends -->
@@ -554,7 +559,6 @@ var main=function(){
     top: 0;
 }
 .message-div, .message-div-hover {
-    border:1px solid #dfdfdf;
 	border-radius:0.25rem;
 	background-color:#fff;
 	padding:1rem;
@@ -677,7 +681,7 @@ var main=function(){
 ul.item-list {
 	line-height: 22px;
 	padding-bottom: 2px;
-	color: #909090;
+	color: #555;
 	list-style: none;
 	padding: 0;
 	margin: 0;

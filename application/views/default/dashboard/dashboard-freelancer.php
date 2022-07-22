@@ -91,7 +91,7 @@
                 </div>
                 <!-- Buttons -->
                 <div class="buttons-to-right single-right-button always-visible">
-                    <a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
+                    <a href="<?php echo $contract_details_url;?>" class="btn-edit btn-circle" data-tippy-placement="left" title="View">
                         <i class="icon-feather-eye"></i>
                     </a>
                 </div>									
@@ -149,7 +149,7 @@
                 </div>
                 <!-- Buttons -->
                 <div class="buttons-to-right single-right-button always-visible">
-                    <a href="<?php echo $url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View">
+                    <a href="<?php echo $url;?>" class="btn-edit btn-circle" data-tippy-placement="left" title="View">
                         <i class="icon-feather-eye"></i>
                     </a>
                 </div>									
@@ -280,7 +280,7 @@
                 </div>
                 </div>
                 <!-- Buttons -->
-                <div class="buttons-to-right single-right-button always-visible"> <a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top" title="View"> <i class="icon-feather-eye"></i> </a> </div>
+                <div class="buttons-to-right single-right-button always-visible"> <a href="<?php echo $contract_details_url;?>" class="btn-edit btn-circle" data-tippy-placement="top" title="View"> <i class="icon-feather-eye"></i> </a> </div>
               
             </li>
             <?php } }else{ ?>
@@ -396,7 +396,7 @@ var SPINNER='<?php load_view('inc/spinner',array('size'=>30));?>';
 	   		datasets: [{
 				label: "Earn",
 				backgroundColor: 'rgba(42,65,232,0.08)',
-				borderColor: '#2a41e8',
+				borderColor: '#8e1ef1',
 				borderWidth: "3",
 				data: [<?php echo implode(',',$line_chart_earning['data'])?>],
 				pointRadius: 5,

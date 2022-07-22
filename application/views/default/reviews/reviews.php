@@ -12,7 +12,7 @@ $currency=priceSymbol();
 			<!-- Dashboard Headline -->
 			<div class="dashboard-box margin-top-0">
 				<div class="headline">
-                    <h3><i class="icon-material-outline-rate-review" style="vertical-align: -3px;"></i> <?php echo __('review_reviews','Reviews');?> </h3>
+                    <h4><?php echo __('review_reviews','Reviews');?> </h4>
 				</div>
 				
 				<div class="content">
@@ -27,7 +27,7 @@ if($list){
 		<!-- Content -->
 		<div class="job-listing-details">						
 			<div class="job-listing-description">				
-                <h4 class="job-listing-title mb-1"><a href="<?php echo $project_url;?>" target="_blank"><?php echo $review->project_title;?></a></h4>
+                <h5 class="job-listing-title"><a href="<?php echo $project_url;?>" target="_blank"><?php echo $review->project_title;?></a></h5>
                 <div class="star-rating" data-rating="<?php echo $review->average_review;?>"></div>
                 <p class="mb-2"><sup class="icon-line-awesome-quote-left"></sup> <?php echo nl2br($review->review_comments);?> <sub class="icon-line-awesome-quote-right"></sub></p>
 				<div class="job-listing-footer if-button">

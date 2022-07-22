@@ -9,7 +9,7 @@ $invoice_url=get_link('InvoiceURL');
 	<div class="dashboard-content-container" >
 		<div class="dashboard-content-inner">
 			<div class="dashboard-headline">
-				<h3><?php echo __('invoice_list_invoice','Invoice list');?></h3>				
+				<h4><?php echo __('invoice_list_invoice','Invoice list');?></h4>				
 			</div>
 	        <ul class="nav nav-tabs mb-3">
 		      <li class="nav-item"> <a class="nav-link <?php if($show=='all'){?>active<?php }?>" href="<?php echo $invoice_url;?>"><?php echo __('invoice_list_all','All');?></a> </li>
@@ -34,7 +34,7 @@ $invoice_url=get_link('InvoiceURL');
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('invoice_list_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('invoice_list_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('invoice_list_reject_invoice','Reject Invoice');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="ActionInvoice(this)"><?php echo __('invoice_list_send','Send');?></button>
       </div>

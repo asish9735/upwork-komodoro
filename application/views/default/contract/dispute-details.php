@@ -27,19 +27,21 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 <script src="<?php echo JS;?>vue-infinite-loading.js"></script>
 <script type="text/javascript" src="<?php echo JS;?>moment-with-locales.js"></script>
 
-
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $contractDetails->contract_title;?></h1>
+</div>
+</section>
 <section class="section">
 <div class="container">
 		<a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i><?php echo __('contract_dispute_b_contract','Back to Contract');?> </a>
-        <h1 class="mb-3"><?php echo $contractDetails->contract_title;?></h1>
-      
         <div class="row">
           <div class="col-lg-8">
 		  <?php 
 		  if($contractDetails->is_send_to_admin==1){
 			  if($contractDetails->dispute_status==1){
 		  ?>
-			<div class="text-center mb-2"><span class="status badge badge-success btn-block"><?php echo __('contract_dispute_close_admin','Dispute closed by admin');?></span></div>
+			<span class="status badge bg-success mb-2"><?php echo __('contract_dispute_close_admin','Dispute closed by admin');?></span>
 			<ul class="totalList mb-3">
                 	<li><b><?php echo __('contract_dispute_total','Total');?></b> <span ><?php echo $currency;?><?php echo $contractDetails->milestone_amount;?></span></li>
                 	<li><b><?php echo __('contract_dispute_commision','Commission');?></b> <span ><?php echo $currency;?><?php echo $contractDetails->commission_amount;?></span></li>
@@ -142,7 +144,9 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
           <div class="col-lg-4">
             <div class="card text-center mx-auto mb-4">
                 <div class="card-body">
-                <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
+                <div class="profile_pic mb-3">
+                	<img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle" height="96" width="96"> 
+                </div>                   
                 <h5 class="card-title"><?php echo $name;?></h5>
                 <?php if($is_owner){?>
             	<p class="text-muted mb-2"><?php D($contractDetails->contractor->member_heading);?></p>
@@ -217,7 +221,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('contract_end_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('contract_end_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('contract_dispute_submit_offer','Submit Offer');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="SaveOffer(this)"><?php echo __('contract_dispute_send','Send');?></button>
       </div>

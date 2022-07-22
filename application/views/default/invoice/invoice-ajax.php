@@ -10,7 +10,7 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 	<div class="job-listing">
 		<div class="job-listing-details">
 			<div class="job-listing-description">
-				<h4 class="job-listing-title">
+				<h5 class="job-listing-title">
 					<a href="<?php echo $invoice_url;?>" target="_blank"><?php echo make_invoice_number($invoice->invoice_number);?></a>
 					<?php if($invoice->invoice_status==1){?>
 					<span class="dashboard-status-button green"><?php echo __('invoice_paid','Paid');?></span>
@@ -20,7 +20,7 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 					<?php }else{?>
 					<span class="dashboard-status-button yellow"><?php echo __('invoice_pending','Pending');?></span>
 					<?php }?>
-				</h4>
+				</h5>
 
 				<div class="job-listing-footer if-button">
 					<ul>
@@ -37,7 +37,7 @@ $invoice_url=get_link('InvoiceDetailsURL').'/'.md5($invoice->invoice_id);
 				<button class="btn btn-success btn-sm acceptbtn" data-sid="<?php echo md5($invoice->invoice_id);?>"><?php echo __('invoice_accept','Accept');?></button>&nbsp;
       			<button class="btn btn-danger btn-sm denybtn" data-sid="<?php echo md5($invoice->invoice_id);?>"><?php echo __('invoice_reject','Reject');?></button>
 			<?php }?>
-			<a href="<?php echo $invoice_url;?>" target="_blank" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top" data-tippy="" title="View">
+			<a href="<?php echo $invoice_url;?>" target="_blank" class="btn-edit btn-circle" data-tippy-placement="top" data-tippy="" title="View">
 				<i class="icon-feather-eye"></i>
 			</a>
 		</div>

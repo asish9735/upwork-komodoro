@@ -21,10 +21,14 @@ $contract_resolution_url=get_link('OrderResolutionCenterURL').md5($contractDetai
 $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
 ?>
 
-
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $contractDetails->proposal_title;?></h1>
+</div>
+</section>
 <section class="section">
 <div class="container">
-        <h1><?php echo $contractDetails->proposal_title;?></h1>
+        
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo (__('order_details_page_Order_Activity',"Order Activity"));?></a> </li>
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
@@ -138,7 +142,7 @@ $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
 						?>
 						<div class="row mb-3">
 							<div class="col-md-3"><h5><?php echo __('contract_term_c_date','Contract Date');?></h5></div>
-							<div class="col-md-9"><p><?php echo $contractDetails->order_date;?></p></div>
+							<div class="col-md-9"><p><i class="icon-feather-calendar"></i> <?php echo $contractDetails->order_date;?></p></div>
 						</div>
 						<h5><?php echo __('contract_term_d_work','Description of Work');?></h5>
                			<p><?php echo $contractDetails->proposal_title;?></p>

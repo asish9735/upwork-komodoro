@@ -256,7 +256,8 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
     background: #37A000;
 }
 .btn-circle {
-  position: absolute;
+  border: 1px solid transparent;
+  position: relative;
   display: inline-block;
   width: 1.875rem;
   height: 1.875rem;
@@ -268,6 +269,22 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 }
 .btn-circle.ico {
 	position:absolute;
+}
+.btn-edit {
+  background-color: rgba(var(--rgbSite), 10%);
+  color: var(--siteColor);
+}
+.btn-edit:hover{
+	background-color: rgba(var(--rgbSite), 20%);
+	color: var(--siteColor);
+}
+.btn-delete{
+	background-color: rgba(var(--bs-danger-rgb), 10%);
+	color: var(--bs-danger);
+}
+.btn-delete:hover{
+	background-color: rgba(var(--bs-danger-rgb), 20%);
+	color: var(--bs-danger);
 }
 .action_favorite{
 	color: #7f7f7f;
@@ -517,6 +534,7 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
 	margin-bottom: 10px;
 }
 .avatar-wrapper img {
+	border-radius: 50%;
 	display: block;
 	height: auto;
 	max-width: 100%;
@@ -612,7 +630,7 @@ display:flex
 }
 .myradio .btn-group > .btn {
 	border:1px solid #ddd;
-	flex: 1;
+	/* flex: 1; */
 	padding: 1rem;
 }
 .myradio .btn-group > .btn:hover {
@@ -810,9 +828,9 @@ ul.langList > li:last-child {
 	/*margin-bottom:1rem*/
 }
 .edit_logo_btn {
+	background-color: #fff;
     position: absolute; 
-	top: calc(50% - 15px);
-    left: calc(50% - 15px);
+	bottom: 0.5rem;
 }
 ul.totalList {
 	display: flex;
@@ -1271,7 +1289,7 @@ ul.list-group-0 > li{
 	justify-content: center;
 }
 .avatar-logo{
-	background-color:#ddd;	
+	background-color:#eee;	
     border-radius: 50%;
 	display: inline-block;
 }
@@ -1279,7 +1297,7 @@ ul.list-group-0 > li{
 .messages-headline p > a{
 	color:#333;
 }
-.help-text {
+.text-help, .help-text {
     color: #777;
     font-size: 0.875rem;
     font-style: italic;
@@ -1305,10 +1323,10 @@ ul.list-group-0 > li{
 .profile_pic {
     background-color: #eee;
     border-radius: 50%;
+	display: block;
     margin: 0 auto 0.5rem;
     height: 96px;
     width: 96px;
-    vertical-align: middle;
 	position:relative;
 }
 .profile-details{
@@ -1872,6 +1890,9 @@ ul.skills > li > span{
 	color: #fff;
 	padding: 1rem 0;
 	text-align: center;
+}
+.short-banner h1 {
+    margin-bottom: 0;
 }
 .sidebar-filter{
 	background-color: #fff;

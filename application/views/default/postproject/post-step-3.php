@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //dd($memberInfo,TRUE);
 ?>
 
-<div id="dataStep-3" style="display: none1">
+<div id="dataStep-3" style="display: none">
   <div class="dashboard-box"> 
     <!-- Headline -->
     <div class="headline">

@@ -19,7 +19,7 @@
 	  
       <div class="dashboard-box margin-top-0">
         <div class="headline">
-            <h3><?php echo __('Order_list','Manage Orders');?></h3>
+            <h4><?php echo __('Order_list','Manage Orders');?></h4>
         </div>
 		
         <div class="content">
@@ -35,7 +35,7 @@
                         <div class="job-listing-details">
                             <!-- Details -->
                             <div class="job-listing-description">
-                                <h4 class="job-listing-title"><a href="<?php echo get_link('OrderDetailsURL').md5($order['order_id']); ?>"><?php echo $order['proposal_title']; ?></a></h4>
+                                <h5 class="job-listing-title"><a href="<?php echo get_link('OrderDetailsURL').md5($order['order_id']); ?>"><?php echo $order['proposal_title']; ?></a></h5>
     
                                 <!-- Job Listing Footer -->              
                                 <div class="job-listing-footer">
@@ -80,7 +80,7 @@
                     </div>
                     <!-- Buttons -->
                     <div class="buttons-to-right single-right-button always-visible">
-                    <a href="<?php echo get_link('OrderDetailsURL').md5($order['order_id']); ?>" class="btn btn-sm btn-outline-site ico" title="View" data-tippy-placement="left"><i class="icon-feather-eye"></i></a>
+                    <a href="<?php echo get_link('OrderDetailsURL').md5($order['order_id']); ?>" class="btn-edit btn-circle" title="View" data-tippy-placement="left"><i class="icon-feather-eye"></i></a>
                     </div>
                 </li>
                 <?php } 

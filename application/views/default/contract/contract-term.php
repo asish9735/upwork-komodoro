@@ -23,9 +23,14 @@ $ProjectDetailsURL=get_link('myProjectDetailsURL')."/".$contractDetails->project
 $offer_details_url=get_link('OfferDetails').'/'.md5($contractDetails->contract_id);
 $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->project_id.'/'.$contractDetails->bid_id;
 ?>
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $contractDetails->contract_title;?></h1>
+</div>
+</section>
 <section class="section">
 <div class="container">
-        <h1><?php echo $contractDetails->contract_title;?></h1>
+        
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('contract_details_milestone','Milestones & Earnings');?></a> </li>
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
@@ -151,11 +156,12 @@ $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->proje
             	<?php }else{ ?>
              	<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
             	<?php }?>
-            	<a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block"><?php echo __('contract_term_view_offer','View Offer');?> <!--<i class="icon-feather-external-link"></i>--></a>
+                <div class="d-grid mb-2">
+            	<a href="<?php echo $offer_details_url;?>" target="_blank" class="btn btn-outline-success btn-block"><?php echo __('contract_term_view_offer','View Offer');?> <!--<i class="icon-feather-external-link"></i>--></a></div>
                 <?php if($contractDetails->bid_id){?>
-                <a href="<?php echo $application_link;?>" target="_blank" class="btn btn-site btn-block"><?php echo __('contract_term_o_proposal','Original Proposal');?></a>
+                <div class="d-grid mb-2"><a href="<?php echo $application_link;?>" target="_blank" class="btn btn-site btn-block"><?php echo __('contract_term_o_proposal','Original Proposal');?></a></div>
                 <?php }?>
-                <a href="<?php echo $ProjectDetailsURL;?>" target="_blank" class="btn btn-web btn-block"><?php echo __('contract_term_job_posting','Original Job Posting');?></a>
+                <div class="d-grid mb-2"><a href="<?php echo $ProjectDetailsURL;?>" target="_blank" class="btn btn-web btn-block"><?php echo __('contract_term_job_posting','Original Job Posting');?></a></div>
 
               </div>
             </div>

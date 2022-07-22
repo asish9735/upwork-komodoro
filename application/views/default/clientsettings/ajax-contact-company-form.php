@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="row">
 <div class="col-md-4">
     <div class="submit-field">
-        <h5><?php echo __('contact_company_form_name','Company Name');?></h5>
+        <label class="form-label"><?php echo __('contact_company_form_name','Company Name');?></label>
         <input type="text" class="form-control input-text with-border" value="<?php D($organizationInfo->organization_name)?>" name="name" id="name" placeholder="Enter Company Name">
         <span id="nameError" class="rerror"></span>
     </div>
@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="col-md-4">
     <div class="submit-field">
-        <h5><?php echo __('contact_company_form_website','Website');?></h5>
+        <label class="form-label"><?php echo __('contact_company_form_website','Website');?></label>
         <input type="text" class="form-control input-text with-border" value="<?php D($organizationInfo->organization_website)?>" name="website" id="website" placeholder="Enter Website">
         <span id="websiteError" class="rerror"></span>
     </div>
@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="col-md-4">
     <!-- Account Type -->
     <div class="submit-field">
-        <h5><?php echo __('contact_company_form_tagline','Tagline');?></h5>
+        <label class="form-label"><?php echo __('contact_company_form_tagline','Tagline');?></label>
         <input type="text" class="form-control input-text with-border" value="<?php D($organizationInfo->organization_heading)?>" name="heading" id="heading" placeholder="Enter Tagline">
         <span id="headingError" class="rerror"></span>
     </div>
@@ -33,12 +33,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Account Type -->
     <div class="submit-field">
-        <h5><?php echo __('contact_company_diplay_description','Description');?></h5>
+        <label class="form-label"><?php echo __('contact_company_diplay_description','Description');?></label>
         <textarea class="form-control textarea-text with-border" rows="1" name="info" id="info" placeholder="Enter Description"><?php D($organizationInfo->organization_info)?></textarea>
         <span id="infoError" class="rerror"></span>
     </div>
+<a href="javascript:void(0)" class="btn btn-secondary me-2" id="cancel_company"><?php echo __('contact_company_form_cancel','Cancel');?> </a>
+<button class="btn btn-site companyUpdateBTN"><?php echo __('contact_company_form_update','Update');?></button>
 
-<button class="button ripple-effect companyUpdateBTN"><?php echo __('contact_company_form_update','Update');?></button>
-<a href="javascript:void(0)" class="popup-with-zoom-anim button-sliding-icon padding-left-20" id="cancel_company"><?php echo __('contact_company_form_cancel','Cancel');?> </a>
 
 </form>

@@ -23,10 +23,14 @@ $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
 <script src="<?php echo JS;?>vue.js"></script>
 <script src="<?php echo JS;?>vue-infinite-loading.js"></script>
 <script type="text/javascript" src="<?php echo JS;?>moment-with-locales.js"></script>
-
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $contractDetails->proposal_title;?></h1>
+</div>
+</section>
 <section class="section">
 <div class="container">
-        <h1><?php echo $contractDetails->proposal_title;?></h1>
+        
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo (__('order_details_page_Order_Activity',"Order Activity"));?></a> </li>
           <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
@@ -67,10 +71,9 @@ $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
           <div class="col-xl-3 col-lg-4 col-12">
             <div class="card text-center mt-4 mt-lg-0">
                 <div class="card-body">
-				<a <?php echo $profile_url;?>>
-                <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
+				<a <?php echo $profile_url;?> class="profile_pic">
+                <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                </a>
                 <h4><?php echo $name;?></h4>
-				</a>
                 <?php if($is_buyer){?>
             	<p class="text-muted mb-2 text-ellipsis-1"><?php D($contractDetails->seller->member_heading);?></p>
             	<div class="star-rating" data-rating="<?php echo round($contractDetails->seller->avg_rating,1);?>"></div> 

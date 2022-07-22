@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
         <?php if($dataid){?>
         <h4 class="modal-title"><?php echo __('profileview_language_change','Change language');?></h4>
         <?php }else{?>

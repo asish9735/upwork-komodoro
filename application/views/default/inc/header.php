@@ -49,16 +49,19 @@ if($loggedUser){
 					<?php if($loggedUser){
 						if($this->access_member_type=='C'){
 						?>
+                        <li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><?php echo __('dashboard','Dashboard'); ?></a></li>
 						<li><a href="<?php echo URL::get_link('search_freelancer'); ?>"><?php echo __('professionals','Professionals'); ?></a></li>
 						<li><a href="<?php echo URL::get_link('search_gigs'); ?>"><?php echo __('Catalog','Gigs'); ?></a></li>
-						<li><a href="<?php D(get_link('postprojectURL'))?>"><?php echo __('',''); ?>Post a Job</a></li>
+						<li class="d-sm-none"><a href="<?php D(get_link('postprojectURL'))?>"><?php echo __('',''); ?>Post a Job</a></li>
+                        
 						<?php }
 						if($this->access_member_type=='F'){
 						?>
+                        <li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><?php echo __('dashboard','Dashboard'); ?></a></li>
 						<li><a href="<?php echo URL::get_link('search_job'); ?>"><?php echo __('projects','Projects'); ?></a></li>
-						<li><a href="<?php D(get_link('postproposalURL'))?>"><?php echo __('Catalog_post','Post Gig'); ?></a></li>
+						<li class="d-sm-none"><a href="<?php D(get_link('postproposalURL'))?>"><?php echo __('Catalog_post','Post Gig'); ?></a></li>
 						<?php }?>
-						<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><?php echo __('dashboard','Dashboard'); ?></a></li>
+						
 					<?php }else{?>
 					<li><a href="<?php echo URL::get_link('search_job'); ?>"><?php echo __('projects','Projects'); ?></a></li>
 					<li><a href="<?php echo URL::get_link('search_gigs'); ?>"><?php echo __('Catalog','Gigs'); ?></a></li>
@@ -73,8 +76,6 @@ if($loggedUser){
 				<!--<div class="clearfix"></div>-->
 				<!-- Main Navigation / End -->
                 
-                
-
 				<?php if(!is_login_user()){ ?>
 				<div class="header-widget hide-on-mobile_ d-none d-sm-block">
 					<ul class="display-inline">
@@ -83,7 +84,7 @@ if($loggedUser){
                     	<li><a href="<?php echo URL::get_link('registerURL'); ?>" class="btn btn-site text-white"><img src="<?php echo IMAGE;?>post_20.png" alt=""> <?php echo __('post_a_job','Post A Job'); ?></a></li>
 					</ul>
                 </div>
-			<?php }else{ ?>
+				<?php }else{ ?>
 
 				<!--  User Notifications -->
 				<div class="header-widget">					
@@ -190,6 +191,19 @@ if($loggedUser){
 				<!-- User Menu / End -->
                 
 				<?php } ?>
+                <!-- POST JOB/GIGS -->
+                <div class="header-widget d-none d-sm-block">
+                <?php if($loggedUser){
+					if($this->access_member_type=='C'){
+				?>                
+                        <a class="btn btn-site text-white log-in-button" href="<?php D(get_link('postprojectURL'))?>"><?php echo __('',''); ?>Post a Job</a>                <?php }
+					if($this->access_member_type=='F'){
+				?>
+                	<a class="btn btn-site text-white log-in-button" href="<?php D(get_link('postproposalURL'))?>"><img src="<?php echo IMAGE;?>post_20.png" alt=""> <?php echo __('Catalog_post','Post Gig'); ?></a>        
+                <?php } ?>
+                <?php }?>
+                </div>
+                
                 <div class="header-widget">
                 	<?php if($this->config->item('language')=='ar'){?>
 					<a href="<?php D(VZ);?>" onclick="upldateLanguage(this)" class="setlang log-in-button" data-language="en" title="EN"><img src="<?php echo IMAGE;?>flags/en.svg" alt="" height="18" width="24"> English</a>

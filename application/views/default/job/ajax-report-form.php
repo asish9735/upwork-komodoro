@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php D(__('project_view_Cancel','Cancel'));?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php D(__('project_view_Cancel','Cancel'));?></button>
         <h4 class="modal-title"><?php D(__('project_view_Report_This_Project','Report This Project'));?></h4>
         <button type="button" class="btn btn-site pull-right" onclick="submitReport()" id="submit_btn"><?php D(__('project_view_Submit_Report','Submit Report'));?></button>
       </div>

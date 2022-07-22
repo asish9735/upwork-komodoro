@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       
       <!-- Dashboard Headline -->
       <div class="dashboard-headline">
-        <h3><?php echo __('password_security_password','Password');?> &amp; <?php echo __('password_security','Security');?> </h3>
+        <h4><?php echo __('password_security_password','Password');?> &amp; <?php echo __('password_security','Security');?> </h4>
       </div>
             
       <!-- Dashboard Box -->
@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Headline -->
         <div class="headline">
-          <h3><?php echo __('password_security_password','Password');?> <a href="<?php echo VZ;?>" class="ico float-right edit_password" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a></h3>
+          <h4><?php echo __('password_security_password','Password');?> </h4><a href="<?php echo VZ;?>" class="ico btn-edit btn-circle edit_password" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a>
         </div>
         <div class="content with-padding" id="passwordLoad">
           <p><i class="icon-material-outline-check-circle text-success"></i> <?php echo __('password_securit_password_set','Password has been set');?> </p>
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Headline -->
         <div class="headline">
-          <h3><i class="icon-material-outline-account-circle"></i> <?php echo __('password_securit_two_step','Two-step verification');?>  </h3>
+          <h4><?php echo __('password_securit_two_step','Two-step verification');?>  </h4>
         </div>
         <div class="content with-padding padding-bottom-15">
           <div   id="verifyLoad">
@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Welcome Text -->
         <div class="welcome-text">
-          <h3><?php echo __('password_securit_accept_offer_F','Accept Offer From David');?></h3>
+          <h4><?php echo __('password_securit_accept_offer_F','Accept Offer From David');?></h4>
           <div class="bid-acceptance margin-top-15"> $3200 </div>
         </div>
         <form id="terms">

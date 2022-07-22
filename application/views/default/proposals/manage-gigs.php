@@ -46,7 +46,7 @@ $currency=priceSymbol();
                         <div class="job-listing-details">
                             <!-- Details -->
                             <div class="job-listing-description">
-                                <h4 class="job-listing-title"><a href="<?php echo $details_url; ?>"><?php echo $proposal['proposal_title']; ?></a></h4>
+                                <h5 class="job-listing-title"><a href="<?php echo $details_url; ?>"><?php echo $proposal['proposal_title']; ?></a></h5>
     
                                 <!-- Job Listing Footer -->              
                                 <div class="job-listing-footer">
@@ -94,17 +94,17 @@ $currency=priceSymbol();
 
                     }
                     elseif($proposal['proposal_status']==PROPOSAL_ACTIVE){ ?>
-                    <a href="javascript:void(0)" onclick="doAction('makefeature','<?php echo $proposal['proposal_id']; ?>',this)" class="btn btn-sm btn-outline-success  ico" title="Make Featured" data-tippy-placement="left"><i class="icon-feather-star"></i></a>
+                    <a href="javascript:void(0)" onclick="doAction('makefeature','<?php echo $proposal['proposal_id']; ?>',this)" class="btn-edit btn-circle" title="Make Featured" data-tippy-placement="left"><i class="icon-feather-star"></i></a>
                     <?php }?>
                     <?php if($proposal['proposal_status']==PROPOSAL_PAUSED){?> 
-                    <a href="javascript:void(0)" onclick="doAction('active','<?php echo $proposal['proposal_id']; ?>',this)" class="btn btn-sm btn-outline-success  ico" title="pause" data-tippy-placement="left"><i class="icon-feather-play"></i></a>
+                    <a href="javascript:void(0)" onclick="doAction('active','<?php echo $proposal['proposal_id']; ?>',this)" class="btn-edit btn-circle" title="pause" data-tippy-placement="left"><i class="icon-feather-play"></i></a>
                     <?php }?>  
                    <?php if($proposal['proposal_status']==PROPOSAL_ACTIVE){?>
-                   <a href="javascript:void(0)" onclick="doAction('pause','<?php echo $proposal['proposal_id']; ?>',this)" class="btn btn-sm btn-outline-warning  ico" title="Active" data-tippy-placement="left"><i class="icon-feather-pause"></i></a>                  
+                   <a href="javascript:void(0)" onclick="doAction('pause','<?php echo $proposal['proposal_id']; ?>',this)" class="btn-delete btn-circle" title="Active" data-tippy-placement="left"><i class="icon-feather-pause"></i></a>                  
                     <?php }?>  
-                        <a href="<?php echo $edit_url;?>" class="btn btn-sm btn-outline-site ico" title="Edit" data-tippy-placement="left"><i class="icon-feather-edit-2"></i></a>
-                        <a href="<?php echo $details_url;?>" class="btn btn-sm btn-outline-site ico" title="View" data-tippy-placement="left"><i class="icon-feather-eye"></i></a>
-                        <a href="javascript:void(0)" onclick="doAction('delete','<?php echo $proposal['proposal_id']; ?>',this)" class="btn btn-sm btn-outline-danger  ico" title="Delete" data-tippy-placement="left"><i class="icon-feather-trash"></i></a>                    
+                        <a href="<?php echo $edit_url;?>" class="btn-edit btn-circle" title="Edit" data-tippy-placement="left"><i class="icon-feather-edit-3"></i></a>
+                        <a href="<?php echo $details_url;?>" class="btn-edit btn-circle" title="View" data-tippy-placement="left"><i class="icon-feather-eye"></i></a>
+                        <a href="javascript:void(0)" onclick="doAction('delete','<?php echo $proposal['proposal_id']; ?>',this)" class="btn-delete btn-circle" title="Delete" data-tippy-placement="left"><i class="icon-feather-trash"></i></a>                    
                     </div>
                 </li>
                     <?php 

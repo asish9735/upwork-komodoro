@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php echo $left_panel;?>
 <!-- Dashboard Content
 	================================================== -->
-	<div class="dashboard-content-container" >
-		<div class="dashboard-content-inner" >
+	<div class="dashboard-content-container">
+		<div class="dashboard-content-inner">
 			
 			<!-- Dashboard Headline -->
 			<?php /*?><div class="dashboard-headline">
@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3><i class="icon-material-outline-account-circle"></i><?php echo __('contact_company_account','Account');?>  <a href="<?php echo VZ;?>" class="float-right edit_account_info" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>
+							<h4><?php echo __('contact_company_account','Account');?></h4>  <a href="<?php echo VZ;?>" class="ico btn-circle btn-edit edit_account_info" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a>
 							
 						</div>
 
@@ -28,8 +28,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="col-sm-auto">
 								<div class="avatar-wrapper rounded-circle" id="crop-avatar-dashboard">
 									<input type="hidden" name="logo" id="logo" class="replceLogoVal">
-									<img   src="<?php D(getCompanyLogo($organization_id));?>" alt="">
-									<a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar" ><i class="icon-feather-edit"></i></a>
+									<img src="<?php D(getCompanyLogo($organization_id));?>" alt="">
+									<a href="javascript:void(0)" class="ico edit_logo_btn btn-circle" data-popup="logo" data-tippy-placement="top" title="Change avatar" ><i class="icon-feather-edit-3"></i></a>
 								</div>
 							</div>
 						
@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3><i class="icon-material-outline-business"></i><?php echo __('contact_company_details','Company Details');?>  <a href="<?php echo VZ;?>" class="ico float-right edit_company" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>
+							<h4><?php echo __('contact_company_details','Company Details');?></h4> <a href="<?php echo VZ;?>" class="ico btn-circle btn-edit edit_company" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a>
 							
 						</div>
 
@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Headline -->
 						<div class="headline">
-							<h3><i class="icon-feather-map-pin"></i><?php echo __('contact_company_contact','Company Contact');?>  <a href="<?php echo VZ;?>" class="ico float-right edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit"></i></a></h3>							
+							<h4><?php echo __('contact_company_contact','Company Contact');?></h4>  <a href="<?php echo VZ;?>" class="ico btn-circle btn-edit edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-3"></i></a>							
 						</div>
 
 						<div class="content with-padding" id="locationLoad">
@@ -78,22 +78,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 						<div class="content with-padding" id="locationLoadForm" style="display: none"></div>
 					</div>
-				
-				<!--<div class="dashboard-box ">
-					<div class="content with-padding">
-						<div class="row">
-							<div class="col-xl-12">
-							<p>This is a <b>Client</b> account</p>
-							</div>
-							<div class="col-xl-12 padding-bottom-20">								
-								<button class="button ripple-effect popup-with-zoom-anim" href="#small-dialog" >Create new account</button>
-								<a href="#small-dialog-1" class="popup-with-zoom-anim button-sliding-icon padding-left-15">Close my account <i class="icon-material-outline-arrow-right-alt"></i></a>
-							</div>
-						</div>												
-					</div>					
-					</div>-->
-				
-
 			<!-- Footer -->
 			<div class="dashboard-footer-spacer"></div>
 			
@@ -272,12 +256,12 @@ var  main = function(){
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content mycustom-modal">
           <form class="avatar-form" action="<?php D(get_link('settingclientlogoFormCheckAJAXURL'))?>" enctype="multipart/form-data" method="post">
-          <input  type="hidden" value="logo" id="formtype" name="formtype"/>
+          <input type="hidden" value="logo" id="formtype" name="formtype"/>
             <div class="modal-header">
              <!-- <button type="submit" class="btn btn-success pull-right avatar-save">Done</button>-->
-               <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+               <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal">Cancel</button>
         		<h4 class="modal-title">Change Avatar</h4>
-        		<button  class="btn btn-success pull-right avatar-save" type="submit">Save</button>
+        		<button class="btn btn-success pull-right avatar-save" type="submit">Save</button>
             </div>
             <div class="modal-body">
               <div class="avatar-body">
@@ -296,7 +280,7 @@ var  main = function(){
                   	</div>
 	                
 					
-                  	<p class="green-text">File must be gif, jpg, png, jpeg.</p>               
+                  	<p class="text-help">File must be gif, jpg, png, jpeg.</p>               
                 </div>
 
                 <!-- Crop and preview -->

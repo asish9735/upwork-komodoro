@@ -21,7 +21,7 @@ if($all_projects){
 
 			<!-- Details -->
 			<div class="job-listing-description">
-				<h4 class="job-listing-title"><a href="<?php D($link);?>"><?php D($projectDetails->project_title);?></a></h4>
+				<h5 class="job-listing-title"><a href="<?php D($link);?>"><?php D($projectDetails->project_title);?></a></h5>
 <?php
 $status=getAllProjectStatus($projectDetails->project_status);
 ?>
@@ -53,7 +53,7 @@ $status=getAllProjectStatus($projectDetails->project_status);
 	</div>
 	<!-- Buttons -->
     <div class="buttons-to-right single-right-button always-visible">
-        <a href="<?php D($link);?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="left" title="View"><i class="icon-feather-eye"></i></a>
+        <a href="<?php D($link);?>" class="btn-edit btn-circle" data-tippy-placement="left" title="View"><i class="icon-feather-eye"></i></a>
     </div>		
 </li>
 <?php 

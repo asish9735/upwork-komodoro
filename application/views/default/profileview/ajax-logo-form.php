@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal">Cancel</button>
         <h4 class="modal-title">Change logo</h4>
         <button type="button" class="btn btn-success pull-right" onclick="SaveLogo(this)">Save</button>
       </div>

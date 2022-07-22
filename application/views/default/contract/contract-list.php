@@ -11,15 +11,10 @@ $currency=priceSymbol();
 	================================================== -->
   <div class="dashboard-content-container">
     <div class="dashboard-content-inner" > 
-      <!--<div class="dashboard-headline">
-				<h3>My Favourite</h3>				
-			</div>-->
-      
       <div class="dashboard-box margin-top-0"> 
-        
         <!-- Headline -->
         <div class="headline">
-          <h3><?php echo __('contract_list_all_contract','All Contracts');?></h3>
+          <h4><?php echo __('contract_list_all_contract','All Contracts');?></h4>
         </div>
         <div class="content">
           <ul class="nav nav-tabs">
@@ -44,7 +39,7 @@ $currency=priceSymbol();
                 <div class="job-listing-details"> 
                   <!-- Details -->
                   <div class="job-listing-description">
-                    <h4 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a></h4>
+                    <h5 class="job-listing-title"><a href="<?php echo $contract_details_url;?>"><?php echo $v['contract_title']; ?></a></h5>
                     
                     <!-- Job Listing Footer -->
                     <div class="job-listing-footer if-button">
@@ -79,7 +74,7 @@ $currency=priceSymbol();
                 </div>
                 </div>
                 <!-- Buttons -->
-                <div class="buttons-to-right single-right-button always-visible"> <a href="<?php echo $contract_details_url;?>" class="btn btn-sm btn-outline-site ico" data-tippy-placement="top" title="View"> <i class="icon-feather-eye"></i> </a> </div>
+                <div class="buttons-to-right single-right-button always-visible"> <a href="<?php echo $contract_details_url;?>" class="btn-edit btn-circle" data-tippy-placement="top" title="View"> <i class="icon-feather-eye"></i> </a> </div>
               
             </li>
             <?php } }else{ ?>

@@ -11,7 +11,7 @@ if($memberInfo->portfolio_image){
 ?>
  <div class="modal-header">        
     <h4 class="modal-title"><?php echo __('profileview_portfolia_view','View portfolio');?></h4>
-    <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
+    <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
 </div>
 <div class="modal-body">
     <div class="row">

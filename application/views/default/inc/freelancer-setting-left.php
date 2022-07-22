@@ -95,7 +95,7 @@ if($loggedUser){
                             </b>  */?>
                             </h5>
                             <!-- <h5><i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CurrencySymbol();?><b>1500</b></h5> -->
-                            <a href="<?php echo URL::get_link('myprofileAJAXURL');?>" class="btn btn-site btn-block"><?php echo __('my_profile','My profile'); ?></a>
+                            <a href="<?php echo URL::get_link('myprofileAJAXURL');?>" class="btn btn-outline-site btn-block"><?php echo __('my_profile','My profile'); ?></a>
                             
                         	</div>
                     	</div>

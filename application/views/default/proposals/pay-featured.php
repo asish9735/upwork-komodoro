@@ -17,7 +17,7 @@ $is_join_payment=0;
 		<div class="modal-content mycustom-modal">
 			<div class="modal-header">
 				<h5 class="modal-title"> <?php echo (__('pay_featured_page_heading','Make Your Proposal/Service Featured'))?></h5>
-				<button class="close" data-dismiss="modal">
+				<button class="close" data-bs-dismiss="modal">
 					<span>&times;</span>
 				</button>
 			</div>
@@ -73,7 +73,7 @@ $is_join_payment=0;
 
 		<div class="modal-footer ">
 
-            <button class="btn btn-secondary" data-dismiss="modal"> Close </button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
 			<?php if($current_balance >= $featured_fee){ ?>
 				<form action="" method="post" id="shopping-balance-form" class="checkoutForm" onsubmit="return processCheckout(this);return false;">
 					<input type="hidden" name="method" value="wallet">

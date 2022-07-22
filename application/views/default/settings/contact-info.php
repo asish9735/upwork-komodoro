@@ -9,17 +9,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner">
 			
-			<!-- Dashboard Headline -->
+			<?php /*?><!-- Dashboard Headline -->
 			<div class="dashboard-headline">
-				<h3><?php echo __('setting_contact_info','Contact Info');?></h3>				
-			</div>
+				<h4><?php echo __('setting_contact_info','Contact Info');?></h4>				
+			</div><?php */?>
 			<!-- Dashboard Box -->
             <div class="dashboard-box margin-top-0">
-
                     <!-- Headline -->
                     <div class="headline d-flex">
-                        <h3><?php echo __('setting_contact_account','Account');?> </h3>  
-                        <a href="<?php echo VZ;?>" class="btn btn-circle btn-outline-site edit_account_info" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a>                      
+                        <h4><?php echo __('setting_contact_account','Account');?> </h4>  
+                        <a href="<?php echo VZ;?>" class="ico btn-circle btn-edit edit_account_info" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a>                      
                     </div>
 
                     <div class="content with-padding">
@@ -27,8 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="col-sm-auto">
 							<div class="avatar-wrapper rounded-circle" id="crop-avatar-dashboard">
 								<input type="hidden" name="logo" id="logo" class="replceLogoVal">
-								<img   src="<?php D(getMemberLogo($member_id));?>" alt="">
-								<a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle" data-popup="logo" data-tippy-placement="top" title="Change avatar" ><i class="icon-feather-edit-2"></i></a>
+								<img src="<?php D(getMemberLogo($member_id));?>" alt="" />
+								<a href="javascript:void(0)" class="ico btn-circle edit_logo_btn" data-popup="logo" data-tippy-placement="top" title="Change avatar" ><i class="icon-feather-edit-3"></i></a>
 							</div>
 						</div>
 					
@@ -47,8 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <!-- Headline -->
                     <div class="headline d-flex">
-                        <h3><?php echo __('setting_contact_location','Location');?></h3>
-                        <a href="<?php echo VZ;?>" class="btn btn-circle btn-outline-site edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-2"></i></a>                        
+                        <h4><?php echo __('setting_contact_location','Location');?></h4>
+                        <a href="<?php echo VZ;?>" class="ico btn-circle btn-edit edit_location" data-tippy-placement="top"  title="Edit"><i class="icon-feather-edit-3"></i></a>                        
                     </div>
 
                     <div class="content with-padding"  id="locationLoad">
@@ -58,19 +57,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="content with-padding"  id="locationLoadForm" style="display: none"></div>
              </div>
-				
-            <!--<div class="dashboard-box ">
-                <div class="content with-padding">
-                <p>This is a <b>Freelancer</b> account</p>
-                    
-                         <button class="button popup-with-zoom-anim" href="#small-dialog" >Create new account</button>
-                         <a href="#small-dialog-1" class="popup-with-zoom-anim button-sliding-icon padding-left-15">Close my account <i class="icon-material-outline-arrow-right-alt"></i></a>                       
-                    
-                    
-                    
-                </div>
-                
-             </div>-->				
 		</div>
 	</div>
 	<!-- Dashboard Content / End -->
@@ -193,7 +179,7 @@ var  main = function(){
           <input  type="hidden" value="logo" id="formtype" name="formtype"/>
             <div class="modal-header">
              <!-- <button type="submit" class="btn btn-success pull-right avatar-save">Done</button>-->
-               <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('setting_contact_info_cancel','Cancel');?></button>
+               <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('setting_contact_info_cancel','Cancel');?></button>
         		<h4 class="modal-title"><?php echo __('setting_contact_change_avatar','Change Avatar');?></h4>
         		<button  class="btn btn-success pull-right avatar-save" type="submit"><?php echo __('setting_contact_Save','Save');?></button>
             </div>
@@ -203,7 +189,7 @@ var  main = function(){
                 <div class="avatar-upload">
                   	<input type="hidden" class="avatar-src" name="avatar_src">
                   	<input type="hidden" class="avatar-data" name="avatar_data">
-                  	<label for="avatarInput"><?php echo __('setting_contact_profile_picture','Profile Picture');?> </label>
+                  	<label for="avatarInput" class="form-label"><?php echo __('setting_contact_profile_picture','Profile Picture');?> </label>
 
                   			<div class="uploadButton margin-top-0">
 								<input class="uploadButton-input avatar-input" type="file" id="avatarInput" name="avatar_file">
@@ -214,7 +200,7 @@ var  main = function(){
                   	</div>
 	                
 					
-                  	<p class="green-text"><?php echo __('setting_contact_file_format','File must be gif, jpg, png, jpeg.');?></p>               
+                  	<p class="text-help"><?php echo __('setting_contact_file_format','File must be gif, jpg, png, jpeg.');?></p>               
                 </div>
 
                 <!-- Crop and preview -->

@@ -23,7 +23,11 @@ if($proposal->proposal_video){
  */
 
 ?>
-
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $proposal->proposal_title;?></h1>
+</div>
+</section>
 <section class="section">
   <div class="container">
     <div class="categorySec"> 
@@ -144,8 +148,7 @@ if($proposal->proposal_video){
 			</div><?php */?>
           </div> 
 
-          <div class="card-body">
-              <h3><?php echo $proposal->proposal_title;?></h3>
+          <div class="card-body">              
               <p>
               <?php echo html_entity_decode($proposal->proposal_additional->proposal_description);?>
               </p>
@@ -301,7 +304,7 @@ if($proposal->proposal_video){
                   if($proposal->proposal_packages){
                     foreach($proposal->proposal_packages as $package){
                     ?>
-                      <li><a href="javascript:void(0)" class="btn btn-site btn-sm" onclick="checkoutForm(this,'<?php echo ($package->package_id); ?>')">Select</a></li>
+                      <li><a href="javascript:void(0)" class="btn btn-site" onclick="checkoutForm(this,'<?php echo ($package->package_id); ?>')">Select</a></li>
                   <?php
                     }
                   }
@@ -321,7 +324,7 @@ if($proposal->proposal_video){
                if($proposal->proposal_packages){
                   foreach($proposal->proposal_packages as $k=>$package){
               ?>
-                <li class="nav-item" role="presentation"> <a class="nav-link <?php echo ($k==0 ? 'active':'');?>" id="<?php echo ($package->package_id); ?>-tab" data-toggle="tab" href="#tab_<?php echo ($package->package_id); ?>" role="tab" aria-controls="<?php echo ($package->package_name); ?>" aria-selected="true"><?php echo ($package->package_name); ?></a> </li>
+                <li class="nav-item" role="presentation"> <a class="nav-link <?php echo ($k==0 ? 'active':'');?>" id="<?php echo ($package->package_id); ?>-tab" data-bs-toggle="tab" href="#tab_<?php echo ($package->package_id); ?>" role="tab" aria-controls="<?php echo ($package->package_name); ?>" aria-selected="true"><?php echo ($package->package_name); ?></a> </li>
               <?php
                   }
                 }
@@ -355,7 +358,7 @@ if($proposal->proposal_video){
                         </div>
                       </div>
                   </div>
-                  <a href="javascript:void(0)" onclick="checkoutForm(this,'<?php echo ($package->package_id); ?>')" class="btn btn-site btn-block">Order Now</a> </div>
+                  <div class="text-center"><a href="javascript:void(0)" onclick="checkoutForm(this,'<?php echo ($package->package_id); ?>')" class="btn btn-site">Order Now</a> </div></div>
               </div>
               <?php
                   }
@@ -432,7 +435,7 @@ if($proposal->proposal_video){
                 </ul>
               </div>
               <?php if(!$is_owner){?>
-              <a href="javascript:void(0)" onclick="send_message('<?php echo md5($proposal->proposal_id);?>','<?php echo md5($logged_in_id);?>')" class="btn btn-site btn-block">Contact Now</a>
+              <div class="text-center"><a href="javascript:void(0)" onclick="send_message('<?php echo md5($proposal->proposal_id);?>','<?php echo md5($logged_in_id);?>')" class="btn btn-site">Contact Now</a></div>
               <?php }?>
             </div>
           </div>

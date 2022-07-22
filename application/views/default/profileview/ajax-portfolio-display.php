@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="portfolio-action-btn">       	
         	<a href="javascript:void(0)" class="edit_account_btn btn btn-site btn-circle" data-popup="portfolio_view" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Preview"><i class="icon-feather-eye"></i></a>
             <?php if($is_editable){?>                
-                    <a href="javascript:void(0)" class="edit_account_btn btn btn-primary btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a> 
+                    <a href="javascript:void(0)" class="edit_account_btn btn btn-primary btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a> 
                     <a href="javascript:void(0)" class=" ripple-effect delete_account_btn btn btn-danger btn-circle" data-popup="portfolio" data-popup-id="<?php D($portfolio->portfolio_id)?>" data-tippy-placement="top" title="Delete"><i class="icon-feather-trash"></i></a> 
                                  
             <?php }?>

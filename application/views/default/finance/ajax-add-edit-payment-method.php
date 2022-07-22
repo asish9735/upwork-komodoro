@@ -6,7 +6,7 @@ $enable_stripe=0;
 $enable_bank=get_setting('enable_bank_withdraw');
 ?>
 <div class="modal-header">
-<button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('finace_add_cancel','Cancel');?></button>
+<button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('finace_add_cancel','Cancel');?></button>
     <h4 class="modal-title"><?php echo __('Payment Method','Payment Method');?></h4> 
     <button type="button" class="btn btn-success pull-right" onclick="SaveAccount(this)"><?php echo __('finace_add_save','Save');?></button>
 </div>

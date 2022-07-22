@@ -15,12 +15,12 @@ $sub_total=0;
 	================================================== -->
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner" >		
-			<div class="dashboard-headline">
-				<h3><?php echo __('finace_add_fund_wallet','Add fund to your wallet');?></h3>				
-			</div>
+			<?php /*?><div class="dashboard-headline">
+				<h4><?php echo __('finace_add_fund_wallet','Add fund to your wallet');?></h4>				
+			</div><?php */?>
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><?php echo __('finace_add_fund_amount','Amount');?></h3>
+			<h4><?php echo __('finace_add_fund_amount','Amount');?></h4>
 			</div>
 			<div class="content with-padding">	
 				<div class="row">
@@ -37,17 +37,16 @@ $sub_total=0;
             </div>
 			<div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3><?php D(__('cart_checkout_page_Payment_Options',"Payment Options"));?></h3>
+			<h4><?php D(__('cart_checkout_page_Payment_Options',"Payment Options"));?></h4>
 			</div>
-			<div class="content with-padding">	
-             <div class="btn-group btn-group-toggle pricing-group" data-toggle="buttons">                        
+			<div class="content with-padding myradio">	
+             <div class="btn-group pricing-group">                        
             <?php if($enable_paypal == 1){
             	$feeCalculation=generateProcessingFee('paypal',$sub_total);
             $p++;
             ?>            
-            <label for="paypal" class="btn btn-outline-black">
-            <input type="radio" name="method" id="paypal" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
-            <?php D(__('paymentmethod_page_Pay_By_Paypal',"Pay With Paypal"));?><br/>
+            <input type="radio" class="btn-check" name="method" id="paypal" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+            <label for="paypal" class="btn"><?php D(__('paymentmethod_page_Pay_By_Paypal',"Pay With Paypal"));?><br/>
             <img src="<?php D(IMAGE)?>paypal.png">
             </label>
             <?php } ?>
@@ -55,9 +54,9 @@ $sub_total=0;
             	$feeCalculation=generateProcessingFee('stripe',$sub_total);
             $p++;
             ?>            
-            <label for="stripe" class="btn btn-outline-black">
-            <input type="radio" name="method" id="stripe" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
-            <?php D(__('paymentmethod_page_Pay_By_Stripe',"Pay With Stripe"));?><br/>
+            
+            <input type="radio" class="btn-check" name="method" id="stripe" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+            <label for="stripe" class="btn"><?php D(__('paymentmethod_page_Pay_By_Stripe',"Pay With Stripe"));?><br/>
             <img src="<?php D(IMAGE)?>stripe.png">
             </label>
             <?php } ?>

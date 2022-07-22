@@ -16,12 +16,9 @@ $sub_total=0;
 	================================================== -->
 	<div class="dashboard-content-container">
 		<div class="dashboard-content-inner" >		
-			<!--<div class="dashboard-headline">
-				<h3>My Favourite</h3>				
-			</div>-->
             <div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-				<h3><i class="icon-material-outline-credit-card text-site"></i> <?php echo __('finace_add_fund_amount','Amount');?> </h3>
+				<h4><?php echo __('finace_add_fund_amount','Amount');?> </h4>
 			</div>
 			<div class="content with-padding">	
 				<div class="row">
@@ -38,13 +35,12 @@ $sub_total=0;
             </div>
 			<div class="dashboard-box mt-0 mb-4">
 			<div class="headline">
-			<h3>
-			<i class="icon-material-outline-credit-card text-site"></i> <?php D(__('cart_checkout_page_Withdraw_Options',"Withdraw Options"));?>
-			<button class="btn btn-sm btn-site float-right add_new_method"><i class="icon-feather-plus"></i><?php echo __('finace_transaction_add_new','Add new');?></button>
-			</h3>
+			<h4><?php D(__('cart_checkout_page_Withdraw_Options',"Withdraw Options"));?></h4>
+			<button class="ico btn-site btn-circle ms-auto add_new_method" data-tippy-placement="top" title="<?php echo __('finace_transaction_add_new','Add new');?>"><i class="icon-feather-plus"></i></button>
+			
 			</div>
-			<div class="content with-padding">	
-             <div class="btn-group btn-group-toggle pricing-group" data-toggle="buttons">    
+			<div class="content with-padding myradio">	
+             <div class="btn-group pricing-group">    
 			<?php if($list){
 				foreach($list as $k=>$account){
 				?>
@@ -53,26 +49,25 @@ $sub_total=0;
             	$feeCalculation=generateProcessingFee('paypal_withdrawn',$sub_total);
            		 $p++;
             ?>            
-            <label for="paypal" class="btn btn-outline-black">
-            <input value="<?php echo $account->account_id;?>" type="radio" name="method" id="paypal" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
-            <?php //D(__('paymentmethod_page_withdraw_By_Paypal',"With Paypal"));?>
-            <img src="<?php D(IMAGE)?>paypal.png"><br>
-			<b>ID:</b> <?php D($account->account_heading);?>
-			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash"></i></a>
             
+            <input class="btn-check" value="<?php echo $account->account_id;?>" type="radio" name="method" id="paypal" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+            <?php //D(__('paymentmethod_page_withdraw_By_Paypal',"With Paypal"));?>
+            <label for="paypal" class="btn"><img src="<?php D(IMAGE)?>paypal.png"><br>
+			<b>ID:</b> <?php D($account->account_heading);?>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn-delete btn-circle removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash" style="font-size:1rem;"></i></a>            
             </label>
             <?php }
 			elseif($enable_stripe == 1 && $account->payment_type=='stripe'){
 				$feeCalculation=generateProcessingFee('stripe_withdrawn',$sub_total);
 				$p++;
 			?>
-			<label for="stripe" class="btn btn-outline-black">
-            <input value="<?php echo $account->account_id;?>" type="radio" name="method" id="stripe" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+			
+            <input class="btn-check" value="<?php echo $account->account_id;?>" type="radio" name="method" id="stripe" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
             <?php //D(__('paymentmethod_page_withdraw_By_Stripe',"With Stripe"));?>
-            <img src="<?php D(IMAGE)?>stripe.png">
+            <label for="stripe" class="btn"><img src="<?php D(IMAGE)?>stripe.png">
 			<br>
 			<b>ID:</b> <?php D($account->account_heading);?>
-			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash"></i></a>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn-delete btn-circle removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash" style="font-size:1rem;"></i></a>
             
             </label>
 			<?php
@@ -80,12 +75,12 @@ $sub_total=0;
 				$feeCalculation=generateProcessingFee('bank_withdrawn',$sub_total);
 				$p++;
 			?>
-			<label for="bank" class="btn btn-outline-black">
-            <input value="<?php echo $account->account_id;?>" type="radio" name="method" id="bank" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
+			
+            <input class="btn-check" value="<?php echo $account->account_id;?>" type="radio" name="method" id="bank" data-processing-fee-text="<?php D($feeCalculation['processing_fee_text'])?>" data-processing-fee="<?php D($feeCalculation['processing_fee'])?>" data-total="<?php D($feeCalculation['total_amount']);?>">
             <?php //D(__('paymentmethod_page_withdraw_By_Bank',"With Bank"));?>
-            <img src="<?php D(IMAGE)?>bank.png"><br>
+            <label for="bank" class="btn"><img src="<?php D(IMAGE)?>bank.png"><br>
 			<b>A/C:</b> <?php D($account->account_heading);?>
-			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn btn-sm btn-danger ico removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash"></i></a>
+			<a href="<?php D(VZ);?>" data-id="<?php echo md5($account->account_id);?>" style="position:absolute; right:-10px;top:-10px" class="btn-delete btn-circle removeaccount" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash" style="font-size:1rem;"></i></a>
                 
             </label>
 			<?php

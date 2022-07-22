@@ -80,7 +80,7 @@ img {
 	position: relative;
 	z-index: 999;
 	padding: 0;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+	/* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); */
 	height: 80px;
 	background-color: #fff;
 }
@@ -2406,7 +2406,7 @@ right: auto;
 .single-page-header {
 	background-image: linear-gradient(to left, var(--siteColor), var(--siteHoverColor));
     color: #fff;
-	margin-bottom: 1.5rem;
+	/* margin-bottom: 1.5rem; */
 	padding: 1.5rem 0;
 	position: relative;
 }
@@ -3839,15 +3839,14 @@ text-align: center;
 .job-listing .job-listing-description p {
 	/*margin-top: 1rem;*/
 	padding: 0;
-	color: #666;
+	color: #555;
 }
 .job-listing h4.job-listing-company {
-	color: #777;
+	color: #555;
 }
 .job-listing h5.job-listing-title,
 .job-listing h4.job-listing-title {
 	margin-top: -5px;
-	margin-bottom:0
 }
 .job-listing h5 > a,
 .job-listing h4 > a {
@@ -3884,7 +3883,7 @@ text-align: center;
 .job-listing .job-listing-footer ul > li > i {
 	position: relative;
 	top: 1px;
-	color: #777;
+	color: #555;
 }
 
 /* Media Queries for Default List Layout*/
@@ -5538,7 +5537,7 @@ border-bottom: 0;
 	margin: 0 auto;
 	border-radius: 0.25rem;
 	overflow: hidden;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	/* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
 }
 .accordion .accordion {
 	border-radius: 0px;
@@ -5555,7 +5554,7 @@ border-bottom: 0;
 	position: relative;
 	box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.15);
 }
-.accordion-header > h4 {
+.accordion-header > h4, .accordion-header > h5{
 	margin-bottom:0
 }
 .accordion .accordion .accordion-header {
@@ -11661,7 +11660,7 @@ a.attachment-box:hover i {
 	flex: 0 0 280px;
 	background-color: #fff;
 	position: relative;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+	/* box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1); */
 	z-index: 100;
 }
 .dashboard-sidebar .dashboard-sidebar-inner {
@@ -11884,7 +11883,7 @@ a.dashboard-responsive-nav-trigger {
 }
 .fun-fact {
 	background-color: #fff;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	/* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
 	border-radius: 0.25rem;
 	padding: 1rem;
 	margin-bottom: 1.25rem;
@@ -11952,7 +11951,8 @@ flex: 1;
 	position: relative;
 }
 .dashboard-box .headline {
-	display: block;
+	display: flex;
+	align-items: center;
     padding: 0.75rem 1.25rem;
     border-bottom: 1px solid #e4e4e4;
     position: relative;    
@@ -12269,33 +12269,37 @@ ul.dashboard-box-list > li:hover {
 .dashboard-status-button {
 	color: #fff;
 	border-radius: 1rem;
-	font-size: 0.875rem;
+	font-family: 'Rubik', Helvetica, sans-serif;
+	font-size: 0.75rem;
 	line-height: 20px;
-	padding: 2px 8px;
+	font-weight: 500;
+    line-height: 1.25;
+    padding: 3px 8px 2px;
 	display: inline-block;
 	position: relative;
 	top: -2px;
 	margin-bottom:4px;
+	text-transform: uppercase;
 }
 .job-listing-footer .dashboard-status-button{
 	margin-bottom:-3px;
 	top:0;
 }
 .dashboard-status-button.green {
-	background: #e0f5d7;
-	color: #449626;
+	background-color: rgba(var(--bs-success-rgb), 20%);
+	color: var(--bs-success);
 }
 .dashboard-status-button.yellow {	
-    background-color: #fff7e0;
-	color: #fd7e14;
+    background-color: rgba(var(--bs-warning-rgb), 20%);
+	color: var(--bs-warning);
 }
 .dashboard-status-button.red {
-	background-color: #ffe6e6;
-	color: #ea5252
+	background-color: rgba(var(--bs-danger-rgb), 20%);
+	color: var(--bs-danger);
 }
 .dashboard-status-button.blue {
-	background-color: #dfeeff;
-	color: #007bff
+	background-color: rgba(var(--bs-primary-rgb), 20%);
+	color: var(--bs-primary);
 }
 /* Dashboard Invoices List
 ------------------------------------- */
@@ -12337,22 +12341,27 @@ ul.dashboard-box-list > li:hover {
 .paid, .unpaid ,.waitingcolor{
 	background-color: #333;
 	color: #fff;
-	border-radius: 0.25rem;
-	font-family: 'Rubik', Helvetica, sans-serif;
-	line-height: 20px;
-	padding: 4px 8px;
-	font-size: 13px;
-	position: relative;
-	top: -1px;
+    border-radius: 5rem;
+    font-family: 'Rubik', Helvetica, sans-serif;
+	font-weight: 500;
+    line-height: 1.25;
+    padding: 2px 8px;
+    font-size: 12px;
+    position: relative;
+    top: -1px;
+    text-transform: uppercase;
 }
 .paid {
-	background-color: #40b660;
+	background-color: rgba(var(--bs-success-rgb), 20%);
+	color: var(--bs-success);
 }
 .unpaid {
-	background-color: #dc3139;
+	background-color: rgba(var(--bs-danger-rgb), 20%);
+    color: var(--bs-danger);
 }
 .waitingcolor {
-	background-color: #ffc107;
+	background-color: rgba(var(--bs-warning-rgb), 20%);
+	color: var(--bs-warning);
 }
 /* Listings in Dashboard
 ------------------------------------- */
@@ -12566,11 +12575,6 @@ max-width: 100%
 	top: 47px !important;
 	border-radius: 0 0 4px 4px;
 }
-.submit-field h5 {
-	font-size: 1.067rem;
-	font-weight: 600;
-	color: #333;
-}
 .submit-field h5 span {
 	color: #777;
 	font-weight: 500;
@@ -12598,11 +12602,10 @@ max-width: 100%
 	position: relative;
 	width: 120px;
 	height: 120px;
-	border-radius: 0.25rem;
-	overflow: hidden;
+	border-radius: 0.25rem;	
 	box-shadow: none;
 	margin: 0 10px 30px 0;
- transition: all .3s ease;
+    transition: all .3s ease;
 }
 .avatar-wrapper:hover {
 	transform: scale(1.05);

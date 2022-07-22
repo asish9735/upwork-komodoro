@@ -88,7 +88,7 @@ class Dashboard_model extends MX_Controller {
         $this->load->model('contract/contract_model','contract_model');
         $result=$srch=array();
         $result['label']=array('Pending Offer','Processing Contract','Completed Contract');
-        $result['color']=array('rgb(255, 205, 86)','#007bff','#28a745');
+        $result['color']=array('rgb(255, 205, 86)','#4f96ff','#0c0');
         $srch['contractor_id'] = $member_id;
         $srch['contract_status'] = 0;
         $pending_offer=$this->contract_model->getContracts($srch, '', '',false);

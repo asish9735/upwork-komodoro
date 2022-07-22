@@ -116,7 +116,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('workroom_details_add_fund_escrow','Add Fund To Escrow');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)"><?php echo __('workroom_details_add','Add');?></button>
       </div>
@@ -140,7 +140,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('workroom_worklog_reject_work','Reject Work');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="ActionWork(this)"><?php echo __('workroom_invoice_send','Send');?></button>
       </div>
@@ -166,7 +166,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('workroom_worklog_add_manual_H','Add Manual Hour');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="SaveLog(this)"><?php echo __('workroom_details_add','Add');?></button>
       </div>
@@ -235,7 +235,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('workroom_worklog_send_invoice','Send Invoice');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="SendInvoice(this)"><?php echo __('workroom_invoice_send','Send');?></button>
       </div>

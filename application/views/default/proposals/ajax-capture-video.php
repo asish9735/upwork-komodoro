@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="modal-header">    
-    <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
+    <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
     <h4 class="modal-title"><?php echo __('proposal_capture_thumb','Capture thumb');?></h4> 
 
     <button type="button" class="btn btn-site pull-right" onclick="SaveCapture(this)"><?php echo __('profileview_save','Save');?></button>

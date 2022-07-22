@@ -22,10 +22,14 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 $endcontract_url=get_link('ReviewURL').'/'.md5($contractDetails->contract_id);
 $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_id);
 ?>
-
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $contractDetails->contract_title;?></h1>
+</div>
+</section>
 <section class="section">
   <div class="container">
-    <h1><?php echo $contractDetails->contract_title;?></h1>
+    
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>"><?php echo __('contract_details_milestone','Milestones & Earnings');?></a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>

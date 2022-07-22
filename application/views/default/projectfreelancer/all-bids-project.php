@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Headline -->
         <div class="headline">
-          <h3><?php echo __('projectfreelancer_all_bid_my_proposal','My Proposals');?></h3>
+          <h4><?php echo __('projectfreelancer_all_bid_my_proposal','My Proposals');?></h4>
         </div>
         <div class="content">
           <ul class="dashboard-box-list" id="ajax_table">

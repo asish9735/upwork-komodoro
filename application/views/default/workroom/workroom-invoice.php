@@ -103,7 +103,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('workroom_details_add_fund_escrow','Add Fund To Escrow');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="SaveFund(this)"><?php echo __('workroom_details_add','Add');?></button>
       </div>
@@ -127,7 +127,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
     <!-- Modal content-->
     <div class="modal-content mycustom-modal">
       <div class="modal-header">
-        <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
+        <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('workroom_details_cancel','Cancel');?></button>
         <h4 class="modal-title"><?php echo __('workroom_invoice_reject_invoice','Reject Invoice');?></h4>
         <button type="button" class="btn btn-success pull-right" onclick="ActionInvoice(this)"><?php echo __('workroom_invoice_send','Send');?></button>
       </div>

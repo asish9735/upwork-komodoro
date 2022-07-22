@@ -5,7 +5,7 @@ get_print($proposaldetails,FALSE);
 $is_hourly=$projects['project_settings']->is_hourly;
 ?>
 <div class="modal-header">
-<button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('projectview_proposal_cancel','Cancel');?></button>
+<button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('projectview_proposal_cancel','Cancel');?></button>
 	<h4 class="modal-title"><?php echo __('projectview_proposal_details','Proposal Details');?></h4>
 	<button type="button" class="btn btn-success pull-right"><?php echo __('projectview_proposal_save','Save');?></button>
 </div>

@@ -246,8 +246,8 @@ $logo=getMemberLogo($member_id);
               <?php
  	}
 }?>
-<a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn btn btn-primary btn-block"><i class="icon-feather-mail"></i> <?php echo __('projectview_proposal_message','Message');?> </a>
-              <div class="mb-3"></div>
+<div class="d-grid mb-3"><a href="<?php D(VZ);?>" data-btn="message-btn" class="proposal-btn btn btn-site"><i class="icon-feather-mail"></i> <?php echo __('projectview_proposal_message','Message');?> </a>
+</div>
               
               <!-- Profile Overview -->
               <ul class="list-group-0">

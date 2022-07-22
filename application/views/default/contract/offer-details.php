@@ -16,10 +16,14 @@ if($is_owner){
 	
 }
 ?>
+<section class="short-banner">
+    <div class="container">
+        <h1><?php echo $contractDetails->contract_title;?></h1>
+    </div>     
+</section>
 <section class="section">
 	<?php //echo $left_panel;?>
-    <div class="container">
-        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
+    <div class="container">        
         <div class="d-lg-none mb-3">				
         <?php 
         if($contractDetails->contract_status==0){

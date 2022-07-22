@@ -21,10 +21,14 @@ $contract_resolution_url=get_link('OrderResolutionCenterURL').md5($contractDetai
 $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
 ?>
 
-
+<section class="short-banner">
+<div class="container">
+    <h1><?php echo $contractDetails->proposal_title;?></h1>
+</div>
+</section>
 <section class="section">
 <div class="container">
-        <h1><?php echo $contractDetails->proposal_title;?></h1>
+        
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo (__('order_details_page_Order_Activity',"Order Activity"));?></a> </li>
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
@@ -41,11 +45,11 @@ $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
 						<form method="post" id="resolutionForm" onsubmit="return performAction(this);return false;">
 							<input type="hidden" name="action" value="submit_cancellation_request"/>
 							<div class="form-group">
-								<label>Desciption</label>
+								<label class="form-label">Desciption</label>
 								<textarea name="cancellation_message" id="cancellation_message" placeholder="<?php echo (__('order_details_page_Order_Cancellation_Request_input',"Please be as detailed as possible..."));?>" rows="5" class="form-control" ></textarea>
 							</div>
 							<div class="form-group">
-								<label> <?php echo (__('order_details_page_Cancellation_Request_Reason',"Cancellation Request Reason"));?> </label>
+								<label class="form-label"> <?php echo (__('order_details_page_Cancellation_Request_Reason',"Cancellation Request Reason"));?> </label>
 								<select name="cancellation_reason" class="form-control" id="cancellation_reason">
 								<option class="hidden"> <?php echo (__('order_details_page_Select_Cancellation_Reason',"Select Cancellation Reason"));?> </option>
 								<?php if($orderDetails->seller_id == $loggedInUserId){ ?>

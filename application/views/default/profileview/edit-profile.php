@@ -36,7 +36,7 @@ if($login_user_id){
           <div class="header-image freelancer-avatar" id="" style="position: relative">
             <ec id="crop-avatar-dashboard" style="width: 100%">
               <input type="hidden" name="logo" id="logo" class="replceLogoVal">
-              <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar"><i class="icon-feather-edit-2"></i></a></ec>
+              <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar"><i class="icon-feather-edit-3"></i></a></ec>
           </div>
           <div class="header-details">
             <h1>
@@ -47,7 +47,7 @@ if($login_user_id){
               <ec id="profile-heading-data">
                 <?php D(ucfirst($memberInfo->member_heading))?>
               </ec>
-              <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-white ms-2 btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></span>              
+              <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-white ms-2 btn-circle" data-popup="heading" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a></span>              
               </h1>
             <ul>
               <li>
@@ -88,8 +88,8 @@ if($login_user_id){
     </div>
   </div>
   
-  <!-- Page Content
-================================================== -->
+  <!-- Page Content -->
+  <section class="section">
   <div class="container">
     <div class="row"> 
       <!-- Content -->
@@ -99,7 +99,7 @@ if($login_user_id){
         <div class="panel mb-4" id="job-about">
           <div class="panel-header d-flex">
             <h4 class="show_edit_btn"><?php echo __('profileview_profile_about','About');?></h4>
-            <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="overview" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a>
+            <a href="javascript:void(0)" class="edit_account_btn btn-edit btn-circle ico" data-popup="overview" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a>
           </div>
           <div class="panel-body">
             <ec id="profile-overview-data">
@@ -126,7 +126,7 @@ if($login_user_id){
         <div class="boxed-list mb-4" id="job-portfolio">
           <div class="boxed-list-headline d-flex">
             <h4><?php echo __('profileview_profile_protfolio','Portfolio');?> </h4>
-            <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="portfolio" data-tippy-placement="top" title="Add">
+            <a href="javascript:void(0)" class="edit_account_btn btn-site btn-circle ico" data-popup="portfolio" data-tippy-placement="top" title="Add">
               <icon class="icon-feather-plus"></icon>
               </a>
           </div>
@@ -140,7 +140,8 @@ if($login_user_id){
         <!-- Boxed List -->
         <div class="boxed-list mb-4">
           <div class="boxed-list-headline d-flex">
-            <h4><?php echo __('profileview_profile_em_history','Employment History');?></h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="employment" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
+            <h4><?php echo __('profileview_profile_em_history','Employment History');?></h4>
+            <a href="javascript:void(0)" class="edit_account_btn btn-site btn-circle ico" data-popup="employment" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
               </a>
           </div>
           <div id="profile-employment-data"> </div>
@@ -149,15 +150,17 @@ if($login_user_id){
         
         <div class="panel mb-4">
             <div class="panel-header d-flex">
-              <h4><?php echo __('profileview_profile_skill','Skills');?></h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="skill" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a>
+              <h4><?php echo __('profileview_profile_skill','Skills');?></h4>
+              <a href="javascript:void(0)" class="edit_account_btn btn-edit btn-circle ico" data-popup="skill" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a>
             </div>
             <div class="panel-body task-tags" id="profile-skill-data"> </div>
           </div>
           
         <!-- Boxed List -->
-        <div class="boxed-list mb-4">
+        <div class="boxed-list">
           <div class="boxed-list-headline d-flex">
-            <h4><?php echo __('profileview_profile_education','Education');?></h4> <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="education" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
+            <h4><?php echo __('profileview_profile_education','Education');?></h4>
+            <a href="javascript:void(0)" class="edit_account_btn btn-site btn-circle ico" data-popup="education" data-tippy-placement="top" title="Add"><icon class="icon-feather-plus"></icon>
               </a>
           </div>
           <div id="profile-education-data"> </div>
@@ -179,7 +182,7 @@ if($login_user_id){
                   <ec id="profile-hourly-data">
                     <?php if($memberInfo->member_hourly_rate && $memberInfo->member_hourly_rate>0){D(priceSymbol().priceFormat($memberInfo->member_hourly_rate));}elseif(!$is_editable){D('Not set');}else{D('Set');}?>
                   </ec>
-                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ms-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
+                  <a href="javascript:void(0)" class="edit_account_btn btn-edit btn-circle float-end ms-2" data-popup="hourly" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a></strong>
                 </li>
                 <li>
                 	<span><?php echo __('profileview_profile_work_hour','Total Working Hour');?></span>
@@ -213,7 +216,7 @@ if($login_user_id){
                     	}?>
                   </ec>
                   
-                  <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle float-end ms-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-2"></i></a></strong>
+                  <a href="javascript:void(0)" class="edit_account_btn btn-edit btn-circle float-end ms-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a></strong>
                 </li>
               </ul>
               
@@ -249,7 +252,7 @@ if($login_user_id){
           <div class="panel mb-4">
             <div class="panel-header d-flex">
               <h4><?php echo __('profileview_profile_language','Language');?></h4>
-              <a href="javascript:void(0)" class="edit_account_btn btn btn-outline-site btn-circle ico" data-popup="language" data-tippy-placement="top" title="Add language"><i class="icon-feather-plus"></i></a>
+              <a href="javascript:void(0)" class="edit_account_btn btn-site btn-circle ico" data-popup="language" data-tippy-placement="top" title="Add language"><i class="icon-feather-plus"></i></a>
             </div>
             <div class="panel-body" id="profile-language-data"> </div>
           </div>          
@@ -288,6 +291,7 @@ if($login_user_id){
       </div>
     </div>
   </div>
+  </section>
 </div>
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -621,7 +625,7 @@ function SaveHeading(ev){
         <input  type="hidden" value="logo" id="formtype" name="formtype"/>
         <div class="modal-header"> 
           <!-- <button type="submit" class="btn btn-success float-end avatar-save">Done</button>-->
-          <button type="button" class="btn btn-dark pull-left" data-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
+          <button type="button" class="btn btn-dark pull-left" data-bs-dismiss="modal"><?php echo __('profileview_cancel','Cancel');?></button>
           <h4 class="modal-title"><?php echo __('profileview_profile_avatar','Change Avatar');?></h4>
           <button  class="btn btn-success float-end avatar-save" type="submit"><?php echo __('profileview_save','Save');?></button>
         </div>
