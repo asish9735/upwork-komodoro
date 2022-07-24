@@ -43,6 +43,7 @@ if($login_user_id){
 				</div>
 	</div>
 </div>
+
 <?php if($is_owner){?>
 <div class="container">
 <ul class="nav nav-tabs mb-3">
@@ -58,8 +59,8 @@ if($login_user_id){
 <?php
 //print_r($display_tabs);
 ?>
-<!-- Page Content
-================================================== -->
+<!-- Page Content -->
+<section class="section">
 <div class="container">
 	<div class="row">		
 		<!-- Content -->
@@ -252,7 +253,7 @@ if($login_user_id){
 
 	</div>
 </div>
-<div class="margin-top-30"></div>
+</section>
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document"> 
     <!-- Modal content-->

@@ -794,7 +794,8 @@ ul.langList > li:last-child {
 	max-width:480px
 }
 .general-form h1{
-	font-size:2rem;
+	font-size: 1.75rem;
+    margin-bottom: 1rem;
 }
 .general-body {
 	padding:1.5rem;

@@ -1,12 +1,11 @@
-<section class="sec">
-<div class="container margin-top-65 margin-bottom-65">
+<section class="section">
+<div class="container">
 <div class="row">
-	<aside class=" offset-md-3  offset-sm-1  col-xs-12 col-sm-10 col-md-6 col-lg-6" data-effect="slide-top">
+	<aside class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12" data-effect="slide-top">
         <div class="general-form">
         <div class="general-body">
          <form action="" method="post" accept-charset="utf-8" id="forgotform" class="form-horizontal" role="form" name="forgotform" onsubmit="saveForgotpassword(this);return false;">              
-       <h1 class="text-center m-0"><?php echo __('user_page_login_password_forget','Forgot Password');?></h1>
-       <div class="m-lg-3 d-none d-sm-block"> </div>
+       <h1><?php echo __('user_page_login_password_forget','Forgot Password');?></h1>       
        <div id="agree_termsError" class="error-msg5 error alert-error alert alert-danger" style="display:none"></div>
          <input type="hidden" name="refer" value="" readonly="readonly">
          <div class="input-with-icon-left">
@@ -14,7 +13,9 @@
             <input type="text" class="form-control" value="" name="forgot_email" id="forgot_email" placeholder="Email Address">
             <span id="forgot_emailError" class="rerror"></span> 
           </div>                                          
-        <button class="btn btn-site btn-block mb-3 saveBTN" id="submit-btn"><?php echo __('user_page_forget_submit','Submit');?></button>
+        <div class="d-grid mb-3">
+        <button class="btn btn-site saveBTN" id="submit-btn"><?php echo __('user_page_forget_submit','Submit');?></button>
+        </div>
         </form>
         <p class="text-center small mb-0"><?php echo __('user_page_login_no_account',"Don't have an account?");?> <a href="<?php URL::getLink('signup'); ?>"><?php echo __('user_page_login_register','Register Now');?></a></p>
         </div>        

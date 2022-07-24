@@ -148,15 +148,6 @@ header.fullwidth .container {
 	padding-left: 0;
 	margin-right: 0;
 }
-/* Notification Avatar*/
-.header-notifications-content .notification-avatar {
-	height: 42px;
-	width: 42px;
-	max-width: 42px;
-	display: inline-block;
-	border-radius: 50%;
-	overflow: hidden;
-}
 /* Sign In Button */
 .header-widget .log-in-button,
 .header-widget ul.display-inline {
@@ -349,7 +340,7 @@ button.mark-as-read:hover {
 	border-bottom: none;
 }
 .header-notifications-content ul li a {
-	color: #666;
+	color: #333;
 	position: relative;
 	padding: 0.75rem 1.25rem;
 	display: block;
@@ -402,6 +393,7 @@ button.mark-as-read:hover {
 	border-radius: 50%;
 	overflow: visible;
 	align-self: flex-start;
+	overflow: hidden;
 }
 .header-notifications-content .notification-avatar img {
 	width: 100%;
@@ -1646,8 +1638,7 @@ border: none;
 }
  #logo img {
 border: none;
-max-width: 100px;
-height: auto;
+height: 64px;
 }
  header.fullwidth .container {
  padding: 0 15px;
@@ -2480,21 +2471,20 @@ max-width: 140px;
 }
 }
 .single-page-header.freelancer-header .header-image {
-	background: #dfdfdf;
+	background: #eee;
 	border-radius: 50%;
 	box-shadow: none;
 	display: flex;
 	padding: 0;
-	overflow: hidden;
 	height: 100px;
 	flex: 0 0 100px;
 	width: 100px;
 }
 .single-page-header .header-image img {
 	align-self: center;
+	border-radius: 50%;	
 	transform: translate3d(0, 0, 0);
 }
-
 
 /* IE 11 FIX */
 @media all and (-ms-high-contrast:none) {
@@ -9704,14 +9694,10 @@ img.mfp-img {
 	color: #fff;
 }
  @media (max-width: 767px) {
- .social-login-separator {
-margin-bottom: 25px;
+.social-login-separator {
+	margin-bottom: 25px;
 }
- .social-login-buttons,  .social-login-buttons a {
-width: 100%;
-display: block;
-max-width: 100%;
-}
+
 }
 /* Account Type */
 .account-type {
@@ -9724,11 +9710,9 @@ max-width: 100%;
 	margin-right: 15px;
 }
 .account-type label {
-	border-bottom: 1px solid #999;	
+	border-radius: 2rem;	
 	margin-bottom: 0;
 	width: 100%;
-	/*background-color: #f2f2f2;
-	border: none;*/
 }
 /* hide input */
 .account-type input.account-type-radio:empty {
@@ -9743,26 +9727,25 @@ max-width: 100%;
 }
  .account-type input.account-type-radio:empty ~ label {
 	position: relative;
-    padding: 6px 12px;
+    padding: 6px 12px 8px;
     text-align: center;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: #777;
     transition: 0.4s;
     overflow: hidden;    
 }
- .account-type input.account-type-radio ~ label:hover {
- color: #289c41;
- background-color: #e4f6e9;
- border-bottom-color: #47bb67;
+.account-type input.account-type-radio ~ label{
+ color: var(--siteColor);
+ background-color: rgba(var(--rgbSite), 10%);
+ border-bottom-color: var(--siteColor);
 }
  .account-type input.account-type-radio:checked ~ label {
  color: #fff;
- background-color: #47bb67;
- border-bottom-color: #47bb67;
+ background-color: var(--siteColor);
+ border-bottom-color: var(--siteColor);
 }
  .account-type input.account-type-radio:empty ~ label:after, .account-type input.account-type-radio:empty ~ label:before {
  position: absolute;
@@ -9842,13 +9825,18 @@ border-bottom: 1px solid #e0e0e0;
  height: 50px;
  width: 50px;
 }
- .account-type,  .social-login-buttons {
-flex-direction: column;
+.account-type,  .social-login-buttons {
+	flex-direction: column;
 }
- .social-login-buttons button {
- max-width: 100%;
- width: 100%;
- flex: auto;
+.social-login-buttons,  .social-login-buttons a {
+	width: 100%;
+	display: block;
+	max-width: 100%;
+}
+.social-login-buttons button {
+	max-width: 100%;
+	width: 100%;
+	flex: auto;
 }
  .uploadButton {
 flex-direction: column;
@@ -10531,7 +10519,6 @@ width: 5px;
 	box-sizing: border-box;
 	display: block;
 	background-color: #fff;
-	font-weight: 400;
 	opacity: 1;
 	border-color: #ced4da;
 	border-radius: 2rem;

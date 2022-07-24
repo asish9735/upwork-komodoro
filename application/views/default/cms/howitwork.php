@@ -82,12 +82,12 @@ if($cms_temp){
 <ul class="nav nav-tabs justify-content-center mb-0" id="myTab" role="tablist">  
   <?php if($how_it_works_freelancer){?>
   <li class="nav-item">
-    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php D($cms_freelancer->title); ?></a>
+    <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php D($cms_freelancer->title); ?></a>
   </li> 
   <?php }?>
   <?php if($how_it_works_employer){?>
   <li class="nav-item">
-    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php D($cms_employer->title); ?></a>
+    <a class="nav-link" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php D($cms_employer->title); ?></a>
   </li> 
   <?php }?>
 </ul>

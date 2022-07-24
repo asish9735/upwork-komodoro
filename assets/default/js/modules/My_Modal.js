@@ -48,7 +48,7 @@ var Modal = (function($){
    modal_header = 
 
    '<div class="modal-header">'+
-        '<button type="button" class="close" data-dismiss="modal">&times;</button>'+
+        '<button type="button" class="close" data-bs-dismiss="modal">&times;</button>'+
         '<h4 class="modal-title">{MODAL_TITLE}</h4>'+
     '</div>'
 ,
@@ -57,7 +57,7 @@ var Modal = (function($){
     modal_footer = 
 
         '<div class="modal-footer">'+
-             '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+             '<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>'+
         '</div>'
 
     ;

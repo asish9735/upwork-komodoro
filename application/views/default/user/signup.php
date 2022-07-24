@@ -2,8 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<section class="sec">
-<div class="container margin-top-65 margin-bottom-65">
+<section class="section">
+<div class="container">
 <div class="general-form">
 	<div class="general-body">
    <form action="" method="post" accept-charset="utf-8" id="Register_form" class="form-horizontal" role="form" name="regform" onsubmit="return false;"> 
@@ -14,8 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
      <div id="agree_termsError" class="error-msg5 error alert-error alert alert-danger" style="display:none"></div>
     <div id="step_1">
-   <h2 class="text-center m-0"><?php echo __('user_page_signup_header','Sign Up');?> </h2>
-   <div class="m-lg-3 d-none d-sm-block"> </div>
+    <h1><?php echo __('user_page_signup_header','Sign Up');?> </h1>   
     <div class="input-with-icon-left">
         <i class="icon-feather-user"></i>    	         	
         <input type="text" class="form-control" value="" name="name" id="name" placeholder="<?php echo __('user_page_signup_name_placeholder','Enter Name');?>">
@@ -26,8 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="text" class="form-control" value="" name="email" id="email" placeholder="<?php echo __('user_page_signup_email_placeholder','Email Address');?>">
         <span id="emailError" class="rerror"></span>
     </div>    
-    <div class="d-grid">
-    <button class="btn btn-site mb-3 signUpBTN"><?php echo __('user_page_signup_button','Sign Up');?></button>
+    <div class="d-grid mb-3">
+    	<button class="btn btn-site signUpBTN"><?php echo __('user_page_signup_button','Sign Up');?></button>
     </div>    
     <div class="social-login-separator"><span><?php echo __('user_page_login_separetor','OR');?></span></div>
         <div class="social-login-buttons mb-3">
@@ -36,18 +35,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
    </div>
     <div id="step_2" style="display: none">
-     <h2 class="text-center m-0"><?php echo __('user_page_signup_account','Complete your account');?></h2>
-     <div class="m-lg-3 d-none d-sm-block"> </div>
+     <h3><?php echo __('user_page_signup_account','Complete your account');?></h3>     
      <p id="select_email" class="text-center"></p>
         <div class="account-type">
             <div>
                 <input type="radio" name="user_type" id="freelancer-radio" class="account-type-radio" value="F" checked  onclick="$('.for_individual').show()">
-                <label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Freelancer</label>
+                <label for="freelancer-radio"><i class="icon-material-outline-account-circle"></i> Freelancer</label>
             </div>
 
             <div>
                 <input type="radio" name="user_type" id="employer-radio" class="account-type-radio" value="E" onclick="$('.for_individual').hide()">
-                <label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Employer</label>
+                <label for="employer-radio"><i class="icon-material-outline-business-center"></i> Employer</label>
             </div>
         </div>
         <div class="input-with-icon-left">
@@ -77,8 +75,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="password" class="form-control" value="" name="password" id="password" placeholder="Enter Password">
             <span id="passwordError" class="rerror"></span>
         </div>
-        
-         <button class="btn btn-site btn-block mb-3 signUpBTN">Submit</button>
+        <div class="d-grid mb-3">
+         <button class="btn btn-site btn-block signUpBTN">Submit</button>
+        </div>
     </div>
     </form>
     <p class="text-center small mb-0"><?php echo __('user_page_signup_have_account','Already have an account?');?> <a href="<?php URL::getLink('login'); ?>"><?php echo __('user_page_signup_login','Log In');?></a></p>

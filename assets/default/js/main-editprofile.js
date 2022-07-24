@@ -323,7 +323,7 @@
     alert: function (msg) {
       var $alert = [
             '<div class="alert alert-danger avatar-alert ">',
-              '<button type="button" class="close" data-dismiss="alert">&times;</button>',
+              '<button type="button" class="close" data-bs-dismiss="alert">&times;</button>',
               msg,
             '</div>'
           ].join('');

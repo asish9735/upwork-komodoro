@@ -36,7 +36,7 @@ if($login_user_id){
           <div class="header-image freelancer-avatar" id="" style="position: relative">
             <ec id="crop-avatar-dashboard" style="width: 100%">
               <input type="hidden" name="logo" id="logo" class="replceLogoVal">
-              <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn btn-light btn-circle text-site" data-popup="logo" data-tippy-placement="top" title="Change avatar"><i class="icon-feather-edit-3"></i></a></ec>
+              <img src="<?php D($logo);?>" alt=""><a href="javascript:void(0)" class="edit_logo_btn btn-circle ico" data-popup="logo" data-tippy-placement="top" title="Change avatar"><i class="icon-feather-edit-3"></i></a></ec>
           </div>
           <div class="header-details">
             <h1>
@@ -778,7 +778,7 @@ var  main = function(){
 				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
 				buttons: {
 				'confirm': {
-					label: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					//label: '<?php // D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
 					className: 'btn-site pull-right'
 					},
 				'cancel': {
@@ -820,7 +820,7 @@ var  main = function(){
 				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
 				buttons: {
 				'confirm': {
-					label: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					//label: '<?php // D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
 					className: 'btn-site pull-right'
 					},
 				'cancel': {

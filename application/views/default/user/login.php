@@ -2,15 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<section class="sec">
-<div class="container margin-top-65 margin-bottom-65">
+<section class="section">
+<div class="container">
     <div class="general-form">
     	<div class="general-body">
        <form action="" method="post" accept-charset="utf-8" id="logform" class="form-horizontal" role="form" name="logform" onsubmit="return false;">     
         <input type="hidden" name="ref" value="<?php D(get('ref'));?>"/>
         <input type="hidden" name="refer" value="<?php D(get('refer'));?>" readonly/>   
-       <h1 class="text-center m-0"><?php echo __('user_page_login_header','Log In');?></h1>
-       <div class="m-lg-3 d-none d-sm-block"> </div>
+       <h1><?php echo __('user_page_login_header','Log In');?></h1>
        <div id="agree_termsError" class="error-msg5 error alert-error alert alert-danger" style="display:none"></div>
          <div class="input-with-icon-left">
             <i class="icon-feather-mail"></i>

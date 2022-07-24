@@ -4,46 +4,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php if($is_valid){?>
 
 
-<section class="margin-top-65 margin-bottom-65">
+<section class="section">
 	<div class="container"> <!-- Container starts -->
     <div class="general-form">
     	<div class="general-body">
-        <h1 class="text-center mb-4"><?php D(__('rest_password_heading',"Reset Your Password"));?></h1>
-    	<form action="" method="post" accept-charset="utf-8" id="restpasswordform" class="form-horizontal col-md-8" role="form" name="restpasswordform" onsubmit="saveResetpassword(this);return false;"> 
+        <h1><?php D(__('rest_password_heading',"Reset Your Password"));?></h1>
+    	<form action="" method="post" accept-charset="utf-8" id="restpasswordform" class="form-horizontal" role="form" name="restpasswordform" onsubmit="saveResetpassword(this);return false;"> 
         <input  type="hidden" name="verifycode" value="<?php D($verifycode);?>"/>
             <div class="form-group">
-                <label><?php D(__('rest_password_password',"Enter New Password"));?></label>
+                <label class="form-label"><?php D(__('rest_password_password',"Enter New Password"));?></label>
                 <div class="input-group">
-                    <span class="input-group-prepend">
-                        <i class="fa fa-check tick1 text-success"></i>
-                        <i class="fa fa-times cross1 text-danger"></i>
+                    <span class="input-group-text">
+                        <i class="icon-feather-check tick1 text-success"></i>
+                        <i class="icon-feather-x cross1 text-danger"></i>
                     </span>
-                    <input type="password" name="new_pass" id="new_pass" class="form-control" >
-                    <div class="input-group-append">
+                    <input type="password" name="new_pass" id="new_pass" class="form-control">                    
                     <span class="input-group-text" id="meter">
                         <div id="meter_wrapper">
                             <span id="pass_type"><span class="move-up-js text-dark"><?php echo __('user_page_resetpass_strength','Strength');?></span></span>
                             <!--<div id="meter"></div>-->
                         </div>
                     </span>
-                    </div>
                 </div>	
                 <span id="new_passError" class="rerror"></span>
             </div>
             <div class="form-group">
-                <label><?php D(__('rest_password_confirm_password',"Confirm New Password"));?></label>
+                <label class="form-label"><?php D(__('rest_password_confirm_password',"Confirm New Password"));?></label>
                 <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-check tick2 text-success"></i>
-                        <i class="fa fa-times cross2 text-danger"></i>
+                    <span class="input-group-text">
+                        <i class="icon-feather-check tick2 text-success"></i>
+                        <i class="icon-feather-x cross2 text-danger"></i>
                     </span>
                     <input type="password" name="new_pass_again" id="new_pass_again" class="form-control" >
                 </div>	
                 <span id="new_pass_againError" class="rerror"></span>
             </div>
-            <div class="text-center">
+            <div class="d-grid">
                 <button class="btn btn-success saveBTN" type="submit" name="submit">
-                    <i class="fa fa-pencil-square-o"></i> <?php D(__('rest_password_button_submit',"Change Password"));?>
+                     <?php D(__('rest_password_button_submit',"Change Password"));?>
                 </button>
             </div>
         </form>
@@ -173,7 +171,7 @@ function saveResetpassword(ev){
 </script>
 
 <?php }else{?>
-<section style="background-color: #2c3e50;min-height: 200px">
+<section style="background-color: #fff;min-height: 300px">
 	
 </section>
 <script type="text/javascript">
