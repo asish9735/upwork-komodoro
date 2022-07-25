@@ -778,7 +778,7 @@ var  main = function(){
 				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
 				buttons: {
 				'confirm': {
-					//label: '<?php // D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					label: '<?php D(__('login','Login'));?>',
 					className: 'btn-site pull-right'
 					},
 				'cancel': {
@@ -820,7 +820,7 @@ var  main = function(){
 				message: '<?php D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
 				buttons: {
 				'confirm': {
-					//label: '<?php // D(__('project_view_Save_Search_you_are_not_logged_in','You are not Logged In. Please login first.'));?>',
+					label: '<?php D(__('login','Login'));?>',
 					className: 'btn-site pull-right'
 					},
 				'cancel': {
