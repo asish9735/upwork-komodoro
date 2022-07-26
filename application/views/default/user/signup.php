@@ -16,12 +16,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="step_1">
     <h1><?php echo __('user_page_signup_header','Sign Up');?> </h1>   
     <div class="input-with-icon-left">
-        <i class="icon-feather-user"></i>    	         	
+        <i class="ri-user-line"></i>	
         <input type="text" class="form-control" value="" name="name" id="name" placeholder="<?php echo __('user_page_signup_name_placeholder','Enter Name');?>">
         <span id="nameError" class="rerror"></span>
     </div>
     <div class="input-with-icon-left">
-        <i class="icon-feather-mail"></i>      	          	
+        <i class="ri-mail-open-line"></i>     	          	
         <input type="text" class="form-control" value="" name="email" id="email" placeholder="<?php echo __('user_page_signup_email_placeholder','Email Address');?>">
         <span id="emailError" class="rerror"></span>
     </div>    
@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
         <div class="input-with-icon-left">
-        	<i class="icon-feather-map-pin"></i>       	                  
+        	<i class="ri-map-pin-2-line"></i>  	                  
             <select name="country" id="country" class="selectpicker" title="Select Country" data-live-search="true">
             
                 <?php
@@ -66,12 +66,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <span id="countryError" class="rerror"></span>
         </div>
         <div class="input-with-icon-left for_individual"> 
-        	<i class="icon-feather-user"></i>       	    	
+        	<i class="ri-user-line"></i>	    	    	
             <input type="text" class="form-control" value="" name="username" id="username" placeholder="Enter Username">
             <span id="usernameError" class="rerror"></span>
         </div>
         <div class="input-with-icon-left">  
-        	<i class="icon-feather-lock"></i>      	           	
+        	<i class="ri-lock-2-line"></i>   	           	
             <input type="password" class="form-control" value="" name="password" id="password" placeholder="Enter Password">
             <span id="passwordError" class="rerror"></span>
         </div>

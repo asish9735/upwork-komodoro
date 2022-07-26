@@ -18,12 +18,12 @@ echo '</pre>'; */
             <div class="col-xl-9 col-lg-11 col-12">
 			<!-- Dashboard Headline -->
             <div id="postJobStepItem" class="post-steps">
-                <a class="active"><span class="count">1</span> <span><i class="icon-feather-tag"></i> <?php echo __('postproposal_overview','Overview');?></span></a>
-                <a><span class="count">2</span> <span><i class="icon-feather-dollar-sign"></i> <?php echo __('postproposal_price','Price');?></span></a>
-                <a><span class="count">3</span> <span><i class="icon-feather-file-text"></i> <?php echo __('postproposal_description','Description');?></span></a>
-                <a><span class="count">4</span> <span><i class="icon-feather-award"></i> <?php echo __('postproposal_requirements','Requirements');?></span></a>
-                <a><span class="count">5</span> <span><i class="icon-feather-image"></i> <?php echo __('postproposal_gallery','Gallery');?></span></a>
-                <a><span class="count">6</span> <span><i class="icon-feather-eye"></i> <?php echo __('postproposal_publish','Publish');?></span></a>
+                <a class="active"><span class="count">1</span> <span><i class="ri-price-tag-3-line"></i> <?php echo __('postproposal_overview','Overview');?></span></a>
+                <a><span class="count">2</span> <span><i class="ri-money-dollar-circle-line"></i> <?php echo __('postproposal_price','Price');?></span></a>
+                <a><span class="count">3</span> <span><i class="ri-file-list-2-line"></i> <?php echo __('postproposal_description','Description');?></span></a>
+                <a><span class="count">4</span> <span><i class="ri-award-line"></i> <?php echo __('postproposal_requirements','Requirements');?></span></a>
+                <a><span class="count">5</span> <span><i class="ri-gallery-line"></i> <?php echo __('postproposal_gallery','Gallery');?></span></a>
+                <a><span class="count">6</span> <span><i class="ri-lightbulb-line"></i> <?php echo __('postproposal_publish','Publish');?></span></a>
             </div>
 			
 			<form action="" method="post" accept-charset="utf-8" id="postproposalform" class="form-horizontal" role="form" name="postproposalform" onsubmit="return false;">  

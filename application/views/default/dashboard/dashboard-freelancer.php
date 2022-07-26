@@ -195,12 +195,12 @@
                   <a href="<?php echo $url;?>" class="job-listing-company-logo"> <img src="<?php echo $logo;?>" alt=""> </a>                   
                   <!-- Details -->
                   <div class="job-listing-description">
-                  	<span class="float-end text-muted d-none d-md-block"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span>
+                  	<span class="float-end text-muted d-none d-md-block"><i class="ri-time-line"></i> <?php echo $list->time_ago;?></span>
                     <h5 class="job-listing-title mb-1 mw-100"><a href="<?php echo $url;?>"><?php echo $list->notification;?></a> </h5>                    
                     <div class="job-listing-footer">
                     <ul>
-                      <li><i class="icon-material-outline-account-circle"></i> <?php echo $sender_name;?></li>
-                      <li><i class="icon-feather-calendar"></i> <?php echo $list->sent_date;?> </li>                      
+                      <li><i class="ri-user-line"></i> <?php echo $sender_name;?></li>
+                      <li><i class="ri-calendar-event-line"></i> <?php echo $list->sent_date;?> </li>                      
                       <li class="d-md-none"><span class="text-muted"><i class="icon-material-outline-access-time"></i> <?php echo $list->time_ago;?></span></li>
                       <li>
                       	<?php echo $read_class;?>                      	
@@ -262,7 +262,7 @@
                           <?php D($currency.$v['contract_amount']);?>
                           <?php if($v['is_hourly']==1){echo'/hr';}?>
                         </li>
-                        <li><i class="icon-feather-calendar"></i>
+                        <li><i class="ri-calendar-event-line"></i>
                           <?php D($v['contract_date']);?>
                         </li>
                         <li>

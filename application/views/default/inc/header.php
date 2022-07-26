@@ -92,7 +92,7 @@ if($loggedUser){
 					<div class="header-notifications">
 						<!-- Trigger -->
 						<div class="header-notifications-trigger notification-trigger">
-							<a href="#"><i class="icon-feather-bell"></i><span class="new-notification-counter" style="display:none"></span></a>
+							<a href="#"><i class="ri-notification-4-line"></i><span class="new-notification-counter" style="display:none"></span></a>
 						</div>
 						<!-- Dropdown -->
 						<div class="header-notifications-dropdown">
@@ -117,7 +117,7 @@ if($loggedUser){
 					<!-- Messages -->
 					<div class="header-notifications">
 						<div class="header-notifications-trigger message-trigger">
-							<a href="#"><i class="icon-feather-mail"></i><span class="new-message-counter" style="display:none"></span></a>
+							<a href="#"><i class="ri-mail-open-line"></i><span class="new-message-counter" style="display:none"></span></a>
 						</div>
 
 						<!-- Dropdown -->
@@ -180,9 +180,9 @@ if($loggedUser){
 						</div>
 						
 						<ul class="user-menu-small-nav">
-							<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
-							<li><a href="<?php echo URL::get_link('settingsURL'); ?>"><i class="icon-material-outline-settings"></i> <?php echo __('settings','Settings'); ?></a></li>
-							<li><a href="<?php echo URL::get_link('logoutURL'); ?>"><i class="icon-material-outline-power-settings-new"></i> <?php echo __('logout','Logout'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="ri-dashboard-3-line"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('settingsURL'); ?>"><i class="ri-settings-2-line"></i> <?php echo __('settings','Settings'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('logoutURL'); ?>"><i class="ri-logout-box-line"></i> <?php echo __('logout','Logout'); ?></a></li>
 						</ul>
 
 						</div>

@@ -51,7 +51,8 @@ ul.display-inline li:last-child {
 	margin-right: 15px
 }
 .input-with-icon-left .form-control,
-.input-with-icon-left input.with-border	 {
+.input-with-icon-left input.with-border,
+.input-with-icon-left .btn-default{
 	padding-left: 40px
 }
 .input-with-icon-left i {

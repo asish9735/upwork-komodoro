@@ -12,13 +12,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        <h1><?php echo __('user_page_login_header','Log In');?></h1>
        <div id="agree_termsError" class="error-msg5 error alert-error alert alert-danger" style="display:none"></div>
          <div class="input-with-icon-left">
-            <i class="icon-feather-mail"></i>
+            <i class="ri-mail-open-line"></i>
             <input type="text" class="form-control" name="email" id="email" placeholder="<?php echo __('user_page_login_email_placeholder','Email Address');?>" />
             <span id="emailError" class="rerror"></span>
         </div>              
         
         <div class="input-with-icon-left">   
-        	<i class="icon-feather-lock"></i>     	         	
+        	<i class="ri-lock-2-line"></i>  	
             <input type="password" class="form-control" value="" name="password" id="password" placeholder="<?php echo __('user_page_login_password_placeholder','Password');?>">
             <span id="passwordError" class="rerror"></span>
         </div>

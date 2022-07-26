@@ -208,11 +208,14 @@ color: #555;
 	position: relative;
 }
 .header-notifications-trigger, .header-notifications-trigger a {
-	font-size: 22px;
-	color: #333;
+	font-size: 1.333rem;
+	color: #000;
 	position: relative;
 	top: 50%;
 	transform: translate3d(0, -50%, 0);
+}
+.header-notifications-trigger a:hover{
+	color: var(--siteColor);	
 }
 
 /* IE 11 Fixes */
@@ -6094,15 +6097,15 @@ color: #ffc600;
 }
 .input-with-icon-left i {
 	position: absolute;
-    top: 0;
+	top: 50%;
+    transform: translateY(-50%);
     color: #a0a0a0;
 	font-style: normal;
     text-align: center;
-    line-height: 40px;
-    height: 100%;
     font-size: 1rem;
     box-sizing: border-box;
     display: block;
+	z-index: 9;
 }
 .input-with-icon-left.no-border i {
 	border: none;

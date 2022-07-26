@@ -64,10 +64,6 @@ $website_name=get_setting('website_name');
 <meta name="author" content="<?php D($website_name);?>" />
 <meta name="organization" content="<?php D($website_name);?>" />
 <link rel="shortcut icon" href="<?php D(FAVICON)?>" type="image/x-icon">
-
-
-
-
 <?php foreach($canonicals as $url){?>
 <link rel="canonical" href="<?php D($url);?>" /> <!--all dublicate url put-->
 <?php }?>
@@ -78,6 +74,7 @@ $website_name=get_setting('website_name');
 
 <?php
 $this->minify->add_css('bootstrap'.($currentLang=='ar'? '.rtl':'').'.css');
+$this->minify->add_css('remixicon.css');
 $this->minify->add_css('icons.css');
 $this->minify->add_css('theme.css');
 $load_css=$this->layout->load_css(); 

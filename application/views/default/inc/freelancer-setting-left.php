@@ -78,9 +78,8 @@ if($loggedUser){
                             <?php }?>
                             </div>
                             
-                            <h5>
-                            <i class="icon-feather-clock text-info"></i> <?php if($memberDataBasic->member_hourly_rate && $memberDataBasic->member_hourly_rate>0){D(CurrencySymbol().priceFormat($memberDataBasic->member_hourly_rate).'/hr');}else{D('Not set');}?> &nbsp; <span class="text-muted">|</span> &nbsp; 
-                            <i class="icon-material-outline-account-balance-wallet text-success"></i> <?php echo CurrencySymbol();?><b><?php D(priceFormat($memberDataBasic->balance));?></b>
+                            <h5><?php if($memberDataBasic->member_hourly_rate && $memberDataBasic->member_hourly_rate>0){D(CurrencySymbol().priceFormat($memberDataBasic->member_hourly_rate).'/hr');}else{D('Not set');}?> &nbsp; <span class="text-muted">|</span> &nbsp; 
+                            <?php echo CurrencySymbol();?><b><?php D(priceFormat($memberDataBasic->balance));?></b>
                             <?php /*<i class="icon-feather-calendar text-primary"></i> 
                             <b>
                             <?php if($memberDataBasic->not_available_until){
@@ -101,14 +100,14 @@ if($loggedUser){
                     	</div>
 
 						<ul>
-							<li class="<?php echo ($page_key == 'dashboard_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="icon-material-outline-dashboard"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
-							<li class="<?php echo ($page_key == 'message_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MessageURL');?>"><i class="icon-material-outline-question-answer"></i> <?php echo __('messages','Messages'); ?> <!--<span class="nav-tag">2</span>--></a></li>
-							<li class="<?php echo ($page_key == 'notification_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('NotificationURL');?>"><i class="icon-material-outline-notifications-active"></i> <?php echo __('notifications','Notifications'); ?> <!--<span class="nav-tag">2</span>--></a></li>
-							<li class="<?php echo ($page_key == 'favorite_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="icon-feather-heart"></i> <?php echo __('favourite','Favourite'); ?></a></li>
-							<li class="<?php echo ($page_key == 'reviews_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="icon-material-outline-star-border"></i> <?php echo __('reviews','Reviews'); ?></a></li>
+							<li class="<?php echo ($page_key == 'dashboard_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('dashboardURL'); ?>"><i class="ri-dashboard-3-line"></i> <?php echo __('dashboard','Dashboard'); ?></a></li>
+							<li class="<?php echo ($page_key == 'message_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MessageURL');?>"><i class="ri-mail-open-line"></i> <?php echo __('messages','Messages'); ?> <!--<span class="nav-tag">2</span>--></a></li>
+							<li class="<?php echo ($page_key == 'notification_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('NotificationURL');?>"><i class="ri-notification-4-line"></i> <?php echo __('notifications','Notifications'); ?> <!--<span class="nav-tag">2</span>--></a></li>
+							<li class="<?php echo ($page_key == 'favorite_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('favoriteURL');?>"><i class="ri-heart-3-line"></i> <?php echo __('favourite','Favourite'); ?></a></li>
+							<li class="<?php echo ($page_key == 'reviews_index') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('MyReviewURL');?>"><i class="ri-star-line"></i> <?php echo __('reviews','Reviews'); ?></a></li>
 						</ul>
 						<ul>
-							<li><a href="#"><i class="icon-material-outline-assignment"></i> <span><?php echo __('Catalog','Gigs'); ?></span></a>
+							<li><a href="#"><i class="ri-lightbulb-line"></i> <?php echo __('Catalog','Gigs'); ?></a>
 								<ul>
 									<li class="<?php echo ($page_key == 'proposals_manage') ? 'active' : '' ;?>"><a href="<?php D(get_link('myProposalsURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <span><?php echo __('my_Catalog','My Gigs');?></span></a></li>
 									<li class="<?php echo ($page_key == 'proposals_add') ? 'active' : '' ;?>"><a href="<?php D(get_link('postproposalURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <span><?php echo __('add_new_Catalog','Create a Gig');?></span></a></li>                           
@@ -117,7 +116,7 @@ if($loggedUser){
 							</li>
 						</ul>
 						<ul data-submenu-title="Finance">
-							<li><a href="#"><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('finance','Finance'); ?></a>
+							<li><a href="#"><i class="ri-wallet-3-line"></i> <?php echo __('finance','Finance'); ?></a>
 								<ul>
 									<li class="<?php echo ($page_key == 'finance_addfund') ? 'active' : '' ;?>"><a href="<?php D(get_link('AddFundURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('add_fund','Add Fund');?></a></li>
 									<li class="<?php echo ($page_key == 'finance_transaction') ? 'active' : '' ;?>"><a href="<?php D(get_link('TransactionHistoryURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('transaction','Transaction')?></a></li>
@@ -134,7 +133,7 @@ if($loggedUser){
 									<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
 								</ul>	
 							</li>-->
-							<li><a href="#"><i class="icon-material-outline-assignment"></i> <?php echo __('projects','Projects'); ?></a>
+							<li><a href="#"><i class="ri-file-list-2-line"></i> <?php echo __('projects','Projects'); ?></a>
 								<ul>
 									<li class="<?php echo ($page_key == 'projectfreelancer_bids') ? 'active' : '' ;?>"><a href="<?php D(get_link('myBidsURL'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('my_proposals','My Proposals');?></a></li>
 									<li class="<?php echo ($page_key == 'contract_offerlist') ? 'active' : '' ;?>"><a href="<?php D(get_link('OfferList'))?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('my_offers','My Offers');?> </a></li>
@@ -148,7 +147,7 @@ if($loggedUser){
 						</ul>
 
 						<ul>
-							<li><a href="<?php echo URL::get_link('settingaccountInfoURL')?>"><i class="icon-material-outline-settings"></i> <?php echo __('settings','Settings'); ?></a>
+							<li><a href="<?php echo URL::get_link('settingaccountInfoURL')?>"><i class="ri-settings-2-line"></i> <?php echo __('settings','Settings'); ?></a>
 								<ul>
 									<li class="<?php echo ($page_key == 'settings_contact_info') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingaccountInfoURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('contact_info','Contact info');?></a></li>
 									<li class="<?php echo ($page_key == 'password_security_password') ? 'active' : '' ;?>"><a href="<?php echo URL::get_link('settingpasswordURL');?>"><?php echo __('',''); ?><i class="icon-feather-check"></i> <?php echo __('password_security','Password & security');?></a></li>
@@ -157,7 +156,7 @@ if($loggedUser){
 							
 							</li>
 							
-							<li><a href="<?php echo URL::get_link('logoutURL');?>"><i class="icon-material-outline-power-settings-new"></i> <?php echo __('logout','Logout'); ?></a></li>
+							<li><a href="<?php echo URL::get_link('logoutURL');?>"><i class="ri-logout-box-line"></i> <?php echo __('logout','Logout'); ?></a></li>
 						</ul>
 						
 					</div>
