@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <!-- Dashboard Box -->
-<div class="dashboard-box margin-top-0">
+<div class="dashboard-box mb-0">
 <div class="content">
 <?php 
 if($req_type=='invite'){
@@ -30,7 +30,7 @@ elseif($all_data){?>
 					
                     <!-- Avatar -->
                     <div class="freelancer-avatar">
-                        <div class="verified-badge"></div>
+                        <div class="verified-badge" title="Verified" data-tippy-placement="bottom"></div>
                         <a data-href="<?php echo $application_link;?>" href="<?php D(VZ);?>" data-btn="application-dtl" class="proposal-btn"><img src="<?php D($logo);?>" alt=""></a>
                     </div>
 					

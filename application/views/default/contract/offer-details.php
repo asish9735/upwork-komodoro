@@ -120,19 +120,21 @@ if($is_owner){
         if($contractDetails->contract_status==0){
             if($current_member!=$contractDetails->offer_by){
             ?>
-            <button class="btn btn-success btn-block acceptbtn"><?php echo __('contract_offer_accept','Offer Accept');?></button>
+            <div class="d-grid">
+            <button class="btn btn-success btn-block acceptbtn mb-2"><?php echo __('contract_offer_accept','Offer Accept');?></button>
             <button class="btn btn-danger btn-block denybtn mb-3"><?php echo __('contract_offer_reject','Offer Reject');?></button>
+            </div>
             <?php	
             }
         }elseif($contractDetails->contract_status==1){
         ?>
         
-        <p><span class="badge badge-success"><i class="icon-material-outline-thumb-up"></i> <?php echo __('contract_offer_accepted','Offer Accepted.');?></span></p>
+        <p><span class="badge bg-success"><i class="icon-material-outline-thumb-up"></i> <?php echo __('contract_offer_accepted','Offer Accepted.');?></span></p>
         
         <?php	
         }elseif($contractDetails->contract_status==2){
         ?>
-        <p><span class="badge badge-danger"><i class="icon-material-outline-thumb-down"></i> <?php echo __('contract_offer_rejected','Offer Rejected');?></span></p>        
+        <p><span class="badge bg-danger"><i class="icon-material-outline-thumb-down"></i> <?php echo __('contract_offer_rejected','Offer Rejected');?></span></p>        
         <?php	
         }?>
         </div>

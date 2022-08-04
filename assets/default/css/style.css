@@ -99,6 +99,7 @@ body {
 }
 .form-group{
 	margin-bottom: 1rem;
+	position: relative;
 }
 /* bootstrap start */
 .nav-tabs .nav-link {

@@ -27,9 +27,13 @@ $ProjectDetailsURL=get_link('myProjectDetailsURL')."/".$contractDetails->project
 $offer_details_url=get_link('OfferDetails').'/'.md5($contractDetails->contract_id);
 $application_link=get_link('viewapplicationURLAJAX')."/".$contractDetails->project_id.'/'.$contractDetails->bid_id;
 ?>
+<section class="short-banner">
+    <div class="container">
+		<h1><?php echo $contractDetails->contract_title;?></h1>
+	</div>
+</section>
 <section class="section">
 <div class="container">
-        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('workroom_details_overview','Overview');?></a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_details_work_logs','Work Logs');?></a> </li>

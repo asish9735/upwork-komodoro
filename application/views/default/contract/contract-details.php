@@ -28,8 +28,7 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
 </div>
 </section>
 <section class="section">
-  <div class="container">
-    
+  <div class="container">    
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_details_url;?>"><?php echo __('contract_details_milestone','Milestones & Earnings');?></a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>
@@ -226,19 +225,18 @@ $make_dispute_url=get_link('MakeDisputeURL').'/'.md5($contractDetails->contract_
             <?php }else{ ?>
              	<div class="star-rating d-block mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
             <?php }?>
-            
+            <div class="d-grid">
             <?php if($is_owner){?>
-            <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block mt-2">
-            <icon class="icon-material-outline-add"></icon>
-            <?php echo __('contract_details_n_contract','New Contract');?></a> <!--<a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
-            <icon class="icon-material-outline-add"></icon>
-            Add Fund</a>-->
+            <a href="<?php echo $new_contract_url;?>" class="btn btn-success">
+            <i class="icon-material-outline-add"></i>
+            <?php echo __('contract_details_n_contract','New Contract');?></a> <!--<a href="<?php // echo VZ;?>" class="btn btn-site btn-block add_fund_escrow"> <icon class="icon-material-outline-add"></icon>Add Fund</a>-->
             <?php if($pending_contract){?>
-            <a href="<?php echo $make_dispute_url;?>" class="btn btn-danger btn-block">
-            <icon class="icon-line-awesome-warning"></icon>
+            <a href="<?php echo $make_dispute_url;?>" class="btn btn-danger mt-2">
+            <i class="icon-line-awesome-warning"></i>
             <?php echo __('contract_details_m_disputed','Make Dispute');?></a>
             <?php }?>
             <?php }?>
+            </div>
           </div>
         </div>
       </div>

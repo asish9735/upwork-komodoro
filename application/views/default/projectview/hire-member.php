@@ -33,8 +33,8 @@ $logo=getMemberLogo($bid);
     </div>
   </div>
   
-  <!-- Page Content
-================================================== -->
+  <!-- Page Content -->
+<section class="section">
   <div class="container">
     <form action="" method="post" accept-charset="utf-8" id="hireprojectform" class="form-horizontal" role="form" name="hireprojectform" onsubmit="return false;">
       <div class="row"> 
@@ -50,8 +50,38 @@ $logo=getMemberLogo($bid);
               <p><strong><?php echo __('projectview_job_project_title','Project Title:');?></strong> <a href="<?php echo get_link('myProjectDetailsURL')."/".$projects['project']->project_url;?>" target="_blank">
                 <?php D(ucfirst($projects['project']->project_title));?> <i class="icon-feather-external-link"></i></a></p>
               <div class="form-group">
-                <label><b><?php echo __('projectview_job_contract_title','Contract Title');?></b></label>
+                <label class="form-label"><?php echo __('projectview_job_contract_title','Contract Title');?></label>
                 <input type="text" name="title" id="title" class="form-control input-text with-border" value="<?php D(ucfirst($projects['project']->project_title));?>" >
+              </div>
+              <div class="row">
+              	<div class="col-sm-6">
+                	<div class="form-group">
+                	<label class="form-label"><?php echo __('country','Country');?></label>
+                	<select class="selectpicker default">
+                    	<option>Australia</option>
+                        <option>China</option>
+                        <option>France</option>
+                        <option>Germany</option>
+                    	<option>India</option>
+                        <option>New Zealand</option>
+                        <option>USA</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                	<div class="form-group">
+                	<label class="form-label"><?php echo __('city','City');?></label>
+                	<select class="selectpicker default">
+                        <option selected="selected"><?php echo __('select_city','Select City');?></option>
+                        <option>Delhi</option>
+                        <option>Kolkata</option>
+                        <option>Bangaluru</option>
+                        <option>Chennai</option>
+                        <option>Mumbai</option>
+                        <option>Pune</option>
+                    </select>
+                    </div>
+                </div>
               </div>
             </div>
           </div>
@@ -61,7 +91,7 @@ $logo=getMemberLogo($bid);
             </div>
             <div class="panel-body">
               <div class="form-group">
-                <label><b><?php echo __('projectview_job_payment_term','Payment Term');?></b></label>                                
+                <label class="form-label"><?php echo __('projectview_job_payment_term','Payment Term');?></label>                                
                 <div class="radio radio-inline">
                   <input id="payment_fixed" name="is_hourly" class="is_hourly" value="0" type="radio" <?php if($is_hourly==1){}else{echo 'checked';}?> >
                   <label for="payment_fixed"><span class="radio-label"></span><?php echo __('projectview_job_fixed','Fixed');?> </label>
@@ -75,7 +105,7 @@ $logo=getMemberLogo($bid);
               
                 <div class="row">
                   <div class="col-sm-6 col-12">
-                  <label><b><?php echo __('projectview_apply_hourly_rate','Hourly Rate');?></b></label>
+                  <label class="form-label"><?php echo __('projectview_apply_hourly_rate','Hourly Rate');?></label>
                   <div class="input-with-icon-left">
                   <i><?php echo priceSymbol();?></i>
                   <input type="text" name="bid_amount_hourly" id="bid_amount_hourly" class="form-control" value="<?php if($getBidDetails && $is_hourly==1){echo $getBidDetails->bid_amount;}elseif($memberInfo->member_hourly_rate){echo $memberInfo->member_hourly_rate;}else{echo '0.00';}?>" onkeyup="updatePaymentHourly(this)">
@@ -88,10 +118,10 @@ $logo=getMemberLogo($bid);
                 <div class="form-group mb-0">
 				<div class="row">
                   <div class="col-sm-6 col-12">
-                    <label><b><?php echo __('projectview_job_weely_limit','Weekly Limit');?></b></label>
+                    <label class="form-label"><?php echo __('projectview_job_weely_limit','Weekly Limit');?></label>
                     <div class="input-group">
                       <input type="text" name="max_hour_limit" id="max_hour_limit" class="form-control" value="10" onkeyup="updatePaymentHourly(this)">
-                      <div class="input-group-append"><span class="input-group-text max_week_payment"></span></div>
+                      <span class="input-group-text max_week_payment"></span>
                     </div>
                   </div>
                   </div>
@@ -106,7 +136,7 @@ $logo=getMemberLogo($bid);
               <div class="is_fixed_wrapper" <?php if($is_hourly==1){echo 'style="display: none"';}else{}?>>
                 <div class="row">
                   <div class="col-sm-6 col-12">
-                  <label><b><?php echo __('projectview_job_total_amount','Total Amount');?></b></label>
+                  <label class="form-label"><?php echo __('projectview_job_total_amount','Total Amount');?></label>
                   <div class="input-with-icon-left">
                   <i><?php echo priceSymbol();?></i>
                   <input type="text" name="bid_amount" id="bid_amount" class="form-control" value="0" onkeyup="updateFullPayment(this)">
@@ -114,7 +144,7 @@ $logo=getMemberLogo($bid);
                   </div>
                 </div>
                 <div class="form-group">
-                  <label><b><?php echo __('projectview_job_deposit_escrow','Deposit into Escrow');?></b></label>
+                  <label class="form-label"><?php echo __('projectview_job_deposit_escrow','Deposit into Escrow');?></label>
                   <div class="radio">
                     <input id="payment_at_project" name="bid_by_project" class="project_payment_type" value="1" type="radio" checked>
                     <label for="payment_at_project"><span class="radio-label"></span>
@@ -134,30 +164,40 @@ $logo=getMemberLogo($bid);
                       <div class="col-sm-6 col-xs-12">
                         <input type="hidden" name="milestone_id[]" class="milestone_row" value="1"/>
                         <div class="form-group">
-                          <label for="title"><b><?php echo __('projectview_apply_description','Description');?></b></label>
+                          <label for="title" class="form-label"><?php echo __('projectview_apply_description','Description');?></label>
                           <input type="text" name="milestone_title_1" id="milestone_title_1" class="form-control">
                         </div>
                       </div>
                       <div class="col-sm-3 col-xs-12">
                         <div class="form-group">
-                          <label for="title"><b><?php echo __('projectview_apply_due_date','Due date');?></b></label>
+                          <label for="title" class="form-label"><?php echo __('projectview_apply_due_date','Due date');?></label>
                           <input type="text" name="milestone_due_date_1" id="milestone_due_date_1" class="datepicker form-control">
                         </div>
                       </div>
                       <div class="col-sm-3 col-xs-12">
                         <div class="form-group">
-                          <label for="title"><b><?php echo __('projectview_apply_amount','Amount');?></b></label>
+                          <label for="title" class="form-label"><?php echo __('projectview_apply_amount','Amount');?></label>
                           <input type="text" name="milestone_amount_1" id="milestone_amount_1" class="milestone_amount form-control">
                         </div>
                       </div>
                     </div>
                   </div>
-                  <a href="javascript:" class="btn btn-site btn-sm addMilestone"><i class="icon-feather-plus"></i><?php echo __('projectview_apply_add_milestone','Add milestone');?> </a> </div>
+                  <a href="javascript:" class="btn btn-site addMilestone"><i class="icon-feather-plus"></i><?php echo __('projectview_apply_add_milestone','Add milestone');?> </a> </div>
                 <div class="payment_project_wrapper">
-                  <h4><?php echo __('projectview_apply_full_ammount',"What is the full amount you'd like to bid for this job?");?></h4>
-                  <div class="form-group mb-0">
-                      <label for="title"><b><?php echo __('projectview_apply_due_date','Due date');?></b></label>
-                      <input type="text" name="milestone_due_date" id="milestone_due_date" class="form-control datepicker" value="">
+                  <h4><?php echo __('projectview_',"When should the job be done?");?></h4>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="title" class="form-label"><?php echo __('projectview_','Start Date');?></label>
+                              <input type="text" name="milestone_due_date" id="milestone_due_date" class="form-control datepicker" value="">
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                          	  <label for="title" class="form-label"><?php echo __('projectview_','End Date');?></label>
+                              <input type="text" name="milestone_due_date" id="milestone_due_date" class="form-control datepicker" value="">
+                          </div>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -169,11 +209,11 @@ $logo=getMemberLogo($bid);
             </div>
             <div class="panel-body">
               <div class="form-group">
-                <label><?php echo __('projectview_apply_description','Description')?></label>
+                <label class="form-label"><?php echo __('projectview_apply_description','Description')?></label>
                 <textarea rows="4" class="form-control" id="bid_details" name="bid_details"></textarea>
               </div>
               <div class="form-group">
-                <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>                
+                <label class="form-label"><?php echo __('projectview_proposal_attachment','Attachments');?></label>                
                 <div class="upload-area" id="uploadfile">
                 <input type="file" name="fileinput" id="fileinput" multiple="true">
                   <p><?php echo __('projectview_job_drag_drop','Drag and Drop file here');?><br/>
@@ -206,7 +246,7 @@ $logo=getMemberLogo($bid);
           <div class="sidebar-container">
             <div class="panel mb-4">
               <div class="panel-body">
-                <label><?php echo __('projectview_job_title','Title');?></label>
+                <h4><?php echo __('projectview_job_title','Title');?></h4>
                 <p><?php echo __('projectview_job_leverage','Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.');?></p>
               </div>
             </div>
@@ -215,8 +255,8 @@ $logo=getMemberLogo($bid);
       </div>
     </form>
   </div>
-</div>
-<div class="dashboard-footer-spacer"></div>
+</section>
+
 <script type="text/javascript">
 	var pid='<?php echo $pid;?>';
 	var bid='<?php echo $bid;?>';
@@ -307,19 +347,19 @@ $logo=getMemberLogo($bid);
 			html+='<div class="col-sm-6 col-12">';
 			html+='<input type="hidden" name="milestone_id[]" class="milestone_row" value="'+new_row+'"/>';
 			html+='<div class="form-group">';
-			html+='<label for="title"><b>Description</b></label>';
+			html+='<label for="title" class="form-label">Description</label>';
 			html+='<input type="text" name="milestone_title_'+new_row+'" id="milestone_title_'+new_row+'" class="form-control">';
 			html+='</div>';
 			html+='</div>';
 			html+='<div class="col-sm-3 col-12">';
 			html+='<div class="form-group">';
-			html+='<label for="title"><b>Due date</b></label>';
+			html+='<label for="title" class="form-label">Due date</label>';
 			html+='<input type="text" name="milestone_due_date_'+new_row+'" id="milestone_due_date_'+new_row+'" class="datepicker form-control">';
 			html+='</div>';
 			html+='</div>';
 			html+='<div class="col-sm-3 col-12">';
 			html+='<div class="form-group">';
-			html+='<label for="title"><b>Amount</b></label>';
+			html+='<label for="title" class="form-label">Amount</label>';
 			html+='<div class="input-group">';
 			html+='<input type="text" name="milestone_amount_'+new_row+'" id="milestone_amount_'+new_row+'" class="milestone_amount form-control">';
 			html+='<div class="input-group-append ms-3">';

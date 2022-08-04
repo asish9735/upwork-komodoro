@@ -18,12 +18,16 @@ if($is_owner){
 }
 $contract_details_url=get_link('ContractDetails').'/'.md5($contractMilestoneDetails->contract_id);
 ?>
-
+<section class="short-banner">
+    <div class="container">
+        <h1><?php echo $contractMilestoneDetails->contract_title;?></h1>
+    </div>
+</section>
 <section class="section">
 <div class="container">
       <a href="<?php echo $contract_details_url;?>" class="mb-1 btn btn-link p-0"><i class="icon-feather-chevron-left"></i><?php echo __('contract_end_b_contract','Back to Contract');?> </a>
       
-        <h1 class="display-4"><?php echo $contractMilestoneDetails->contract_title;?></h1>
+        
         <div class="row">
           <div class="col-lg-9">
             <div class="panel mb-4">

@@ -23,13 +23,13 @@ if($all_projects){
 
 			<!-- Details -->
 			<div class="job-listing-description">
-				<h3 class="job-listing-title"><a href="<?php D($link);?>"><?php D($projectDetails->project_title);?></a> 
+				<h5 class="job-listing-title"><a href="<?php D($link);?>"><?php D($projectDetails->project_title);?></a> 
 				<?php if($projectDetails->is_hourly){?>
 				<span class="dashboard-status-button yellow"><?php D('Hourly');?></span>
 				<?php }else{?>
 				<span class="dashboard-status-button green"><?php D('Fixed');?></span>
 				<?php }?>
-				</h3>
+				</h5>
 <?php
 $status=getAllProjectStatus($projectDetails->project_status);
 ?>
@@ -48,7 +48,7 @@ $status=getAllProjectStatus($projectDetails->project_status);
 				<!-- Buttons -->
                 <div class="buttons-to-right_ always-visible_">
                     <a href="<?php D($link_bid);?>" class="btn btn-sm btn-site <?php if($projectDetails->project_status==PROJECT_DRAFT){ D('disabled');}?>"><?php echo __('projectclient_list_M_proposal','Manage Proposal');?> <span class="button-info"><?php D($projectDetails->bids);?></span></a>
-                    <?php if(!$projectDetails->hired){?><a href="<?php echo $edit_link;?>" class="btn btn-sm btn-secondary ico" data-tippy-placement="top"title="Edit"><i class="icon-feather-edit"></i></a><?php }?>
+                    <?php if(!$projectDetails->hired){?><a href="<?php echo $edit_link;?>" class="btn btn-sm btn-outline-secondary ico" data-tippy-placement="top"title="Edit"><i class="icon-feather-edit-3"></i></a><?php }?>
                     <a hidden href="#" class="btn btn-sm btn-danger ico" data-tippy-placement="top" title="Remove"><i class="icon-feather-trash-2"></i></a>
                 </div>
 		</div>

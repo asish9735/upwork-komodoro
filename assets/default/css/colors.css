@@ -128,7 +128,6 @@
  table.basic-table th,
  .copy-url .copy-url-button,
  .keyword-input-container .keyword-input-button,
- .tags-container input[type="checkbox"]:checked + label,
  input:checked + .switch-button,
  .radio input[type="radio"] + label .radio-label:after,
  .uploadButton .uploadButton-button:hover,

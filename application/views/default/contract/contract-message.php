@@ -29,8 +29,7 @@ $contract_term_url=get_link('ContractTerm').'/'.md5($contractDetails->contract_i
 </div>
 </section>
 <section class="section">
-<div class="container">
-        
+<div class="container">        
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('contract_details_milestone','Milestones & Earnings');?></a> </li>
           <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_message_url;?>"><?php echo __('contract_details_mesage','Messages & Files');?></a> </li>

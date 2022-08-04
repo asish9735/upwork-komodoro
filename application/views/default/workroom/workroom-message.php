@@ -25,10 +25,13 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 <script src="<?php echo JS;?>vue.js"></script>
 <script src="<?php echo JS;?>vue-infinite-loading.js"></script>
 <script type="text/javascript" src="<?php echo JS;?>moment-with-locales.js"></script>
-
+<section class="short-banner">
+    <div class="container">
+		<h1><?php echo $contractDetails->contract_title;?></h1>
+	</div>
+</section>
 <section class="section">
 <div class="container">
-        <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('workroom_details_overview','Overview');?></a> </li>
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_details_work_logs','Work Logs');?></a> </li>
@@ -72,7 +75,7 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 				<a <?php echo $profile_url;?>>
                 <img src="<?php echo $logo;?>" alt="<?php echo $name;?>" class="rounded-circle mb-3" height="96" width="96">                    
                 <h5 class="card-title"><?php echo $name;?></h5>
-				</a>
+				</a>                
 				<?php if($is_owner){?>
 				<p class="text-muted mb-0"><?php D($contractDetails->contractor->member_heading);?></p>
 				<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->contractor->avg_rating,1);?>"></div> 

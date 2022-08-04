@@ -8,25 +8,32 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 <div class="single-page-header">
 	<div class="container">
 		<div class="single-page-header-inner">
-					<div class="left-side">
-						
-						<div class="header-details">
-							<h1><?php D(ucfirst($projectData['project']->project_title));?></h1>
-							<p><?php D($projectData['project_category']->category_subchild_name);?>, <?php D($projectData['project_category']->category_name);?></p>
+            <div class="left-side">
+                
+                <div class="header-details">
+                    <h1><?php D(ucfirst($projectData['project']->project_title));?></h1>
+                    <p><?php D($projectData['project_category']->category_subchild_name);?>, <?php D($projectData['project_category']->category_name);?></p>
 
-						</div>
-					</div>
-					<?php if($projectData['project_settings']->is_fixed==1){?>
-					<div class="right-side">
-						<div class="salary-box">
-							<div class="salary-type"><?php echo __('projectview_apply_fixed_budget','Fixed Budget');?></div>
-							<div class="salary-amount"><?php D(priceSymbol().priceFormat($projectData['project_settings']->budget));?></div>
-						</div>
-					</div>
-					<?php }?>
-				</div>
+                </div>
+            </div>
+            
+            <div class="right-side">
+            	<div class="ms-auto">
+            		<h5>Location</h5>
+                	<p class="mb-0"><i class="ri-map-pin-line"></i> Berlin, Germany</p>
+                </div>
+            	<?php /* if($projectData['project_settings']->is_fixed==1){?>
+                <div class="salary-box">
+                    <div class="salary-type"><?php echo __('projectview_apply_fixed_budget','Fixed Budget');?></div>
+                    <div class="salary-amount"><?php D(priceSymbol().priceFormat($projectData['project_settings']->budget));?></div>
+                </div>
+                <?php }*/?>
+            </div>
+            
+        </div>
 	</div>
 </div>
+<section class="section">
 <div class="container">
 <ul class="nav nav-tabs mb-3">
   <li class="nav-item">
@@ -36,7 +43,6 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
     <a class="nav-link active" href="<?php echo $ProjectApplicationURL;?>"><?php echo __('projectview_bid_application','Applications');?></a>
   </li>
 </ul>
-
 <!-- Dashboard Headline -->
 <div class="dashboard-headline">
     <h3><?php echo __('projectview_bid_manage_proposal','Manage Proposals');?></h3>
@@ -46,22 +52,22 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 					
 <ul class="nav nav-tabs mb-3" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#proposal" role="tab"><?php echo __('projectview_bid_proposal','Proposal');?> <span id="show_count_total_proposal"></span></a>
+        <a class="nav-link active" data-bs-toggle="tab" href="#proposal" role="tab"><?php echo __('projectview_bid_proposal','Proposal');?> <span id="show_count_total_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#archive" role="tab"><?php echo __('projectview_bid_archive','Archive');?> <span id="show_count_archive_proposal"></span></a>
+        <a class="nav-link" data-bs-toggle="tab" href="#archive" role="tab"><?php echo __('projectview_bid_archive','Archive');?> <span id="show_count_archive_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#shortlisted" role="tab"><?php echo __('projectview_bid_shortlisted','Shortlisted');?> <span id="show_count_shortlisted_proposal"></span></a>
+        <a class="nav-link" data-bs-toggle="tab" href="#shortlisted" role="tab"><?php echo __('projectview_bid_shortlisted','Shortlisted');?> <span id="show_count_shortlisted_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#interview" role="tab"><?php echo __('projectview_bid_interview','Interview');?> <span id="show_count_interview_proposal"></span></a>
+        <a class="nav-link" data-bs-toggle="tab" href="#interview" role="tab"><?php echo __('projectview_bid_interview','Interview');?> <span id="show_count_interview_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#invite" role="tab"><?php echo __('projectview_bid_invite','Invite');?> <span id="show_count_invite_proposal"></span></a>
+        <a class="nav-link" data-bs-toggle="tab" href="#invite" role="tab"><?php echo __('projectview_bid_invite','Invite');?> <span id="show_count_invite_proposal"></span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#hired" role="tab"><?php echo __('projectview_hire','Hire');?> <span id="show_count_hired_proposal"></span></a>
+        <a class="nav-link" data-bs-toggle="tab" href="#hired" role="tab"><?php echo __('projectview_hire','Hire');?> <span id="show_count_hired_proposal"></span></a>
     </li>
 </ul>
 
@@ -95,7 +101,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 </div>
 
 
-<div class="tab-content dashboard-box_ margin-top-0 margin-bottom-30">
+<div class="tab-content">
     <div class="tab-pane active" id="proposal" role="tabpanel"><?php echo __('projectview_bid_proposal','proposal');?></div>
     <div class="tab-pane" id="archive" role="tabpanel"><?php echo __('projectview_bid_archive','archive');?></div>
     <div class="tab-pane" id="shortlisted" role="tabpanel"><?php echo __('projectview_bid_shortlisted','shortlist');?></div>
@@ -104,9 +110,8 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
     <div class="tab-pane" id="hired" role="tabpanel"><?php echo __('projectview_bid_hired','hired');?></div>
 </div>
 				
-			</div>
-<div class="dashboard-footer-spacer"></div>
-            
+</div>
+</section>            
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog"  style="z-index: 10000"  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <!-- Modal content-->

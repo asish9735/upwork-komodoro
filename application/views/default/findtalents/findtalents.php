@@ -31,7 +31,7 @@
 			</div>		
 				<!-- Location -->
 				<div class="sidebar-widget">
-					<h5><?php echo __('findtalents_page_location','Location');?></h5>
+					<h5><?php echo __('country','Country');?></h5>
 					<select name="country" class="selectpicker default"  title="All locations"  data-live-search="true">
 						<option value=""><?php echo __('findtalents_page_all','All');?></option>
 						<?php if($all_location){
@@ -43,8 +43,18 @@
 						}?>
 					</select>
 				</div>
-
-			
+				<div class="sidebar-widget">
+                    <h5><?php echo __('city','City');?></h5>
+                    <select class="selectpicker default">
+                        <option selected="selected"><?php echo __('select_city','Select City');?></option>
+                        <option>Delhi</option>
+                        <option>Kolkata</option>
+                        <option>Bangaluru</option>
+                        <option>Chennai</option>
+                        <option>Mumbai</option>
+                        <option>Pune</option>
+                    </select>
+                </div>
 
 				<!-- Keywords -->
 				<div class="sidebar-widget" hidden>
@@ -64,8 +74,11 @@
 				<!-- Tags -->
 				<div class="sidebar-widget">
 					<h5><?php echo __('findtalents_page_skills','Skills');?></h5>
-
-					<div class="tags-container skillContaintag">
+					<!-- More Skills -->
+					<div class="mb-3">
+					<input type="text"  class="form-control input-text with-border tagsinput_skill" placeholder="<?php echo __('findtalents_page_skills_placeholder','skills');?>"/>
+					</div>
+                    <div class="tags-container skillContaintag">
 						<?php
 						if($searchdata && array_key_exists('byskillsname',$searchdata)){
 							if($searchdata['pre_skills']){
@@ -82,14 +95,9 @@
 						?>
 					</div>
 					<div class="clearfix"></div>
-
-					<!-- More Skills -->
-					<div class="submit-field">
-					<input type="text"  class="form-control input-text with-border tagsinput_skill" placeholder="<?php echo __('findtalents_page_skills_placeholder','skills');?>"/>
-					</div>
 				</div>
 				<!-- Hourly Rate -->
-				<div class="sidebar-widget mb-0">
+				<div class="sidebar-widget">
 					<h5><?php echo __('findtalents_page_hourly','Hourly Rate');?></h5>
 					<div class="margin-top-60"></div>
                     <div class="ps-4 pe-4">
@@ -105,7 +113,9 @@
                         <button type="button" class="btn btn-site" onclick="filterForm()"><i class="icon-feather-search"></i></button> 
                     </div> 
 				</div>
-				
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-site">Search</button>
+                </div>
 			</form>
 			</div>
 		</div>

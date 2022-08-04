@@ -33,17 +33,17 @@ if($login_user_id){
 					  <?php if(!$is_owner){?>						
 						<a href="<?php echo VZ;?>" class="ms-auto btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-line-awesome-heart"></i></a>					              
 					  <?php }?>                  	
-					<?php if($projectData['project_settings'] && $projectData['project_settings']->is_fixed==1){?>                    	
+					<?php /* if($projectData['project_settings'] && $projectData['project_settings']->is_fixed==1){?>                    	
 						<div class="salary-box">
 							<div class="salary-type"><?php echo __('projectview_apply_fixed_budget','Fixed Budget');?></div>
 							<div class="salary-amount"><?php D(priceSymbol().priceFormat($projectData['project_settings']->budget));?></div>
 						</div>					
-					<?php }?>
+					<?php }*/ ?>
                     </div>
 				</div>
 	</div>
 </div>
-
+<section class="section">
 <?php if($is_owner){?>
 <div class="container">
 <ul class="nav nav-tabs mb-3">
@@ -60,7 +60,7 @@ if($login_user_id){
 //print_r($display_tabs);
 ?>
 <!-- Page Content -->
-<section class="section">
+
 <div class="container">
 	<div class="row">		
 		<!-- Content -->
@@ -145,7 +145,7 @@ if($login_user_id){
 			</div>
 <?php }?>
 
-<ul class="totalList mb-4">
+<ul class="totalList">
             <li><b><?php echo __('projectview_bid_proposal','Proposal');?></b>
                 <span><?php D($projectData['proposal']['total_proposal'])?></span>
             </li>
@@ -168,7 +168,7 @@ if($login_user_id){
 
 		<!-- Sidebar -->
 		<div class="col-xl-4 col-lg-4">
-			<div class="sidebar-container mt-4 mt-sm-0">
+			<div class="mt-4 mt-lg-0">
             <h5><?php echo __('projectview_view_posted','Posted');?> <?php D(get_time_ago($projectData['project']->project_posted_date));?></h5>
 			<?php if(!$is_owner){
 				if($is_already_bid && $is_already_bid->is_hired!=1){

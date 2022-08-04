@@ -121,8 +121,8 @@
                        
         </div>
         
-        <div class="sidebar-widget mb-0">
-        <h5>Locations</h5>
+        <div class="sidebar-widget">
+        <h5><?php echo __('country','Country');?></h5>
         <select class="selectpicker default" name="country">
         	<option value=""><?php echo __('findtalents_page_','Select Country');?></option>
 			<?php if($all_location){
@@ -134,6 +134,21 @@
             }?>
         </select>
 		</div>
+        <div class="sidebar-widget">
+        <h5><?php echo __('city','City');?></h5>
+        <select class="selectpicker default">
+        	<option selected="selected"><?php echo __('select_city','Select City');?></option>
+        	<option>Delhi</option>
+            <option>Kolkata</option>
+            <option>Bangaluru</option>
+            <option>Chennai</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+        </select>
+        </div>
+        <div class="d-grid">
+        	<button type="submit" class="btn btn-site">Search</button>
+        </div>
 	</div>
 	</form>
     	</div>

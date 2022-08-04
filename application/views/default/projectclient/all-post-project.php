@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <!-- Headline -->
                 <div class="headline">
-                    <h3><?php echo __('projectclient_proposa_posted_project','My Posted Projects');?></h3>
+                    <h4><?php echo __('projectclient_proposa_posted_project','My Posted Projects');?></h4>
                 </div>
                 <div class="content">
                     <ul class="dashboard-box-list" id="ajax_table"></ul>

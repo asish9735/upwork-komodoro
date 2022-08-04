@@ -38,8 +38,8 @@ $currency=priceSymbol();
   </div>
 </div>
 
-<!-- Page Content
-================================================== -->
+<!-- Page Content -->
+<section class="section">
 <div class="container">
   <?php if($limit_over){?>
   <div class="alert alert-warning"><?php echo __('projectview_apply_max_limit','Max limit over, please upgrade your membership plan.');?> <a href="<?php echo get_link('membershipURL');?>"><?php echo __('projectview_apply_click_here','Click here');?></a><?php echo __('projectview_apply_to_upgrade','to upgrade');?> </div>
@@ -120,19 +120,19 @@ $currency=priceSymbol();
               <div class="col-md-6 col-12">
                 <input type="hidden" name="milestone_id[]" class="milestone_row" value="<?php echo $pmid;?>"/>
                 <div class="form-group">
-                  <label for="description"><?php echo __('projectview_apply_description','Description');?></label>
+                  <label for="description" class="form-label"><?php echo __('projectview_apply_description','Description');?></label>
                   <input type="text" name="milestone_title_<?php echo $pmid;?>" id="milestone_title_<?php echo $pmid;?>" class="form-control" value="<?php echo $milestone->bid_milestone_title;?>">
                 </div>
               </div>
               <div class="col-md-3 col-12">
                 <div class="form-group">
-                  <label for="due date"><?php echo __('projectview_apply_due_date','Due date');?></label>
+                  <label for="due date" class="form-label"><?php echo __('projectview_apply_due_date','Due date');?></label>
                   <input type="text" name="milestone_due_date_<?php echo $pmid;?>" id="milestone_due_date_<?php echo $pmid;?>" class="form-control datepicker" value="<?php echo $milestone->bid_milestone_due_date;?>">
                 </div>
               </div>
               <div class="col-md-3 col-12">
                 <div class="form-group">
-                  <label for="amount"><?php echo __('projectview_apply_amount','Amount');?></label>
+                  <label for="amount" class="form-label"><?php echo __('projectview_apply_amount','Amount');?></label>
                   <?php if($k>0){?>
                   <div class="input-group">
                     <?php }?>
@@ -152,19 +152,19 @@ $currency=priceSymbol();
               <div class="col-sm-6 col-xs-12">
                 <input type="hidden" name="milestone_id[]" class="milestone_row" value="1"/>
                 <div class="form-group">
-                  <label for="title"><b><?php echo __('projectview_apply_description','Description');?></b></label>
+                  <label for="title" class="form-label"><b><?php echo __('projectview_apply_description','Description');?></b></label>
                   <input type="text" name="milestone_title_1" id="milestone_title_1" class="form-control">
                 </div>
               </div>
               <div class="col-sm-3 col-xs-12">
                 <div class="form-group">
-                  <label for="title"><b><?php echo __('projectview_apply_due_date','Due date');?></b></label>
+                  <label for="title" class="form-label"><b><?php echo __('projectview_apply_due_date','Due date');?></b></label>
                   <input type="text" name="milestone_due_date_1" id="milestone_due_date_1" class="datepicker form-control">
                 </div>
               </div>
               <div class="col-sm-3 col-xs-12">
                 <div class="form-group">
-                  <label for="title"><b><?php echo __('projectview_apply_amount','Amount');?></b></label>
+                  <label for="title" class="form-label"><b><?php echo __('projectview_apply_amount','Amount');?></b></label>
                   <input type="text" name="milestone_amount_1" id="milestone_amount_1" class="milestone_amount form-control" onKeyUp="updateTotal()">
                 </div>
               </div>
@@ -270,7 +270,7 @@ $currency=priceSymbol();
 				foreach($project_question as $k=>$val){
 			?>
         <div class="form-group">
-          <label><?php echo $k+1;?>. <?php echo $val->question_title;?></label>
+          <label class="form-label"><?php echo $k+1;?>. <?php echo $val->question_title;?></label>
           <input type="hidden" name="qid[]" value="<?php echo $val->question_id;?>"/>
           <input type="text" name="question[<?php echo $val->question_id;?>]" class="form-control" value="<?php echo $val->question_answer;?>">
         </div>
@@ -279,7 +279,7 @@ $currency=priceSymbol();
 			}
 			?>
         <div class="form-group">
-          <label><?php echo __('projectview_proposal_cover_letter','Cover Letter');?>
+          <label class="form-label"><?php echo __('projectview_proposal_cover_letter','Cover Letter');?>
             <?php if($projectData['project_additional'] && $projectData['project_additional']->project_is_cover_required){?>
               <?php echo __('projectview_apply_require_cover','(this client require cover letter)');?>
             <?php }?>
@@ -287,7 +287,7 @@ $currency=priceSymbol();
           <textarea class="form-control" rows="4" id="bid_details" name="bid_details"><?php if($getBidDetails && $getBidDetails->bid_details){echo $getBidDetails->bid_details;}?></textarea>
         </div>
         <div class="form-group">
-          <label><?php echo __('projectview_proposal_attachment','Attachments');?></label>          
+          <label class="form-label"><?php echo __('projectview_proposal_attachment','Attachments');?></label>          
           <div class="upload-area" id="uploadfile">
           <input type="file" name="fileinput" id="fileinput" multiple="true">
             <p><?php echo __('projectview_apply_drag','Drag');?> &amp; <?php echo __('projectview_apply_drop_file','drop file here');?> <br />
@@ -325,7 +325,7 @@ $currency=priceSymbol();
   </form>
   <?php }?>
 </div>
-<div class="dashboard-footer-spacer"></div>
+</section>
 <script type="text/javascript">
 	var pid='<?php echo $projectData['project']->project_id;?>';
 	var is_hourly='<?php if($projectData['project_settings']->is_hourly==1){echo 1;}else{echo 0;}?>';

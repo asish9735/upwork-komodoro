@@ -218,6 +218,10 @@ if($login_user_id){
                   
                   <a href="javascript:void(0)" class="edit_account_btn btn-edit btn-circle float-end ms-2" data-popup="availability" data-tippy-placement="top" title="Edit"><i class="icon-feather-edit-3"></i></a></strong>
                 </li>
+                <li>
+                	<span>Location</span>
+                    <strong><?php D(ucfirst($memberInfo->country_name))?></strong>
+                </li>
               </ul>
               
               <!-- Button --> 

@@ -23,10 +23,14 @@ $contract_message_url=get_link('ContractMessageHourly').'/'.md5($contractDetails
 $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->contract_id);
 
 ?>
-
+<section class="short-banner">
+    <div class="container">
+		<h1><?php echo $contractDetails->contract_title;?></h1>
+	</div>
+</section>
 <section class="section">
   <div class="container">
-    <h1 class="display-4"><?php echo $contractDetails->contract_title;?></h1>
+    
     <ul class="nav nav-tabs mb-3">
       <li class="nav-item"> <a class="nav-link" href="<?php echo $contract_details_url;?>"><?php echo __('workroom_details_overview','Overview');?></a> </li>
       <li class="nav-item"> <a class="nav-link active" href="<?php echo $contract_worklog_url;?>"><?php echo __('workroom_details_work_logs','Work Logs');?></a> </li>
@@ -84,26 +88,24 @@ $contract_term_url=get_link('ContractTermHourly').'/'.md5($contractDetails->cont
 			<?php }else{ ?>
 			<div class="star-rating mb-2" data-rating="<?php echo round($contractDetails->owner->statistics->avg_rating,1);?>"></div>
 			<?php }?>
+            <div class="clearfix"></div>
             <?php if($contractDetails->is_pause){?>
-            <p class="alert alert-warning"><?php echo __('workroom_details_contract_pause','Contract Pause');?></p>
+            <p class="badge bg-warning"><?php echo __('workroom_details_contract_pause','Contract Pause');?></p>
             <?php }?>
+            <div class="d-grid">
             <?php if($is_owner){?>
-            <a href="<?php echo $new_contract_url;?>" class="btn btn-success btn-block">
-            <icon class="icon-material-outline-add"></icon>
-            <?php echo __('workroom_details_new_contract','New Contract');?></a> <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_fund_escrow">
-            <icon class="icon-material-outline-add"></icon>
-            <?php echo __('workroom_details_add_fund','Add Fund');?></a>
+            <a href="<?php echo $new_contract_url;?>" class="btn btn-success"><i class="icon-material-outline-add"></i> <?php echo __('workroom_details_new_contract','New Contract');?></a>
+            <a href="<?php echo VZ;?>" class="btn btn-site mt-2 add_fund_escrow"><i class="icon-material-outline-add"></i> <?php echo __('workroom_details_add_fund','Add Fund');?></a>
             <?php }else{?>
             <?php if($contractDetails->allow_manual_hour){
-	            	if($contractDetails->is_pause!=1){
-					?>
-					 <a href="<?php echo VZ;?>" class="btn btn-site btn-block add_manual_hour">
-	            <icon class="icon-material-outline-add"></icon>
-	            <?php echo __('workroom_invoice_add_hour','Add Hour');?></a>
+				if($contractDetails->is_pause!=1){
+				?>
+				<a href="<?php echo VZ;?>" class="btn btn-site mt-2 add_manual_hour"><i class="icon-material-outline-add"></i> <?php echo __('workroom_invoice_add_hour','Add Hour');?></a>
 					<?php	
 					}
             	}
             }?>
+            </div>
           </div>
         </div>
       </div>

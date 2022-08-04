@@ -15,15 +15,13 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 		}	
 	}
 	
-	 ?>
-<!-- Freelancer -->
-<div class="job-listing">
+	 ?><div class="job-listing">
 	<!-- Job Listing Details -->
 	<div class="job-listing-details">
 		<!-- Logo -->
 		<div class="job-listing-company-logo">
 			<a href="<?php echo $freelancer['profile_link'];?>"><img src="<?php echo $freelancer['user_logo'];?>" alt="">
-			<span class="verified-badge"></span></a>
+			<span class="verified-badge" title="Verified" data-tippy-placement="bottom"></span></a>
 		</div>
 
 		<!-- Details -->
@@ -58,10 +56,11 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 	</div>		
     <div class="job-listing-footer">
         <ul>
-        	<li><i class="icon-feather-map-pin"></i> <?php echo $freelancer['country_name'];?></li>
+        	
         	<li><?php echo __('findtalents_job_success','Job Success');?> <b><?php echo $freelancer['success_rate'];?>%</b></li>
             <li><?php echo __('');?>Rate <strong><?php echo $freelancer['member_hourly_rate'] > 0 ? priceSymbol().  priceFormat($freelancer['member_hourly_rate']) . ' / hr' : ' - ';?></strong></li>
 			<li><i class="icon-material-outline-account-balance-wallet"></i> <?php echo __('');?>Earned <strong><?php D(priceSymbol().displayamount($freelancer['total_earning'],2));?></strong></li>
+            <li><i class="icon-feather-map-pin"></i> <?php echo $freelancer['country_name'];?></li>
             <li class="ms-md-auto">
             <?php if($freelancer['badges']){
               	foreach($freelancer['badges'] as $b=>$badge){
@@ -77,7 +76,9 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
             </li>
         </ul>
     </div>			
-</div>		
+</div>
+<!-- Freelancer -->
+		
 <?php } } ?>
 <!-- Freelancer -->
 
@@ -89,7 +90,7 @@ if($talent_list){foreach($talent_list as $k => $freelancer){
 		<!-- Logo -->
 		<div class="job-listing-company-logo">
 			<a href="#"><img src="<?php echo IMAGE;?>user-avatar-big-01.jpg" alt="">
-			<span class="verified-badge"></span></a>
+			<span class="verified-badge" title="Verified" data-tippy-placement="bottom"></span></a>
 		</div>
 
 		<!-- Details -->

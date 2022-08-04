@@ -300,7 +300,7 @@ if ($cms_temp) {
           <div class="freelancer-overview-inner"> 
             <!-- Avatar -->
             <div class="freelancer-avatar">
-              <div class="verified-badge"></div>
+              <div class="verified-badge" title="Verified" data-tippy-placement="bottom"></div>
               <a href="<?php echo $freelancer['profile_link']; ?>"><img src="<?php echo $freelancer['user_logo']; ?>" alt="professional01"></a> </div>
             <!-- Name -->
             <div class="freelancer-name">
@@ -366,7 +366,7 @@ if ($cms_temp) {
             	<a href="<?php echo $url;?>"><img src="<?php echo $proposal_image;?>" alt="<?php echo $proposal['proposal_title'];?>" class="card-img-top" /></a>
                 <a href="#" class="card-avatar">
                 	<img src="<?php echo $logo;?>" alt="User" height="40" width="40" class="rounded-circle" />
-                    <span class="verified-badge"></span></a>
+                    <span class="verified-badge" title="Verified" data-tippy-placement="bottom"></span></a>
                 </a>                
             </div>
         	  <div class="card-body">
@@ -439,15 +439,15 @@ if ($cms_temp) {
                 	<div class="user-name">
                     	<p><?php echo getConvertedNameClient($v['clientdata']->client_name);?>
                         <?php if($v['clientdata']->country_code_short){?>
-                        <img src="<?php echo IMAGE;?>flags/<?php D(strtolower($v['clientdata']->country_code_short));?>.svg" alt="" height="18" width="18" class="flag" title="<?php echo $v['clientdata']->client_location;?>" data-tippy-placement="top" />
+                        <img src="<?php echo IMAGE;?>flags/<?php D(strtolower($v['clientdata']->country_code_short));?>.svg" alt="" height="18" width="18" class="flag ms-2" title="<?php echo $v['clientdata']->client_location;?>" data-tippy-placement="top" />
                       <?php }?>
                       </p>
                         <div class="star-rating" data-rating="<?php echo $v['clientdata']->avg_rating;?>"></div>
                     </div>
                 </div>
                 <div class="d-flex align-items-end justify-content-between">
-                  <h3 class="budget mb-0"><?php echo $budget > 0 ? $currency. $budget : '';?></h3>
-                  <!-- <span class="bookmark-icon ms-auto"></span> -->
+                  <?php /*?><h3 class="budget mb-0"><?php echo $budget > 0 ? $currency. $budget : '';?></h3><?php */?>
+                  <span><i class="ri-map-pin-line"></i> <?php echo $v['clientdata']->client_location;?></span>
                   <a href="<?php echo $v['project_detail_url']; ?>" class="btn btn-outline-site btn-sm">Apply Now</a> 
                 </div>
             </div>
