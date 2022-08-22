@@ -721,11 +721,13 @@ function getProjectDetails($project_id,$show=array()){
 	}
 	if(empty($show) || in_array('project_settings',$show)){
 	$arr=array(
-				'select'=>'p_s.is_visible_anyone,p_s.is_visible_private,p_s.is_visible_invite,p_s.is_hourly,p_s.is_fixed,p_s.budget,e_l.experience_level_key,e_l_n.experience_level_name,p_s.hourly_duration,p_s.hourly_time_required,p_s.project_type_code',
+				'select'=>'p_s.is_visible_anyone,p_s.is_visible_private,p_s.is_visible_invite,p_s.is_hourly,p_s.is_fixed,p_s.budget,e_l.experience_level_key,e_l_n.experience_level_name,p_s.hourly_duration,p_s.hourly_time_required,p_s.project_type_code,p_s.country_code,p_s.city_id,c_n.country_name,ct_n.city_name',
 				'table'=>'project_settings as p_s',
 				'join'=>array(
 					array('table'=>'experience_level as e_l','on'=>'p_s.experience_level=e_l.experience_level_id','position'=>'left'),
 					array('table'=>'experience_level_name as e_l_n','on'=>"(e_l.experience_level_id=e_l_n.experience_level_id and e_l_n.experience_level_lang='".get_active_lang()."')",'position'=>'left'),
+					array('table'=>'country_names as c_n','on'=>"(p_s.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left'),
+					array('table'=>'city_names as ct_n','on'=>"(p_s.city_id=ct_n.city_id and ct_n.city_lang='".get_active_lang()."')",'position'=>'left'),
 				),
 				'where'=>array('p_s.project_id'=>$project_id),
 				'single_row'=>true,

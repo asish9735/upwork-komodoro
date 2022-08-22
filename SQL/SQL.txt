@@ -795,3 +795,6 @@ ALTER TABLE `pref_city` ADD `is_featured` BOOLEAN NOT NULL AFTER `city_order`;
 ALTER TABLE `pref_member_address` ADD `city_id` INT NOT NULL AFTER `member_city`;
 ALTER TABLE `pref_organization_address` ADD `city_id` INT NOT NULL AFTER `organization_city`;
 ALTER TABLE `pref_city` ADD `country_code` CHAR(5) NULL AFTER `state_id`;
+
+--
+ALTER TABLE `pref_project_settings` ADD `country_code` CHAR(3) NULL AFTER `project_type_code`, ADD `city_id` INT NOT NULL AFTER `country_code`;

@@ -14,6 +14,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <h5><?php echo __('postproject_title','Title');?> <a href="javascript:void(0)" class="ico edit-project btn-edit btn-circle" data-popup="1" data-tippy-placement="top" title="Edit title"><i class="icon-feather-edit-2"></i></a></h5>
           <label><?php echo __('postproject_project_name','Name of your project');?></label>
           <p id="preview_title"></p>
+          <label><?php echo __('postproject_project_location','Location');?></label>
+          <p id="preview_location"></p>
           <label><?php echo __('postproject_project_category','Project category');?></label>
           <p id="preview_category"></p>
         </div>

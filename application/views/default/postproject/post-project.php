@@ -83,6 +83,7 @@ var pre_skills=<?php D(json_encode($myskills));?>;
 		$( "#project-"+type+"-data").html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 50px;">'+SPINNER+'<div>').show();
 		if(type=='title'){
 			$('#preview_title').html($('#title').val());
+			$('#preview_location').html($('#city_id option:selected').text()+' - '+$('#country option:selected').text());
 			$('#preview_category').html($('#category option:selected').text()+', '+$('#sub_category option:selected').text());
 			
 		}else if(type=='description'){
@@ -247,6 +248,13 @@ var  main = function(){
 			$('.fixed_project_display').hide();
 			$('.hourly_project_display').show();
 		}
+	});
+
+	$('#postprojectform').on('change','#country',function(){
+	$( "#load_city").html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 50px;">'+SPINNER+'<div>').show();
+		$.get( "<?php echo get_link('editprofileAJAXURL')?>",{'formtype':'getcity','Okey':$(this).val()}, function( data ) {
+			setTimeout(function(){ $("#load_city").html(data);$('.selectpicker').selectpicker('refresh');},1000)
+		});
 	});
 }
 var mainload = function(){

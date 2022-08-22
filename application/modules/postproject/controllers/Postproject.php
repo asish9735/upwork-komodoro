@@ -59,6 +59,9 @@ class Postproject extends MX_Controller {
 				$this->data['all_projectDurationTime']=getAllProjectDurationTime();
 				$this->data['all_skills']=getAllSkills();
 				//$this->data['left_panel']=load_view('inc/client-setting-left','',TRUE);
+				$this->data['country']=getAllCountry();
+				$this->data['city']=array();
+
 				$this->layout->view('post-project', $this->data);
 			}
 		}	
@@ -122,6 +125,12 @@ class Postproject extends MX_Controller {
 				$this->data['all_projectDurationTime']=getAllProjectDurationTime();
 				$this->data['all_skills']=getAllSkills();
 				//$this->data['left_panel']=load_view('inc/client-setting-left','',TRUE);
+				//print_r($this->data['projectData']);
+				$this->data['country']=getAllCountry();
+				$this->data['city']=array();
+				if($this->data['projectData']['project_settings']){
+					$this->data['city']=getAllCity(array('country_code'=>$this->data['projectData']['project_settings']->country_code));
+				}
 				$this->layout->view('post-project', $this->data);
 			}
 		}	
@@ -200,6 +209,8 @@ class Postproject extends MX_Controller {
 				if($step=='1' || $step=='7')
 				{
 					$this->form_validation->set_rules('title', 'Title', 'required|trim|xss_clean');
+					$this->form_validation->set_rules('country', 'country', 'required|trim|xss_clean');
+					$this->form_validation->set_rules('city_id', 'city', 'required|trim|xss_clean');
 					$this->form_validation->set_rules('category', 'Category', 'required|trim|xss_clean|is_natural_no_zero');
 					$this->form_validation->set_rules('sub_category', 'Speciality', 'required|trim|xss_clean|is_natural_no_zero');
 					if ($this->form_validation->run() == FALSE){
@@ -648,6 +659,12 @@ class Postproject extends MX_Controller {
 						}
 						if(post('projectType')){
 							$project_settings['project_type_code']=post('projectType');
+						}
+						if(post('country')){
+							$project_settings['country_code']=post('country');
+						}
+						if(post('city_id')){
+							$project_settings['city_id']=post('city_id');
 						}
 						if($is_edited==1){
 							unset($project_settings['project_id']);
