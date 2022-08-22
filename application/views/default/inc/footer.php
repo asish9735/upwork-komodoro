@@ -108,9 +108,9 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
       <!-- Right Side -->
       <div class="col-auto">                         
         <!-- Language Switcher -->
-        <select class="selectpicker language-switcher" data-selected-text-format="count" data-size="5">
-              <option selected>English</option>
-              <option>Arabic</option>
+        <select class="selectpicker language-switcher"  data-selected-text-format="count" data-size="5" onchange="upldateLanguageFooter()">
+              <option  value="en"  <?php if($this->config->item('language')=='en'){echo 'selected';}?>>English</option>
+              <option  value="ar"  <?php if($this->config->item('language')=='ar'){echo 'selected';}?>>Arabic</option>
             </select>
       </div>
     </div>		
@@ -250,6 +250,16 @@ function updateheadscroll(type){
 }
 function upldateLanguage(ev){
 	var language=$(ev).data('language');
+	var previous_lang='<?php D($this->config->item('language'))?>';
+	if(previous_lang==language){
+		return false;
+	}
+	$.post('<?php D(get_link('SetLanguage'))?>',{currentlink:"<?php D(uri_string());?>",newlang:language,preflang:previous_lang},function(response){
+		window.location.href=response['refeffer']+"<?php if($_SERVER['QUERY_STRING']){D('?'.$_SERVER['QUERY_STRING']);}?>";
+	},'JSON');
+}
+function upldateLanguageFooter(){
+  var language=$('.language-switcher :selected').val();
 	var previous_lang='<?php D($this->config->item('language'))?>';
 	if(previous_lang==language){
 		return false;

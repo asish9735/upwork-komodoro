@@ -88,7 +88,7 @@ class Cms extends MX_Controller {
 		if(post() && $this->input->is_ajax_request()){
 			$this->load->library('form_validation');
 			foreach($lang as $k => $v){
-				$this->form_validation->set_rules('lang[content]['.$v.']', "content $v", 'required|trim');
+				//$this->form_validation->set_rules('lang[content]['.$v.']', "content $v", 'required|trim');
 				$this->form_validation->set_rules('lang[title]['.$v.']', "title $v", 'required|trim|max_length[100]');
 				$this->form_validation->set_rules('lang[meta_title]['.$v.']', "meta title $v", 'required|trim');
 				$this->form_validation->set_rules('lang[meta_keys]['.$v.']', "meta keys $v", 'required|trim');
@@ -123,7 +123,7 @@ class Cms extends MX_Controller {
 		if(post() && $this->input->is_ajax_request()){
 			$this->load->library('form_validation');
 			foreach($lang as $k => $v){
-				$this->form_validation->set_rules('lang[content]['.$v.']', "content $v", 'required|trim');
+				//$this->form_validation->set_rules('lang[content]['.$v.']', "content $v", 'required|trim');
 				$this->form_validation->set_rules('lang[title]['.$v.']', "title $v", 'required|trim|max_length[100]');
 				$this->form_validation->set_rules('lang[meta_title]['.$v.']', "meta title $v", 'required|trim');
 				$this->form_validation->set_rules('lang[meta_keys]['.$v.']', "meta keys $v", 'required|trim');
@@ -264,7 +264,7 @@ class Cms extends MX_Controller {
 			$ID = post('ID');
 			$this->load->library('form_validation');
 			foreach($lang as $k => $v){
-				$this->form_validation->set_rules('lang[content]['.$v.']', "content $v", 'required|trim');
+				//$this->form_validation->set_rules('lang[content]['.$v.']', "content $v", 'required|trim');
 				$this->form_validation->set_rules('lang[title]['.$v.']', "title $v", 'required|trim|max_length[100]');
 				$this->form_validation->set_rules('lang[meta_title]['.$v.']', "meta title $v", 'required|trim');
 				$this->form_validation->set_rules('lang[meta_keys]['.$v.']', "meta keys $v", 'required|trim');

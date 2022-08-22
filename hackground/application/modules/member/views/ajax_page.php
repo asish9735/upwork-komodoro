@@ -98,7 +98,7 @@ function onsuccess(res){
         <label for="is_email_verified_1">Yes</label>
       </div>
       <div class="radio-inline">
-        <input type="radio" name="is_email_verified" value="0" class="magic-radio" id="is_email_verified_0" <?php echo $detail['is_email_verified'] == '0' ?  'checked' : ''; ?>>
+        <input type="radio" name="is_email_verified" value="0" class="magic-radio" id="is_email_verified_0" <?php echo $detail['is_email_verified'] != '1' ?  'checked' : ''; ?>>
         <label for="is_email_verified_0">No</label>
       </div>
     </div>
@@ -109,7 +109,7 @@ function onsuccess(res){
         <label for="is_phone_verified_1">Yes</label>
       </div>
       <div class="radio-inline">
-        <input type="radio" name="is_phone_verified" value="0" class="magic-radio" id="is_phone_verified_0" <?php echo $detail['is_phone_verified'] == '0' ?  'checked' : ''; ?>>
+        <input type="radio" name="is_phone_verified" value="0" class="magic-radio" id="is_phone_verified_0" <?php echo $detail['is_phone_verified'] != '1' ?  'checked' : ''; ?>>
         <label for="is_phone_verified_0">No</label>
       </div>
     </div>

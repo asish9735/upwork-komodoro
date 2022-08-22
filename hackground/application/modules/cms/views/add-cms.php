@@ -41,7 +41,7 @@
                 </div>
 
 				
-				<div class="form-group">
+				<div class="form-group" hidden>
                   <label for="content_<?php echo $v;?>">Content (<?php echo $v;?>)</label>
 				  <div data-error-wrapper="lang[content][<?php echo $v; ?>]">
                   <textarea class="form-control reset_field" id="content_<?php echo $v;?>" name="lang[content][<?php echo $v; ?>]" autocomplete="off"></textarea>

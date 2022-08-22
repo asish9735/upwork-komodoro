@@ -40,7 +40,7 @@
                   <input type="text" class="form-control reset_field" id="title_<?php echo $v;?>" name="lang[title][<?php echo $v; ?>]" autocomplete="off" value="<?php echo !empty($detail['lang']['title'][$v]) ? $detail['lang']['title'][$v] : '';?>" />
                 </div>
 				
-				<div class="form-group">
+				<div class="form-group" hidden>
                   <label for="content_<?php echo $v;?>">Content (<?php echo $v;?>)</label>
 				  <div data-error-wrapper="lang[content][<?php echo $v; ?>]">
                   <textarea class="form-control reset_field" id="content_<?php echo $v;?>" name="lang[content][<?php echo $v; ?>]" autocomplete="off"><?php echo !empty($detail['lang']['content'][$v]) ? $detail['lang']['content'][$v] : '';?></textarea>
