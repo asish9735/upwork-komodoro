@@ -878,7 +878,7 @@ class Payment extends MX_Controller {
 			$feeCalculation=generateProcessingFee('paypal',$amount);
 			$processing_fee=$feeCalculation['processing_fee'];
 			$this->data['formdata']=array(
-			'amount'=>round($amount+$processing_fee),
+			'amount'=>round($amount+$processing_fee,2),
 			'org_amt'=>$amount,
 			'fee'=>$processing_fee,
 			'return_url'=>get_link('AddFundURL').'?refer=paymentsuccess',
