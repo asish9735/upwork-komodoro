@@ -74,12 +74,13 @@ class City extends MX_Controller {
 	public function load_ajax_page(){
 		$page = get('page');
 		$this->data['page'] = $page;
-		/* $this->load->model('country/country_model');
-		$this->data['country'] = $this->country_model->get_all_country(); */
-		$this->data['state_id'] = get('state_id');
+		$this->load->model('country/country_model');
+		$this->data['country'] = $this->country_model->get_all_country();
+		 /**/
+		/* $this->data['state_id'] = get('state_id');
 		if($this->data['state_id']){
 			$this->data['state_name'] = $this->city->getStateById($this->data['state_id']);
-		}
+		} */
 		if($page == 'add'){
 			$this->data['title'] = 'Add City';
 			$this->data['form_action'] = base_url($this->data['curr_controller'].'add');
@@ -88,10 +89,10 @@ class City extends MX_Controller {
 			$this->data['ID']= $id;
 			$this->data['form_action'] = base_url($this->data['curr_controller'].'edit');
 			$this->data['detail'] = $this->city->getDetail($id);
-			if($this->data['detail']['state_id']){
+			/* if($this->data['detail']['state_id']){
 				$this->data['state_id'] = $this->data['detail']['state_id'];
 				$this->data['state_name'] = $this->city->getStateById($this->data['state_id']);
-			}
+			} */
 			$this->data['title'] = 'Edit City';
 		}
 		$this->load->view('ajax_page', $this->data);
@@ -105,6 +106,7 @@ class City extends MX_Controller {
 				$this->form_validation->set_rules('lang[city_name]['.$v.']', "name $v", 'required|trim|max_length[100]');
 			}
 			
+			$this->form_validation->set_rules('country_code', 'country', 'required');
 			$this->form_validation->set_rules('status', 'status', '');
 			if($this->form_validation->run()){
 				$post = post();
@@ -134,6 +136,7 @@ class City extends MX_Controller {
 			foreach($lang as $k => $v){
 				$this->form_validation->set_rules('lang[city_name]['.$v.']', "name $v", 'required|trim|max_length[100]');
 			}
+			$this->form_validation->set_rules('country_code', 'country', 'required');
 			$this->form_validation->set_rules('status', 'status', '');
 			$this->form_validation->set_rules('ID', 'id', 'required');
 			if($this->form_validation->run()){

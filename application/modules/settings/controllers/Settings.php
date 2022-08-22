@@ -153,12 +153,14 @@ class Settings extends MX_Controller {
 		if($this->loggedUser){
 			$member_id=$this->member_id;	
 			$memberData=get_row(array(
-				'select'=>'m_a.member_timezone,m_a.member_city,m_a.member_state,m_a.member_address_1,m_a.member_address_2,m_a.member_pincode,m_a.member_mobile,,m_a.member_mobile_code,c_n.country_name',
+				'select'=>'m_a.member_timezone,ct_n.city_name,m_a.member_city,m_a.member_state,m_a.member_address_1,m_a.member_address_2,m_a.member_pincode,m_a.member_mobile,,m_a.member_mobile_code,c_n.country_name',
 				'from'=>'member as m',
 				'join'=>array(
 					array('member_address as m_a','m.member_id=m_a.member_id','left'),
 					array('country as c','m_a.member_country=c.country_code','left'),
-					array('country_names as c_n',"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'left')
+					array('country_names as c_n',"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'left'),
+					array('city_names as ct_n',"(m_a.city_id=ct_n.city_id and ct_n.city_lang='".get_active_lang()."')",'left')
+
 				),
 				'where'=>array('m.member_id'=>$member_id),
 			),'object');	
@@ -176,9 +178,10 @@ class Settings extends MX_Controller {
 		
 		if($this->loggedUser){
 			$this->data['country']=getAllCountry();
+			$this->data['city']=array();
 			$member_id=$this->member_id;	
 			$memberData=get_row(array(
-				'select'=>'m_a.member_timezone,m_a.member_country,m_a.member_city,m_a.member_state,m_a.member_address_1,m_a.member_address_2,m_a.member_pincode,m_a.member_mobile,,m_a.member_mobile_code,c_n.country_name',
+				'select'=>'m_a.member_timezone,m_a.member_country,m_a.city_id,m_a.member_city,m_a.member_state,m_a.member_address_1,m_a.member_address_2,m_a.member_pincode,m_a.member_mobile,,m_a.member_mobile_code,c_n.country_name',
 				'from'=>'member as m',
 				'join'=>array(
 					array('member_address as m_a','m.member_id=m_a.member_id','left'),
@@ -189,6 +192,7 @@ class Settings extends MX_Controller {
 			),'object');	
 			
 			if($memberData){
+				$this->data['city']=getAllCity(array('country_code'=>$memberData->member_country));
 				$this->data['memberInfo']=$memberData;
 				$this->layout->view('ajax-contact-location-form', $this->data,TRUE);
 			}
@@ -204,6 +208,7 @@ class Settings extends MX_Controller {
 		$msg=array();
 		if($this->input->post()){
 		$this->form_validation->set_rules('country', 'Country', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('city_id', 'City', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('address_1', 'Address 1', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pincode', 'Pincode', 'required|trim|xss_clean');
 		if($this->form_validation->run( )== FALSE){
@@ -247,6 +252,9 @@ class Settings extends MX_Controller {
 				}
 				if(post('city')){
 					$updatedata['member_city']=trim(post('city'));
+				}
+				if(post('city_id')){
+					$updatedata['city_id']=trim(post('city_id'));
 				}
 				if(post('state')){
 					$updatedata['member_state']=trim(post('state'));

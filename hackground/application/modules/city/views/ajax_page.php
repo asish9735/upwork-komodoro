@@ -6,10 +6,17 @@
 </div>
 <div class="modal-body">
   <form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
-    <div class="form-group">
+<!--     <div class="form-group">
       <label for="country_code">State </label>
       <input type="text" value="<?php echo $state_name; ?>" readonly class="form-control"/>
       <input type="hidden" name="state_id" value="<?php echo $state_id; ?>"/>
+    </div> -->
+    <div class="form-group">
+      <label for="country_code">Country </label>
+      <select class="form-control" name="country_code">
+        <option value="">-select-</option>
+        <?php print_select_option($country, 'country_code', 'country_name');?>
+      </select>
     </div>
     <?php
         $lang = get_lang();
@@ -34,6 +41,14 @@
         <label for="status_0">Inactive</label>
       </div>
     </div>
+    
+    <div class="form-group">
+					<div>
+					 <input type="hidden" name="is_featured" value="0" />
+					 <input type="checkbox" name="is_featured" value="1" class="magic-checkbox" id="is_featured">
+					  <label for="is_featured">Featured</label>
+					</div>
+				</div>
     <div class="form-group">
       <div>
         <input type="checkbox" name="add_more" value="1" class="magic-checkbox" id="add_more">
@@ -74,10 +89,17 @@ function onsuccess(res){
 <div class="modal-body">
   <form role="form" id="add_form" action="<?php echo $form_action;?>" onsubmit="submitForm(this, event)">
     <input type="hidden" name="ID" value="<?php echo $ID?>"/>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="country_code">State </label>
       <input type="text" value="<?php echo $state_name; ?>" readonly class="form-control"/>
       <input type="hidden" name="state_id" value="<?php echo $state_id; ?>"/>
+    </div> -->
+    <div class="form-group">
+      <label for="country_code">Country </label>
+      <select class="form-control" name="country_code">
+        <option value="">-select-</option>
+        <?php print_select_option($country, 'country_code', 'country_name', $detail['country_code']);?>
+      </select>
     </div>
     <?php
 				$lang = get_lang();
@@ -92,6 +114,13 @@ function onsuccess(res){
       <input type="text" class="form-control reset_field" id="city_order" name="city_order" autocomplete="off" value="<?php echo !empty($detail['city_order']) ? $detail['city_order'] : ''; ?>">
     </div>
     <div class="form-group">
+					<div>
+					 <input type="hidden" name="is_featured" value="0" />
+					 <input type="checkbox" name="is_featured" value="1" class="magic-checkbox" id="is_featured" <?php echo (!empty($detail['is_featured']) && $detail['is_featured'] == '1') ? 'checked' : '';?>>
+					  <label for="is_featured">Featured</label>
+					</div>
+				</div>
+    <div class="form-group">
       <label class="form-label">Status</label>
       <div class="radio-inline">
         <input type="radio" name="status" value="1" class="magic-radio" id="status_1" checked>
@@ -102,6 +131,7 @@ function onsuccess(res){
         <label for="status_0">Inactive</label>
       </div>
     </div>
+    
     <button type="submit" class="btn btn-site">Save</button>
   </form>
 </div>

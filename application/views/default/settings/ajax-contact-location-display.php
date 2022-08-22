@@ -25,8 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php D($memberInfo->member_address_2)?><br/>
 					<?php }?>
 
-					<?php if($memberInfo->member_city){?>
-					<?php D($memberInfo->member_city)?>,  
+					<?php if($memberInfo->city_name){?>
+					<?php D($memberInfo->city_name)?>,  
 					<?php }?>
 					<?php if($memberInfo->member_state){?>
 					<?php D($memberInfo->member_state)?> 

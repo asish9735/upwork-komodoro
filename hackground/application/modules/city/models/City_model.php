@@ -35,6 +35,9 @@ class City_model extends CI_Model{
 		if(!empty($srch['state'])){
 			$this->db->where('a.state_id', $srch['state']);
 		}
+		if(!empty($srch['country'])){
+			$this->db->where('a.country_code', $srch['country']);
+		}
 		
 		
 		$this->db->where('b.city_lang', $admin_default_lang);	
@@ -51,8 +54,10 @@ class City_model extends CI_Model{
 		$structure = array(
 			'city_key' => !empty($data['city_key']) ? $data['city_key'] : '',
 			'state_id' => !empty($data['state_id']) ? $data['state_id'] : '',
+			'country_code' => !empty($data['country_code']) ? $data['country_code'] : NULL,
 			'city_order' => !empty($data['city_order']) ? $data['city_order'] : '',
 			'city_status' => !empty($data['status']) ? $data['status'] : '0',
+			'is_featured' => !empty($data['is_featured']) ? $data['is_featured'] : '0',
 		);
 		$ins['data'] = $structure;
 		$ins['table'] = $this->table;
@@ -93,8 +98,10 @@ class City_model extends CI_Model{
 		$structure = array(
 			'city_key' => !empty($data['city_key']) ? $data['city_key'] : '',
 			'state_id' => !empty($data['state_id']) ? $data['state_id'] : '',
+			'country_code' => !empty($data['country_code']) ? $data['country_code'] : NULL,
 			'city_order' => !empty($data['city_order']) ? $data['city_order'] : '',
 			'city_status' => !empty($data['status']) ? $data['status'] : '0',
+			'is_featured' => !empty($data['is_featured']) ? $data['is_featured'] : '0',
 		);
 		$ins['data'] = $structure;
 		$ins['table'] = $this->table;

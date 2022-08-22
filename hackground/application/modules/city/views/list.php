@@ -2,11 +2,15 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+	<div class="row">
+      <div class="col-sm-6 col-12">
       <h1>
          <?php echo $main_title ? $main_title : '';?>
-        <small><?php echo $second_title ? $second_title : '';?></small>
+		 <small><?php echo $second_title ? $second_title : '';?></small>
       </h1>
-     <?php echo $breadcrumb ? $breadcrumb : '';?>
+	  </div>
+      <div class="col-sm-6 col-12"><?php echo $breadcrumb ? $breadcrumb : '';?></div>
+	</div>
     </section>
 
 	 <!-- Content Filter -->
@@ -16,11 +20,10 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $title ? $title : '';?></h3>
-
-          <div class="box-tools pull-right">
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h3 class="card-title"><?php echo $title ? $title : '';?></h3>
+          <div class="card-tools">
 			<?php if(ALLOW_TRASH_VIEW){ ?>
 			<?php if(get('show') && get('show') == 'trash'){ ?>
 			<a href="<?php echo base_url($curr_controller.$curr_method);?>" type="button" class="btn btn-box-tool"><i class="fa fa-check-circle-o <?php echo ICON_SIZE;?>"></i> Show Main</a>&nbsp;&nbsp;
@@ -37,14 +40,14 @@
 			</div>
 			&nbsp;
 			<?php } ?>
-            <button type="button" class="btn btn-primary btn-sm hide" onclick="add()">
-              <i class="fa fa-plus"></i>
+            <button type="button" class="btn btn-site btn-sm" onclick="add()">
+              <i class="icon-feather-plus"></i>
 				<?php echo $add_btn;?>
 			</button>
           </div>
         </div>
        
-		<div class="box-body table-responsive no-padding" id="main_table">
+		<div class="card-body table-responsive p-0" id="main_table">
               <table class="table table-hover">
                 <tbody>
 				<tr>
@@ -55,7 +58,7 @@
 					</th>
                   <th style="width:10%">ID</th>
                   <th style="width:40%">Name</th>
-                  <th style="width:20%">State</th>
+                 <!--  <th style="width:20%">State</th> -->
                   <th style="width:10%">Status</th>
                   <th class="text-right" style="padding-right:20px;">Action</th>
                 </tr>
@@ -69,7 +72,7 @@
 					$status = '<a href="'.JS_VOID.'" data-toggle="tooltip" title="Restore"  onclick="changeStatus(1, '.$v[$primary_key].', this)"><span class="badge badge-danger">Deleted</span></a>';
 				}
 				
-				$state_name = $this->city->getStateById($v['state_id']);
+			//	$state_name = $this->city->getStateById($v['state_id']);
 				
 				?>
 				<tr>
@@ -81,7 +84,7 @@
 					</td>
                   <td><?php echo $v[$primary_key]; ?></td>
                   <td><?php echo $v['city_name']; ?></td>
-                  <td><?php echo $state_name; ?></td>
+                 <!--  <td><?php echo $state_name; ?></td> -->
                   <td><?php echo $status; ?></td>
                   <td class="text-right" style="padding-right:20px;">
 					<?php if($v['city_status'] != DELETE_STATUS){ ?>

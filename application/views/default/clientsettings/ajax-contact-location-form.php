@@ -59,6 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        	</div>
 	        	<span id="countryError" class="rerror"></span>
 	        </div>
+			
         </div>    
 
         <div class="submit-field">
@@ -70,12 +71,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 		<div class="row">	
 			<div class="col-md-4">
+				<div class="submit-field remove_arrow_select">
+					<label class="form-label"><?php echo __('setting_contact_info_city','City');?></label>  
+					<div id="load_city">
+						<select name="city_id" id="city_id" data-size="4" class=" selectpicker" title="Select city" data-live-search="true">
+							<?php
+							if($city){
+								foreach($city as $city_list){
+									?>
+									<option value="<?php echo $city_list->city_id;?>" <?php if($city_list->city_id==$organizationInfo->city_id){echo 'selected';}?>><?php echo ucfirst($city_list->city_name);?></option>
+									<?php
+								}
+							}
+								?>
+						</select> 
+					</div>
+					<span id="city_idError" class="rerror"></span>
+				</div>
+			</div>
+			<!-- <div class="col-md-4">
 				<div class="submit-field">
 					<label class="form-label"><?php echo __('contact_company_location_city','City');?></label>
 					<input type="text" class="form-control" value="<?php D($organizationInfo->organization_city)?>" name="city" id="city" placeholder="Enter city">
 					<span id="cityError" class="rerror"></span>
 				</div>
-			</div>
+			</div> -->
 			<div class="col-md-4">
 				<div class="submit-field">
 					<label class="form-label"><?php echo __('contact_company_location_state','State');?></label>

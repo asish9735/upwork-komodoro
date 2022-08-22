@@ -303,13 +303,14 @@ class Clientsettings extends MX_Controller {
 			$member_id=$this->member_id;	
 			$organization_id=$this->organization_id;
 			$memberData=getData(array(
-				'select'=>'m.member_name,o.organization_name,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,o_a.organization_address_1,o_a.organization_address_2,o_a.organization_pincode,o_a.organization_mobile,o_a.organization_vat_number,o_a.display_in_invoice,o_a.organization_mobile_code,c_n.country_name',
+				'select'=>'m.member_name,o.organization_name,ct_n.city_name,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,o_a.organization_address_1,o_a.organization_address_2,o_a.organization_pincode,o_a.organization_mobile,o_a.organization_vat_number,o_a.display_in_invoice,o_a.organization_mobile_code,c_n.country_name',
 				'table'=>'member as m',
 				'join'=>array(
 				array('table'=>'organization as o','on'=>'m.member_id=o.member_id','position'=>'left'),
 				array('table'=>'organization_address as o_a','on'=>'o.organization_id=o_a.organization_id','position'=>'left'),
 				array('table'=>'country as c','on'=>'o_a.organization_country=c.country_code','position'=>'left'),
-				array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left')
+				array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left'),
+				array('table'=>'city_names as ct_n','on'=>"(o_a.city_id=ct_n.city_id and ct_n.city_lang='".get_active_lang()."')",'position'=>'left'),
 				),
 				'where'=>array('m.member_id'=>$member_id),
 				'single_row'=>true,
@@ -330,8 +331,9 @@ class Clientsettings extends MX_Controller {
 			$member_id=$this->member_id;	
 			$organization_id=$this->organization_id;
 			$this->data['country']=getAllCountry();
+			$this->data['city']=array();
 			$memberData=getData(array(
-				'select'=>'m.member_name,o.organization_name,o_a.organization_country,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,o_a.organization_address_1,o_a.organization_address_2,o_a.organization_pincode,o_a.organization_mobile,o_a.organization_vat_number,o_a.display_in_invoice,o_a.organization_mobile_code,c_n.country_name',
+				'select'=>'m.member_name,o.organization_name,o_a.city_id,,o_a.organization_country,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,o_a.organization_address_1,o_a.organization_address_2,o_a.organization_pincode,o_a.organization_mobile,o_a.organization_vat_number,o_a.display_in_invoice,o_a.organization_mobile_code,c_n.country_name',
 				'table'=>'member as m',
 				'join'=>array(
 				array('table'=>'organization as o','on'=>'m.member_id=o.member_id','position'=>'left'),
@@ -343,6 +345,7 @@ class Clientsettings extends MX_Controller {
 				'single_row'=>true,
 			));	
 			if($memberData){
+				$this->data['city']=getAllCity(array('country_code'=>$memberData->organization_country));
 				$this->data['organizationInfo']=$memberData;
 				$this->layout->view('ajax-contact-location-form', $this->data,TRUE);
 			}
@@ -358,6 +361,7 @@ class Clientsettings extends MX_Controller {
 		$msg=array();
 		if($this->input->post()){
 		$this->form_validation->set_rules('country', 'Country', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('city_id', 'City', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('address_1', 'Address 1', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('pincode', 'Zip', 'required|trim|xss_clean');
 		if($this->form_validation->run( )== FALSE){
@@ -400,6 +404,9 @@ class Clientsettings extends MX_Controller {
 				}
 				if(post('country')){
 					$updatedata['organization_country']=trim(post('country'));
+				}
+				if(post('city_id')){
+					$updatedata['city_id']=trim(post('city_id'));
 				}
 				if(post('city')){
 					$updatedata['organization_city']=trim(post('city'));

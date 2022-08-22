@@ -774,3 +774,24 @@ INSERT INTO `pref_settings` (`id`, `title`, `setting_key`, `setting_value`, `edi
 (NULL, 'LinkedIn Link', 'linkedin_url', 'https://linkedin.com', 1, 0, 3, 'social'),
 (NULL, 'Instagram Link', 'instagram_url', 'https://instagram.com', 1, 0, 4, 'social'),
 (NULL, 'Youtube Link', 'youtube_url', 'https://youtube.com', 1, 0, 5, 'social');
+-------
+CREATE TABLE `pref_city` (
+  `city_id` int(11) NOT NULL,
+  `city_key` varchar(100) NOT NULL,
+  `state_id` int(11) NOT NULL,
+  `city_status` tinyint(1) NOT NULL,
+  `city_order` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pref_city_names` (
+  `city_id` int(11) NOT NULL,
+  `city_name` varchar(100) NOT NULL,
+  `city_lang` char(3) NOT NULL DEFAULT 'en'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `pref_city` ADD PRIMARY KEY (`city_id`);
+ALTER TABLE `pref_city` MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+ALTER TABLE `pref_city` ADD `is_featured` BOOLEAN NOT NULL AFTER `city_order`;
+ALTER TABLE `pref_member_address` ADD `city_id` INT NOT NULL AFTER `member_city`;
+ALTER TABLE `pref_organization_address` ADD `city_id` INT NOT NULL AFTER `organization_city`;
+ALTER TABLE `pref_city` ADD `country_code` CHAR(5) NULL AFTER `state_id`;

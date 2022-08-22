@@ -170,6 +170,13 @@ var  main = function(){
 		$( "#locationLoad").show();
 		$('.edit_location').show();
 	});	
+
+	$('#locationLoadForm').on('change','#country',function(){
+	$( "#load_city").html('<div class="text-center" style="min-height: 70px;width: 100%;line-height: 50px;">'+SPINNER+'<div>').show();
+		$.get( "<?php echo get_link('editprofileAJAXURL')?>",{'formtype':'getcity','Okey':$(this).val()}, function( data ) {
+			setTimeout(function(){ $("#load_city").html(data);$('.selectpicker').selectpicker('refresh');},1000)
+		});
+	});
 }
 </script>
 <div class="modal fade" id="avatar-modal-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="z-index: 10000" aria-hidden="true">

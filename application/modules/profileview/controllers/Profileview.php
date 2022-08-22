@@ -300,7 +300,7 @@ class Profileview extends MX_Controller {
 				$this->layout->view('ajax-portfolio-view', $this->data,TRUE);
 			//die;
 		}
-		elseif($this->access_member_type=='C' && $form_type!='getsubcat'){
+		elseif($this->access_member_type=='C' && ($form_type!='getsubcat' && $form_type!='getcity')){
 			redirect(get_link('dashboardURL'));
 		}
 		elseif($this->loggedUser){
@@ -519,6 +519,17 @@ class Profileview extends MX_Controller {
 				}
 				$this->data['all_category_subchild']=$all_category_subchild;
 				$this->layout->view('ajax-subcategory-form', $this->data,TRUE);
+			
+			}
+			elseif($form_type=='getcity')
+			{
+				$dataid=get('Okey');
+				$all_city=array();
+				if($dataid){
+					$all_city=getAllCity(array('country_code'=>$dataid));
+				}
+				$this->data['all_city']=$all_city;
+				$this->layout->view('ajax-city-form', $this->data,TRUE);
 			
 			}
 			elseif($form_type=='logo'){

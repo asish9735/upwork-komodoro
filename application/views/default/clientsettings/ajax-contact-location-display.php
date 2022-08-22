@@ -48,8 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php D($organizationInfo->organization_address_2)?><br/>
             <?php }?>
 
-            <?php if($organizationInfo->organization_city){?>
-            <?php D($organizationInfo->organization_city)?>,  
+            <?php if($organizationInfo->city_name){?>
+            <?php D($organizationInfo->city_name)?>,  
             <?php }?>
             <?php if($organizationInfo->organization_state){?>
             <?php D($organizationInfo->organization_state)?> 
