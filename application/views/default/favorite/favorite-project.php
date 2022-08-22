@@ -55,7 +55,7 @@ if($list){
                 </div>
               </div>
               <!-- Buttons -->
-              <div class="buttons-to-right single-right-button always-visible"> <a href="<?php echo $favorite_url;?>" target="_blank" class="btn-edit btn-circle" data-tippy-placement="top" data-tippy="" title="View"> <i class="icon-feather-eye"></i> </a> <a href="<?php echo VZ;?>" data-id="<?php echo md5($favorite->project_id);?>" data-action="remove" class="btn-delete btn-circle" data-tippy-placement="top" data-tippy="" title="Remove"> <i class="icon-feather-trash"></i> </a> </div>
+              <div class="buttons-to-right single-right-button always-visible"> <a href="<?php echo $favorite_url;?>" target="_blank" class="btn-edit btn-circle" data-tippy-placement="top" data-tippy="" title="View"> <i class="icon-feather-eye"></i> </a> <a href="<?php echo VZ;?>" data-id="<?php echo md5($favorite->project_id);?>" data-action="remove" class="btn-delete btn-circle mark_fav" data-tippy-placement="top" data-tippy="" title="Remove"> <i class="icon-feather-trash"></i> </a> </div>
             </li>
             <?php
 	}

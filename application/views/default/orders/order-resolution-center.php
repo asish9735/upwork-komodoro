@@ -60,7 +60,7 @@ $contract_term_url=get_link('OrderTermURL').md5($contractDetails->order_id);
 								<?php }elseif($orderDetails->buyer_id == $loggedInUserId){ ?>
 								<option> <?php echo (__('order_details_page_Cancellation_Reason_option_buyer_1',"Freelancer is not responding."));?> </option>
 								<option> <?php echo (__('order_details_page_Cancellation_Reason_option_buyer_2',"Freelancer is extremely rude."));?> </option>
-								<option> <?php echo (__('order_details_page_Cancellation_Reason_option_buyer_3',"Order does meet requirements."));?> </option>
+								<option> <?php echo (__('order_details_page_Cancellation_Reason_option_buyer_3',"Order does not meet requirements / description."));?> </option>
 								<option> <?php echo (__('order_details_page_Cancellation_Reason_option_buyer_4',"Freelancer asked me to cancel."));?> </option>
 								<option> <?php echo (__('order_details_page_Cancellation_Reason_option_buyer_5',"Freelancer cannot do required task."));?> </option>
 								<?php }  ?>

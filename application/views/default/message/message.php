@@ -153,4 +153,7 @@ var main = function(){
     position: absolute;
     right: 10px;
 }
+.uploadButton .uploadButton-input{
+	width:100%
+}
 </style>

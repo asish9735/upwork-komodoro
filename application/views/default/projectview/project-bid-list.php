@@ -153,7 +153,7 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
 	    $('.mytabs').tab(); //initialize tabs
 	});
    
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	$('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
 		$('.tab-pane').empty();
 	  var target = $(e.target).attr("href") // activated tab
 	  var pattern=/#.+/gi //use regex to get anchor(==selector)

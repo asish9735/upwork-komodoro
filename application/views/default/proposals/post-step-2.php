@@ -49,7 +49,7 @@ if($proposalData){
             </div>
           
             <div class="form-group">
-              <label class="form-label">Delivery Time: </label>
+              <label class="form-label">Delivery Time:(days) </label>
               <input onkeypress="return isNumberKey(event)" name="package_time_basic" id="package_time_basic" class="form-control" value="<?php if($proposalData && $packages && array_key_exists('B',$packages)){echo $packages['B']->delivery_time;}else{echo '1';}?>">
               <span id="package_time_basicError" class="rerror"></span>
             </div>
@@ -81,7 +81,7 @@ if($proposalData){
             </div>
             
             <div class="form-group">
-                <label class="form-label">Delivery Time: </label>
+                <label class="form-label">Delivery Time:(days) </label>
                 <input onkeypress="return isNumberKey(event)" name="package_time_standard" id="package_time_standard" class="form-control" value="<?php if($proposalData && $packages && array_key_exists('S',$packages)){echo $packages['S']->delivery_time;}else{echo '1';}?>">
                 <span id="package_time_standardError" class="rerror"></span>
             </div>
@@ -113,7 +113,7 @@ if($proposalData){
               </div>
               
               <div class="form-group">
-                  <label class="form-label">Delivery Time: </label>
+                  <label class="form-label">Delivery Time:(days) </label>
                   <input onkeypress="return isNumberKey(event)" name="package_time_premium" id="package_time_premium" class="form-control" value="<?php if($proposalData && $packages && array_key_exists('P',$packages)){echo $packages['P']->delivery_time;}else{echo '1';}?>">
                   <span id="package_time_premiumError" class="rerror"></span>
               </div>
