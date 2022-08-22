@@ -18,9 +18,9 @@ $ApplyProjecURL=get_link('ApplyProjectURL')."/".$projectData['project']->project
             </div>
             
             <div class="right-side">
-            	<div class="ms-auto">
-            		<h5>Location</h5>
-                	<p class="mb-0"><i class="ri-map-pin-line"></i> Berlin, Germany</p>
+                <div class="ms-auto">
+                    <h5>Location</h5>
+                    <p class="mb-0"><i class="ri-map-pin-line"></i> <?php D($projectData['clientInfo']['client_address']['location'])?>, <?php D($projectData['clientInfo']['client_address']['country'])?></p>
                 </div>
             	<?php /* if($projectData['project_settings']->is_fixed==1){?>
                 <div class="salary-box">

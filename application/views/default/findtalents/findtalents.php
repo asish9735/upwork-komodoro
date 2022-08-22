@@ -45,15 +45,20 @@
 				</div>
 				<div class="sidebar-widget">
                     <h5><?php echo __('city','City');?></h5>
-                    <select class="selectpicker default">
-                        <option selected="selected"><?php echo __('select_city','Select City');?></option>
-                        <option>Delhi</option>
-                        <option>Kolkata</option>
-                        <option>Bangaluru</option>
-                        <option>Chennai</option>
-                        <option>Mumbai</option>
-                        <option>Pune</option>
-                    </select>
+					<div id="load_city">
+						<select name="city_id" id="city_id" data-size="4" class=" selectpicker" title="Select city" data-live-search="true">
+						<option value=""><?php echo __('select_city','Select City');?></option>
+							<?php
+							if($city){
+								foreach($city as $city_list){
+									?>
+									<option value="<?php echo $city_list->city_id;?>" <?php if($searchdata && array_key_exists('city_id',$searchdata) && $searchdata['city_id']==($city_list->city_id)){echo 'selected';}?>><?php echo ucfirst($city_list->city_name);?></option>
+									<?php
+								}
+							}
+								?>
+						</select> 
+					</div>
                 </div>
 
 				<!-- Keywords -->
@@ -96,6 +101,7 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
+				<div class="clearfix"></div>
 				<!-- Hourly Rate -->
 				<div class="sidebar-widget">
 					<h5><?php echo __('findtalents_page_hourly','Hourly Rate');?></h5>
@@ -344,6 +350,7 @@ var main = function(){
 	findJobLoadMore.start(); */
 	
 	function filterForm(){
+		$('.skillContaintag').find('input:not(:checked)').parent().remove()
 		setTimeout(() => {
 			
 		
@@ -396,6 +403,10 @@ var main = function(){
 			}
 		}); */
 	});
+	$('[name="city_id"]').change(function(){
+		filterForm();
+
+	})
 	$('#talent_list').on('click', '.action_favorite',function(e){
 		e.preventDefault();
 		var _self=$(this);

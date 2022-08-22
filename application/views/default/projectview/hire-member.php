@@ -53,36 +53,7 @@ $logo=getMemberLogo($bid);
                 <label class="form-label"><?php echo __('projectview_job_contract_title','Contract Title');?></label>
                 <input type="text" name="title" id="title" class="form-control input-text with-border" value="<?php D(ucfirst($projects['project']->project_title));?>" >
               </div>
-              <div class="row">
-              	<div class="col-sm-6">
-                	<div class="form-group">
-                	<label class="form-label"><?php echo __('country','Country');?></label>
-                	<select class="selectpicker default">
-                    	<option>Australia</option>
-                        <option>China</option>
-                        <option>France</option>
-                        <option>Germany</option>
-                    	<option>India</option>
-                        <option>New Zealand</option>
-                        <option>USA</option>
-                    </select>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                	<div class="form-group">
-                	<label class="form-label"><?php echo __('city','City');?></label>
-                	<select class="selectpicker default">
-                        <option selected="selected"><?php echo __('select_city','Select City');?></option>
-                        <option>Delhi</option>
-                        <option>Kolkata</option>
-                        <option>Bangaluru</option>
-                        <option>Chennai</option>
-                        <option>Mumbai</option>
-                        <option>Pune</option>
-                    </select>
-                    </div>
-                </div>
-              </div>
+              
             </div>
           </div>
           <div class="panel mb-4">

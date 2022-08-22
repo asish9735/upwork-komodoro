@@ -220,7 +220,7 @@ if($login_user_id){
                 </li>
                 <li>
                 	<span>Location</span>
-                    <strong><?php D(ucfirst($memberInfo->country_name))?></strong>
+                    <strong><?php if($memberInfo->city_name){D(ucfirst($memberInfo->city_name))?> - <?php }?><?php D(ucfirst($memberInfo->country_name))?></strong>
                 </li>
               </ul>
               

@@ -48,8 +48,12 @@ class Findtalents extends MX_Controller {
 		
 		$this->data['all_skills']=getAllSkills();
 		$this->data['all_location']=getAllCountry();
-
-
+		$country = get('country');
+		$this->data['city']=array();
+		if($country){
+			$this->data['city']=getAllCity(array('country_code'=>$country));
+		}
+		
 		$this->layout->set_meta('author', 'Venkatesh bishu');
 		$this->layout->set_meta('keywords', 'Freelancer Script, Freelancer, New Flance');
 		$this->layout->set_meta('description', 'Freelancer Clone Script');

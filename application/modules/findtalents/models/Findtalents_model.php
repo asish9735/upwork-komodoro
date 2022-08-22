@@ -53,6 +53,9 @@ class Findtalents_model extends CI_Model {
 		if(!empty($srch['country'])){
 			$this->db->where("m_a.member_country", $srch['country']);
 		}
+		if(!empty($srch['city_id'])){
+			$this->db->where("m_a.city_id", $srch['city_id']);
+		}
 		if(!empty($srch['min']) && $srch['min'] > 0){
 			$this->db->where('m_b.member_hourly_rate >=', $srch['min']);
 		}

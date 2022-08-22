@@ -28,7 +28,12 @@ if($login_user_id){
 						</div>
 					</div>
 					
-					<div class="right-side">  
+					<div class="right-side"> 
+						<div class="ms-auto">
+							<h5>Location</h5>
+							<p class="mb-0"><i class="ri-map-pin-line"></i> <?php D($projectData['clientInfo']['client_address']['location'])?>, <?php D($projectData['clientInfo']['client_address']['country'])?></p>
+						</div>
+					
                     <!-- Bookmark icon -->
 					  <?php if(!$is_owner){?>						
 						<a href="<?php echo VZ;?>" class="ms-auto btn btn-circle action_favorite <?php echo $is_fav_class;?>" data-pid="<?php echo md5($projectData['project']->project_id);?>"><i class="icon-line-awesome-heart"></i></a>					              
@@ -72,7 +77,7 @@ if($login_user_id){
 					<p><?php D(nl2br($projectData['project_additional']->project_description));?></p>
                 
     <div class="details-budget">
-    
+   
     </div>
     
     <ul class="totalList">
@@ -199,8 +204,8 @@ if($login_user_id){
                             </li>
                             <li>
                                 <i class="icon-material-outline-location-on"></i>
-                                <p><?php D($projectData['clientInfo']['client_address']['country'])?>&nbsp;</p>
-                                <span><?php D($projectData['clientInfo']['client_address']['location'])?></span>
+                                <p><span><?php D($projectData['clientInfo']['client_address']['location'])?></span> - <?php D($projectData['clientInfo']['client_address']['country'])?>&nbsp;</p>
+                                
                             </li>
                             <li>
                                 <i class="icon-material-outline-check-circle <?php if($projectData['clientInfo']['client_payment_verify']=='1'){D('text-success');}else{D('text-danger');}?> "></i>

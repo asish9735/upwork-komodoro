@@ -54,7 +54,7 @@ $logo=getMemberLogo($member_id);
                 <?php if($memberInfo->country_code_short){?>
                 <img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($memberInfo->country_code_short));?>.svg" alt="<?php D(ucfirst($memberInfo->country_name))?>">
                 <?php }?>
-                <?php D(ucfirst($memberInfo->country_name))?>
+                <?php if($memberInfo->city_name){D(ucfirst($memberInfo->city_name))?> - <?php }?><?php D(ucfirst($memberInfo->country_name))?>
               </li>
               <!--<li>
                 <div class="verified-badge-with-title">Verified</div>

@@ -24,16 +24,22 @@ $currency=priceSymbol();
           </p>
         </div>
       </div>
-      <?php if($projectData['project_settings']->is_fixed==1){?>
+      
       <div class="right-side">
-        <div class="salary-box">
+        <div class="ms-auto">
+            <h5>Location</h5>
+            <p class="mb-0"><i class="ri-map-pin-line"></i> <?php D($projectData['clientInfo']['client_address']['location'])?>, <?php D($projectData['clientInfo']['client_address']['country'])?></p>
+          </div>
+        <?php if($projectData['project_settings']->is_fixed==1){?>
+        <!-- <div class="salary-box">
           <div class="salary-type"><?php echo __('projectview_apply_fixed_budget','Fixed Budget');?></div>
           <div class="salary-amount">
             <?php D($currency.priceFormat($projectData['project_settings']->budget));?>
           </div>
-        </div>
+        </div> -->
+        <?php }?>
       </div>
-      <?php }?>
+      
     </div>
   </div>
 </div>
@@ -51,7 +57,7 @@ $currency=priceSymbol();
     <?php if($projectData['project_settings']->is_hourly==1){?>
     <div class="panel mb-4">
       <div class="panel-header">
-        <h3><?php echo __('projectview_apply_header','Lorem ipsum dolar');?> </h3>
+        <h3><?php echo __('projectview_apply_header','Pay Type');?> </h3>
       </div>
       <div class="panel-body">
         <div class="payment_project_wrapper">
@@ -92,7 +98,7 @@ $currency=priceSymbol();
     <?php }else{?>
     <div class="panel mb-4">
       <div class="panel-header">
-        <h3><?php echo __('projectview_apply_header','Lorem ipsum dolar');?> </h3>
+        <h3><?php echo __('projectview_apply_header','Pay Type');?> </h3>
       </div>
       <div class="panel-body">
         <div class="form-group">

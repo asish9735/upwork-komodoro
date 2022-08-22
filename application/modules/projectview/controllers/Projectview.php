@@ -63,12 +63,13 @@ class Projectview extends MX_Controller {
 				
 				if($this->data['projectData']['project_owner']->organization_id){
 					$memberData=getData(array(
-						'select'=>'o.organization_name,o.organization_register_date,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,c_n.country_name,o.is_payment_verified',
+						'select'=>'o.organization_name,o.organization_register_date,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,c_n.country_name,o.is_payment_verified,ct_n.city_name',
 						'table'=>'organization as o',
 						'join'=>array(
 							array('table'=>'organization_address as o_a','on'=>'o.organization_id=o_a.organization_id','position'=>'left'),
 							array('table'=>'country as c','on'=>'o_a.organization_country=c.country_code','position'=>'left'),
-							array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left')
+							array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left'),
+							array('table'=>'city_names as ct_n','on'=>"(o_a.city_id=ct_n.city_id and ct_n.city_lang='".get_active_lang()."')",'position'=>'left'),
 						),
 						'where'=>array('o.organization_id'=>$this->data['projectData']['project_owner']->organization_id),
 						'single_row'=>true,
@@ -77,8 +78,8 @@ class Projectview extends MX_Controller {
 					$client_name=$memberData->organization_name;
 					$client_address=array();
 					$location_address=array();
-					if($memberData->organization_city){
-						$location_address[]=$memberData->organization_city;
+					if($memberData->city_name){
+						$location_address[]=$memberData->city_name;
 					}
 					if($memberData->organization_state){
 						$location_address[]=$memberData->organization_state;
@@ -225,6 +226,78 @@ class Projectview extends MX_Controller {
 			$organization_id=$this->organization_id;	
 			$this->data['projectData']=getProjectDetails($project_id,array('project','project_owner','project_settings','project_category'));
 			if($this->data['projectData']['project_owner']->organization_id==$organization_id){
+				if($this->data['projectData']['project_owner']->organization_id){
+					$memberData=getData(array(
+						'select'=>'o.organization_name,o.organization_register_date,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,c_n.country_name,o.is_payment_verified,ct_n.city_name',
+						'table'=>'organization as o',
+						'join'=>array(
+							array('table'=>'organization_address as o_a','on'=>'o.organization_id=o_a.organization_id','position'=>'left'),
+							array('table'=>'country as c','on'=>'o_a.organization_country=c.country_code','position'=>'left'),
+							array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left'),
+							array('table'=>'city_names as ct_n','on'=>"(o_a.city_id=ct_n.city_id and ct_n.city_lang='".get_active_lang()."')",'position'=>'left'),
+						),
+						'where'=>array('o.organization_id'=>$this->data['projectData']['project_owner']->organization_id),
+						'single_row'=>true,
+					));
+			
+					$client_name=$memberData->organization_name;
+					$client_address=array();
+					$location_address=array();
+					if($memberData->city_name){
+						$location_address[]=$memberData->city_name;
+					}
+					if($memberData->organization_state){
+						$location_address[]=$memberData->organization_state;
+					}
+					$location=implode(', ',$location_address);
+					$client_country="";
+					if($memberData->country_name){
+						$client_country=$memberData->country_name;
+					}
+					$client_address['location']=$location;
+					$client_address['country']=$client_country;
+					$client_payment_verify=$memberData->is_payment_verified;
+					
+					$client_member_since=$memberData->organization_register_date;
+					
+				}else{
+					$memberData=getData(array(
+						'select'=>'m.member_name,m.member_register_date,m_a.member_timezone,m_a.member_city,m_a.member_state,c_n.country_name',
+						'table'=>'member as m',
+						'join'=>array(
+							array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),
+							array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),
+							array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left')
+						),
+						'where'=>array('m.member_id'=>$data['projectData']['project_owner']->member_id),
+						'single_row'=>true,
+					));
+			
+					$client_name=$memberData->member_name;
+					$client_address=array();
+					$location_address=array();
+					if($memberData->member_city){
+						$location_address[]=$memberData->member_city;
+					}
+					if($memberData->member_state){
+						$location_address[]=$memberData->member_state;
+					}
+					$location=implode(', ',$location_address);
+					$client_country="";
+					if($memberData->country_name){
+						$client_country=$memberData->country_name;
+					}
+					$client_address['location']=$location;
+					$client_address['country']=$client_country;
+					$client_payment_verify="0";
+			
+					$client_member_since=$memberData->member_register_date;
+					
+				}
+				$this->data['projectData']['clientInfo']=array(
+					'client_name'=>$client_name,
+					'client_address'=>$client_address,
+				);
 
 			}else{
 				show_403();
@@ -280,6 +353,82 @@ class Projectview extends MX_Controller {
 					}
 				}
 			}
+
+			if($this->data['projectData']['project_owner']->organization_id){
+				$memberData=getData(array(
+					'select'=>'o.organization_name,o.organization_register_date,o_a.organization_timezone,o_a.organization_city,o_a.organization_state,c_n.country_name,o.is_payment_verified,ct_n.city_name',
+					'table'=>'organization as o',
+					'join'=>array(
+						array('table'=>'organization_address as o_a','on'=>'o.organization_id=o_a.organization_id','position'=>'left'),
+						array('table'=>'country as c','on'=>'o_a.organization_country=c.country_code','position'=>'left'),
+						array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left'),
+						array('table'=>'city_names as ct_n','on'=>"(o_a.city_id=ct_n.city_id and ct_n.city_lang='".get_active_lang()."')",'position'=>'left'),
+					),
+					'where'=>array('o.organization_id'=>$this->data['projectData']['project_owner']->organization_id),
+					'single_row'=>true,
+				));
+		
+				$client_name=$memberData->organization_name;
+				$client_address=array();
+				$location_address=array();
+				if($memberData->city_name){
+					$location_address[]=$memberData->city_name;
+				}
+				if($memberData->organization_state){
+					$location_address[]=$memberData->organization_state;
+				}
+				$location=implode(', ',$location_address);
+				$client_country="";
+				if($memberData->country_name){
+					$client_country=$memberData->country_name;
+				}
+				$client_address['location']=$location;
+				$client_address['country']=$client_country;
+				$client_payment_verify=$memberData->is_payment_verified;
+				
+				$client_member_since=$memberData->organization_register_date;
+				
+			}else{
+				$memberData=getData(array(
+					'select'=>'m.member_name,m.member_register_date,m_a.member_timezone,m_a.member_city,m_a.member_state,c_n.country_name',
+					'table'=>'member as m',
+					'join'=>array(
+						array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),
+						array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),
+						array('table'=>'country_names as c_n','on'=>"(c.country_code=c_n.country_code and c_n.country_lang='".get_active_lang()."')",'position'=>'left')
+					),
+					'where'=>array('m.member_id'=>$data['projectData']['project_owner']->member_id),
+					'single_row'=>true,
+				));
+		
+				$client_name=$memberData->member_name;
+				$client_address=array();
+				$location_address=array();
+				if($memberData->member_city){
+					$location_address[]=$memberData->member_city;
+				}
+				if($memberData->member_state){
+					$location_address[]=$memberData->member_state;
+				}
+				$location=implode(', ',$location_address);
+				$client_country="";
+				if($memberData->country_name){
+					$client_country=$memberData->country_name;
+				}
+				$client_address['location']=$location;
+				$client_address['country']=$client_country;
+				$client_payment_verify="0";
+		
+				$client_member_since=$memberData->member_register_date;
+				
+			}
+			$this->data['projectData']['clientInfo']=array(
+				'client_name'=>$client_name,
+				'client_address'=>$client_address,
+			);
+			
+
+
 			if($is_owner){
 				redirect(URL::get_link('myProjectDetailsURL').'/'.$project_url);
 			}else{
@@ -606,9 +755,17 @@ class Projectview extends MX_Controller {
 					$this->data['proposaldetails']=getProposalDetails($application_id);
 					
 					$memberDataBasic=getData(array(
-						'select'=>'m.member_name,m_b.member_heading,m_b.member_overview,m_b.member_hourly_rate,c_n.country_name,c.country_code_short,m_l.logo,m_b.available_per_week,m_b.not_available_until,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews,m_s.total_working_hour,m_s.success_rate',
+						'select'=>'m.member_name,ct_n.city_name,m_b.member_heading,m_b.member_overview,m_b.member_hourly_rate,c_n.country_name,c.country_code_short,m_l.logo,m_b.available_per_week,m_b.not_available_until,m_s.avg_rating,m_s.total_earning,m_s.no_of_reviews,m_s.total_working_hour,m_s.success_rate',
 						'table'=>'member as m',
-						'join'=>array(array('table'=>'member_basic as m_b','on'=>'m.member_id=m_b.member_id','position'=>'left'),array('table'=>'member_statistics m_s','on'=>'m.member_id=m_s.member_id','position'=>'left'),array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),array('table'=>'country_names as c_n','on'=>'c.country_code=c_n.country_code','position'=>'left'),array('table'=>'member_logo as m_l','on'=>'(m.member_id=m_l.member_id and m_l.status=1)','position'=>'left'),),
+						'join'=>array(
+							array('table'=>'member_basic as m_b','on'=>'m.member_id=m_b.member_id','position'=>'left'),
+							array('table'=>'member_statistics m_s','on'=>'m.member_id=m_s.member_id','position'=>'left'),
+							array('table'=>'member_address as m_a','on'=>'m.member_id=m_a.member_id','position'=>'left'),
+							array('table'=>'country as c','on'=>'m_a.member_country=c.country_code','position'=>'left'),
+							array('table'=>'country_names as c_n','on'=>'c.country_code=c_n.country_code','position'=>'left'),
+							array('table'=>'member_logo as m_l','on'=>'(m.member_id=m_l.member_id and m_l.status=1)','position'=>'left'),
+							array('table'=>'city_names as ct_n','on'=>"(m_a.city_id=ct_n.city_id and ct_n.city_lang='".get_active_lang()."')",'position'=>'left'),
+						),
 						'where'=>array('m.member_id'=>$bidder_id,'c_n.country_lang'=>get_active_lang()),
 						'single_row'=>true,
 					));
