@@ -157,18 +157,18 @@ $logo=getMemberLogo($bid);
                 <div class="payment_project_wrapper">
                   <h4><?php echo __('projectview_',"When should the job be done?");?></h4>
                   <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-12">
                           <div class="form-group">
-                              <label for="title" class="form-label"><?php echo __('projectview_','Start Date');?></label>
+                              <label for="title" class="form-label"><?php echo __('projectview_','Due Date');?></label>
                               <input type="text" name="milestone_due_date" id="milestone_due_date" class="form-control datepicker" value="">
                           </div>
                       </div>
-                      <div class="col-sm-6">
+                      <!-- <div class="col-sm-6">
                           <div class="form-group">
                           	  <label for="title" class="form-label"><?php echo __('projectview_','End Date');?></label>
                               <input type="text" name="milestone_due_date" id="milestone_due_date" class="form-control datepicker" value="">
                           </div>
-                      </div>
+                      </div> -->
                   </div>
                 </div>
               </div>
