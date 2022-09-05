@@ -601,9 +601,6 @@ input.with-border.is-invalid, input.with-border.is-invalid, input.with-border.is
     line-height: 20px;
 	margin-bottom:0
 }
-#fileinput{
-    display: none;
-}
 #uploadfile_container{
 	margin:0 -1rem
 }
