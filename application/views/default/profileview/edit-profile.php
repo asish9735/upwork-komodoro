@@ -41,7 +41,7 @@ if($login_user_id){
           <div class="header-details">
             <h1>
               <?php D(ucwords($memberInfo->member_name))?> <?php if($memberInfo->country_code_short){?>
-                <img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($memberInfo->country_code_short));?>.svg" alt="<?php D(ucfirst($memberInfo->country_name))?>" title="<?php D(ucfirst($memberInfo->country_name))?>" data-tippy-placement="top" height="16">
+                <img class="flag" src="<?php echo IMAGE;?>flags/<?php D(strtolower($memberInfo->country_code_short));?>.svg" alt="<?php D(ucfirst($memberInfo->country_name))?>" title="<?php if($memberInfo->city_name){D(ucfirst($memberInfo->city_name))?> - <?php }?><?php D(ucfirst($memberInfo->country_name))?>" data-tippy-placement="top" height="16">
                 <?php }?>
               <span class="show_edit_btn">
               <ec id="profile-heading-data">
