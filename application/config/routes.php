@@ -73,6 +73,7 @@ $route['apply-job/(:any)']='projectview/apply/$1';
 
 $route['how-it-works']='cms/howitworks';
 $route['terms-and-conditions']='cms/index/terms-and-conditions';
+$route['imprint']='cms/index/imprint';
 $route['privacy-policy']='cms/index/privacy-policy';
 $route['refund-policy']='cms/index/refund-policy';
 $route['about-us']='cms/index/about-us';

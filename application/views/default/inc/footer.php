@@ -46,7 +46,8 @@ $all_category=getAllCategory(array('limit'=>6,'is_featured'=>1));
               <li><a href="<?php D(get_link('enterpriseURL'))?>"><span><?php echo __('enterprise','Enterprise');?></span></a></li>
               <li><a href="<?php D(get_link('CMSprivacypolicy'))?>"><span><?php echo __('privacy_policy','Privacy Policy');?></span></a></li>
               <li><a href="<?php D(get_link('CMSrefundpolicy'))?>"><span><?php echo __('refund_policy','Refund Policy');?></span></a></li>
-              <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span><?php echo __('terms_conditions','Terms &amp; Conditions');?></span></a></li>              <li><a href=""><span>Imprint</span></a></li>
+              <li><a href="<?php D(get_link('CMStermsandconditions'))?>"><span><?php echo __('terms_conditions','Terms &amp; Conditions');?></span></a></li>              
+              <li><a href="<?php D(get_link('CMSimprint'))?>"><span>Imprint</span></a></li>
             </ul>
           </div>
         </div>        

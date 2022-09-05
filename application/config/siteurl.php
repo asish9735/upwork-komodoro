@@ -85,6 +85,7 @@ $config['CMSaboutus'] = 'about-us'; #router
 $config['conatctURL'] = 'contact-us'; #router
 $config['conatctCheckAjaxURL'] = 'contact-request-check'; #router
 $config['CMStermsandconditions'] = 'terms-and-conditions'; #router
+$config['CMSimprint'] = 'imprint'; #router
 $config['CMSprivacypolicy'] = 'privacy-policy'; #router
 $config['CMSrefundpolicy'] = 'refund-policy'; #router
 $config['enterpriseURL'] = 'enterprise'; #router
