@@ -526,18 +526,25 @@ var main=function(){
   });
 }
 </script>
-<?php /*  if(($this->input->get('ref') && $this->input->get('ref')=='paymentsuccess') || ($this->input->get('ref_p') && $this->input->get('ref_p')=='paymentsuccess')){?>
+<?php   if(($this->input->get('ref') && $this->input->get('ref')=='paymentsuccess') || ($this->input->get('ref_p') && $this->input->get('ref_p')=='paymentsuccess')){?>
 <script>
-
-	swal({
-          type: 'success',
-          text: '<?php echo (__('popup_order_details_payment_success',"Payment Success"));?>',
-          padding: 40,
-    }).then(function(){
-			window.location.href="<?php echo (base_url('OrderDetailsURL'));?><?php echo ($orderDetails->order_id)?>";
-    })
+  var main=function(){
+    bootbox.alert({
+        title:'Order Place',
+        message: '<?php echo (__('popup_order_details_payment_success',"Payment Success"));?>',
+        buttons: {
+        'ok': {
+          label: 'Ok',
+          className: 'btn-site pull-right'
+          }
+        },
+        callback: function () {
+          window.location.href="<?php echo (get_link('OrderDetailsURL'));?><?php echo md5($orderDetails->order_id)?>";
+          }
+    });
+  }
 </script>
-<?php } */?>
+<?php } ?>
 <style>
 .choosefile {
     position: relative;
