@@ -1227,7 +1227,15 @@ $(document).ready(function(){
 			{
 			  breakpoint: 768,
 			  settings: {
-				slidesToShow: 1,
+				slidesToShow: 2,
+				dots: true,
+				arrows: false
+			  }
+			},
+			{
+			  breakpoint: 575,
+			  settings: {
+				slidesToShow: 2,
 				dots: true,
 				arrows: false
 			  }

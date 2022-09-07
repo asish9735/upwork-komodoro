@@ -122,8 +122,8 @@
 </section><?php */ ?>
 <section class="intro-stats">
 	<div class="container">
-    	<div class="row row-10">
-        	<article class="col-md-3">
+    	<div class="row row-10 -mb-4">
+        	<article class="col-md-3 col-sm-6 col-12">
             	<div class="card">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE; ?>c1.png" alt="" height="84" width="84" />
@@ -132,7 +132,7 @@
                     </div>
                 </div>
             </article>
-            <article class="col-md-3">
+            <article class="col-md-3 col-sm-6 col-12">
             	<div class="card">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE; ?>c2.png" alt="" height="84" width="84" />
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             </article>
-            <article class="col-md-3">
+            <article class="col-md-3 col-sm-6 col-12">
             	<div class="card">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE; ?>c3.png" alt="" height="84" width="84" />
@@ -150,7 +150,7 @@
                     </div>
                 </div>
             </article>
-            <article class="col-md-3">
+            <article class="col-md-3 col-sm-6 col-12">
             	<div class="card">
                 	<div class="card-body">
                     	<img src="<?php echo IMAGE; ?>c4.png" alt="" height="84" width="84" />
@@ -649,7 +649,7 @@ if ($cms_temp) {
       <h2><?php echo __('home_page_partner_section_h2_tag', 'Trusted Partners'); ?></h2>
       <p><?php echo __('home_page_partner_section_p_tag', 'Trusted by 10M+ businesses') ?></p>
     </div>
-    <div class="logo-carousel">
+    <div class="logo-carousel mb-0">
       <?php
         foreach ($partner as $k => $row) {
           $logo = IMAGE . 'default/thumb/default-member-logo.svg';

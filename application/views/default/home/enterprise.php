@@ -12,7 +12,7 @@
 <div class="container">
 	<div class="row align-items-center">
     <aside class="col-md-6 col-12 text-center">
-        <img src="<?php echo IMAGE;?>works-1a.png" alt="" class="img-responsive" />
+        <img src="<?php echo IMAGE;?>works-1f.jpg" alt="" class="img-fluid" />
     </aside>
     <aside class="col-md-6 col-12">
     <div class="paragraph">
@@ -28,11 +28,11 @@
     </div>    
 </div>  
 </section>
-<section class="section">
+<section class="section bg-white">
 <div class="container">
 <div class="row align-items-center">
 	<aside class="col-md-6 col-12 order-md-2">
-        <img src="<?php echo IMAGE;?>works-2a.png" alt="" class="img-responsive" />
+        <img src="<?php echo IMAGE;?>works-4f.jpg" alt="" class="img-fluid" />
     </aside>    
     <aside class="col-md-6 col-12 order-md-1">
     <div class="paragraph">
@@ -52,7 +52,7 @@
 <div class="container">
 <div class="row align-items-center">
     <aside class="col-md-6 col-12">
-        <img src="<?php echo IMAGE;?>works-3a.png" alt="" class="img-responsive" />
+        <img src="<?php echo IMAGE;?>works-3f.jpg" alt="" class="img-fluid" />
     </aside>
     <aside class="col-md-6 col-12">
     <div class="paragraph">
@@ -71,11 +71,11 @@
     </div>   
 </div>  
 </section>
-<section class="section">
+<section class="section bg-white">
 <div class="container">
 <div class="row align-items-center">
     <aside class="col-md-6 col-12 order-md-2">
-        <img src="<?php echo IMAGE;?>works-4a.png" alt="" class="img-responsive" />
+        <img src="<?php echo IMAGE;?>works-4e.jpg" alt="" class="img-fluid" />
     </aside>
     <aside class="col-md-6 col-12 order-md-1">
     <div class="paragraph">

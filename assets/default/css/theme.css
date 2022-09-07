@@ -1817,8 +1817,6 @@ display: none;
 	padding: 0;
 	padding-right: 35px;
 	padding-left: 18px;
-	color: #fff;
-	background-color: #000;
 	transition: 0.3s;
 	box-shadow: none;
 }
@@ -5285,7 +5283,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	font-size: 18px;
 	font-weight: 600;
 	position: absolute;
-    /* top: 0; */
+    top: 3px; 
     left: 0;
 }
 .list-2 li:before{
@@ -6595,7 +6593,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 /* Intro Banner
 ------------------------------------- */
 .intro-banner {
-	padding: 50px 0 150px;
+	padding: 3rem 0 7rem;
 	position: relative;
 }
 .intro-banner.big-padding {
@@ -6663,9 +6661,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	display: block;
 }
 .banner-headline-alt h1 {
-	font-size: 2.75rem;
 	font-weight: 600;
-	line-height: 50px;
 }
 .banner-headline-alt span {
 	font-size: 24px;
@@ -6749,7 +6745,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 	align-items: center;
 }
 .intro-search-button .button {
-	border-radius: 50%;
+	border-radius: 3rem;
 	height: 40px;
 	width: 40px;
 	line-height: 40px;
@@ -6766,6 +6762,7 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 .intro-banner-search-form .form-control {
 	box-shadow: none;
 	border: none;
+	height: 48px;
 	margin: 0;
 	width: 100%;
 }
@@ -6775,9 +6772,6 @@ box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
 .intro-banner-search-form .input-with-icon {
 	align-self: center;
 	flex: 1;
-}
-.intro-banner-search-form input {
-	padding: 10px 15px;
 }
 .intro-banner-search-form .input-with-icon input {
 	padding: 10px 15px;
@@ -6838,13 +6832,13 @@ top: 55px;
 
 /* Intro Stats */
 .intro-stats {
-	margin-top: -100px;
     position: relative;
     z-index: 15;
 }
 .intro-stats .card {
 	border: none;
     border-bottom: 3px solid var(--siteColor);
+	margin-bottom: 1.5rem;
 	text-align:center
 }
 .intro-stats .card img{
@@ -6895,18 +6889,28 @@ top: 55px;
 	border-right: none;
 }
 
-
 /* Intro Banner Media Queries
 ------------------------------------- */
+@media (min-width: 768px) {
+
+	
+}
 @media (min-width: 992px) {
  .banner-headline h1,  .banner-headline h2,  .banner-headline h3,  .banner-headline h4 {
  font-size: 2.5rem;
+}
+.intro-stats {
+	margin-top: -100px;
 }
 }
 @media (min-width: 1200px) {
  .banner-headline h1,  .banner-headline h2,  .banner-headline h3,  .banner-headline h4 {
  font-size: 3rem;
  line-height: 3rem;
+}
+.banner-headline-alt h1 {
+	font-size: 2.75rem;
+	line-height: 3rem;
 }
 }
 
@@ -6915,18 +6919,15 @@ top: 55px;
 height: auto;
 line-height: 20px;
 }
- .intro-banner {
-padding: 70px 0;
-}
- .banner-headline {
+.banner-headline {
 max-width: 100%
 }
  .banner-headline h1,  .banner-headline h2,  .banner-headline h3,  .banner-headline h4 {
  font-size: 2rem;
 }
 	
-	/* Alternative Banner Style */
-	.intro-banner.dark-overlay .intro-banner-search-form {
+/* Alternative Banner Style */
+.intro-banner.dark-overlay .intro-banner-search-form {
 box-shadow: none
 }
  .intro-banner.big-padding {
@@ -6944,8 +6945,8 @@ font-size: 22px;
 line-height: 32px;
 }
 
-	/* Photo Position */
-	.intro-banner:after,  .intro-banner:before {
+/* Photo Position */
+.intro-banner:after,  .intro-banner:before {
  background: rgba(250, 250, 250, 0.9);
 }
  .intro-banner .background-image-container {
@@ -6954,14 +6955,12 @@ line-height: 32px;
  width: 100%;
  left: 0;
 }
-	/* Photo Position - End*/
-
-	.intro-banner-search-form .intro-search-field .bootstrap-select.btn-group button,  .intro-banner-search-form input {
- height: 56px;
- padding: 15px 22px;
+/* Photo Position - End*/
+.intro-banner-search-form .intro-search-field .bootstrap-select.btn-group button,  .intro-banner-search-form .form-control {
+ height: 40px;
 }
- .intro-banner-search-form .input-with-icon i {
-left: 17px;
+.intro-banner-search-form .input-with-icon i {
+	left: 17px;
 }
  .intro-banner-search-form .input-with-icon input {
 padding-left: 50px;
@@ -6973,47 +6972,37 @@ padding-left: 50px;
  flex-direction: column;
  background: transparent;
  box-shadow: none;
- margin-top: 20px;
 }
  .intro-banner-search-form .intro-search-field {
  padding: 0;
+ border: none;
  border-radius: 0.25rem;
- box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
  margin-top: 20px;
 }
  .intro-banner-search-form .intro-search-field.with-label {
  margin-top: 80px;
 }
- .intro-banner-search-form .intro-search-button {
- margin-top: 30px;
+.intro-banner-search-form .intro-search-button {
+ margin-top: 20px;
 }
+.intro-search-button .button{
+	width: 100%;
+}	
+.intro-banner {
+	padding: 3rem 0;
+}
+.intro-stats {
+	padding-top: 2rem;
+}
+}
+ @media (min-width: 768px) and (max-width: 991.98px) {
+	
+ }
+	
+ @media (max-width: 767.98px) {
+	
+ }
 
-	/* Intro Stats */
-	.intro-stats {
- flex-direction: column;
- background: #fff;
- padding: 20px;
- border-radius: 0.25rem;
- box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
- justify-content: center;
-}
- .intro-stats li {
- display: flex;
- flex-direction: column;
- margin: 0 0 10px 0;
- padding: 0 0 10px 0;
- border: none;
- border-bottom: 1px solid #eee;
- width: 100%;
- align-self: center;
- text-align: center;
-}
- .intro-stats li:last-child {
- margin-bottom: 0;
- padding-bottom: 0;
- border: none;
-}
-}
 /* ---------------------------------- */
 /* Category Boxes
 ------------------------------------- */
@@ -7137,7 +7126,7 @@ width: 50px !important;
 	position: relative;
 	background-size: cover;
 	background-position: 100%;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--siteColor);
 	transition: 0.4s;
 	margin: 0 0 25px 0;
 }
@@ -7193,7 +7182,7 @@ width: 50px !important;
 }
 .photo-box:hover:before {
 	background: #66676b;
-	opacity: 0.95;
+	opacity: 0.9;
 }
 
 /* Small Photobox Styles */

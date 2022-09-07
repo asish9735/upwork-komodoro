@@ -54,7 +54,6 @@
 @media only screen and (max-width: 767.98px) {
 	.home-banner, .carousel-item > img{
 		color:#fff;
-		height:350px;
 	}
 	.home-banner .banner-headline .btn-outline-white {
 		background-color: var(--siteColor);

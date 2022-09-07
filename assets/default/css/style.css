@@ -32,6 +32,9 @@ b, strong {
 a{
 	text-decoration: none;
 }
+p:last-child{
+	margin-bottom: 0;	
+}
 /* global end */
 
 body {	

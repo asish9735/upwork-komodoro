@@ -90,10 +90,9 @@
 .slick-loading .slick-list {
 	background:#fff url('../images/ajax-loader.gif') center center no-repeat
 }
-
 .slick-dots {
-	position:absolute;
-	bottom:-25px;
+	/*position:absolute;
+	bottom: -1.5rem;*/
 	display:block;
 	width:100%;
 	padding:0;
@@ -165,17 +164,6 @@
 	padding-left: 5%;
 	padding-right: 5%;
 }
- 
- @media only screen and (min-width: 768px) and (max-width: 991px) {
- .testimonial-style-5.testimonial-slider-2 .testimonial-for {
- padding: 0;
-}
-}
- @media only screen and (max-width: 767px) {
- .testimonial-style-5.testimonial-slider-2 .testimonial-for {
- padding: 0;
-}
-}
 .testimonial-style-5.testimonial-slider-2 .testimonial-for .testimonial-desc {
 	/*background-color: #fff;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -220,12 +208,6 @@
 .testimonial-style-5.testimonial-slider-2 .slick-slide.slick-active.slick-center .testimonal-img {
 	transform: scale(1);
 }
-.testimonial-style-5.testimonial-slider-2 .slick-slide {
-	padding: 4px 0;
-}
-/*.testimonial-style-5.testimonial-slider-2 .testimonal-nav .slick-track {
-	margin-top: 30px;
-}*/
 /*----------------------------------
     Testimonial Style 5
 -------------------------------------*/
@@ -243,18 +225,19 @@
 .testimonial-style-5:before{
 	left: 0;
 	bottom: 0;
-	height: 90px;
-	width: 140px;
+	height: 120px;
+    width: 220px;
 	background-position: bottom;
 }
 .testimonial-style-5:after{	
 	right:0;
-	top:63px;
-	height: 120px;
-    width: 180px;
+	top: 51px;
+	height: 90px;
+    width: 220px;
 	background-position: top;
 }
 .testimonial-for{
+	padding-top: 1rem;
 	padding-bottom: 2rem;
 	position: relative;
 }
@@ -310,14 +293,17 @@
 	font-size: 18px;
 	line-height: 29px;
 }
-.testimonal-nav.slick-slider {
+.testimonal-nav.slick-slider{
 	max-width: 32%;
 	width: 100%;
 	margin: 0 auto;
     z-index: 9;
 }
-.slick-dotted.slick-slider {
-	margin-bottom:30px
+.slick-dotted.slick-slider{
+	margin-bottom: 2rem;
+}
+.testimonal-nav.slick-slider{
+	margin-bottom: 0;
 }
 .slick-slide.slick-active.slick-center .testimonal-img {
 	transform: scale(1);
@@ -368,6 +354,25 @@
 		width: 120px;
 	} 
  }
-
+ @media only screen and (max-width: 991.98px) {
+	 .testimonial-style-5:before{
+		height: 60px;
+		width: 150px;
+		background-size: 150px;
+	 }
+	.testimonial-style-5:after{	
+		height: 90px;
+		width: 150px;
+		background-size: 150px;
+	}
+ }
+ @media only screen and (max-width: 574.98px) {
+	 .testimonial-style-5:after {
+    	top: 55px;
+		height: 60px;
+		width: 100px;
+		background-size: 100px;
+	}
+ }
 
 /* END CSS */
