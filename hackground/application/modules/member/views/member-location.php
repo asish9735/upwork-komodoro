@@ -31,7 +31,28 @@
 						<div class="col-sm-4">
 							<div class="form-group">
 								<label for="member_city">City</label>
-								<input type="text" class="form-control" name="member_address[member_city]" value="<?php echo !empty($detail['member_address']['member_city']) ? $detail['member_address']['member_city'] : '' ;?>"/>
+								<div id="city_section">
+									<select class="form-control" name="member_address[city_id]">
+										<option value="">-Select-</option>
+										<?php
+										if(!empty($detail['member_address']['member_country']['code'])){
+											$country_code=$detail['member_address']['member_country']['code'];
+											$all_city=getAllCity(array('country_code'=>$country_code));
+											if($all_city){
+												foreach($all_city as $k=>$city){
+													?>
+													
+													<option value="<?php echo $city->city_id;?>" <?php if(!empty($detail['member_address']['city_id']) && $detail['member_address']['city_id']== $city->city_id){echo 'selected';}?>><?php echo $city->city_name;?></option>
+												<?php
+												}
+											}
+											//print_select_option($all_city, 'city_id', 'city_name', (!empty($detail['member_address']['city_id']) ? $detail['city_id']['city_id'] : ''));
+										}
+										
+										  ?>
+									</select>
+								</div>
+								<!-- <input type="text" class="form-control" name="member_address[member_city]" value="<?php echo !empty($detail['member_address']['member_city']) ? $detail['member_address']['member_city'] : '' ;?>"/> -->
 							</div>
 						</div>
 						

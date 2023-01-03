@@ -40,10 +40,12 @@
 	
 	<ul class="nav nav-tabs">
 	  <li class="nav-item"><a class="nav-link <?php echo $page == 'member-basic-info' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/basic_info/'.$member_id); ?>">Basic Info</a></li>
-	   <li class="nav-item"><a class="nav-link <?php echo $page == 'member-location' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/location/'.$member_id); ?>">Location</a></li>
-	   <?php if($detail['is_employer'] == '1'){ /*Skipping tabs for employer */ ?>
 	   
+	   <?php if($detail['is_employer'] == '1'){ /*Skipping tabs for employer */ ?>
+		<li class="nav-item"><a class="nav-link <?php echo $page == 'organization-location' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/organization_location/'.$member_id); ?>">Location</a></li>
+		<li class="nav-item"><a class="nav-link <?php echo $page == 'organization-details' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/organization_details/'.$member_id); ?>">Company</a></li>
 	   <?php }else{ ?>
+		<li class="nav-item"><a class="nav-link <?php echo $page == 'member-location' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/location/'.$member_id); ?>">Location</a></li>
 	   <li class="nav-item"><a class="nav-link <?php echo $page == 'member-profile-detail' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/profile_detail/'.$member_id); ?>">Detail</a></li>
 	   <li class="nav-item"><a class="nav-link <?php echo $page == 'member-skills' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/skills/'.$member_id); ?>">Skills</a></li>
 	   <li class="nav-item"><a class="nav-link <?php echo $page == 'member-language' ? 'active' : ''; ?>" href="<?php echo base_url('member/view_edit/language/'.$member_id); ?>">Language</a></li>

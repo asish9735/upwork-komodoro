@@ -487,7 +487,35 @@ if(!function_exists('get_all_country')){
 	}
 	
 }
-
+if(!function_exists('getAllCity')){
+	function getAllCity($param=array()){
+		$lang = admin_default_lang();
+		$ci = &get_instance();
+		$ci->db->select('c.city_id,c_n.city_name,c.city_order,c.is_featured')
+			->from('city c')
+			->join('city_names c_n', 'c.city_id=c_n.city_id', 'LEFT');
+		$ci->db->where('c_n.city_lang', $lang);
+		if($param){
+			if(array_key_exists('is_featured',$param)){
+				$ci->db->where('c.is_featured',1);
+			}
+			if(array_key_exists('country_code',$param)){
+				$ci->db->where('c.country_code',$param['country_code']);
+			}
+			
+		}	
+		$ci->db->where('c.city_status',1);
+		$ci->db->order_by('c.city_order','asc');
+		$ci->db->order_by('c_n.city_name','asc');
+		if($param){
+			if(array_key_exists('limit',$param)){
+				$ci->db->limit($param['limit']);
+			}
+		}
+		$result = $ci->db->get()->result();
+	return $result;
+	}
+}
 
 if ( ! function_exists('getRoleUserEmployemnt'))
 {

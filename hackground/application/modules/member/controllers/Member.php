@@ -421,6 +421,7 @@ class Member extends MX_Controller {
 		
 		$this->data['module'] = $module;
 		$this->data['member_id'] = $member_id;
+		$this->data['organization_id'] = $this->data['detail']['organization_id'];
 		if($module == 'basic_info'){
 			$this->_member_basic_info($member_id);
 		}else if($module == 'professional_info'){
@@ -443,6 +444,10 @@ class Member extends MX_Controller {
 			$this->_member_education($member_id);
 		}else if($module == 'portfolio'){
 			$this->_member_portfolio($member_id);
+		}else if($module == 'organization_location'){
+			$this->_organization_location($member_id);
+		}else if($module == 'organization_details'){
+			$this->_organization_details($member_id);
 		}else{
 			show_404();
 			return;
@@ -450,7 +455,18 @@ class Member extends MX_Controller {
 		$this->layout->view('member-detail', $this->data);
        
 	}
-	
+	public function getcity(){
+		$country_code=$this->input->post('country_code');
+		$all_city=getAllCity(array('country_code'=>$country_code));
+		echo '<select class="form-control" name="organization_address[city_id]"><option value="">-Select-</option>';
+		if($all_city){
+			foreach($all_city as $k=>$city){
+				echo '<option value="'.$city->city_id.'">'.$city->city_name.'</option>';
+			}
+		}
+		
+		echo '</select>';
+	}
 	private function _member_skills($member_id=''){
 		$this->data['title'] = 'Skills';
 		$breadcrumb = array(
@@ -587,6 +603,7 @@ class Member extends MX_Controller {
 		$this->data['page'] = 'member-profile-detail';
 	}
 	
+	
 	private function _member_professional_info($member_id=''){
 		$this->data['title'] = 'Professional Info';
 		$breadcrumb = array(
@@ -680,7 +697,42 @@ class Member extends MX_Controller {
 		/* Attributes */
 		$this->data['page'] = 'member-location';
 	}
-	
+	private function _organization_location($member_id=''){
+		$this->data['title'] = 'Location';
+		$breadcrumb = array(
+			array(
+				'name' => 'Member',
+				'path' => base_url('member/list_record'),
+			),
+			array(
+				'name' => $this->data['detail']['member_name'],
+				'path' => '',
+			),
+		);
+		$this->data['breadcrumb'] = breadcrumb($breadcrumb);
+		$this->data['action'] = base_url('member/edit_member_info');
+		
+		/* Attributes */
+		$this->data['page'] = 'organization-location';
+	}
+	private function _organization_details($member_id=''){
+		$this->data['title'] = 'Detail';
+		$breadcrumb = array(
+			array(
+				'name' => 'Member',
+				'path' => base_url('member/list_record'),
+			),
+			array(
+				'name' => $this->data['detail']['member_name'],
+				'path' => '',
+			),
+		);
+		$this->data['breadcrumb'] = breadcrumb($breadcrumb);
+		$this->data['action'] = base_url('member/edit_member_info');
+		
+		/* Attributes */
+		$this->data['page'] = 'organization-details';
+	}
 	public function edit_member_info(){
 		if(post() && $this->input->is_ajax_request()){
 			$page = post('page');
@@ -737,8 +789,9 @@ class Member extends MX_Controller {
 				$this->form_validation->set_rules('member_address[member_timezone]', 'timezone', 'required');
 				$this->form_validation->set_rules('member_address[member_country]', 'country', 'required');
 				$this->form_validation->set_rules('member_address[member_address_1]', 'address line 1', 'required');
-				$this->form_validation->set_rules('member_address[member_address_2]', 'address line 2', 'required');
-				$this->form_validation->set_rules('member_address[member_city]', 'city', 'required');
+				//$this->form_validation->set_rules('member_address[member_address_2]', 'address line 2', 'required');
+				//$this->form_validation->set_rules('member_address[city_id]', 'city', 'required');
+				//$this->form_validation->set_rules('member_address[member_city]', 'city', 'required');
 				$this->form_validation->set_rules('member_address[member_state]', 'state', 'required');
 				$this->form_validation->set_rules('member_address[member_pincode]', 'pincode', 'required');
 				
@@ -747,6 +800,51 @@ class Member extends MX_Controller {
 					$member_id = post('ID');
 					$post = post();
 					$update = $this->member->saveMemberInfo($post, $member_id);
+					
+					$this->api->cmd('reload');
+					
+				}else{
+					$errors = validation_errors_array();
+					$this->api->set_error($errors);
+				}
+				
+			}else if($page == 'organization-location'){
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('organization_address[organization_timezone]', 'timezone', 'required');
+				$this->form_validation->set_rules('organization_address[organization_country]', 'country', 'required');
+				$this->form_validation->set_rules('organization_address[organization_address_1]', 'address line 1', 'required');
+				//$this->form_validation->set_rules('organization_address[organization_address_2]', 'address line 2', 'required');
+				//$this->form_validation->set_rules('organization_address[city_id]', 'city', 'required');
+				//$this->form_validation->set_rules('organization_address[member_city]', 'city', 'required');
+				$this->form_validation->set_rules('organization_address[organization_state]', 'state', 'required');
+				$this->form_validation->set_rules('organization_address[organization_pincode]', 'pincode', 'required');
+				$this->form_validation->set_rules('organization_address[organization_vat_number]', 'vat_number', 'required');
+				
+				if($this->form_validation->run()){
+					
+					$organization_id = post('ID');
+					$post = post();
+					$update = $this->member->saveOrganizationInfo($post, $organization_id);
+					
+					$this->api->cmd('reload');
+					
+				}else{
+					$errors = validation_errors_array();
+					$this->api->set_error($errors);
+				}
+				
+			}else if($page == 'organization-details'){
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('organization_basic[organization_name]', 'organization_name', 'required');
+				$this->form_validation->set_rules('organization_basic[organization_website]', 'organization_website', 'required');
+				$this->form_validation->set_rules('organization_basic[organization_heading]', 'organization_heading', 'required');
+				$this->form_validation->set_rules('organization_basic[organization_info]', 'organization_info', 'required');
+				
+				if($this->form_validation->run()){
+					
+					$organization_id = post('ID');
+					$post = post();
+					$update = $this->member->saveOrganizationInfo($post, $organization_id);
 					
 					$this->api->cmd('reload');
 					
@@ -894,7 +992,7 @@ class Member extends MX_Controller {
 					
 				}else{
 					$this->form_validation->set_rules('tomonth', 'Month', 'required|trim');
-					$this->form_validation->set_rules('toyear', 'year', 'required|trim');
+					$this->form_validation->set_rules('toyear', 'year', 'required|trim|greater_than_equal_to['.post('fromyear').']');
 				}
 				
 				if($this->form_validation->run()){
@@ -945,7 +1043,7 @@ class Member extends MX_Controller {
 				$this->load->library('form_validation');
 				$this->form_validation->set_rules('school', 'School', 'required|trim');
 				$this->form_validation->set_rules('from_year', 'From year', 'required|trim');
-				$this->form_validation->set_rules('end_year', 'To year', 'required|trim');
+				$this->form_validation->set_rules('end_year', 'To year', 'required|trim|greater_than_equal_to['.post('from_year').']');
 				
 				if($this->form_validation->run()){
 					$member_id = post('ID');

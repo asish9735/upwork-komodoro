@@ -78,7 +78,15 @@ class Member_model extends CI_Model{
 	
 	public function getAllDetail($member_id=''){
 		$member = $this->db->where('member_id', $member_id)->get('member')->row_array();
-		$member['member_address'] = $this->_getMemberAddress($member_id);
+		$member['organization_id']=0;
+		$organization=$this->db->where('member_id', $member_id)->get('organization')->row();
+		if($organization){
+			$member['organization_address'] = $this->_getOrganizationAddress($organization->organization_id);
+			$member['organization_id']=$organization->organization_id;
+			$member['organization_basic'] = $this->_getOrganizationBasic($organization->organization_id);
+		}else{
+			$member['member_address'] = $this->_getMemberAddress($member_id);
+		}
 		$member['member_basic'] = $this->_getMemberBasic($member_id);
 		$member['member_logo'] = $this->_getMemberLogo($member_id);
 		$member['member_skills'] = $this->_getMemberSkills($member_id);
@@ -212,7 +220,27 @@ class Member_model extends CI_Model{
 		
 		return $member_address;
 	}
-	
+	private function _getOrganizationAddress($organization_id=''){
+		$member_address = $this->db->where('organization_id', $organization_id)->get('organization_address')->row_array();
+		if($member_address){
+			$member_address['member_country'] = array(
+				'code' => $member_address['organization_country'] ,
+				'name' => get_country_name($member_address['organization_country']) ,
+			);
+			
+			$member_address['member_current_location'] = array(
+				'code' => $member_address['organization_country'] ,
+				'name' => get_country_name($member_address['organization_country']) ,
+			);
+			
+		}
+		
+		return $member_address;
+	}
+	private function _getOrganizationBasic($organization_id=''){
+		$organization_basic = $this->db->where('organization_id', $organization_id)->get('organization')->row_array();
+		return $organization_basic;
+	}
 	private function _getMemberBasic($member_id=''){
 		$member_basic = $this->db->where('member_id', $member_id)->get('member_basic')->row_array();
 		return $member_basic;
@@ -358,6 +386,49 @@ class Member_model extends CI_Model{
 			}else{
 				$member_basic['member_id'] = $member_id;
 				$this->db->insert($table, $member_basic);
+			}
+			
+			
+		}
+		
+	}
+	public function saveOrganizationInfo($data=array(), $organization_id=0){
+		if(($organization_id > 0) === false){
+			return false;
+		}
+	
+		$member_main = !empty($data['member']) ? $data['member'] : array(); 
+		$organization_address = !empty($data['organization_address']) ? $data['organization_address'] : array(); 
+		$organization_basic = !empty($data['organization_basic']) ? $data['organization_basic'] : array(); 
+		$where = array(
+			'organization_id' => $organization_id
+		);
+		if($organization_address){
+			$table = 'organization_address';
+			$count = (bool) $this->db->where($where)->count_all_results($table);
+			
+			if($count){
+				$this->db->where($where)->update($table, $organization_address);
+			}else{
+				$organization_address['organization_id'] = $organization_id;
+				$this->db->insert($table, $organization_address);
+			}
+			
+		}
+		if($member_main){
+			$this->db->where($where)->update('member', $member_main);
+		}
+	
+		
+		if($organization_basic){
+			$table = 'organization';
+			$count = (bool) $this->db->where($where)->count_all_results($table);
+			
+			if($count){
+				$this->db->where($where)->update($table, $organization_basic);
+			}else{
+				$organization_basic['organization_id'] = $organization_id;
+				$this->db->insert($table, $organization_basic);
 			}
 			
 			
