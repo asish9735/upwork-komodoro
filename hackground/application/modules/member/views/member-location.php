@@ -11,7 +11,7 @@
 					
 					<div class="form-group">
 						<label for="country">Country</label>
-						<select class="form-control" name="member_address[member_country]">
+						<select onchange="getCity(this.value)" class="form-control" name="member_address[member_country]">
 							<option value="">-Select-</option>
 							<?php print_select_option(get_all_country(), 'country_code', 'country_name', (!empty($detail['member_address']['member_country']) ? $detail['member_address']['member_country']['code'] : '')); ?>
 						</select>
@@ -95,5 +95,17 @@ function onsuccess(res){
 		location.reload();
 	}
 }
-
+function getCity(country_code){
+	var url = '<?php echo base_url($curr_controller.'/getcity');?>';
+	$.ajax({
+		url : url,
+		data: {country_code: country_code},
+		type: 'POST',
+		
+		success: function(res){
+			$('#city_section').html(res);
+			
+		}
+	});
+}
 </script>
